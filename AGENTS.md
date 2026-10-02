@@ -115,17 +115,18 @@ When architecture changes:
 - create/update the ADR;
 - note newly introduced trust assumptions.
 
-## Initial Codex bootstrap tasks
+## Current agent priorities
 
-When this repository is first opened in Codex, do the following before major coding:
-
-1. Validate the repository tree and Markdown links.
-2. Create a concise `git status` baseline.
-3. Review the primary Kaspa sources linked in `research/kaspa-toccata-vprogs.md`.
-4. Map public Kaspa repositories for any shielded-pool, note, nullifier, ZK, or exit implementation and record exact files/branches/commits if found.
-5. Turn `docs/INITIAL-ISSUES.md` into GitHub issues when GitHub access is available.
-6. Draft ADR-0001 comparing the three candidate state architectures in `docs/ARCHITECTURE.md`.
-7. Do **not** begin production cryptography until the existing-work map and ADR-0001 are reviewed.
+1. Work from the public GitHub issues and the current ADRs rather than recreating bootstrap work.
+2. Keep Kaspa/Toccata/vProgs research evidence current, source-grounded, and pinned to exact upstream files/commits where practical.
+3. Prioritize the open architecture and feasibility work in P01-P03 before substantial cryptographic implementation.
+4. Preserve the invariants in `SECURITY-INVARIANTS.md`. Do not weaken or reinterpret an invariant silently; any proposed change must be explicit and reviewed.
+5. Keep facts, interpretations, hypotheses, and unverified claims clearly separated.
+6. Before implementing notes, nullifiers, proving, exits, wallet scanning, or private state, inspect the relevant mature protocol designs and current Kaspa work first.
+7. Use test KAS only for experiments. Do not deploy experimental protocol code to mainnet or use real funds.
+8. Treat passing tests as evidence about the tested implementation, not as proof of cryptographic correctness or production safety.
+9. For every significant implementation, perform an adversarial second-pass review covering inflation, double spending, unauthorized exits, stale/replayed state, privacy leakage, dependency failure, and hidden trust assumptions.
+10. Keep documentation, ADRs, threat model, and security assumptions synchronized with implementation changes.
 
 ## Definition of a useful first PoC
 
