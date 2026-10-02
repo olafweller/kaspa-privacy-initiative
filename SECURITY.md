@@ -8,13 +8,15 @@ This repository is early research and may contain incomplete designs, unsafe exp
 
 ## Vulnerability reporting
 
-Before any code is deployed with economic value, the repository should enable GitHub Private Vulnerability Reporting / Security Advisories and publish a dedicated private security contact.
+GitHub Private Vulnerability Reporting is enabled for this repository. Use [Report a vulnerability](https://github.com/olafweller/kaspa-privacy-initiative/security/advisories/new) for sensitive findings. The report is private to repository maintainers and the reporter through GitHub's advisory workflow.
 
-Until that channel exists:
+For public discussion:
 
 - do not publish detailed exploit instructions for any experiment that may already be running with value;
 - open a public issue only for non-sensitive design/security discussion;
 - clearly label suspected critical issues without posting weaponized details.
+
+Never include bearer tokens, private keys, or user wallet secrets in a report. Before any deployment with economic value, document a dedicated contact, response ownership, and incident process as well. This repository currently contains no deployed privacy protocol or real-fund experiment.
 
 ## What counts as critical
 
