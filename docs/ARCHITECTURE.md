@@ -2,7 +2,7 @@
 
 **Status:** exploratory. No architecture has been selected.
 
-The proposed comparison is in [ADR-0001](adr/0001-state-architecture.md). It remains unaccepted pending review; see the [initial repository findings](REPOSITORY-REVIEW.md) for factual corrections and unresolved feasibility gates.
+The proposed comparison is in [ADR-0001](adr/0001-state-architecture.md). It remains unaccepted pending review.
 
 The purpose of this document is to compare candidate ways to create optional privacy for native KAS without prematurely locking the project into one implementation.
 

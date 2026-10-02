@@ -9,8 +9,15 @@ Where possible, they should later become executable tests, property tests, fuzz 
 At every valid protocol state:
 
 ```text
-total spendable shielded value <= native KAS controlled by the protocol for users
+total outstanding user liabilities <= native KAS reserved for users
 ```
+
+Outstanding user liabilities include:
+
+- spendable shielded value;
+- valid withdrawal/exit claims that have been created but not yet paid.
+
+Consuming a private note into a withdrawal request must preserve the outstanding liability until the valid withdrawal/exit claim is paid. Reserved native KAS must remain controlled by protocol rules for users.
 
 Development treasury funds must not be counted as user backing.
 

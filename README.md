@@ -2,6 +2,8 @@
 
 > Researching permissionless, optional privacy for native KAS.
 
+**Kaspa Privacy Initiative is an independent, community-led research initiative and is not an official Kaspa Core project.**
+
 **Status:** early public research. No production protocol exists here yet. Do not use experimental code with real funds.
 
 ## Start here and help shape the research
@@ -38,8 +40,15 @@ Instead, native KAS remains locked under protocol rules while cryptographic stat
 The fundamental accounting invariant is:
 
 ```text
-total valid shielded claims <= native KAS locked by the protocol
+total outstanding user liabilities <= native KAS reserved for users
 ```
+
+Outstanding user liabilities include:
+
+- spendable shielded value;
+- valid withdrawal/exit claims that have been created but not yet paid.
+
+Consuming a private note into a withdrawal request must not make the protocol forget that it still owes the user native KAS. That liability remains outstanding until the valid withdrawal/exit claim is paid.
 
 Shielded notes or claims are therefore **not a new token**. They are private cryptographic claims on native KAS held under protocol-enforced conditions.
 
