@@ -1,0 +1,29 @@
+name: Research question
+description: Propose or investigate an open technical question
+title: "[Research] "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: What exact question are we trying to answer?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Which security, privacy, architecture, UX, or economic decision depends on this?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Existing evidence / sources
+      description: Prefer primary specs, repos, code links, papers, or reproducible experiments.
+  - type: textarea
+    id: criteria
+    attributes:
+      label: What would count as an answer?
+      description: Define useful acceptance criteria or experiments.

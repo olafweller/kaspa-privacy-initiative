@@ -1,0 +1,39 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets / local config
+.env
+.env.*
+ENV
+env
+*.key
+*.pem
+secrets/
+
+# Rust
+/target/
+**/target/
+
+# Node / JS
+node_modules/
+.npm/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build / test artifacts
+coverage/
+dist/
+build/
+.tmp/
+tmp/
+
+# Local notes
+.local/

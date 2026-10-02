@@ -1,0 +1,23 @@
+name: Security design issue
+description: Discuss a non-sensitive security design problem
+labels: ["security"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not publish weaponized exploit details for deployed code. Use private vulnerability reporting once enabled."
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk
+      description: What could go wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: invariant
+    attributes:
+      label: Security invariant affected
+      description: Reference SECURITY-INVARIANTS.md where possible.
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed mitigation / research path
