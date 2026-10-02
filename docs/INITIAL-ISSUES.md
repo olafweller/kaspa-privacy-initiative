@@ -2,6 +2,28 @@
 
 The P01–P15 identifiers below are proposal IDs, independent of GitHub issue numbering. The [live issue tracker](https://github.com/olafweller/kaspa-privacy-initiative/issues) holds current discussion and progress. Draft research notes do not close a task whose experimental acceptance criteria remain unmet.
 
+## Published tasks
+
+| Proposal | GitHub issue |
+| --- | --- |
+| P01 | [#1: Map current Kaspa primitives for a shielded KAS PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/1) |
+| P02 | [#2: Locate and review existing Kaspa shielded-pool implementations](https://github.com/olafweller/kaspa-privacy-initiative/issues/2) |
+| P03 | [#3: Review ADR-0001 and choose a state architecture for the first PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/3) |
+| P04 | [#4: Define the minimal note model](https://github.com/olafweller/kaspa-privacy-initiative/issues/4) |
+| P05 | [#5: Define nullifier requirements](https://github.com/olafweller/kaspa-privacy-initiative/issues/5) |
+| P06 | [#6: Define value-conservation proof statement](https://github.com/olafweller/kaspa-privacy-initiative/issues/6) |
+| P07 | [#7: Define shield/deposit mechanism](https://github.com/olafweller/kaspa-privacy-initiative/issues/7) |
+| P08 | [#8: Define permissionless exit/unshield mechanism](https://github.com/olafweller/kaspa-privacy-initiative/issues/8) |
+| P09 | [#9: Prover failure experiment design](https://github.com/olafweller/kaspa-privacy-initiative/issues/9) |
+| P10 | [#10: State availability and recovery specification](https://github.com/olafweller/kaspa-privacy-initiative/issues/10) |
+| P11 | [#11: Compare proof systems available to the first PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/11) |
+| P12 | [#12: Wallet note-discovery research](https://github.com/olafweller/kaspa-privacy-initiative/issues/12) |
+| P13 | [#13: Practical privacy leakage analysis](https://github.com/olafweller/kaspa-privacy-initiative/issues/13) |
+| P14 | [#14: Sustainable funding options](https://github.com/olafweller/kaspa-privacy-initiative/issues/14) |
+| P15 | [#15: Legal/operational review questions before mainnet](https://github.com/olafweller/kaspa-privacy-initiative/issues/15) |
+
+New to the project? Try [the documentation review task](https://github.com/olafweller/kaspa-privacy-initiative/issues/16).
+
 ## P01 — Map current Kaspa primitives for a shielded KAS PoC
 
 **Labels:** `research`, `architecture`, `kaspa`, `priority-high`

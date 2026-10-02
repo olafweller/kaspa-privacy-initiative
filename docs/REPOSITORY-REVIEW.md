@@ -2,7 +2,20 @@
 
 **Date:** 2026-10-02
 
-**Status:** findings for steward review; no architecture accepted and no production cryptography started.
+**Status:** initial findings and publication follow-up; no architecture accepted and no production cryptography started.
+
+## Publication follow-up
+
+On October 2, 2026, the project steward approved the proposed editorial and structural corrections and authorized public GitHub publication. The original baseline and findings below are retained as a historical record; they describe the workspace before publication setup.
+
+- Clarified temporary development controls without allowing reserve/proof bypasses.
+- Added deposit, pending-exit, fee, and payout specification requirements; kept the security invariants unchanged.
+- Clarified note inclusion versus authenticated spent-state checks, asynchronous execution versus settlement, recovery data/pruning/reorg requirements, and prover confidentiality in architecture, open questions, and the threat model.
+- Revised unsubstantiated safety/throughput language while keeping all three architecture candidates open.
+- Added the canonical Apache-2.0 license, contributor walkthrough, proposal IDs, issue templates, and a minimal documentation check/CI workflow.
+- Published the [repository](https://github.com/olafweller/kaspa-privacy-initiative) with Issues and Discussions. Private vulnerability reporting is enabled. The initial documentation workflow passed.
+
+ADR-0001 remains Proposed. Approval of these corrections is not acceptance of a state architecture or authorization to start production cryptography. The live issue tracker carries ongoing research and review. All fifteen backlog proposals have public issues; a documentation starter task and a welcome discussion provide entry points for new contributors.
 
 ## Scope and baseline
 
@@ -49,7 +62,7 @@ No complete shielded pool was verified in the reviewed official files. This limi
 
 ## Corrections proposed before publication
 
-These require discussion or a broader editorial change and have not been applied to the principles/invariants or candidate designs.
+These were proposed in the initial review. The publication follow-up above records the approved clarifications; the invariants remain unchanged and unresolved protocol details remain research tasks.
 
 1. **Temporary controls need tighter wording.** `PRINCIPLES.md` section 5 permits temporary testnet controls, while AGENTS and I-7/I-8 prohibit convenience withdrawal authority and privileged fund control. Clarify that development controls cannot bypass reserve/proof rules; a deliberately weaker mock must be identified as a separate simulation and cannot claim to satisfy the invariants. This flags an ambiguity, not a proposal to weaken I-7/I-8/I-13.
 2. **Define boundary and pending-exit accounting.** I-2's equation describes private transfers, while deposits, withdrawals, public fees, and unpaid exit entitlements need explicit state-transition equations. Keep I-1/I-2 unchanged; add those equations to a later proof-statement specification so consuming a note into an unpaid exit cannot hide an outstanding liability.

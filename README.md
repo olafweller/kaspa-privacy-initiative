@@ -10,7 +10,7 @@ The first public milestone is a feasibility and architecture review. Developers,
 
 - Read the [candidate architectures](docs/ARCHITECTURE.md) and [proposed ADR-0001](docs/adr/0001-state-architecture.md).
 - Challenge the [security invariants](SECURITY-INVARIANTS.md), [threat model](THREAT-MODEL.md), and [open questions](QUESTIONS.md) with evidence.
-- Join [Discussions](https://github.com/olafweller/kaspa-privacy-initiative/discussions) for ideas and questions, or use [Issues](https://github.com/olafweller/kaspa-privacy-initiative/issues) for concrete research tasks and corrections.
+- Join the [welcome discussion](https://github.com/olafweller/kaspa-privacy-initiative/discussions/17) for ideas and questions, or use [Issues](https://github.com/olafweller/kaspa-privacy-initiative/issues) for concrete research tasks and corrections.
 - Suggest a documentation change through a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) for a short walkthrough.
 
 Feedback is most useful when it identifies an assumption, links a specification or exact upstream file/commit, and explains what would validate or falsify the idea. You do not need a finished implementation to contribute.
