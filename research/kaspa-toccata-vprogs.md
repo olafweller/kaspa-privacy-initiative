@@ -2,12 +2,15 @@
 
 **Last reviewed:** 2026-10-02
 
-**Scope:** specifications, repository trees, and selected source files. No node, prover, or TN10 transaction was run. Source inspection establishes implemented interfaces, not end-to-end shielded-pool feasibility or security.
+**Original source-review scope:** specifications, repository trees, and selected source files. No node, prover, or TN10 transaction was run during that October 2 review. Source inspection establishes implemented interfaces, not end-to-end shielded-pool feasibility or security.
 
 **Later experimental evidence:** the October 3 [A0 report](../docs/poc-a0.md)
-records real local proof/consensus-code execution against this same node revision.
-The source-review snapshot below remains dated October 2; live TN10 execution
-and the full private-state/recovery gates remain unvalidated.
+records real local proof/consensus-code execution and a live A0.5 terminal reserve
+release, accepted-body/payout observation and missing-input replay rejection.
+The source-review snapshot below remains dated October 2. Live observations use
+two synchronized native RPC endpoints, with own-node genesis/header validation
+and explicit remote-observation trust. Full private-state/recovery gates remain
+unvalidated.
 
 The October 3 local continuation rechecked Rusty Kaspa/vProgs/research heads;
 they still match the pins below. A [read-only TN10 transport preflight](../docs/poc-a0.md#a05-local-continuation-transport-preflight)

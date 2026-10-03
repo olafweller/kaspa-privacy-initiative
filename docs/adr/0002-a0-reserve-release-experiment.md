@@ -13,15 +13,18 @@ again for A0. ADR-0001 remains **Proposed** and Candidate A remains experimental
 
 The existing PoC A and AGENTS.md describe a broader private-transfer and recovery
 milestone. A0 is a preliminary sub-experiment and cannot satisfy that milestone.
-The existing source review explicitly says that no real-proof TN10 round trip
-has been demonstrated. Availability in upstream source is not evidence of a
-particular live endpoint accepting our transaction.
+The original source review had no real-proof TN10 round trip. A0.5 now records
+that narrow terminal run in the linked evidence; source availability alone remains
+insufficient to establish live endpoint acceptance.
 
 CONTRIBUTING.md normally requests public coordination before substantial work.
 The original task required local-only implementation and review. A subsequent
 explicit instruction authorizes publishing this A0 feature branch, a draft PR,
 and a PQ research tracking item, plus preparing the [A0.5 handoff](../poc-a0-live-tn10-handoff.md).
-It does not authorize merging, starting A1, or claiming live TN10 success.
+The subsequent local A0.5 instruction explicitly authorizes reviewed test-only
+funding, broadcast and replay on this same draft PR. The observed result is in
+[the live report](../poc-a0.md#a05-live-tn10-result). Merging and starting A1 remain
+unauthorized.
 
 ## Experiment decision
 

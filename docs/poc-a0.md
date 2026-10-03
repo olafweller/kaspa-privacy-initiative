@@ -1,33 +1,32 @@
 # PoC A0 — native-KAS reserve release feasibility
 
-**Date:** 2026-10-03. **Scope:** experimental, local evidence; no production protocol.
+**Date:** 2026-10-03. **Scope:** experimental local and live TN10 evidence; no production protocol.
 
-**Result: local baseline reproduced; A0.5 live execution in progress.** A freshly generated
-Groth16 proof passed the unmodified upstream transaction validator with full
-script/mass validation and TN10 parameters. All 28 invalid transaction variants
-were rejected. Four circuit tests passed. No funded or observed TN10 spend exists.
+**Result: the narrow A0.5 terminal reserve-release experiment succeeded.** A real
+Groth16 proof authorized the funded TN10 reserve release; the exact 10 test-KAS
+payout and consumed reserve were observed through two native RPC endpoints.
+A distinct-ID replay was rejected for a missing input. The circuit, covenant,
+10.2 / 10 / 0.2 accounting and full-validator flags were preserved. See the
+[live result](#a05-live-tn10-result) and [machine-readable evidence](../poc/a0/evidence/a05-live-tn10.json).
 
 ## Question and evidence boundary
 
 Can a native-KAS reserve be spent only after a real cryptographic proof verifies
 and the transaction meets the covenant's state/output conditions?
 
-A0 exercises a terminal withdrawal against pinned Rusty Kaspa consensus code.
-The reserve UTXO supplied locally is a fixture. It has not been funded on TN10.
-No transaction was submitted, mined, or observed on TN10, and there are no TN10
-transaction IDs. Local validator acceptance must not be described as an on-chain
-reserve release. The live-network feasibility question remains open.
+The original cloud baseline exercised a terminal withdrawal against pinned
+Rusty Kaspa consensus code with a supplied UTXO. One valid fixture and stateless
+replay passed; 28 invalid variants failed and four circuit tests passed. That
+cloud run had no permitted TN10 endpoint or funded reserve and established only
+local execution. Its original measurements and source-review records remain below.
 
-The original cloud environment permitted upstream/package downloads but had no configured
-TN10 RPC endpoint, test funding, or outbound TCP destination grants. Its allowed
-HTTP destinations do not include the TN10 seeders in the inspected node config.
-No credentials or wallet keys were requested or used. This is an environment
-blocker, not evidence that Kaspa lacks the required consensus primitives.
-
-The local A0.5 continuation adds a retained-key, file-based proof adapter and
-pinned native-wRPC transport. The REST limitation is documented below; it does
-not require changing the original circuit or covenant. Dedicated test wallets
-exist; no funds have been sent at this checkpoint.
+The local continuation reproduced that baseline first, retained fresh KPI claim
+and wallet material, and executed A0.5 on TN10. The own pinned node independently
+validated genesis and headers, but its large UTXO import remained incomplete.
+Live UTXO/acceptance observations therefore come from two synchronized native
+RPC endpoints matching the locally validated headers. Their honesty is an explicit
+trust assumption; two URLs do not establish independent operators. This is not
+local validation of the full live UTXO set, a finality proof or an audit.
 
 The [experiment decision](adr/0002-a0-reserve-release-experiment.md) records scope
 and documentation reconciliation. ADR-0001 remains Proposed. Neither the broader
@@ -169,7 +168,7 @@ commands, test counts, and SHA-256 hashes of the tested source/build inputs.
 | Modified public tag; noncanonical scalar; 31/33-byte scalar | Rejected by verifier/field decoding |
 | Zero / `u64::MAX` amount | Rejected by upstream monetary range checks |
 | Insufficient compute budget | Rejected by actual script resource meter |
-| Exact replay with the same supplied UTXO | **Accepted**, intentionally demonstrating the stateless boundary; no live double-spend rejection was tested |
+| Exact replay with the same supplied UTXO | **Accepted**, intentionally demonstrating the stateless boundary; no live double-spend rejection was tested in this original baseline |
 
 There are 30 harness cases: one authorized transaction, 28 rejected variants,
 and one accepted replay-boundary diagnostic. The four circuit tests separately
@@ -202,7 +201,7 @@ quota, and a 16 GiB memory limit, compiled with Rust 1.91.0 release optimization
 Do not infer throughput, mobile feasibility, confirmation latency, or production
 fees. Fresh randomness means proof bytes and timings vary between reproductions.
 
-## Review findings and deliverables
+## Original cloud review findings and deliverables
 
 The parallel integration, proof, implementation, and adversarial tracks were
 reconciled before implementation. Review caught an omitted payout covenant-
@@ -227,10 +226,10 @@ The source, lockfile, runner, documentation, and sanitized evidence are prepared
 for the user-authorized feature branch and draft PR. Build caches and transient logs remain
 ignored. No witness, wallet private key, setup secret, API token, or funding
 material from a generated experiment is part of the deliverable. Circuit unit
-tests contain explicitly synthetic, public, non-funding witness bytes. Publication
-does not change the local-only experimental evidence or complete A0.
+tests contain explicitly synthetic, public, non-funding witness bytes. That original publication established local evidence only. The A0.5 continuation
+and its separate live evidence are recorded below.
 
-### Publication review of the actual diff
+### Original cloud publication review of the actual diff
 
 The final publication review re-read AGENTS.md, the invariants, threat model,
 architecture, both ADRs and this report, then inspected both Rust sources,
@@ -368,7 +367,7 @@ proof roundtrip pass. The own node has validated headers and is importing its UT
 RPC endpoints report synchronized TN10/2.1.0 and match three locally validated
 headers. All broadcast paths require those identity checks and a review tied to
 the current source/binary hashes.
-No live IDs or confirmation claim are available yet.
+The subsequent live result and exact identifiers follow.
 
 ### Repeated local measurements
 
@@ -392,14 +391,119 @@ RPC capture. Compute mass is 171335 grams, transient mass 3900 and storage mass
 measurements. Whole-harness RSS is not isolated prover memory. These results do
 not establish cryptographic correctness or compare equivalent work with RISC Zero.
 
+## A0.5 live TN10 result
+
+The [sanitized live artifact](../poc/a0/evidence/a05-live-tn10.json) includes the
+public manifest/VK/redeem, actual funding and release transactions, proof/public
+inputs, observed UTXOs, native submission receipts and frame sizes, accepted-body
+readback, exact replay errors, later observations and the adversarial review.
+Private wallet/claim/proving material is excluded. The local cold bootstrap did
+not finish its UTXO import; it later restarted that phase when the pruning point
+advanced. The experiment node was stopped after the RPC observations, retaining
+its ignored data and the separate wallet/proving backup. No local full-UTXO
+validation is claimed.
+
+| Event | Identifier / result |
+| --- | --- |
+| Fresh KPI wallet bootstrap, 12 test KAS | `27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a` |
+| Reserve funding | `67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f` |
+| Actual reserve outpoint | `67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f:0` |
+| Reserve release / payout output 0 | `29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554` |
+| Release-containing block | `c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210` |
+| Accepting block | `c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f` |
+| Acceptance/UTXO observed | 2026-10-03 17:56:52.669 UTC; DAA 587174865 |
+| Later recheck | 17:59:21.269 UTC; 153.474 s since submission; DAA 587175971 |
+| Distinct-ID replay | `a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade` |
+
+The fixed reserve address was
+`kaspatest:pqc9cdt4u94f4yf4lxxawr9mz6ypc53rypc72mm2phtulartxmvhw2lxjzegy`.
+The controlled recipient was
+`kaspatest:qr33u5pnjefh90vcgfc8dexl8re3kuv2ulys0skqhqxup2erjvly2s38lsrz4`.
+The accepted body exactly matches the locally validated SDK transaction: one
+10.2 test-KAS reserve input, one 10 test-KAS output to that fixed full script,
+`covenant=None`, 0.2 test-KAS fee, no successor or extra output. Both endpoints
+reported the same accepting block and exact body/payout; the reserve was absent
+and no distinct-replay payout existed. The later check adds 1106 virtual DAA
+score over the first acceptance observation, not a permanent-finality claim.
+
+Exact replay returned `was already accepted by the consensus`. The distinct-ID
+variant changed sequence from u64::MAX to u64::MAX-1 and first passed full local
+validation against the original supplied UTXO. Its node error was
+`is an orphan where orphan is disallowed`. The [pinned mempool path](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/validate_and_insert_transaction.rs)
+maps `RejectMissingOutpoint` to that error when orphans are forbidden. Combined
+with the known funded output, accepted consuming transaction and absent reserve,
+this is evidence of spent-input rejection. The error does not itself say
+“double spend”, and proof invalidity is not the rejection cause. This resolves
+the precise spentness boundary that the stateless local fixture could not test.
+
+| Live measurement | Result / scope |
+| --- | --- |
+| Proof generation | 889.026 ms, one retained-key live sample |
+| Full local release validation | 10.380 ms |
+| Proof / VK / redeem / signature | 128 / 424 / 576 / 775 bytes |
+| Consensus Borsh transaction encoding | 965 bytes; not the RPC wire encoding |
+| Captured native-wRPC submission message | 998 bytes including RPC envelope; excluding WebSocket/TCP/TLS framing |
+| Upstream estimated transaction size | 975 bytes; an estimate, not the captured message |
+| Compute / storage / transient mass | 171335 / 20 / 3900 grams |
+| Actual reserve-release fee | 20000000 sompi = 0.2 test KAS |
+| Ordinary bootstrap / reserve-funding fees | 815400 / 704700 sompi |
+| Broadcast to accepted-ID and exact-UTXO observation | 4851 ms, with blue-score-distance >20 policy |
+
+Node/SDK release: 2.1.0; source revision:
+`01b532e8b553523216471682649693af92f0fd16`; Rust 1.91.0;
+arkworks BN254/Groth16 0.6.0; Node 22.22.3. Archive/binary hashes, local environment
+and five independent baseline samples are in the linked artifacts. Whole-harness
+RAM measurements are not isolated prover RAM or local-node memory.
+
+### Adapter changes and post-live review
+
+No circuit, covenant, amount, budget or full-validation rule changed. The live
+adapter adds retained key/claim material, controlled recipient ownership, P2SH
+address derivation, actual outpoint/UTXO context, exact SDK serialization and
+accepted-body checks. The public-RPC observation trust is documented separately.
+
+Two transport hazards were caught before reserve funding: the SDK may retain a
+supplied cached transaction ID, and its ordinary v0 generator commits overall
+mass where TN10 requires the storage component. IDs are explicitly recomputed;
+the v0 mass component is corrected using upstream code with exact integer-range
+checks, then signatures/accounting/full validation are checked unchanged. Saved
+genesis u64 fields also require explicit bounded BigInt restoration after pruning.
+
+The initial highest-priority fee estimate exceeded the fixed release fee, but a
+lower bucket fitted it with a subsecond estimate. The reviewed policy accepts a
+bucket fitting the unchanged fee with at most 30 seconds estimated inclusion,
+above the pinned relay floor. Actual inclusion was then observed; the estimate
+was not treated as a guarantee. No accounting or proof change was needed.
+
+The post-live adversarial review found no added inflation, payout-redirection,
+extra-output, key-substitution or privileged-withdrawal path. Sequence can vary
+without changing the authorization terms, intentionally used for the distinct-ID
+replay; copying a proof cannot redirect the fixed payout. Dependency failure can
+halt operation. Persistent local backup does not establish independent recovery.
+All value/timing links are public; Groth16 trusted setup, unaudited code, non-PQ
+security, local-host integrity and remote observation honesty remain assumptions.
+Seven Rust tests (four circuit, three adapter) and thirteen Node tests (nine SDK/
+policy, four preflight) pass alongside the preserved 28-invalid-variant baseline.
+
+### Recommendation for A1, not implementation
+
+Review this A0.5 evidence first. Then define an A1 ADR/test matrix for **one
+authenticated successor reserve/state with explicit liability conservation and
+an independently executable terminal exit**. Test competing transitions, stale/
+wrong-state and cross-instance proofs, fee accounting and recovery without the
+original operator. Revisit the existing mature-protocol/Kaspa work before choosing
+state/note/nullifier machinery. Do not infer a private multi-user pool, select
+Candidate A, or begin A1 from this terminal success alone.
+
 ## Security and architectural interpretation
 
 - Groth16 setup is performed locally for the experiment. Its toxic-waste handling
   is not a reviewed ceremony; a malicious setup party could forge proofs.
 - The proof depends on BN254/Groth16, SHA-256, arkworks, and pinned Kaspa consensus
   code. BN254/Groth16 is not post-quantum secure. Passing tests is not an audit.
-- Witnesses remain in the local process and are not printed or persisted. Memory
-  is not hardened/zeroized. A hosted prover receiving the witness would learn it.
+- Witnesses are not transmitted to RPC services or published. The live adapter
+  deliberately persists restricted local claim/proving material and a backup.
+  Memory is not hardened/zeroized; a hosted prover would learn the witness.
 - Amounts, recipient, outpoint, claim linkage, fees, and operation timing are
   public. No anonymity, unlinkability, or multi-user privacy is established.
 - Exact output checks prevent a proof-valid withdrawal from redirecting or
@@ -414,7 +518,8 @@ not establish cryptographic correctness or compare equivalent work with RISC Zer
 
 Candidate A has a concrete direct-verifier path worth testing further. Its
 production architecture, proof system, and recovery model remain unaccepted.
-Further work must establish live TN10 acceptance, robust circuit/setup review,
-general claim issuance/conservation, and reconstructable independent exits.
+Live A0.5 improves the credibility of the direct L1 authorization path specifically.
+Further work still requires robust circuit/setup review, general claim issuance/
+conservation, and reconstructable independent exits. No A1 implementation began.
 
 PQ requirements and migration research are tracked separately in [issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19). This tracking item does not redesign A0.

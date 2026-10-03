@@ -8,7 +8,8 @@ The [A0 feasibility experiment](poc-a0.md) investigates direct Groth16 proof
 authorization and native payout constraints for one terminal claim. Its local
 consensus-code evidence must be distinguished from funded TN10 acceptance and
 the broader private-state/recovery requirements. This experiment does not select
-Candidate A or accept ADR-0001. A0.5 adds a retained-key/native-RPC test adapter
+Candidate A or accept ADR-0001. A0.5 now records a terminal TN10 release and
+spent-input replay rejection through a retained-key/native-RPC test adapter
 under [ADR-0002](adr/0002-a0-reserve-release-experiment.md), with no change to
 the terminal proof statement or the candidate architecture.
 

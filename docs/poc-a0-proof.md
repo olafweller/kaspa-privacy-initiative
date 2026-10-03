@@ -1,6 +1,6 @@
 # A0 proof statement and existing-work review
 
-**Scope:** one terminal claim, for a local native-test-KAS reserve experiment. This is not a shielded payment protocol, an accepted Candidate A architecture, or a new note/nullifier construction. See [the A0 experiment report](poc-a0.md) for execution results and the actual network evidence boundary.
+**Scope:** one terminal claim, for a native-test-KAS reserve experiment with local and live TN10 evidence. This is not a shielded payment protocol, an accepted Candidate A architecture, or a new note/nullifier construction. See [the A0 experiment report](poc-a0.md) for execution results and the actual network evidence boundary.
 
 **A0.5 continuation:** the circuit and covenant are unchanged. The file-only
 adapter reloads the original claim/proving material and recomputes public inputs
@@ -55,7 +55,7 @@ The proving/verification key is specific to this single claim's constants. This 
 
 The proof alone does not establish that an output exists or pays the correct amount. The locking script checks the actual transaction: one reserve input, one payout output, exact input amount, exact output amount, and full recipient script/version. It constructs the outpoint public fields directly from `OpOutpointTxId` and `OpOutpointIndex`; the spender does not supply those fields. The circuit's fixed prefix commits to the same terms, and the script commits to that circuit's verifying key. Therefore a mismatch in either layer rejects.
 
-There is no successor reserve or pending withdrawal in this terminal experiment. State is the current reserve UTXO plus its pinned claim terms. Successful settlement consumes that UTXO and fully pays its one outstanding claim. Kaspa's UTXO-set membership checks, not the SHA256 tag or a custom nullifier, prevent a second spend. The local harness supplies its own UTXO entry: even `TransactionValidator` with `Full` flags cannot establish that this outpoint currently exists or remains unspent in TN10's UTXO set. Repeating an identical valid transaction against the supplied entry therefore passes locally. Actual node UTXO-set lookup and spend processing are required to reject an already consumed outpoint; that live boundary must be tested separately.
+There is no successor reserve or pending withdrawal in this terminal experiment. State is the current reserve UTXO plus its pinned claim terms. Successful settlement consumes that UTXO and fully pays its one outstanding claim. Kaspa's UTXO-set membership checks, not the SHA256 tag or a custom nullifier, prevent a second spend. The local harness supplies its own UTXO entry: even `TransactionValidator` with `Full` flags cannot establish that this outpoint currently exists or remains unspent in TN10's UTXO set. Repeating an identical valid transaction against the supplied entry therefore passes locally. Actual node UTXO-set lookup and spend processing are required to reject an already consumed outpoint; that live boundary must be tested separately. [A0.5](poc-a0.md#a05-live-tn10-result) now records an accepted terminal release and distinct-ID missing-input replay rejection, with explicit remote-observation trust.
 
 Accounting is explicitly:
 

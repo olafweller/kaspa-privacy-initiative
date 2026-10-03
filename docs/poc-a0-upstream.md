@@ -120,13 +120,13 @@ Costs come from [precompile tags][tags], [Groth16 metering][groth16], [mass unit
 
 For illustration, a 150,000-gram withdrawal requires at least 15,000,000 sompi (0.15 KAS) under the default minimum fee before market premium. A fee of 1,000 sompi is not plausible live-relay evidence for this proof. Fee funding must remain distinct from user backing: paying a legitimate liability must not silently charge another user's reserve. The invariant remains `outstanding user liabilities <= native KAS reserved for users`.
 
-## TN10 execution and current blocker
+## TN10 execution and original cloud blocker
 
 Upstream documents running `kaspad --utxoindex --testnet` for TN10; current RPC must preserve transaction version, input compute budget, storage mass, and output covenant fields. A meaningful run also needs a synchronized endpoint, native **test** KAS funding, actual UTXO queries, correctly computed storage mass/fee, transaction submission, and acceptance observation. No mainnet funds or node should be used.
 
 The inspected cloud configuration on 2026-10-03 reports current, enforced restricted HTTP policy with package-manager/source-host destinations; no permitted TN10 RPC/P2P/faucet destination; no TCP grants; no VPN; and no configured secret/runtime-variable/outbound-identity bindings. GitHub/raw/codeload source retrieval is available. No authorized reachable TN10 endpoint or funded test UTXO was provided. This is a concrete execution-environment blocker, not evidence that the consensus primitive is missing. No denied destination was probed and no proxy restriction was bypassed.
 
-The remaining live evidence requires supported network access and test funding, then an unmodified current node accepting the valid withdrawal and rejecting invalid variants. Source inspection and local consensus-code execution must stay labeled separately from this missing network result.
+The subsequent local [A0.5 run](poc-a0.md#a05-live-tn10-result) records live native-RPC acceptance, exact payout/spentness and replay evidence. Source inspection and local consensus-code execution remain distinct from those remote observations. The original cloud restriction was not bypassed; execution took place in the separately authorized local environment.
 
 [manifest]: https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/Cargo.toml
 [license]: https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/LICENSE

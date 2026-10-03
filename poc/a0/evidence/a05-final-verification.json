@@ -1,0 +1,21 @@
+{
+  "branch": "poc-a0-reserve-release",
+  "upstream_revision": "01b532e8b553523216471682649693af92f0fd16",
+  "unchanged_original_components": [
+    "circuit.rs",
+    "redeem",
+    "signature",
+    "validator construction",
+    "SECURITY-INVARIANTS.md"
+  ],
+  "tests": {
+    "baseline_expected_outcomes": 30,
+    "invalid_rejections": 28,
+    "rust_tests": 7,
+    "node_tests": 13,
+    "docs": "Checked 37 Markdown files and 112 relative links: OK.\nExternal URLs and heading fragments require separate review. This check does not validate protocol security."
+  },
+  "publication_scan": "No actual KPI private-key/claim-secret/private-directory values in candidates; secret wallet file ignored; explicitly selected public evidence only.",
+  "observed_at": "2026-10-03T18:09:20.634673+00:00",
+  "implementation_head": "509c5c2a8fa1f285215332e8b865fb447d1aa5db"
+}

@@ -17,6 +17,11 @@ replay accepted against the supplied stateless UTXO. Four original circuit tests
 plus three adapter parsing tests pass. See [the report](../../docs/poc-a0.md) for
 measurements and the actual live evidence boundary; tests do not prove security.
 
+The [live A0.5 result](../../docs/poc-a0.md#a05-live-tn10-result) records accepted
+reserve release, exact payout, replay rejection and two-endpoint/later observations.
+It establishes no anonymity, general shielded accounting, independent recovery
+or production security.
+
 Follow the [A0.5 runbook](../../docs/poc-a0-tn10-runbook.md) for pinned SDK/node
 setup, isolated wallets, reviewed funding, confirmation and replay. File-only
 Rust `live` subcommands never access RPC or broadcast. No KasPact checkout is
