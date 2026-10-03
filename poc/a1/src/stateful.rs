@@ -103,6 +103,9 @@ pub fn accept_path(steps: &[Transaction], initial: &UtxoEntry) -> Result<Value, 
         if tx.inputs.len() != 1 {
             return Err("native path single input".into());
         }
+        let input_entry = h
+            .entry(tx.inputs[0].previous_outpoint)
+            .ok_or("native path current input unavailable")?;
         h.spend(tx)?;
         let block = h.block(vec![parent], vec![tx.clone()])?;
         let accepting = h.block(vec![block], vec![])?;
@@ -141,7 +144,7 @@ pub fn accept_path(steps: &[Transaction], initial: &UtxoEntry) -> Result<Value, 
         }
         receipts.push(
             json!({"block":block.to_string(),"accepting_block":accepting.to_string(),
-            "acceptance_data":acceptance.as_ref(),"transaction":body}),
+            "acceptance_data":acceptance.as_ref(),"transaction":body,"input_entry":input_entry}),
         );
         parent = accepting;
     }
