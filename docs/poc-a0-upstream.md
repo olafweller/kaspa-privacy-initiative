@@ -23,6 +23,18 @@ for native pruning-proof validation. The adapter records whether a fresh or
 retained header was used. The archive licenses are upstream ISC; KPI's adapter is original code. Generic
 KasPact tooling was inspected, not copied, and is not a runtime dependency.
 
+The native SDK's ordinary v0 wallet generator still writes calculated overall
+mass into `storageMass` ([generator source](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs)).
+The first real funding candidate was rejected locally: committed 5390, required
+storage component 795. No broadcast occurred. The adapter uses upstream
+[`calculateStorageMass`](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/wasm/tx/mass.rs)
+for ordinary v0 funding only, commits that component, asserts all other signed
+fields/ID unchanged, and repeats full validation. The helper accepts f64 arrays:
+values above JavaScript's exact-safe integer range are explicitly rejected before
+conversion. Transaction amounts/fees still use BigInt/u64. The corrected actual
+signed candidate passed with the same 1039000-sompi fee. A0 v1 release construction
+already calculates contextual storage mass through the original native Rust code.
+
 ## Source snapshots
 
 The checked-out default-branch heads still match the repository's October 2 research snapshot:

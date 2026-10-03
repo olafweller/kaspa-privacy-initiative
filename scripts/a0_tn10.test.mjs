@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { transaction, canonical, genesisHash } from './a0_tn10.mjs';
+import { transaction, canonical, genesisHash, fundingStorageMass } from './a0_tn10.mjs';
 
 // Public, unfunded serialization vector. No private key or spending proof.
 function sample() {
@@ -37,4 +37,12 @@ test('archived decimal-string genesis header reloads and hashes independently',(
 test('cached header hash cannot conceal a changed nonce or overflowing u64',()=>{
   assert.notEqual(genesisHash({...genesis.header,nonce:'83331'}),genesis.expected_hash);
   assert.throws(()=>genesisHash({...genesis.header,nonce:'18446744073709634946'}));
+});
+
+test('generic v0 mass is the storage component, not overall compute mass',()=>{
+  assert.equal(fundingStorageMass(['400000000000'],['1200000000','398799000000']),833n);
+});
+test('f64-only mass helper refuses values that could lose integer precision',()=>{
+  assert.throws(()=>fundingStorageMass(['9007199254740992'],['1000000000']));
+  assert.throws(()=>fundingStorageMass(['1000000000'],['-1']));
 });

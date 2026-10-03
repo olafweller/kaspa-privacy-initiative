@@ -211,6 +211,14 @@ function reviewGate() {
   assert.equal(review.approved_for_test_funding,true);
   for (const file of reviewFiles) assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex'),review.sha256[file],`review stale: ${file}`);
 }
+export function fundingStorageMass(inputs,outputs) {
+  // Upstream's v0 helper accepts JS Numbers (f64), unlike transaction u64 fields.
+  // Reject values outside exact integer representation instead of rounding funds.
+  const exact=raw=>{const value=BigInt(raw);assert.ok(value>=0n && value<=BigInt(Number.MAX_SAFE_INTEGER));return Number(value);};
+  const mass=k.calculateStorageMass('testnet-10',inputs.map(exact),outputs.map(exact));
+  assert.ok(mass!==undefined,'storage mass unavailable');
+  return mass;
+}
 async function buildFunding(rpc,keyHex,from,to,amount,dag,label,suppliedEntries) {
   stage = 'funding wallet address verification';
   assert.equal(new k.PrivateKey(keyHex).toKeypair().toAddress('testnet-10').toString(),from);
@@ -223,7 +231,7 @@ async function buildFunding(rpc,keyHex,from,to,amount,dag,label,suppliedEntries)
   assert.ok(!(await generator.next()), 'experiment requires one funding transaction');
   pending.sign([new k.PrivateKey(keyHex)]);
   const tx = pending.transaction;
-  const raw = canonical(tx);
+  let raw = canonical(tx);
   const targetScript=spk(k.payToAddressScript(to)),changeScript=spk(k.payToAddressScript(from));
   assert.notEqual(targetScript,changeScript);
   assert.equal(raw.outputs.filter(o=>o.scriptPublicKey===targetScript && BigInt(o.value)===amount && o.covenant===null).length,1);
@@ -233,6 +241,16 @@ async function buildFunding(rpc,keyHex,from,to,amount,dag,label,suppliedEntries)
   const availableMap = new Map(available.map(u => {const e=entry(u);return [`${e.outpoint.transactionId}:${e.outpoint.index}`,e];}));
   const entries = raw.inputs.map(i=>availableMap.get(`${i.previousOutpoint.transactionId}:${i.previousOutpoint.index}`));
   assert.ok(entries.every(Boolean));
+  assert.equal(raw.version,0,'generic funding mass helper is v0 only');
+  const beforeMass=raw;
+  const generatorMass=raw.storageMass;
+  tx.storageMass=fundingStorageMass(entries.map(e=>e.amount),raw.outputs.map(o=>o.value));
+  raw=canonical(tx);
+  assert.deepEqual({...raw,storageMass:generatorMass},beforeMass,'mass update changed signed transaction fields');
+  // Generator v2.1.0 commits overall mass here. TN10 Full validation requires
+  // the contextual storage component. Never relax validation to accommodate it.
+  save(`${label}-mass-adjustment.json`,{generator_mass:generatorMass,committed_storage_mass:raw.storageMass,
+    method:'pinned upstream v0 calculateStorageMass with exact-safe integer bounds; unchanged signed inputs/outputs/fees; full validation follows'});
   const total = entries.reduce((sum,e)=>sum+BigInt(e.amount),0n);
   const outputTotal = raw.outputs.reduce((sum,o)=>sum+BigInt(o.value),0n);
   const fee = total-outputTotal;

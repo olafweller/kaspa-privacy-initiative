@@ -113,6 +113,9 @@ node scripts/a0_tn10.mjs corroborate
 10.2 test KAS for the reserve; 10 goes to the fixed recipient and 0.2 is the
 reserve-release miner fee. Each ordinary funding transaction has a 0.1 test-KAS
 fee cap, a single intended payment and at most one change output to its source.
+The v0 SDK generator mass field is corrected to the upstream storage component
+before full validation; all other signed fields must be unchanged. Its f64-only
+helper is used only after explicit exact-integer range checks; larger values halt.
 
 `fund` first signs the funding transaction, locates the exact reserve output,
 proves a release bound to that future txid/index under the retained key and
