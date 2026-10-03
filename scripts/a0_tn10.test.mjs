@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { transaction, canonical, genesisHash, fundingStorageMass } from './a0_tn10.mjs';
+import { transaction, canonical, genesisHash, fundingStorageMass, releaseFeeAssessment } from './a0_tn10.mjs';
 
 // Public, unfunded serialization vector. No private key or spending proof.
 function sample() {
@@ -45,4 +45,15 @@ test('generic v0 mass is the storage component, not overall compute mass',()=>{
 test('f64-only mass helper refuses values that could lose integer precision',()=>{
   assert.throws(()=>fundingStorageMass(['9007199254740992'],['1000000000']));
   assert.throws(()=>fundingStorageMass(['1000000000'],['-1']));
+});
+
+test('fixed A0 fee can use a slower bounded bucket without changing accounting',()=>{
+  const proof={fee_sompi:20000000,compute_mass_grams:171335};
+  const result=releaseFeeAssessment(proof,{estimate:{priorityBucket:{feerate:211,estimatedSeconds:0.1},normalBuckets:[],lowBuckets:[{feerate:111,estimatedSeconds:0.7}]}});
+  assert.equal(result.fixed_fee_sompi,20000000);assert.equal(result.selected_bucket.feerate,111);
+});
+test('unaffordable, stale-duration or malformed fee estimates fail closed',()=>{
+  const proof={fee_sompi:20000000,compute_mass_grams:171335};
+  for(const b of [{feerate:150,estimatedSeconds:1},{feerate:100,estimatedSeconds:31},{feerate:NaN,estimatedSeconds:1}])
+    assert.throws(()=>releaseFeeAssessment(proof,{estimate:{priorityBucket:b,normalBuckets:[],lowBuckets:[]}}));
 });

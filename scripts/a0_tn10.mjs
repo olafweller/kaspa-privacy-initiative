@@ -219,6 +219,18 @@ export function fundingStorageMass(inputs,outputs) {
   assert.ok(mass!==undefined,'storage mass unavailable');
   return mass;
 }
+export function releaseFeeAssessment(proof,feeEstimate) {
+  const rate=Number(proof.fee_sompi)/proof.compute_mass_grams;
+  assert.ok(Number.isFinite(rate) && rate>=100,'fixed fee below pinned relay floor');
+  const e=feeEstimate.estimate;
+  const fitting=[e.priorityBucket,...e.normalBuckets,...e.lowBuckets].filter(b=>
+    Number.isFinite(b.feerate) && b.feerate>=100 && b.feerate<=rate &&
+    Number.isFinite(b.estimatedSeconds) && b.estimatedSeconds>=0 && b.estimatedSeconds<=30)
+    .sort((a,b)=>a.estimatedSeconds-b.estimatedSeconds);
+  assert.ok(fitting.length,'no fee-estimate bucket fits fixed fee within 30 seconds');
+  return {fixed_fee_sompi:proof.fee_sompi,feerate:rate,selected_bucket:fitting[0],
+    scope:'estimate only, not guaranteed inclusion; no fee/accounting change; chain observation still required'};
+}
 async function buildFunding(rpc,keyHex,from,to,amount,dag,label,suppliedEntries) {
   stage = 'funding wallet address verification';
   assert.equal(new k.PrivateKey(keyHex).toKeypair().toAddress('testnet-10').toString(),from);
@@ -392,8 +404,7 @@ async function main(command) {
         blockDaaScore:node.dag.virtualDaaScore.toString(),isCoinbase:false,covenantId:null},node.dag));
       const futureRelease=checkedProof(w,'planned-reserve-context.json','planned-release');
       const feeEstimate=await rpc.getFeeEstimate();save('funding-release-fee-estimate.json',feeEstimate);
-      assert.ok(Number(futureRelease.fee_sompi)/futureRelease.compute_mass_grams >= feeEstimate.estimate.priorityBucket.feerate,
-        'do not fund while the fixed reserve-release fee is below the priority estimate');
+      save('funding-release-fee-assessment.json',releaseFeeAssessment(futureRelease,feeEstimate));
       // No byte of the reviewed/signed funding transaction is changed after proving its exact output spendable.
       const submission=await submit(rpc,plan.raw,'funding');
       const accepted=await observe(rpc,plan.raw.id,submission.start_hash,manifest.reserve_address,manifest.reserve_spk_hex,1020000000n);
@@ -415,7 +426,7 @@ async function main(command) {
       save('release-current-context.json',reserveContext(unspent,node.dag));
       rust('check',w.KPI_PROVING_DIRECTORY,path.join(dir,'release-current-context.json'),path.join(dir,'release-transaction.json'));
       const feeEstimate=await rpc.getFeeEstimate();save('release-fee-estimate.json',feeEstimate);
-      assert.ok(Number(proof.fee_sompi)/proof.compute_mass_grams >= feeEstimate.estimate.priorityBucket.feerate,'fixed fee is below priority estimate');
+      save('release-fee-assessment.json',releaseFeeAssessment(proof,feeEstimate));
       const submission=await submit(rpc,proof.transaction,'release');
       const accepted=await observe(rpc,proof.transaction.id,submission.start_hash,manifest.recipient_address,manifest.recipient_spk_hex,1000000000n);
       assert.ok(!(await utxos(rpc,manifest.reserve_address)).map(entry).some(e=>e.outpoint.transactionId===reserve.outpoint.transactionId&&e.outpoint.index===reserve.outpoint.index));

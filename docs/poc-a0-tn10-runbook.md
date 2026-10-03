@@ -119,11 +119,13 @@ helper is used only after explicit exact-integer range checks; larger values hal
 
 `fund` first signs the funding transaction, locates the exact reserve output,
 proves a release bound to that future txid/index under the retained key and
-runs full validation after SDK roundtrip. The current priority fee estimate must
-also fit the unchanged release fee. Only then can it broadcast funding.
+runs full validation after SDK roundtrip. A current fee-estimate bucket with at most 30 seconds estimated inclusion time
+must fit the unchanged release fee, which must also meet the pinned relay floor. Only then can it broadcast funding.
 After acceptance, `release-prepare` queries the actual reserve output/context
 and generates a fresh proof. `release` rechecks current UTXO context and the
-fixed fee against the native fee estimate before submission. No amount/budget
+fixed fee against the native fee estimate before submission. A slower qualifying
+bucket is sufficient; the highest-priority fee is not mandatory. Estimates are
+not inclusion guarantees, and the subsequent chain/UTXO observations remain required. No amount/budget
 is silently increased and no sponsor input or alternate payout is added.
 
 The observer uses native accepted transaction IDs with `minConfirmationCount=20`.
