@@ -423,7 +423,12 @@ The accepted body exactly matches the locally validated SDK transaction: one
 10.2 test-KAS reserve input, one 10 test-KAS output to that fixed full script,
 `covenant=None`, 0.2 test-KAS fee, no successor or extra output. Both endpoints
 reported the same accepting block and exact body/payout; the reserve was absent
-and no distinct-replay payout existed. The later check adds 1106 virtual DAA
+and no distinct-replay payout existed. A later read-only
+[public REST-index response](https://api-tn10.kaspa.org/transactions/29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554)
+also reports the same accepted block, outpoint, proof bytes, v1 budget and payout.
+Its previous-input amount is absent; native funding/UTXO records supply that value.
+This does not establish REST write compatibility or provider independence.
+The later native check adds 1106 virtual DAA
 score over the first acceptance observation, not a permanent-finality claim.
 
 Exact replay returned `was already accepted by the consensus`. The distinct-ID
@@ -451,7 +456,9 @@ the precise spentness boundary that the stateless local fixture could not test.
 
 Node/SDK release: 2.1.0; source revision:
 `01b532e8b553523216471682649693af92f0fd16`; Rust 1.91.0;
-arkworks BN254/Groth16 0.6.0; Node 22.22.3. Archive/binary hashes, local environment
+arkworks BN254/Groth16 0.6.0; Node 22.22.3. The source/binary pins apply to the
+local validator, SDK and own node; remote endpoints report 2.1.0, but their
+executable hashes were not measured. Archive/binary hashes, local environment
 and five independent baseline samples are in the linked artifacts. Whole-harness
 RAM measurements are not isolated prover RAM or local-node memory.
 

@@ -661,10 +661,56 @@
     ".local/sdk/kaspa-wasm32-sdk/nodejs/kaspa/kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5"
   },
   "local_node_lifecycle": {
-    "status": "graceful shutdown requested after completed RPC observations; exit verified separately",
+    "status": "Stopped cleanly; process exited with status 0, local RPC listeners stopped, process absence verified.",
     "full_utxo_sync_completed": false,
     "ibd_observation": "At 19:51:41 local time, background IBD reported got unexpected pruning point and resumed UTXO import. This node was never claimed to validate the full live UTXO set.",
     "shutdown_requested_at": "2026-10-03T18:11:44.258565+00:00",
     "retained_data": "Ignored node data, dedicated wallet and external claim/proving backup retained; no system service created."
+  },
+  "rest_readonly_corroboration": {
+    "observed_at": "2026-10-03T18:13:38.620Z",
+    "url": "https://api-tn10.kaspa.org/transactions/29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+    "status": 200,
+    "response": {
+      "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+      "hash": "7fb6d89ccd32b9aa797032eb93c19c34db0c692470259ec58de8d10fcc0346d7",
+      "version": 1,
+      "mass": "171335",
+      "is_accepted": true,
+      "block_hash": [
+        "c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210"
+      ],
+      "block_time": 1791050208492,
+      "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+      "accepting_block_blue_score": 575642260,
+      "accepting_block_time": 1791050209027,
+      "inputs": [
+        {
+          "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "index": 0,
+          "previous_outpoint_hash": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+          "previous_outpoint_index": "0",
+          "previous_outpoint_address": null,
+          "previous_outpoint_amount": null,
+          "signature_script": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+          "sig_op_count": null,
+          "compute_budget": 1700,
+          "covenant_id": null
+        }
+      ],
+      "outputs": [
+        {
+          "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "index": 0,
+          "amount": 1000000000,
+          "script_public_key": "20e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+          "script_public_key_address": "kaspatest:qr33u5pnjefh90vcgfc8dexl8re3kuv2ulys0skqhqxup2erjvly2s38lsrz4",
+          "script_public_key_type": "pubkey",
+          "covenant_authorizing_input": null,
+          "covenant_id": null
+        }
+      ]
+    },
+    "scope": "Read-only public index corroboration, not REST submission compatibility or operator-independence proof. Previous input amount and sig_op_count are null in this response; actual input amount is established by native funding/UTXO records. REST mass 171335 is not the storage commitment 20."
   }
 }
