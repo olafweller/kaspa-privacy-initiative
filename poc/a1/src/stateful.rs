@@ -114,9 +114,23 @@ fn accepted_group(h: &Harness, accepting: Hash) -> Result<Value, String> {
     )
 }
 
+/// Obtain C's actual native checkpoint before any fixture funding/transition.
+/// Reconstructing the same seed in later isolated paths must reproduce this hash.
+/// This creates no transactions and does not represent a public-network checkpoint.
+pub fn checkpoint(outpoint: TransactionOutpoint, initial: &UtxoEntry) -> Result<Value, String> {
+    let h = Harness::new(outpoint, initial)?;
+    Ok(json!({"schema":"kpi-a1-native-checkpoint/v1",
+        "backend":"native TestConsensus + temporary RocksDB",
+        "scope":"synthetic seed checkpoint before any fixture transactions; no public TN10",
+        "synthetic_genesis_hash":h.consensus.params().genesis.hash.to_string(),
+        "initial_outpoint":outpoint,"initial_entry":initial,
+        "native_seed_utxo_present":h.has(outpoint),"transactions_accepted":0}))
+}
+
 /// Accept an exact fixture path using actual native virtual UTXOs at each step,
 /// and export bodies retrieved from native block storage with acceptance data.
 /// This is a synthetic chain/archive fixture, not a live/indexed TN10 source.
+/// Its checkpoint must match the separately retained pre-funding checkpoint.
 pub fn accept_path(steps: &[Transaction], initial: &UtxoEntry) -> Result<Value, String> {
     let first = steps.first().ok_or("empty native path")?;
     if first.inputs.len() != 1 {
@@ -216,6 +230,25 @@ mod tests {
             vec![],
         );
         crate::validator::set_mass(&tx, &entry).unwrap();
+        // Checkpoint retention precedes all acceptance and reproduces the seed
+        // of a separately instantiated native path. This is not live history.
+        let before = checkpoint(original, &entry).unwrap();
+        assert_eq!(before["transactions_accepted"], 0);
+        assert_eq!(before["native_seed_utxo_present"], true);
+        assert_eq!(
+            before["initial_outpoint"],
+            serde_json::to_value(original).unwrap()
+        );
+        assert_eq!(
+            before["initial_entry"],
+            serde_json::to_value(&entry).unwrap()
+        );
+        let accepted = accept_path(&[tx.clone()], &entry).unwrap();
+        assert_eq!(
+            before["synthetic_genesis_hash"],
+            accepted["synthetic_genesis_hash"]
+        );
+        assert_eq!(accepted["accepted_path"].as_array().unwrap().len(), 1);
         let mut other = tx.clone();
         other.inputs[0].sequence -= 1;
         other.finalize();

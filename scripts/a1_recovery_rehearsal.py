@@ -6,6 +6,7 @@ Native C runs TestConsensus with synthetic genesis/skipped PoW. This does not
 close live TN10, indexed archive compatibility or physical machine-loss G5.
 """
 import argparse
+import ast
 import base64
 import copy
 import json
@@ -111,6 +112,15 @@ def rpc_body(body):
     return tx
 
 
+def planned_s0_locator(manifest,inventory_hash,s0id,checkpoint):
+    return {'network':'testnet-10','genesis_hex':manifest['genesis_hex'],'instance_hex':manifest['instance_hex'],'s0_txid_hex':s0id,'s0_index':'0','s0_amount':manifest['states']['s0']['R'],'s0_spk_hex':manifest['states']['s0']['spk_hex'],'s0_covenant':None,'scan_start_hash':checkpoint,'scan_start_blue_score':'0','scan_start_daa_score':'0','artifact_index_sha256':inventory_hash}
+
+
+def check_prefunding_checkpoint(checkpoint,point,entry):
+    c.require(checkpoint['schema']=='kpi-a1-native-checkpoint/v1' and checkpoint['native_seed_utxo_present'] is True and type(checkpoint['transactions_accepted']) is int and checkpoint['transactions_accepted']==0 and checkpoint['initial_outpoint']==point and checkpoint['initial_entry']==entry,'checkpoint was not captured before transaction acceptance with expected native initial UTXO')
+    c.unhex(checkpoint['synthetic_genesis_hash'],32)
+
+
 def archive_from_native(native,manifest,inventory_hash,dest):
     """Translate exact native stored accepted bodies to v2 Full-shaped fixtures.
 
@@ -133,13 +143,63 @@ def archive_from_native(native,manifest,inventory_hash,dest):
     for point,entry in native['current_virtual_utxos']:
         key=point['transactionId']+':'+str(point['index']);current_entries[key]=entry
         current.append({'transaction_id':point['transactionId'],'index':str(point['index']),'value':str(entry['amount']),'spk_hex':entry['scriptPublicKey'],'covenant':entry['covenantId']})
-    locator={'network':'testnet-10','genesis_hex':manifest['genesis_hex'],'instance_hex':manifest['instance_hex'],'s0_txid_hex':s0id,'s0_index':'0','s0_amount':manifest['states']['s0']['R'],'s0_spk_hex':manifest['states']['s0']['spk_hex'],'s0_covenant':None,'scan_start_hash':checkpoint,'scan_start_blue_score':'0','scan_start_daa_score':'0','artifact_index_sha256':inventory_hash}
+    locator=planned_s0_locator(manifest,inventory_hash,s0id,checkpoint)
     write_json(dest/'locator.json',locator);write_json(dest/'pages.json',pages)
     write_json(dest/'entries.json',entries);write_json(dest/'current-utxos.json',current)
     write_json(dest/'current-entries.json',current_entries)
     write_json(dest/'source.json',{'schema':'kpi-a1-synthetic-archive/v1','scope':'native-TestConsensus-path-fixture-not-complete-live-RPC-history','horizon':cursor,'synthetic_genesis_hash':checkpoint,'native_backend':native['backend'],'native_network':native['network'],'live_tn10':False,'rpc_compatibility_demonstrated':False})
     write_json(dest/'native-acceptance.json',native)
     return locator,cursor
+
+
+def reuse_initial_locator(archive,retained):
+    """S1 recovery receives bytes retained during the earlier S0-only case."""
+    early=retained.read_bytes();late=(archive/'locator.json').read_bytes()
+    c.require(c.canonical_json(c.load_json(retained))==early,'noncanonical retained S0 locator')
+    c.require(late==early,'late locator differs from independently retained initial S0 locator')
+    (archive/'locator.json').write_bytes(early)
+    return c.sha(early)
+
+
+def qualify_old_locator(run):
+    """Post-run content/provenance inspection, NOT an unexecuted runtime test.
+
+    The older runner independently constructed per-case locators. Its initial
+    S0-only archive was already retained before later S1 native acceptance.
+    Qualify equal bytes plus reviewed sequential source, not filesystem times.
+    """
+    report=read_receipt(run/'report.json');source=run/'software/a1_recovery_rehearsal.py'
+    source_bytes=source.read_bytes();source_hash=c.sha(source_bytes)
+    c.require(source_hash==report['software_sha256']['a1_recovery_rehearsal.py'],'executed orchestration source pin mismatch')
+    tree=ast.parse(source_bytes)
+    function=next(node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='rehearse')
+    loops=[node for node in ast.walk(function) if isinstance(node,ast.For) and isinstance(node.target,ast.Tuple) and [getattr(x,'id',None) for x in node.target.elts]==['case','steps']]
+    c.require(len(loops)==1 and isinstance(loops[0].iter,ast.Tuple),'unexpected orchestration case loop')
+    loop=loops[0]
+    labels=[node.elts[0].value for node in loop.iter.elts if isinstance(node,ast.Tuple) and isinstance(node.elts[0],ast.Constant)]
+    c.require(labels==['orderly-s0','orderly-s1','abrupt-s1'],'S0 locator was not created before later S1 cases')
+    calls=[]
+    for statement in loop.body:
+        for node in ast.walk(statement):
+            if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id in ('run_c','archive_from_native','run_b'):
+                calls.append(node.func.id)
+    c.require(calls==['run_c','archive_from_native','run_b','run_c'],'unexpected acceptance/archive/recovery sequencing')
+    early_path=run/'orderly-s0-archive/locator.json';early=early_path.read_bytes();locator=c.load_json(early_path)
+    c.require(c.canonical_json(locator)==early,'noncanonical initial S0 locator')
+    initial=c.load_json(run/'orderly-s0-archive/native-acceptance.json')
+    c.require(len(initial['accepted_path'])==1,'initial archive already contains successor acceptance')
+    funding=initial['accepted_path'][0]['transaction']
+    c.require(funding['id']==locator['s0_txid_hex'] and locator['s0_index']=='0' and locator['scan_start_hash']==initial['synthetic_genesis_hash'],'initial funding/checkpoint locator mismatch')
+    observations=[]
+    for case in ('orderly-s1','abrupt-s1'):
+        path=run/(case+'-archive')/'locator.json';data=path.read_bytes()
+        c.require(data==early,'late locator differs from retained S0-only locator')
+        native=c.load_json(run/(case+'-archive')/'native-acceptance.json')
+        c.require(len(native['accepted_path'])==2 and native['accepted_path'][0]['transaction']==funding and native['synthetic_genesis_hash']==locator['scan_start_hash'],'later archive funding/checkpoint changed')
+        point=native['accepted_path'][1]['transaction']['inputs'][0]['previousOutpoint']
+        c.require(point['transactionId']==locator['s0_txid_hex'] and str(point['index'])==locator['s0_index'],'successor does not spend retained S0')
+        observations.append({'case':case,'locator_sha256':c.sha(data),'native_acceptance_sha256':c.sha((run/(case+'-archive')/'native-acceptance.json').read_bytes()),'exact_initial_S0_locator_bytes':True})
+    return {'schema':'kpi-a1-old-locator-qualification/v1','scope':'post-run inspection of same-host synthetic native fixture','initial_locator_sha256':c.sha(early),'initial_locator':locator,'initial_native_acceptance_sha256':c.sha((run/'orderly-s0-archive/native-acceptance.json').read_bytes()),'executed_orchestration_sha256':source_hash,'reviewed_case_order':labels,'reviewed_loop_source_lines':[loop.lineno,loop.end_lineno],'initial_retention_order_basis':'reviewed sequential pinned source: initial S0-only archive and B complete before later C accepts S1; not filesystem timestamps or hardware attestation','initial_checkpoint_scope':'C synthetic genesis, established before first funding acceptance; public initial locator retained after funding and before later S1 cases; not a live independent indexed-archive checkpoint','later_cases':observations,'late_locator_has_no_additional_successor_information':True,'runtime_explicit_retained_locator_reuse_executed':False,'post_run_byte_equivalence_verified':True,'B_reexecuted':False,'live_TN10':False,'physical_machine_loss':False,'G5_full_closure':False}
 
 
 def inside(bundle,backup,archive,work):
@@ -232,6 +292,9 @@ def export_public_evidence(run,bundle,dest):
         sources.append((previous,'previous-negative-report.json'))
     for name in ('inventory.json','manifest.json','owner-intent.json','setup-receipt.json'):
         sources.append((run/'public'/name,'public-'+name))
+    for name in ('retained-initial-s0-locator.json','pre-funding-checkpoint.json','timeline.json'):
+        path=run/name
+        if path.is_file():sources.append((path,name))
     for case in ('orderly-s0','orderly-s1','abrupt-s1'):
         for name in ('locator.json','pages.json','entries.json','current-utxos.json','current-entries.json','source.json','native-acceptance.json'):
             sources.append((run/(case+'-archive')/name,case+'/archive/'+name))
@@ -322,7 +385,10 @@ def rehearse(repo,bundle,retained,binary,reference,output,image,reuse_negatives=
     funding=c.load_json(bundle/'synthetic-funding.validate.json')
     s0=c.load_json(bundle/'s0_continue.validate.json')
     prefix='kpi-a1-'+uuid.uuid4().hex[:12]
-    results=[];containers=[]
+    results=[];containers=[];timeline=[];checkpoint=None
+    def event(label,**fields):
+        timeline.append({'ordinal':len(timeline),'event':label,**fields})
+        write_json(output/'timeline.json',{'schema':'kpi-a1-recovery-topology-timeline/v1','scope':'executed same-host Docker program order; not a hardware timestamp attestation','events':timeline})
     def run_c(case,transactions):
         chain=output/(case+'-chain');chain.mkdir(mode=0o700)
         write_json(chain/'request.json',{'initial_entry':funding['entry'],'transactions':transactions})
@@ -331,6 +397,8 @@ def rehearse(repo,bundle,retained,binary,reference,output,image,reuse_negatives=
         p=docker_run(image,name,software,[(chain,'/chain',False)],['/software/kpi-poc-a1','native-path','/chain/request.json'])
         elapsed=time.monotonic()-started
         native=json.loads(p.stdout);write_json(chain/'native-result.json',native)
+        c.require(checkpoint is not None and native['synthetic_genesis_hash']==checkpoint['synthetic_genesis_hash'],'accepted native path checkpoint differs from retained pre-funding checkpoint')
+        event('C-native-path-accepted',case=case,transactions=len(transactions),native_receipt_sha256=c.sha((chain/'native-result.json').read_bytes()))
         return native,chain,elapsed
     def run_b(case,archive,bundle_dir=public,backup_dir=private,expected=True):
         work=output/(case+'-work');work.mkdir(mode=0o700)
@@ -342,6 +410,19 @@ def rehearse(repo,bundle,retained,binary,reference,output,image,reuse_negatives=
         c.require(p.returncode!=0,'negative recovery unexpectedly succeeded')
         return {'case':case,'rejected':True,'returncode':p.returncode,'rejecting_process':'clean-B','error':p.stderr[-1200:]},work
     try:
+        # C observes its actual initialized native genesis/UTXO before either
+        # accepting funding or allowing A to generate the continuation proof.
+        checkpoint_dir=output/'checkpoint-c';checkpoint_dir.mkdir(mode=0o700)
+        initial_point=funding['transaction']['inputs'][0]['previousOutpoint']
+        write_json(checkpoint_dir/'request.json',{'initial_outpoint':initial_point,'initial_entry':funding['entry']})
+        checkpoint_name=prefix+'-pre-funding-checkpoint-c';containers.append(checkpoint_name)
+        p=docker_run(image,checkpoint_name,software,[(checkpoint_dir,'/checkpoint',True)],['/software/kpi-poc-a1','native-checkpoint','/checkpoint/request.json'])
+        checkpoint=json.loads(p.stdout)
+        check_prefunding_checkpoint(checkpoint,initial_point,funding['entry'])
+        write_json(output/'pre-funding-checkpoint.json',checkpoint)
+        retained_locator=output/'retained-initial-s0-locator.json'
+        write_json(retained_locator,planned_s0_locator(manifest,inventory_hash,funding['transaction']['id'],checkpoint['synthetic_genesis_hash']))
+        event('pre-funding-C-checkpoint-and-planned-S0-locator-retained',checkpoint_sha256=c.sha((output/'pre-funding-checkpoint.json').read_bytes()),locator_sha256=c.sha(retained_locator.read_bytes()),accepted_transaction_count=0)
         # A creates a fresh continuation, and has no code or file receiving S1's
         # pointer/history. Its original input mount is absent from both B and C.
         original=output/'original-a';original.mkdir(mode=0o700)
@@ -349,14 +430,18 @@ def rehearse(repo,bundle,retained,binary,reference,output,image,reuse_negatives=
         a_name=prefix+'-original-a';containers.append(a_name)
         a=docker_run(image,a_name,software,[(bundle,'/original',True),(original,'/a',False)],['/software/kpi-poc-a1','fresh-continue','/original','/original/claim-secret.bin','/a/request.json','/a/continuation.json'])
         write_json(original/'created.json',json.loads(a.stdout))
+        event('A-fresh-continuation-created-after-checkpoint')
         continuation=c.load_json(original/'continuation.json')
         for case,steps in (('orderly-s0',[funding['transaction']]),('orderly-s1',[funding['transaction'],continuation]),('abrupt-s1',[funding['transaction'],continuation])):
             native,chain,initial_acceptance_seconds=run_c(case,steps)
             if case=='abrupt-s1':
                 remove_container(a_name);containers.remove(a_name)
                 c.require(not (original/'s1-pointer.json').exists(),'original S1 pointer was recorded')
+                event('original-A-removed-after-S1-acceptance-before-pointer',saved_S1_pointer=False)
             archive=output/(case+'-archive')
             archive_from_native(native,manifest,inventory_hash,archive)
+            locator_hash=reuse_initial_locator(archive,retained_locator)
+            event('B-archive-reuses-pre-funding-retained-S0-locator',case=case,locator_sha256=locator_hash)
             report,work=run_b(case,archive)
             fresh=c.load_json(work/'fresh-terminal.json')
             accepted,final_chain,terminal_acceptance_seconds=run_c(case+'-terminal',steps+[fresh])
@@ -364,7 +449,7 @@ def rehearse(repo,bundle,retained,binary,reference,output,image,reuse_negatives=
             c.require(last['id']==fresh['id'],'fresh terminal missing from native acceptance')
             expected=manifest['branches'][report['discovery']['state']+'_terminal']['outputs'][0]
             c.require(len(last['outputs'])==1 and str(last['outputs'][0]['value'])==expected['value'] and last['outputs'][0]['scriptPublicKey']==expected['spk_hex'] and last['outputs'][0]['covenant'] is None,'wrong accepted fresh terminal payout')
-            results.append({'case':case,'recovery':report,'native_terminal_accepted':True,'payout_sompi':expected['value'],'archive_pages':len(steps),'no_original_mount_in_B_or_C':True,'initial_C_acceptance_wall_seconds':initial_acceptance_seconds,'terminal_C_acceptance_wall_seconds':terminal_acceptance_seconds,'original_A_removed_before_S1_pointer':case=='abrupt-s1'})
+            results.append({'case':case,'recovery':report,'native_terminal_accepted':True,'payout_sompi':expected['value'],'archive_pages':len(steps),'no_original_mount_in_B_or_C':True,'initial_C_acceptance_wall_seconds':initial_acceptance_seconds,'terminal_C_acceptance_wall_seconds':terminal_acceptance_seconds,'original_A_removed_before_S1_pointer':case=='abrupt-s1','initial_S0_locator_sha256':locator_hash,'locator_source':'pre-funding C checkpoint and planned S0 transaction, retained before A continuation; exact old bytes copied after comparison, no accepted-S1-derived locator supplied'})
         base_archive=output/'abrupt-s1-archive'
         negatives=[]
         dependency_faults=inventory_faults(public,inventory_hash,output/'dependency-fault-public')
@@ -425,10 +510,15 @@ def main():
     finalize=sub.add_parser('finalize-receipt')
     for name in ('run','previous-report'):finalize.add_argument('--'+name,type=Path,required=True)
     finalize.add_argument('--replace-receipt',action='store_true',help='retain existing receipt before explicitly refinalizing it')
+    qualify=sub.add_parser('qualify-old-locator')
+    for name in ('run','output'):qualify.add_argument('--'+name,type=Path,required=True)
     a=p.parse_args()
     if a.action=='inside':inside(a.bundle,a.backup,a.archive,a.work)
     elif a.action=='export-public':print(json.dumps(export_public_evidence(a.run.resolve(),a.bundle.resolve(),a.output.resolve()),indent=2))
     elif a.action=='finalize-receipt':print(json.dumps(finalize_persisted_run(a.run.resolve(),a.previous_report.resolve(),a.replace_receipt),indent=2))
+    elif a.action=='qualify-old-locator':
+        c.require(not a.output.exists(),'new qualification receipt required')
+        result=qualify_old_locator(a.run.resolve());write_json(a.output,result);print(json.dumps(result,indent=2))
     else:rehearse(a.repo.resolve(),a.bundle.resolve(),a.retained.resolve(),a.binary.resolve(),a.reference_binary.resolve(),a.output.resolve(),a.image,a.reuse_negative_report)
 
 

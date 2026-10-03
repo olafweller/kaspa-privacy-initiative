@@ -13,6 +13,26 @@ from test_a1_check import schema_fixture
 
 
 class RehearsalIsolationTests(unittest.TestCase):
+    def test_prefunding_checkpoint_rejects_late_or_wrong_initial_state(self):
+        point={'transactionId':'ab'*32,'index':7};entry={'amount':100,'scriptPublicKey':'0000','covenantId':None}
+        receipt={'schema':'kpi-a1-native-checkpoint/v1','native_seed_utxo_present':True,'transactions_accepted':0,'initial_outpoint':point,'initial_entry':entry,'synthetic_genesis_hash':'cd'*32}
+        h.check_prefunding_checkpoint(receipt,point,entry)
+        for field,value in (('transactions_accepted',1),('transactions_accepted',False),('native_seed_utxo_present',False),('initial_outpoint',{'transactionId':'ef'*32,'index':7}),('initial_entry',{'amount':99}),('synthetic_genesis_hash','ab')):
+            late=copy.deepcopy(receipt);late[field]=value
+            with self.assertRaises(c.Invalid):h.check_prefunding_checkpoint(late,point,entry)
+
+    def test_retained_initial_locator_rejects_late_changed_outpoint_or_checkpoint(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);archive=root/'archive';archive.mkdir()
+            early={'s0_txid_hex':'ab'*32,'s0_index':'0','scan_start_hash':'cd'*32}
+            retained=root/'retained.json';h.write_json(retained,early)
+            h.write_json(archive/'locator.json',early)
+            self.assertEqual(h.reuse_initial_locator(archive,retained),c.sha(retained.read_bytes()))
+            for field in ('s0_txid_hex','scan_start_hash'):
+                late=copy.deepcopy(early);late[field]='ef'*32;h.write_json(archive/'locator.json',late)
+                with self.assertRaises(c.Invalid):h.reuse_initial_locator(archive,retained)
+                self.assertEqual(c.load_json(retained),early)
+
     def test_benchmark_reader_does_not_weaken_artifact_reader(self):
         with tempfile.TemporaryDirectory() as td:
             path=Path(td)/'receipt.json';path.write_text('{"wall_seconds":1.5}')

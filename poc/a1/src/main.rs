@@ -971,6 +971,12 @@ fn native_path(request: &Path) -> Result<Value> {
         .collect::<Result<Vec<_>>>()?;
     Ok(kpi_poc_a1::stateful::accept_path(&txs, &initial)?)
 }
+fn native_checkpoint(request: &Path) -> Result<Value> {
+    let v = kpi_poc_a1::artifact::strict_json(&fs::read(request)?)?;
+    let initial: UtxoEntry = serde_json::from_value(v["initial_entry"].clone())?;
+    let outpoint: TransactionOutpoint = serde_json::from_value(v["initial_outpoint"].clone())?;
+    Ok(kpi_poc_a1::stateful::checkpoint(outpoint, &initial)?)
+}
 fn fresh_proof(
     bundle: &Path,
     branch: Branch,
@@ -1061,6 +1067,7 @@ fn main() -> Result<()> {
         Some("validate-body") if args.len()==2 => validate_body(Path::new(&args[1]))?,
         Some("check-backup") if args.len()==4 => check_backup(Path::new(&args[1]),Path::new(&args[2]),Path::new(&args[3]))?,
         Some("native-path") if args.len()==2 => native_path(Path::new(&args[1]))?,
+        Some("native-checkpoint") if args.len()==2 => native_checkpoint(Path::new(&args[1]))?,
         Some("fresh-continue") if args.len()==5 => fresh_proof(Path::new(&args[1]),Branch::S0Continue,Path::new(&args[2]),Path::new(&args[3]),Path::new(&args[4]))?,
         Some("fresh-terminal") if args.len()==6 => fresh_proof(Path::new(&args[1]),match args[2].as_str(){"s0_terminal"=>Branch::S0Terminal,"s1_terminal"=>Branch::S1Terminal,_=>return Err("terminal branch required".into())},Path::new(&args[3]),Path::new(&args[4]),Path::new(&args[5]))?,
         _=>return Err("Usage: kpi-poc-a1 experiment NEW_DIRECTORY | stateful BUNDLE | validate-body REQUEST.json | check-backup BUNDLE SECRET KEY | fresh-terminal BUNDLE s0_terminal|s1_terminal SECRET REQUEST OUTPUT".into())
