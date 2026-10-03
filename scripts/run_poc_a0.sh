@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Local-only real-proof experiment. Never connects to a Kaspa network or wallet.
+# Local proof/validation. The live subcommands prepare files, never broadcast.
 set -euo pipefail
 
 kpi_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -46,5 +46,6 @@ cd -- "$kpi_root/poc/a0"
 case "${1:-run}" in
     run) exec cargo +1.91.0 run --locked --release ;;
     test) exec cargo +1.91.0 test --locked --release ;;
-    *) echo 'Usage: scripts/run_poc_a0.sh [run|test]' >&2; exit 2 ;;
+    live) shift; exec cargo +1.91.0 run --locked --release -- live "$@" ;;
+    *) echo 'Usage: scripts/run_poc_a0.sh [run|test|live init|prepare|check ...]' >&2; exit 2 ;;
 esac

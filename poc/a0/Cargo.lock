@@ -2159,6 +2159,8 @@ dependencies = [
  "ark-relations",
  "ark-serialize",
  "ark-snark",
+ "borsh",
+ "kaspa-addresses",
  "kaspa-consensus",
  "kaspa-consensus-core",
  "kaspa-hashes",

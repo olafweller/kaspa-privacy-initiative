@@ -1,6 +1,7 @@
 //! Offline experiment: genuine proof and production consensus validation, supplied UTXO fixture.
 //! This program cannot submit transactions, fund reserves, or establish live TN10 acceptance.
 mod circuit;
+mod live;
 use ark_bn254::{Bn254, Fr};
 use ark_groth16::{Groth16, Proof};
 use ark_serialize::CanonicalSerialize;
@@ -71,19 +72,27 @@ fn policy(secret: &[u8; 32]) -> Policy {
             .drain()
             .into(),
     );
+    policy_for_recipient(secret, recipient)
+}
+
+fn context_prefix(recipient: &ScriptPublicKey, state: &[u8; 32]) -> Vec<u8> {
     let mut prefix = b"KPI-A0/TN10/terminal/v1\0".to_vec();
     prefix.extend_from_slice(&TESTNET_PARAMS.genesis.hash.as_bytes());
-    let mut state = [0u8; 32];
-    OsRng.fill_bytes(&mut state);
-    prefix.extend_from_slice(&state);
+    prefix.extend_from_slice(state);
     for n in [RESERVE, AMOUNT, FEE] {
         prefix.extend_from_slice(&n.to_le_bytes());
     }
     prefix.extend_from_slice(&(encode_spk(&recipient).len() as u32).to_le_bytes());
     prefix.extend_from_slice(&encode_spk(&recipient));
     prefix.push(1); // terminal state marker: zero remaining user liability
+    prefix
+}
+
+fn policy_for_recipient(secret: &[u8; 32], recipient: ScriptPublicKey) -> Policy {
+    let mut state = [0u8; 32];
+    OsRng.fill_bytes(&mut state);
     Policy {
-        prefix,
+        prefix: context_prefix(&recipient, &state),
         claim: circuit::claim_commitment(secret),
         recipient,
     }
@@ -218,13 +227,22 @@ fn mass(tx: &Transaction, entry: &UtxoEntry) {
     }
 }
 fn validate(tv: &TransactionValidator, tx: &Transaction, entry: &UtxoEntry) -> Result<u64, String> {
+    validate_at(tv, tx, entry, 1_000_000_000, 1_000_000_000)
+}
+fn validate_at(
+    tv: &TransactionValidator,
+    tx: &Transaction,
+    entry: &UtxoEntry,
+    daa: u64,
+    median: u64,
+) -> Result<u64, String> {
     tv.validate_tx_in_isolation(tx)
         .map_err(|e| format!("isolation: {e:?}"))?;
     let pop = PopulatedTransaction::new(tx, vec![entry.clone(); tx.inputs.len()]);
     tv.validate_populated_transaction_and_get_fee(
         &pop,
-        1_000_000_000,
-        1_000_000_000,
+        daa,
+        median,
         TxValidationFlags::Full,
         None,
         None,
@@ -249,6 +267,15 @@ fn record(
 }
 
 fn main() {
+    if std::env::args().nth(1).as_deref() == Some("live") {
+        if let Err(error) = live::run() {
+            // Adapter errors contain static check names, public transaction fields or
+            // library error categories, never secret/key byte contents.
+            eprintln!("A0 live preparation/check failed: {error}");
+            std::process::exit(1);
+        }
+        return;
+    }
     let started = Instant::now();
     let mut secret = [0u8; 32];
     OsRng.fill_bytes(&mut secret);

@@ -23,6 +23,8 @@ kaspa-consensus = { path = "../../../upstream/rusty-kaspa/consensus" }
 kaspa-consensus-core = { path = "../../../upstream/rusty-kaspa/consensus/core" }
 kaspa-hashes = { path = "../../../upstream/rusty-kaspa/crypto/hashes" }
 kaspa-txscript = { path = "../../../upstream/rusty-kaspa/crypto/txscript" }
+kaspa-addresses = { path = "../../../upstream/rusty-kaspa/crypto/addresses" }
+borsh = "=1.5.1"
 
 [profile.dev]
 debug = 0
