@@ -23,6 +23,18 @@ The objective is not "nobody earns money." The objective is:
 - legal and operational review;
 - long-term maintenance.
 
+### Private-operation costs and fee privacy
+
+A private operation may involve distinct costs:
+
+- prover/executor compensation;
+- Kaspa L1 miner fees;
+- protocol/development funding, if any.
+
+These costs should not be assumed to use the same payment mechanism.
+
+Paying for a private operation should not require the user's known transparent Kaspa wallet to visibly fund the corresponding L1 transaction. The design should investigate whether L1 costs can be sponsored, relayed, aggregated, or otherwise funded from shielded value without creating a direct public correlation to the private user. No specific fee mechanism has been selected.
+
 ## Candidate funding mechanisms
 
 These are options to research, not commitments.

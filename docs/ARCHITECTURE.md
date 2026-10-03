@@ -6,6 +6,14 @@ The proposed comparison is in [ADR-0001](adr/0001-state-architecture.md). It rem
 
 The purpose of this document is to compare candidate ways to create optional privacy for native KAS without prematurely locking the project into one implementation.
 
+## Initial asset scope
+
+**Initial scope: native KAS only.** KCC20/private token transfers and trading are explicitly out of scope for the initial protocol and PoCs.
+
+Where reasonably possible, the architecture should avoid design decisions that would unnecessarily prevent future support for KCC20 or other Kaspa-native assets. This is a future extensibility consideration, not a requirement for the initial protocol. It must not outweigh security, simplicity, native-KAS privacy, or other primary design requirements.
+
+This is a reversible early-stage scope/design constraint, not a commitment to a long-term protocol feature or a selection of any candidate architecture. Future KCC20 or other asset support would require separate research and an explicit later design decision recorded in an ADR.
+
 ## 1. Common economic model
 
 Regardless of implementation, the intended model is:
@@ -248,6 +256,23 @@ No proof system has been selected.
 Current Kaspa/vProgs work includes RISC Zero and Groth16-related components. Other privacy systems provide lessons from Halo 2 and specialized circuits.
 
 Selection should follow architecture and benchmarking, not branding.
+
+### Proving topology
+
+The architecture should evaluate both local and delegated proving. No proving topology has been selected.
+
+Local proving has privacy and trust-minimization advantages because witnesses do not need to be exposed to external infrastructure. However, proving latency, RAM usage, and hardware requirements may make it impractical on some devices, especially mobile. The protocol should not assume that every user device can efficiently generate proofs locally.
+
+If delegated proving is needed, the preferred direction is permissionless and provider-replaceable. A prover should provide computation, not custody or authorization over user funds. Failure or disappearance of a prover may affect liveness; it must not compromise fund safety.
+
+Architecture comparisons should benchmark:
+
+- proving latency;
+- peak memory;
+- hardware requirements;
+- proof size;
+- L1 verification cost;
+- opportunities for batching or aggregation.
 
 ## 10. Architecture decision process
 

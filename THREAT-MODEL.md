@@ -101,6 +101,8 @@ The system should verify rather than trust witness providers wherever practical.
 
 A user shields a distinctive amount and soon unshields a similar amount. Even perfect ZK may not prevent a strong statistical link.
 
+Low-activity periods require particular attention, because batching provides less timing anonymity when very few users are active.
+
 ### 9. Amount correlation
 
 Unique public deposit/withdrawal values may reduce the practical anonymity set.
@@ -152,6 +154,12 @@ Define rollback/replay behavior and distinguish executed, proved, settled, and w
 ### 19. Unpaid exit liability
 
 A private claim is consumed into an exit entitlement, but the reserve accounting drops that entitlement before the user receives an authorized payout. All pending exits remain user liabilities; proofs and settlement must bind the amount, destination, reserve continuation, and any fees.
+
+### 20. Fee-payment correlation
+
+A private operation may cause a publicly observable Kaspa L1 transaction whose fee is paid by a known or linkable transparent wallet. Even if the private state transition hides sender, recipient, and amount, an observer may correlate the payer, timing, and privacy-system activity.
+
+Desired property: private operations should not require a publicly linkable fee payment from the user's transparent wallet.
 
 ## Initial out of scope for the first cryptographic PoC
 
