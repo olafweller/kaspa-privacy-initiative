@@ -1,4 +1,9 @@
-# A0.5 handoff: live TN10 reserve-release validation
+# A0.5 original cloud handoff: live TN10 reserve-release validation
+
+**Historical checkpoint:** the requirements below describe the cloud handoff.
+The subsequent implementation and exact operational steps are in the
+[current A0.5 runbook](poc-a0-tn10-runbook.md); measured status is in the
+[A0 report](poc-a0.md). Statements about a missing adapter below are historical.
 
 **Scope:** continue A0 on TN10; do not start A1. Candidate A is experimental,
 ADR-0001 is Proposed, and A0 is not complete. No live TN10 evidence exists yet.

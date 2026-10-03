@@ -44,6 +44,28 @@ live consensus acceptance. Network execution requires a reachable TN10 node,
 verified network identity, test-only funding, and observed transaction evidence.
 Do not substitute a verifier mock or relaxed validation flags when blocked.
 
+## A0.5 retained-key/native-RPC adapter, October 3
+
+Continue the same circuit and P2SH authorization on draft PR #20, without
+merging or starting A1. The supplied REST schema cannot preserve all A0 fields;
+use the pinned official Node SDK and an own loopback TN10 node's native wRPC.
+The file-only Rust adapter retains setup/claim material and calls the original
+full validator. No proof, accounting, output or validation rule is relaxed.
+
+Before reserve funding, validate a release from the exact signed funding output,
+including an SDK roundtrip. After funding, read actual UTXO/context and generate
+a fresh proof. Require accepted-chain and payout-UTXO evidence, a full accepted
+transaction readback, spent-input replay rejection and a later recheck. A local
+source/binary-hash review gate prevents accidental funding with changed tooling;
+it is a test-run procedure, not an on-chain approval or withdrawal authority.
+
+New operational assumptions are an uncompromised local host, accurate pinned
+SDK/node artifacts, retained claim/proving and recipient material, and an explicit
+blue-score-distance >20 observation window. A same-host backup is not disaster recovery. A0
+remains transparent and terminal; no production finality/recovery rule or Candidate
+A architecture is selected. See [runbook](../poc-a0-tn10-runbook.md) and
+[report](../poc-a0.md#native-adapter-and-pre-funding-checks) for measured status.
+
 ## Alternatives
 
 - RISC Zero: supported upstream, but adds guest/receipt tooling for a statement

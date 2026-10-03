@@ -1,9 +1,9 @@
-# A0 local real-proof fixture
+# A0 real-proof fixture and A0.5 TN10 adapter
 
-This executable generates a real Groth16 BN254 proof and runs the actual pinned
-Kaspa transaction validator. It is **not a wallet or live TN10 deployment tool**.
-Its generated recipient key and claim/setup material are discarded. Never fund
-the fixture script. A0 remains incomplete pending live-network evidence.
+The no-argument executable creates an ephemeral Groth16 BN254 claim and runs the
+unmodified pinned Kaspa full validator. Its recipient/claim/setup material is
+discarded: **never fund the fixture script**. The separate A0.5 file adapter and
+native-RPC orchestrator retain independent test material for a reviewed TN10 run.
 
 From the repository root:
 
@@ -12,11 +12,24 @@ From the repository root:
 ./scripts/run_poc_a0.sh test
 ```
 
-The first command exercises the real consensus path and 28 invalid variants,
-plus an expected exact-replay acceptance with a supplied UTXO. The second runs
-four circuit constraint tests. See [the report](../../docs/poc-a0.md) for build
-requirements, pins, single-run benchmarks and the evidence boundary.
+The baseline is one valid fixture, 28 rejected variants and an expected exact
+replay accepted against the supplied stateless UTXO. Four original circuit tests
+plus three adapter parsing tests pass. See [the report](../../docs/poc-a0.md) for
+measurements and the actual live evidence boundary; tests do not prove security.
 
-For the next local session, follow the [A0.5 TN10 handoff](../../docs/poc-a0-live-tn10-handoff.md).
-Implement the missing persistence/RPC adapter and verify the test-only network
-and recipient control before funding. Do not start A1 as part of this handoff.
+Follow the [A0.5 runbook](../../docs/poc-a0-tn10-runbook.md) for pinned SDK/node
+setup, isolated wallets, reviewed funding, confirmation and replay. File-only
+Rust `live` subcommands never access RPC or broadcast. No KasPact checkout is
+needed; only an authorized test-KAS source is needed for funding. Do not start A1.
+
+```bash
+node --test scripts/a0_tn10.test.mjs scripts/a0_tn10_preflight.test.mjs
+python3 scripts/benchmark_poc_a0.py --samples 5
+python3 scripts/check_docs.py
+```
+
+Install the pinned SDK before the SDK tests. The benchmark uses fresh setup/proof
+and verifies all 30 expected outcomes per sample. GNU time maximum RSS covers
+the whole harness. The read-only REST preflight remains available through
+`node scripts/a0_tn10_preflight.mjs`; exit 2 denotes its recorded compatibility
+blocker. It never authorizes funding, even if a later advertised schema passes.

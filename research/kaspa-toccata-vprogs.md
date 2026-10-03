@@ -9,6 +9,15 @@ records real local proof/consensus-code execution against this same node revisio
 The source-review snapshot below remains dated October 2; live TN10 execution
 and the full private-state/recovery gates remain unvalidated.
 
+The October 3 local continuation rechecked Rusty Kaspa/vProgs/research heads;
+they still match the pins below. A [read-only TN10 transport preflight](../docs/poc-a0.md#a05-local-continuation-transport-preflight)
+reached a synchronized node reporting 2.1.0 through a REST v2.3.0 interface,
+but required A0 transaction fields are absent from that schema and genesis
+retrieval failed with HTTP 403. The continuation therefore uses the pinned native SDK and an own TN10 node,
+with retained-key and full-validator gates before funding. See the linked report
+for the current execution status. REST compatibility is not evidence about the
+availability of the L1 verifier.
+
 ## Source snapshots
 
 Default-branch heads resolved through the GitHub API on the review date:

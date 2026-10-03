@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-03. **Scope:** experimental, local evidence; no production protocol.
 
-**Result: partial success, with live TN10 execution blocked.** A freshly generated
+**Result: local baseline reproduced; A0.5 live execution in progress.** A freshly generated
 Groth16 proof passed the unmodified upstream transaction validator with full
 script/mass validation and TN10 parameters. All 28 invalid transaction variants
 were rejected. Four circuit tests passed. No funded or observed TN10 spend exists.
@@ -18,11 +18,16 @@ No transaction was submitted, mined, or observed on TN10, and there are no TN10
 transaction IDs. Local validator acceptance must not be described as an on-chain
 reserve release. The live-network feasibility question remains open.
 
-The current environment permits upstream/package downloads but has no configured
+The original cloud environment permitted upstream/package downloads but had no configured
 TN10 RPC endpoint, test funding, or outbound TCP destination grants. Its allowed
 HTTP destinations do not include the TN10 seeders in the inspected node config.
 No credentials or wallet keys were requested or used. This is an environment
 blocker, not evidence that Kaspa lacks the required consensus primitives.
+
+The local A0.5 continuation adds a retained-key, file-based proof adapter and
+pinned native-wRPC transport. The REST limitation is documented below; it does
+not require changing the original circuit or covenant. Dedicated test wallets
+exist; no funds have been sent at this checkpoint.
 
 The [experiment decision](adr/0002-a0-reserve-release-experiment.md) records scope
 and documentation reconciliation. ADR-0001 remains Proposed. Neither the broader
@@ -252,12 +257,134 @@ single-run reference measurement; the recheck is a separate sample.
 | Malformed/range semantics | Canonical 32-byte Fr decoding; 128/32-bit circuit bounds; exact positive amount constants and upstream monetary checks |
 | Admin/operator paths | No alternate branch, owner override, key replacement or operator-signature release path; trusted setup remains an assumption |
 
-The live-use hazards are explicit in the handoff: the current recipient key is
+The original fixture hazards are explicit in the handoff: its recipient key is
 discarded inside `policy()`, the outpoint and DAA context are synthetic, and the
 fixed fee cannot be increased by adding a sponsor input or reducing payout.
 None of these is a live deployment facility. Do not fund before the adapter
 retains the original proving material, controls the recipient, verifies TN10,
-and checks current fee/policy requirements.
+and checks current fee/policy requirements. The A0.5 adapter addresses these
+requirements separately from the original ephemeral fixture.
+
+## A0.5 local continuation: transport preflight
+
+On October 3, the existing `poc-a0-reserve-release` branch for draft PR #20 was
+fetched and continued without changing the circuit, covenant, amounts, budget,
+validator flags or upstream/toolchain pins. The lockfile adds two direct names
+already present in the graph (`kaspa-addresses`, `borsh`); dependency versions
+are unchanged. The original baseline passed before adapter implementation.
+
+The reproducible, read-only [preflight](../scripts/a0_tn10_preflight.mjs) uses
+only `https://api-tn10.kaspa.org`; it does not read environment files, generate
+keys, construct transactions or submit anything. Run:
+
+```bash
+node --test scripts/a0_tn10_preflight.test.mjs
+node scripts/a0_tn10_preflight.mjs
+```
+
+Exit status 2 means blocked before wallet/funding. Even a complete advertised
+schema does not authorize funding: wire preservation, genesis verification,
+persistent proving material and exact local spend validation remain required.
+The [timestamped public evidence](../poc/a0/evidence/tn10-rest-preflight.json)
+records:
+
+- Network endpoint: `kaspa-testnet-10`; virtual DAA score `587081669`.
+- Node endpoint: version `2.1.0`, synchronized, UTXO-indexed. The endpoint does
+  not report a source revision, so this is not verified node-commit provenance.
+- Fee estimate: `100` sompi/gram. At the fixture's 171,335 compute grams, the
+  calculated floor is 17,133,500 sompi; the unchanged 20,000,000 sompi fee buffer
+  exceeds it. No actual transaction fee or relay acceptance was measured.
+- Genesis block query: HTTP `403`, Cloudflare HTML response. Its contents were
+  discarded to avoid retaining client/network identifiers. Actual genesis
+  verification remains incomplete; the domain constant alone is insufficient.
+- Advertised REST version `v2.3.0`: `SubmitTxInput` lacks `computeBudget`,
+  `SubmitTxOutput` lacks `covenant`, `SubmitTxModel` lacks `mass`, `gas`, and
+  `payload`, and the UTXO response model lacks `covenantId`.
+
+This is supported by the [version-matched REST-server source](https://github.com/kaspa-ng/kaspa-rest-server/blob/e479a5da8dfdb1e3a96105a5460c773dacca4a60/endpoints/kaspad_requests/submit_transaction_request.py):
+its model cannot carry the missing fields; its Python-SDK conversion forwards
+only `sigOpCount` and supplies mass zero. Its [gRPC input/output definitions](https://github.com/kaspa-ng/kaspa-rest-server/blob/e479a5da8dfdb1e3a96105a5460c773dacca4a60/kaspad/protos/rpc.proto)
+also lack compute-budget/covenant fields. Source matching the advertised release
+is evidence of a transport limitation, not an independently verified binary
+revision or a measured live rejection. No transaction POST was attempted.
+
+REST-server [v2.4.1 source](https://github.com/kaspa-ng/kaspa-rest-server/blob/c638eb5cceff30591cd9b35b241752878a2cfad0/endpoints/kaspad_requests/submit_transaction_request.py)
+adds compute-budget/covenant fields but still initializes mass to zero in this
+conversion. An API version upgrade alone is not evidence of exact A0 support.
+Prefer a current TN10 node's native wRPC/gRPC interface with exact transaction
+and UTXO round trips; then verify genesis, validation context and acceptance.
+
+The KasPact generic environment, wallet, balance and transfer scripts were
+inspected. Its transfer serializer carries `sigOpCount`, omits A0's budget/mass/
+covenant fields, and converts u64 sequences to JavaScript `Number`. Reusing it
+unchanged could lose A0's `u64::MAX` sequence precision as well. No KasPact code,
+configuration, secrets, database or historical artifacts were copied. The new
+preflight/benchmark tooling is original KPI code and requires no KasPact checkout.
+Existing `.env.*` ignore protection was checked before any wallet work.
+
+### Native adapter and pre-funding checks
+
+The supplied REST route is not used for transaction submission. The new
+[orchestrator](../scripts/a0_tn10.mjs) uses the official v2.1.0 Node SDK and a
+loopback-only v2.1.0 TN10 node. [Setup](../scripts/setup_a0_tn10.sh) verifies the
+release archive SHA-256 values. The [runbook](poc-a0-tn10-runbook.md) records
+reproduction and stop/resume boundaries.
+
+The file-only Rust adapter calls the original circuit, redeem script and full
+validator. It retains a fresh claim, proving key, matching VK and public terms
+outside Git with restricted permissions and a reload-verified local backup.
+Separate KPI funding and recipient keys remain in ignored `.env.tn10.local`.
+No KasPact secret is copied. A future contributor can use any authorized TN10
+funding source with the documented environment fields.
+
+The live P2SH address is derived from the original redeem bytes using upstream
+`pay_to_script_hash_script` and `extract_script_pub_key_address`. SDK field
+roundtrips preserve u64 values as BigInt/decimal strings, the v1 compute budget,
+full output scripts, explicit absent covenant metadata and storage mass. The
+SDK transaction ID is recomputed rather than trusting an optional cached ID.
+Missing metadata, malformed widths and altered IDs fail closed.
+
+Before any reserve funding, the signed funding transaction determines the exact
+future reserve outpoint. A fresh proof under the retained original key spends
+that exact output; the SDK reconstruction is then passed through the same full
+validator. After funding acceptance, the actual unspent output, DAA score and
+median time are read again before generating the release. One input, one payout
+and the original 10.2 / 10 / 0.2 test-KAS accounting remain mandatory.
+
+Submission alone is insufficient. The observer requires accepted transaction
+IDs with accepting-block blue-score distance from the sink greater than 20 and the exact payout UTXO, then checks
+that the reserve disappeared and compares the accepted block transaction body
+field by field. A later recheck is required. This observation policy is not a
+finality proof. Exact and distinct-ID replay attempts separate cached/already-known
+responses from spent-input rejection; the latter replay first passes full local
+validation against the original supplied UTXO.
+
+At this checkpoint the local signed funding fixture and retained-key reserve
+proof roundtrip pass. The own node is still synchronizing; all broadcast paths
+require synchronization and a review tied to the current source/binary hashes.
+No live IDs or confirmation claim are available yet.
+
+### Repeated local measurements
+
+[Five baseline samples](../poc/a0/evidence/local-host-benchmark.json) were collected
+on an Intel i7-1165G7 (8 logical CPUs), Linux Mint 22.3, kernel 6.8.0-142, Rust
+1.91.0 release build. Each sample reran fresh setup/proving and all 30 expected
+outcomes. The host was shared with other work; these are latency samples, not
+throughput measurements.
+
+| Measurement | Minimum | Median | Maximum |
+| --- | ---: | ---: | ---: |
+| Setup (ms) | 2859.887 | 2873.487 | 4417.833 |
+| Proving (ms) | 990.104 | 1034.974 | 1840.455 |
+| Full valid-transaction validation (ms) | 7.262 | 8.223 | 12.779 |
+| Whole-harness maximum RSS (KiB) | 265572 | 271008 | 284020 |
+
+The proof is 128 bytes, VK 424 bytes, redeem script 576 bytes and signature
+script 775 bytes. The 975-byte upstream transaction estimate is not an actual
+RPC capture. Compute mass is 171335 grams, transient mass 3900 and storage mass
+20; the fixed budget is 1700. Actual live RPC frame size and fee remain separate
+measurements. Whole-harness RSS is not isolated prover memory. These results do
+not establish cryptographic correctness or compare equivalent work with RISC Zero.
 
 ## Security and architectural interpretation
 

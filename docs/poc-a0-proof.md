@@ -2,6 +2,13 @@
 
 **Scope:** one terminal claim, for a local native-test-KAS reserve experiment. This is not a shielded payment protocol, an accepted Candidate A architecture, or a new note/nullifier construction. See [the A0 experiment report](poc-a0.md) for execution results and the actual network evidence boundary.
 
+**A0.5 continuation:** the circuit and covenant are unchanged. The file-only
+adapter reloads the original claim/proving material and recomputes public inputs
+from the exact reserve outpoint. Full validation is repeated after SDK field
+roundtrip and against the observed UTXO. The native transport preserves the
+committed compute budget; classical `sigOpCount` is not a substitute. See the
+[adapter evidence boundary](poc-a0.md#native-adapter-and-pre-funding-checks).
+
 ## Statement
 
 The private witness is one uniformly sampled 32-byte authorization secret `s`. Circuit setup fixes:

@@ -1,0 +1,120 @@
+{
+  "observed_at": "2026-10-03T15:16:54.226Z",
+  "endpoint": "https://api-tn10.kaspa.org",
+  "expected_genesis": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+  "scope": "read-only REST preflight; no wallet, UTXO funding, transaction construction or broadcast",
+  "assessment": {
+    "status": "blocked_before_wallet_or_funding",
+    "funding_allowed": false,
+    "blockers": [
+      "TN10 genesis block could not be retrieved",
+      "REST schema does not advertise the lossless A0 interface: SubmitTxInput.computeBudget, SubmitTxOutput.covenant, SubmitTxModel.mass, SubmitTxModel.gas, SubmitTxModel.payload, UtxoModel.covenantId"
+    ],
+    "missing_schema_fields": [
+      "SubmitTxInput.computeBudget",
+      "SubmitTxOutput.covenant",
+      "SubmitTxModel.mass",
+      "SubmitTxModel.gas",
+      "SubmitTxModel.payload",
+      "UtxoModel.covenantId"
+    ]
+  },
+  "observations": {
+    "network": {
+      "status": 200,
+      "body": {
+        "networkName": "kaspa-testnet-10",
+        "blockCount": "1426484",
+        "headerCount": "1426484",
+        "tipHashes": [
+          "fc8a189530ec0d0aa4c77defe5bffa1b5a424659704499bed1d8a91fb1333ed5",
+          "02d1e90de787a5fb62ce284c21ff986e52384f34fec93ad3c7ecfccdd00c3c5e"
+        ],
+        "difficulty": 2558550.8162516872,
+        "pastMedianTime": "1791040460417",
+        "virtualParentHashes": [
+          "fc8a189530ec0d0aa4c77defe5bffa1b5a424659704499bed1d8a91fb1333ed5",
+          "02d1e90de787a5fb62ce284c21ff986e52384f34fec93ad3c7ecfccdd00c3c5e"
+        ],
+        "pruningPointHash": "ad63ef1bfdbc030f7a3105b1c036a11e37ebd95daeb225842445ad5f36eb2907",
+        "virtualDaaScore": "587081669",
+        "sink": "02d1e90de787a5fb62ce284c21ff986e52384f34fec93ad3c7ecfccdd00c3c5e"
+      }
+    },
+    "node": {
+      "status": 200,
+      "body": {
+        "mempoolSize": "2",
+        "serverVersion": "2.1.0",
+        "isUtxoIndexed": true,
+        "isSynced": true,
+        "p2pIdHashed": "b079c5553a4d4d950a6033f56a129ea07a6f67d7cca7ffbcf6ac7daaf69cbfaf"
+      }
+    },
+    "fee": {
+      "status": 200,
+      "body": {
+        "priorityBucket": {
+          "feerate": 100,
+          "estimatedSeconds": 0.0006216494365155413
+        },
+        "normalBuckets": [
+          {
+            "feerate": 100,
+            "estimatedSeconds": 0.0006216494365155413
+          },
+          {
+            "feerate": 100,
+            "estimatedSeconds": 0.0006216494365155413
+          }
+        ],
+        "lowBuckets": [
+          {
+            "feerate": 100,
+            "estimatedSeconds": 0.0006216494365155413
+          }
+        ]
+      }
+    },
+    "openapi": {
+      "status": 200,
+      "body": {
+        "info": {
+          "title": "Kaspa REST-API server",
+          "version": "v2.3.0"
+        },
+        "model_properties": {
+          "SubmitTxInput": [
+            "previousOutpoint",
+            "signatureScript",
+            "sequence",
+            "sigOpCount"
+          ],
+          "SubmitTxOutput": [
+            "amount",
+            "scriptPublicKey"
+          ],
+          "SubmitTxModel": [
+            "version",
+            "inputs",
+            "outputs",
+            "lockTime",
+            "subnetworkId"
+          ],
+          "UtxoModel": [
+            "amount",
+            "scriptPublicKey",
+            "blockDaaScore",
+            "isCoinbase"
+          ]
+        }
+      }
+    },
+    "genesis": {
+      "status": 403,
+      "content_type": "text/html; charset=UTF-8",
+      "body_retained": false,
+      "cloudflare_error_page": true
+    }
+  }
+}

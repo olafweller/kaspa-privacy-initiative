@@ -2,6 +2,27 @@
 
 **Reviewed:** 2026-10-03. **Status:** source-grounded integration findings; see [A0 experiment results](poc-a0.md) for the checks actually executed. This document does not establish acceptance by a live TN10 node. Candidate A remains experimental and ADR-0001 remains proposed.
 
+**A0.5 local follow-up:** the REST v2.3.0 interface omits required transaction
+fields and is not used for A0 submission. The new native adapter uses official
+v2.1.0 artifacts, pinned by SHA-256 in `scripts/setup_a0_tn10.sh`. Current Rusty
+Kaspa, vProgs and research default-branch refs were rechecked against these pins.
+Node version reporting alone does not establish binary provenance.
+
+At the pinned Rusty Kaspa revision, inspect
+[`rpc/core/src/wasm/convert.rs`](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/wasm/convert.rs)
+and [`rpc/core/src/convert/tx.rs`](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/convert/tx.rs):
+native conversion carries v1 compute budgets, output covenant metadata and
+storage mass. [`consensus/client/src/transaction.rs`](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/client/src/transaction.rs)
+allows a cached constructor ID; the adapter explicitly calls `finalize()` before
+comparing IDs and fields. JavaScript u64 values remain BigInt. Explicit JSON
+`covenant: null` is converted to the SDK's absent Option and checked on readback.
+Genesis is independently hashed from a retrieved header before IBD pruning.
+A retained header can be reused only for the same verified local process; see
+[`consensus/src/processes/pruning_proof/validate.rs`](https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/pruning_proof/validate.rs)
+for native pruning-proof validation. The adapter records whether a fresh or
+retained header was used. The archive licenses are upstream ISC; KPI's adapter is original code. Generic
+KasPact tooling was inspected, not copied, and is not a runtime dependency.
+
 ## Source snapshots
 
 The checked-out default-branch heads still match the repository's October 2 research snapshot:
