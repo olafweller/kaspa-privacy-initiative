@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { transaction, canonical } from './a0_tn10.mjs';
+import fs from 'node:fs';
+import { transaction, canonical, genesisHash } from './a0_tn10.mjs';
 
 // Public, unfunded serialization vector. No private key or spending proof.
 function sample() {
@@ -27,4 +28,13 @@ test('missing metadata or a covenant substitution cannot silently become None',(
 test('overflow and noninteger budgets do not survive roundtrip',()=>{
   for(const bad of [65536,1700.5]) {const raw=sample();raw.inputs[0].computeBudget=bad;assert.throws(()=>transaction(raw));}
   const raw=sample();raw.inputs[0].sequence='18446744073709551616';assert.throws(()=>transaction(raw));
+});
+
+const genesis=JSON.parse(fs.readFileSync(new URL('../poc/a0/evidence/tn10-genesis-header.json',import.meta.url)));
+test('archived decimal-string genesis header reloads and hashes independently',()=>{
+  assert.equal(genesisHash(genesis.header),genesis.expected_hash);
+});
+test('cached header hash cannot conceal a changed nonce or overflowing u64',()=>{
+  assert.notEqual(genesisHash({...genesis.header,nonce:'83331'}),genesis.expected_hash);
+  assert.throws(()=>genesisHash({...genesis.header,nonce:'18446744073709634946'}));
 });

@@ -34,6 +34,8 @@ retrieved TN10 genesis header hash. Linux `/proc` also verifies the executable
 hash, working directory and exact startup arguments. If IBD pruning later removes
 the genesis header, only the retained actual RPC header from the same still-running
 pinned process is accepted and rehashed; PID plus process start ticks must match.
+Archived u64 header fields are restored as bounded BigInt before independent hashing.
+Tests reject changed nonce/overflow despite a supplied cached hash.
 This relies on the pinned native consensus pruning-proof validation and local host,
 not a claim that a pruned node serves genesis. A changed process fails this
 fallback and needs explicit identity review. Broadcast paths require `isSynced=true`.

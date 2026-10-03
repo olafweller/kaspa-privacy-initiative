@@ -115,6 +115,17 @@ function ownNode() {
   const start_ticks=stat.slice(stat.lastIndexOf(')')+2).trim().split(/\s+/)[19];
   return {pid,start_ticks,sha256,args};
 }
+export function genesisHash(header) {
+  const restored={...header};
+  for(const field of ['timestamp','nonce','daaScore','blueScore']) {
+    const value=BigInt(header[field]);
+    assert.ok(value>=0n && value<=18446744073709551615n,`invalid header ${field}`);
+    restored[field]=value;
+  }
+  // Saved JSON uses decimal strings; the upstream Header constructor requires
+  // actual bigint fields. Recompute even when a cached hash was supplied.
+  return new k.Header(restored).finalize();
+}
 async function identity(rpc, requireSync=true) {
   stage = 'TN10 identity and synchronization';
   const processIdentity=ownNode();
@@ -132,14 +143,14 @@ async function identity(rpc, requireSync=true) {
     const anchor=read('node-genesis.json');
     assert.deepEqual(anchor.process,processIdentity,'node changed since genesis observation');
     header=anchor.header;
-    genesis_method='retained actual RPC genesis header from same pinned running process before pruning; native consensus validated IBD';
+    genesis_method='retained actual RPC genesis header from same pinned running process before pruning; native consensus validated pruning/header proof; sync status recorded separately';
   }
-  const h = new k.Header(header);
-  assert.equal(h.finalize(), GENESIS, 'independently computed genesis mismatch');
-  if(!exists('node-genesis.json')) save('node-genesis.json',{observed_at:new Date().toISOString(),header,genesis_recomputed:h.hash,process:processIdentity});
+  const computed=genesisHash(header);
+  assert.equal(computed, GENESIS, 'independently computed genesis mismatch');
+  if(!exists('node-genesis.json')) save('node-genesis.json',{observed_at:new Date().toISOString(),header,genesis_recomputed:computed,process:processIdentity});
   const dag = await rpc.getBlockDagInfo();
   assert.equal(dag.network,'testnet-10');
-  return {observed_at:new Date().toISOString(),rpc:RPC,info,genesis_header:header,genesis_recomputed:h.hash,genesis_method,process:processIdentity,dag};
+  return {observed_at:new Date().toISOString(),rpc:RPC,info,genesis_header:header,genesis_recomputed:computed,genesis_method,process:processIdentity,dag};
 }
 async function utxos(rpc,address) { return (await rpc.getUtxosByAddresses({addresses:[address]})).entries; }
 function reserveContext(u, dag) {
