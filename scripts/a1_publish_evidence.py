@@ -7,6 +7,7 @@ normalized R1CS files must be retained separately. Known recipient fixture key 1
 is deliberately public and is never suitable for funding.
 """
 import argparse
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -38,7 +39,7 @@ def export(bundle, retained, output):
                 ('before-setup.json', 'observation.json', 'setup-receipt.json', 'final-artifact-manifest.json')]
     # Check actual private bytes and textual encodings before any publication.
     # This supplements, rather than replaces, the explicit source allowlist.
-    needles = (secret, secret.hex().encode(), secret.hex().upper().encode())
+    needles = (secret, secret.hex().encode(), secret.hex().upper().encode(), base64.b64encode(secret))
     payloads = []
     for name, source in sources:
         if not source.is_file() or source.is_symlink():
@@ -69,18 +70,29 @@ def export(bundle, retained, output):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--verify-only', action='store_true', help='scan actual claim value without writing')
+    p.add_argument('--write-index', action='store_true', help='after scanning, create aggregate post-artifact evidence index')
     p.add_argument('bundle', type=Path); p.add_argument('retained', type=Path); p.add_argument('output', type=Path, nargs='?')
     a = p.parse_args()
     if a.verify_only:
         secret = (a.bundle / 'claim-secret.bin').read_bytes()
         if len(secret) != 32: raise ValueError('private backup shape')
-        needles = (secret, secret.hex().encode(), secret.hex().upper().encode())
+        needles = (secret, secret.hex().encode(), secret.hex().upper().encode(), base64.b64encode(secret))
         count = 0
+        files = {}
         for path in a.retained.rglob('*'):
             if path.is_file():
-                if path.is_symlink() or any(value in path.read_bytes() for value in needles):
+                data = path.read_bytes()
+                if path.is_symlink() or any(value in data for value in needles):
                     raise ValueError('private value/symlink in proposed evidence')
+                files[str(path.relative_to(a.retained))] = {'bytes': str(len(data)), 'sha256': hashlib.sha256(data).hexdigest()}
                 count += 1
+        if a.write_index:
+            index = {'schema': 'kpi-a1-review-evidence-index/v1', 'scope': 'unfunded review evidence, not complete public-parameter/private-backup retention',
+                     'files': files, 'index_hash_inserted_in_circuit_or_manifest': False,
+                     'private_value_scan_encodings': ['raw', 'lower-hex', 'upper-hex', 'base64'],
+                     'funding_authorized': False, 'G5_full_closure': False}
+            with (a.retained / 'evidence-index.json').open('xb') as stream:
+                stream.write((json.dumps(index, indent=2, sort_keys=True) + '\n').encode())
         print(json.dumps({'actual_private_claim_value_absent': True, 'files_scanned': count}))
     else:
         if a.output is None: raise ValueError('new output required')

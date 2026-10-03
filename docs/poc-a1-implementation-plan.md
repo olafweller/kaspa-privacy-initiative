@@ -1,9 +1,13 @@
 # A1 implementation plan
 
-**Status:** G0 specification closed; design deliverable only. No A1 code, setup,
-execution tests, funding or broadcast has begun. Independent context calculations
-are recorded in the ADR; G1–G6 remain unexecuted. Implementation needs a separate
-user instruction and a separate A1 implementation branch.
+**Status:** G0 specification merged at
+`0193d1847aa53468d6056a925ffb60f2d69e5b23`. Separately authorized unfunded
+implementation now lives on `poc-a1-successor-state`. G1/G2 are locally
+demonstrated; G3 native synthetic consensus and G4 decoded SDK/resource/fee
+qualification have evidence in the [A1 report](poc-a1-proof-report.md).
+G5 tooling and isolated-container rehearsals do not yet close independent
+machine-loss/live-archive recovery. G6 is unauthorized and unexecuted.
+No funding, broadcast, merge, node reconfiguration or invariant change occurred.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -24,7 +28,7 @@ not promote the finite experiment into a note system or accept ADR-0001.
 
 ## Ordered work packages and gates
 
-| Gate | Future deliverable | Required evidence / dependency |
+| Gate | Deliverable / frozen requirement | Required evidence / dependency |
 | --- | --- | --- |
 | G0 — specification closure | Closed specification in ADR, matrix and this plan | Raw selectors and opcode framing, exact witness ABI, context bytes/hashes independently calculated, SPK/verifier pins, acyclic graph, artifact/checker/setup-receipt contract, discovery/topology, fee formulas and source-estimated resources are frozen. Closed as specification only; ADR acceptance remains project review. Implementation separately authorized. |
 | G1 — integer model and codec | Isolated A1 manifest/state model; byte-format vectors | Independently calculated golden examples, checked sums/ranges, forbidden states/modes, partial payout and rebate. Matrix 01–03, 09. No setup or funding until inconsistent manifests deterministically reject. |
@@ -39,14 +43,16 @@ files. Preserve A0 source, its historical evidence and its 30-outcome baseline;
 any shared-helper refactor needs independent justification and regression checks.
 Suggested A1 boundaries are manifest/accounting, canonical encoding, branch
 circuit, script construction, local validator harness, recovery bundle and
-optional later native transport. These are proposed responsibilities, not files
-created in this design task.
+optional later native transport. These were proposed responsibilities at G0;
+the separate implementation now uses these boundaries without changing the
+frozen graph or invariant scope.
 
 G1 implements the frozen schema and compares against the G0 independently
 calculated vectors. G2–G5 must reconcile on identical manifest/output bytes.
 The independent checker must not import the production serializer/compiler,
 and an adversarial reviewer should not author the safety assertion being
-evaluated. No implementation work is authorized by this design closure.
+evaluated. G0 design closure alone authorized no implementation. The subsequent
+explicit G1–G5 instruction authorizes unfunded local falsification, not G6.
 
 ## Frozen G0 handoff checklist
 
@@ -61,7 +67,7 @@ evaluated. No implementation work is authorized by this design closure.
 | Discovery | Retained `kpi-a1-locator/v1` S0 locator + pre-funding checkpoint. Independent indexed node/archive scans accepted bodies with native v2 Full, or v1 accepted-ID/body join; cursor pagination, pruning and removal/reorg rules. Matrix 22/23. |
 | Topology | A original, B clean recovery, C independent chain/archive accessible after A loss. Prefer fully synced local pinned node once independently available; do not await or disturb current sync. G5 records concrete machines/source capabilities. |
 | Fees | f0/fc/f1 frozen before funding using actual relay plus 25% quote-rate headroom; B0 >= max(f0,fc+f1) plus 10% refundable credit headroom. No post-funding fee modification/rescue. Matrix 24. |
-| Resources/layers | Source limits verified; S0 estimated 1.2–1.6 KiB, conservative 2-KiB qualification ceiling, one verifier 155000 grams plus surrounding work. G2/G4 measurements pending. ADR enforcement map prevents adapter/consensus conflation. Matrix 25. |
+| Resources/layers | Source limits verified; G0 estimated S0 at 1.2–1.6 KiB, conservative 2-KiB qualification ceiling, one verifier 155000 grams plus surrounding work. G2/G4 measurements were pending at handoff; current measurements are in the report. ADR enforcement map prevents adapter/consensus conflation. Matrix 25. |
 
 G0 closes what must be built and falsified, not circuit/setup correctness or
 artifact availability. Concrete A1 artifact bytes, source/checker commits, lock
@@ -155,19 +161,21 @@ insufficient fee or ambiguous state blocks a success claim. Passing never implie
 cryptographic correctness, production safety, anonymity, PQ security or a chosen
 production state architecture.
 
-## Implementation handoff boundary
+## Original G0 handoff boundary and current execution boundary
 
-G0 is closed as a source-grounded specification with independent codec
-calculations. PR #21 can be reviewed/merged as the finite A1 specification;
-this task does not merge it or accept Candidate A/ADR-0001. No hard protocol
-blocker was identified from the pinned source review. Implementation is ready
-to start on a separate branch only under a separate instruction, beginning G1
-and the first G2 falsification test, not funding or broadcast.
+G0 was closed as a source-grounded specification with independent codec
+calculations and subsequently merged through PR #21 by the project. This does
+not accept Candidate A/ADR-0001. The separately instructed implementation has
+executed the first two-VK native falsifier successfully and measures S0 at 1289
+bytes, one matching verifier and nine combined stack elements. No hard protocol
+blocker has been found. The implementation PR remains draft/unmerged.
 
-Remaining execution gates are independent checker/build/setup receipts, actual
-script/proof rejection and path traces, measured resource/fee affordability,
-stateful consensus races/reorgs, and clean-machine recovery with demonstrated
-independent archive availability. Until all G1–G5 pass, no reserve may be funded.
+The report distinguishes model, actual native Full, native stateful consensus,
+SDK qualification, same-host namespace recovery and pending independent
+machine/archive evidence. Passing local checks or a namespace rehearsal does
+not close full G5. Until all G1–G5 pass and a separate G6 instruction is given,
+no reserve may be funded. Quotes/configuration must also be refreshed before
+future funding; the publicly known recipient fixture key must never be used.
 Actual hard protocol incompatibility stops work; failures must not be patched
 by weaker output/VK/accounting constraints. All security invariants and trusted
 single-party setup/chain-observation limits remain explicit and unchanged.

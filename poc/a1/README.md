@@ -4,10 +4,12 @@ Implements ADR-0003 on the separate `poc-a1-successor-state` branch. It has no
 funding, RPC submission, wallet or broadcasting API. Do not fund its local
 fixtures: the deliberately public recipient fixture key is **1**.
 
-G1 checked integer accounting and canonical contexts have passed the fixed G0
-oracles in Rust and a separately written Python implementation. Circuit, script,
-native consensus, parameter inspection and recovery tooling are included for
-subsequent gate qualification; their presence does not itself close those gates.
+G1–G4 have unfunded local qualification evidence in the
+[A1 report](../../docs/poc-a1-proof-report.md). All three real proof paths,
+native stateful conflicts/reorgs, final SDK decoding and exact fee/resource
+checks pass. G5 has network-disabled Docker A/B/C rehearsals; physical-host loss
+and independently retained live archive compatibility remain pending. Tool
+presence or a container rehearsal never closes full independent recovery.
 
 Run only the pinned Rust 1.91.0 release toolchain and the locked dependency graph.
 The upstream checkout must be clean at
@@ -29,10 +31,62 @@ three fresh proofs. `stateful BUNDLE` separately tests actual native temporary
 RocksDB/virtual-UTXO consensus, with synthetic genesis and proof-of-work skipped.
 `validate-body REQUEST.json` recomputes ID/full hash and runs native Full against
 the supplied entry; it does not prove chain acceptance or current spentness.
+`native-checkpoint REQUEST.json` imports the synthetic seed UTXO and exports
+C's actual native checkpoint with zero accepted fixture transactions. Retain
+it and the planned S0 locator before any fixture funding/continuation; later
+native paths must match the checkpoint and recovery must reuse those exact
+locator bytes. Its request is `{ "initial_outpoint": <native TransactionOutpoint>,
+"initial_entry": <native UtxoEntry> }`. This is not a public TN10 checkpoint.
 `fresh-terminal BUNDLE BRANCH SECRET REQUEST OUTPUT` proves terminal spendability
 for an authenticated known UTXO, not acceptance-history discovery.
+Its request is `{ "txid": "<32-byte hex>", "index": "0", "entry": <native UtxoEntry> }`;
+`validate-body` instead takes `{ "transaction": <exact file transport>, "entry": <native UtxoEntry> }`.
+They are not interchangeable. The independent checker must qualify owner intent,
+artifacts and receipt before fresh proving; Full with a supplied entry does not
+establish current-chain spentness. `check-backup BUNDLE SECRET RECIPIENT_KEY`
+checks both actual private backups locally without printing their bytes.
 
 The Python recovery scanner checks independently retained accepted transaction
 bodies, lineage and accounting. Synthetic archive/unit tests are not independent
 TN10 recovery evidence. G5 requires the separate A/B/C failure-domain topology
 and authenticated history prescribed by the ADR. G6 remains unauthorized.
+
+## Reconstruct without original-host access
+
+Retain public PK/VK/R1CS/context/scripts/manifest/intent/inspection receipts,
+source/lock/SDK pins and software independently before any future funding. Git
+review fixtures alone deliberately omit the large public PK/R1CS artifacts.
+Never regenerate setup to replace a lost key. Keep user private backup separate.
+
+On independent B, obtain this public repository at the recorded source pin and
+the official `kaspanet/rusty-kaspa` checkout at the exact revision above in the
+sibling `upstream/rusty-kaspa` layout. Install Rust1.91.0 and the native RocksDB
+build prerequisites; use locked release builds, not changed dependency versions.
+The Cargo lock/source hashes and runtime binaries are recorded in the evidence.
+Reconstruction means rebuilding software/reference checks, **not new setup**.
+
+Run `a1_check.py` against separately retained owner intent and receipt with the
+independently wired reference binary. Verify private backups with `check-backup`.
+For B lineage recovery, use `a1_recovery.py` with the exact S0 locator,
+artifact-index hash, complete accepted-body pages, actual historical UTXO
+contexts and current UTXOs at a fixed horizon. Do not trust an address-only
+match, guessed entry, pruned/gapped history or stale pointer. Reconcile reorgs
+before proving. Feed its authenticated outpoint/entry to `fresh-terminal`;
+generate a new proof and independently run Full/read back the exact payout.
+
+`a1_recovery_rehearsal.py run --repo ... --bundle ... --retained ... --binary ...
+--reference-binary ... --output NEW_DIR` reproduces the **same-host synthetic**
+Docker rehearsal. It requires the pinned image identified in its source; an
+exported public image may be independently replicated and imported with
+`docker load`, then checked by image ID before running. Missing image software
+can be rebuilt from pins; missing circuit PK cannot. Containers use read-only
+scoped mounts, network none, unprivileged UID, no capabilities, no original
+bundle mount in B/C and no saved S1 pointer or exit proof in B.
+The chronological v3 rehearsal retains C's checkpoint and planned S0 locator
+before A creates a continuation proof or C accepts funding. A late regenerated
+locator/checkpoint is rejected rather than credited as pre-loss retention.
+
+The local complete bundle/receipt and image copies under ignored `.local/a1/`
+are durable local research records, **not proof of independent host retention**.
+Do not recommend G6 until true B/C machine/archive prerequisites and full G5
+are completed under separate instructions. Never fund the public-key-1 fixture.
