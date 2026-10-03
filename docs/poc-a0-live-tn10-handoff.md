@@ -5,7 +5,7 @@ ADR-0001 is Proposed, and A0 is not complete. No live TN10 evidence exists yet.
 
 Repository: `olafweller/kaspa-privacy-initiative`.
 Branch: `poc-a0-reserve-release`, targeting `main` through a draft PR.
-The draft PR URL is recorded in the publication links below after creation.
+Continue [draft PR #20](https://github.com/olafweller/kaspa-privacy-initiative/pull/20).
 
 ## Start locally
 
@@ -180,5 +180,9 @@ review; a filename being Git-ignored is not sufficient protection.
 
 ## Publication links
 
-Continue the `poc-a0-reserve-release` draft PR in this repository. Its exact URL
-will be recorded here when publication completes. PQ tracking: [issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19).
+- [Draft PR #20 — PoC A0: real-proof reserve-release feasibility spike](https://github.com/olafweller/kaspa-privacy-initiative/pull/20)
+- [Feature branch](https://github.com/olafweller/kaspa-privacy-initiative/tree/poc-a0-reserve-release)
+- [PQ tracking issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19)
+
+Push reviewed A0.5 work to this feature branch to extend the same draft PR.
+Do not merge it or begin A1 as part of the live-validation handoff.
