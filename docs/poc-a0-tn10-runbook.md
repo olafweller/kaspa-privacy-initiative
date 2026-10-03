@@ -28,22 +28,38 @@ steps. All RPC/P2P listeners bind loopback, UPnP is disabled and no inbound peer
 are accepted. Outbound peers provide TN10 synchronization. Existing local node
 services are not reconfigured. Stop this node with Ctrl-C after observation.
 
-The adapter fixes `ws://127.0.0.1:17210`, TN10 and version 2.1.0. It requires a
-UTXO index, checks actual network identity and independently recomputes the
-retrieved TN10 genesis header hash. Linux `/proc` also verifies the executable
-hash, working directory and exact startup arguments. If IBD pruning later removes
-the genesis header, only the retained actual RPC header from the same still-running
-pinned process is accepted and rehashed; PID plus process start ticks must match.
-Archived u64 header fields are restored as bounded BigInt before independent hashing.
-Tests reject changed nonce/overflow despite a supplied cached hash.
-This relies on the pinned native consensus pruning-proof validation and local host,
-not a claim that a pruned node serves genesis. A changed process fails this
-fallback and needs explicit identity review. Broadcast paths require `isSynced=true`.
-Do not substitute a mainnet/public endpoint or bypass these checks.
+The own node binds `ws://127.0.0.1:17210` and validates TN10's pruning/header
+proof. The adapter broadcasts through the explicit native TLS endpoint
+`wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh` and corroborates through
+`wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh`, both discovered using
+the pinned upstream resolver infrastructure. Both must report synchronized,
+UTXO-indexed TN10/2.1.0 and reproduce up to three recent headers already validated
+by the own consensus process. No runtime endpoint override is accepted.
+
+Linux `/proc` verifies the local executable hash, working directory and exact
+startup arguments. Run `anchor` once while the own node still serves genesis;
+the actual retrieved header is independently hashed. After IBD pruning, only
+that retained actual header from the same still-running process is accepted and
+rehashed; PID plus process start ticks must match. Archived u64 fields are
+restored as bounded BigInt. Changed nonce/overflow cannot hide behind a cached
+hash. A changed local process fails this fallback and needs explicit identity
+review. Keep the original genesis observation; never replace it with an invented
+record. Header synchronization must complete before public RPC funding is enabled.
+
+**Observation trust:** remote UTXO and acceptance responses are trusted and
+corroborated across two endpoints. This is not local full-UTXO validation, and
+two endpoints do not establish independent operators. Genesis/header matching
+identifies the connected chain; it does not authenticate every remote UTXO reply.
+Every proposed funding/release transaction still passes the original local full
+validator against explicitly checked entries. See [ADR-0002](adr/0002-a0-reserve-release-experiment.md).
+If using an already synchronized own node in a later run, review the transport
+selection explicitly rather than silently changing URLs or genesis checks.
 
 ## Prepare without broadcasting
 
 ```bash
+node scripts/a0_tn10.mjs anchor
+# Wait until the own node has committed its validated header chain:
 node scripts/a0_tn10.mjs identity
 node scripts/a0_tn10.mjs wallet
 node scripts/a0_tn10.mjs prefund
@@ -62,7 +78,8 @@ artifacts, but inspect and allowlist them before publication.
 checks every relevant field after native SDK reconstruction. `funding-fixture`
 signs an ordinary transaction spending a synthetic KPI-wallet UTXO and subjects
 it to the same full upstream validator. Neither broadcasts. These commands can
-run while the node synchronizes and are not evidence of actual UTXO existence.
+run while the local UTXO set imports, once header synchronization and the remote
+identity checks pass. They are not evidence of actual UTXO existence.
 
 ## Review and funding gate
 
@@ -89,6 +106,7 @@ node scripts/a0_tn10.mjs release
 node scripts/a0_tn10.mjs replay
 # After an additional observation interval:
 node scripts/a0_tn10.mjs recheck
+node scripts/a0_tn10.mjs corroborate
 ```
 
 `bootstrap` transfers 12 test KAS to the fresh KPI funding wallet. Funding uses
@@ -109,7 +127,10 @@ The observer uses native accepted transaction IDs with `minConfirmationCount=20`
 In this pinned node implementation that means accepting-block blue-score
 distance from the sink **greater than 20**, not a production finality rule.
 It also requires the exact payout UTXO, absent reserve and full accepted-body
-field comparison. `recheck` repeats acceptance and UTXO observations. RPC frame
+field comparison. `recheck` repeats acceptance and UTXO observations.
+`corroborate` requires the second endpoint to return the same accepting block,
+exact accepted body and payout, absent reserve and no distinct replay payout.
+A disagreement halts for inspection, including possible reorgs. RPC frame
 byte counts include the wRPC envelope, excluding WebSocket/TCP framing; consensus
 Borsh bytes and the upstream estimated transaction bytes are separate metrics.
 

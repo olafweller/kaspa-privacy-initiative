@@ -28,7 +28,9 @@ const dir = path.join(root, '.local/a0-tn10');
 const envFile = path.join(root, '.env.tn10.local');
 const binary = path.join(root, 'poc/a0/target/release/kpi-poc-a0');
 const GENESIS = 'f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370';
-const RPC = 'ws://127.0.0.1:17210'; // Own pinned node only, no endpoint substitution.
+const LOCAL_RPC = 'ws://127.0.0.1:17210'; // Own pinned consensus process verifies TN10 headers.
+const RPC = 'wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh';
+const CORROBORATING_RPC = 'wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh';
 const NODE_SHA256 = 'adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f';
 let stage = 'argument and configuration checks';
 const stringify = value => JSON.stringify(value, (_, x) => typeof x === 'bigint' ? x.toString() : x, 2);
@@ -126,14 +128,13 @@ export function genesisHash(header) {
   // actual bigint fields. Recompute even when a cached hash was supplied.
   return new k.Header(restored).finalize();
 }
-async function identity(rpc, requireSync=true) {
+async function localIdentity(rpc) {
   stage = 'TN10 identity and synchronization';
   const processIdentity=ownNode();
   const info = await rpc.getServerInfo();
   assert.equal(info.networkId, 'testnet-10', 'wrong network');
   assert.equal(info.serverVersion, '2.1.0', 'wrong node version');
   assert.equal(info.hasUtxoIndex, true);
-  if (requireSync) assert.equal(info.isSynced, true, 'node still syncing');
   let header,genesis_method='fresh RPC header, independently hashed';
   try {header=(await rpc.getBlock({hash:GENESIS,includeTransactions:false})).block.header;}
   catch(error) {
@@ -150,7 +151,39 @@ async function identity(rpc, requireSync=true) {
   if(!exists('node-genesis.json')) save('node-genesis.json',{observed_at:new Date().toISOString(),header,genesis_recomputed:computed,process:processIdentity});
   const dag = await rpc.getBlockDagInfo();
   assert.equal(dag.network,'testnet-10');
-  return {observed_at:new Date().toISOString(),rpc:RPC,info,genesis_header:header,genesis_recomputed:computed,genesis_method,process:processIdentity,dag};
+  return {observed_at:new Date().toISOString(),rpc:LOCAL_RPC,info,genesis_header:header,genesis_recomputed:computed,genesis_method,process:processIdentity,dag};
+}
+async function identity(rpc) {
+  const local=new k.RpcClient({url:LOCAL_RPC,networkId:'testnet-10'});
+  const other=new k.RpcClient({url:CORROBORATING_RPC,networkId:'testnet-10'});
+  await local.connect({timeoutDuration:15000});
+  try {
+    const anchor=await localIdentity(local);
+    assert.ok(BigInt(anchor.dag.headerCount)>0n,'own node has not validated headers');
+    const hashes=anchor.dag.tipHashes.filter(h=>h!==anchor.dag.pruningPointHash).slice(0,3);
+    assert.ok(hashes.length>0,'recent locally validated header required');
+    await other.connect({timeoutDuration:15000});
+    try {
+      const endpoints=[];
+      for(const [client,url] of [[rpc,RPC],[other,CORROBORATING_RPC]]) {
+        const info=await client.getServerInfo();
+        assert.equal(info.networkId,'testnet-10');assert.equal(info.serverVersion,'2.1.0');
+        assert.equal(info.isSynced,true);assert.equal(info.hasUtxoIndex,true);
+        const matched=[];
+        for(const hash of hashes) {
+          const localHeader=(await local.getBlock({hash,includeTransactions:false})).block.header;
+          const remoteHeader=(await client.getBlock({hash,includeTransactions:false})).block.header;
+          assert.equal(genesisHash(localHeader),hash);assert.equal(genesisHash(remoteHeader),hash);
+          matched.push(hash);
+        }
+        endpoints.push({url,info,matched_locally_validated_headers:matched});
+      }
+      const dag=await rpc.getBlockDagInfo();assert.equal(dag.network,'testnet-10');
+      assert.ok(BigInt(dag.virtualDaaScore)>0n && BigInt(dag.pastMedianTime)>0n);
+      return {observed_at:new Date().toISOString(),rpc:RPC,info:endpoints[0].info,dag,
+        local_identity:anchor,endpoints,observation_trust:'Remote native-RPC UTXO/acceptance data; two endpoint corroboration, not local full UTXO validation or proof of independent operators'};
+    } finally {await other.disconnect();}
+  } finally {await local.disconnect();}
 }
 async function utxos(rpc,address) { return (await rpc.getUtxosByAddresses({addresses:[address]})).entries; }
 function reserveContext(u, dag) {
@@ -260,6 +293,15 @@ async function observe(rpc,id,startHash,address,expectedScript,expectedAmount,ti
   throw new Error('acceptance/UTXO observation timed out; inspect saved transaction before retrying');
 }
 async function main(command) {
+  if(command==='anchor') {
+    const local=new k.RpcClient({url:LOCAL_RPC,networkId:'testnet-10'});
+    await local.connect({timeoutDuration:15000});
+    try {
+      const anchor=await localIdentity(local);save(`local-identity-${Date.now()}.json`,anchor);
+      console.log('Actual local genesis header independently hashed and retained for this pinned process; no funding.');
+    } finally {await local.disconnect();}
+    return;
+  }
   if(command==='wallet') {
     assert.equal(execFileSync('git',['check-ignore','.env.tn10.local'],{cwd:root,encoding:'utf8'}).trim(),'.env.tn10.local');
     assert.ok(!fs.existsSync(envFile),'KPI wallet already exists');
@@ -276,10 +318,25 @@ async function main(command) {
   const rpc=new k.RpcClient({url:RPC,networkId:'testnet-10'});
   await rpc.connect({timeoutDuration:15000});
   try {
-    const node=await identity(rpc,!['identity','prefund','funding-fixture'].includes(command));
+    const node=await identity(rpc);
     if(command==='identity'){save(`identity-${Date.now()}.json`,node);console.log(stringify(node));return;}
     const w=wallet(); const manifest=read('manifest.json');
     assert.equal(manifest.recipient_address,w.KPI_RECIPIENT_ADDRESS);
+    if(command==='corroborate') {
+      const other=new k.RpcClient({url:CORROBORATING_RPC,networkId:'testnet-10'});
+      await other.connect({timeoutDuration:15000});
+      try {
+        const proof=read('release.json'),submission=read('release-submission.json'),reserve=read('live-reserve-context.json');
+        const accepted=await observe(other,proof.transaction.id,submission.start_hash,manifest.recipient_address,manifest.recipient_spk_hex,1000000000n);
+        assert.equal(accepted.accepted.acceptingBlockHash,read('release-acceptance.json').accepted.acceptingBlockHash,'endpoints disagree on acceptance; inspect possible reorg');
+        const body=await acceptedBody(other,accepted.accepted,proof.transaction);
+        assert.ok(!(await utxos(other,manifest.reserve_address)).map(entry).some(e=>e.outpoint.transactionId===reserve.outpoint.transactionId&&e.outpoint.index===reserve.outpoint.index));
+        assert.equal((await utxos(other,manifest.recipient_address)).map(entry).filter(e=>e.outpoint.transactionId===proof.distinct_replay_transaction.id).length,0);
+        save(`corroboration-${Date.now()}.json`,{node,endpoint:CORROBORATING_RPC,accepted,body,reserve_unspent:false,
+          elapsed_since_broadcast_ms:Date.now()-submission.started_ms});
+        console.log('Second native endpoint corroborated accepted body, exact payout, absent reserve and no distinct replay payout.');return;
+      } finally {await other.disconnect();}
+    }
     if(command==='funding-fixture') {
       const available=[{address:w.KPI_FUNDING_ADDRESS,outpoint:{transactionId:'43'.repeat(32),index:0},
         amount:1200000000n,scriptPublicKey:k.payToAddressScript(w.KPI_FUNDING_ADDRESS),blockDaaScore:0n,isCoinbase:false}];

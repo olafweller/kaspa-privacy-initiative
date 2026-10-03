@@ -326,7 +326,11 @@ Existing `.env.*` ignore protection was checked before any wallet work.
 
 The supplied REST route is not used for transaction submission. The new
 [orchestrator](../scripts/a0_tn10.mjs) uses the official v2.1.0 Node SDK and a
-loopback-only v2.1.0 TN10 node. [Setup](../scripts/setup_a0_tn10.sh) verifies the
+loopback-only v2.1.0 TN10 node for independent genesis/header validation.
+Two explicit synchronized public native-RPC endpoints supply and corroborate
+live UTXO/acceptance observations while the own node imports its large UTXO set.
+This remote observation trust is explicit in ADR-0002; it is not local full-UTXO
+validation or proof that the two services have independent operators. [Setup](../scripts/setup_a0_tn10.sh) verifies the
 release archive SHA-256 values. The [runbook](poc-a0-tn10-runbook.md) records
 reproduction and stop/resume boundaries.
 
@@ -360,8 +364,10 @@ responses from spent-input rejection; the latter replay first passes full local
 validation against the original supplied UTXO.
 
 At this checkpoint the local signed funding fixture and retained-key reserve
-proof roundtrip pass. The own node is still synchronizing; all broadcast paths
-require synchronization and a review tied to the current source/binary hashes.
+proof roundtrip pass. The own node has validated headers and is importing its UTXO set. Both public
+RPC endpoints report synchronized TN10/2.1.0 and match three locally validated
+headers. All broadcast paths require those identity checks and a review tied to
+the current source/binary hashes.
 No live IDs or confirmation claim are available yet.
 
 ### Repeated local measurements

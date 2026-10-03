@@ -66,6 +66,26 @@ remains transparent and terminal; no production finality/recovery rule or Candid
 A architecture is selected. See [runbook](../poc-a0-tn10-runbook.md) and
 [report](../poc-a0.md#native-adapter-and-pre-funding-checks) for measured status.
 
+### Native public RPC observation while local UTXO import is incomplete
+
+The initial own-node bootstrap validated the TN10 pruning/header proof and
+recent headers, but its UTXO import exceeded 50 million entries and is still in
+progress. For this test, permit the two explicit TLS native-wRPC endpoints
+resolved from upstream's public resolver infrastructure, after both report synced
+TN10/2.1.0 and match independently rehashed recent headers from the own pinned
+consensus process. The original actual genesis header must still rehash correctly,
+and the local process/config identity must match the pre-pruning observation.
+
+This changes the observation trust boundary, not the proof/covenant or accounting:
+remote UTXO/acceptance data is trusted and corroborated across two endpoints, not
+claimed to be locally UTXO-validated. Distinct endpoints are not proof of independent
+operators. Local full validation of exact signed funding and reserve-release
+transactions remains mandatory. After release, require the same accepted block
+body, exact payout and absent reserve through both endpoints, plus later recheck.
+Fail closed on disagreement. No experiment result establishes production finality,
+remote-provider honesty, independent recovery or a general shielded state model.
+The loopback-only full-node route remains preferable when already synchronized.
+
 ## Alternatives
 
 - RISC Zero: supported upstream, but adds guest/receipt tooling for a statement

@@ -1,12 +1,12 @@
 {
-  "observed_at": "2026-10-03T16:19:19.241226+00:00",
+  "observed_at": "2026-10-03T17:44:26.497185+00:00",
   "scope": "A0.5 pre-funding adapter checkpoint; no on-chain execution at this observation",
   "adversarial_review": {
-    "observed_at": "2026-10-03T17:18:05.576917+00:00",
+    "observed_at": "2026-10-03T17:44:26.497185+00:00",
     "approved_for_test_funding": true,
     "scope": "same-agent adversarial second pass before any test funding; not an independent audit or cryptographic correctness proof",
     "sha256": {
-      "scripts/a0_tn10.mjs": "3cc6f12a8a0fb88efe634f09e4c0cae66cc97f12b67db7647bd7f6525023437e",
+      "scripts/a0_tn10.mjs": "e6b8f7885388de14af9c791e267d6c179e4c1e26de32aa883d30807623f406b0",
       "poc/a0/src/main.rs": "4e209555a8dd20fa904b4902ffb7c47efc6d1599fdb5096f9b56fb6a6d6265fc",
       "poc/a0/src/live.rs": "6adef38fb1e6114165aa4bdba05c385e11ab9545a99cb346839400c4c6c97d9a",
       "poc/a0/src/circuit.rs": "5d3f4f32c588e4637ca7b1597708a81c70331b53cc301f05c84cfea7855b7da8",
@@ -35,7 +35,8 @@
       "Loss of claim/key/node availability halts safely; no fallback spend. Same-host backup is not independent disaster recovery.",
       "Durable submission intent and exclusive files prevent automatic rebroadcast after uncertain network result. Manual inspection required before resume.",
       "Current priority fee estimate checked before reserve funding as well as before release; original fixed 0.2 test-KAS fee is never silently changed.",
-      "After actual genesis pruning, archived header reload failed closed on string nonce. Fixed by explicit bounded BigInt conversion; real same-process fallback now reproduces expected genesis. Added positive archival-header and mutated/overflow/cached-hash tests; all nine Node tests pass."
+      "After actual genesis pruning, archived header reload failed closed on string nonce. Fixed by explicit bounded BigInt conversion; real same-process fallback now reproduces expected genesis. Added positive archival-header and mutated/overflow/cached-hash tests; all nine Node tests pass.",
+      "Reviewed explicit two-endpoint native RPC route: both synced TN10/2.1.0 with UTXO index, matching three independently rehashed headers from own pinned consensus process. Own actual genesis anchor/process verified after pruning. UTXO/acceptance observations are remote trusted data, not locally full-UTXO-validated; provider independence is not claimed. Local full validator and proof/covenant checks unchanged. Second endpoint must agree on accepting block, exact body, payout and spent reserve. Fresh retained-key proof under current remote DAA/median context passed native SDK roundtrip and full validation."
     ],
     "unverified_until_live": [
       "native relay acceptance",
@@ -43,14 +44,15 @@
       "spent-input replay error",
       "later chain/UTXO observation",
       "actual submission-frame measurement"
-    ]
+    ],
+    "observation_trust": "Two synchronized public native-RPC endpoints, corroborated against own genesis/header validation; remote UTXO/acceptance trust remains explicit. No local full UTXO-set validation claim."
   },
   "tests": {
     "original_circuit_tests": 4,
     "rust_adapter_tests": 3,
     "sdk_boundary_tests": 5,
     "rest_diagnostic_tests": 4,
-    "docs_checker": "37 Markdown files, 105 relative links; external links/fragments not validated"
+    "docs_checker": "37 Markdown files, 106 relative links; external links/fragments not validated"
   },
   "baseline": {
     "cases": [
@@ -312,6 +314,9 @@
   "network_identity": {
     "genesis_hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
     "method": "actual RPC header independently hashed before own node IBD; native process binary and TN10 arguments checked",
-    "synced": false
+    "synced": false,
+    "public_endpoints_synced": true,
+    "public_endpoints_match_locally_validated_headers": 3,
+    "scope": "Local header chain validated, local UTXO import incomplete; public endpoints synced. See adversarial review for explicit observation trust."
   }
 }
