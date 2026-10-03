@@ -96,7 +96,8 @@ fee cap, a single intended payment and at most one change output to its source.
 
 `fund` first signs the funding transaction, locates the exact reserve output,
 proves a release bound to that future txid/index under the retained key and
-runs full validation after SDK roundtrip. Only then can it broadcast funding.
+runs full validation after SDK roundtrip. The current priority fee estimate must
+also fit the unchanged release fee. Only then can it broadcast funding.
 After acceptance, `release-prepare` queries the actual reserve output/context
 and generates a fresh proof. `release` rechecks current UTXO context and the
 fixed fee against the native fee estimate before submission. No amount/budget

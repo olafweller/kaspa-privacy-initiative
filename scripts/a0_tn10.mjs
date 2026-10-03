@@ -304,7 +304,10 @@ async function main(command) {
       const outpoint={transactionId:plan.raw.id,index:matches[0].index};
       save('planned-reserve-context.json',reserveContext({outpoint,amount:'1020000000',scriptPublicKeyHex:manifest.reserve_spk_hex,
         blockDaaScore:node.dag.virtualDaaScore.toString(),isCoinbase:false,covenantId:null},node.dag));
-      checkedProof(w,'planned-reserve-context.json','planned-release');
+      const futureRelease=checkedProof(w,'planned-reserve-context.json','planned-release');
+      const feeEstimate=await rpc.getFeeEstimate();save('funding-release-fee-estimate.json',feeEstimate);
+      assert.ok(Number(futureRelease.fee_sompi)/futureRelease.compute_mass_grams >= feeEstimate.estimate.priorityBucket.feerate,
+        'do not fund while the fixed reserve-release fee is below the priority estimate');
       // No byte of the reviewed/signed funding transaction is changed after proving its exact output spendable.
       const submission=await submit(rpc,plan.raw,'funding');
       const accepted=await observe(rpc,plan.raw.id,submission.start_hash,manifest.reserve_address,manifest.reserve_spk_hex,1020000000n);
