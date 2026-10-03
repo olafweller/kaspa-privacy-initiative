@@ -1,0 +1,22 @@
+{
+  "recorded_date": "2026-10-03",
+  "platform": "Linux x86_64, kernel 6.18.44, glibc 2.41",
+  "cpu_model": "Intel Xeon Platinum 8573C",
+  "visible_logical_cpus": 5,
+  "cgroup_cpu_quota_cores": 4,
+  "cgroup_memory_limit_bytes": 17179869184,
+  "build_jobs": 4,
+  "build_profile": "release",
+  "rust_toolchain": "1.91.0",
+  "kaspa_revision": "01b532e8b553523216471682649693af92f0fd16",
+  "kaspa_version": "2.1.0",
+  "arkworks_version": "0.6.0",
+  "scope": "Local supplied UTXO fixtures; real proof and pinned production transaction validator. No live TN10 node, funding, submission, or confirmation.",
+  "network_blocker": "Enforced restricted source/package HTTP destinations, no configured TN10 endpoint, no TCP destination grants, no VPN, no configured funding credentials.",
+  "benchmark_caveat": "Shared cloud VM, single samples, fresh random setup/witness/proof per run; not throughput or production performance estimates. Compile time is separate from runtime measurements.",
+  "os": "Debian GNU/Linux 13 (trixie)",
+  "cxx_compiler": "GCC 14.2.0",
+  "libclang": "19",
+  "rustc_commit": "f8297e351a40c1439a467bbbb6879088047f50b3",
+  "repository_base_commit": "a97a6efd5830fc0b1648d898efdfb96acc80902f"
+}

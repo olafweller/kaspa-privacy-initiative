@@ -4,6 +4,11 @@
 
 **Scope:** specifications, repository trees, and selected source files. No node, prover, or TN10 transaction was run. Source inspection establishes implemented interfaces, not end-to-end shielded-pool feasibility or security.
 
+**Later experimental evidence:** the October 3 [A0 report](../docs/poc-a0.md)
+records real local proof/consensus-code execution against this same node revision.
+The source-review snapshot below remains dated October 2; live TN10 execution
+and the full private-state/recovery gates remain unvalidated.
+
 ## Source snapshots
 
 Default-branch heads resolved through the GitHub API on the review date:

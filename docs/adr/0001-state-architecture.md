@@ -150,7 +150,7 @@ Before implementation, reviewers must assess this ADR and the existing-work map.
 - [Pinned upstream map](../../research/kaspa-toccata-vprogs.md): active KIPs, verifier source, prototype runtime, draft full-vProgs specification, and inspected exits.
 - [Existing Kaspa work](../../research/existing-kaspa-privacy.md): prior proposal and boundaries of source inspection.
 - Mature-protocol research leads: [Orchard](../../research/zcash-orchard.md), [Aztec](../../research/aztec.md), [RAILGUN](../../research/railgun.md), [Monero](../../research/monero.md), [MWEB](../../research/litecoin-mweb.md). These notes are study inputs, not completed component reuse/security reviews.
-- No KPI benchmark, circuit review, real-proof TN10 round trip, or recovery experiment exists yet. Upstream development-mode demos do not substitute for them.
+- [A0](../poc-a0.md) now supplies local real-proof consensus-code measurements and a limited circuit/covenant review for one terminal claim. No real-proof TN10 round trip or recovery experiment exists yet. This preliminary evidence does not accept this ADR; upstream development-mode demos do not substitute for the remaining gates.
 
 ## Revisit if
 

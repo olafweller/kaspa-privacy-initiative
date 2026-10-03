@@ -4,6 +4,15 @@ The first PoCs are designed to answer narrow technical questions, not to simulat
 
 Use **test KAS only**.
 
+## A0 — reserve-release feasibility sub-spike
+
+The [A0 experiment](../docs/poc-a0.md) tests a real Groth16 authorization proof
+and exact payout constraints through pinned Kaspa consensus code. Its supplied
+local UTXO is not a funded TN10 reserve. A0 is narrower than PoC A below and does
+not satisfy the private-transfer or independent-recovery milestones. See
+[ADR-0002](../docs/adr/0002-a0-reserve-release-experiment.md) for the bounded scope;
+ADR-0001 remains Proposed.
+
 ## PoC A — Fund safety + private transition
 
 ### Question

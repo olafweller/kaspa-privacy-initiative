@@ -1,0 +1,237 @@
+{
+  "cases": [
+    {
+      "accepted": true,
+      "case": "valid_terminal_release",
+      "expected_accept": true,
+      "result": "Ok(20000000)",
+      "validation_ms": 3.928292
+    },
+    {
+      "accepted": false,
+      "case": "malformed_proof",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"ARK serialization error: the input buffer contained invalid data\\\"))\")",
+      "validation_ms": 1.998063
+    },
+    {
+      "accepted": false,
+      "case": "proof_trailing_bytes",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 proof has trailing bytes\\\"))\")",
+      "validation_ms": 2.184178
+    },
+    {
+      "accepted": false,
+      "case": "public_input_length_31",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: Invalid Fr length: expected 32 bytes, got 31\\\"))\")",
+      "validation_ms": 0.020429
+    },
+    {
+      "accepted": false,
+      "case": "public_input_length_33",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: Invalid Fr length: expected 32 bytes, got 33\\\"))\")",
+      "validation_ms": 0.010647
+    },
+    {
+      "accepted": false,
+      "case": "missing_authorization_identity_proof",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.146753
+    },
+    {
+      "accepted": false,
+      "case": "missing_authorization_empty",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureEmpty(InvalidStackOperation(1, 0))\")",
+      "validation_ms": 0.004246
+    },
+    {
+      "accepted": false,
+      "case": "replay_other_outpoint_txid",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.7036640000000003
+    },
+    {
+      "accepted": false,
+      "case": "replay_other_outpoint_index",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.771956
+    },
+    {
+      "accepted": false,
+      "case": "outpoint_index_u32_max",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.71013
+    },
+    {
+      "accepted": false,
+      "case": "wrong_amount_underpay",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.009967
+    },
+    {
+      "accepted": false,
+      "case": "wrong_amount_overpay",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.005245
+    },
+    {
+      "accepted": false,
+      "case": "amount_zero",
+      "expected_accept": false,
+      "result": "Err(\"isolation: TxOutZero(0)\")",
+      "validation_ms": 0.000788
+    },
+    {
+      "accepted": false,
+      "case": "amount_u64_max",
+      "expected_accept": false,
+      "result": "Err(\"isolation: TxOutTooHigh(0)\")",
+      "validation_ms": 0.00036899999999999997
+    },
+    {
+      "accepted": false,
+      "case": "wrong_recipient",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.004722
+    },
+    {
+      "accepted": false,
+      "case": "wrong_recipient_spk_version",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.004068
+    },
+    {
+      "accepted": false,
+      "case": "modified_outputs_extra",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.0032370000000000003
+    },
+    {
+      "accepted": false,
+      "case": "modified_output_covenant_metadata",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.006972000000000001
+    },
+    {
+      "accepted": false,
+      "case": "modified_outputs_missing",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.0030110000000000002
+    },
+    {
+      "accepted": false,
+      "case": "duplicate_reserve_input",
+      "expected_accept": false,
+      "result": "Err(\"isolation: TxDuplicateInputs\")",
+      "validation_ms": 0.0006039999999999999
+    },
+    {
+      "accepted": false,
+      "case": "extra_distinct_reserve_input",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.090771
+    },
+    {
+      "accepted": false,
+      "case": "wrong_reserve_value",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+      "validation_ms": 0.007742
+    },
+    {
+      "accepted": false,
+      "case": "insufficient_compute_budget",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ExceededCommittedScriptUnits { used: 14001433, limit: 9999 })\")",
+      "validation_ms": 0.01362
+    },
+    {
+      "accepted": false,
+      "case": "invalid_public_inputs_tag",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.926683
+    },
+    {
+      "accepted": false,
+      "case": "noncanonical_field_input",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: ARK serialization error: the input buffer contained invalid data\\\"))\")",
+      "validation_ms": 0.020528
+    },
+    {
+      "accepted": false,
+      "case": "wrong_domain",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 3.941812
+    },
+    {
+      "accepted": false,
+      "case": "wrong_domain_replacement_verifier",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(EvalFalse)\")",
+      "validation_ms": 0.010798
+    },
+    {
+      "accepted": false,
+      "case": "wrong_state",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+      "validation_ms": 5.721933
+    },
+    {
+      "accepted": false,
+      "case": "wrong_state_replacement_verifier",
+      "expected_accept": false,
+      "result": "Err(\"utxo: SignatureInvalid(EvalFalse)\")",
+      "validation_ms": 0.011583999999999999
+    },
+    {
+      "accepted": true,
+      "case": "exact_replay_stateless_boundary",
+      "expected_accept": true,
+      "result": "Ok(20000000)",
+      "validation_ms": 4.0682
+    }
+  ],
+  "compute_budget": 1700,
+  "compute_mass_grams": 171335,
+  "default_minimum_relay_fee_sompi": 17133500,
+  "estimated_transaction_bytes": 975,
+  "fee_buffer_sompi": 20000000,
+  "network": "testnet-10",
+  "proof_bytes": 128,
+  "proof_system": "Groth16 BN254 / arkworks 0.6.0",
+  "proving_ms": 1088.931492,
+  "redeem_script_bytes": 576,
+  "reserve_sompi": 1020000000,
+  "scope": "offline production TransactionValidator::Full with supplied UTXO; NOT live TN10; no UTXO membership test",
+  "setup": "fresh OS randomness, single party trusted setup; unsuitable for deposits",
+  "setup_ms": 2285.24661,
+  "signature_script_bytes": 775,
+  "standalone_verify_ms": 2.8784069999999997,
+  "storage_mass_grams": 20,
+  "total_ms": 9122.393226,
+  "transient_mass_grams": 3900,
+  "upstream_revision": "01b532e8b553523216471682649693af92f0fd16",
+  "used_script_units": 15501434,
+  "user_liability_sompi": 1000000000,
+  "verifying_key_bytes": 424
+}
