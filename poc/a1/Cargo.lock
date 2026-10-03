@@ -2169,6 +2169,7 @@ dependencies = [
  "kaspa-muhash",
  "kaspa-txscript",
  "rand 0.8.5",
+ "secp256k1",
  "serde",
  "serde_json",
  "sha2",

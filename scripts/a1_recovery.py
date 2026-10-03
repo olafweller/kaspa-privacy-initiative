@@ -9,7 +9,12 @@ Local synthetic tests do not demonstrate live TN10 or machine-loss recovery.
 import copy
 import hashlib
 import struct
-from a1_check import Invalid, require, keys, decimal, unhex, full_spk, sha, p2sh, FR
+import argparse
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+from a1_check import Invalid, require, keys, decimal, unhex, full_spk, sha, p2sh, FR, load_json
 
 
 def rpc_uint(value, bits=64):
@@ -239,3 +244,69 @@ def check_private_backup(bundle,secret,recipient_public_key):
     require(len(secret)==32 and hashlib.sha256(secret).hexdigest()==bundle['claim_commitment_hex'],'wrong claim secret')
     require(len(recipient_public_key)==32 and ('000020'+recipient_public_key.hex()+'ac')==bundle['recipient']['spk_hex'],'wrong recipient recovery key')
     return {'claim_secret_matches':True,'recipient_key_matches':True}
+
+
+def native_callback(binary,reference_binary,entries):
+    """Hash all bodies independently; Full validate exact historical reserve inputs.
+
+    entries are independently retained native UTXO entries keyed by txid:index.
+    Synthesizing a block DAA score/default UTXO here would conceal missing data.
+    """
+    binary=str(Path(binary).resolve());reference_binary=str(Path(reference_binary).resolve())
+    def validate(tx,context):
+        with tempfile.TemporaryDirectory(prefix='kpi-a1-recovery-validate-') as directory:
+            body_path=Path(directory)/'body.json'
+            # Full SPK strings are the native RPC serialization. Object shape is
+            # accepted by the decoder but is converted without omitting version.
+            normalized=copy.deepcopy(tx)
+            for output in normalized['outputs']:
+                output['scriptPublicKey']=rpc_spk(output['scriptPublicKey']).hex()
+            body_path.write_text(json.dumps(normalized))
+            result=subprocess.run([reference_binary,'--body',str(body_path)],check=True,capture_output=True,text=True)
+            hashes=json.loads(result.stdout)
+            if context is None:return hashes
+            point=context['outpoint'];lookup=point[0]+':'+str(point[1])
+            require(lookup in entries,'historical authenticated reserve UTXO context missing')
+            entry=entries[lookup]
+            require(isinstance(entry,dict) and all(k in entry for k in ('amount','scriptPublicKey','blockDaaScore','isCoinbase','covenantId')),'incomplete historical native UTXO entry')
+            expected=context['bundle']['states'][context['state']]
+            require(rpc_uint(entry['amount'])==decimal(expected['R']) and rpc_spk(entry['scriptPublicKey']).hex()==expected['spk_hex'] and entry['covenantId'] is None,'wrong historical reserve entry')
+            # File-only A1 adapter transport fields preserve exact native values.
+            transaction={k:normalized[k] for k in ('version','inputs','outputs','lockTime','subnetworkId','gas','payload')}
+            transaction['id']=hashes['txid'];transaction['storageMass']=str(rpc_uint(normalized.get('storageMass',normalized.get('mass'))))
+            for item in transaction['inputs']:
+                item['sigOpCount']=0  # v1 has no sigop-count serialized field.
+            native_entry=copy.deepcopy(entry);native_entry['scriptPublicKey']=rpc_spk(entry['scriptPublicKey']).hex()
+            for field in ('amount','blockDaaScore'):native_entry[field]=rpc_uint(native_entry[field])
+            request=Path(directory)/'request.json';request.write_text(json.dumps({'transaction':transaction,'entry':native_entry}))
+            result=subprocess.run([binary,'validate-body',str(request)],check=True,capture_output=True,text=True)
+            full=json.loads(result.stdout)
+            require(full.get('txid')==hashes.get('txid') and full.get('full_hash')==hashes.get('full_hash'),'independent native ID/full-hash disagreement')
+            return full
+    return validate
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--manifest',type=Path,required=True)
+    parser.add_argument('--locator',type=Path,required=True)
+    parser.add_argument('--artifact-index-sha256',required=True,help='independently retained approved artifact index hash')
+    parser.add_argument('--pages',type=Path,required=True,help='ordered array of archived native v2 Full request/response records')
+    parser.add_argument('--entries',type=Path,required=True,help='independently retained full historical UTXO entries, txid:index -> entry')
+    parser.add_argument('--current-utxos',type=Path,required=True)
+    parser.add_argument('--horizon',required=True)
+    parser.add_argument('--binary',type=Path,required=True)
+    parser.add_argument('--reference-binary',type=Path,required=True)
+    parser.add_argument('--checker-report',type=Path,required=True,help='completed report from independent parameter inspection')
+    args=parser.parse_args()
+    report=load_json(args.checker_report)
+    require(report.get('parameter_consistency') is True and report.get('schema')=='kpi-a1-independent-check/v1','parameter inspection required before recovery')
+    scanner=Scanner(load_json(args.locator),load_json(args.manifest),native_callback(args.binary,args.reference_binary,load_json(args.entries)),args.artifact_index_sha256)
+    pages=load_json(args.pages);require(isinstance(pages,list),'archived pages array required')
+    for page_record in pages:scanner.page(page_record,args.horizon)
+    outcome=scanner.reconcile_utxos(load_json(args.current_utxos),args.horizon)
+    require(outcome['lineage_history_complete'],'missing authenticated accepted funding/history: lineage recovery fails')
+    print(json.dumps(outcome,indent=2))
+
+
+if __name__=='__main__':main()

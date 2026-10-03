@@ -87,6 +87,70 @@ impl Harness {
     }
 }
 
+/// Accept an exact fixture path using actual native virtual UTXOs at each step,
+/// and export bodies retrieved from native block storage with acceptance data.
+/// This is a synthetic chain/archive fixture, not a live/indexed TN10 source.
+pub fn accept_path(steps: &[Transaction], initial: &UtxoEntry) -> Result<Value, String> {
+    let first = steps.first().ok_or("empty native path")?;
+    if first.inputs.len() != 1 {
+        return Err("native path initial input count".into());
+    }
+    let mut h = Harness::new(first.inputs[0].previous_outpoint, initial)?;
+    let genesis = h.consensus.params().genesis.hash;
+    let mut parent = genesis;
+    let mut receipts = vec![];
+    for tx in steps {
+        if tx.inputs.len() != 1 {
+            return Err("native path single input".into());
+        }
+        h.spend(tx)?;
+        let block = h.block(vec![parent], vec![tx.clone()])?;
+        let accepting = h.block(vec![block], vec![])?;
+        if h.has(tx.inputs[0].previous_outpoint) {
+            return Err("native path input not consumed".into());
+        }
+        for (index, output) in tx.outputs.iter().enumerate() {
+            let native = h
+                .entry(TransactionOutpoint::new(tx.id(), index as u32))
+                .ok_or("native path output missing")?;
+            if native.amount != output.value
+                || native.script_public_key != output.script_public_key
+                || native.covenant_id.is_some()
+            {
+                return Err("native path output terms mismatch".into());
+            }
+        }
+        let acceptance = h
+            .consensus
+            .get_block_acceptance_data(accepting)
+            .map_err(|e| format!("native path acceptance: {e:?}"))?;
+        let accepted = acceptance
+            .iter()
+            .flat_map(|m| m.accepted_transactions.iter())
+            .any(|a| a.transaction_id == tx.id());
+        if !accepted {
+            return Err("native path transaction missing from acceptance data".into());
+        }
+        let bodies = h
+            .consensus
+            .get_block_transactions(block, Some(vec![1]))
+            .map_err(|e| format!("native path body: {e:?}"))?;
+        let body = bodies.first().ok_or("native path body retrieval empty")?;
+        if body.id() != tx.id() {
+            return Err("native path stored body ID mismatch".into());
+        }
+        receipts.push(
+            json!({"block":block.to_string(),"accepting_block":accepting.to_string(),
+            "acceptance_data":acceptance.as_ref(),"transaction":body}),
+        );
+        parent = accepting;
+    }
+    Ok(json!({"backend":"native TestConsensus + temporary RocksDB",
+        "network":"isolated synthetic TN10-parameter chain; no public TN10 acceptance",
+        "synthetic_genesis_hash":genesis.to_string(),"accepted_path":receipts,
+        "current_virtual_utxos":h.consensus.get_virtual_utxos(None, 1000, false)}))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -215,6 +279,30 @@ pub fn competing_and_reorg(
         .consensus
         .get_block_acceptance_data(merged)
         .map_err(|e| format!("native initial acceptance data: {e:?}"))?;
+    let initial_ids = initial_acceptance
+        .iter()
+        .flat_map(|mb| mb.accepted_transactions.iter())
+        .map(|tx| tx.transaction_id)
+        .collect::<Vec<_>>();
+    if !initial_ids.contains(&winner.id()) || initial_ids.contains(&loser.id()) {
+        return Err("native initial accepting block disagrees with virtual winner".into());
+    }
+    let mut accepted_body = None;
+    for mb in initial_acceptance.iter() {
+        for tx in &mb.accepted_transactions {
+            if tx.transaction_id == winner.id() {
+                let body = h
+                    .consensus
+                    .get_block_transactions(mb.block_hash, Some(vec![tx.index_within_block]))
+                    .map_err(|e| format!("native accepted body retrieval: {e:?}"))?;
+                accepted_body = body.into_iter().next();
+            }
+        }
+    }
+    let accepted_body = accepted_body.ok_or("native accepted body missing")?;
+    if accepted_body.id() != winner.id() {
+        return Err("native accepted body ID mismatch".into());
+    }
     let mut fork = h.block(vec![genesis], vec![loser.clone()])?;
     // Move competing history outside k-cluster. Use current native k, not a lower
     // convenience parameter, and read actual virtual-chain removed blocks.
@@ -283,7 +371,9 @@ pub fn competing_and_reorg(
         "distinct_replay_standalone_valid":true,"distinct_replay_txid":replay.id().to_string(),"replay_rejection":replay_result.unwrap_err(),
         "fork_blocks":fork_blocks,"removed_chain_blocks":path.removed.iter().map(ToString::to_string).collect::<Vec<_>>(),
         "added_chain_blocks":path.added.iter().map(ToString::to_string).collect::<Vec<_>>(),
-        "initial_acceptance_data":initial_acceptance.as_ref(),"new_chain_acceptance_data":new_acceptance,
+        "synthetic_genesis_hash":genesis.to_string(),"initial_accepting_block":merged.to_string(),
+        "initial_acceptance_data":initial_acceptance.as_ref(),"initial_native_accepted_body":accepted_body,
+        "new_chain_acceptance_data":new_acceptance,
         "original_reserve_final_unspent":false,"original_reserve_spent_by_alternative":true,
         "all_old_winner_outputs_removed_on_reorg":true,"all_alternate_outputs_exact":true,
         "state_pointer_rollback":"old winner outpoints removed, alternative outpoints installed by native UTXO processor; original S0 stays spent after atomic replacement",

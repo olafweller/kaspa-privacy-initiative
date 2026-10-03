@@ -38,6 +38,47 @@ pub fn set_mass(tx: &Transaction, entry: &UtxoEntry) -> Result<(), String> {
     tx.set_storage_mass(m.storage_mass);
     Ok(())
 }
+/// Reproduce pinned relay standardness rules with native class/scanner/mass
+/// helpers. This is an offline policy check, not remote mempool admission.
+pub fn relay_policy(tx: &Transaction, entry: &UtxoEntry, fee: u64) -> Result<Value, String> {
+    use kaspa_txscript::{p2sh_sig_scanner, script_class::ScriptClass};
+    if entry.script_public_key.version() != 0
+        || ScriptClass::from_script(&entry.script_public_key) != ScriptClass::ScriptHash
+    {
+        return Err("A1 reserve must be standard version-zero P2SH".into());
+    }
+    let mut sigops = 0;
+    for i in &tx.inputs {
+        let n = p2sh_sig_scanner(&i.signature_script, &entry.script_public_key);
+        if n > 15 {
+            return Err("standard P2SH sigop limit".into());
+        }
+        sigops += n;
+    }
+    for o in &tx.outputs {
+        if o.script_public_key.version() != 0
+            || ScriptClass::from_script(&o.script_public_key) == ScriptClass::NonStandard
+        {
+            return Err("standard output class/version".into());
+        }
+    }
+    let masses =
+        MassCalculator::new_with_consensus_params(&TESTNET_PARAMS).calc_non_contextual_masses(tx);
+    let normalized_transient = masses.transient_mass.div_ceil(2);
+    let mass = masses.compute_mass.max(normalized_transient);
+    let rate = 100_000u64;
+    let mut floor = mass.checked_mul(rate).ok_or("relay floor overflow")? / 1000;
+    if floor == 0 {
+        floor = rate;
+    }
+    floor = floor.min(crate::model::MAX_SOMPI);
+    if fee < floor {
+        return Err("fixed fee below pinned relay floor".into());
+    }
+    Ok(
+        json!({"passed":true,"scope":"offline pinned standardness/class/sigop/fee rules; no remote admission","relay_fee_mass":mass,"normalized_transient_mass":normalized_transient,"relay_rate_sompi_per_kg":rate,"minimum_relay_fee_sompi":floor,"P2SH_sigops":sigops,"storage_has_no_additional_relay_floor":true}),
+    )
+}
 pub fn validate(
     tv: &TransactionValidator,
     tx: &Transaction,
@@ -96,6 +137,34 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
         )
     };
     let log = String::from_utf8(log).map_err(|e| e.to_string())?;
+    let parsed_signature = kaspa_txscript::parse_script::<
+        PopulatedTransaction<'_>,
+        kaspa_consensus_core::hashing::sighash::SigHashReusedValuesUnsync,
+    >(&tx.inputs[0].signature_script)
+    .collect::<Result<Vec<_>, _>>()
+    .map_err(|e| e.to_string())?;
+    let redeem = parsed_signature.last().ok_or("empty witness")?.get_data();
+    let mut native_counted_ops = vec![];
+    let mut largest_element = 0usize;
+    for script in [
+        &tx.inputs[0].signature_script[..],
+        entry.script_public_key.script(),
+        redeem,
+    ] {
+        let mut count = 0;
+        for op in kaspa_txscript::parse_script::<
+            PopulatedTransaction<'_>,
+            kaspa_consensus_core::hashing::sighash::SigHashReusedValuesUnsync,
+        >(script)
+        {
+            let op = op.map_err(|e| e.to_string())?;
+            if !op.is_push_opcode() {
+                count += 1;
+            }
+            largest_element = largest_element.max(op.get_data().len());
+        }
+        native_counted_ops.push(count);
+    }
     let mut peak = final_main.len() + final_alt.len();
     let mut active = true;
     let mut inside_if = false;
@@ -234,7 +303,7 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
     let required_budget = ComputeBudget::checked_covering_script_units(ScriptUnits(units))
         .ok_or("execution exceeds u16 budget")?;
     Ok(
-        json!({"script_units":units,"executed_grams_ceil":units.div_ceil(SCRIPT_UNITS_PER_GRAM),"minimum_compute_budget":required_budget.0,"peak_combined_stack":peak,"executed_instructions":count,"executed_non_push_ops":executed_non_push,
+        json!({"script_units":units,"executed_grams_ceil":units.div_ceil(SCRIPT_UNITS_PER_GRAM),"native_counted_ops_per_script_signature_spk_redeem":native_counted_ops,"largest_pushed_element_bytes":largest_element,"minimum_compute_budget":required_budget.0,"peak_combined_stack":peak,"executed_instructions":count,"executed_non_push_ops":executed_non_push,
         "matching_vk_verifiers":verifiers,"output_amount_checks":output_amount,"output_spk_checks":output_spk,
         "metadata_checks":metadata,"verifier_stack":verifier_stack,"compute_mass":non_contextual.compute_mass,
         "storage_mass":masses.storage_mass,"transient_mass":non_contextual.transient_mass,

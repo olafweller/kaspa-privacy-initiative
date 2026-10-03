@@ -61,6 +61,54 @@ fn spk(b: &[u8]) -> Result<ScriptPublicKey> {
     model::full_spk(b)?;
     Ok(ScriptPublicKey::from_vec(0, b[2..].to_vec()))
 }
+fn artifact_path(bundle: &Path, name: &str) -> Result<PathBuf> {
+    let relative = Path::new(name);
+    if relative.is_absolute()
+        || relative
+            .components()
+            .any(|p| !matches!(p, std::path::Component::Normal(_)))
+    {
+        return Err("unsafe artifact path".into());
+    }
+    let root = bundle.canonicalize()?;
+    let path = root.join(relative).canonicalize()?;
+    if !path.starts_with(&root) {
+        return Err("escaping artifact symlink".into());
+    }
+    Ok(path)
+}
+fn private_secret(path: &Path) -> Result<[u8; 32]> {
+    let meta = fs::symlink_metadata(path)?;
+    if !meta.is_file() {
+        return Err("private backup must be regular file".into());
+    }
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        if meta.permissions().mode() & 0o077 != 0 {
+            return Err("private backup permissions must exclude group/other".into());
+        }
+    }
+    Ok(fs::read(path)?.try_into().map_err(|_| "secret32")?)
+}
+fn check_backup(bundle: &Path, secret: &Path, key: &Path) -> Result<Value> {
+    let manifest = kpi_poc_a1::artifact::manifest(&fs::read(bundle.join("manifest.json"))?)?;
+    let s = private_secret(secret)?;
+    if hex::encode(circuit::claim_commitment(&s)) != text(&manifest["claim_commitment_hex"])? {
+        return Err("wrong claim backup".into());
+    }
+    let raw = private_secret(key)?;
+    let key = secp256k1::SecretKey::from_slice(&raw)?;
+    let pair = secp256k1::Keypair::from_secret_key(&secp256k1::Secp256k1::new(), &key);
+    let (pubkey, _) = pair.x_only_public_key();
+    let expected = format!("000020{}ac", hex::encode(pubkey.serialize()));
+    if expected != text(&manifest["recipient"]["spk_hex"])? {
+        return Err("wrong recipient private recovery key".into());
+    }
+    Ok(
+        json!({"claim_secret_matches":true,"recipient_private_key_matches":true,"private_material_printed":false,"scope":"private backup correspondence only, not history availability"}),
+    )
+}
 fn policy(c: &BranchContext) -> Result<ScriptPolicy> {
     Ok(ScriptPolicy {
         reserve: c.reserve,
@@ -296,6 +344,7 @@ fn fixture(
         return Err("fee mismatch".into());
     }
     let meter = validator::meter(&decoded, entry, &a.vk)?;
+    let relay = validator::relay_policy(&decoded, entry, fee)?;
     if meter["compute_mass"].as_u64().unwrap() > 500_000
         || meter["storage_mass"].as_u64().unwrap() > 500_000
         || meter["transient_mass"].as_u64().unwrap() > 1_000_000
@@ -303,6 +352,10 @@ fn fixture(
         return Err("hard TN10 block mass exceeded".into());
     }
     let binary = borsh::to_vec(&decoded)?;
+    let consensus_preimage = kpi_poc_a1::encoding::full_transaction_bytes(&decoded)?;
+    if kpi_poc_a1::encoding::full_transaction_hash(&decoded)? != hashing::tx::hash(&decoded) {
+        return Err("independent full encoding/hash mismatch".into());
+    }
     json_new(
         &root.join(format!("{}.transaction.json", branch.name())),
         &encoded,
@@ -316,7 +369,7 @@ fn fixture(
         &bytes,
         false,
     )?;
-    let measure = json!({"setup":a.measure,"prove_ms":prove_ms,"standalone_verify_ms":verify_ms,"native_full_ms":full_ms,"proof_bytes":bytes.len(),"redeem_bytes":redeem.len(),"signature_bytes":decoded.inputs[0].signature_script.len(),"spk_bytes_full":script::encode_spk(&entry.script_public_key).len(),"native_borsh_bytes":binary.len(),"native_borsh_sha256":sha(&binary),"estimated_consensus_bytes":kaspa_consensus_core::mass::transaction_estimated_serialized_size(&decoded),"transport_json_bytes":serde_json::to_vec(&encoded)?.len(),"compute_budget":budget,"fee_sompi":fee,"txid":decoded.id().to_string(),"full_hash":hashing::tx::hash(&decoded).to_string(),"meter":meter});
+    let measure = json!({"setup":a.measure,"prove_ms":prove_ms,"standalone_verify_ms":verify_ms,"native_full_ms":full_ms,"proof_bytes":bytes.len(),"redeem_bytes":redeem.len(),"signature_bytes":decoded.inputs[0].signature_script.len(),"spk_bytes_full":script::encode_spk(&entry.script_public_key).len(),"output_script_bytes":decoded.outputs.iter().map(|o|o.script_public_key.script().len()).collect::<Vec<_>>(),"native_borsh_bytes":binary.len(),"native_borsh_sha256":sha(&binary),"consensus_full_hash_preimage_bytes":consensus_preimage.len(),"consensus_full_hash_preimage_sha256":sha(&consensus_preimage),"estimated_consensus_bytes":kaspa_consensus_core::mass::transaction_estimated_serialized_size(&decoded),"transport_json_bytes":serde_json::to_vec(&encoded)?.len(),"compute_budget":budget,"fee_sompi":fee,"txid":decoded.id().to_string(),"full_hash":hashing::tx::hash(&decoded).to_string(),"meter":meter,"relay_policy":relay});
     json_new(
         &root.join(format!("{}.measurement.json", branch.name())),
         &measure,
@@ -336,7 +389,21 @@ fn case(
     let start = Instant::now();
     let result = validator::validate(&validator::validator(), &tx, entry);
     let accepted = result.is_ok();
-    cases.push(json!({"case":name,"expected":expected,"accepted":accepted,"layer":layer,"result":format!("{result:?}"),"milliseconds":start.elapsed().as_secs_f64()*1000.}));
+    let error = result.as_ref().err().map(String::as_str).unwrap_or("");
+    let observed = if accepted {
+        "success"
+    } else if error.starts_with("isolation:") {
+        "native-isolation"
+    } else if error.contains("ZkIntegrity") {
+        "native-Groth16-verifier"
+    } else if error.contains("Budget") || error.contains("script units") {
+        "native-budget"
+    } else if error.contains("Signature") {
+        "native-script-VM"
+    } else {
+        "native-UTXO-context"
+    };
+    cases.push(json!({"case":name,"expected":expected,"accepted":accepted,"expected_check":layer,"observed_layer":observed,"result":format!("{result:?}"),"milliseconds":start.elapsed().as_secs_f64()*1000.}));
     if accepted != expected {
         return Err(format!("falsification mismatch: {}", cases.last().unwrap()).into());
     }
@@ -359,6 +426,12 @@ fn negatives(
     let proof: Vec<u8> = {
         let p: Value = serde_json::from_slice(&serde_json::to_vec(&tx_json(tx))?)?;
         let sig = hexbytes(&p["inputs"][0]["signatureScript"])?;
+        if sig.get(0) != Some(&0x20)
+            || sig.get(33) != Some(&0x20)
+            || sig.get(66..68) != Some(&[0x4c, 0x80][..])
+        {
+            return Err("fixture proof framing not canonical".into());
+        }
         let first = 33 + 33;
         sig[first + 2..first + 2 + 128].to_vec()
     };
@@ -422,19 +495,23 @@ fn negatives(
             "native-P2SH-or-redeem-depth",
         )?;
     }
-    let mut items = base.clone();
-    items.insert(0, vec![1]);
-    let mut t = tx.clone();
-    t.inputs[0].signature_script = raw_sig(&items)?;
-    case(
-        cases,
-        format!("{}/extra", branch.name()),
-        t,
-        entry,
-        false,
-        "redeem-depth",
-    )?;
-    for (i, j) in [(0, 1), (1, 2), (2, 3), (3, 4)] {
+    for position in 0..=5 {
+        for value in [vec![], vec![1]] {
+            let mut items = base.clone();
+            items.insert(position, value.clone());
+            let mut t = tx.clone();
+            t.inputs[0].signature_script = raw_sig(&items)?;
+            case(
+                cases,
+                format!("{}/extra_{position}_{}", branch.name(), hex::encode(value)),
+                t,
+                entry,
+                false,
+                "P2SH-or-redeem-depth",
+            )?;
+        }
+    }
+    for (i, j) in (0..5).flat_map(|i| (i + 1..5).map(move |j| (i, j))) {
         let mut items = base.clone();
         items.swap(i, j);
         let mut t = tx.clone();
@@ -547,6 +624,30 @@ fn negatives(
             false,
             "redeem-SPK",
         )?;
+        let mut t = tx.clone();
+        t.outputs[index].script_public_key =
+            ScriptPublicKey::from_vec(1, t.outputs[index].script_public_key.script().to_vec());
+        case(
+            cases,
+            format!("{}/output_spk_version_{index}", branch.name()),
+            t,
+            entry,
+            false,
+            "redeem-full-SPK-version",
+        )?;
+        let mut t = tx.clone();
+        t.outputs[index].covenant = Some(kaspa_consensus_core::tx::CovenantBinding {
+            authorizing_input: 0,
+            covenant_id: Hash::from_bytes([0; 32]),
+        });
+        case(
+            cases,
+            format!("{}/output_covenant_zero_{index}", branch.name()),
+            t,
+            entry,
+            false,
+            "native-covenant-or-redeem-metadata",
+        )?;
     }
     let mut t = tx.clone();
     t.outputs.push(t.outputs[0].clone());
@@ -568,7 +669,7 @@ fn negatives(
         false,
         "native-duplicate-or-redeem-count",
     )?;
-    for idx in [0, u32::MAX].into_iter().filter(|i| *i != op.index) {
+    for idx in [0, 1, u32::MAX].into_iter().filter(|i| *i != op.index) {
         let mut t = tx.clone();
         t.inputs[0].previous_outpoint.index = idx;
         case(
@@ -621,6 +722,36 @@ fn negatives(
         "native-envelope-or-redeem",
     )?;
     let mut t = tx.clone();
+    t.subnetwork_id = format!("01{}", "00".repeat(19)).parse()?;
+    case(
+        cases,
+        format!("{}/subnetwork", branch.name()),
+        t,
+        entry,
+        false,
+        "native-or-redeem-subnetwork",
+    )?;
+    let mut t = tx.clone();
+    t.version = 0;
+    case(
+        cases,
+        format!("{}/version", branch.name()),
+        t,
+        entry,
+        false,
+        "native-or-redeem-version",
+    )?;
+    let mut t = tx.clone();
+    t.inputs[0].signature_script.insert(0, 0x76);
+    case(
+        cases,
+        format!("{}/nonpush_witness", branch.name()),
+        t,
+        entry,
+        false,
+        "native-P2SH-push-only",
+    )?;
+    let mut t = tx.clone();
     t.inputs[0].compute_commit = kaspa_consensus_core::mass::ComputeBudget(1).into();
     case(
         cases,
@@ -660,6 +791,9 @@ fn experiment(root: &Path) -> Result<Value> {
     let pins = json!({"kpi_source_commit":source,"rusty_kaspa_commit":"01b532e8b553523216471682649693af92f0fd16","rust_toolchain":"1.91.0","target":"x86_64-unknown-linux-gnu","cargo_lock_sha256":sha(&lock),"dependency_versions":{"arkworks":"0.6.0","sha2":"0.10.9"},"sdk_archive_sha256":"ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124","node_archive_sha256":"5ba61c05c013a4856491a8a17666fa73f7bd2aecbfed8affe8ffdc077361dad8","build_commands":["cargo +1.91.0 build --locked --release"],"checker_source_commit":source});
     let intent = json!({"schema":"kpi-a1-intent/v1","scope":"local-unfunded-fixture","genesis_hex":model::GENESIS_HEX,"instance_hex":hex::encode(instance),"claim_commitment_hex":hex::encode(claim),"recipient_spk_hex":hex::encode(&recipient),"terms":{"l0":q.l0.to_string(),"b0":q.b0.to_string(),"w":q.w.to_string(),"f0":q.f0.to_string(),"fc":q.fc.to_string(),"f1":q.f1.to_string()},"pins":pins});
     json_new(&root.join("owner-intent.json"), &intent)?;
+    if let Some(retained) = std::env::var_os("KPI_A1_RETAIN_INTENT") {
+        json_new(Path::new(&retained), &intent)?;
+    }
     write_new(&root.join("claim-secret.bin"), &secret, true)?;
     write_new(
         &root.join("recipient-key.bin"),
@@ -693,8 +827,40 @@ fn experiment(root: &Path) -> Result<Value> {
     let at = setup(root, Branch::S0Terminal, &ct)?;
     let d0 = script::build_s0(&ac.vk, &at.vk, &policy(&cc)?, &policy(&ct)?)?;
     let s0 = pay_to_script_hash_script(&d0);
-    let op0 =
-        TransactionOutpoint::new(Hash::from_bytes(std::array::from_fn(|i| 0x40 + i as u8)), 7);
+    // Only a synthetic temporary-consensus funding BODY, never submitted to TN10.
+    // Its ID is constructed after all setup/scripts; no future txid is a constant.
+    let bootstrap = UtxoEntry::new(
+        q.r0.checked_add(1_000_000).ok_or("bootstrap overflow")?,
+        ScriptPublicKey::from_vec(0, vec![0x51]),
+        0,
+        false,
+        None,
+    );
+    let funding = Transaction::new(
+        1,
+        vec![TransactionInput::new_with_compute_budget(
+            TransactionOutpoint::new(Hash::from_bytes([0x40; 32]), 7),
+            vec![],
+            u64::MAX,
+            1,
+        )],
+        vec![TransactionOutput::new(q.r0, s0.clone())],
+        0,
+        Default::default(),
+        0,
+        vec![],
+    );
+    validator::set_mass(&funding, &bootstrap)?;
+    validator::validate(&validator::validator(), &funding, &bootstrap)?;
+    json_new(
+        &root.join("synthetic-funding.transaction.json"),
+        &tx_json(&funding),
+    )?;
+    json_new(
+        &root.join("synthetic-funding.validate.json"),
+        &json!({"transaction":tx_json(&funding),"entry":bootstrap}),
+    )?;
+    let op0 = TransactionOutpoint::new(funding.id(), 0);
     let e0 = UtxoEntry::new(q.r0, s0.clone(), 0, false, None);
     let e1 = UtxoEntry::new(q.r1, s1.clone(), 0, false, None);
     eprintln!("Proving three paths / native Full / decoded measurement");
@@ -769,9 +935,27 @@ fn stateful_bundle(root: &Path) -> Result<Value> {
     alternate.inputs[0].sequence -= 1;
     alternate.finalize();
     validator::set_mass(&alternate, &e)?;
-    let result = json!({"continue_vs_continue":kpi_poc_a1::stateful::competing_and_reorg(&tc,&alternate,&e)?,"continue_vs_terminal":kpi_poc_a1::stateful::competing_and_reorg(&tc,&tt,&e)?});
+    let fundreq: Value =
+        serde_json::from_slice(&fs::read(root.join("synthetic-funding.validate.json"))?)?;
+    let fund = parse_tx(&fundreq["transaction"])?;
+    let bootstrap: UtxoEntry = serde_json::from_value(fundreq["entry"].clone())?;
+    let t1 = parse_tx(&serde_json::from_slice(&fs::read(
+        root.join("s1_terminal.transaction.json"),
+    )?)?)?;
+    let result = json!({"continue_vs_continue":kpi_poc_a1::stateful::competing_and_reorg(&tc,&alternate,&e)?,"continue_vs_terminal":kpi_poc_a1::stateful::competing_and_reorg(&tc,&tt,&e)?,"accepted_direct_terminal":kpi_poc_a1::stateful::accept_path(&[fund.clone(),tt],&bootstrap)?,"accepted_continue_snapshot":kpi_poc_a1::stateful::accept_path(&[fund.clone(),tc.clone()],&bootstrap)?,"accepted_continue_terminal":kpi_poc_a1::stateful::accept_path(&[fund,tc,t1],&bootstrap)?});
     json_new(&root.join("stateful.json"), &result)?;
     Ok(result)
+}
+fn native_path(request: &Path) -> Result<Value> {
+    let v = kpi_poc_a1::artifact::strict_json(&fs::read(request)?)?;
+    let initial: UtxoEntry = serde_json::from_value(v["initial_entry"].clone())?;
+    let txs = v["transactions"]
+        .as_array()
+        .ok_or("transactions array")?
+        .iter()
+        .map(parse_tx)
+        .collect::<Result<Vec<_>>>()?;
+    Ok(kpi_poc_a1::stateful::accept_path(&txs, &initial)?)
 }
 fn fresh_proof(
     bundle: &Path,
@@ -780,15 +964,15 @@ fn fresh_proof(
     request: &Path,
     output: &Path,
 ) -> Result<Value> {
-    let m: Value = serde_json::from_slice(&fs::read(bundle.join("manifest.json"))?)?;
-    let secret: [u8; 32] = fs::read(secret_file)?.try_into().map_err(|_| "secret32")?;
+    let m = kpi_poc_a1::artifact::manifest(&fs::read(bundle.join("manifest.json"))?)?;
+    let secret = private_secret(secret_file)?;
     let r = &m["branches"][branch.name()];
     let prefix = hexbytes(&r["context_hex"])?;
     let context = BranchContext::decode(&prefix)?;
     if circuit::claim_commitment(&secret) != context.claim {
         return Err("wrong private claim secret".into());
     }
-    let bytes = fs::read(bundle.join(text(&r["pk"]["path"])?))?;
+    let bytes = fs::read(artifact_path(bundle, text(&r["pk"]["path"])?)?)?;
     if sha(&bytes) != text(&r["pk"]["sha256"])? {
         return Err("PK artifact hash".into());
     }
@@ -829,12 +1013,20 @@ fn fresh_proof(
     if !Groth16::<Bn254>::verify(&pk.vk, &inputs, &proof)? {
         return Err("fresh proof invalid".into());
     }
-    let redeem = fs::read(bundle.join(text(&m["states"][stage]["redeem"]["path"])?))?;
+    let redeem = fs::read(artifact_path(
+        bundle,
+        text(&m["states"][stage]["redeem"]["path"])?,
+    )?)?;
     if sha(&redeem) != text(&m["states"][stage]["redeem"]["sha256"])? {
         return Err("redeem artifact hash".into());
     }
-    let sig = script::signature(&circuit::compressed(&proof)?, &inputs, &[1], &redeem)?;
-    let mut tx = tx_for(
+    let sig = script::signature(
+        &circuit::compressed(&proof)?,
+        &inputs,
+        &[branch.selector()],
+        &redeem,
+    )?;
+    let tx = tx_for(
         &context,
         op,
         sig,
@@ -849,7 +1041,16 @@ fn fresh_proof(
 }
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
-    let result=match args.first().map(String::as_str){Some("experiment")if args.len()==2=>experiment(&PathBuf::from(&args[1]))?,Some("stateful")if args.len()==2=>stateful_bundle(Path::new(&args[1]))?,Some("validate-body")if args.len()==2=>validate_body(Path::new(&args[1]))?,Some("fresh-terminal")if args.len()==6=>fresh_proof(Path::new(&args[1]),match args[2].as_str(){"s0_terminal"=>Branch::S0Terminal,"s1_terminal"=>Branch::S1Terminal,_=>return Err("terminal branch required".into())},Path::new(&args[3]),Path::new(&args[4]),Path::new(&args[5]))?,_=>return Err("Usage: kpi-poc-a1 experiment NEW_DIRECTORY | stateful BUNDLE | validate-body REQUEST.json | fresh-terminal BUNDLE s0_terminal|s1_terminal SECRET REQUEST OUTPUT".into())};
+    let result=match args.first().map(String::as_str){
+        Some("experiment") if args.len()==2 => experiment(&PathBuf::from(&args[1]))?,
+        Some("stateful") if args.len()==2 => stateful_bundle(Path::new(&args[1]))?,
+        Some("validate-body") if args.len()==2 => validate_body(Path::new(&args[1]))?,
+        Some("check-backup") if args.len()==4 => check_backup(Path::new(&args[1]),Path::new(&args[2]),Path::new(&args[3]))?,
+        Some("native-path") if args.len()==2 => native_path(Path::new(&args[1]))?,
+        Some("fresh-continue") if args.len()==5 => fresh_proof(Path::new(&args[1]),Branch::S0Continue,Path::new(&args[2]),Path::new(&args[3]),Path::new(&args[4]))?,
+        Some("fresh-terminal") if args.len()==6 => fresh_proof(Path::new(&args[1]),match args[2].as_str(){"s0_terminal"=>Branch::S0Terminal,"s1_terminal"=>Branch::S1Terminal,_=>return Err("terminal branch required".into())},Path::new(&args[3]),Path::new(&args[4]),Path::new(&args[5]))?,
+        _=>return Err("Usage: kpi-poc-a1 experiment NEW_DIRECTORY | stateful BUNDLE | validate-body REQUEST.json | check-backup BUNDLE SECRET KEY | fresh-terminal BUNDLE s0_terminal|s1_terminal SECRET REQUEST OUTPUT".into())
+    };
     println!("{}", serde_json::to_string_pretty(&result)?);
     Ok(())
 }

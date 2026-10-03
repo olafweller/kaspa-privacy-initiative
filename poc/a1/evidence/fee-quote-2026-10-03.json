@@ -1,0 +1,138 @@
+{
+  "schema": "kpi-a1-fee-observation/v1",
+  "scope": "Read-only external TN10 fee estimates; no submission, inclusion guarantee, node configuration attestation, or archive qualification.",
+  "network": "testnet-10",
+  "pins": {
+    "rusty_kaspa_commit": "01b532e8b553523216471682649693af92f0fd16",
+    "sdk_version": "2.1.0",
+    "sdk_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+    "extracted_files_sha256": {
+      "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+      "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+      "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+    }
+  },
+  "rpc_methods": [
+    "getInfo",
+    "getBlockDagInfo",
+    "getFeeEstimate"
+  ],
+  "source_default_relay_floor_sompi_per_gram": "100",
+  "headroom_rule": "Use max(source default relay floor, chosen current quote); require fixed fee >= ceil(5 * rate * normalized_non_contextual_mass / 4), using exact rational arithmetic.",
+  "observations": [
+    {
+      "endpoint": "wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh",
+      "observed_at_utc": "2026-10-03T21:13:07.407Z",
+      "status": "observed",
+      "info": {
+        "p2pId": "775951f1-03c7-4bcd-b4d4-9dc70b427099",
+        "mempoolSize": "752",
+        "serverVersion": "2.1.0",
+        "isUtxoIndexed": true,
+        "isSynced": true,
+        "hasNotifyCommand": true,
+        "hasMessageId": true
+      },
+      "dag": {
+        "network": "testnet-10",
+        "blockCount": "1204371",
+        "headerCount": "1204371",
+        "tipHashes": [
+          "0fbe82942a5414dae5e3fbe8f74e4710332538ede3abcc53df84564c9f7d8e01",
+          "b37777577dbdff70c6ccedd10404bd314b4b6499ba1f9239ad3de3e5ead19a9b"
+        ],
+        "difficulty": 2261960.031467553,
+        "pastMedianTime": "1791061855291",
+        "virtualParentHashes": [
+          "b37777577dbdff70c6ccedd10404bd314b4b6499ba1f9239ad3de3e5ead19a9b",
+          "0fbe82942a5414dae5e3fbe8f74e4710332538ede3abcc53df84564c9f7d8e01"
+        ],
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "virtualDaaScore": "587292609",
+        "sink": "b37777577dbdff70c6ccedd10404bd314b4b6499ba1f9239ad3de3e5ead19a9b"
+      },
+      "fees": {
+        "estimate": {
+          "priorityBucket": {
+            "feerate": 100,
+            "estimatedSeconds": 0.000705095286569893
+          },
+          "normalBuckets": [
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.000705095286569893
+            },
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.000705095286569893
+            }
+          ],
+          "lowBuckets": [
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.000705095286569893
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+      "observed_at_utc": "2026-10-03T21:13:07.906Z",
+      "status": "observed",
+      "info": {
+        "p2pId": "00af0fba-3646-4f06-8be7-dbf5961e8f38",
+        "mempoolSize": "0",
+        "serverVersion": "2.1.0",
+        "isUtxoIndexed": true,
+        "isSynced": true,
+        "hasNotifyCommand": true,
+        "hasMessageId": true
+      },
+      "dag": {
+        "network": "testnet-10",
+        "blockCount": "1204379",
+        "headerCount": "1204379",
+        "tipHashes": [
+          "093036a231c958d0a75cce7a599e4fc84bee111f18ccd5b70cb454f52a680b29",
+          "44650d42c68416c0028ad9280b12125bb4d409cca476e229f1ea5bf243f4d2ff",
+          "aa7503df5931b832c50ec30c5f855945cb0ee1bf6a2049d237ce762b5cb1e7c7"
+        ],
+        "difficulty": 2261960.031467553,
+        "pastMedianTime": "1791061855291",
+        "virtualParentHashes": [
+          "093036a231c958d0a75cce7a599e4fc84bee111f18ccd5b70cb454f52a680b29",
+          "44650d42c68416c0028ad9280b12125bb4d409cca476e229f1ea5bf243f4d2ff",
+          "aa7503df5931b832c50ec30c5f855945cb0ee1bf6a2049d237ce762b5cb1e7c7"
+        ],
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "virtualDaaScore": "587292617",
+        "sink": "44650d42c68416c0028ad9280b12125bb4d409cca476e229f1ea5bf243f4d2ff"
+      },
+      "fees": {
+        "estimate": {
+          "priorityBucket": {
+            "feerate": 100,
+            "estimatedSeconds": 0.0005385559140436228
+          },
+          "normalBuckets": [
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.0005385559140436228
+            },
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.0005385559140436228
+            }
+          ],
+          "lowBuckets": [
+            {
+              "feerate": 100,
+              "estimatedSeconds": 0.0005385559140436228
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
