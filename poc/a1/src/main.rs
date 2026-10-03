@@ -224,8 +224,22 @@ fn validate_body(p: &Path) -> Result<Value> {
     let tx = parse_tx(&v["transaction"])?;
     let entry: UtxoEntry = serde_json::from_value(v["entry"].clone())?;
     let fee = validator::validate(&validator::validator(), &tx, &entry)?;
+    let populated = kaspa_consensus_core::tx::PopulatedTransaction::new(
+        &tx,
+        vec![entry.clone(); tx.inputs.len()],
+    );
+    let calculator = kaspa_consensus_core::mass::MassCalculator::new_with_consensus_params(
+        &kaspa_consensus_core::config::params::TESTNET_PARAMS,
+    );
+    let non_contextual = calculator.calc_non_contextual_masses(&tx);
+    let masses = calculator
+        .calc_contextual_masses(&populated)
+        .ok_or("decoded native mass undefined")?;
     Ok(
-        json!({"txid":tx.id().to_string(),"full_hash":hashing::tx::hash(&tx).to_string(),"full_valid":true,"fee":fee.to_string()}),
+        json!({"txid":tx.id().to_string(),"full_hash":hashing::tx::hash(&tx).to_string(),"full_valid":true,"fee":fee.to_string(),
+        "native_masses":{"compute":non_contextual.compute_mass,"storage":masses.storage_mass,"transient":non_contextual.transient_mass},
+        "consensus_full_hash_preimage_bytes":kpi_poc_a1::encoding::full_transaction_bytes(&tx)?.len(),
+        "mass_scope":"fresh native calculation from exact decoded transaction and supplied UTXO context; not chain acceptance"}),
     )
 }
 struct Artifact {
