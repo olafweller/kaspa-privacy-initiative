@@ -1,7 +1,9 @@
 # A1 implementation plan
 
-**Status:** Proposed; design deliverable only. No A1 code, setup, tests, funding
-or broadcast has begun. Future execution needs a separate user instruction.
+**Status:** G0 specification closed; design deliverable only. No A1 code, setup,
+execution tests, funding or broadcast has begun. Independent context calculations
+are recorded in the ADR; G1–G6 remain unexecuted. Implementation needs a separate
+user instruction and a separate A1 implementation branch.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -13,22 +15,23 @@ A0/A0.5 as experimental research evidence at
 re-review intervening A0 changes before depending on them. Merging the experiment
 does not establish production readiness or accept ADR-0001.
 
-Freeze the finite graph, same-owner policy, ordered output layouts, canonical
-context, branch selectors, owner fee-credit accounting and recovery inventory.
-Refresh the ADR's pinned upstream/source comparisons before implementation and
-record any changed compatibility assumptions. Do not silently promote the
-finite experiment into a note system or accept ADR-0001.
+The ADR now freezes the finite graph, same-owner policy, ordered output layouts,
+canonical context, raw selector dispatch, five-push witness ABI, owner fee-credit
+accounting, artifact inspection and recovery discovery/topology. Upstream heads
+and native limits were rechecked at G0. Recheck compatibility before execution;
+changes to frozen rules require documented review, not silent adaptation. Do
+not promote the finite experiment into a note system or accept ADR-0001.
 
 ## Ordered work packages and gates
 
 | Gate | Future deliverable | Required evidence / dependency |
 | --- | --- | --- |
-| G0 — design review | Reviewed ADR, matrix and artifact schema | Resolve canonical selector/witness bytes, parameter inspection method, fee policy and independent recovery environment. User authorizes implementation separately. |
+| G0 — specification closure | Closed specification in ADR, matrix and this plan | Raw selectors and opcode framing, exact witness ABI, context bytes/hashes independently calculated, SPK/verifier pins, acyclic graph, artifact/checker/setup-receipt contract, discovery/topology, fee formulas and source-estimated resources are frozen. Closed as specification only; ADR acceptance remains project review. Implementation separately authorized. |
 | G1 — integer model and codec | Isolated A1 manifest/state model; byte-format vectors | Independently calculated golden examples, checked sums/ranges, forbidden states/modes, partial payout and rebate. Matrix 01–03, 09. No setup or funding until inconsistent manifests deterministically reject. |
-| G2 — finite scripts and real proof | S1-terminal first; S0 continuation and terminal; three fixed setups | Verify exact successor bytes, immutable VKs, canonical selectors and all five public-input widths. All three branches pass pinned Full validation. Independent original-context golden tags must satisfy original constraints; one-field-mutated reference tags must not. Separately test foreign-setup/cross-branch proofs against the unchanged funded script. Matrix 04–07, 09, 14–15. |
+| G2 — finite scripts and real proof | S1-terminal first; S0 continuation and terminal; three fixed setups, independent checker | First falsifier: actual two-VK S0 and one-VK S1 fit the pinned VM, every successful trace executes matching output checks/key/tag20/verifier. Freeze three fully literal real-proof golden transactions and public UTXO contexts. Independent context/R1CS/script inspection plus witnessed final setup receipts required. Original-key one-field mutated context/range negatives must reject; foreign-key rejection separately labeled. Matrix 04–07, 09, 14–15, 18–21, 25. |
 | G3 — stateful safety | Native consensus test harness for competing spends and controlled reorgs | Both S0 alternatives first valid independently; at most one accepts; loser has no payout/successor. Distinct-ID locally valid replay rejected for spent input. Rollback restores state and payout accounting together. Matrix 08–10; model and stateless validator alone are insufficient. |
-| G4 — adapter and resource qualification | File-only preparation; pinned SDK roundtrip; measurement report | Full validation of final decoded transactions, immutable envelope fields and exact ID/mass. Measure every branch and enforce funding gates below. Matrix 05–07, 13, 16–17. No live submission path needed yet. |
-| G5 — independent recovery and adversarial review | Clean-machine terminal proofs from both states; abrupt-loss and artifact-loss tests | Disable original services/access; recover all required material, generate fresh proofs, independently validate exact payouts within declared limits. Include loss immediately after continuation acceptance before original-host archival/pointer update; discover S1 independently from the old S0 locator. Review all invariant rows and setup/observation assumptions. Matrix 11–15. |
+| G4 — adapter and resource qualification | File-only preparation; pinned SDK roundtrip; measurement report | Full validation of final decoded transactions, script-enforced version1/native/gas0/payload0/lock0, adapter sequence/budget policy and ID/full-hash/mass. Measure every branch, actual relay configuration and rational fee/headroom policy. Qualify full accepted-body RPC retrieval/pagination separately from observation trust. Matrix 05–07, 13, 16–17, 20, 22–25. No live submission path needed yet. |
+| G5 — independent recovery and adversarial review | Clean-machine terminal proofs from both states; abrupt-loss, archive/page/reorg and artifact-loss tests | Separate original/recovery/chain-archive failure domains; independently retain public artifacts and old S0 locator/checkpoint before continuation. Both terminal spendability A and accepted lineage/accounting B must pass. Disable original services/storage; discover accepted S1, freshly prove and validate. Abrupt loss precedes original S1 pointer/body save. Review invariant rows and setup/observation assumptions. Matrix 10–15, 21–24. |
 | G6 — separately authorized TN10 execution | Bounded test-fund runbook and public evidence | Only after G0–G5 pass and live execution is instructed: pre-funding proof, accepted continuation, competing-spend result, clean-machine S1 exit and separate S0 direct exit. Observe actual spentness/payout, exact body, later recheck; do not infer permanent finality. |
 
 Implementation should live in separate `poc/a1/` and A1-specific runner/test
@@ -39,10 +42,32 @@ circuit, script construction, local validator harness, recovery bundle and
 optional later native transport. These are proposed responsibilities, not files
 created in this design task.
 
-After G1 freezes shared schemas, circuit/script work and reference-vector/recovery
-tooling may proceed in parallel with clear file ownership. G2–G5 must reconcile
-on identical manifest/output bytes. An adversarial reviewer should not author
-the safety assertion they are evaluating. Parallel work never bypasses a gate.
+G1 implements the frozen schema and compares against the G0 independently
+calculated vectors. G2–G5 must reconcile on identical manifest/output bytes.
+The independent checker must not import the production serializer/compiler,
+and an adversarial reviewer should not author the safety assertion being
+evaluated. No implementation work is authorized by this design closure.
+
+## Frozen G0 handoff checklist
+
+| Item | Specification location / implementation obligation |
+| --- | --- |
+| Selector | ADR: exact raw `00` S0 continue; raw `01` S0/S1 terminal; OP_EQUAL dispatch only. Equivalent pushes permitted. Matrix 18 exhausts bypasses. |
+| Witness | Five pushes: tag-high32, tag-low32, proof128, selector1, exact redeem. Depth4 at redeem entry; alternate empty; five verifier inputs derived/ordered as specified. Matrix 19 adds malformed/order vectors. |
+| SPK/verifier | Full version-0 standard P2SH reserves and fixed version-0 P2PK recipient. Two S0 keys, one S1 key, Groth16 tag20, five canonical Fr32 inputs. Matrix 20. |
+| Context | ADR complete hex vectors: continue 276 bytes, each terminal 226; Python packing/independent literal Node calculation agree on hashes/tags. Codec fixtures are unfunded; G1 compares implementation, G2 compares original constraints. |
+| Construction | Fixed S1 -> VK_1t -> D1/SPK1 -> S0 continuation constants/VK_0c; separate S0-terminal VK_0t; D0/SPK0 -> funding -> dynamic inputs. No own-artifact/future-txid/whole-manifest cycle. |
+| Inspection | Human manifest and strict `kpi-a1-artifacts/v1`; independent context/compiler/R1CS evaluator/script checker; owner-intent comparison; supervised exact final setup and PK/VK/hash receipt. Proof success alone cannot qualify. Matrix 21. |
+| Discovery | Retained `kpi-a1-locator/v1` S0 locator + pre-funding checkpoint. Independent indexed node/archive scans accepted bodies with native v2 Full, or v1 accepted-ID/body join; cursor pagination, pruning and removal/reorg rules. Matrix 22/23. |
+| Topology | A original, B clean recovery, C independent chain/archive accessible after A loss. Prefer fully synced local pinned node once independently available; do not await or disturb current sync. G5 records concrete machines/source capabilities. |
+| Fees | f0/fc/f1 frozen before funding using actual relay plus 25% quote-rate headroom; B0 >= max(f0,fc+f1) plus 10% refundable credit headroom. No post-funding fee modification/rescue. Matrix 24. |
+| Resources/layers | Source limits verified; S0 estimated 1.2–1.6 KiB, conservative 2-KiB qualification ceiling, one verifier 155000 grams plus surrounding work. G2/G4 measurements pending. ADR enforcement map prevents adapter/consensus conflation. Matrix 25. |
+
+G0 closes what must be built and falsified, not circuit/setup correctness or
+artifact availability. Concrete A1 artifact bytes, source/checker commits, lock
+hashes, budgets/fees and machines are generated/recorded in G1–G5 under this
+contract; they cannot be supplied as fictitious G0 measurements. A schema/checker
+contract is frozen here; checker code belongs to the separate implementation.
 
 ## Measurement and pre-funding checklist
 
@@ -62,15 +87,19 @@ recomputing its ID and dependent proofs. Also exercise fresh proof generation
 after the actual accepted S1 outpoint is independently observed. Pre-generated
 fixtures cannot substitute for the fresh recovery proof.
 
-All three branch fees must fit measured current policy, and `B0` must cover
-both direct exit and continue-plus-exit. Any failed branch prevents funding.
+All three branch fees must satisfy the ADR's checked rational relay/fee headroom
+rules and <=5-minute quote policy; B0 must cover max(f0,fc+f1) plus 10% refundable
+credit headroom. Apply the 10% execution headroom budget formula to measured
+script units, then repeat Full validation with final serialization. Rebuild and
+reinspect an unfunded instance when changed fees require new constants. Any
+failed branch prevents funding.
 Fee insufficiency after funding is a documented liveness limit; no principal
 haircut, sponsor input or administrator rescue is introduced.
 
-Explicitly validate native subnetwork/version, gas/payload/lock-time policy,
-full input UTXO context, absent covenant metadata, exact transaction IDs,
-integer widths and recipient-key control. Document which checks are consensus,
-script, circuit, or adapter policy. Do not claim adapter restrictions are
+Implement redeem checks for native subnetwork/version, gas/payload/lock time;
+validate final decoded fields, full input UTXO context, absent covenant metadata,
+exact transaction IDs/full hashes, integer widths and recipient-key control.
+Use the ADR's field-by-field enforcement map. Do not claim adapter restrictions are
 covenant-enforced. Sequence variants used for competing/replay tests must first
 pass full local validation; disabled relative-lock semantics must remain valid.
 
@@ -79,9 +108,22 @@ pass full local validation; disabled relative-lock semantics must remain valid.
 Use separate instances for the direct-S0 and continued-S1 runs. Recovery uses
 the matrix's declared inventory and time limits, on a clean machine without
 access to the original filesystem/services and without precomputed exit proofs.
-The owner brings private backup material; public parameters/history come from
-independent retained copies or authenticated chain data. Public proving keys
-cannot be reconstructed from a hash or regenerated by a fresh setup.
+The owner brings the private claim/recipient backup; independently retained
+public parameters and C's accepted-history archive authenticate current state.
+PK_1t cannot be reconstructed from a hash or regenerated by a fresh setup.
+Use ADR discovery exactly: pre-funding checkpoint/S0 locator, fixed scan horizon,
+complete cursor pages of accepted DAG-mergeset bodies, strict output/metadata/
+proof checks, derived S1 index0 and current UTXO check. Matching S1 address is
+insufficient. A gap/pruning failure without an independent archive fails lineage
+B; distinguish whether terminal spendability A can still succeed.
+
+Before the later experiment, declare original A, recovery B and chain/archive C,
+concrete independently accessible machines, binary/source pins, data-source
+capabilities and retention start/horizon. C archives acceptance bodies/pages
+before funding, independently of A. Test >one page and no-progress/gap/removal
+cases, shutdown immediately after independent S1 acceptance before original
+pointer/body save, and reorg rollback of payouts/state together. A separate
+directory on A or original-host RPC is not the clean recovery topology.
 
 Prefer a fully synchronized independently operated TN10 node. If only remote
 UTXO/acceptance observations are available, document and review that trust route
@@ -115,13 +157,17 @@ production state architecture.
 
 ## Implementation handoff boundary
 
-This proposal is ready for a local implementation agent to assess and complete
-G0. It is not an executable script specification with G0 already satisfied.
-Before G2, freeze the exact selector opcodes, witness stack order and rejection
-vectors. G0 must also specify how a separate reviewer reconstructs branch
-constants and inspects their circuit/script use: artifact hashes and successful
-proofs alone do not establish that setup encoded the intended relation. Preserve
-the stated setup trust assumption. Record the immutable artifact schema, chosen
-recovery machine/data source and provisional fee policy before implementation;
-actual budgets and fee affordability remain measured G4 gates. A separate user
-instruction is required to begin code; this draft does not provide it.
+G0 is closed as a source-grounded specification with independent codec
+calculations. PR #21 can be reviewed/merged as the finite A1 specification;
+this task does not merge it or accept Candidate A/ADR-0001. No hard protocol
+blocker was identified from the pinned source review. Implementation is ready
+to start on a separate branch only under a separate instruction, beginning G1
+and the first G2 falsification test, not funding or broadcast.
+
+Remaining execution gates are independent checker/build/setup receipts, actual
+script/proof rejection and path traces, measured resource/fee affordability,
+stateful consensus races/reorgs, and clean-machine recovery with demonstrated
+independent archive availability. Until all G1–G5 pass, no reserve may be funded.
+Actual hard protocol incompatibility stops work; failures must not be patched
+by weaker output/VK/accounting constraints. All security invariants and trusted
+single-party setup/chain-observation limits remain explicit and unchanged.

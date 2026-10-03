@@ -1,6 +1,8 @@
 # A1 threat and test matrix
 
-**Status:** Proposed design; every A1 test below is **planned, not executed**.
+**Status:** G0 specification closed; every A1 execution/security test below is
+**planned, not executed**. The ADR records the independently calculated G0
+context/selector/serialization vectors; these are not real-proof/script tests.
 [ADR-0003](adr/0003-a1-successor-reserve.md) defines the finite S0/S1 graph,
 encoding and accounting. The [implementation plan](poc-a1-implementation-plan.md)
 assigns execution gates. No invariant is changed.
@@ -48,6 +50,14 @@ mismatch also does not establish circuit context binding.
 | A1-15 / I-5, I-8, I-13 | Malicious setup or hidden upgrade/administrator; lost key leads to bypass | Public VK/PK/redeem manifest pinned before funding; known single-party setup/toxic-waste trust remains explicit. No recovery/upgrade key can replace proof or redirect funds. Recovery never includes toxic-waste randomness. PQ unresolved under issue #19, not a claim addressed by A1. |
 | A1-16 / I-9, I-11, I-15 | SDK cached ID, missing v1 compute budget, integer loss, misleading/malicious RPC | Native serialization roundtrip preserves all authenticated fields, BigInt boundaries, covenant=null semantics, computed ID/storage mass and fees; full validator runs on final decoded transaction. Divergent RPC observations fail closed. Endpoint URL count is not proof of independent trust or locally validated UTXO consensus. |
 | A1-17 / I-16 | Public values/linkage/network metadata marketed as privacy | Evidence explicitly enumerates public amount, claimant linkage, fixed destination, instance/stage, proof and timing. Document witness stays local; hosted prover would learn it. No anonymity, confidential accounting, sender/receiver unlinkability or post-quantum claim. I-4's private-resource non-revelation goal is not demonstrated by this public one-claim UTXO fixture. |
+| A1-18 / I-5, I-6, I-7, I-15 | OP_IF truthiness bypass, numeric-equivalent/negative-zero selector, raw mode confused with selector | S0 accepts only raw `00` continue and `01` terminal; S1 only `01`. Use ADR's exact OP_EQUAL dispatch. Exhaust all 256 one-byte selectors and the multi-byte corpus; each successful trace must execute matching count/order/value/SPK/metadata checks and exactly one matching immutable VK/tag20 verifier. Empty, `80`, `02`, `81`, `ff`, `0000`, `0100`, `0080`, `0180`, `0001` reject. Same raw bytes via equivalent push opcodes pass subject to native resource bounds. No signature-script minimal-push policy may be misreported as consensus safety. |
+| A1-19 / I-5, I-11, I-15 | Witness ambiguity, hidden alt-stack values, supplied count/VK/outpoint, wrong public limb order | Exactly five pushed elements: high tag32, low tag32, proof128, selector1, exact redeem. Depth=4 at redeem entry; alt empty. Derive txid/index on script; verifier order low txid/high txid/index/low tag/high tag. Remove each item, insert extra at every slot, swap every pair, try scalar sizes 0/16/31/33/64, >=Fr modulus and nonzero upper bits, proof 127/129/trailing bytes. Reject at recorded layer with unequal-limb positive controls. Inspect alternate stack before VM boundary clearing; no leftover items. Store three literal real-proof golden transactions at G2; encoding-only OP_TRUE scaffold must never count as a positive script. |
+| A1-20 / I-5, I-7, I-13, I-15 | Unknown-version SPK bypass; wrong verifier/key accepted through adapter-only restriction | Funding reserve, exact S1 and recipient all version 0. Input unknown-version native acceptance is a diagnostic of upstream semantics, not a valid A1 success. Change successor/payout version and reject via full SPK equality; substitution of funded SPK/redeem must fail artifact/funding inspection/P2SH. Check embedded VK_0c/VK_0t/VK_1t with six gamma_abc terms, 424 bytes; tag raw20, five scalars, proof128. No alternate tag/VK witness. |
+| A1-21 / I-2, I-5, I-6, I-11, I-13 | Self-consistent malicious manifest/compiler/setup, wrong R/L/B/recipient/state/branch, hashes mistaken for relation provenance | Second reviewer independently reconstructs terms/contexts, compares normalized R1CS from reviewed exact source, inspects constant-byte/range/public allocation and both SHA relations, disassembles/reconstructs scripts and acyclic dependency graph. Mutate each field/branch/key and regenerate hashes/proof under malicious artifacts: independent owner-intent/checker must reject. Final setup needs witnessed exact R1CS -> PK/VK hash receipt; unwitnessed opaque keys fail qualification. Proof success/PK-VK equality/hash alone cannot certify setup relation. Single-party toxic-waste assumption remains. |
+| A1-22 / I-6, I-10, I-11 | S1 address match mistaken for legitimate successor; incomplete history, wrong accepting block, txid mistaken for whole-body checksum | From independently retained S0 locator/checkpoint scan accepted mergeset bodies with native v2 Full or v1 ID/body join. Exact accepted input spends S0; outputs/count/order/values/SPKs/None/fee/branch verified; derive S1 txid/index0 and current UTXO. Unrelated S1-address deposit is not lineage. Check full body hash/signature/budget/storage separately because txid excludes signature/mass commitments. Distinguish terminal spendability A from accepted lineage/accounting B; missing B history fails B even if A can still exit. |
+| A1-23 / I-6, I-9, I-10, I-11 | Pagination gaps/duplicates, pruning, reorg at page/horizon boundary; original host lost before pointer save | Test >one server page, inclusive-v1 lowHash, missing acceptance/body, repeated/no-progress cursor, removed hashes at/before horizon, stale S0/S1 UTXOs, conflicting provider assertions. Only advance after complete groups; undo removed acceptance/accounting before added groups; independently retained archive restores missing history. Abrupt loss uses only old S0 locator and independent C archive; no final export, saved S1 pointer or original node/filesystem. Loss of required history without a replica fails recovery, not a silent address fallback. |
+| A1-24 / I-1, I-2, I-8, I-9, I-10 | Wrong relay floor, fixed fees lack headroom, setup terms changed after funding | Apply ADR's exact rational fee rules: branch 25% rate headroom, B0 >= max(f0,fc+f1) + 10% refundable credit headroom; default relay r=100000 sompi/kg, use actual config/standardness and <=5-minute quotes. Recompute fee-dependent scripts/keys before funding. Any funded insufficiency is liveness failure; no sponsor, bump, principal haircut/admin rescue. Different budget may be consensus-valid but adapter refuses unqualified exact budget; do not conflate that policy with script enforcement. |
+| A1-25 / I-5, I-9, I-11, I-15 | Source estimate mistaken for measured capacity; verifier count doubled or alternate body skips checks | First G2 falsifier records all branch bytes, peak main+alt stack/count, executed ops, VK/tag/verifier count and U_j; G4 records final committed budgets, native compute/storage/transient masses and relay results. S0 has two embedded VKs but executes one. Assert exact envelope version1/native/gas0/payload0/lock0 via script, and distinguish unconstrained sequence/budget from adapter defaults. Actual hard limit/semantic blocker stops work; estimate miss requires reviewed revision, never safety relaxation. |
 
 ## Invariant coverage and limits
 
@@ -75,7 +85,9 @@ mismatch also does not establish circuit context binding.
 Private backups: claim secret, recipient spending key/seed, and any backup
 unlocking key. Public artifacts: all three full proving keys/VKs, exact S0/S1
 redeem scripts/SPKs, contexts and manifest, pinned source/toolchain/SDK,
-initial funding locator, accepted transition history/current outpoint, and
+initial funding locator and pre-funding independent scan checkpoint,
+accepted transition history/current outpoint, reviewer setup/inspection receipt,
+normalized constraint exports, artifact schema/index hashes, and
 reconstruction/build instructions. List byte counts and hashes. Authenticate
 these against actual funded scripts and accepted bodies, not self-reported hashes
 alone. Toxic waste must never be a recovery dependency.
@@ -92,14 +104,27 @@ not expected timings, throughput guarantees or finality claims.
 
 At G5, run separate synthetic/native-consensus fixtures for direct S0 exit and
 continued S1 exit. Separately funded TN10 instances belong only to authorized G6.
-The abrupt-loss case must succeed using the old S0 locator and independently
-available accepted-chain body/history, without a final export from the original
-host. Locate the accepted spending transaction, check its complete continuation
-outputs against the pinned S0/S1 manifest, and verify the resulting S1 outpoint
-is current and unspent. A matching address alone is insufficient. If pruning
-removes that history and no independent replica exists, record failed recovery;
-do not silently add original-host access or claim that a safe halt passes I-10.
-No saved
+Use the ADR's A/B distinction: A is terminal spendability of an authenticated
+current S1 UTXO; B is discovery plus accepted lineage/accounting from the exact
+S0 outpoint. Both must pass the experiment. The recovery key controls the fixed
+payout; the claim secret, PK_1t and public terms authorize the reserve proof.
+Declare original, clean recovery and independent indexed chain/archive machines
+on separate failure domains as specified in the ADR. A fully synced local pinned
+node is preferred when available independently of the original host; G0 does
+not wait for the currently syncing process.
+
+The abrupt-loss case must succeed from the old S0 locator and a gap-free
+pre-funding-checkpoint-to-horizon independent acceptance/body archive, without
+a final export from the original host. Scan native v2 Full acceptance groups
+with cursor pagination; if only v1 accepted IDs are available, join exact
+archived bodies across DAG mergesets. Check the accepted S0-spending transaction
+against branch constraints, derive S1 index0 and check current unspentness.
+A matching address alone is insufficient. Include >one page,
+pruning/independent restore, original disappearance before local pointer save,
+reorg rollback and stale-horizon cases (A1-22/23). History loss without an
+independent replica fails B even if a separately authenticated current S1 can
+satisfy A. Do not silently add original-host access or claim that safe halting
+passes I-10. No saved
 exit proof, original host filesystem, original prover/RPC service or freshly
 regenerated setup may be used. Delete/corrupt each required artifact in negative
 recovery fixtures and record explicit failure or restoration from an independent
