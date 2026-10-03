@@ -1,0 +1,669 @@
+{
+  "elapsed_ms": "201891",
+  "negative_cases": 66,
+  "outcomes": [
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "domain",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "genesis",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "instance",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "stage",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "mode",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "claim_commitment",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "fee",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_count",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_value",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_length",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_version",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_script",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_metadata",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_1_value",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_1_spk_length",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_1_spk_version",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_1_script",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_1_metadata",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_order",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_continue",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "wrong_secret_original_C",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "domain",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "genesis",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "instance",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "stage",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "mode",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "claim_commitment",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "fee",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_count",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_value",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_length",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_version",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_script",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_metadata",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s0_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "wrong_secret_original_C",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "domain",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "genesis",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "instance",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "stage",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "mode",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "claim_commitment",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "fee",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_R",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_L",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "next_B",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_count",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_value",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_length",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_spk_version",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_script",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "output_0_metadata",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    },
+    {
+      "branch": "s1_terminal",
+      "constraint_satisfied": false,
+      "layer": "circuit-and-original-key-verification",
+      "mutation": "wrong_secret_original_C",
+      "new_proof_generated": false,
+      "original_constants_retained": true,
+      "original_proof_with_changed_inputs_verified": false,
+      "original_vk_retained": true
+    }
+  ],
+  "positive_branches": 3,
+  "schema": "kpi-a1-context-negative-results/v1",
+  "scope": "original-relation-context-binding-no-foreign-setup-no-new-proofs-no-chain-acceptance"
+}
