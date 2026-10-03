@@ -87,6 +87,33 @@ impl Harness {
     }
 }
 
+/// Native archive receipts, not an RPC simulation: body indexes are supplied by
+/// actual acceptance data and bodies are read back from native block storage.
+fn accepted_group(h: &Harness, accepting: Hash) -> Result<Value, String> {
+    let data = h
+        .consensus
+        .get_block_acceptance_data(accepting)
+        .map_err(|e| format!("native receipt acceptance: {e:?}"))?;
+    let mut bodies = vec![];
+    for mb in data.iter() {
+        for accepted in &mb.accepted_transactions {
+            let stored = h
+                .consensus
+                .get_block_transactions(mb.block_hash, Some(vec![accepted.index_within_block]))
+                .map_err(|e| format!("native receipt body retrieval: {e:?}"))?;
+            let tx = stored.first().ok_or("native receipt missing body")?;
+            if tx.id() != accepted.transaction_id {
+                return Err("native receipt body ID mismatch".into());
+            }
+            bodies.push(json!({"source_block":mb.block_hash.to_string(),"index_within_block":accepted.index_within_block,
+                "txid":tx.id().to_string(),"full_hash":kaspa_consensus_core::hashing::tx::hash(tx).to_string(),"transaction":tx}));
+        }
+    }
+    Ok(
+        json!({"accepting_block":accepting.to_string(),"acceptance_data":data.as_ref(),"accepted_bodies":bodies}),
+    )
+}
+
 /// Accept an exact fixture path using actual native virtual UTXOs at each step,
 /// and export bodies retrieved from native block storage with acceptance data.
 /// This is a synthetic chain/archive fixture, not a live/indexed TN10 source.
@@ -306,6 +333,19 @@ pub fn competing_and_reorg(
     if accepted_body.id() != winner.id() {
         return Err("native accepted body ID mismatch".into());
     }
+    let initial_path = h
+        .consensus
+        .get_virtual_chain_from_block(genesis, None)
+        .map_err(|e| format!("native initial chain path: {e:?}"))?;
+    if !initial_path.removed.is_empty() {
+        return Err("initial genesis path unexpectedly removes history".into());
+    }
+    let initial_groups = initial_path
+        .added
+        .iter()
+        .map(|block| accepted_group(&h, *block))
+        .collect::<Result<Vec<_>, _>>()?;
+    let before_utxos = h.consensus.get_virtual_utxos(None, 1000, false);
     let mut fork = h.block(vec![genesis], vec![loser.clone()])?;
     // Move competing history outside k-cluster. Use current native k, not a lower
     // convenience parameter, and read actual virtual-chain removed blocks.
@@ -358,8 +398,7 @@ pub fn competing_and_reorg(
                 new_ids.push(tx.transaction_id);
             }
         }
-        new_acceptance
-            .push(json!({"accepting_block":block.to_string(),"acceptance_data":data.as_ref()}));
+        new_acceptance.push(accepted_group(&h, *block)?);
     }
     if !new_ids.contains(&loser.id()) || new_ids.contains(&winner.id()) {
         return Err("native new chain acceptance IDs inconsistent with restored outputs".into());
@@ -376,6 +415,13 @@ pub fn competing_and_reorg(
         "added_chain_blocks":path.added.iter().map(ToString::to_string).collect::<Vec<_>>(),
         "synthetic_genesis_hash":genesis.to_string(),"initial_accepting_block":merged.to_string(),
         "initial_acceptance_data":initial_acceptance.as_ref(),"initial_native_accepted_body":accepted_body,
+        "receipt_schema":"kpi-a1-native-reorg/v1",
+        "checkpoint_scope":"S0 imported into synthetic genesis; authenticated fixture checkpoint, NOT recovered funding lineage or live TN10 history",
+        "original_outpoint":original,"original_input_entry":entry,
+        "initial_chain_blocks":initial_path.added.iter().map(ToString::to_string).collect::<Vec<_>>(),
+        "initial_chain_acceptance_data":initial_groups,
+        "before_reorg_virtual_utxos":before_utxos,
+        "after_reorg_virtual_utxos":h.consensus.get_virtual_utxos(None, 1000, false),
         "new_chain_acceptance_data":new_acceptance,
         "original_reserve_final_unspent":false,"original_reserve_spent_by_alternative":true,
         "all_old_winner_outputs_removed_on_reorg":true,"all_alternate_outputs_exact":true,
