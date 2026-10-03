@@ -44,13 +44,15 @@ Deliverables:
 - draft note/commitment/nullifier model;
 - state-machine model or simulator;
 - executable value-conservation tests;
+- explicit exit authorization and recovery-data requirements;
+- a falsifiable test plan for recovery and exit after default infrastructure shutdown;
 - explicit trust assumptions.
 
-Exit condition: the design can be attacked on paper and in tests before substantial testnet code exists.
+Exit condition: the design, including its permissionless exit/recovery path, can be attacked on paper and in tests before substantial testnet code exists. A candidate remains provisional until it passes the early exit/recovery gate in Phase 3.
 
 ## Phase 3 — PoC A: fund-safety path
 
-**Goal:** demonstrate the basic private-value lifecycle using test KAS under a documented model.
+**Goal:** demonstrate the basic private-value lifecycle and independent recovery/exit using test KAS under a documented model.
 
 Target flow:
 
@@ -72,14 +74,23 @@ Required tests:
 - value inflation fails;
 - stale/replayed proof fails.
 
-Exit condition: documented tests demonstrate the required properties in a reproducible testnet experiment using real proofs. Passing tests does not establish cryptographic correctness or production security.
+### Early exit and recovery gate
+
+Before a candidate is treated as credible, run this falsifiable test:
+
+> N users shield test KAS. All normal operators, provers, executors, and hosted state services are then shut down. Using only public or independently reconstructable protocol data, their own wallet secrets/backups, and independent software/infrastructure, every user can recover and exit to native test KAS. No privileged operator data or cooperation is required.
+
+Record N, the shutdown conditions, required data and backups, independent infrastructure, time limits, and each user's payout result. Missing required data or a failed exit blocks this gate. Successful deposits, private transfers, and proof verification alone do not establish architecture viability.
+
+Exit condition: documented tests demonstrate the required fund-safety properties and pass the shutdown recovery/exit gate in a reproducible testnet experiment using real proofs. Passing tests does not establish cryptographic correctness or production security.
 
 ## Phase 4 — PoC B: failure and decentralization
 
-**Goal:** test recovery and exits after loss of the default operator.
+**Goal:** extend the Phase 3 recovery/exit gate with broader failure, failover, and censorship experiments.
 
 Experiments:
 
+- repeat the shutdown recovery/exit test under varied state, backup, and pruning conditions;
 - stop the normal prover;
 - replace the prover;
 - rebuild required state on a clean machine;
@@ -88,6 +99,19 @@ Experiments:
 - test state/witness corruption handling.
 
 Exit condition: failure assumptions are measured instead of merely claimed.
+
+### Testnet evidence to collect
+
+Across the PoCs and privacy analysis, measure:
+
+- operator/prover failover time, from shutdown to independently accepted progress;
+- successful native test KAS exit after default infrastructure shutdown, reporting every user's result;
+- percentage of required protocol state reconstructable independently, against a documented inventory, with user-held secrets/backups listed separately;
+- whether private operations require a publicly linkable user fee payment;
+- observable timing correlation under low activity;
+- censorship recovery / resubmission success through independent infrastructure.
+
+Record test conditions, observation windows, and success criteria. These are research measurements, not production guarantees; a high state-reconstruction percentage cannot excuse missing data required for an exit.
 
 ## Phase 5 — Privacy analysis
 

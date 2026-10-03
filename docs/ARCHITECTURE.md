@@ -198,7 +198,7 @@ This pattern may amortize settlement across many operations. Whether that makes 
 
 ### Current limitation
 
-The `kaspanet/vprogs` repository describes itself as early development / prototype. Kaspa's builder documentation describes full vProgs as the future direction for composition between independent apps, with the runtime still evolving rather than a stable external API.
+The `kaspanet/vprogs` repository describes itself as early development / prototype. Kaspa's builder documentation describes full vProgs as the future direction for composition between independent apps, with the runtime still evolving rather than a stable external API or production dependency.
 
 Therefore:
 
@@ -237,23 +237,26 @@ prover A disappears
 
 ## 8. Exit architecture
 
-The exit path is one of the most important parts of the design.
+A viable architecture must explain how a user can recover native KAS without cooperation from a privileged operator. A candidate must pass the [early exit and recovery gate](ROADMAP.md#early-exit-and-recovery-gate) before it is treated as credible.
 
-Questions include:
+Each candidate must specify:
 
-- What proof releases native KAS?
-- Is the proof checked directly by a Kaspa covenant or by a settled application state?
-- Can a user exit without a specific operator?
-- What state/witness data must the user obtain?
-- Can another prover generate the required artifact?
-- Is an emergency/escape path needed?
-- How do exits remain safe during upgrades?
+- the exact proof or protocol condition authorizing native KAS to leave the reserve;
+- the component that verifies that condition;
+- the L1 covenant/script/state transition that releases the KAS;
+- the public inputs bound to the proof and how they bind authorization to the corresponding native KAS payout;
+- the required user-held material, including keys/secrets, note data, or backups;
+- the required public or independently reconstructable state and history;
+- whether an independent prover can reproduce the required exit artifact;
+- the recovery and exit behavior when all default operators, provers, and executors disappear.
+
+Open questions also include whether an emergency/escape path is needed and how exits remain safe during upgrades.
 
 ## 9. Candidate proof technology
 
 No proof system has been selected.
 
-Current Kaspa/vProgs work includes RISC Zero and Groth16-related components. Other privacy systems provide lessons from Halo 2 and specialized circuits.
+Toccata provides native L1 ZK verification through `OpZkPrecompile`, including Groth16 and RISC Zero Succinct verification paths; see the [pinned verifier sources](../research/kaspa-toccata-vprogs.md#exact-verifier-surface). This capability does not require full vProgs. Other privacy systems provide lessons from Halo 2 and specialized circuits.
 
 Selection should follow architecture and benchmarking, not branding.
 

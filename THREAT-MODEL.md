@@ -82,6 +82,9 @@ Questions:
 - Can another executor take over?
 - Can censorship be detected?
 - Can users still exit safely?
+- How long does failover to an independent executor/prover take?
+- Can a censored valid operation or exit be resubmitted through independent infrastructure?
+- Can censorship and failover be observed and measured externally?
 
 ### 6. State availability failure
 
@@ -160,6 +163,8 @@ A private claim is consumed into an exit entitlement, but the reserve accounting
 A private operation may cause a publicly observable Kaspa L1 transaction whose fee is paid by a known or linkable transparent wallet. Even if the private state transition hides sender, recipient, and amount, an observer may correlate the payer, timing, and privacy-system activity.
 
 Desired property: private operations should not require a publicly linkable fee payment from the user's transparent wallet.
+
+Testnet analysis should measure whether a passive observer can correlate a known transparent wallet's L1 fee payment with a specific private operation.
 
 ## Initial out of scope for the first cryptographic PoC
 

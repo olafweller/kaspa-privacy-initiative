@@ -45,9 +45,13 @@ Primary question:
 
 ## 5. Exits
 
-- Can users exit without cooperation from one specific operator?
+- Can users exit without cooperation from a privileged operator?
+- What exact Kaspa L1 covenant/script verifies or consumes the result of an unshield proof?
+- What exact public inputs must be bound to that proof?
+- How does a valid proof cryptographically authorize the corresponding native KAS payout?
 - What information must a user retain to prove ownership later?
-- Can exits work if the normal prover network disappears?
+- Can the same exit be independently constructed after every normal operator/prover has disappeared?
+- What data must come from L1, what may come from independently reconstructable protocol history, and what must the user retain privately?
 - Is an emergency exit path required?
 - How can any escape path preserve the same authorization, conservation, and single-spend requirements?
 - Can an exit path itself create a privacy leak or theft vector?
