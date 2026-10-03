@@ -17,6 +17,18 @@ The first public milestone is a feasibility and architecture review. Developers,
 
 Feedback is most useful when it identifies an assumption, links a specification or exact upstream file/commit, and explains what would validate or falsify the idea. You do not need a finished implementation to contribute.
 
+## First falsifiable milestone
+
+> N users shield test KAS. All normal operators, provers, executors, and hosted state services are then shut down. Using only public or independently reconstructable protocol data, their own wallet secrets/backups, and independent software/infrastructure, every user must still be able to recover and exit to native test KAS. No privileged operator data or cooperation is allowed.
+
+Deposits and private transfers are not enough: a candidate architecture is only credible if users can ultimately recover native KAS without a privileged operator. Failure of this test means the candidate needs redesign.
+
+> **What exactly authorizes the reserve to release native KAS?**
+
+The project must specify what proof or condition is verified, where it is verified, and how that cryptographically authorizes the native-KAS payout.
+
+See the [detailed recovery/exit gate](docs/ROADMAP.md#early-exit-and-recovery-gate) and [exit architecture and candidate designs](docs/ARCHITECTURE.md).
+
 ## The idea
 
 Kaspa is transparent by default. The Kaspa Privacy Initiative (KPI) explores whether native KAS can support a trust-minimized shielded domain where balances, transfer amounts, and ownership relationships are private, while remaining fully backed by native KAS. Permissionless entry, transfers, and exits are research targets, not implemented guarantees.
@@ -147,13 +159,9 @@ Before choosing an architecture, this project will map:
 
 See [research/README.md](research/README.md) and [research/existing-kaspa-privacy.md](research/existing-kaspa-privacy.md).
 
-## First milestone
+## First PoC
 
-The first milestone is **not** a polished wallet.
-
-It is a reproducible testnet experiment testing whether native KAS can enter a shielded state, change ownership privately, and exit again under the required accounting and authorization rules. Passing those tests would not prove cryptographic correctness or production security.
-
-A second proof-of-concept should deliberately break infrastructure assumptions: for example, remove one prover or state-serving component and verify that another participant can recover or continue without risking user funds.
+The broader first PoC is a reproducible testnet experiment testing native KAS deposits, private ownership transfers, and withdrawals under the required accounting and authorization rules. The [first falsifiable milestone](#first-falsifiable-milestone) above is its decisive early test. Passing these tests would not prove cryptographic correctness or production security.
 
 See [poc/README.md](poc/README.md).
 
