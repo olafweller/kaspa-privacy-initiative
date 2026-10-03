@@ -1,0 +1,19 @@
+{
+  "scope": "Public TN10 genesis header retrieved from own pinned node before IBD pruning; independently recomputed hash",
+  "header": {
+    "hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+    "version": 0,
+    "parentsByLevel": [],
+    "hashMerkleRoot": "17341408a5724556504df4d6cf515cbfbb220430dc451c743c22d5e911720c2a",
+    "acceptedIdMerkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+    "utxoCommitment": "544eb3142c000f0ad2c76ac41f4222abbababed830eeafee4b6dc56b52d5cac0",
+    "timestamp": "1633687894966",
+    "bits": 511705087,
+    "nonce": "83330",
+    "daaScore": "0",
+    "blueWork": "000000000000000000000000000000000000000000000000",
+    "blueScore": "0",
+    "pruningPoint": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "expected_hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370"
+}

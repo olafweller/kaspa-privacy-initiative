@@ -184,3 +184,28 @@ These are not out of scope for the eventual protocol. They are only deferred so 
 **A privacy protocol is not secure merely because transaction contents are encrypted or hidden in a proof.**
 
 The entire path — deposits, state availability, proving, note discovery, transaction broadcast, exits, wallet behavior, and upgrades — belongs in the threat model.
+
+## A0.5 experiment-specific operational boundary
+
+The [A0.5 adapter](docs/poc-a0-tn10-runbook.md) assumes an uncompromised local
+host and correct pinned SDK/node binaries. Persisted claim/proving material and
+recipient keys are required for liveness; a same-host restricted backup is not
+independent recovery. A substituted key cannot spend the original P2SH reserve,
+but lost material can strand the test claim. No admin recovery path is added.
+
+The adapter checks exact fields after serialization and accepted-block readback.
+A blue-score distance greater than 20 plus a later UTXO recheck are bounded observations,
+not a finality guarantee. On uncertain submission/acceptance, stop and inspect
+saved IDs; do not automatically refund/rebroadcast. Transparent source, reserve,
+recipient, amounts, proof and timing are public and linkable. A0.5 demonstrates
+no anonymity or general state availability. Setup remains single-party Groth16
+with no independent audit, ceremony or proof of toxic-waste destruction.
+
+During A0.5, the own node can validate network headers while its full UTXO import
+is incomplete. Two explicit synchronized native RPC endpoints may then supply
+UTXO/acceptance observations after matching locally validated headers and the
+independently established TN10 genesis. Their responses remain a trust assumption;
+two endpoint URLs do not prove operator independence. Corroborate the accepted
+block/body and payout/spentness, fail closed on disagreement, and never describe
+this route as local validation of the entire live UTXO set. The original local
+full transaction validator and on-chain covenant remain the authorization path.

@@ -1,0 +1,716 @@
+{
+  "observed_at": "2026-10-03T18:02:55.736320+00:00",
+  "result": "A0.5 terminal reserve release observed accepted on TN10; replay rejected; two-endpoint and later observations agree",
+  "scope": "One transparent terminal claim. Remote RPC chain/UTXO observations; not local validation of entire live UTXO set, finality proof, security audit or complete privacy protocol.",
+  "network": {
+    "genesis_hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+    "genesis_header": {
+      "hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+      "version": 0,
+      "parentsByLevel": [],
+      "hashMerkleRoot": "17341408a5724556504df4d6cf515cbfbb220430dc451c743c22d5e911720c2a",
+      "acceptedIdMerkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+      "utxoCommitment": "544eb3142c000f0ad2c76ac41f4222abbababed830eeafee4b6dc56b52d5cac0",
+      "timestamp": "1633687894966",
+      "bits": 511705087,
+      "nonce": "83330",
+      "daaScore": "0",
+      "blueWork": "000000000000000000000000000000000000000000000000",
+      "blueScore": "0",
+      "pruningPoint": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "genesis_method": "retained actual RPC genesis header from same pinned running process before pruning; native consensus validated pruning/header proof; sync status recorded separately",
+    "local_binary_sha256": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+    "local_header_count": "1084364",
+    "local_full_utxo_sync": false,
+    "endpoints": [
+      {
+        "url": "wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh",
+        "info": {
+          "rpcApiVersion": 1,
+          "rpcApiRevision": 0,
+          "serverVersion": "2.1.0",
+          "networkId": "testnet-10",
+          "hasUtxoIndex": true,
+          "isSynced": true,
+          "virtualDaaScore": "587175971"
+        },
+        "matched_locally_validated_headers": [
+          "757a842cab0b21488c518f8456432a8a371bbf43e20a9896509e46a4b4e6ae03",
+          "441960ebd26dcb3818420070d8fa737a6d77be4186b864f82024b2a335e322fc"
+        ]
+      },
+      {
+        "url": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+        "info": {
+          "rpcApiVersion": 1,
+          "rpcApiRevision": 0,
+          "serverVersion": "2.1.0",
+          "networkId": "testnet-10",
+          "hasUtxoIndex": true,
+          "isSynced": true,
+          "virtualDaaScore": "587175971"
+        },
+        "matched_locally_validated_headers": [
+          "757a842cab0b21488c518f8456432a8a371bbf43e20a9896509e46a4b4e6ae03",
+          "441960ebd26dcb3818420070d8fa737a6d77be4186b864f82024b2a335e322fc"
+        ]
+      }
+    ],
+    "observation_trust": "Remote native-RPC UTXO/acceptance data; two endpoint corroboration, not local full UTXO validation or proof of independent operators"
+  },
+  "manifest": {
+    "claim_commitment_hex": "7a9b1182444495ac5d2b7aa0b0d827b4302942f8334cac33189be378d282fa3d",
+    "compute_budget": 1700,
+    "context_prefix_hex": "4b50492d41302f544e31302f7465726d696e616c2f763100f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc437089af856453f0cc4ca687353f29e7c6eb549ea39cc75025a74cc6a7ed501192f700f7cb3c0000000000ca9a3b00000000002d31010000000024000000000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac01",
+    "fee_sompi": 20000000,
+    "genesis": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+    "network": "testnet-10",
+    "payout_sompi": 1000000000,
+    "recipient_address": "kaspatest:qr33u5pnjefh90vcgfc8dexl8re3kuv2ulys0skqhqxup2erjvly2s38lsrz4",
+    "recipient_spk_hex": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+    "redeem_script_hex": "b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+    "reserve_address": "kaspatest:pqc9cdt4u94f4yf4lxxawr9mz6ypc53rypc72mm2phtulartxmvhw2lxjzegy",
+    "reserve_sompi": 1020000000,
+    "reserve_spk_hex": "0000aa20305c3575e16a9a9135f98dd70cbb16881c52232071e56f6a0dd7cff46b36d97787",
+    "setup_ms": 6786.632536,
+    "upstream_revision": "01b532e8b553523216471682649693af92f0fd16",
+    "verifying_key_hex": "78b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a10"
+  },
+  "wallet_bootstrap": {
+    "transaction_id": "27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a",
+    "amount_sompi": "1200000000",
+    "observation": {
+      "observed_at": "2026-10-03T17:50:35.646Z",
+      "accepting_block_hash": "1706998f34c6cc8ca0c879f6cb5efbe8df0d8e6185bf5cc5702b6f22b9d47fa3",
+      "accepted_transaction_id": "27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a",
+      "recipient_utxo": {
+        "outpoint": {
+          "transactionId": "27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a",
+          "index": 0
+        },
+        "amount": "1200000000",
+        "scriptPublicKeyHex": "00002078c9f3b9ae05c19cd1e0472d31b650410024f067c495133b1edd7c806ff72ed9ac",
+        "blockDaaScore": "587171947",
+        "isCoinbase": false,
+        "covenantId": null
+      },
+      "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+      "virtual_daa_score": "587171978",
+      "sink": "e3ce9e499d6f46bad3b1bfd59236d33c5d794fea671adab9afa32d896a2300ce"
+    },
+    "mass_adjustment": {
+      "generator_mass": "3154",
+      "committed_storage_mass": "0",
+      "method": "pinned upstream v0 calculateStorageMass with exact-safe integer bounds; unchanged signed inputs/outputs/fees; full validation follows"
+    }
+  },
+  "reserve_funding": {
+    "transaction": {
+      "version": 0,
+      "id": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "transactionId": "27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a",
+            "index": 0
+          },
+          "signatureScript": "414223cd116c2665271eb85b1eac48883bcb7314c9c2350e21aca100ecf4d40c71fb1361988ce53b966e1eb9216dd95fe6c4d44505cc4f290e07b5b68e98e3e41901",
+          "sequence": "0",
+          "sigOpCount": 1,
+          "computeBudget": 0
+        }
+      ],
+      "outputs": [
+        {
+          "value": "1020000000",
+          "scriptPublicKey": "0000aa20305c3575e16a9a9135f98dd70cbb16881c52232071e56f6a0dd7cff46b36d97787",
+          "covenant": null
+        },
+        {
+          "value": "179295300",
+          "scriptPublicKey": "00002078c9f3b9ae05c19cd1e0472d31b650410024f067c495133b1edd7c806ff72ed9ac",
+          "covenant": null
+        }
+      ],
+      "lockTime": "0",
+      "subnetworkId": "0000000000000000000000000000000000000000",
+      "gas": "0",
+      "payload": "",
+      "storageMass": "5724"
+    },
+    "context": {
+      "entries": [
+        {
+          "outpoint": {
+            "transactionId": "27a70f75bd135a1e899160c43af5f00be44db87c1954148dd36bb71864c06c9a",
+            "index": 0
+          },
+          "amount": "1200000000",
+          "scriptPublicKeyHex": "00002078c9f3b9ae05c19cd1e0472d31b650410024f067c495133b1edd7c806ff72ed9ac",
+          "blockDaaScore": "587171947",
+          "isCoinbase": false,
+          "covenantId": null
+        }
+      ],
+      "virtualDaaScore": "587174110",
+      "pastMedianTime": "1791049931496"
+    },
+    "submission": {
+      "started_at": "2026-10-03T17:55:19.690Z",
+      "started_ms": 1791050119690,
+      "returned_at": "2026-10-03T17:55:19.724Z",
+      "transaction_id": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+      "response": {
+        "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f"
+      },
+      "start_hash": "e2d66d0fcb256ecbe122df208d5a9407a94d44b0e559e13ee53112d6c3602d30",
+      "wrpc_submission_frames": [
+        {
+          "bytes": 353,
+          "sha256": "73f0d39166eae93ebcfb52fdc6094fb4c7f48bca23d0d646aba77701481f5e5a"
+        }
+      ],
+      "frame_scope": "WebSocket application message payload including native wRPC envelope; excludes WebSocket/TCP framing"
+    },
+    "observation": {
+      "observed_at": "2026-10-03T17:55:26.021Z",
+      "accepting_block_hash": "bacfa5f142345086ad4568709810e2351088070bde654eb03b38c3d1b290334e",
+      "accepted_transaction_id": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+      "recipient_utxo": {
+        "outpoint": {
+          "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+          "index": 0
+        },
+        "amount": "1020000000",
+        "scriptPublicKeyHex": "0000aa20305c3575e16a9a9135f98dd70cbb16881c52232071e56f6a0dd7cff46b36d97787",
+        "blockDaaScore": "587174211",
+        "isCoinbase": false,
+        "covenantId": null
+      },
+      "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+      "virtual_daa_score": "587174238",
+      "sink": "9017e90948182f8508d2612a58e6e4936dbd47dfcd5eacabb1f782f9e91a46c5"
+    },
+    "mass_adjustment": {
+      "generator_mass": "5724",
+      "committed_storage_mass": "5724",
+      "method": "pinned upstream v0 calculateStorageMass with exact-safe integer bounds; unchanged signed inputs/outputs/fees; full validation follows"
+    },
+    "fee_sompi": 704700,
+    "exact_future_outpoint_validated_before_broadcast": true,
+    "planned_release_transaction": {
+      "version": 1,
+      "id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+            "index": 0
+          },
+          "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80186fd5437eb96651f3cd2aa61639d51b954016cfdb4d23d460f49874f63548ae85fdf86e3acf0cb9e3d164bdbb93fefd7e9865b69e739b992eaa4e7367473916a99c9629cd3b00e0eb0bd75632c5cc7d558d9b5434cd8c225cc6ab4f7f15bd81eebc9a3e5d05f7319d5a2bfceb9989905d4781d209591be5d61cb3d7c1214dae4d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+          "sequence": "18446744073709551615",
+          "sigOpCount": 0,
+          "computeBudget": 1700
+        }
+      ],
+      "outputs": [
+        {
+          "value": "1000000000",
+          "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+          "covenant": null
+        }
+      ],
+      "lockTime": "0",
+      "subnetworkId": "0000000000000000000000000000000000000000",
+      "gas": "0",
+      "payload": "",
+      "storageMass": "20"
+    },
+    "fee_estimate": {
+      "estimate": {
+        "priorityBucket": {
+          "feerate": 211.42463308888983,
+          "estimatedSeconds": 0.10000000000000012
+        },
+        "normalBuckets": [
+          {
+            "feerate": 153.99835634711567,
+            "estimatedSeconds": 0.2574399485681781
+          },
+          {
+            "feerate": 127.84255147637093,
+            "estimatedSeconds": 0.4493570421804623
+          }
+        ],
+        "lowBuckets": [
+          {
+            "feerate": 111.3914592695031,
+            "estimatedSeconds": 0.678871306708993
+          }
+        ]
+      }
+    },
+    "fee_assessment": {
+      "fixed_fee_sompi": 20000000,
+      "feerate": 116.7303820001751,
+      "selected_bucket": {
+        "feerate": 111.3914592695031,
+        "estimatedSeconds": 0.678871306708993
+      },
+      "scope": "estimate only, not guaranteed inclusion; no fee/accounting change; chain observation still required"
+    }
+  },
+  "release": {
+    "context": {
+      "outpoint": {
+        "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+        "index": 0
+      },
+      "utxoEntry": {
+        "amount": "1020000000",
+        "scriptPublicKeyHex": "0000aa20305c3575e16a9a9135f98dd70cbb16881c52232071e56f6a0dd7cff46b36d97787",
+        "blockDaaScore": "587174211",
+        "isCoinbase": false,
+        "covenantId": null
+      },
+      "virtualDaaScore": "587174588",
+      "pastMedianTime": "1791049984312"
+    },
+    "pre_submission_context": {
+      "outpoint": {
+        "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+        "index": 0
+      },
+      "utxoEntry": {
+        "amount": "1020000000",
+        "scriptPublicKeyHex": "0000aa20305c3575e16a9a9135f98dd70cbb16881c52232071e56f6a0dd7cff46b36d97787",
+        "blockDaaScore": "587174211",
+        "isCoinbase": false,
+        "covenantId": null
+      },
+      "virtualDaaScore": "587174829",
+      "pastMedianTime": "1791050023650"
+    },
+    "proof_and_transaction": {
+      "compute_mass_grams": 171335,
+      "consensus_borsh_bytes": 965,
+      "distinct_replay_transaction": {
+        "gas": "0",
+        "id": "a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade",
+        "inputs": [
+          {
+            "computeBudget": 1700,
+            "previousOutpoint": {
+              "index": 0,
+              "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f"
+            },
+            "sequence": "18446744073709551614",
+            "sigOpCount": 0,
+            "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6"
+          }
+        ],
+        "lockTime": "0",
+        "outputs": [
+          {
+            "covenant": null,
+            "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+            "value": "1000000000"
+          }
+        ],
+        "payload": "",
+        "storageMass": "20",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "version": 1
+      },
+      "estimated_transaction_bytes": 975,
+      "fee_sompi": 20000000,
+      "full_validation_ms": 10.380026,
+      "proof_bytes": 128,
+      "proof_hex": "d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc05209488",
+      "proving_ms": 889.025987,
+      "public_inputs_hex": [
+        "67aab5bfb85e9fb1fb6eaa08c6216ca400000000000000000000000000000000",
+        "4ed98c823d4d1141361ac75be0db004f00000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "c2b48f2a9e438b2488f40ae409cbdfb400000000000000000000000000000000",
+        "7ce88beb9e991019b86937f6c2b352df00000000000000000000000000000000"
+      ],
+      "scope": "original A0 proof/covenant; exact file roundtrip fully validated; spentness not established",
+      "storage_mass_grams": 20,
+      "transaction": {
+        "gas": "0",
+        "id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "inputs": [
+          {
+            "computeBudget": 1700,
+            "previousOutpoint": {
+              "index": 0,
+              "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f"
+            },
+            "sequence": "18446744073709551615",
+            "sigOpCount": 0,
+            "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6"
+          }
+        ],
+        "lockTime": "0",
+        "outputs": [
+          {
+            "covenant": null,
+            "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+            "value": "1000000000"
+          }
+        ],
+        "payload": "",
+        "storageMass": "20",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "version": 1
+      },
+      "transient_mass_grams": 3900
+    },
+    "submission": {
+      "started_at": "2026-10-03T17:56:47.886Z",
+      "started_ms": 1791050207886,
+      "returned_at": "2026-10-03T17:56:47.928Z",
+      "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+      "response": {
+        "transactionId": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554"
+      },
+      "start_hash": "6b55eb52375e1b5d7326932ed90ec4e3ec0bbdf62361beff320a41d2029b8d70",
+      "wrpc_submission_frames": [
+        {
+          "bytes": 998,
+          "sha256": "c121e1a1dcb8bfb78199c1dcc35ae1d1ea74df16edcccb63c62531f71958355b"
+        }
+      ],
+      "frame_scope": "WebSocket application message payload including native wRPC envelope; excludes WebSocket/TCP framing"
+    },
+    "observation": {
+      "observed_at": "2026-10-03T17:56:52.669Z",
+      "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+      "accepted_transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+      "recipient_utxo": {
+        "outpoint": {
+          "transactionId": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "index": 0
+        },
+        "amount": "1000000000",
+        "scriptPublicKeyHex": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+        "blockDaaScore": "587174837",
+        "isCoinbase": false,
+        "covenantId": null
+      },
+      "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+      "virtual_daa_score": "587174865",
+      "sink": "f97ae406907a50a653297049b7e175c37a10820860056e4b3a54b2eecd7058dc",
+      "broadcast_to_observation_ms": 4851
+    },
+    "accepted_body": {
+      "containing_block_hash": "c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210",
+      "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+      "transaction": {
+        "version": 1,
+        "id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "inputs": [
+          {
+            "previousOutpoint": {
+              "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+              "index": 0
+            },
+            "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+            "sequence": "18446744073709551615",
+            "sigOpCount": 0,
+            "computeBudget": 1700
+          }
+        ],
+        "outputs": [
+          {
+            "value": "1000000000",
+            "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+            "covenant": null
+          }
+        ],
+        "lockTime": "0",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "gas": "0",
+        "payload": "",
+        "storageMass": "20"
+      }
+    },
+    "fee_estimate": {
+      "estimate": {
+        "priorityBucket": {
+          "feerate": 211.71626636945518,
+          "estimatedSeconds": 0.1000000000000001
+        },
+        "normalBuckets": [
+          {
+            "feerate": 154.08221185803137,
+            "estimatedSeconds": 0.25808691148796015
+          },
+          {
+            "feerate": 127.87473493641849,
+            "estimatedSeconds": 0.4508847730201788
+          }
+        ],
+        "lowBuckets": [
+          {
+            "feerate": 111.40210144438413,
+            "estimatedSeconds": 0.681500960628076
+          }
+        ]
+      }
+    },
+    "fee_assessment": {
+      "fixed_fee_sompi": 20000000,
+      "feerate": 116.7303820001751,
+      "selected_bucket": {
+        "feerate": 111.40210144438413,
+        "estimatedSeconds": 0.681500960628076
+      },
+      "scope": "estimate only, not guaranteed inclusion; no fee/accounting change; chain observation still required"
+    }
+  },
+  "replay": {
+    "observed_at": "2026-10-03T17:57:29.130Z",
+    "distinct_local_validation": {
+      "accepted_locally": true,
+      "fee_sompi": 20000000,
+      "transaction_id": "a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade"
+    },
+    "outcomes": [
+      {
+        "name": "exact",
+        "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "error": "Error: RPC Server (remote error) -> Rejected transaction 29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554: transaction 29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554 was already accepted by the consensus"
+      },
+      {
+        "name": "distinct",
+        "transaction_id": "a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade",
+        "error": "Error: RPC Server (remote error) -> Rejected transaction a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade: transaction a50d798017854a931ab7a9d570ace689796b70815ea2860ed6c86a36bd1dfade is an orphan where orphan is disallowed"
+      }
+    ],
+    "interpretation": "Exact replay is already-known acceptance. Distinct replay passed full local validation against original UTXO, then RejectMissingOutpoint mapped to RejectDisallowedOrphan with allowOrphan=false. Known funded reserve was consumed by observed accepted release and is absent at both endpoints. This is spent-input evidence, not proof-invalid rejection.",
+    "upstream_source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/validate_and_insert_transaction.rs"
+  },
+  "later_recheck": {
+    "observed_at": "2026-10-03T17:59:21.269Z",
+    "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+    "accepted_transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+    "recipient_utxo": {
+      "outpoint": {
+        "transactionId": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "index": 0
+      },
+      "amount": "1000000000",
+      "scriptPublicKeyHex": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+      "blockDaaScore": "587174837",
+      "isCoinbase": false,
+      "covenantId": null
+    },
+    "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+    "virtual_daa_score": "587175971",
+    "sink": "3d38705743de935d1e8d816d958db5519c7b0eb72144eaa781c17c1dd1c0829b",
+    "elapsed_since_broadcast_ms": 153474,
+    "reserve_unspent": false
+  },
+  "corroborations": [
+    {
+      "endpoint": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+      "observation": {
+        "observed_at": "2026-10-03T17:58:05.834Z",
+        "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+        "accepted_transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "recipient_utxo": {
+          "outpoint": {
+            "transactionId": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+            "index": 0
+          },
+          "amount": "1000000000",
+          "scriptPublicKeyHex": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+          "blockDaaScore": "587174837",
+          "isCoinbase": false,
+          "covenantId": null
+        },
+        "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+        "virtual_daa_score": "587175433",
+        "sink": "5ab4b6b6b3556ec1cf603d557f0a3b76acbaa69f980af2a68c5fb8e3a1d2a22f"
+      },
+      "accepted_body": {
+        "containing_block_hash": "c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210",
+        "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+        "transaction": {
+          "version": 1,
+          "id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "inputs": [
+            {
+              "previousOutpoint": {
+                "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+                "index": 0
+              },
+              "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+              "sequence": "18446744073709551615",
+              "sigOpCount": 0,
+              "computeBudget": 1700
+            }
+          ],
+          "outputs": [
+            {
+              "value": "1000000000",
+              "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+              "covenant": null
+            }
+          ],
+          "lockTime": "0",
+          "subnetworkId": "0000000000000000000000000000000000000000",
+          "gas": "0",
+          "payload": "",
+          "storageMass": "20"
+        }
+      },
+      "reserve_unspent": false,
+      "elapsed_since_broadcast_ms": 78148
+    },
+    {
+      "endpoint": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+      "observation": {
+        "observed_at": "2026-10-03T17:59:22.451Z",
+        "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+        "accepted_transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+        "recipient_utxo": {
+          "outpoint": {
+            "transactionId": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+            "index": 0
+          },
+          "amount": "1000000000",
+          "scriptPublicKeyHex": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+          "blockDaaScore": "587174837",
+          "isCoinbase": false,
+          "covenantId": null
+        },
+        "confirmation_policy": "minConfirmationCount=20: accepting-block blue-score distance from sink >20; later observation required",
+        "virtual_daa_score": "587175974",
+        "sink": "5ac492f77c630f3c0d13276911818659619d50ad1569e96a5601534a03b64591"
+      },
+      "accepted_body": {
+        "containing_block_hash": "c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210",
+        "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+        "transaction": {
+          "version": 1,
+          "id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "inputs": [
+            {
+              "previousOutpoint": {
+                "transactionId": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+                "index": 0
+              },
+              "signatureScript": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+              "sequence": "18446744073709551615",
+              "sigOpCount": 0,
+              "computeBudget": 1700
+            }
+          ],
+          "outputs": [
+            {
+              "value": "1000000000",
+              "scriptPublicKey": "000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+              "covenant": null
+            }
+          ],
+          "lockTime": "0",
+          "subnetworkId": "0000000000000000000000000000000000000000",
+          "gas": "0",
+          "payload": "",
+          "storageMass": "20"
+        }
+      },
+      "reserve_unspent": false,
+      "elapsed_since_broadcast_ms": 154746
+    }
+  ],
+  "implementation_adjustments": [
+    "Retain fresh KPI keys/claim/proving material and original verifying key; derive live P2SH and actual outpoint/context.",
+    "Preserve u64, budget, script, covenant and storage metadata; explicitly recompute cached SDK IDs.",
+    "Fix generic v0 generator overall-mass commitment to the exact storage component, with exact-safe f64 helper bounds and full validation.",
+    "Use a <=30-second estimated fee bucket fitting unchanged 0.2 test-KAS fee instead of requiring highest priority.",
+    "Use two synchronized native RPC endpoints cross-checked against own validated genesis/headers; disclose remote observation trust."
+  ],
+  "post_live_adversarial_review": {
+    "inflation_and_unauthorized_exit": "Accepted body exactly matches locally validated one-input/one-output release: 1020000000 in, 1000000000 fixed-recipient out, 20000000 miner fee. No successor/unpaid claim, extra output or covenant metadata.",
+    "outpoint_key_state_binding": "Proof recomputed from observed funded txid/index under original retained circuit-specific key. Redeem/VK/claim/context unchanged; actual P2SH/output and full body read back.",
+    "front_running_and_unbound_fields": "Sequence is not a proof input: intentionally changed for distinct replay, while fixed outpoint and payout remain bound. Copying the proof cannot redirect recipient/value; transaction ID alone is not enough, so entire accepted body is compared.",
+    "double_spend": "Exact replay already accepted; distinct-ID replay locally proof-valid but rejected as disallowed orphan/missing input. Both endpoints show reserve spent and no second payout.",
+    "reorg_and_stale_state": "Same accepting block and payout after >153 seconds, corroborated through two endpoints. Finite observation, no permanent-finality claim.",
+    "privacy": "Funding source, reserve, recipient, amounts, proof and timing are public/linkable. No anonymity, private transfers or general nullifier model.",
+    "dependency_and_authority": "Loss of claim/proving/recipient material threatens liveness. Same-host backup is not independent recovery. No operator/admin release path; local review flag is not covenant authority.",
+    "remaining_trust": "Single-party trusted setup without independent audit/ceremony or toxic-waste attestation; BN254 non-PQ; uncompromised host and pinned release artifacts; remote RPC observation honesty with no operator-independence claim.",
+    "conclusion": "No bypass of original proof/covenant/accounting checks found in this same-agent limited review. Passing tests and one live run do not establish cryptographic correctness or production safety."
+  },
+  "reviewed_source_sha256": {
+    "scripts/a0_tn10.mjs": "3c3ea4dd352dcd05d8ec59c6d2e13cb2e3f76e9c1b7e917e03d8e10e2097a9f6",
+    "poc/a0/src/main.rs": "4e209555a8dd20fa904b4902ffb7c47efc6d1599fdb5096f9b56fb6a6d6265fc",
+    "poc/a0/src/live.rs": "6adef38fb1e6114165aa4bdba05c385e11ab9545a99cb346839400c4c6c97d9a",
+    "poc/a0/src/circuit.rs": "5d3f4f32c588e4637ca7b1597708a81c70331b53cc301f05c84cfea7855b7da8",
+    "poc/a0/Cargo.toml": "cc135563ee81ca127fadfa1de5dbd0f2d807668e0c04452da8855f7496d2245f",
+    "poc/a0/Cargo.lock": "dae6cd7a3a4af67b740762a89b247f24500ec2a74ee983fcf14be9ffc5562364",
+    "scripts/run_poc_a0.sh": "118b2e507c993bbc853566f193b860acd73b6a931325be6a2a3bca6ae1a443ac",
+    "scripts/start_a0_tn10_node.sh": "992d27dcf672fffb2c017e01f611436a02951180d24cec4f2f9a078218153ea2",
+    "poc/a0/target/release/kpi-poc-a0": "5d510e2d8031e1497c1b1413d05a4b35b9c4a79531320a699e996e2803339a40",
+    ".local/node/bin/kaspad": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+    ".local/sdk/kaspa-wasm32-sdk/nodejs/kaspa/kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+    ".local/sdk/kaspa-wasm32-sdk/nodejs/kaspa/kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5"
+  },
+  "local_node_lifecycle": {
+    "status": "Stopped cleanly; process exited with status 0, local RPC listeners stopped, process absence verified.",
+    "full_utxo_sync_completed": false,
+    "ibd_observation": "At 19:51:41 local time, background IBD reported got unexpected pruning point and resumed UTXO import. This node was never claimed to validate the full live UTXO set.",
+    "shutdown_requested_at": "2026-10-03T18:11:44.258565+00:00",
+    "retained_data": "Ignored node data, dedicated wallet and external claim/proving backup retained; no system service created."
+  },
+  "rest_readonly_corroboration": {
+    "observed_at": "2026-10-03T18:13:38.620Z",
+    "url": "https://api-tn10.kaspa.org/transactions/29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+    "status": 200,
+    "response": {
+      "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+      "hash": "7fb6d89ccd32b9aa797032eb93c19c34db0c692470259ec58de8d10fcc0346d7",
+      "version": 1,
+      "mass": "171335",
+      "is_accepted": true,
+      "block_hash": [
+        "c38a5439db59c5768e62a37d162f19cd04c4802a8a2e33a35a80050fa3c76210"
+      ],
+      "block_time": 1791050208492,
+      "accepting_block_hash": "c8dc02dd15e6451ff328eb3708d00a1b638bd004e5ad98a2405a76a2de431a6f",
+      "accepting_block_blue_score": 575642260,
+      "accepting_block_time": 1791050209027,
+      "inputs": [
+        {
+          "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "index": 0,
+          "previous_outpoint_hash": "67aab5bfb85e9fb1fb6eaa08c6216ca44ed98c823d4d1141361ac75be0db004f",
+          "previous_outpoint_index": "0",
+          "previous_outpoint_address": null,
+          "previous_outpoint_amount": null,
+          "signature_script": "207ce88beb9e991019b86937f6c2b352df0000000000000000000000000000000020c2b48f2a9e438b2488f40ae409cbdfb4000000000000000000000000000000004c80d5ab871a0e1a1d7b8a9744043d86f0cd855d228be552f30cd2f1c8891d7a51056504db80c12e0458573ed29acb9a3082891b7ccf293a6c415dc72a82e9c99b1affaecdb9750e92d5eec5fdd519ae6834df5d6548a672824e2084a74573a930aeb68cefa91b48c42bcbad11743214be4243d862c13d6e18e916665dfc052094884d4002b35188b4518800be0400f7cb3c8800c20400ca9a3b8800c324000020e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac8800d64f886b00bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178b72645fa73912aaa32c89311309e35996c8d51415ce23e64c435a3c9912ea303cb5f7c083775afed60aa627fa284aa2b9c6e007cc1fe124ebd29dca0ca2e2ab6cad48609df73b0c076d053aee910d274157191fbe95d656dcfae816d12ad054a7c2de01a8f7ac5358f3afbbd078745898ef6b8775bd1d35ce19b7d100eac1eb62e8bb0db43a4df0b2fd2293098a81c36e7dc657432a0e350da4cdb0eb1fd16301ca7a74c11e17293eabb594281d999d41786ab25137f0e54861b978409b12f9f3044a7d4a2b476031af02080b05bfb6ec6beb10c0a19ea861e2a44bf8abe960600000000000000d8ecf664be866300126ed9f7981cdcdd748a787777ff4f3a4e5ad1ed5e0b7d95ca2d4fc4cc17e99282bffed74434b999444cab7306d387d7752b638d573f44a9ceab63fdff039be051466d1e3ce8fea2c89d3798ff9b130d060eaa5e6756e506f01b74723c4060dfab17f7c77b61cdaf222c0217e3ab4cfa2a92a08359a1b5814c27fc722dddd239cafb3f48e9de89509295def8ca1568d930618c22ce5b1c91e90e5d6f50808df173c710fb8f4f7065ec9b0ed54204f77f1ede55f5d3dd7a100120a6",
+          "sig_op_count": null,
+          "compute_budget": 1700,
+          "covenant_id": null
+        }
+      ],
+      "outputs": [
+        {
+          "transaction_id": "29d875bbdf31cb14205b6f429d63c475b9ad85e558e932b1c70ff1dbc0e2b554",
+          "index": 0,
+          "amount": 1000000000,
+          "script_public_key": "20e31e5033965372bd98427076e4df38f31b718ae7c907c2c0b80dc0ab23933e45ac",
+          "script_public_key_address": "kaspatest:qr33u5pnjefh90vcgfc8dexl8re3kuv2ulys0skqhqxup2erjvly2s38lsrz4",
+          "script_public_key_type": "pubkey",
+          "covenant_authorizing_input": null,
+          "covenant_id": null
+        }
+      ]
+    },
+    "scope": "Read-only public index corroboration, not REST submission compatibility or operator-independence proof. Previous input amount and sig_op_count are null in this response; actual input amount is established by native funding/UTXO records. REST mass 171335 is not the storage commitment 20."
+  }
+}

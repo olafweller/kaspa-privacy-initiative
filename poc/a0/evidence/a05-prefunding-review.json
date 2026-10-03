@@ -1,0 +1,324 @@
+{
+  "observed_at": "2026-10-03T17:50:30.025471+00:00",
+  "scope": "A0.5 adapter reviews before reserve funding; initial checkpoint preceded all funding, later review updates follow ordinary KPI-wallet bootstrap",
+  "adversarial_review": {
+    "observed_at": "2026-10-03T17:55:04.545922+00:00",
+    "approved_for_test_funding": true,
+    "scope": "same-agent adversarial second pass before any test funding; not an independent audit or cryptographic correctness proof",
+    "sha256": {
+      "scripts/a0_tn10.mjs": "3c3ea4dd352dcd05d8ec59c6d2e13cb2e3f76e9c1b7e917e03d8e10e2097a9f6",
+      "poc/a0/src/main.rs": "4e209555a8dd20fa904b4902ffb7c47efc6d1599fdb5096f9b56fb6a6d6265fc",
+      "poc/a0/src/live.rs": "6adef38fb1e6114165aa4bdba05c385e11ab9545a99cb346839400c4c6c97d9a",
+      "poc/a0/src/circuit.rs": "5d3f4f32c588e4637ca7b1597708a81c70331b53cc301f05c84cfea7855b7da8",
+      "poc/a0/Cargo.toml": "cc135563ee81ca127fadfa1de5dbd0f2d807668e0c04452da8855f7496d2245f",
+      "poc/a0/Cargo.lock": "dae6cd7a3a4af67b740762a89b247f24500ec2a74ee983fcf14be9ffc5562364",
+      "scripts/run_poc_a0.sh": "118b2e507c993bbc853566f193b860acd73b6a931325be6a2a3bca6ae1a443ac",
+      "scripts/start_a0_tn10_node.sh": "992d27dcf672fffb2c017e01f611436a02951180d24cec4f2f9a078218153ea2",
+      "poc/a0/target/release/kpi-poc-a0": "5d510e2d8031e1497c1b1413d05a4b35b9c4a79531320a699e996e2803339a40",
+      ".local/node/bin/kaspad": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+      ".local/sdk/kaspa-wasm32-sdk/nodejs/kaspa/kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+      ".local/sdk/kaspa-wasm32-sdk/nodejs/kaspa/kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5"
+    },
+    "checks": [
+      "Original real proof fixture: all 30 expected outcomes, including 28 rejects and supplied-UTXO stateless replay.",
+      "Four original circuit tests plus three adapter parsing tests pass; three real SDK boundary tests and four REST diagnostic boundary tests pass.",
+      "Controlled fresh KPI recipient; source private material never passed to Rust or public evidence. Restricted external claim/proving files and backup reload against original VK/script/address.",
+      "Original circuit unchanged. Redeem/value/count/recipient/covenant checks unchanged. Full validator flags unchanged. Fees exactly R-A; generic funding has one exact target, at most one source change, capped fee.",
+      "Original retained proving key used for synthetic pre-funding proof; native SDK roundtrip and full validation pass. Ordinary signed funding fixture also passes full validation.",
+      "Future real funding outpoint is derived from signed transaction ID and exact reserve output before funding, then proof and full validator gate. Actual UTXO is re-read after funding and again before release.",
+      "u64 stays exact; explicit absent covenant and per-version compute metadata required; cached SDK IDs recomputed. Missing or changed fields fail.",
+      "Own pinned binary, exact TN10 startup arguments, RPC network and actual genesis-header hash checked. If pruning removes genesis, only retained header from the same verified running process is accepted. Broadcast requires synced/indexed node.",
+      "Spentness belongs to live UTXO/consensus; exact and distinct-ID replay outcomes must be recorded. Local replay validity cannot count as live double-spend success.",
+      "Accepted transaction ID plus exact payout UTXO, absent reserve, accepted-body field comparison and later observation required. Blue-score distance >20 is not finality.",
+      "No alternate operator signature, admin path, claim replacement or sponsor input. Local review bit only gates test tooling and cannot authorize the covenant.",
+      "Proof publication exposes no witness but all participants/amounts are public and linkable. Single-party setup and unaudited original circuit remain assumptions.",
+      "Loss of claim/key/node availability halts safely; no fallback spend. Same-host backup is not independent disaster recovery.",
+      "Durable submission intent and exclusive files prevent automatic rebroadcast after uncertain network result. Manual inspection required before resume.",
+      "Current priority fee estimate checked before reserve funding as well as before release; original fixed 0.2 test-KAS fee is never silently changed.",
+      "After actual genesis pruning, archived header reload failed closed on string nonce. Fixed by explicit bounded BigInt conversion; real same-process fallback now reproduces expected genesis. Added positive archival-header and mutated/overflow/cached-hash tests; all nine Node tests pass.",
+      "Reviewed explicit two-endpoint native RPC route: both synced TN10/2.1.0 with UTXO index, matching three independently rehashed headers from own pinned consensus process. Own actual genesis anchor/process verified after pruning. UTXO/acceptance observations are remote trusted data, not locally full-UTXO-validated; provider independence is not claimed. Local full validator and proof/covenant checks unchanged. Second endpoint must agree on accepting block, exact body, payout and spent reserve. Fresh retained-key proof under current remote DAA/median context passed native SDK roundtrip and full validation.",
+      "Real generic funding was rejected before submission: Generator committed overall mass 5390 instead of contextual storage 795. Pinned calculateStorageMass v0 helper computes 795; exact-safe integer bounds prevent f64 rounding, other signed fields/ID must remain equal, and corrected actual signed transaction passes unmodified full validator with unchanged 1039000 sompi fee. Rejected files retained; no submission intent existed. Eleven Node tests pass, including mass/range regressions.",
+      "Exact planned reserve release passed full validation; priority-only fee policy halted before funding (211.1 sompi/gram). Native low bucket 111.4 sompi/gram estimated 0.68 s fits fixed A0 rate 116.73. Reviewed selection of any valid bucket fitting unchanged fee with <=30 s estimate and >=100 relay floor; malformed/unaffordable/slow buckets halt. Thirteen Node tests pass. No amount, proof, covenant or validator changes; pre-broadcast artifacts preserved."
+    ],
+    "unverified_until_live": [
+      "native relay acceptance",
+      "actual funded reserve and full accepted transaction readback",
+      "spent-input replay error",
+      "later chain/UTXO observation",
+      "actual submission-frame measurement"
+    ],
+    "observation_trust": "Two synchronized public native-RPC endpoints, corroborated against own genesis/header validation; remote UTXO/acceptance trust remains explicit. No local full UTXO-set validation claim."
+  },
+  "tests": {
+    "original_circuit_tests": 4,
+    "rust_adapter_tests": 3,
+    "sdk_boundary_tests": 9,
+    "rest_diagnostic_tests": 4,
+    "docs_checker": "37 Markdown files, 106 relative links; external links/fragments not validated"
+  },
+  "baseline": {
+    "cases": [
+      {
+        "accepted": true,
+        "case": "valid_terminal_release",
+        "expected_accept": true,
+        "result": "Ok(20000000)",
+        "validation_ms": 9.418968999999999
+      },
+      {
+        "accepted": false,
+        "case": "malformed_proof",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 9.738589000000001
+      },
+      {
+        "accepted": false,
+        "case": "proof_trailing_bytes",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 proof has trailing bytes\\\"))\")",
+        "validation_ms": 5.714422
+      },
+      {
+        "accepted": false,
+        "case": "public_input_length_31",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: Invalid Fr length: expected 32 bytes, got 31\\\"))\")",
+        "validation_ms": 0.064528
+      },
+      {
+        "accepted": false,
+        "case": "public_input_length_33",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: Invalid Fr length: expected 32 bytes, got 33\\\"))\")",
+        "validation_ms": 0.023565
+      },
+      {
+        "accepted": false,
+        "case": "missing_authorization_identity_proof",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 7.426262
+      },
+      {
+        "accepted": false,
+        "case": "missing_authorization_empty",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureEmpty(InvalidStackOperation(1, 0))\")",
+        "validation_ms": 0.007305000000000001
+      },
+      {
+        "accepted": false,
+        "case": "replay_other_outpoint_txid",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 8.991836
+      },
+      {
+        "accepted": false,
+        "case": "replay_other_outpoint_index",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 8.676873
+      },
+      {
+        "accepted": false,
+        "case": "outpoint_index_u32_max",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 9.836991999999999
+      },
+      {
+        "accepted": false,
+        "case": "wrong_amount_underpay",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.026644
+      },
+      {
+        "accepted": false,
+        "case": "wrong_amount_overpay",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.010977
+      },
+      {
+        "accepted": false,
+        "case": "amount_zero",
+        "expected_accept": false,
+        "result": "Err(\"isolation: TxOutZero(0)\")",
+        "validation_ms": 0.001888
+      },
+      {
+        "accepted": false,
+        "case": "amount_u64_max",
+        "expected_accept": false,
+        "result": "Err(\"isolation: TxOutTooHigh(0)\")",
+        "validation_ms": 0.0010249999999999999
+      },
+      {
+        "accepted": false,
+        "case": "wrong_recipient",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.011241
+      },
+      {
+        "accepted": false,
+        "case": "wrong_recipient_spk_version",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.009139
+      },
+      {
+        "accepted": false,
+        "case": "modified_outputs_extra",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.006805
+      },
+      {
+        "accepted": false,
+        "case": "modified_output_covenant_metadata",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.013923999999999999
+      },
+      {
+        "accepted": false,
+        "case": "modified_outputs_missing",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.007187
+      },
+      {
+        "accepted": false,
+        "case": "duplicate_reserve_input",
+        "expected_accept": false,
+        "result": "Err(\"isolation: TxDuplicateInputs\")",
+        "validation_ms": 0.001412
+      },
+      {
+        "accepted": false,
+        "case": "extra_distinct_reserve_input",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.11995700000000001
+      },
+      {
+        "accepted": false,
+        "case": "wrong_reserve_value",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(VerifyError)\")",
+        "validation_ms": 0.014066
+      },
+      {
+        "accepted": false,
+        "case": "insufficient_compute_budget",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ExceededCommittedScriptUnits { used: 14001433, limit: 9999 })\")",
+        "validation_ms": 0.039946
+      },
+      {
+        "accepted": false,
+        "case": "invalid_public_inputs_tag",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 8.759876
+      },
+      {
+        "accepted": false,
+        "case": "noncanonical_field_input",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Kaspa txscript error: ZK Integrity: ARK serialization error: the input buffer contained invalid data\\\"))\")",
+        "validation_ms": 0.042445
+      },
+      {
+        "accepted": false,
+        "case": "wrong_domain",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 9.501610000000001
+      },
+      {
+        "accepted": false,
+        "case": "wrong_domain_replacement_verifier",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(EvalFalse)\")",
+        "validation_ms": 0.020099
+      },
+      {
+        "accepted": false,
+        "case": "wrong_state",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(ZkIntegrity(\\\"Groth16 verification failed\\\"))\")",
+        "validation_ms": 12.146455
+      },
+      {
+        "accepted": false,
+        "case": "wrong_state_replacement_verifier",
+        "expected_accept": false,
+        "result": "Err(\"utxo: SignatureInvalid(EvalFalse)\")",
+        "validation_ms": 0.023303
+      },
+      {
+        "accepted": true,
+        "case": "exact_replay_stateless_boundary",
+        "expected_accept": true,
+        "result": "Ok(20000000)",
+        "validation_ms": 9.537592
+      }
+    ],
+    "compute_budget": 1700,
+    "compute_mass_grams": 171335,
+    "default_minimum_relay_fee_sompi": 17133500,
+    "estimated_transaction_bytes": 975,
+    "fee_buffer_sompi": 20000000,
+    "network": "testnet-10",
+    "proof_bytes": 128,
+    "proof_system": "Groth16 BN254 / arkworks 0.6.0",
+    "proving_ms": 1455.957194,
+    "redeem_script_bytes": 576,
+    "reserve_sompi": 1020000000,
+    "scope": "offline production TransactionValidator::Full with supplied UTXO; NOT live TN10; no UTXO membership test",
+    "setup": "fresh OS randomness, single party trusted setup; unsuitable for deposits",
+    "setup_ms": 3490.9999049999997,
+    "signature_script_bytes": 775,
+    "standalone_verify_ms": 6.7541329999999995,
+    "storage_mass_grams": 20,
+    "total_ms": 16000.498994000001,
+    "transient_mass_grams": 3900,
+    "upstream_revision": "01b532e8b553523216471682649693af92f0fd16",
+    "used_script_units": 15501434,
+    "user_liability_sompi": 1000000000,
+    "verifying_key_bytes": 424
+  },
+  "synthetic_prefunding": {
+    "reserve_proof": {
+      "compute_mass_grams": 171335,
+      "consensus_borsh_bytes": 965,
+      "estimated_transaction_bytes": 975,
+      "fee_sompi": 20000000,
+      "full_validation_ms": 18.848741,
+      "proof_bytes": 128,
+      "proving_ms": 4122.63521,
+      "scope": "original A0 proof/covenant; exact file roundtrip fully validated; spentness not established",
+      "storage_mass_grams": 20,
+      "transient_mass_grams": 3900
+    },
+    "ordinary_signed_funding": {
+      "transaction_id": "08dd62774356f68229e5d1c77004f38db7ab7fcf41a907df813b8c41b50f3f7a",
+      "fee_sompi": "704700",
+      "scope": "synthetic supplied UTXO only; no broadcast"
+    },
+    "roundtrip": "Native SDK canonical field comparison followed by Rust full validator; original circuit and covenant unchanged"
+  },
+  "network_identity": {
+    "genesis_hash": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+    "method": "actual RPC header independently hashed before own node IBD; native process binary and TN10 arguments checked",
+    "synced": false,
+    "public_endpoints_synced": true,
+    "public_endpoints_match_locally_validated_headers": 3,
+    "scope": "Local header chain validated, local UTXO import incomplete; public endpoints synced. See adversarial review for explicit observation trust."
+  }
+}

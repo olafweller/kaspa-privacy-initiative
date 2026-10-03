@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-03",
+  "experiment_command": "./scripts/run_poc_a0.sh",
+  "experiment_exit_code": 0,
+  "experiment_cases": 30,
+  "rejected_variants": 28,
+  "accepted_cases": [
+    "valid_terminal_release",
+    "exact_replay_stateless_boundary"
+  ],
+  "circuit_test_command": "./scripts/run_poc_a0.sh test",
+  "circuit_test_exit_code": 0,
+  "circuit_tests_passed": [
+    "native_sha256_matches_circuit_at_integer_boundaries",
+    "wrong_secret_fails_even_with_recomputed_tag",
+    "high_public_limb_bits_cannot_be_silently_truncated",
+    "wrong_outpoint_index_fails_and_index_overflow_fails"
+  ],
+  "source_sha256": {
+    "poc/a0/src/main.rs": "df0765b9e23df89fc05e202fcf5889cb39019195ee5e5565cda353a92fbf1d96",
+    "poc/a0/src/circuit.rs": "5d3f4f32c588e4637ca7b1597708a81c70331b53cc301f05c84cfea7855b7da8",
+    "poc/a0/Cargo.toml": "1c738213d6c52fbfe0262808fa9b1128b3532ca63e5828bf0bf3edb51b73c6d2",
+    "poc/a0/Cargo.lock": "7a56921a52264bec7bacb0f8544165ddff263f5c0ae347ba9d735dc49c0c168e",
+    "poc/a0/rust-toolchain.toml": "57da15ac9b199a5169602f55715ebac933e4c0d59aa3560e6096f5494ee62f0c",
+    "scripts/run_poc_a0.sh": "277502d58baebfecbceb1eaca1b94f58fa84ab325d0dd6d5ac8cc57b61815ecd"
+  },
+  "local_run_sha256": "112ef2d1abdc781fc5a3c8b60fe0059e2003789e1309e4c9ff01be6156f4894e",
+  "boundary": "No TN10 RPC connection, funded UTXO, broadcast, mined spend, or live spent-UTXO rejection was tested."
+}

@@ -2,6 +2,11 @@
 
 The initiative should treat these as questions to answer, not conclusions to defend.
 
+The [A0.5 terminal reserve experiment](docs/poc-a0.md) and its retained-key/native-RPC
+adapter test one narrow proof-authorized payout. They do not answer the open
+private-state, successor-liability, independent-recovery or anonymity questions.
+Live outcome and remaining validation gaps belong to that evidence report.
+
 ## 1. Minimal Kaspa architecture
 
 - What can be implemented today using current Toccata primitives?
