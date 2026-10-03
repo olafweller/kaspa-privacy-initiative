@@ -30,6 +30,39 @@ pub fn validator() -> TransactionValidator {
         p.mass_per_sig_op,
     )
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // Engine-observation regression only. OP_TRUE is deliberately not an A1
+    // reserve/proof positive; this checks the native API's stack consumption.
+    #[test]
+    fn native_final_check_consumes_boolean() {
+        let cache: Cache<SigCacheKey, bool> = Cache::new(10);
+        let reused = kaspa_consensus_core::hashing::sighash::SigHashReusedValuesUnsync::new();
+        let mut checked = TxScriptEngine::<PopulatedTransaction<'_>, _>::from_script(
+            &[0x51],
+            &reused,
+            &cache,
+            Default::default(),
+        );
+        checked.execute().unwrap();
+        assert!(checked.stacks().dstack.is_empty());
+        assert!(checked.stacks().astack.is_empty());
+        let raw = TxScriptEngine::<PopulatedTransaction<'_>, _>::from_script(
+            &[0x51],
+            &reused,
+            &cache,
+            Default::default(),
+        )
+        .execute_and_return_stacks()
+        .unwrap();
+        assert_eq!(raw.dstack.len(), 1);
+        assert_eq!(raw.dstack[0].as_slice(), [1]);
+        assert!(raw.astack.is_empty());
+    }
+}
 pub fn set_mass(tx: &Transaction, entry: &UtxoEntry) -> Result<(), String> {
     let pop = PopulatedTransaction::new(tx, vec![entry.clone(); tx.inputs.len()]);
     let m = MassCalculator::new_with_consensus_params(&TESTNET_PARAMS)
@@ -118,7 +151,7 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
     let cache: Cache<SigCacheKey, bool> = Cache::new(10);
     let reused = kaspa_consensus_core::hashing::sighash::SigHashReusedValuesUnsync::new();
     let mut log = vec![];
-    let (units, final_main, final_alt) = {
+    let (units, post_check_main, post_check_alt) = {
         let mut engine = TxScriptEngine::from_transaction_input_with_script_units_limit(
             &pop,
             &tx.inputs[0],
@@ -136,6 +169,24 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
             engine.stacks().astack.to_vec(),
         )
     };
+    // execute() validates clean-stack/truth and consumes the final boolean. A
+    // separate native pass exposes the actual stack BEFORE that check, rather
+    // than inventing a [01] observation from successful validation. The logged
+    // pre-verifier snapshot below independently requires alternate-stack empty
+    // before the redeem-script boundary can clear it.
+    let raw = TxScriptEngine::from_transaction_input_with_script_units_limit(
+        &pop,
+        &tx.inputs[0],
+        0,
+        entry,
+        EngineCtx::new(&cache).with_reused(&reused),
+        Default::default(),
+        tx.inputs[0].compute_commit.allowed_script_units(),
+    )
+    .execute_and_return_stacks()
+    .map_err(|e| format!("native pre-final stack capture: {e:?}"))?;
+    let final_main = raw.dstack;
+    let final_alt = raw.astack;
     let log = String::from_utf8(log).map_err(|e| e.to_string())?;
     let parsed_signature = kaspa_txscript::parse_script::<
         PopulatedTransaction<'_>,
@@ -272,8 +323,19 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
         || final_main.len() != 1
         || final_main[0].as_slice() != [1]
         || !final_alt.is_empty()
+        || !post_check_main.is_empty()
+        || !post_check_alt.is_empty()
     {
-        return Err("native trace mandatory body/final stack mismatch".into());
+        return Err(format!(
+            "native trace mandatory body/final stack mismatch: {}",
+            json!({"matching_vk_verifiers":verifiers,"output_amount_checks":output_amount,
+                "output_spk_checks":output_spk,"metadata_checks":metadata,"expected_outputs":tx.outputs.len(),
+                "pre_final_check_main_hex":final_main.iter().map(hex::encode).collect::<Vec<_>>(),
+                "pre_final_check_alt_hex":final_alt.iter().map(hex::encode).collect::<Vec<_>>(),
+                "post_native_check_main_hex":post_check_main.iter().map(hex::encode).collect::<Vec<_>>(),
+                "post_native_check_alt_hex":post_check_alt.iter().map(hex::encode).collect::<Vec<_>>(),
+                "executed_opcode_counts":executed_opcodes,"native_opcode_log":log})
+        ));
     }
     for (name, expected) in [
         ("OpTxVersion", 1),
@@ -307,6 +369,12 @@ pub fn meter(tx: &Transaction, entry: &UtxoEntry, expected_vk: &[u8]) -> Result<
         "matching_vk_verifiers":verifiers,"output_amount_checks":output_amount,"output_spk_checks":output_spk,
         "metadata_checks":metadata,"verifier_stack":verifier_stack,"compute_mass":non_contextual.compute_mass,
         "storage_mass":masses.storage_mass,"transient_mass":non_contextual.transient_mass,
-        "executed_opcode_counts":executed_opcodes,"native_opcode_log":log,"final_main_hex":["01"],"final_alt":[]}),
+        "executed_opcode_counts":executed_opcodes,"native_opcode_log":log,
+        "final_stack_observation_point":"after redeem execution, before native final clean-stack/truth check consumes boolean",
+        "pre_final_check_main_hex":final_main.iter().map(hex::encode).collect::<Vec<_>>(),
+        "pre_final_check_alt_hex":final_alt.iter().map(hex::encode).collect::<Vec<_>>(),
+        "post_native_check_main_hex":post_check_main.iter().map(hex::encode).collect::<Vec<_>>(),
+        "post_native_check_alt_hex":post_check_alt.iter().map(hex::encode).collect::<Vec<_>>(),
+        "final_main_hex":["01"],"final_alt":[]}),
     )
 }
