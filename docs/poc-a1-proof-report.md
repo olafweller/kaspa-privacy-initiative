@@ -1,9 +1,14 @@
-# A1 unfunded implementation and falsification report
+# A1 implementation and falsification report
 
 Status: G1–G4 locally qualified; full G5 independent machine/archive evidence
 pending on `poc-a1-successor-state`, descending
 from merged specification `0193d1847aa53468d6056a925ffb60f2d69e5b23`.
-**No funding, broadcast, mainnet use, G6 execution or merge is authorized.**
+The [first live TN10 attempt](poc-a1-live-attempt-1.md) demonstrated S0 → S1,
+then **failed safely at the independent recovery boundary**. B never armed,
+A stayed online and recovery did not start. That terminal failed run was not
+resumed. Its S1 was later exited by a separate freshly proved, Full-validated,
+explicitly authorized transaction. This is not G5 recovery or a full G6 run.
+**No further live action, mainnet use, G6 execution or merge is authorized.**
 The fixture recipient private key is deliberately public **1**: never fund it.
 
 The frozen [ADR](adr/0003-a1-successor-reserve.md),
@@ -301,6 +306,12 @@ remain historical observations, not approval for subsequent funding.
 
 ## G5 — recovery boundaries
 
+[Live attempt 1](poc-a1-live-attempt-1.md) failed to complete C's boundary receipt
+before the status deadline because historical validation blocked the shared
+status/probe lock. C had the archived material; B correctly stayed unarmed.
+Unfunded repair regressions and the later separate owner exit do not close G5.
+The historical local rehearsals below retain their original scope.
+
 Recovery separates terminal spendability A from accepted lineage/accounting B.
 The scanner starts from retained exact S0 locator + checkpoint + artifact-index
 hash; processes cursor-paginated accepted transaction bodies, recomputes ID/full
@@ -432,9 +443,11 @@ verified on B before a real machine-loss test. User private backups must remain
 separate from publication. Actual random claim bytes/hex/base64 were scanned before
 publication; allowlists exclude all private backup files.
 
-Remaining blockers are full G5 independent B/C topology, independently retained
-accepted-history availability and complete live archive integration/retention
-qualification. Future funding also requires explicit G6 authority, refreshed
-quotes/actual target relay policy and a new non-public recipient instance.
-**Do not recommend G6 or fund this fixture.** PR remains draft; stop after local
-evidence closure. No mainnet, fund, broadcast, merge, node or invariant mutation.
+Remaining blockers include demonstrated independent whole-A-loss recovery and
+live pruning-cycle/history-retention survival. Attempt 1 established live C
+capture, but its complete recovery boundary never finished. A separate attempt
+needs repaired tooling pinned and freshly qualified before any new authorization;
+full G6 remains blocked by open G5. Future live work requires explicit authority,
+fresh quotes/actual target policy and a separately inspected private-owner instance.
+**Do not recommend G6 or fund the public fixture.** PR remains draft; the attempt
+record authorizes no further funding, broadcast, merge or invariant mutation.

@@ -9,8 +9,11 @@ qualification repairs are recorded in the [A1 report](poc-a1-proof-report.md).
 G5 tooling and isolated-container rehearsals do not close independent
 machine-loss/live-archive recovery. Full independent G5 remains open; G6 is
 unauthorized and unexecuted. The requirements below are the specification,
-not a claim that A1 is merged or every gate has passed. No A1 funding,
-broadcast, node reconfiguration or invariant change occurred.
+not a claim that A1 is merged or every gate has passed. Subsequent separate
+instructions authorized [live attempt 1](poc-a1-live-attempt-1.md): S0 funding,
+accepted S0 → S1, a failed independent recovery boundary, and a later separate
+terminal exit. Attempt 1 was not resumed or credited as G5/G6 success.
+No further live action or invariant change is authorized.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -55,7 +58,8 @@ calculated vectors. G2–G5 must reconcile on identical manifest/output bytes.
 The independent checker must not import the production serializer/compiler,
 and an adversarial reviewer should not author the safety assertion being
 evaluated. G0 design closure alone authorized no implementation. The subsequent
-explicit G1–G5 instruction authorizes unfunded local falsification, not G6.
+explicit G1–G5 instruction authorized unfunded local falsification, not G6;
+the later bounded attempt 1 and owner exit had separate specific authorization.
 
 ## Frozen G0 handoff checklist
 
@@ -176,8 +180,11 @@ blocker has been found. The implementation PR remains draft/unmerged.
 The report distinguishes model, actual native Full, native stateful consensus,
 SDK qualification, same-host namespace recovery and pending independent
 machine/archive evidence. Passing local checks or a namespace rehearsal does
-not close full G5. Until all G1–G5 pass and a separate G6 instruction is given,
-no reserve may be funded. Quotes/configuration must also be refreshed before
+not close full G5. Attempt 1 failed safely before A loss; its separately
+settled terminal exit changes no gate requirement. Full G6 still requires all
+G1–G5 and separate instructions. Any separate bounded recovery attempt needs a
+new qualified/pinned checklist and explicit authority; this record supplies none.
+Quotes/configuration must also be refreshed before
 future funding; the publicly known recipient fixture key must never be used.
 
 Actual hard protocol incompatibility stops work; failures must not be patched

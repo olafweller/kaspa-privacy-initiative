@@ -105,3 +105,10 @@ SDK receipts cannot qualify. `--historical-time SECONDS` explicitly replays an
 old quote for regression evidence; it is never current fee/funding approval.
 The complete invocation and source/binary hashes are reconstructable from the
 repair receipt and its listed inputs. Original evidence is retained unchanged.
+
+## Separate live attempt record
+
+[Live attempt 1](../../docs/poc-a1-live-attempt-1.md) demonstrated TN10 S0 → S1
+but failed safely at the independent recovery boundary. Its later owner terminal
+exit is separate evidence, not successful G5 recovery. Full G5 remains open;
+no further live action is authorized. The public fixtures above remain unfunded.
