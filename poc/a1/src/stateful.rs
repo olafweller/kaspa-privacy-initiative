@@ -5,6 +5,7 @@ use kaspa_consensus::consensus::test_consensus::TestConsensus;
 use kaspa_consensus_core::{
     api::{ConsensusApi, args::TransactionValidationArgs},
     config::{ConfigBuilder, params::TESTNET_PARAMS},
+    errors::tx::TxRuleError,
     header::Header,
     muhash::MuHashExtensions,
     tx::{MutableTransaction, Transaction, TransactionOutpoint, UtxoEntry},
@@ -67,6 +68,20 @@ impl Harness {
             .into_iter()
             .next()
             .and_then(|(op, entry)| (op == outpoint).then_some(entry))
+    }
+    fn require_spent_input(&self, tx: &Transaction) -> Result<String, String> {
+        let mut mutable = MutableTransaction::new(Arc::new(tx.clone()));
+        match self
+            .consensus
+            .validate_mempool_transaction(&mut mutable, &TransactionValidationArgs::default())
+        {
+            Err(TxRuleError::MissingTxOutpoints) => {
+                Ok("native virtual UTXO: MissingTxOutpoints".into())
+            }
+            result => Err(format!(
+                "expected native MissingTxOutpoints, got {result:?}"
+            )),
+        }
     }
     fn spend(&self, tx: &Transaction) -> Result<(), String> {
         let mut mutable = MutableTransaction::new(Arc::new(tx.clone()));
@@ -253,7 +268,7 @@ mod tests {
         other.inputs[0].sequence -= 1;
         other.finalize();
         crate::validator::set_mass(&other, &entry).unwrap();
-        // One-bit replay modification in suite must differ from loser too.
+        // Both competitors use nondefault sequences; replay must differ from both.
         tx.inputs[0].sequence -= 2;
         tx.finalize();
         crate::validator::set_mass(&tx, &entry).unwrap();
@@ -318,26 +333,23 @@ pub fn competing_and_reorg(
             return Err("loser payout/successor exists".into());
         }
     }
-    let loser_result = h.spend(loser);
-    if loser_result.is_ok() {
-        return Err("spent-input competitor accepted".into());
-    }
-    let exact_replay_result = h.spend(winner);
-    if exact_replay_result.is_ok() {
-        return Err("exact replay accepted as new virtual-UTXO spend".into());
-    }
+    let loser_result = h.require_spent_input(loser)?;
+    let exact_replay_result = h.require_spent_input(winner)?;
     let mut replay = winner.clone();
-    replay.inputs[0].sequence ^= 1; // Still relative-lock-disabled; outpoint proof remains valid.
+    // Three disabled-relative-lock sequences suffice for two competing bodies.
+    replay.inputs[0].sequence = [u64::MAX, u64::MAX - 1, u64::MAX - 2]
+        .into_iter()
+        .find(|sequence| {
+            *sequence != winner.inputs[0].sequence && *sequence != loser.inputs[0].sequence
+        })
+        .ok_or("no distinct relative-lock-disabled replay sequence")?;
     replay.finalize();
     crate::validator::set_mass(&replay, entry)?;
-    if replay.id() == winner.id() {
-        return Err("replay ID unchanged".into());
+    if replay.id() == winner.id() || replay.id() == loser.id() {
+        return Err("replay ID must differ from both competitors".into());
     }
     crate::validator::validate(&tv, &replay, entry)?;
-    let replay_result = h.spend(&replay);
-    if replay_result.is_ok() {
-        return Err("native spent-input replay accepted".into());
-    }
+    let replay_result = h.require_spent_input(&replay)?;
     let initial_acceptance = h
         .consensus
         .get_block_acceptance_data(merged)
@@ -440,10 +452,10 @@ pub fn competing_and_reorg(
         json!({"backend":"kaspa-consensus TestConsensus temporary RocksDB + native virtual processors",
         "network":"isolated synthetic genesis with TN10 parameters; no public-chain acceptance", "proof_of_work":"skipped",
         "both_standalone_valid":true,"both_initial_virtual_utxo_valid":true,"winner_txid":winner.id().to_string(),
-        "loser_txid":loser.id().to_string(),"loser_rejection":loser_result.unwrap_err(),
+        "loser_txid":loser.id().to_string(),"loser_rejection":loser_result,
         "exact_replay_behavior":"native virtual-UTXO validation rejects spent original input (no RPC/idempotent submission claim)",
-        "exact_replay_rejection":exact_replay_result.unwrap_err(),
-        "distinct_replay_standalone_valid":true,"distinct_replay_txid":replay.id().to_string(),"replay_rejection":replay_result.unwrap_err(),
+        "exact_replay_rejection":exact_replay_result,
+        "distinct_replay_standalone_valid":true,"distinct_replay_txid":replay.id().to_string(),"replay_rejection":replay_result,
         "fork_blocks":fork_blocks,"removed_chain_blocks":path.removed.iter().map(ToString::to_string).collect::<Vec<_>>(),
         "added_chain_blocks":path.added.iter().map(ToString::to_string).collect::<Vec<_>>(),
         "synthetic_genesis_hash":genesis.to_string(),"initial_accepting_block":merged.to_string(),

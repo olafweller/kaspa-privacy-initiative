@@ -24,6 +24,7 @@ const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 assert.equal(sha(fs.readFileSync(options['--sdk-archive'])), archivePin);
 for (const [name, pin] of Object.entries(filePins)) assert.equal(sha(fs.readFileSync(path.join(options['--sdk-dir'], name))), pin, name);
 const sdk = createRequire(import.meta.url)(path.join(options['--sdk-dir'], 'kaspa.js'));
+const manifestHash = sha(fs.readFileSync(path.join(options['--bundle'], 'manifest.json')));
 const read = name => JSON.parse(fs.readFileSync(path.join(options['--bundle'], name), 'utf8'));
 const fullSpk = spk => spk.version.toString(16).padStart(4, '0') + spk.script;
 function canonical(tx) {
@@ -103,7 +104,11 @@ for (const name of ['s0_continue', 's0_terminal', 's1_terminal']) {
     assert.throws(() => execFileSync(options['--validator'], ['validate-body', mutationPath], {encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']}), `${kind}: native Full must reject`);
     mutant.free(); mutationResults.push({mutation: kind, exact_readback_detected: true, native_full_rejected: true});
   }
-  branches.push({branch: name, safe_json_bytes: Buffer.byteLength(wire), safe_json_sha256: sha(wire),
+  const artifactNames = [name + '.vk', name + '.proof', name + '.context.hex',
+    name === 's1_terminal' ? 's1.redeem' : 's0.redeem'];
+  branches.push({branch: name, decoded_transaction: decodedBody, input_entry: request.entry,
+    measurement_sha256: sha(fs.readFileSync(path.join(options['--bundle'], name + '.measurement.json'))),
+    artifacts_sha256: Object.fromEntries(artifactNames.map(file => [file, sha(fs.readFileSync(path.join(options['--bundle'], file)))])), safe_json_bytes: Buffer.byteLength(wire), safe_json_sha256: sha(wire),
     numeric_json_bytes: Buffer.byteLength(numericWire), decoded_transport_sha256: sha(JSON.stringify(decodedBody)),
     txid: native.txid, full_hash: native.full_hash, native_full_after_decode: true,
     independent_hash_encoder_agrees: true, fee_sompi: native.fee,
@@ -114,7 +119,7 @@ for (const name of ['s0_continue', 's0_terminal', 's1_terminal']) {
     mass_evidence: 'Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates.'});
   decoded.free(); numericDecoded.free(); source.free();
 }
-console.log(JSON.stringify({schema: 'kpi-a1-sdk-roundtrip/v1', observed_at_utc: new Date().toISOString(),
+console.log(JSON.stringify({schema: 'kpi-a1-sdk-roundtrip/v2', manifest_sha256: manifestHash, observed_at_utc: new Date().toISOString(),
   scope: 'Offline unfunded three-branch final transaction serialization; no RPC, public-chain acceptance or wallet.',
   sdk_version: '2.1.0', sdk_archive_sha256: archivePin, extracted_files_sha256: filePins,
   native_validator_binary_sha256: sha(fs.readFileSync(options['--validator'])), independent_reference_binary_sha256: sha(fs.readFileSync(options['--reference'])),

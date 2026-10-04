@@ -175,7 +175,7 @@ fn hexbytes(v: &Value) -> Result<Vec<u8>> {
 fn tx_json(tx: &Transaction) -> Value {
     json!({"version":tx.version,"id":tx.id().to_string(),"inputs":tx.inputs.iter().map(|i|json!({"previousOutpoint":{"transactionId":i.previous_outpoint.transaction_id.to_string(),"index":i.previous_outpoint.index},"signatureScript":hex::encode(&i.signature_script),"sequence":i.sequence.to_string(),"sigOpCount":0,"computeBudget":i.compute_commit.compute_budget().unwrap()})).collect::<Vec<_>>(),"outputs":tx.outputs.iter().map(|o|json!({"value":o.value.to_string(),"scriptPublicKey":hex::encode(script::encode_spk(&o.script_public_key)),"covenant":o.covenant})).collect::<Vec<_>>(),"lockTime":tx.lock_time.to_string(),"subnetworkId":tx.subnetwork_id.to_string(),"gas":tx.gas.to_string(),"payload":hex::encode(&tx.payload),"storageMass":tx.storage_mass().to_string()})
 }
-fn parse_tx(v: &Value) -> Result<Transaction> {
+fn decode_tx(v: &Value) -> Result<Transaction> {
     if num(&v["version"])? != 1 {
         return Err("A1 version1 only".into());
     }
@@ -214,10 +214,53 @@ fn parse_tx(v: &Value) -> Result<Transaction> {
         hexbytes(&v["payload"])?,
     );
     t.set_storage_mass(num(&v["storageMass"])?);
+    Ok(t)
+}
+fn parse_tx(v: &Value) -> Result<Transaction> {
+    let t = decode_tx(v)?;
     if t.id().to_string() != text(&v["id"])? {
         return Err("decoded transaction ID mismatch".into());
     }
     Ok(t)
+}
+// Test-fixture preparation only. Strict validate-body never repairs a supplied ID.
+fn prepare_body(p: &Path) -> Result<Value> {
+    let v: Value = serde_json::from_slice(&fs::read(p)?)?;
+    let tx = decode_tx(&v["transaction"])?;
+    let entry: UtxoEntry = serde_json::from_value(v["entry"].clone())?;
+    validator::set_mass(&tx, &entry)?;
+    Ok(json!({"transaction": tx_json(&tx), "entry": entry}))
+}
+
+#[cfg(test)]
+mod transport_tests {
+    use super::*;
+
+    #[test]
+    fn stale_mutant_id_is_not_a_native_negative() {
+        let mut v: Value = serde_json::from_str(include_str!(
+            "../evidence/fixture-2026-10-03/s0_continue.validate.json"
+        ))
+        .unwrap();
+        let original = parse_tx(&v["transaction"]).unwrap();
+        v["transaction"]["outputs"].as_array_mut().unwrap().pop();
+        assert!(
+            parse_tx(&v["transaction"])
+                .unwrap_err()
+                .to_string()
+                .contains("ID mismatch")
+        );
+        let tx = decode_tx(&v["transaction"]).unwrap();
+        let entry: UtxoEntry = serde_json::from_value(v["entry"].clone()).unwrap();
+        validator::set_mass(&tx, &entry).unwrap();
+        assert_ne!(tx.id(), original.id());
+        assert_ne!(tx.storage_mass(), original.storage_mass());
+        let final_tx = parse_tx(&tx_json(&tx)).unwrap();
+        assert_eq!(
+            validator::validate(&validator::validator(), &final_tx, &entry).unwrap_err(),
+            "utxo: SignatureInvalid(VerifyError)"
+        );
+    }
 }
 fn validate_body(p: &Path) -> Result<Value> {
     let v: Value = serde_json::from_slice(&fs::read(p)?)?;
@@ -1065,6 +1108,7 @@ fn main() -> Result<()> {
         Some("experiment") if args.len()==2 => experiment(&PathBuf::from(&args[1]))?,
         Some("stateful") if args.len()==2 => stateful_bundle(Path::new(&args[1]))?,
         Some("validate-body") if args.len()==2 => validate_body(Path::new(&args[1]))?,
+        Some("prepare-body") if args.len()==2 => prepare_body(Path::new(&args[1]))?,
         Some("check-backup") if args.len()==4 => check_backup(Path::new(&args[1]),Path::new(&args[2]),Path::new(&args[3]))?,
         Some("native-path") if args.len()==2 => native_path(Path::new(&args[1]))?,
         Some("native-checkpoint") if args.len()==2 => native_checkpoint(Path::new(&args[1]))?,

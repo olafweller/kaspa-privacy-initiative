@@ -23,19 +23,43 @@ def push(data):
     return b'\x4d' + len(data).to_bytes(2, 'little') + data
 
 
+def assert_result(returncode, stdout, stderr, expected, reason):
+    """Any decoder, preparation, mass or unrelated failure invalidates coverage."""
+    if expected:
+        c.require(returncode == 0 and json.loads(stdout).get('full_valid') is True,
+                  'native Full positive control failed')
+        return 'native-Full-success'
+    c.require(returncode != 0, 'fund-safety negative unexpectedly accepted')
+    error = stderr.strip()
+    if reason == 'native-verifier-canonical-scalar':
+        c.require(error.startswith('Error: "utxo: SignatureInvalid(ZkIntegrity(') and
+                  'ARK serialization error' in error, 'wrong rejection layer: ' + error)
+        return 'native-verifier-canonical-scalar'
+    c.require(error == 'Error: "utxo: SignatureInvalid(VerifyError)"',
+              'wrong rejection layer: ' + error)
+    return 'native-script-verify'
+
+
 def run(bundle, binary):
     cases = []
     with tempfile.TemporaryDirectory(prefix='kpi-a1-extra-negative-') as temporary:
         path = Path(temporary) / 'request.json'
         def check(name, request, expected=False, reason='redeem-script'):
-            path.write_bytes(c.canonical_json(request))
             start = time.monotonic()
+            path.write_bytes(c.canonical_json(request))
+            prepared = subprocess.run([str(binary), 'prepare-body', str(path)],
+                                      capture_output=True, text=True, check=True)
+            final = json.loads(prepared.stdout)
+            path.write_bytes(c.canonical_json(final))
             p = subprocess.run([str(binary), 'validate-body', str(path)], capture_output=True, text=True)
-            accepted = p.returncode == 0
-            if accepted != expected:
-                raise ValueError('unexpected native result: ' + name + ': ' + p.stderr)
-            cases.append({'case': name, 'accepted': accepted, 'expected': expected,
-                          'expected_check': reason, 'actual_result': p.stdout.strip() if accepted else p.stderr.strip(),
+            layer = assert_result(p.returncode, p.stdout, p.stderr, expected, reason)
+            cases.append({'case': name, 'accepted': p.returncode == 0, 'expected': expected,
+                          'expected_check': reason, 'actual_layer': layer,
+                          'final_request_sha256': c.sha(c.canonical_json(final)),
+                          'final_txid': final['transaction']['id'],
+                          'final_storage_mass': final['transaction']['storageMass'],
+                          'id_recomputed': True, 'storage_mass_recomputed': True,
+                          'actual_result': p.stdout.strip() if expected else p.stderr.strip(),
                           'milliseconds': (time.monotonic() - start) * 1000})
         for branch in c.BRANCHES:
             base = c.load_json(bundle / (branch + '.validate.json'))
@@ -55,7 +79,7 @@ def run(bundle, binary):
                 check(f'{branch}/scalar_{position}_equals_Fr', changed, reason='native-verifier-canonical-scalar')
             for index in range(len(base['transaction']['outputs'])):
                 changed = copy.deepcopy(base); changed['transaction']['outputs'].pop(index)
-                check(f'{branch}/missing_output_{index}', changed, reason='native-isolation-or-redeem-count')
+                check(f'{branch}/missing_output_{index}', changed, reason='redeem-output-count')
                 full_spk = bytes.fromhex(base['transaction']['outputs'][index]['scriptPublicKey'])
                 script = full_spk[2:]
                 for offset in range(len(script)):
@@ -70,7 +94,7 @@ def run(bundle, binary):
         spk = bytes.fromhex(manifest['states']['s1']['spk_hex'])
         changed['transaction']['outputs'][0]['scriptPublicKey'] = spk.hex()
         check('s1_terminal/attempt_S2_same_S1_script', changed, reason='redeem-fixed-terminal-recipient')
-    return {'scope': 'real-golden-unfunded-native-Full-supplement', 'cases': cases,
+    return {'schema': 'kpi-a1-native-supplement/v2', 'validator_binary_sha256': c.sha(binary.read_bytes()), 'scope': 'real-golden-unfunded-native-Full-supplement-finalized-ID-and-mass', 'cases': cases,
             'case_count': len(cases), 'funding_authorized': False}
 
 

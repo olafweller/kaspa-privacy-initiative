@@ -78,7 +78,7 @@ const output = {
     sdk_archive_sha256: ARCHIVE_SHA256, extracted_files_sha256: FILE_PINS },
   rpc_methods: ['getInfo', 'getBlockDagInfo', 'getFeeEstimate'],
   source_default_relay_floor_sompi_per_gram: '100',
-  headroom_rule: 'Use max(source default relay floor, chosen current quote); require fixed fee >= ceil(5 * rate * normalized_non_contextual_mass / 4), using exact rational arithmetic.',
+  headroom_rule: 'Use max(source default relay floor, chosen current quote); require fixed fee >= ceil(5 * rate * normalized_overall_mass_including_storage / 4), using exact rational arithmetic.',
   observations,
 };
 console.log(JSON.stringify(output, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2));

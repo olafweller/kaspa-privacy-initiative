@@ -16,7 +16,7 @@ cd -- "$kpi_a1_root/poc/a1"
 case "${1:-test}" in
     build) exec cargo +1.91.0 build --locked --release --bins ;;
     test) exec cargo +1.91.0 test --locked --release -- --test-threads=2 ;;
-    experiment|stateful|validate-body|check-backup|fresh-terminal|fresh-continue|native-path|native-checkpoint)
+    experiment|stateful|prepare-body|validate-body|check-backup|fresh-terminal|fresh-continue|native-path|native-checkpoint)
         exec cargo +1.91.0 run --locked --release --bin kpi-poc-a1 -- "$@" ;;
     *) echo 'Usage: run_poc_a1.sh build|test|experiment NEW_DIR|stateful BUNDLE|validate-body REQUEST|fresh-terminal BUNDLE BRANCH SECRET REQUEST OUTPUT' >&2; exit 2 ;;
 esac
