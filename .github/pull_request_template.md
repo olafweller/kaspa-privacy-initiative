@@ -21,10 +21,10 @@ What becomes more or less observable?
 
 How was this validated?
 
-## Architecture decision
+## Architecture proposal / decision
 
-- [ ] No ADR required
-- [ ] ADR linked:
+- [ ] No RFC or ADR required
+- [ ] RFC or ADR linked:
 
 ## Mainnet safety
 

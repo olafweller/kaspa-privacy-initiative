@@ -29,7 +29,7 @@ trust assumption; two URLs do not establish independent operators. This is not
 local validation of the full live UTXO set, a finality proof or an audit.
 
 The [experiment decision](adr/0002-a0-reserve-release-experiment.md) records scope
-and documentation reconciliation. ADR-0001 remains Proposed. Neither the broader
+and documentation reconciliation. RFC-0001 remains Open. Neither the broader
 PoC A nor the repository's permissionless recovery gate is satisfied by A0.
 
 ## Exact authorization path
@@ -220,7 +220,7 @@ limited second-pass review; that is not an independent security audit.
   either the experiment or circuit tests with consistent native build settings.
 - `poc/a0/evidence/`: sanitized measurements and environment/source provenance.
 - This report, proof/upstream appendices, and ADR-0002: evidence and boundaries;
-  architecture/PoC references are updated without accepting ADR-0001.
+  architecture/PoC references are updated without accepting RFC-0001.
 
 The source, lockfile, runner, documentation, and sanitized evidence are prepared
 for the user-authorized feature branch and draft PR. Build caches and transient logs remain

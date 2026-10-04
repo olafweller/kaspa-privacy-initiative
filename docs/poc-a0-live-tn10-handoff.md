@@ -6,7 +6,7 @@ The subsequent implementation and exact operational steps are in the
 [A0 report](poc-a0.md). Statements about a missing adapter below are historical.
 
 **Scope:** continue A0 on TN10; do not start A1. Candidate A is experimental,
-ADR-0001 is Proposed, and A0 is not complete. No live TN10 evidence exists yet.
+RFC-0001 is Open, and A0 is not complete. No live TN10 evidence exists yet.
 
 Repository: `olafweller/kaspa-privacy-initiative`.
 Branch: `poc-a0-reserve-release`, targeting `main` through a draft PR.
@@ -173,7 +173,7 @@ versions, network/genesis checks, funding/release txids and output indexes,
 public transaction/proof/VK/redeem encodings, mass/fee measurements, timestamped
 acceptance and UTXO observations, all applicable negative-test responses, and
 replay/reorg limitations. Keep local and live evidence in separate files. Update
-the A0 report only for observations actually obtained. Do not accept ADR-0001,
+the A0 report only for observations actually obtained. Do not accept RFC-0001,
 select Candidate A, or claim anonymous/private-accounting/recovery functionality.
 
 Never commit `.env`, seed phrases, wallet/recipient private keys, the claim

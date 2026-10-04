@@ -8,7 +8,7 @@ The P01–P15 identifiers below are proposal IDs, independent of GitHub issue nu
 | --- | --- |
 | P01 | [#1: Map current Kaspa primitives for a shielded KAS PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/1) |
 | P02 | [#2: Locate and review existing Kaspa shielded-pool implementations](https://github.com/olafweller/kaspa-privacy-initiative/issues/2) |
-| P03 | [#3: Review ADR-0001 and choose a state architecture for the first PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/3) |
+| P03 | [#3: Review RFC-0001 and choose a state architecture for the first PoC](https://github.com/olafweller/kaspa-privacy-initiative/issues/3) |
 | P04 | [#4: Define the minimal note model](https://github.com/olafweller/kaspa-privacy-initiative/issues/4) |
 | P05 | [#5: Define nullifier requirements](https://github.com/olafweller/kaspa-privacy-initiative/issues/5) |
 | P06 | [#6: Define value-conservation proof statement](https://github.com/olafweller/kaspa-privacy-initiative/issues/6) |
@@ -58,7 +58,7 @@ Map public Kaspa privacy implementations/branches/commits.
 
 ---
 
-## P03 — Review ADR-0001 and choose a state architecture for the first PoC
+## P03 — Review RFC-0001 and choose a state architecture for the first PoC
 
 **Labels:** `architecture`, `adr`, `priority-high`
 
@@ -70,7 +70,7 @@ Compare:
 
 Evaluate against security invariants and current Kaspa capability.
 
-The [draft ADR](adr/0001-state-architecture.md) is Proposed. Review its objections, real-proof budgets, reserve/output bindings, and independent recovery/exit gates before recording acceptance. Do not infer acceptance from publication or the recommended investigation order.
+The [open RFC](rfc/0001-state-architecture.md) is Open. Review its objections, real-proof budgets, reserve/output bindings, and independent recovery/exit gates before recording a decision in an ADR. Do not infer acceptance from publication or the recommended investigation order.
 
 ---
 

@@ -1,10 +1,10 @@
-# ADR-0001: State architecture for the first native-KAS privacy PoC
+# RFC-0001: State architecture for the first native-KAS privacy PoC
 
-**Status:** Proposed
+**Status:** Open
 
 **Date:** 2026-10-02
 
-**Decision owner:** project review; no architecture accepted by this draft.
+**Review owner:** project review; no architecture accepted by this draft.
 
 ## Context
 
@@ -17,7 +17,7 @@ test KAS deposit -> private claim -> private value-conserving transfer
 
 The three candidates in [ARCHITECTURE.md](../ARCHITECTURE.md) share native-KAS backing but place state updates and ordering differently. Current Toccata specifications/code support investigating direct covenant proof verification. The based-app runtime remains a prototype; full cross-program vProgs composition is a separate research design. Exact reviewed commits, interfaces, and limitations are recorded in the [upstream evidence map](../../research/kaspa-toccata-vprogs.md).
 
-This ADR compares candidates and proposes an investigation order. It does not select production cryptography, establish feasibility, or authorize deployment.
+This RFC compares candidates and proposes an investigation order. It does not select production cryptography, establish feasibility, or authorize deployment.
 
 ## Constraints
 
@@ -129,11 +129,11 @@ Deposits, withdrawals, public amounts at those boundaries, fees, roots, operatio
 
 For C, publish ciphertexts/proofs and sufficient public transition data without publishing private witnesses. Specify how an executor validates a confidential operation. For every candidate, sending plaintext notes/spend material to a hosted prover introduces a confidentiality assumption that must be disclosed or avoided through local/private proving.
 
-## Decision
+## Proposed direction / outcome
 
 **Not decided.** Proposed investigation order: test A's settlement feasibility first, retain B and C as alternatives, and reconsider after measured results. A is the smallest falsifiable baseline, not an accepted production architecture. No throughput or permissionless-exit claim has been demonstrated.
 
-Before implementation, reviewers must assess this ADR and the existing-work map. Then define the proof statement, recovery data, and covenant output constraints. A later explicit review records acceptance or rejection; this draft changes no architectural commitment.
+Before implementation, reviewers must assess this RFC and the existing-work map. Then define the proof statement, recovery data, and covenant output constraints. A later explicit review records acceptance or rejection; this draft changes no architectural commitment.
 
 ## Objections / unresolved questions
 
@@ -150,7 +150,7 @@ Before implementation, reviewers must assess this ADR and the existing-work map.
 - [Pinned upstream map](../../research/kaspa-toccata-vprogs.md): active KIPs, verifier source, prototype runtime, draft full-vProgs specification, and inspected exits.
 - [Existing Kaspa work](../../research/existing-kaspa-privacy.md): prior proposal and boundaries of source inspection.
 - Mature-protocol research leads: [Orchard](../../research/zcash-orchard.md), [Aztec](../../research/aztec.md), [RAILGUN](../../research/railgun.md), [Monero](../../research/monero.md), [MWEB](../../research/litecoin-mweb.md). These notes are study inputs, not completed component reuse/security reviews.
-- [A0](../poc-a0.md) now supplies local real-proof consensus-code measurements and a limited circuit/covenant review for one terminal claim. No real-proof TN10 round trip or recovery experiment exists yet. This preliminary evidence does not accept this ADR; upstream development-mode demos do not substitute for the remaining gates.
+- [A0](../poc-a0.md) now supplies local real-proof consensus-code measurements and a limited circuit/covenant review for one terminal claim. No real-proof TN10 round trip or recovery experiment exists yet. This preliminary evidence does not accept this RFC; upstream development-mode demos do not substitute for the remaining gates.
 
 ## Revisit if
 

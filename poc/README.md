@@ -11,7 +11,7 @@ and exact payout constraints through pinned Kaspa consensus code. Its supplied
 local UTXO is not a funded TN10 reserve. A0 is narrower than PoC A below and does
 not satisfy the private-transfer or independent-recovery milestones. See
 [ADR-0002](../docs/adr/0002-a0-reserve-release-experiment.md) for the bounded scope;
-ADR-0001 remains Proposed.
+RFC-0001 remains Open.
 
 ## PoC A — Fund safety + private transition
 

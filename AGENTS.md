@@ -42,7 +42,7 @@ Before writing a new subsystem:
 3. inspect mature privacy protocols for analogous components;
 4. state the problem and security assumptions;
 5. compare candidate solutions;
-6. create/update an ADR;
+6. create/update an RFC for open design questions and record resolved decisions in an ADR;
 7. only then prototype.
 
 ## Source quality
@@ -112,12 +112,12 @@ When architecture changes:
 - update `docs/ARCHITECTURE.md`;
 - update affected open questions;
 - update the threat model if necessary;
-- create/update the ADR;
+- update the relevant RFC and record decisions in an ADR;
 - note newly introduced trust assumptions.
 
 ## Current agent priorities
 
-1. Work from the public GitHub issues and the current ADRs rather than recreating bootstrap work.
+1. Work from the public GitHub issues and the current RFCs/ADRs rather than recreating bootstrap work.
 2. Keep Kaspa/Toccata/vProgs research evidence current, source-grounded, and pinned to exact upstream files/commits where practical.
 3. Prioritize the open architecture and feasibility work in P01-P03 before substantial cryptographic implementation.
 4. Preserve the invariants in `SECURITY-INVARIANTS.md`. Do not weaken or reinterpret an invariant silently; any proposed change must be explicit and reviewed.
@@ -126,7 +126,7 @@ When architecture changes:
 7. Use test KAS only for experiments. Do not deploy experimental protocol code to mainnet or use real funds.
 8. Treat passing tests as evidence about the tested implementation, not as proof of cryptographic correctness or production safety.
 9. For every significant implementation, perform an adversarial second-pass review covering inflation, double spending, unauthorized exits, stale/replayed state, privacy leakage, dependency failure, and hidden trust assumptions.
-10. Keep documentation, ADRs, threat model, and security assumptions synchronized with implementation changes.
+10. Keep documentation, RFCs/ADRs, threat model, and security assumptions synchronized with implementation changes.
 
 ## Definition of a useful first PoC
 

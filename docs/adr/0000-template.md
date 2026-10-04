@@ -1,8 +1,10 @@
 # ADR-XXXX: Title
 
-**Status:** Proposed
+**Status:** Accepted / Rejected / Superseded
 
 **Date:** YYYY-MM-DD
+
+**Related RFC:** link, if applicable
 
 ## Context
 
@@ -52,7 +54,7 @@ What becomes public? What remains private? What metadata is introduced?
 
 ## Decision
 
-Not decided / chosen option and rationale.
+Record the chosen or rejected option, the decision's rationale, and its outcome.
 
 ## Objections / unresolved questions
 

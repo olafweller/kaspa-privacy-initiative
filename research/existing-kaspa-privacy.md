@@ -38,7 +38,7 @@ The enduring lesson is that a correct destination and a valid proof do not by th
 
 ## 5. Architecture hypotheses
 
-Our interpretation of current upstream sources is that direct inline-ZK covenants merit investigation before requiring a shared runtime. Batching through a based app may later help throughput. Neither conclusion establishes privacy, safe exits, or recovery. See [ADR-0001](../docs/adr/0001-state-architecture.md).
+Our interpretation of current upstream sources is that direct inline-ZK covenants merit investigation before requiring a shared runtime. Batching through a based app may later help throughput. Neither conclusion establishes privacy, safe exits, or recovery. See [RFC-0001](../docs/rfc/0001-state-architecture.md).
 
 ## Open action items
 

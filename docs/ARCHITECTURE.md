@@ -2,13 +2,13 @@
 
 **Status:** exploratory. No architecture has been selected.
 
-The proposed comparison is in [ADR-0001](adr/0001-state-architecture.md). It remains unaccepted pending review.
+The open comparison is in [RFC-0001](rfc/0001-state-architecture.md), pending review.
 
 The [A0 feasibility experiment](poc-a0.md) investigates direct Groth16 proof
 authorization and native payout constraints for one terminal claim. Its local
 consensus-code evidence must be distinguished from funded TN10 acceptance and
 the broader private-state/recovery requirements. This experiment does not select
-Candidate A or accept ADR-0001. A0.5 now records a terminal TN10 release and
+Candidate A or accept RFC-0001. A0.5 now records a terminal TN10 release and
 spent-input replay rejection through a retained-key/native-RPC test adapter
 under [ADR-0002](adr/0002-a0-reserve-release-experiment.md), with no change to
 the terminal proof statement or the candidate architecture.
@@ -290,7 +290,7 @@ Architecture comparisons should benchmark:
 
 The next step is not to choose based on intuition.
 
-Review the proposed [ADR-0001](adr/0001-state-architecture.md), which compares:
+Review the proposed [RFC-0001](rfc/0001-state-architecture.md), which compares:
 
 1. minimal L1 covenant pool;
 2. sharded/native covenant state;
