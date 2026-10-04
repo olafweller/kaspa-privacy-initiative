@@ -9,9 +9,17 @@
       "bytes": "48536",
       "sha256": "beac18bd18dd3f5322ba06d9c58c1674929f68b4a7b6d3262d046aff7de6d30c"
     },
+    "extra-native-negatives-repaired-2026-10-04.json": {
+      "bytes": "89903",
+      "sha256": "8d528e6de6045e9ce896eb4f4732ee26215ff6c53c6a9c65612e04893f3f5ec9"
+    },
     "extra-native-negatives.json": {
       "bytes": "38141",
       "sha256": "55326fae419ad7b48317d4482b2a7e5b7f8ca0d885867acfbd6d6361fa3aa5d7"
+    },
+    "fee-bound-qualification-2026-10-04.json": {
+      "bytes": "2323",
+      "sha256": "bb5425b6af463d2e0c0282a44ba3d5e889c934ecd7be35d1a864663e53d42a29"
     },
     "fee-qualification-2026-10-04.json": {
       "bytes": "1391",
@@ -212,6 +220,10 @@
     "isolated-prover-memory.json": {
       "bytes": "1128",
       "sha256": "80b6769c711f4863963110dc7679a8b4c3e8c6a050a1a1e252310293a9f3069b"
+    },
+    "qualification-repair-2026-10-04.json": {
+      "bytes": "2325",
+      "sha256": "8483f3a3e3c33f299f147afc81c3ddc36a006b00d3bf186fcd9b4a7b738bca46"
     },
     "recovery-container-2026-10-04/abrupt-s1/archive/current-entries.json": {
       "bytes": "992",
@@ -561,6 +573,14 @@
       "bytes": "2211",
       "sha256": "5303e371682d7b515afa38eca1ae3ce47eae52619fbe5e2ef7af4593771a3b20"
     },
+    "reorg-scanner-requalification-2026-10-04.json": {
+      "bytes": "6515",
+      "sha256": "677a753a1cd3b9f71295d25b8d25f137361ecdd15b1d7da63a94fb7ca12e002f"
+    },
+    "sdk-bound-requalification-2026-10-04.json": {
+      "bytes": "18561",
+      "sha256": "bef38972371e1efea05340c17b5b3db6297205c86cda186b7ec6d43ac0f61cc3"
+    },
     "sdk-requalification-2026-10-04.json": {
       "bytes": "5625",
       "sha256": "38244f8935c520f5baf8e59e207e01eebc1d8eb72afdfe83500c19141f33f0b1"
@@ -568,6 +588,10 @@
     "source-limits.md": {
       "bytes": "8511",
       "sha256": "6e232345d30a107eebb80a75ae4ee68786059ce2906fd412d7515503f89d3dad"
+    },
+    "stateful-requalification-2026-10-04.json": {
+      "bytes": "590348",
+      "sha256": "10c5a9fd77b0f91f4d4e0d34586be098b42b37ae9692a4cbee18cbf224dc81fa"
     },
     "verifier-diagnostics.json": {
       "bytes": "2001",
@@ -582,6 +606,7 @@
     "upper-hex",
     "base64"
   ],
+  "qualification_repair_source_commit": "9125dc04d4fac49c900e9e56351f27d1b0fac454",
   "schema": "kpi-a1-review-evidence-index/v1",
   "scope": "unfunded review evidence, not complete public-parameter/private-backup retention"
 }

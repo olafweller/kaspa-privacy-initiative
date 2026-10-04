@@ -7,7 +7,7 @@ fixtures: the deliberately public recipient fixture key is **1**.
 G1–G4 have unfunded local qualification evidence in the
 [A1 report](../../docs/poc-a1-proof-report.md). All three real proof paths,
 native stateful conflicts/reorgs, final SDK decoding and exact fee/resource
-checks pass. G5 has network-disabled Docker A/B/C rehearsals; physical-host loss
+checks pass. The [qualification repair](../../docs/poc-a1-proof-report.md#qualification-repair-after-independent-adversarial-review) corrects early-reject supplemental cases and binds fee evidence to final bodies/artifacts. G5 has network-disabled Docker A/B/C rehearsals; physical-host loss
 and independently retained live archive compatibility remain pending. Tool
 presence or a container rehearsal never closes full independent recovery.
 
@@ -90,3 +90,18 @@ The local complete bundle/receipt and image copies under ignored `.local/a1/`
 are durable local research records, **not proof of independent host retention**.
 Do not recommend G6 until true B/C machine/archive prerequisites and full G5
 are completed under separate instructions. Never fund the public-key-1 fixture.
+
+## Replaying repaired qualification evidence
+
+`prepare-body REQUEST.json` is a file-only negative-fixture helper: it recomputes
+ID and native storage mass before strict `validate-body`. Preparation is not
+validation. The supplemental harness requires the intended script/verifier error;
+a stale ID, wrong mass, process failure or unexpected acceptance fails the run.
+
+`scripts/a1_fee_check.py` additionally requires `--bundle DIR --validator BINARY`.
+It binds SDK v2 literal bodies, input entries, fees/budgets/IDs/full hashes,
+measurements and artifact hashes, then reruns native Full/masses. Legacy unbound
+SDK receipts cannot qualify. `--historical-time SECONDS` explicitly replays an
+old quote for regression evidence; it is never current fee/funding approval.
+The complete invocation and source/binary hashes are reconstructable from the
+repair receipt and its listed inputs. Original evidence is retained unchanged.

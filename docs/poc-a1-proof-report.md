@@ -13,6 +13,50 @@ This is a public, fixed-value, single-owner finite reserve experiment, not a
 shielded note system. No anonymity, confidential amounts, nullifiers, private
 transfers, post-quantum security, audit or production readiness is demonstrated.
 
+## Qualification repair after independent adversarial review
+
+The review of `8d936c1` found two qualification defects. Supplemental output
+mutations retained stale IDs: 142 cases rejected in transport decoding before
+native validation. The fee checker compared masses but did not bind all SDK
+fee/budget/ID/hash fields to the manifest and actual final bodies. These were
+evidence/tooling defects, not demonstrated unauthorized-spend paths.
+
+Repair source `9125dc04d4fac49c900e9e56351f27d1b0fac454` restores that portion of G2/G4 qualification.
+The [repair receipt](../poc/a1/evidence/qualification-repair-2026-10-04.json)
+pins the following newly executed evidence; original receipts remain unchanged:
+
+- [172 supplemental cases](../poc/a1/evidence/extra-native-negatives-repaired-2026-10-04.json)
+  use native final ID/storage-mass preparation, strict final-body decoding and
+  asserted script/verifier rejection categories. All formerly stale-ID cases
+  reach the intended check. Unexpected acceptance or an unrelated error fails
+  qualification. Strict `validate-body` never silently repairs stale IDs.
+- [SDK v2 receipt](../poc/a1/evidence/sdk-bound-requalification-2026-10-04.json)
+  retains exact decoded bodies/input contexts, the manifest hash, per-branch
+  measurement and VK/proof/context/redeem hashes. Three positives and nine
+  decoded negatives pass. The fee checker rejects mixed/duplicate branch
+  records and mismatched fee, budget, ID, full hash, mass or artifact receipts.
+- [Bound fee requalification](../poc/a1/evidence/fee-bound-qualification-2026-10-04.json)
+  reruns native Full/masses on the decoded bodies. It explicitly replays the
+  retained quote at its historical qualification time; it is **not a fresh
+  quote or current pre-funding approval**. Actual fees/budgets/amounts are unchanged.
+- [Native G3 rerun](../poc/a1/evidence/stateful-requalification-2026-10-04.json)
+  requires typed `MissingTxOutpoints`; each replay differs from both competitors.
+  [Scanner/accounting coupling](../poc/a1/evidence/reorg-scanner-requalification-2026-10-04.json)
+  again agrees with both native conflicting-branch reorgs. No G5 run occurred.
+
+Final repair checks: **20 Rust**, **46 Python**, **13 Node** tests pass; SDK
+roundtrips, formatting/syntax, docs and whitespace checks pass. Rust used pinned
+1.91.0/locked release builds with the existing native build cache. Existing
+historical setup, 966-case generation, 66 context negatives and recovery receipts
+were not regenerated or credited as newly executed. New public receipts derive
+from retained public fixtures only; the original private claim backup was not
+available here, so no new actual-private-value scan or setup ceremony is claimed.
+
+No underlying fund-safety negative was accepted. Historical supplemental coverage
+is corrected, not retroactively credited. G1/G3 results remain supported and the
+repaired local G2/G4 checks pass; full independent G5 remains open, G6 unexecuted,
+and PR #22 stays draft. Fixed-fee liveness and single-party setup trust remain.
+
 ## Evidence boundaries and reproduction
 
 The observed setup source is
@@ -88,7 +132,7 @@ truthy alternatives and noncanonical numeric equivalents are not selectors.
 The observed corpus has 966 native cases, including all 256 one-byte selectors
 for every branch, multibyte/empty selectors, all missing elements/extra slots/
 pair swaps, malformed scalars/proofs, wrong-branch proofs, output/envelope/
-metadata/outpoint mutations and equivalent-push positive controls. Supplemental
+metadata/outpoint mutations and equivalent-push positive controls. The repaired supplemental
 cases cover scalar lengths 0/16/64, exact Fr modulus, every byte of each output
 script, each missing output, forbidden S1→S2 and a different sufficient budget.
 Budget+1 is consensus-valid but fails the exact qualified adapter policy; it is
@@ -198,7 +242,7 @@ The isolated samples include PK subgroup/canonical parsing and proving/Full
 verification in a separate process; they are not a proof-only RSS attribution.
 Each generates a different proof than the golden; unchanged txids are expected
 because txid excludes the witness. They are not discovery or chain acceptance.
-The [final SDK requalification](../poc/a1/evidence/sdk-requalification-2026-10-04.json)
+The historical [final SDK requalification](../poc/a1/evidence/sdk-requalification-2026-10-04.json)
 repeats all three positives and nine decoded negatives using the v3 native
 binary `a2dd5ab1b8431af037d279511467c5b3acbf29712c248f501d4c35e1d8360ae1`
 and unchanged independently wired reference binary. Final decoded masses,
@@ -331,7 +375,7 @@ Its eventual availability does not by itself prove independent retention or
 failure-domain isolation. Real independently operated machine/archive evidence
 remains a prerequisite before declaring full G5 or recommending G6.
 
-## Final checks
+## Original implementation checks (before qualification repair)
 
 Pinned offline locked Rust release tests: **19 passed, 0 failed** in 132.52s;
 includes native checkpoint-before-acceptance/reproducible-seed regression.

@@ -65,11 +65,15 @@ mismatch also does not establish circuit context binding.
 
 The [setup/G2 fixture index](../poc/a1/evidence/fixture-2026-10-03/public-evidence-index.json)
 contains G2's literal positives, 966 cases and native traces.
-[Supplemental native cases](../poc/a1/evidence/extra-native-negatives.json),
+[Supplemental native cases](../poc/a1/evidence/extra-native-negatives-repaired-2026-10-04.json),
 [66 original-context tests](../poc/a1/evidence/context-negatives.json),
 [foreign setups](../poc/a1/evidence/foreign-setups.json) and
 [native verifier diagnostics](../poc/a1/evidence/verifier-diagnostics.json)
-have separately classified layers. A fabricated diagnostic SPK is not an A1
+have separately classified layers. The original supplemental receipt had 142
+stale-ID decoder rejections and does not establish those native checks. Its
+replacement recomputes ID/mass and asserts the intended layer. Bound SDK/fee
+receipts reject mixed transactions/artifacts; fee replay uses a historical quote
+and is not fresh funding approval. See the report's qualification-repair section. A fabricated diagnostic SPK is not an A1
 accepted path; unknown input-version acceptance is an upstream diagnostic that
 A1 funding/artifact inspection must reject.
 The [post-artifact aggregate index](../poc/a1/evidence/evidence-index.json)
@@ -85,11 +89,11 @@ This is local program-order evidence, not physical-machine or live-archive G5.
 | 04 | Claim/secret and outpoint circuit tests, original-context wrong-secret test, copied-proof output/recipient mutations | Cryptographic soundness proof or audit |
 | 05 | Literal pinned keys, malformed proof/scalar/range corpus; native arity/tag/trailing-key diagnostics | Production-safe setup/gadget assurance |
 | 06–07 | Acyclic real setup order; every output script byte/value/version/count/order/metadata mutations; wrong branches and fresh foreign setup proofs | Unbounded successor graph or arbitrary recipients |
-| 08 | [Actual native race/replay receipts](../poc/a1/evidence/fixture-2026-10-03/stateful.json): two first-valid competing spends, exact and distinct-ID replay rejection | Public TN10 races/settlement |
+| 08 | [Actual native race/replay receipts](../poc/a1/evidence/stateful-requalification-2026-10-04.json): two first-valid competing spends, exact and distinct-ID replay rejection | Public TN10 races/settlement |
 | 09 | Original-key instance/domain/stage/mode/range/outpoint tests; S1→S2 rejection; separate foreign-context/key tests | Copied identical-chain-state replay excluded by ADR |
-| 10 | [Native reorg + scanner accounting](../poc/a1/evidence/fixture-2026-10-03/reorg-scanner.json): actual removed/added chain groups, old outputs absent, final UTXOs exact; rollback/replay pointer/credits agree | Imported S0 checkpoint is not funding-lineage G5; no Bitcoin-only global-unspent claim |
+| 10 | [Native reorg + scanner accounting](../poc/a1/evidence/reorg-scanner-requalification-2026-10-04.json): actual removed/added chain groups, old outputs absent, final UTXOs exact; rollback/replay pointer/credits agree | Imported S0 checkpoint is not funding-lineage G5; no Bitcoin-only global-unspent claim |
 | 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks | Independent physical machine loss and live/indexed archive compatibility remain G5 pending |
-| 13 | Measured finite budgets; inadequate decoded budget rejects; [exact fee rules/forced failures](../poc/a1/evidence/fee-qualification.json) halt without changing terms | Guaranteed exit at arbitrary future rates |
+| 13 | Measured finite budgets; inadequate decoded budget rejects; [exact fee rules/forced failures](../poc/a1/evidence/fee-bound-qualification-2026-10-04.json) halt without changing terms | Guaranteed exit at arbitrary future rates |
 | 14 | Native fixed recipient derivation and actual backup-key/claim checks in clean B | Private note recipient spendability does not exist in A1 |
 | 15 | Observed circuit-specific setup, public VK/redeem pins, no bypass, no retained trapdoor material | Single-party setup trust, erasure/provenance proof, PQ unresolved |
 | 16 | [Pinned SDK roundtrips](../poc/a1/evidence/fixture-2026-10-03/sdk-roundtrip.json), BigInt u64 max, independent ID/FULL hash and fresh native masses, nine decoded native negatives | Live malicious/divergent-provider observation and complete RPC archive integration |
@@ -97,10 +101,10 @@ This is local program-order evidence, not physical-machine or live-archive G5.
 | 18–20 | All 256 selectors each branch, multibyte/empty/equivalent pushes, every witness pair/slot, exact key/tag/ABI, output version and unknown-input diagnostic | Unknown input SPK versions are inadmissible, not magically script-enforced |
 | 21 | Independent intent/codec/scripts/R1CS reconstruction, actual key validation and observed receipt; schema/matrix/hash/intent mutation unit tests | Same-host automated observation is not an independent-human ceremony; opaque CRS/shared gadget trust remains |
 | 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled | Full independently retained TN10 DAG-body archive and actual machine-loss G5 pending |
-| 24 | Fresh quotes, rational 25-percent rate / 10-percent B0 headroom and 10-percent execution budget; forced high/stale quote/low credit/wrong budget negatives | Remote custom relay configuration/admission, later quotes and post-funding liveness |
+| 24 | Historical quotes/replay, bound final-body receipts, rational 25-percent rate / 10-percent B0 headroom and 10-percent execution budget; forced high/stale quote/low credit/wrong budget negatives | Remote custom relay configuration/admission, later quotes and post-funding liveness |
 | 25 | Actual three-branch byte/resource/trace measurements, fresh native SDK-decoded masses; every measured path fits pinned limits | Live G6 measurements/admission/inclusion |
 
-19 Rust tests and 38 A1 Python tests pass. Runtime proof/case/SDK/native-chain
+After qualification repair, 20 Rust tests, 46 A1 Python tests and 13 Node tests pass. Runtime proof/case/SDK/native-chain
 results above are separate from unit tests; none is proof of cryptographic
 correctness. Full G5 is not closed, and G6 remains unauthorized.
 

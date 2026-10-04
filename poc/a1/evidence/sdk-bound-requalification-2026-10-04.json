@@ -1,0 +1,270 @@
+{
+  "schema": "kpi-a1-sdk-roundtrip/v2",
+  "manifest_sha256": "13518264eb4bf142fdcaf222d06725685770b7c6fbb0eee736d570ee48cee6e5",
+  "observed_at_utc": "2026-10-04T08:07:42.318Z",
+  "scope": "Offline unfunded three-branch final transaction serialization; no RPC, public-chain acceptance or wallet.",
+  "sdk_version": "2.1.0",
+  "sdk_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+  "extracted_files_sha256": {
+    "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+    "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+    "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+  },
+  "native_validator_binary_sha256": "23dc2c17da712b3626a2726af54cd19c8bd888168ae598b7237e5de163939dc4",
+  "independent_reference_binary_sha256": "7d5ed68c98681aa1fa489b65c5ab8a1f08daed7acbd34c63d271fdbb1c242bca",
+  "retained_decoded_public_requests": "/tmp/kpi-a1-sdk-roundtrip.R47K3y",
+  "branches": [
+    {
+      "branch": "s0_continue",
+      "decoded_transaction": {
+        "version": 1,
+        "id": "c755e4f002b3423c84cb9bb7416ff96e1c0edc0bbd251c27dde1f91b17a0733b",
+        "inputs": [
+          {
+            "previousOutpoint": {
+              "transactionId": "c501fa7e6780be7ec52a32b88a16084d656f390e3f6cc7cdfb9b60d6683e0b42",
+              "index": 0
+            },
+            "signatureScript": "20b7034238b54d9ce145e194f5a00fdad30000000000000000000000000000000020878c5fcf2f64964f6f99c9d2caab9b40000000000000000000000000000000004c809248b89f5d9e850f339ada4f93810e513ee34ecbed34e86b56fef6c8e2cb291f71d7edd494270036a9d8cad7eb2f2183f7e4eba7131ff472be4584415340911e5eed444d5df5a84785109e01a841aa4597eb44bd6f2d700f2dec1b5df67f962e82632c64afe9ccebdba81d12bb0c497815c4d0a68330564f8d9f3f3f902af78c01004d0905b2519db614000000000000000000000000000000000000000088b7009dc4009db5009d74549d760100876375b3519db9009d00be0480e7c63f9db4529d00c20400a025269d00c3250000aa20e2e86b94197f4f3edfa46124aae655482203b34f1b26f78851cc4e64e58cf068878800d64f9d51c2040084d7179d51c32400002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac8851d64f9d820280009d6b8201209d788201209d7500bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da801527fadba59088940ff96484476d205c8509666d398aeb3e9e93a0b0cbbefb32d706e9faffbe51fdfddbe646967d6d792c2fcf18a45b256a35f48a1b3783bad178adafa7bb723210f995c84f3e8dc76ea58c9d9f79a91a6d67cb213e5456c1a9815d3789345c92fac4427b7841fc6e0183a96c5e01fc3da83b30576dd1a7fb407107769c27300bf192b263d4dbfcb77613378d65bdbcfe0668cccec71141ef58a043c8510b81af450551c63376c189f1fd76a53b9a70d9bc6abff37863be360304ab2155a6e4444e16b476a20a4c1b9466d7f9e7fc1c4c013a4b76de61ab71f0e0600000000000000795f6bf7605fa66d3f973047c74ed64702bbd88b811728307a5ffa6574279a985b100cd4a4bf95a517e697414e379a2a37e94c3c3eeebcb84a93c9324e28371297f8ffd48c18a9de2cdc87aac4ecd3ce0316d62362ee712b046e12b33cbd51a8f537504faecc1d0d9fba722767b7e56a00f87a1b2faf3d883786aa62003a0d9e8c802adf41985d5cdf2bf1c3f57b2739b6b39917cb1b417b0910d0ebe5028123613bbdafbe3e828a01fa5e2be79c7eb7037620717b4e4655bcba41957708ea100120a6675188b3519db9009d00be0480e7c63f9db4519d00c2040024fd3d9d00c32400002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac8800d64f9d820280009d6b8201209d788201209d7500bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178a106abf316c70cc289ce08090a8880e4775fff70749f61770654f6e87bda800d4c6ed26aa4ad81d099e861a3f41ef1bb342fb47b9f4306b278f293a97dfc26c384894d79803f0de03450f860fc5f48bb52f1acfe106496f847e05e573fb896f06fc885b5e2ba09493f99006124d9bac8243dee2b5b57871e52d7e99c74e40a85ccd638c8037436536e8ea37da9d2e712b95575e1e53d628bbf9b150e365e8a9390ea1f0b533535bb2fead3fcccaa886c3ee56a2de93cb3d8993eff5d6f0b06fc8924089c1b26afc661ba4bf6340741b974fe6be7712d0e331ac662200cb58f0600000000000000eab6b2af7f7736dc3961a0fff91e2c4d619a9573a6fb2405851af5db5f4c3919e732f5bb8b473e2de92697cbebc18f3abb85b1995ce7e7bf667a4bd03fb76d8352474cc58011a773e2b270721c9c881aafcb692ca1b5d9a8057c3a5273419e0bdd4dc8a7d0ff351aa78c9c55c6e73a79e01d8d3fd8fce6fc5f323d376e0a5b0deb244342316651fa95c5787d61ffe89805fbf0797803294e9539511bf3a0589b1f1dea651ce8cbe12a1701ab1ecc089c0761a08a8befdeab1c778ee6c27c62a10120a668",
+            "sequence": "18446744073709551615",
+            "sigOpCount": 0,
+            "computeBudget": 1706
+          }
+        ],
+        "outputs": [
+          {
+            "value": "640000000",
+            "scriptPublicKey": "0000aa20e2e86b94197f4f3edfa46124aae655482203b34f1b26f78851cc4e64e58cf06887",
+            "covenant": null
+          },
+          {
+            "value": "400000000",
+            "scriptPublicKey": "00002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac",
+            "covenant": null
+          }
+        ],
+        "lockTime": "0",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "gas": "0",
+        "payload": "",
+        "storageMass": "3128"
+      },
+      "input_entry": {
+        "amount": 1070000000,
+        "blockDaaScore": 0,
+        "covenantId": null,
+        "isCoinbase": false,
+        "scriptPublicKey": "0000aa20177e36eb9572c0ae779f84091d3c1c6cd9a0ed0da5d6cb612f0822a5d67742d887"
+      },
+      "measurement_sha256": "ce46c82be0e7bf37521c0dcbdbb2b43253db9f2ff730107eeb36609ab79af416",
+      "artifacts_sha256": {
+        "s0_continue.vk": "4d3ce49ddaf45e6630924bde0be07c0e4b8d7ec1fd8df6f69f9e46f3ec29c7df",
+        "s0_continue.proof": "c8d6bb83107e3973f380fe7421f0bc961c03cfa0b2ed2fdc2ef2fd986b788c95",
+        "s0_continue.context.hex": "77ac910dbd1bfce189cbbe5a6960110021be6eb16c3e64de4d1992ccd18769a5",
+        "s0.redeem": "cca6603bcdb6dc7d972eff58a887c715dbf3541791f8582a3afbfd8122ccf8fb"
+      },
+      "safe_json_bytes": 3853,
+      "safe_json_sha256": "45444c1eea5e19575fce7f766e13b78cc25ad69350f5ccb4f1ad44ab8713138a",
+      "numeric_json_bytes": 3837,
+      "decoded_transport_sha256": "e016ffa7df7275944a96c1bb7d1aea49e55834ce7be67d3892b2243861dc659b",
+      "txid": "c755e4f002b3423c84cb9bb7416ff96e1c0edc0bbd251c27dde1f91b17a0733b",
+      "full_hash": "77f81c97011dd7a83a39d81945ec26d59d14663b061ff58798f70efe21a2c117",
+      "native_full_after_decode": true,
+      "independent_hash_encoder_agrees": true,
+      "fee_sompi": "30000000",
+      "literal_witness_and_proof_preserved": true,
+      "compute_budget": 1706,
+      "committed_storage_mass": "3128",
+      "output_covenant_none_preserved": true,
+      "decoded_negative_cases": [
+        {
+          "mutation": "wrong-proof-byte",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "insufficient-budget",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "covenant-some-zero",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        }
+      ],
+      "native_masses": {
+        "compute": 173073,
+        "storage": 3128,
+        "transient": 6972
+      },
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates."
+    },
+    {
+      "branch": "s0_terminal",
+      "decoded_transaction": {
+        "version": 1,
+        "id": "9e87b4e96f790f7a954a933d7b2faa5be7721e56b8861373e01ef6b0b7731c5c",
+        "inputs": [
+          {
+            "previousOutpoint": {
+              "transactionId": "c501fa7e6780be7ec52a32b88a16084d656f390e3f6cc7cdfb9b60d6683e0b42",
+              "index": 0
+            },
+            "signatureScript": "20721aa70694142bd7ef52595a1720e0f1000000000000000000000000000000002079c22a3b9c87b9eaa92d43c48be004b9000000000000000000000000000000004c804f42bee579b110eec2687a7d9fc64aa77329c57f6c7c6fc7a18d6496082622aecdb40ffc85d9613eb5c34d15fdae5b09f34f70d224df853075762440ff37771bdc64c788574da382f99e9399eeec0eb289ca11a64689c0cf5e8074c5e11fdda66973b80698f7d2fb0e499a9e27b4d2d5fcb769901326bc1ccfcf9d2d55f88d11514d0905b2519db614000000000000000000000000000000000000000088b7009dc4009db5009d74549d760100876375b3519db9009d00be0480e7c63f9db4529d00c20400a025269d00c3250000aa20e2e86b94197f4f3edfa46124aae655482203b34f1b26f78851cc4e64e58cf068878800d64f9d51c2040084d7179d51c32400002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac8851d64f9d820280009d6b8201209d788201209d7500bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da801527fadba59088940ff96484476d205c8509666d398aeb3e9e93a0b0cbbefb32d706e9faffbe51fdfddbe646967d6d792c2fcf18a45b256a35f48a1b3783bad178adafa7bb723210f995c84f3e8dc76ea58c9d9f79a91a6d67cb213e5456c1a9815d3789345c92fac4427b7841fc6e0183a96c5e01fc3da83b30576dd1a7fb407107769c27300bf192b263d4dbfcb77613378d65bdbcfe0668cccec71141ef58a043c8510b81af450551c63376c189f1fd76a53b9a70d9bc6abff37863be360304ab2155a6e4444e16b476a20a4c1b9466d7f9e7fc1c4c013a4b76de61ab71f0e0600000000000000795f6bf7605fa66d3f973047c74ed64702bbd88b811728307a5ffa6574279a985b100cd4a4bf95a517e697414e379a2a37e94c3c3eeebcb84a93c9324e28371297f8ffd48c18a9de2cdc87aac4ecd3ce0316d62362ee712b046e12b33cbd51a8f537504faecc1d0d9fba722767b7e56a00f87a1b2faf3d883786aa62003a0d9e8c802adf41985d5cdf2bf1c3f57b2739b6b39917cb1b417b0910d0ebe5028123613bbdafbe3e828a01fa5e2be79c7eb7037620717b4e4655bcba41957708ea100120a6675188b3519db9009d00be0480e7c63f9db4519d00c2040024fd3d9d00c32400002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac8800d64f9d820280009d6b8201209d788201209d7500bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da80178a106abf316c70cc289ce08090a8880e4775fff70749f61770654f6e87bda800d4c6ed26aa4ad81d099e861a3f41ef1bb342fb47b9f4306b278f293a97dfc26c384894d79803f0de03450f860fc5f48bb52f1acfe106496f847e05e573fb896f06fc885b5e2ba09493f99006124d9bac8243dee2b5b57871e52d7e99c74e40a85ccd638c8037436536e8ea37da9d2e712b95575e1e53d628bbf9b150e365e8a9390ea1f0b533535bb2fead3fcccaa886c3ee56a2de93cb3d8993eff5d6f0b06fc8924089c1b26afc661ba4bf6340741b974fe6be7712d0e331ac662200cb58f0600000000000000eab6b2af7f7736dc3961a0fff91e2c4d619a9573a6fb2405851af5db5f4c3919e732f5bb8b473e2de92697cbebc18f3abb85b1995ce7e7bf667a4bd03fb76d8352474cc58011a773e2b270721c9c881aafcb692ca1b5d9a8057c3a5273419e0bdd4dc8a7d0ff351aa78c9c55c6e73a79e01d8d3fd8fce6fc5f323d376e0a5b0deb244342316651fa95c5787d61ffe89805fbf0797803294e9539511bf3a0589b1f1dea651ce8cbe12a1701ab1ecc089c0761a08a8befdeab1c778ee6c27c62a10120a668",
+            "sequence": "18446744073709551615",
+            "sigOpCount": 0,
+            "computeBudget": 1706
+          }
+        ],
+        "outputs": [
+          {
+            "value": "1040000000",
+            "scriptPublicKey": "00002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac",
+            "covenant": null
+          }
+        ],
+        "lockTime": "0",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "gas": "0",
+        "payload": "",
+        "storageMass": "27"
+      },
+      "input_entry": {
+        "amount": 1070000000,
+        "blockDaaScore": 0,
+        "covenantId": null,
+        "isCoinbase": false,
+        "scriptPublicKey": "0000aa20177e36eb9572c0ae779f84091d3c1c6cd9a0ed0da5d6cb612f0822a5d67742d887"
+      },
+      "measurement_sha256": "083952fa2e9a3e6527de5447dbdd54309e9fd2615f1f19595e3e56e13ac6ad32",
+      "artifacts_sha256": {
+        "s0_terminal.vk": "f84d598f9d343c5b025e02f7ffab29d7745b101c44638158d5a4d537d0ac37bd",
+        "s0_terminal.proof": "3ba0d6cb734dfab2c810db6d5f128ff0047c3b15b19b67bf3fefe73b446ab256",
+        "s0_terminal.context.hex": "ad0591e055e79d620b5cccdb9b07e51b77a2cab591ef5038b1119eccf83ee4c1",
+        "s0.redeem": "cca6603bcdb6dc7d972eff58a887c715dbf3541791f8582a3afbfd8122ccf8fb"
+      },
+      "safe_json_bytes": 3717,
+      "safe_json_sha256": "8e2fda3ba56ee9b58103651453496ddc4bdabf70b5d72d971302005b9d4a6ce7",
+      "numeric_json_bytes": 3703,
+      "decoded_transport_sha256": "39ee82eb6c88e3684487108d977cb075664b131c3c8c364dece1c978e32254c1",
+      "txid": "9e87b4e96f790f7a954a933d7b2faa5be7721e56b8861373e01ef6b0b7731c5c",
+      "full_hash": "068f2f73bc9f9e6996f9350273aa46e5d6428b208cf70978383ea1cef6e372d0",
+      "native_full_after_decode": true,
+      "independent_hash_encoder_agrees": true,
+      "fee_sompi": "30000000",
+      "literal_witness_and_proof_preserved": true,
+      "compute_budget": 1706,
+      "committed_storage_mass": "27",
+      "output_covenant_none_preserved": true,
+      "decoded_negative_cases": [
+        {
+          "mutation": "wrong-proof-byte",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "insufficient-budget",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "covenant-some-zero",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        }
+      ],
+      "native_masses": {
+        "compute": 172649,
+        "storage": 27,
+        "transient": 6756
+      },
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates."
+    },
+    {
+      "branch": "s1_terminal",
+      "decoded_transaction": {
+        "version": 1,
+        "id": "58a989d8c581dd101d30f7fd4414d6d7dbc76b231c33547f4d665881efe5d005",
+        "inputs": [
+          {
+            "previousOutpoint": {
+              "transactionId": "c755e4f002b3423c84cb9bb7416ff96e1c0edc0bbd251c27dde1f91b17a0733b",
+              "index": 0
+            },
+            "signatureScript": "20bf343f9e5a2d58a55215bcc093fc40b500000000000000000000000000000000203a354829af3e52b11833d9fd007cc861000000000000000000000000000000004c80ec2c045a954f7512d3a5b40f6a9973d7cc1febb44451f4ff2bcc7b3373d4819ba8672442a7cf81a6f5cea1f2420088d8ed87fec5411fe33a29e0cb3356df192ce34bb4e088bbe5e6850cc507077e7f0ee79a51a828f0d1cdd08ba6f5145db59f7f29c64616d221d0866d0deeae4d16a92d922dc46206aaf0c07f95b56838cca7514d7a02b2519db614000000000000000000000000000000000000000088b7009dc4009db5009d74549d5188b3519db9009d00be0400a025269db4519d00c20480dc5b249d00c32400002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac8800d64f9d820280009d6b8201209d788201209d7500bb58cd180000000000000000000000000000000000000000000000007e00ba6001207f10000000000000000000000000000000007e00ba00607f10000000000000000000000000000000007e556c4da801c02cb5ff773c0e1a3973152d4a6d5c812d1b06980f9f323d9fa4bd242374731aae9a157ddc4781c1e9f0db8e9790d1405cec197c1b2489e3217c70f2c1fe1c028f4cd517ae34b74662145d22289fa7f20c0722759614c59999a7dd7275c36ea061a4799806e762914ea9b8cc5ce6c018235d4facdad2e176d2a25dc362b35d263db1b0095487c6fa7d65d9977c9f945dd9523d1856b8455c40652ad570c6faac30ea90f880c378cf10e9e7781d2bfeae97c471710a6850c6becd6dc9a7e2df281a8a0a8a5c3b2a34d239807857838999cb50a49f315cc18c92ddd59324b51ba7060000000000000016e8dfcecc00130d7badac0aa9ec5531f301dd2bbd97d11c51828daf743c6418bf64d004c3070762800a52c75412026bb5bdd2c203e570ad76181f490436cf20ca6a52a026acb93132eaa0725be8fd3c992f08afbb8115dad3e761ff1459e305c80b8cbd4484008dd8428263f0521301d6c67df4b37a53c3e8e25f8a8dcfe89889fc029dd9b37f607043942d3065aeff23d1e59b6588a744e1a8f3f268d7d1826b6d4aca676e9cecff7bb1b95852ff75181a17a324b7cf51276a402000d6adad0120a6",
+            "sequence": "18446744073709551615",
+            "sigOpCount": 0,
+            "computeBudget": 1706
+          }
+        ],
+        "outputs": [
+          {
+            "value": "610000000",
+            "scriptPublicKey": "00002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac",
+            "covenant": null
+          }
+        ],
+        "lockTime": "0",
+        "subnetworkId": "0000000000000000000000000000000000000000",
+        "gas": "0",
+        "payload": "",
+        "storageMass": "77"
+      },
+      "input_entry": {
+        "amount": 640000000,
+        "blockDaaScore": 0,
+        "covenantId": null,
+        "isCoinbase": false,
+        "scriptPublicKey": "0000aa20e2e86b94197f4f3edfa46124aae655482203b34f1b26f78851cc4e64e58cf06887"
+      },
+      "measurement_sha256": "715b486d066ae189ca2723f6e68afe16b249a3da8674c49d75d7c7be521d9885",
+      "artifacts_sha256": {
+        "s1_terminal.vk": "2bc6deec35d1e319a3565747968a44a2d4bbefd497766639c15f7d44111e5a7d",
+        "s1_terminal.proof": "0bcc577cb3509743ee41e1c72f7174be9814eaa205b0aa6c5f9c9777acc7698c",
+        "s1_terminal.context.hex": "1687f6338194e5eff467105758815eb2d9d72e6f3ac391d3841bd2b035f5f7c4",
+        "s1.redeem": "175cc26dc10e3351b0ca60b05ee377496741686495fb3822478f2a96bdcde97e"
+      },
+      "safe_json_bytes": 2405,
+      "safe_json_sha256": "ddec31c62c041fc40e7ea76f396e6c204c1a912f06ce93b78da48e8fa023f422",
+      "numeric_json_bytes": 2391,
+      "decoded_transport_sha256": "d450cfa86c87cde2d896716784b720e8a2290ed3cecf56838fa92b805d2906a9",
+      "txid": "58a989d8c581dd101d30f7fd4414d6d7dbc76b231c33547f4d665881efe5d005",
+      "full_hash": "9e7411e277c990444e16ec0ce6ef462a81725cbf6d476afca1caf5f6c5d10f03",
+      "native_full_after_decode": true,
+      "independent_hash_encoder_agrees": true,
+      "fee_sompi": "30000000",
+      "literal_witness_and_proof_preserved": true,
+      "compute_budget": 1706,
+      "committed_storage_mass": "77",
+      "output_covenant_none_preserved": true,
+      "decoded_negative_cases": [
+        {
+          "mutation": "wrong-proof-byte",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "insufficient-budget",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        },
+        {
+          "mutation": "covenant-some-zero",
+          "exact_readback_detected": true,
+          "native_full_rejected": true
+        }
+      ],
+      "native_masses": {
+        "compute": 171994,
+        "storage": 77,
+        "transient": 4136
+      },
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates."
+    }
+  ],
+  "negative_guards": [
+    "cached wrong ID fails canonical equality",
+    "IEEE-754 sequence precision loss detected"
+  ]
+}

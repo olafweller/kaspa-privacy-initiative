@@ -1,0 +1,58 @@
+{
+  "G5_executed": false,
+  "G5_full_closure": false,
+  "G6_executed": false,
+  "fee_historical_quote_replay": true,
+  "fee_scope": "historical quote replay with freshly revalidated decoded bodies; not current fee/admission qualification",
+  "files": {
+    "extra-native-negatives-repaired-2026-10-04.json": {
+      "bytes": "89903",
+      "sha256": "8d528e6de6045e9ce896eb4f4732ee26215ff6c53c6a9c65612e04893f3f5ec9"
+    },
+    "fee-bound-qualification-2026-10-04.json": {
+      "bytes": "2323",
+      "sha256": "bb5425b6af463d2e0c0282a44ba3d5e889c934ecd7be35d1a864663e53d42a29"
+    },
+    "reorg-scanner-requalification-2026-10-04.json": {
+      "bytes": "6515",
+      "sha256": "677a753a1cd3b9f71295d25b8d25f137361ecdd15b1d7da63a94fb7ca12e002f"
+    },
+    "sdk-bound-requalification-2026-10-04.json": {
+      "bytes": "18561",
+      "sha256": "bef38972371e1efea05340c17b5b3db6297205c86cda186b7ec6d43ac0f61cc3"
+    },
+    "stateful-requalification-2026-10-04.json": {
+      "bytes": "590348",
+      "sha256": "10c5a9fd77b0f91f4d4e0d34586be098b42b37ae9692a4cbee18cbf224dc81fa"
+    }
+  },
+  "funding_authorized": false,
+  "original_reviewed_head": "8d936c1999416771307560694723581bf58a1ac1",
+  "publication_scope": "new files contain public retained fixture bodies/proofs and test results only; original private claim backup unavailable in this review environment, no new private-value scan claimed",
+  "reference_binary_sha256": "7d5ed68c98681aa1fa489b65c5ab8a1f08daed7acbd34c63d271fdbb1c242bca",
+  "rust_toolchain": "1.91.0",
+  "schema": "kpi-a1-qualification-repair/v1",
+  "source_commit": "9125dc04d4fac49c900e9e56351f27d1b0fac454",
+  "tests": {
+    "native_reorgs_and_scanner_couplings": 2,
+    "node_passed": 13,
+    "python_passed": 46,
+    "rust_passed": 20,
+    "sdk_decoded_negatives": 9,
+    "sdk_positive_branches": 3,
+    "supplemental_cases": 172,
+    "supplemental_layers": {
+      "native-Full-success": 6,
+      "native-script-verify": 160,
+      "native-verifier-canonical-scalar": 6
+    }
+  },
+  "unchanged": [
+    "setup constants and keys",
+    "reserve and payout amounts",
+    "original historical evidence",
+    "security invariants"
+  ],
+  "upstream_commit": "01b532e8b553523216471682649693af92f0fd16",
+  "validator_binary_sha256": "23dc2c17da712b3626a2726af54cd19c8bd888168ae598b7237e5de163939dc4"
+}
