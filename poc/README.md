@@ -8,10 +8,14 @@ Use **test KAS only**.
 
 The [A0 experiment](../docs/poc-a0.md) tests a real Groth16 authorization proof
 and exact payout constraints through pinned Kaspa consensus code. Its supplied
-local UTXO is not a funded TN10 reserve. A0 is narrower than PoC A below and does
+local UTXO is distinct from the later A0.5 funded TN10 reserve release. A0.5 observed a native test-KAS payout using public native RPC UTXO/acceptance observations; the own node did not have complete UTXO sync. This was not independent recovery, a privacy pool, an audit or production safety. A0 is narrower than PoC A below and does
 not satisfy the private-transfer or independent-recovery milestones. See
 [ADR-0002](../docs/adr/0002-a0-reserve-release-experiment.md) for the bounded scope;
 RFC-0001 remains Open.
+
+## A1 — finite authenticated successor experiment
+
+The specification is merged; implementation is in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22). Local/native-synthetic G1–G4 evidence and repairs to qualification checks do not close independent G5 recovery. No live G6 execution has occurred. A1 is one public fixed-recipient claim, not private transfers or accepted pool architecture. See the [reviewer guide](../docs/REVIEWER-GUIDE.md).
 
 ## PoC A — Fund safety + private transition
 

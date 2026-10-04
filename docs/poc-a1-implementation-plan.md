@@ -1,13 +1,16 @@
 # A1 implementation plan
 
-**Status:** G0 specification merged at
-`0193d1847aa53468d6056a925ffb60f2d69e5b23`. Separately authorized unfunded
-implementation now lives on `poc-a1-successor-state`. G1/G2 are locally
-demonstrated; G3 native synthetic consensus and G4 decoded SDK/resource/fee
-qualification have evidence in the [A1 report](poc-a1-proof-report.md).
-G5 tooling and isolated-container rehearsals do not yet close independent
-machine-loss/live-archive recovery. G6 is unauthorized and unexecuted.
-No funding, broadcast, merge, node reconfiguration or invariant change occurred.
+**Status:** this page preserves the G0 specification merged at
+`0193d1847aa53468d6056a925ffb60f2d69e5b23` and its implementation handoff.
+Separately authorized unfunded implementation is on `poc-a1-successor-state`
+in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22).
+Local/native-synthetic G1–G4 evidence and the supplemental-negative/fee-receipt
+qualification repairs are recorded in the [A1 report](poc-a1-proof-report.md).
+G5 tooling and isolated-container rehearsals do not close independent
+machine-loss/live-archive recovery. Full independent G5 remains open; G6 is
+unauthorized and unexecuted. The requirements below are the specification,
+not a claim that A1 is merged or every gate has passed. No A1 funding,
+broadcast, node reconfiguration or invariant change occurred.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -176,6 +179,7 @@ machine/archive evidence. Passing local checks or a namespace rehearsal does
 not close full G5. Until all G1–G5 pass and a separate G6 instruction is given,
 no reserve may be funded. Quotes/configuration must also be refreshed before
 future funding; the publicly known recipient fixture key must never be used.
+
 Actual hard protocol incompatibility stops work; failures must not be patched
 by weaker output/VK/accounting constraints. All security invariants and trusted
 single-party setup/chain-observation limits remain explicit and unchanged.

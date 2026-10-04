@@ -1,0 +1,111 @@
+name: Code checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      review_ref:
+        description: 'Optional explicit ref (e.g. refs/pull/22/head); tests only, no chain operations'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: code-${{ github.workflow }}-${{ github.ref }}-${{ inputs.review_ref }}
+  cancel-in-progress: true
+
+jobs:
+  scope:
+    runs-on: ubuntu-24.04
+    outputs:
+      components: ${{ steps.scope.outputs.components }}
+      sha: ${{ steps.scope.outputs.sha }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.review_ref || github.ref }}
+          persist-credentials: false
+      - id: scope
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          components = [name for name in ('a0', 'a1') if Path(f'poc/{name}/Cargo.toml').is_file()]
+          assert components, 'No experimental Rust component found'
+          sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              out.write('components=' + json.dumps(components) + '\nsha=' + sha + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write(f'Tested source: `{sha}`. Rust components: {components}.\n')
+              if 'a1' not in components:
+                  out.write('A1 is absent from this ref: no A1 qualification is claimed.\n')
+          PY
+  fast:
+    needs: scope
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ needs.scope.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .local/sdk/kaspa-wasm32-sdk-v2.1.0.zip
+          key: sdk-v2.1.0-ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124
+      - name: Install hash-verified SDK (no node, RPC or wallet)
+        run: bash scripts/ci_setup_sdk.sh
+      - name: Docs, Python, Node and syntax checks
+        run: bash scripts/ci_fast.sh
+  rust:
+    needs: scope
+    strategy:
+      fail-fast: false
+      matrix:
+        component: ${{ fromJSON(needs.scope.outputs.components) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/kpi/.local/ci-target
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ needs.scope.outputs.sha }}
+          path: kpi
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: kaspanet/rusty-kaspa
+          ref: 01b532e8b553523216471682649693af92f0fd16
+          path: upstream/rusty-kaspa
+          persist-credentials: false
+      - name: Native build prerequisites and pinned Rust
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang libclang-dev llvm-dev cmake pkg-config libssl-dev protobuf-compiler
+          rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            kpi/.local/ci-target
+          key: rust-ubuntu24-x64-1.91.0-01b532e-${{ matrix.component }}-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+      - name: Check formatting and run locked release tests
+        working-directory: kpi
+        env:
+          KPI_CI_COMPONENT: ${{ matrix.component }}
+        run: |
+          test "$(git -C ../upstream/rusty-kaspa rev-parse HEAD)" = 01b532e8b553523216471682649693af92f0fd16
+          export BINDGEN_EXTRA_CLANG_ARGS="-isystem $(cc -print-file-name=include)"
+          cargo +1.91.0 fmt --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" --check
+          cargo +1.91.0 test --locked --release --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" -- --test-threads=2

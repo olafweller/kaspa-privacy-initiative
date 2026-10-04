@@ -131,9 +131,9 @@ For C, publish ciphertexts/proofs and sufficient public transition data without 
 
 ## Proposed direction / outcome
 
-**Not decided.** Proposed investigation order: test A's settlement feasibility first, retain B and C as alternatives, and reconsider after measured results. A is the smallest falsifiable baseline, not an accepted production architecture. No throughput or permissionless-exit claim has been demonstrated.
+**Not decided.** Candidate A is the current experimental baseline because it is the smallest falsifiable use of current L1 primitives. Retain B and C as alternatives and reconsider after measured results. A0/A1 results are evaluation evidence, not architecture acceptance. No scalable throughput or general independent-recovery/permissionless-exit guarantee has been demonstrated. Future notes, nullifiers and private transfers may require major redesign or another architecture.
 
-Before implementation, reviewers must assess this RFC and the existing-work map. Then define the proof statement, recovery data, and covenant output constraints. A later explicit review records acceptance or rejection; this draft changes no architectural commitment.
+Before widening the existing narrow experiments, reviewers must assess this RFC and the existing-work map and specify the new proof statement, recovery data and covenant output constraints. A later explicit review records acceptance or rejection; this draft changes no architectural commitment.
 
 ## Objections / unresolved questions
 
@@ -150,7 +150,9 @@ Before implementation, reviewers must assess this RFC and the existing-work map.
 - [Pinned upstream map](../../research/kaspa-toccata-vprogs.md): active KIPs, verifier source, prototype runtime, draft full-vProgs specification, and inspected exits.
 - [Existing Kaspa work](../../research/existing-kaspa-privacy.md): prior proposal and boundaries of source inspection.
 - Mature-protocol research leads: [Orchard](../../research/zcash-orchard.md), [Aztec](../../research/aztec.md), [RAILGUN](../../research/railgun.md), [Monero](../../research/monero.md), [MWEB](../../research/litecoin-mweb.md). These notes are study inputs, not completed component reuse/security reviews.
-- [A0](../poc-a0.md) now supplies local real-proof consensus-code measurements and a limited circuit/covenant review for one terminal claim. No real-proof TN10 round trip or recovery experiment exists yet. This preliminary evidence does not accept this RFC; upstream development-mode demos do not substitute for the remaining gates.
+- [A0/A0.5](../poc-a0.md) supplies local real-proof validation plus a funded TN10 reserve release and observed native test-KAS payout. The own node lacked complete UTXO sync; live UTXO/acceptance observations used public native RPC endpoints. This was not independent recovery, a privacy pool, an audit or production safety.
+- [Draft A1 PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) tests a finite authenticated successor reserve and fresh exit. Local/native-synthetic G1–G4 evidence and qualification repairs do not close full independent G5 recovery; G6 has not run. Neither experiment accepts this RFC.
+- Fixed-fee exit liveness remains an [open production blocker (#23)](https://github.com/olafweller/kaspa-privacy-initiative/issues/23); per-instance Groth16 setups do not establish a scalable pool design.
 
 ## Revisit if
 
