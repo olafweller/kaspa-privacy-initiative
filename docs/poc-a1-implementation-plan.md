@@ -1,9 +1,11 @@
 # A1 implementation plan
 
-**Status:** G0 specification closed; design deliverable only. No A1 code, setup,
-execution tests, funding or broadcast has begun. Independent context calculations
-are recorded in the ADR; G1–G6 remain unexecuted. Implementation needs a separate
-user instruction and a separate A1 implementation branch.
+**Status:** this page preserves the merged G0 handoff. Subsequent A1
+implementation is in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22),
+with local/native-synthetic G1–G4 evidence and repairs to its qualification
+checks. Full independent G5 remains open; live A1 G6 has not run. The requirements
+below are the specification, not a claim that the implementation is merged or
+that every gate has passed. See the PR's report for execution evidence.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -158,13 +160,12 @@ production state architecture.
 ## Implementation handoff boundary
 
 G0 is closed as a source-grounded specification with independent codec
-calculations. PR #21 can be reviewed/merged as the finite A1 specification;
-this task does not merge it or accept Candidate A/RFC-0001. No hard protocol
-blocker was identified from the pinned source review. Implementation is ready
-to start on a separate branch only under a separate instruction, beginning G1
-and the first G2 falsification test, not funding or broadcast.
+calculations. PR #21 merged the finite A1 specification;
+that merge did not accept Candidate A/RFC-0001. No hard protocol
+blocker was identified from the pinned source review. Implementation subsequently began on a separate branch under its own instruction;
+its draft status and remaining gates are linked above, without funding or broadcast.
 
-Remaining execution gates are independent checker/build/setup receipts, actual
+The original handoff required independent checker/build/setup receipts, actual
 script/proof rejection and path traces, measured resource/fee affordability,
 stateful consensus races/reorgs, and clean-machine recovery with demonstrated
 independent archive availability. Until all G1–G5 pass, no reserve may be funded.

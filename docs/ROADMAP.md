@@ -2,6 +2,12 @@
 
 This roadmap is intentionally research-first. Phases are research gates, not delivery promises. No state architecture or scaling path has been accepted.
 
+## Current evidence, 2026-10-04
+
+A0/A0.5 demonstrated a real Groth16-authorized funded TN10 reserve release and observed native test-KAS payout. The own node lacked complete UTXO sync; public native RPC endpoints supplied live UTXO/acceptance observations. This was not independent recovery, a privacy pool, an audit, production safety or architecture acceptance.
+
+[Draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) contains A1 local/native-synthetic G1–G4 work and qualification repairs. Full independent G5 remains open and live A1 G6 has not run. These narrow experiments do not pass the broader N-user gate below. Fixed-fee liveness [#23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23), independent artifact/history recovery, scalable state/setup design, P02 coverage and independent human security review remain blockers to broader claims. No A2 or production architecture is authorized by this status update.
+
 ## Phase 0 — Public foundation
 
 **Goal:** create a credible open research home.

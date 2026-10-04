@@ -10,6 +10,7 @@
 
 The first public milestone is a feasibility and architecture review. Developers, researchers, security reviewers, and people who can identify a broken assumption are welcome. No state architecture, proof system, or production implementation has been accepted.
 
+- Start with the compact [external reviewer guide](docs/REVIEWER-GUIDE.md): three small review tasks and reproduction commands.
 - Read the [candidate architectures](docs/ARCHITECTURE.md) and [open RFC-0001](docs/rfc/0001-state-architecture.md).
 - Challenge the [security invariants](SECURITY-INVARIANTS.md), [threat model](THREAT-MODEL.md), and [open questions](QUESTIONS.md) with evidence.
 - Join the [welcome discussion](https://github.com/olafweller/kaspa-privacy-initiative/discussions/17) for ideas and questions, or use [Issues](https://github.com/olafweller/kaspa-privacy-initiative/issues) for concrete research tasks and corrections.
@@ -193,7 +194,15 @@ As of October 2026:
 - Kaspa documents covenants, transaction introspection, ZK verification, and sequencing support for based apps as live capabilities.
 - vProgs is an evolving reference runtime for based computation and is still described as early/prototype infrastructure with APIs and architecture subject to change.
 
-The [upstream evidence map](research/kaspa-toccata-vprogs.md) pins the sources reviewed on October 2, 2026 and distinguishes implemented primitives from unvalidated pool behavior. No real-proof TN10 round trip has been demonstrated by this project yet.
+The [upstream evidence map](research/kaspa-toccata-vprogs.md) pins the sources reviewed on October 2, 2026 and distinguishes implemented primitives from unvalidated pool behavior. The later [A0/A0.5 report](docs/poc-a0.md) records a real Groth16 proof spending a funded TN10 test reserve and an observed native test-KAS payout. The own node did **not** have complete UTXO sync; live UTXO/acceptance observations relied on public native RPC endpoints. This was not independent recovery, a privacy pool, an audit, production safety or architecture acceptance.
+
+A1 remains in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22): G1–G4 local/native-synthetic evidence exists, with supplemental-negative and fee-receipt qualification repairs described there. Full independent G5 recovery remains open; no live A1 G6 execution has occurred. The [CI scope](docs/CI.md) distinguishes automated checks from retained experiment evidence.
+
+Candidate A is the **current experimental baseline**, because it is the smallest falsifiable use of current L1 primitives. RFC-0001 remains open; A0/A1 evaluate Candidate A without accepting a production architecture. Notes, nullifiers and private transfers may require major redesign or another architecture.
+
+BN254/Groth16 uses the current verifier for this experiment; it is not a final proof-system choice and is not post-quantum. Per-instance fixed-context setups are not the intended scalable private-pool architecture. Single-party setup provenance remains a trust assumption. Fixed-fee exit liveness is an [open production blocker (#23)](https://github.com/olafweller/kaspa-privacy-initiative/issues/23).
+
+AI-assisted adversarial review has occurred. It is not independent human security review; external Kaspa/ZK review remains wanted before escalating toward production claims.
 
 Primary sources:
 

@@ -119,6 +119,8 @@ Proof confidentiality against public observers does not automatically hide priva
 
 ## 4. Candidate A: Minimal L1 covenant + ZK pool
 
+Candidate A is the current experimental baseline: the smallest falsifiable use of current L1 primitives. It is not the accepted production architecture. [RFC-0001](rfc/0001-state-architecture.md) remains open. A0/A1 evidence informs its comparison; notes, nullifiers and private transfers may require major redesign or a different candidate.
+
 ### Sketch
 
 ```text
@@ -246,6 +248,8 @@ prover A disappears
 
 ## 8. Exit architecture
 
+**Open production blocker: fixed-fee exit liveness.** A1 precommits branch fees. Headroom helps only under bounded future conditions; higher relay/inclusion costs can prevent practical exits. Extraordinary miner cooperation is not an acceptable production exit design. A reviewed sponsorship or other mechanism must preserve reserve, accounting, authorization and output invariants. [Issue #23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23) tracks this question; no mechanism is selected here.
+
 A viable architecture must explain how a user can recover native KAS without cooperation from a privileged operator. A candidate must pass the [early exit and recovery gate](ROADMAP.md#early-exit-and-recovery-gate) before it is treated as credible.
 
 Each candidate must specify:
@@ -263,7 +267,7 @@ Open questions also include whether an emergency/escape path is needed and how e
 
 ## 9. Candidate proof technology
 
-No proof system has been selected.
+No production proof system has been selected. A0/A1 use BN254/Groth16 because the current verifier makes it useful for the experiment. It is not post-quantum. A1's per-instance/fixed-context setups are not the intended scalable private-pool architecture; single-party setup provenance remains trusted.
 
 Toccata provides native L1 ZK verification through `OpZkPrecompile`, including Groth16 and RISC Zero Succinct verification paths; see the [pinned verifier sources](../research/kaspa-toccata-vprogs.md#exact-verifier-surface). This capability does not require full vProgs. Other privacy systems provide lessons from Halo 2 and specialized circuits.
 
