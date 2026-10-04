@@ -13,14 +13,14 @@ The [ADR](adr/0003-a1-successor-reserve.md) and
 A0/A0.5 as experimental research evidence at
 `3a1efa8db9672025f5282970703cb7256428c1be`. That is the A1 baseline;
 re-review intervening A0 changes before depending on them. Merging the experiment
-does not establish production readiness or accept ADR-0001.
+does not establish production readiness or accept RFC-0001.
 
 The ADR now freezes the finite graph, same-owner policy, ordered output layouts,
 canonical context, raw selector dispatch, five-push witness ABI, owner fee-credit
 accounting, artifact inspection and recovery discovery/topology. Upstream heads
 and native limits were rechecked at G0. Recheck compatibility before execution;
 changes to frozen rules require documented review, not silent adaptation. Do
-not promote the finite experiment into a note system or accept ADR-0001.
+not promote the finite experiment into a note system or accept RFC-0001.
 
 ## Ordered work packages and gates
 
@@ -159,7 +159,7 @@ production state architecture.
 
 G0 is closed as a source-grounded specification with independent codec
 calculations. PR #21 can be reviewed/merged as the finite A1 specification;
-this task does not merge it or accept Candidate A/ADR-0001. No hard protocol
+this task does not merge it or accept Candidate A/RFC-0001. No hard protocol
 blocker was identified from the pinned source review. Implementation is ready
 to start on a separate branch only under a separate instruction, beginning G1
 and the first G2 falsification test, not funding or broadcast.

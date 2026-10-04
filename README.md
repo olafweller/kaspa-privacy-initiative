@@ -10,7 +10,7 @@
 
 The first public milestone is a feasibility and architecture review. Developers, researchers, security reviewers, and people who can identify a broken assumption are welcome. No state architecture, proof system, or production implementation has been accepted.
 
-- Read the [candidate architectures](docs/ARCHITECTURE.md) and [proposed ADR-0001](docs/adr/0001-state-architecture.md).
+- Read the [candidate architectures](docs/ARCHITECTURE.md) and [open RFC-0001](docs/rfc/0001-state-architecture.md).
 - Challenge the [security invariants](SECURITY-INVARIANTS.md), [threat model](THREAT-MODEL.md), and [open questions](QUESTIONS.md) with evidence.
 - Join the [welcome discussion](https://github.com/olafweller/kaspa-privacy-initiative/discussions/17) for ideas and questions, or use [Issues](https://github.com/olafweller/kaspa-privacy-initiative/issues) for concrete research tasks and corrections.
 - Suggest a documentation change through a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) for a short walkthrough.

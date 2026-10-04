@@ -1,6 +1,6 @@
 # A0: upstream integration evidence
 
-**Reviewed:** 2026-10-03. **Status:** source-grounded integration findings; see [A0 experiment results](poc-a0.md) for the checks actually executed. This document does not establish acceptance by a live TN10 node. Candidate A remains experimental and ADR-0001 remains proposed.
+**Reviewed:** 2026-10-03. **Status:** source-grounded integration findings; see [A0 experiment results](poc-a0.md) for the checks actually executed. This document does not establish acceptance by a live TN10 node. Candidate A remains experimental and RFC-0001 remains open.
 
 **A0.5 local follow-up:** the REST v2.3.0 interface omits required transaction
 fields and is not used for A0 submission. The new native adapter uses official

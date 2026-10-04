@@ -32,7 +32,7 @@ Tasks:
 - compare Orchard, Aztec, RAILGUN, Monero, and MWEB patterns;
 - collect Kaspa core/community developer feedback.
 
-Exit condition: ADR-0001 can compare candidate architectures with concrete upstream references rather than assumptions.
+Exit condition: RFC-0001 can compare candidate architectures with concrete upstream references rather than assumptions.
 
 ## Phase 2 — Architecture decision + executable model
 
@@ -40,7 +40,7 @@ Exit condition: ADR-0001 can compare candidate architectures with concrete upstr
 
 Deliverables:
 
-- ADR-0001 state architecture;
+- RFC-0001 state architecture review and an ADR recording the decision;
 - draft note/commitment/nullifier model;
 - state-machine model or simulator;
 - executable value-conservation tests;

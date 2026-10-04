@@ -21,4 +21,4 @@ body:
     id: impact
     attributes:
       label: Security or architecture impact
-      description: Does this affect an invariant, trust assumption, or ADR?
+      description: Does this affect an invariant, trust assumption, RFC, or ADR?

@@ -99,4 +99,4 @@ Candidate A is a plausible smallest experiment because [inline ZK](https://githu
 - [ ] Specify encrypted note delivery and recovery data; test a clean independent rebuild.
 - [ ] Establish permissionless exit after loss of the default prover/state service.
 
-See [ADR-0001](../docs/adr/0001-state-architecture.md). None of these gates is satisfied merely by a mock/development-mode settlement.
+See [RFC-0001](../docs/rfc/0001-state-architecture.md). None of these gates is satisfied merely by a mock/development-mode settlement.

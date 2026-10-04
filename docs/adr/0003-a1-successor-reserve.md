@@ -22,7 +22,7 @@ Propose a finite, same-owner experiment: **S0 → S1 → terminal**, with a dire
 fund-safety experiment, not the repository's complete private-value lifecycle or
 N-user recovery gate. No notes, nullifiers, ownership transfer, private balances,
 new deposits into an existing instance, sponsorship, pool, shards or lanes are
-introduced. Candidate A remains experimental; ADR-0001 remains Proposed.
+introduced. Candidate A remains experimental; RFC-0001 remains Open.
 
 All [I-1–I-16](../../SECURITY-INVARIANTS.md) remain unchanged. The
 [matrix](../poc-a1-threat-test-matrix.md) distinguishes tested obligations from
@@ -34,7 +34,7 @@ properties this public single-claim fixture cannot demonstrate.
 | --- | --- | --- |
 | Finite scripts built successor first | Exact successor bytes known before S0 setup; small, reviewable graph | Three branch-specific setups; fixed amounts and recipient. **Proposed A1 baseline.** |
 | Reusable state prefix and invariant script template | Could support repeated transitions under a stable verifier | Requires authenticated current-template reconstruction, canonical state encoding and additional script/resource validation. Defer; one successor does not require it. |
-| Sharded state or based-app/vProgs settlement | Potential concurrency or batching | Adds ordering, state availability and cross-resource obligations unrelated to this falsifier. Retain under ADR-0001; defer from A1. |
+| Sharded state or based-app/vProgs settlement | Potential concurrency or batching | Adds ordering, state availability and cross-resource obligations unrelated to this falsifier. Retain under RFC-0001; defer from A1. |
 | Terminal-only A0 repetition | Lowest additional complexity | Cannot test surviving liability or successor recovery. Insufficient for A1. |
 
 The finite baseline is not evidence that arbitrary recurring covenants work.
@@ -949,4 +949,4 @@ bytes within limits, the fixed-fee exit is unaffordable, recovery requires
 original services, a malicious parameter manifest can pass review, or stateful
 consensus permits duplicate accepted spending. Widening to recurring transitions,
 new owners, notes, sponsors or pending exits requires another explicit design
-review. This ADR neither accepts ADR-0001 nor authorizes A1 code or funding.
+review. This ADR neither accepts RFC-0001 nor authorizes A1 code or funding.

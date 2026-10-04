@@ -9,7 +9,7 @@
 The requested A0 spike asks whether real proof verification can authorize native
 KAS release through current Kaspa consensus. Repository research pins Rusty Kaspa
 `01b532e8b553523216471682649693af92f0fd16`; this revision was fetched and inspected
-again for A0. ADR-0001 remains **Proposed** and Candidate A remains experimental.
+again for A0. RFC-0001 remains **Open** and Candidate A remains experimental.
 
 The existing PoC A and AGENTS.md describe a broader private-transfer and recovery
 milestone. A0 is a preliminary sub-experiment and cannot satisfy that milestone.

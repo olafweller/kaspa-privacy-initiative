@@ -4,7 +4,7 @@ Kaspa Privacy Initiative is currently a research project. At this stage, finding
 
 ## A simple way to participate
 
-1. Read [README.md](README.md), the [architecture comparison](docs/adr/0001-state-architecture.md), and the [security invariants](SECURITY-INVARIANTS.md).
+1. Read [README.md](README.md), the [architecture comparison](docs/rfc/0001-state-architecture.md), and the [security invariants](SECURITY-INVARIANTS.md).
 2. Browse [open issues](https://github.com/olafweller/kaspa-privacy-initiative/issues). Start with `priority-high` research, or `good first issue` for smaller documentation work.
 3. Comment on a relevant issue with sources, objections, or an approach. Use [Discussions](https://github.com/olafweller/kaspa-privacy-initiative/discussions) if you are unsure where an idea belongs.
 4. For a change, fork this repository, create a branch in your fork, edit the files, and open a pull request against `main`. Small documentation changes can be made with GitHub's browser editor.
@@ -46,7 +46,7 @@ We welcome:
 1. Search the repository for related work.
 2. Check [research/existing-kaspa-privacy.md](research/existing-kaspa-privacy.md).
 3. Open or reference an issue.
-4. For architecture changes, create an ADR proposal.
+4. Use an [RFC](docs/rfc/README.md) for open design discussion; record resolved architecture decisions in an [ADR](docs/adr/README.md).
 5. State assumptions explicitly.
 6. Prefer established cryptographic primitives over new constructions.
 
@@ -88,7 +88,7 @@ A useful PR should explain:
 - what changed;
 - how it was tested;
 - whether it affects a security invariant;
-- whether an ADR is required.
+- whether an RFC or ADR is required.
 
 ## Experimental-code warning
 
