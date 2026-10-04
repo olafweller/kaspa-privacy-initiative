@@ -4,11 +4,11 @@ Kaspa Privacy Initiative is currently a research project. At this stage, finding
 
 ## A simple way to participate
 
-1. Read [README.md](README.md), the [architecture comparison](docs/rfc/0001-state-architecture.md), and the [security invariants](SECURITY-INVARIANTS.md).
+1. Choose a small task from the [external reviewer guide](docs/REVIEWER-GUIDE.md), then read [README.md](README.md), the [architecture comparison](docs/rfc/0001-state-architecture.md), and the [security invariants](SECURITY-INVARIANTS.md).
 2. Browse [open issues](https://github.com/olafweller/kaspa-privacy-initiative/issues). Start with `priority-high` research, or `good first issue` for smaller documentation work.
 3. Comment on a relevant issue with sources, objections, or an approach. Use [Discussions](https://github.com/olafweller/kaspa-privacy-initiative/discussions) if you are unsure where an idea belongs.
 4. For a change, fork this repository, create a branch in your fork, edit the files, and open a pull request against `main`. Small documentation changes can be made with GitHub's browser editor.
-5. Explain your reasoning and any security/privacy impact. Run `python3 scripts/check_docs.py` when working locally; the same check runs on pull requests.
+5. Explain your reasoning and any security/privacy impact. Run the relevant checks listed in [CI scope and local commands](docs/CI.md). Automated tests do not replace independent human review.
 
 You do not need permission to ask a question or submit a proposal. Comment before starting substantial implementation work so assumptions and overlapping work are visible. A pull request proposes a change; it does not automatically change the accepted protocol.
 
@@ -22,7 +22,7 @@ Keep `.env`, credentials, private keys, personal wallet material, and local test
 - Define deposit/transfer/pending-exit/payout accounting and nullifier replay rules.
 - Identify practical privacy leakage and confidential-proving requirements.
 
-Production cryptography is not the next contribution target. The existing-work map and architecture proposal need review before substantial implementation.
+Production cryptography is not the next contribution target. Narrow A0 code is merged and A1 implementation remains in draft PR #22. The existing-work map and open architecture RFC still need independent review; experimental implementation does not accept the architecture.
 
 ## Valuable contributions
 

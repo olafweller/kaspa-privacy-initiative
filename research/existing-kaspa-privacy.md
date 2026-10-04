@@ -1,8 +1,16 @@
 # Existing Kaspa Privacy Work
 
-**Last reviewed:** 2026-10-02
+**Source-review snapshot:** 2026-10-02; scope/status clarified 2026-10-04. This update does not claim a new exhaustive search.
 
 **Scope:** prior forum discussion and selected official upstream source. This is not an exhaustive search of public Kaspa projects, and no privacy demo was reproduced.
+
+## Search and reproduction boundary
+
+The recorded search covered the linked Kaspa Research discussion and selected paths in `kaspanet/docs`, `kaspanet/rusty-kaspa`, `kaspanet/vprogs` and `kaspanet/research`; exact revisions are in the [upstream map](kaspa-toccata-vprogs.md). It was not a crawl of all GitHub repositories, forks, unpublished branches or private work.
+
+The sections below identify source files actually inspected. No third-party Kaspa privacy demo was reproduced and the vProgs exit regression suite was not run. KPI's later [A0/A0.5 experiment](../docs/poc-a0.md) reproduced its own narrow proof-gated payout, not an existing shielded-pool implementation. Mature-system notes are targeted comparison inputs, not full audits.
+
+Unknowns include additional public implementations, current uninspected branches, their complete trust/privacy/exit properties and reusable licensing. [P02 / issue #2](https://github.com/olafweller/kaspa-privacy-initiative/issues/2) remains open: its per-implementation acceptance criteria are not satisfied by this limited survey. No absence-of-project or novelty claim follows.
 
 ## 1. Kaspa Research discussion: optional privacy layer
 
@@ -44,7 +52,7 @@ Our interpretation of current upstream sources is that direct inline-ZK covenant
 
 - [ ] map additional public Kaspa privacy code to exact files, branches, commits, and reproduction steps;
 - [ ] reproduce any relevant TN10 privacy demo with real proofs and test KAS only;
-- [ ] define the exact opcodes, verifier parameters, and budgets for PoC A;
+- [ ] extend the [A0/A1 opcode, verifier and budget evidence](../docs/adr/0003-a1-successor-reserve.md) beyond narrow reserve experiments to the proposed private lifecycle;
 - [ ] identify which based-app components are necessary for this application and why;
 - [ ] complete the mature-protocol reuse/adapt/reject comparison before implementing notes, nullifiers, proving, exits, or scanning;
 - [ ] record reusable code licensing;

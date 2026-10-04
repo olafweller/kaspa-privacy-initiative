@@ -4,7 +4,7 @@ The initiative should treat these as questions to answer, not conclusions to def
 
 The [A0.5 terminal reserve experiment](docs/poc-a0.md) and its retained-key/native-RPC
 adapter test one narrow proof-authorized payout. They do not answer the open
-private-state, successor-liability, independent-recovery or anonymity questions.
+private-state, independent-recovery or anonymity questions. [Draft A1 PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) adds local/native-synthetic successor-liability evidence and qualification repairs; full G5 and live G6 remain unclosed/unexecuted respectively. Fixed-fee exit liveness is tracked in [issue #23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23).
 Live outcome and remaining validation gaps belong to that evidence report.
 
 ## 1. Minimal Kaspa architecture
