@@ -8,6 +8,11 @@ recovery remains open. [Live attempt 1](poc-a1-live-attempt-1.md) funded S0,
 accepted S0 → S1 and captured it independently on C, but failed the boundary:
 B never armed and A stayed online. A later separate terminal owner exit passed;
 it is not independent G5 recovery or full G6. No further live work is authorized.
+[Live attempt 2](poc-a1-live-attempt-2.md) passed C validation, physical whole-A
+loss and autonomous B start, then failed at checkpoint metadata parsing before
+B lineage/proving. **G5 FAILED — autonomous recovery did not complete during
+the live run.** Later offline replay and separately authorized owner exit do not
+close G5 or full G6. Frozen attacks/oracles and attempt 1 evidence are unchanged.
 [ADR-0003](adr/0003-a1-successor-reserve.md) defines the finite S0/S1 graph,
 encoding and accounting. The [implementation plan](poc-a1-implementation-plan.md)
 assigns execution gates. No invariant is changed.
@@ -95,7 +100,7 @@ This is local program-order evidence, not physical-machine or live-archive G5.
 | 08 | [Actual native race/replay receipts](../poc/a1/evidence/stateful-requalification-2026-10-04.json): two first-valid competing spends, exact and distinct-ID replay rejection | Public TN10 races/settlement |
 | 09 | Original-key instance/domain/stage/mode/range/outpoint tests; S1→S2 rejection; separate foreign-context/key tests | Copied identical-chain-state replay excluded by ADR |
 | 10 | [Native reorg + scanner accounting](../poc/a1/evidence/reorg-scanner-requalification-2026-10-04.json): actual removed/added chain groups, old outputs absent, final UTXOs exact; rollback/replay pointer/credits agree | Imported S0 checkpoint is not funding-lineage G5; no Bitcoin-only global-unspent claim |
-| 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks | Live attempt 1 failed before B armed/A loss; independent whole-A-loss recovery remains open |
+| 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks; live attempt 2 passed whole-A-loss gate/autonomous B start | Attempt 1 failed before B armed/A loss; attempt 2 failed before B lineage/proving. Full G5 remains open; offline replay and owner exits do not close it |
 | 13 | Measured finite budgets; inadequate decoded budget rejects; [exact fee rules/forced failures](../poc/a1/evidence/fee-bound-qualification-2026-10-04.json) halt without changing terms | Guaranteed exit at arbitrary future rates |
 | 14 | Native fixed recipient derivation and actual backup-key/claim checks in clean B | Private note recipient spendability does not exist in A1 |
 | 15 | Observed circuit-specific setup, public VK/redeem pins, no bypass, no retained trapdoor material | Single-party setup trust, erasure/provenance proof, PQ unresolved |
@@ -103,7 +108,7 @@ This is local program-order evidence, not physical-machine or live-archive G5.
 | 17 | Report lists public amounts/linkage/recipient/stage/timing and local witness exposure | No anonymity/confidential amount/unlinkability/PQ claim |
 | 18–20 | All 256 selectors each branch, multibyte/empty/equivalent pushes, every witness pair/slot, exact key/tag/ABI, output version and unknown-input diagnostic | Unknown input SPK versions are inadmissible, not magically script-enforced |
 | 21 | Independent intent/codec/scripts/R1CS reconstruction, actual key validation and observed receipt; schema/matrix/hash/intent mutation unit tests | Same-host automated observation is not an independent-human ceremony; opaque CRS/shared gadget trust remains |
-| 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled | Live C captured funding/continuation/context; boundary validation failed. Whole-A-loss discovery/recovery and live pruning-cycle survival remain open |
+| 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled; attempt 2 C independently validated continuation/S1 at commit 919 | Attempt 1 boundary failed; attempt 2 B checkpoint parsing failed. Autonomous B lineage completion and live pruning-cycle survival remain unproved |
 | 24 | Historical quotes/replay, bound final-body receipts, rational 25-percent rate / 10-percent B0 headroom and 10-percent execution budget; forced high/stale quote/low credit/wrong budget negatives | Remote custom relay configuration/admission, later quotes and post-funding liveness |
 | 25 | Actual three-branch byte/resource/trace measurements, fresh native SDK-decoded masses; every measured path fits pinned limits | Live G6 measurements/admission/inclusion |
 
@@ -139,6 +144,17 @@ evidence to rows 01–03, 07, 10, 13, 16 and 22–25. They do not establish live
 race/reorg/pruning coverage or rows 11–12's independent recovery. The separate
 exit's later observations were about 99 seconds apart; this does not establish
 the ≥120-second interval below. Frozen criteria are unchanged.
+
+The [attempt 2 record](poc-a1-live-attempt-2.md) and
+[sanitized ledger](../poc/a1/evidence/live-attempt-2-2026-10-05/public-record.json)
+add independent C lineage validation and the qualified physical A-loss/B-start
+boundary. B produced no live recovery lineage result, fresh proof, SDK receipt or
+terminal Full result. This observed glue failure is not a proof/covenant rejection
+test. The narrow repair's 28 tests exercise the real checkpoint schema and durable
+sanitized child diagnostics; these remain separate from the live failed run and
+the repository's unit-test totals. The memoized offline replay is diagnostic only.
+The separately authorized exit's 59.483394-second recheck does not establish the
+frozen ≥120-second interval. No oracle or invariant is weakened.
 
 ## Recovery inventory and measurable pass criteria
 

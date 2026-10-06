@@ -7,9 +7,10 @@ fixtures: the deliberately public recipient fixture key is **1**.
 G1–G4 have unfunded local qualification evidence in the
 [A1 report](../../docs/poc-a1-proof-report.md). All three real proof paths,
 native stateful conflicts/reorgs, final SDK decoding and exact fee/resource
-checks pass. The [qualification repair](../../docs/poc-a1-proof-report.md#qualification-repair-after-independent-adversarial-review) corrects early-reject supplemental cases and binds fee evidence to final bodies/artifacts. G5 has network-disabled Docker A/B/C rehearsals; physical-host loss
-and independently retained live archive compatibility remain pending. Tool
-presence or a container rehearsal never closes full independent recovery.
+checks pass. The [qualification repair](../../docs/poc-a1-proof-report.md#qualification-repair-after-independent-adversarial-review) corrects early-reject supplemental cases and binds fee evidence to final bodies/artifacts. G5 has network-disabled Docker A/B/C rehearsals. [Live attempt 2](../../docs/poc-a1-live-attempt-2.md)
+passed physical whole-A loss and autonomous B start but failed at checkpoint
+parsing before lineage/proving. Full independent recovery remains open; tool
+presence, a container rehearsal or later offline replay does not close it.
 
 Run only the pinned Rust 1.91.0 release toolchain and the locked dependency graph.
 The upstream checkout must be clean at
@@ -112,3 +113,9 @@ repair receipt and its listed inputs. Original evidence is retained unchanged.
 but failed safely at the independent recovery boundary. Its later owner terminal
 exit is separate evidence, not successful G5 recovery. Full G5 remains open;
 no further live action is authorized. The public fixtures above remain unfunded.
+
+[Live attempt 2](../../docs/poc-a1-live-attempt-2.md) remains permanently
+**G5 FAILED — autonomous recovery did not complete during the live run.** Its
+later memoized offline replay and separate new-proof terminal owner exit are
+distinct evidence. This publication changes no protocol/tooling source and starts
+no attempt 3, funding or broadcast. Attempt 1 records remain unchanged.

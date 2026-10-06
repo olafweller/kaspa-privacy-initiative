@@ -13,6 +13,11 @@ not a claim that A1 is merged or every gate has passed. Subsequent separate
 instructions authorized [live attempt 1](poc-a1-live-attempt-1.md): S0 funding,
 accepted S0 → S1, a failed independent recovery boundary, and a later separate
 terminal exit. Attempt 1 was not resumed or credited as G5/G6 success.
+The separately authorized [attempt 2](poc-a1-live-attempt-2.md) passed live C
+validation, physical whole-A loss and autonomous B start, then failed at live
+checkpoint parsing before B lineage/proving. **G5 FAILED — autonomous recovery
+did not complete during the live run.** Its later repaired offline replay and
+separate owner terminal exit do not change that result or complete full G6.
 No further live action or invariant change is authorized.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
@@ -59,7 +64,7 @@ The independent checker must not import the production serializer/compiler,
 and an adversarial reviewer should not author the safety assertion being
 evaluated. G0 design closure alone authorized no implementation. The subsequent
 explicit G1–G5 instruction authorized unfunded local falsification, not G6;
-the later bounded attempt 1 and owner exit had separate specific authorization.
+the later bounded attempts 1/2 and owner exits had separate specific authorization.
 
 ## Frozen G0 handoff checklist
 
@@ -184,6 +189,14 @@ not close full G5. Attempt 1 failed safely before A loss; its separately
 settled terminal exit changes no gate requirement. Full G6 still requires all
 G1–G5 and separate instructions. Any separate bounded recovery attempt needs a
 new qualified/pinned checklist and explicit authority; this record supplies none.
+Attempt 2 reached the whole-A-loss boundary but failed before B lineage/proving.
+Before considering attempt 3, qualification must pin the separately retained
+metadata/diagnostics repair, exercise fractional live checkpoint timestamps with
+strict protocol fields, retain bounded sanitized child errors, and measure the
+actual deployed recovery path without diagnostic-only C memoization. The later
+20m29s offline replay and approximately 59.5-second owner-exit recheck do not
+satisfy the live recovery or frozen observation gates. This publication is ready
+for qualification review/planning and authorizes no attempt 3 or live action.
 Quotes/configuration must also be refreshed before
 future funding; the publicly known recipient fixture key must never be used.
 

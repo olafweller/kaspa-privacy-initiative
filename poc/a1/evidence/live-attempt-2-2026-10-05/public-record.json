@@ -1,0 +1,216 @@
+{
+  "schema": "kpi-a1-live-attempt-2-public/v1",
+  "run_id": "attempt-2-checkpoint-clean-c121a95184e24b6293d82338bf8e52b5-live-6f8404fde5dd",
+  "live_date": "2026-10-05",
+  "network": "testnet-10",
+  "permanent_status": "G5 FAILED — autonomous recovery did not complete during the live run.",
+  "publication_base_PR22_HEAD": "f4a4ddc50a41aa5c640e0b43ff0962c9ed49e718",
+  "provenance": "Allowlisted extraction from retained original B/C failure, diagnosis and separate-exit receipts, cross-checked against the owner-provided attempt-2 facts. Not a new live run or independent chain observation.",
+  "status_table": {
+    "S0 funding": "PASS",
+    "S0 -> S1": "PASS",
+    "C independent capture": "PASS",
+    "Whole-A-loss gate": "PASS",
+    "B autonomous start": "PASS",
+    "Independent lineage recovery": "FAIL",
+    "Fresh proof during G5": "NOT REACHED",
+    "Terminal Full during G5": "NOT REACHED",
+    "Fail-closed behavior": "PASS",
+    "S1 fund safety": "PASS",
+    "Separate terminal exit": "PASS",
+    "Overall G5 attempt": "FAILED"
+  },
+  "live_continuation": {
+    "S0": {
+      "txid": "8f92f958803d02eea2feb2e97886ba4e2aa6b5430990ba018322705fe7afddcc",
+      "index": 0,
+      "amount_sompi": 1070000000
+    },
+    "txid": "b540852ed61407e56d5ca7e715b70eb59d1a700baa21b3aaa84667b311cf94dc",
+    "full_hash": "70746d43cc23de184862af94fc67e619f781453b80a30bbbd1350cea85178d07",
+    "submission_count": 1,
+    "S1": {
+      "txid": "b540852ed61407e56d5ca7e715b70eb59d1a700baa21b3aaa84667b311cf94dc",
+      "index": 0,
+      "amount_sompi": 640000000
+    },
+    "payout_sompi": 400000000,
+    "fee_sompi": 30000000,
+    "C_boundary": {
+      "commit": 919,
+      "digest": "3c9e627d920956339fdb620711e63f98321236731ba7f3278dd9c7e2d945a737",
+      "range_complete": true,
+      "native_Full_validated": true
+    }
+  },
+  "whole_A_loss": {
+    "physical_shutdown": true,
+    "machine_endpoint_unavailable": true,
+    "KPI_availability_endpoint_unavailable": true,
+    "challenged_SSH_lease_unavailable": true,
+    "consecutive_absent_samples": 10,
+    "C_loss_event_digest": "80f84efdd12b72a49839dc1417376a3cb5450d64383eb3f8dac68dcd9dcc3fa8",
+    "B_started_after_qualified_gate": true,
+    "qualified_gate_UTC": "2026-10-05T20:08:19.680831+00:00",
+    "B_recovery_start_UTC": "2026-10-05T20:08:22.661465+00:00",
+    "scope": "Bounded independently observed whole-A absence gate, not indefinite unavailability."
+  },
+  "live_failure": {
+    "elapsed_seconds": "35.107359",
+    "durable_stage": "fresh-proof-and-Full",
+    "durable_exception_class": "ValueError",
+    "diagnosed_exception": "a1_check.Invalid: float/NaN JSON values forbidden",
+    "Invalid_inherits_from_ValueError": true,
+    "file": "original/B/software/recover_exit.py",
+    "function": "recover()",
+    "operation": "c.load_json(checkpoint)",
+    "fractional_metadata_field": "coverage.at",
+    "layer": "orchestration/glue metadata parsing",
+    "artifact_and_backup_recipient_verification": "PASS before checkpoint read",
+    "independent_lineage_result": false,
+    "proving_started": false,
+    "fresh_terminal_proof": false,
+    "SDK_terminal_receipt": false,
+    "terminal_Full": false,
+    "synthetic_gap": "mode='fixture' and checkpoint=None bypassed the real live checkpoint decoder"
+  },
+  "repair": {
+    "scope": "Separately retained orchestration repair; this publication changes no protocol/tooling source.",
+    "timestamp_leaf_paths": [
+      "coverage.at",
+      "coverage.current.at",
+      "pre_seal_coverage.at",
+      "pre_seal_coverage.current.at",
+      "page_committed_at",
+      "sealed_at",
+      "pre_seal_observation.at",
+      "selected_observation.at"
+    ],
+    "protocol_JSON_remains_strict": true,
+    "lineage_artifact_proof_output_accounting_checks_preserved": true,
+    "durable_sanitized_child_stdout_stderr_stacktraces": true,
+    "historical_regression_tests": {
+      "count": 28,
+      "passed": true,
+      "exact_checkpoint_failure_reproduced": true
+    },
+    "source_sha256": {
+      "capture_metadata.py": "ac1d3205bbdd4b161332909f17a05a167e83528d10973967814007f7caa4bff2",
+      "recover_exit.py": "022c47f29afbad83f9bb01c6018603bbf4b91ed6638f716d961c605950cbc6c9",
+      "recovery_errors.py": "9fb1eb155b5225678da8cdaddc5d23e7a2063bab018f913cd7c7b209a48a97bb"
+    }
+  },
+  "offline_diagnostic_replay": {
+    "result": "PASS — offline diagnostic only",
+    "elapsed_seconds": "1229.389",
+    "scope": "After failed live run; exact retained inputs; not a live G5 retry or result.",
+    "steps": [
+      "old S0",
+      "C retained history",
+      "independent S1 discovery",
+      "accounting reconciliation",
+      "fresh proof",
+      "SDK serialize/decode",
+      "native Full"
+    ],
+    "C_native_memoization": true,
+    "deployed_B_path_has_this_memoization": false,
+    "live_performance_qualified": false,
+    "live_run_reclassified": false,
+    "broadcast": false
+  },
+  "separate_owner_terminal_exit": {
+    "date": "2026-10-06",
+    "separately_authorized": true,
+    "G5_autonomous_recovery": false,
+    "fresh_randomized_proof": true,
+    "proof_differs_from_offline_replay": true,
+    "proof_sha256": "3cc49e3f263a5314bd105f182f4867839daaf83724f29b8bd35289d3cc9a236c",
+    "txid": "16285ec837fba58db9a6782bcfc584f034c618975fd1e8358ddece9ad55fd228",
+    "full_hash": "6b39e7a7ea925a1d76be13d8182e14f4a1aad5a1a345f39d1696777b2f094603",
+    "input": {
+      "txid": "b540852ed61407e56d5ca7e715b70eb59d1a700baa21b3aaa84667b311cf94dc",
+      "index": 0,
+      "amount_sompi": 640000000
+    },
+    "payout": {
+      "txid": "16285ec837fba58db9a6782bcfc584f034c618975fd1e8358ddece9ad55fd228",
+      "index": 0,
+      "amount_sompi": 610000000
+    },
+    "fee_sompi": 30000000,
+    "compute_budget": 1706,
+    "native_masses": {
+      "compute": 171994,
+      "storage": 77,
+      "transient": 4136
+    },
+    "accepting_block": "41d66f60e9cac255e99de7883a7e815aa8fd7f7b54bdb4d0784a01782349bdf4",
+    "submission_count": 1,
+    "C_observations": [
+      {
+        "phase": "initial",
+        "accepted_body_matches_prepared": true,
+        "S1_spent": true,
+        "payout_present_unspent": true,
+        "conflicting_accepted_spends": [],
+        "retry": false,
+        "reorg_observed": false,
+        "accepting_block": "41d66f60e9cac255e99de7883a7e815aa8fd7f7b54bdb4d0784a01782349bdf4",
+        "blue_score_distance": 89
+      },
+      {
+        "phase": "later",
+        "accepted_body_matches_prepared": true,
+        "S1_spent": true,
+        "payout_present_unspent": true,
+        "conflicting_accepted_spends": [],
+        "retry": false,
+        "reorg_observed": false,
+        "accepting_block": "41d66f60e9cac255e99de7883a7e815aa8fd7f7b54bdb4d0784a01782349bdf4",
+        "blue_score_distance": 652
+      }
+    ],
+    "initial_confirmation_UTC": "2026-10-06T05:58:38.065619+00:00",
+    "later_confirmation_UTC": "2026-10-06T05:59:37.549013+00:00",
+    "later_recheck_elapsed_seconds": "59.483394",
+    "later_recheck_passed": true,
+    "frozen_120_second_interval_established": false,
+    "observation_scope": "Historical C node/archive observations; not permanent finality, current UTXO assertions, G5 success or full G6."
+  },
+  "retained_receipt_sha256": {
+    "original_B_failure": "a5a86bdf5271857a3266f21f27a9c8f0eedd126a35e30c9a9a2623b207a8a831",
+    "original_C_failure_copy": "a5a86bdf5271857a3266f21f27a9c8f0eedd126a35e30c9a9a2623b207a8a831",
+    "original_B_controller": "103d962ebf49b4fc72996f47ce168a6b4d5566d469c26b0227409c5c0de55e8c",
+    "original_C_event_journal": "3d898106b6d096a960bf85b633559709c017a8e9b242c892f27204dcdc3bdd36",
+    "original_C_validated_boundary": "e1f8c4148b935c2bedb72d6bf45cd731e45eeed0bb40d39f8651579d0ee9fa7e",
+    "original_prefunding_checkpoint": "8c38c6f942f18260cb27bfca3a77e121befc216f6e50baa879be6512055b6cc5",
+    "original_deployed_recover_exit.py": "3be557e8c3e7649589d6ff2d95662eaf8c70c2fdf1ce3dc2e52b6367f4d24026",
+    "diagnosis_report": "52a62fb6da7d8c47daaad17241699b7be54d51d078d9d0c388648aa646e760c7",
+    "historical_28_test_receipt": "a548784703542dc8bcb9b6e67f8e646a37e97722650f9d45baa4cfec902511b7",
+    "security_critical_source_preservation": "20277980411717f24e68fc3631536d4c67654e3fe2b87c08f781d94545319b05",
+    "offline_diagnostic_recovery_report": "327a599d820bcf972cd30f2d819fa156a9afa3c95f02c4d5ccd765e7e4393af9",
+    "offline_diagnostic_sdk_receipt": "4550c52e50272b63e154884324b2f23470be55a72cd826b4e15f665b2656c822",
+    "offline_diagnostic_scope": "1ca10eb8eb2b8dc92e058425b8c723450138b0c9b7fd1c8ef19f805144142844",
+    "separate_exit_proving_receipt": "9135c0476795dff53b015a70aae67f8bfc402be1ff9d8d16f2cf1c14b63276b7",
+    "separate_exit_sdk_receipt": "855923d60a072fd999edfc640e5e92d4ec5b1d53ae865f27bcb785a2d4cf767f",
+    "separate_exit_native_full_receipt": "78e55a77cfc7c03bd465f01f9a047245404519d72b1a46d17b6cadb6182ddf9d",
+    "separate_exit_initial_C_observation": "5da2309b0be51785079eb3600206e46602aa2597bd834a9c0646ee69f49242ef",
+    "separate_exit_later_C_observation": "890d23ab834300535cc428a67cf3d65b6ab9a33bc963e911b8627aea5f71ea79",
+    "separate_exit_broadcast_receipt": "57a56b09d25dd7b93315594da20d2a59cf20888bc2734e5e9f4d65d5a6b4d4a8",
+    "original_failure_preservation_after_exit": "dc3e8eb695f144eb592f1fd82d0f6d46a3c3b9c56234dd2dc8c636ae5337dc8d",
+    "permanent_attempt2_classification": "659bbe252912ad0bba97aff9cf3bdc582e6e1b08b9a4c133c7ae507a84d5b187"
+  },
+  "published_terminal_validation_request_sha256": "b808ad3c43c0922ce28307001463d59aa40d0f8f18a89323c857c8cd33f33656",
+  "withheld": [
+    "claim secrets",
+    "recipient private keys",
+    "backup/unlock material",
+    "SSH credentials",
+    "infrastructure endpoints and configuration",
+    "raw logs/environment",
+    "setup toxic waste",
+    "unrelated wallet history"
+  ],
+  "evidence_boundary": "No successful autonomous G5 recovery, live G5 terminal proof after A loss, pruning survival, indefinite historical recovery, production readiness, security/audit/anonymity/PQ guarantee, or full G6 completion is established."
+}

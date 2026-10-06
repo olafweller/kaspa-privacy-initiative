@@ -8,6 +8,11 @@ then **failed safely at the independent recovery boundary**. B never armed,
 A stayed online and recovery did not start. That terminal failed run was not
 resumed. Its S1 was later exited by a separate freshly proved, Full-validated,
 explicitly authorized transaction. This is not G5 recovery or a full G6 run.
+[Live attempt 2](poc-a1-live-attempt-2.md) reached independent C validation,
+physical whole-A loss and autonomous B start, then failed at the live checkpoint
+decoder before B's lineage scan or proving. **G5 FAILED — autonomous recovery
+did not complete during the live run.** A later repaired offline replay and a
+separately authorized new-proof terminal exit do not change that result.
 **No further live action, mainnet use, G6 execution or merge is authorized.**
 The fixture recipient private key is deliberately public **1**: never fund it.
 
@@ -312,6 +317,25 @@ status/probe lock. C had the archived material; B correctly stayed unarmed.
 Unfunded repair regressions and the later separate owner exit do not close G5.
 The historical local rehearsals below retain their original scope.
 
+[Attempt 2](poc-a1-live-attempt-2.md) separately records a live accepted S0 → S1,
+C's durable boundary commit 919, qualified physical whole-A loss, and autonomous
+B start. B failed after 35.107359 seconds at `c.load_json(checkpoint)`:
+fractional `coverage.at` metadata was rejected by the integer-only protocol JSON
+parser (`a1_check.Invalid`, a `ValueError` subclass). Artifact and backup/recipient
+checks had passed; no B lineage result, fresh proof, SDK terminal receipt or
+terminal Full result was produced in the live run. Synthetic `mode='fixture'`,
+`checkpoint=None` rehearsals had bypassed this decoder.
+
+The separate narrow metadata/diagnostics repair passed 28 regression tests.
+An exact-input offline replay completed in 1229.389 seconds with diagnostic C
+memoization unavailable on the deployed B path; it is not live G5 success or
+performance qualification. A separately authorized owner exit used a different
+new randomized proof and was accepted, with exact 610,000,000-sompi payout and
+30,000,000-sompi fee. Its approximately 59.5-second later recheck does not meet
+the frozen ≥120-second interval. See the [attempt-2 public ledger](../poc/a1/evidence/live-attempt-2-2026-10-05/public-record.json)
+for identities, accounting and retained receipt hashes. Attempt 2 remains
+permanently **G5 FAILED**. No protocol source or prior evidence is changed.
+
 Recovery separates terminal spendability A from accepted lineage/accounting B.
 The scanner starts from retained exact S0 locator + checkpoint + artifact-index
 hash; processes cursor-paginated accepted transaction bodies, recomputes ID/full
@@ -414,7 +438,7 @@ reinterpreted as a public one-claim implementation specification.
 | I-7 withdrawal | Exact single input/reserve and ordered payout/successor/SPK/metadata/fees; no arbitrary successor or redirected payout. |
 | I-8 no confiscation | No admin/upgrade/operator/rescue withdrawal path. Fixed fees/public-artifact loss can still strand liveness. |
 | I-9 safety first | Malformed inputs, bad artifacts/history/quotes halt; no fallback weaker script, address-only lookup or principal haircut. |
-| I-10 recovery | Clean-container fresh exits and native fixture discovery demonstrated; independent machine/archive G5 still pending, so full recoverability is not claimed. |
+| I-10 recovery | Clean-container fresh exits and native fixture discovery demonstrated; attempt 2 passed physical whole-A loss/autonomous B start but failed before B lineage/proving. Full independent G5 remains open; later replay/owner exit is separate evidence. |
 | I-11 reproduction | Separate Python context/script/accounting and reference R1CS/FULL-hash paths agree; shared cryptographic gadget/field libraries are explicit. |
 | I-12 isolation | Owner fee credit, no treasury/sponsor reserve-control input or alternate branch. |
 | I-13 upgrades | No upgrade or witness-selected key; source/keys/scripts frozen. Verifier diagnostics cannot change funded artifacts. |
@@ -445,8 +469,11 @@ publication; allowlists exclude all private backup files.
 
 Remaining blockers include demonstrated independent whole-A-loss recovery and
 live pruning-cycle/history-retention survival. Attempt 1 established live C
-capture, but its complete recovery boundary never finished. A separate attempt
-needs repaired tooling pinned and freshly qualified before any new authorization;
+capture, but its complete recovery boundary never finished. Attempt 2 established
+whole-A loss and autonomous B start but failed at checkpoint parsing; its later
+offline replay and owner exit do not close G5. Pre-attempt-3 qualification must
+pin repaired tooling, exercise the actual live metadata path and qualify deployed
+performance without relying on diagnostic memoization before any new authorization;
 full G6 remains blocked by open G5. Future live work requires explicit authority,
 fresh quotes/actual target policy and a separately inspected private-owner instance.
 **Do not recommend G6 or fund the public fixture.** PR remains draft; the attempt
