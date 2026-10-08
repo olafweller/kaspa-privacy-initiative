@@ -33,10 +33,13 @@ def observe(repo,binary,reference_binary,output,retained,rustup,testnet_terms=No
     binary_hash=c.sha(binary.read_bytes());reference_hash=c.sha(reference_binary.read_bytes())
     lock_hash=c.sha((repo/'poc/a1/Cargo.lock').read_bytes())
     retained.mkdir(mode=0o700)
+    terms_bytes=None if testnet_terms is None else Path(testnet_terms).read_bytes()
+    if terms_bytes is not None:
+        (retained/'testnet-terms.json').write_bytes(terms_bytes)
     # Persist the pre-run event before launching; retention never depends on final export.
     # Fixture harness by default; the separate testnet constructor takes explicit terms.
     invocation=[str(binary),'experiment',str(output)] if testnet_terms is None else [str(binary),'testnet-10',str(output),str(Path(testnet_terms).resolve())]
-    before={'schema':'kpi-a1-observer-event/v1','event':'before-setup','source_commit':source,'binary_sha256':binary_hash,'reference_binary_sha256':reference_hash,'cargo_lock_sha256':lock_hash,'compiler':toolchain,'invocation':invocation,'started_unix_seconds':str(int(time.time())),'scope':'same-host-automated-observation-no-human-ceremony'}
+    before={'schema':'kpi-a1-observer-event/v1','event':'before-setup','source_commit':source,'binary_sha256':binary_hash,'reference_binary_sha256':reference_hash,'cargo_lock_sha256':lock_hash,'compiler':toolchain,'invocation':invocation,'started_unix_seconds':str(int(time.time())),'scope':'same-host-automated-observation-no-human-ceremony'}|({} if terms_bytes is None else {'testnet_terms_sha256':c.sha(terms_bytes)})
     (retained/'before-setup.json').write_bytes(c.canonical_json(before))
     child_env=dict(os.environ);child_env['KPI_A1_RETAIN_INTENT']=str(retained/'owner-intent.json')
     p=subprocess.run(invocation,cwd=repo,env=child_env,check=False,stdout=subprocess.PIPE,stderr=None,text=True)
@@ -65,6 +68,12 @@ def observe(repo,binary,reference_binary,output,retained,rustup,testnet_terms=No
     (output/'human-manifest.txt').write_text('\n'.join(human)+'\n')
     c.require(manifest['pins']['kpi_source_commit']==source and manifest['pins']['checker_source_commit']==source and manifest['pins']['cargo_lock_sha256']==lock_hash,'observed source/build pin mismatch')
     c.require(intent['pins']==manifest['pins'],'retained intent/build pin mismatch')
+    if terms_bytes is None:
+        c.require(intent['scope']=='local-unfunded-fixture','fixture scope')
+    else:
+        supplied=json.loads(terms_bytes)
+        c.require(intent['scope']=='testnet-10-test-kas' and isinstance(supplied,dict) and set(supplied)==set(intent['terms']) and all(str(int(v))==intent['terms'][k] for k,v in supplied.items()),'testnet intent scope/terms differ from supplied terms')
+        c.require(Path(testnet_terms).read_bytes()==terms_bytes,'terms file changed during observed setup')
     c.require((retained/'owner-intent.json').is_file() and c.load_json(retained/'owner-intent.json')==intent,'intent was not independently retained by pre-setup hook')
     # Source-reviewed hook writes this independent copy before its first setup.
     # Separately supplied human consent remains required before future funding.
@@ -84,7 +93,7 @@ def observe(repo,binary,reference_binary,output,retained,rustup,testnet_terms=No
     observation=before|{'event':'setup-and-reference-comparison-completed','finished_unix_seconds':str(int(time.time())),'branches':branches,'setup_provenance_limit':'observed circuit-specific setup invocation using reviewed source; no mathematical proof of CRS correctness or erasure; shared host and pinned Arkworks gadget','funding_authorized':False}
     observation_bytes=c.canonical_json(observation)
     (retained/'observation.json').write_bytes(observation_bytes)
-    receipt={'schema':'kpi-a1-setup-observation/v1','scope':'local-unfunded-fixture','observer':'same-host automated observer; separately wired reference compiler; observation_sha256='+c.sha(observation_bytes),'build_pins':manifest['pins'],'branches':branches,'setup_randomness_retained':False}
+    receipt={'schema':'kpi-a1-setup-observation/v1','scope':intent['scope'],'observer':'same-host automated observer; separately wired reference compiler; observation_sha256='+c.sha(observation_bytes),'build_pins':manifest['pins'],'branches':branches,'setup_randomness_retained':False}
     (retained/'setup-receipt.json').write_bytes(c.canonical_json(receipt))
     scripts={name:c.artifact(output,manifest['states'][name]['redeem']) for name in ('s0','s1')}
     disassembly=c.canonical_json({name:c.disassemble(data) for name,data in scripts.items()})
@@ -107,7 +116,7 @@ def observe(repo,binary,reference_binary,output,retained,rustup,testnet_terms=No
         c.independent_references(reference_binary,intent,manifest,refs)
         checked=c.check_bundle(output,intent,refs,receipt,key_check)
     final_hash=c.sha((output/'manifest.json').read_bytes())
-    (retained/'final-artifact-manifest.json').write_bytes(c.canonical_json({'manifest_sha256':final_hash,'checker_report_sha256':c.sha(checker_report),'scope':'local-unfunded-fixture','funding_authorized':False}))
+    (retained/'final-artifact-manifest.json').write_bytes(c.canonical_json({'manifest_sha256':final_hash,'checker_report_sha256':c.sha(checker_report),'scope':intent['scope'],'funding_authorized':False}))
     print(json.dumps({'observed':True,'parameter_consistency':checked['parameter_consistency'],'source_commit':source,'manifest_sha256':final_hash,'observation_sha256':c.sha(observation_bytes),'receipt_sha256':c.sha(c.canonical_json(receipt)),'scope':'same-host-unfunded-experiment','independent_machine':False,'human_review':False,'live_archive_qualified':False,'funding_authorized':False},indent=2))
     return receipt
 

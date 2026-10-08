@@ -155,6 +155,14 @@ class IndependentCodecTests(unittest.TestCase):
    with self.assertRaises(c.Invalid):check(manifest,wrong)
    wrong=copy.deepcopy(receipt);wrong['setup_randomness_retained']=True
    with self.assertRaises(c.Invalid):check(manifest,rec=wrong)
+   # Testnet scope is accepted only when intent and observation receipt agree.
+   tn_intent=copy.deepcopy(intent);tn_intent['scope']='testnet-10-test-kas'
+   tn_receipt=copy.deepcopy(receipt);tn_receipt['scope']='testnet-10-test-kas'
+   tn=copy.deepcopy(manifest);tn['inspection']['setup_observation_receipt_sha256']=c.sha(c.canonical_json(tn_receipt))
+   self.assertTrue(check(tn,tn_intent,tn_receipt)['parameter_consistency'])
+   with self.assertRaises(c.Invalid):check(tn,intent,tn_receipt)
+   other=copy.deepcopy(tn_intent);other['scope']='mainnet'
+   with self.assertRaises(c.Invalid):check(tn,other,tn_receipt)
    path=Path(td)/'s1_terminal.pk';original=path.read_bytes();path.write_bytes(original+b'\0')
    with self.assertRaises(c.Invalid):check(manifest)
    path.write_bytes(original);path.unlink()

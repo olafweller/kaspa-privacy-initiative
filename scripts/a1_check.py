@@ -27,6 +27,9 @@ class Invalid(ValueError):
     pass
 
 
+# Fixture harness bundles (public key 1) and testnet-10 test-KAS instances.
+SCOPES=('local-unfunded-fixture','testnet-10-test-kas')
+
 def require(condition, message):
     if not condition:
         raise Invalid(message)
@@ -336,7 +339,7 @@ def check_bundle(root, owner_intent, reference_r1cs_dir, receipt, validate_keys)
     bundle=load_json(Path(root)/'manifest.json')
     keys(bundle,'schema protocol network genesis_hex instance_hex claim_commitment_hex recipient states branches abi envelope pins inspection recovery','bundle')
     keys(owner_intent,'schema scope genesis_hex instance_hex claim_commitment_hex recipient_spk_hex terms pins','owner intent')
-    require(owner_intent['schema']=='kpi-a1-intent/v1' and owner_intent['scope']=='local-unfunded-fixture','intent schema/scope')
+    require(owner_intent['schema']=='kpi-a1-intent/v1' and owner_intent['scope'] in SCOPES,'intent schema/scope')
     require(bundle['schema']=='kpi-a1-artifacts/v1' and bundle['protocol']==LABEL[:-1].decode() and bundle['network']=='testnet-10','bundle protocol identity')
     for field in ('genesis_hex','instance_hex','claim_commitment_hex'):
         require(bundle[field]==owner_intent[field],'owner-intent identity mismatch: '+field)
@@ -403,7 +406,7 @@ def check_bundle(root, owner_intent, reference_r1cs_dir, receipt, validate_keys)
     require((Path(root)/'disassembly.json').read_bytes()==disassembly and inspection['script_disassembly_sha256']==sha(disassembly),'independent disassembly content/hash mismatch')
     # Receipt encoding is a supporting observation protocol, not an artifact-schema extension.
     keys(receipt,'schema scope observer build_pins branches setup_randomness_retained','setup receipt')
-    require(receipt['schema']=='kpi-a1-setup-observation/v1' and receipt['scope']=='local-unfunded-fixture' and isinstance(receipt['observer'],str) and receipt['observer'] and receipt['setup_randomness_retained'] is False,'missing supervised setup observation')
+    require(receipt['schema']=='kpi-a1-setup-observation/v1' and receipt['scope']==owner_intent['scope'] and isinstance(receipt['observer'],str) and receipt['observer'] and receipt['setup_randomness_retained'] is False,'missing supervised setup observation')
     require(receipt['build_pins']==pins and receipt['branches']==hash_records,'setup receipt does not bind reviewed artifacts')
     receipt_bytes=canonical_json(receipt)
     require(inspection['setup_observation_receipt_sha256']==sha(receipt_bytes),'independently retained receipt hash mismatch')

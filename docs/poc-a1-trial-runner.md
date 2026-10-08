@@ -77,8 +77,11 @@ repository core (`kpi-poc-a1`, `a1_check.py`, `a1_recovery.py`):
 
 ## Phases
 
-1. **Constructor in the repository.** `kpi-poc-a1 instance DIR` with explicit
-   terms and a random private owner key (port of the local constructor change).
+1. **Constructor in the repository.** Done: the separate binary
+   `kpi-a1-testnet-instance testnet-10 NEW_DIR TERMS.json` (fresh private key,
+   scope `testnet-10-test-kas`); observe it with
+   `a1_observe.py --testnet-terms TERMS.json`. The `kpi-poc-a1` harness still
+   constructs fixture bundles only.
 2. **Local devnet rehearsal.** Run the same commands against a local
    `rusty-kaspa` devnet at the pinned commit, so the full path can be repeated
    without test KAS or servers. Open question: whether the pinned build

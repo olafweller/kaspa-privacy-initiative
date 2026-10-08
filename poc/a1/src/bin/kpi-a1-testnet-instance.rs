@@ -20,7 +20,8 @@ const USAGE: &str = "Usage: kpi-a1-testnet-instance testnet-10 NEW_DIRECTORY TER
 
 /// Exactly the six terms as integer sompi; unknown or missing keys are rejected.
 fn read_terms(path: &Path) -> Result<Terms> {
-    let v: Value = serde_json::from_slice(&fs::read(path)?)?;
+    // strict_json rejects duplicate keys before the exact-key check.
+    let v: Value = kpi_poc_a1::artifact::strict_json(&fs::read(path)?)?;
     let o = v.as_object().ok_or("terms must be a JSON object")?;
     let names = ["l0", "b0", "w", "f0", "fc", "f1"];
     if o.len() != names.len() || !names.iter().all(|n| o.contains_key(*n)) {
@@ -58,7 +59,12 @@ fn main() -> Result<()> {
         return Err(USAGE.into());
     }
     let terms = read_terms(Path::new(&args[2]))?;
-    let report = harness::construct(Path::new(&args[1]), terms, fresh_recipient_key())?;
+    let report = harness::construct(
+        Path::new(&args[1]),
+        terms,
+        fresh_recipient_key(),
+        "testnet-10-test-kas",
+    )?;
     println!("{}", serde_json::to_string_pretty(&report)?);
     Ok(())
 }

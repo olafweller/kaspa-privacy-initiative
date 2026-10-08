@@ -844,7 +844,7 @@ fn experiment(root: &Path) -> Result<Value> {
     // Real funding is unavailable in this executable and requires a separate review.
     let mut key = [0; 32];
     key[31] = 1;
-    construct(root, terms, key)
+    construct(root, terms, key, "local-unfunded-fixture")
 }
 // Version-0 pay-to-public-key script of the recipient backup key.
 pub(crate) fn recipient_script(key: &[u8; 32]) -> Result<Vec<u8>> {
@@ -856,9 +856,16 @@ pub(crate) fn recipient_script(key: &[u8; 32]) -> Result<Vec<u8>> {
     spk.push(0xac);
     Ok(spk)
 }
-// Shared constructor. This harness binary only calls it with fixture key 1;
-// the separate testnet-only `kpi-a1-testnet-instance` binary supplies a fresh key.
-pub(crate) fn construct(root: &Path, terms: Terms, recipient_key: [u8; 32]) -> Result<Value> {
+// Shared constructor. This harness binary only constructs fixture bundles (key 1);
+// the separate testnet-only `kpi-a1-testnet-instance` binary supplies a fresh key
+// and the testnet scope. Proving/validation commands below operate on any
+// supplied bundle; B's recovery relies on that.
+pub(crate) fn construct(
+    root: &Path,
+    terms: Terms,
+    recipient_key: [u8; 32],
+    scope: &str,
+) -> Result<Value> {
     if root.exists() {
         return Err("output must not already exist (no overwrite)".into());
     }
@@ -873,7 +880,7 @@ pub(crate) fn construct(root: &Path, terms: Terms, recipient_key: [u8; 32]) -> R
     let source = run_git(&["rev-parse", "HEAD"])?;
     let lock = fs::read(Path::new(env!("CARGO_MANIFEST_DIR")).join("Cargo.lock"))?;
     let pins = json!({"kpi_source_commit":source,"rusty_kaspa_commit":"01b532e8b553523216471682649693af92f0fd16","rust_toolchain":"1.91.0","target":"x86_64-unknown-linux-gnu","cargo_lock_sha256":sha(&lock),"dependency_versions":{"arkworks":"0.6.0","sha2":"0.10.9"},"sdk_archive_sha256":"ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124","node_archive_sha256":"5ba61c05c013a4856491a8a17666fa73f7bd2aecbfed8affe8ffdc077361dad8","build_commands":["cargo +1.91.0 build --locked --release"],"checker_source_commit":source});
-    let intent = json!({"schema":"kpi-a1-intent/v1","scope":"local-unfunded-fixture","genesis_hex":model::GENESIS_HEX,"instance_hex":hex::encode(instance),"claim_commitment_hex":hex::encode(claim),"recipient_spk_hex":hex::encode(&recipient),"terms":{"l0":q.l0.to_string(),"b0":q.b0.to_string(),"w":q.w.to_string(),"f0":q.f0.to_string(),"fc":q.fc.to_string(),"f1":q.f1.to_string()},"pins":pins});
+    let intent = json!({"schema":"kpi-a1-intent/v1","scope":scope,"genesis_hex":model::GENESIS_HEX,"instance_hex":hex::encode(instance),"claim_commitment_hex":hex::encode(claim),"recipient_spk_hex":hex::encode(&recipient),"terms":{"l0":q.l0.to_string(),"b0":q.b0.to_string(),"w":q.w.to_string(),"f0":q.f0.to_string(),"fc":q.fc.to_string(),"f1":q.f1.to_string()},"pins":pins});
     json_new(&root.join("owner-intent.json"), &intent)?;
     if let Some(retained) = std::env::var_os("KPI_A1_RETAIN_INTENT") {
         json_new(Path::new(&retained), &intent)?;
