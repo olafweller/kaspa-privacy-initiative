@@ -2,6 +2,10 @@
 
 The initiative should build on mature ideas and current Kaspa capabilities rather than inventing privacy infrastructure from scratch.
 
+## Latest review
+
+- [phase1-source-review-2026-10-08.md](phase1-source-review-2026-10-08.md) — dated source-only comparison, search boundaries and open privacy, scale, recovery, fee and migration questions.
+
 ## Kaspa-specific
 
 - [existing-kaspa-privacy.md](existing-kaspa-privacy.md) — existing proposals, experiments, and claims.
