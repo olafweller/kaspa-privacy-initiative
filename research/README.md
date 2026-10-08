@@ -6,6 +6,7 @@ The initiative should build on mature ideas and current Kaspa capabilities rathe
 
 - [existing-kaspa-privacy.md](existing-kaspa-privacy.md) — existing proposals, experiments, and claims.
 - [kaspa-toccata-vprogs.md](kaspa-toccata-vprogs.md) — live primitives and evolving based-app tooling.
+- [kaspa-post-quantum-experiments.md](kaspa-post-quantum-experiments.md) — PQ signature experiments on Kaspa (STARK-verified, script-verified, covenant-enforced); input for issue #19.
 
 ## Privacy systems to study
 
