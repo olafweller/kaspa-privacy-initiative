@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Published 2026-10-08 trial templates: complete, placeholder-only, reproducible."""
+import contextlib
 import hashlib
+import io
 import json
 import pathlib
 import re
@@ -48,7 +50,8 @@ class TrialSourceTemplates(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             values = pathlib.Path(d) / 'values.json'
             values.write_text(json.dumps({p: 'x' for p in self.manifest['placeholders']}))
-            self.assertEqual(t.main(['verify', '--values', str(values)]), 1)
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(t.main(['verify', '--values', str(values)]), 1)
             values.write_text(json.dumps({'@KPI_REPO@': 'x'}))
             with self.assertRaises(SystemExit):
                 t.main(['verify', '--values', str(values)])

@@ -21,7 +21,7 @@ def command(args,cwd):
     return p.stdout.strip()
 
 
-def observe(repo,binary,reference_binary,output,retained,rustup):
+def observe(repo,binary,reference_binary,output,retained,rustup,testnet_terms=None):
     repo=Path(repo).resolve();binary=Path(binary).resolve();reference_binary=Path(reference_binary).resolve()
     output=Path(output).resolve();retained=Path(retained).resolve()
     c.require(not output.exists() and not retained.exists(),'new external output/retained directories required')
@@ -34,7 +34,8 @@ def observe(repo,binary,reference_binary,output,retained,rustup):
     lock_hash=c.sha((repo/'poc/a1/Cargo.lock').read_bytes())
     retained.mkdir(mode=0o700)
     # Persist the pre-run event before launching; retention never depends on final export.
-    invocation=[str(binary),'experiment',str(output)]
+    # Fixture harness by default; the separate testnet constructor takes explicit terms.
+    invocation=[str(binary),'experiment',str(output)] if testnet_terms is None else [str(binary),'testnet-10',str(output),str(Path(testnet_terms).resolve())]
     before={'schema':'kpi-a1-observer-event/v1','event':'before-setup','source_commit':source,'binary_sha256':binary_hash,'reference_binary_sha256':reference_hash,'cargo_lock_sha256':lock_hash,'compiler':toolchain,'invocation':invocation,'started_unix_seconds':str(int(time.time())),'scope':'same-host-automated-observation-no-human-ceremony'}
     (retained/'before-setup.json').write_bytes(c.canonical_json(before))
     child_env=dict(os.environ);child_env['KPI_A1_RETAIN_INTENT']=str(retained/'owner-intent.json')
@@ -45,7 +46,7 @@ def observe(repo,binary,reference_binary,output,retained,rustup):
     c.require(binary_hash==c.sha(binary.read_bytes()) and reference_hash==c.sha(reference_binary.read_bytes()),'binary changed during observed setup')
     c.require(lock_hash==c.sha((repo/'poc/a1/Cargo.lock').read_bytes()),'lock changed during observed setup')
     manifest=c.load_json(output/'manifest.json');intent=c.load_json(output/'owner-intent.json')
-    human=['A1 UNFUNDED LOCAL FIXTURE — DO NOT FUND (public recipient fixture key 1)',
+    human=['A1 UNFUNDED LOCAL FIXTURE — DO NOT FUND (public recipient fixture key 1)' if testnet_terms is None else 'A1 TESTNET-10 INSTANCE — TEST KAS ONLY (fresh private recipient key)',
            'Single-party setup; same-host automated observation; not audited or production-safe.',
            'Protocol: '+manifest['protocol'], 'Network genesis: '+manifest['genesis_hex'],
            'Instance: '+manifest['instance_hex'],'Claim commitment: '+manifest['claim_commitment_hex'],
@@ -119,7 +120,8 @@ def main():
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--retained',type=Path,required=True)
     p.add_argument('--rustup',default='/home/olaf/.cargo/bin/rustup')
-    a=p.parse_args();observe(a.repo,a.binary,a.reference_binary,a.output,a.retained,a.rustup)
+    p.add_argument('--testnet-terms',type=Path,help='run the testnet-only constructor with these integer-sompi terms')
+    a=p.parse_args();observe(a.repo,a.binary,a.reference_binary,a.output,a.retained,a.rustup,a.testnet_terms)
 
 
 if __name__=='__main__':main()

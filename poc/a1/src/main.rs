@@ -237,6 +237,17 @@ mod transport_tests {
     use super::*;
 
     #[test]
+    fn fixture_key_one_keeps_the_fixture_recipient_script() {
+        let mut key = [0; 32];
+        key[31] = 1;
+        assert_eq!(
+            hex::encode(recipient_script(&key).unwrap()),
+            "00002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac"
+        );
+        assert!(recipient_script(&[0; 32]).is_err());
+    }
+
+    #[test]
     fn stale_mutant_id_is_not_a_native_negative() {
         let mut v: Value = serde_json::from_str(include_str!(
             "../evidence/fixture-2026-10-03/s0_continue.validate.json"
@@ -821,10 +832,6 @@ fn negatives(
     Ok(())
 }
 fn experiment(root: &Path) -> Result<Value> {
-    if root.exists() {
-        return Err("output must not already exist (no overwrite)".into());
-    }
-    fs::create_dir_all(root)?;
     let terms = Terms {
         l0: 1_000_000_000,
         b0: 70_000_000,
@@ -833,16 +840,36 @@ fn experiment(root: &Path) -> Result<Value> {
         fc: 30_000_000,
         f1: 30_000_000,
     };
+    // Explicit known fixture recovery key 1, only an UNFUNDED local instance.
+    // Real funding is unavailable in this executable and requires a separate review.
+    let mut key = [0; 32];
+    key[31] = 1;
+    construct(root, terms, key)
+}
+// Version-0 pay-to-public-key script of the recipient backup key.
+pub(crate) fn recipient_script(key: &[u8; 32]) -> Result<Vec<u8>> {
+    let secret = secp256k1::SecretKey::from_slice(key)?;
+    let (public, _) = secp256k1::Keypair::from_secret_key(&secp256k1::Secp256k1::new(), &secret)
+        .x_only_public_key();
+    let mut spk = vec![0x00, 0x00, 0x20];
+    spk.extend_from_slice(&public.serialize());
+    spk.push(0xac);
+    Ok(spk)
+}
+// Shared constructor. This harness binary only calls it with fixture key 1;
+// the separate testnet-only `kpi-a1-testnet-instance` binary supplies a fresh key.
+pub(crate) fn construct(root: &Path, terms: Terms, recipient_key: [u8; 32]) -> Result<Value> {
+    if root.exists() {
+        return Err("output must not already exist (no overwrite)".into());
+    }
     let q = terms.checked()?;
+    let recipient = recipient_script(&recipient_key)?;
+    fs::create_dir_all(root)?;
     let mut secret = [0; 32];
     let mut instance = [0; 32];
     OsRng.fill_bytes(&mut secret);
     OsRng.fill_bytes(&mut instance);
     let claim = circuit::claim_commitment(&secret);
-    // Explicit known fixture recovery key 1, only an UNFUNDED local instance.
-    // Real funding is unavailable in this executable and requires a separate review.
-    let recipient =
-        hex::decode("00002079be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac")?;
     let source = run_git(&["rev-parse", "HEAD"])?;
     let lock = fs::read(Path::new(env!("CARGO_MANIFEST_DIR")).join("Cargo.lock"))?;
     let pins = json!({"kpi_source_commit":source,"rusty_kaspa_commit":"01b532e8b553523216471682649693af92f0fd16","rust_toolchain":"1.91.0","target":"x86_64-unknown-linux-gnu","cargo_lock_sha256":sha(&lock),"dependency_versions":{"arkworks":"0.6.0","sha2":"0.10.9"},"sdk_archive_sha256":"ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124","node_archive_sha256":"5ba61c05c013a4856491a8a17666fa73f7bd2aecbfed8affe8ffdc077361dad8","build_commands":["cargo +1.91.0 build --locked --release"],"checker_source_commit":source});
@@ -852,15 +879,7 @@ fn experiment(root: &Path) -> Result<Value> {
         json_new(Path::new(&retained), &intent)?;
     }
     write_new(&root.join("claim-secret.bin"), &secret, true)?;
-    write_new(
-        &root.join("recipient-key.bin"),
-        &{
-            let mut b = [0; 32];
-            b[31] = 1;
-            b
-        },
-        true,
-    )?;
+    write_new(&root.join("recipient-key.bin"), &recipient_key, true)?;
     eprintln!("S1 setup (unfunded fixture)");
     let c1 =
         BranchContext::from_terms(Branch::S1Terminal, terms, instance, claim, &recipient, &[])?;
