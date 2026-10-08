@@ -119,3 +119,7 @@ no further live action is authorized. The public fixtures above remain unfunded.
 later memoized offline replay and separate new-proof terminal owner exit are
 distinct evidence. This publication changes no protocol/tooling source and starts
 no attempt 3, funding or broadcast. Attempt 1 records remain unchanged.
+
+The [official trial of 2026-10-08](../../docs/poc-a1-official-trial-2026-10-08.md)
+passed the scoped S1 scenario: autonomous B recovery after physical loss of A
+and an accepted fresh-proof terminal payout. Full G5/G6 remains open.

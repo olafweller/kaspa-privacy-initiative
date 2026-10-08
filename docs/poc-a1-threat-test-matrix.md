@@ -13,6 +13,10 @@ loss and autonomous B start, then failed at checkpoint metadata parsing before
 B lineage/proving. **G5 FAILED — autonomous recovery did not complete during
 the live run.** Later offline replay and separately authorized owner exit do not
 close G5 or full G6. Frozen attacks/oracles and attempt 1 evidence are unchanged.
+**Update 2026-10-08:** the [official trial](poc-a1-official-trial-2026-10-08.md) provides live
+evidence for the S1 recovery path of rows 11–12 and 22–23 (physical A loss,
+independent S1 discovery, fresh proof, accepted payout, ≥120 s later
+observation). S0 direct recovery and other G5/G6 rows remain open.
 [ADR-0003](adr/0003-a1-successor-reserve.md) defines the finite S0/S1 graph,
 encoding and accounting. The [implementation plan](poc-a1-implementation-plan.md)
 assigns execution gates. No invariant is changed.

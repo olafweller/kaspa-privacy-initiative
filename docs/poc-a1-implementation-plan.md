@@ -19,6 +19,11 @@ checkpoint parsing before B lineage/proving. **G5 FAILED — autonomous recovery
 did not complete during the live run.** Its later repaired offline replay and
 separate owner terminal exit do not change that result or complete full G6.
 No further live action or invariant change is authorized.
+**Update 2026-10-08:** the separately authorized [official trial](poc-a1-official-trial-2026-10-08.md)
+passed the scoped S1 autonomous-recovery scenario after physical loss of A,
+with one accepted fresh-proof terminal payout. S0 direct recovery, the
+competing-spend result and live adversarial cases remain open, so full G5/G6
+is not closed.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 

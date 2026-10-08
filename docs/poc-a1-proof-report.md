@@ -14,6 +14,9 @@ decoder before B's lineage scan or proving. **G5 FAILED — autonomous recovery
 did not complete during the live run.** A later repaired offline replay and a
 separately authorized new-proof terminal exit do not change that result.
 **No further live action, mainnet use, G6 execution or merge is authorized.**
+**Update 2026-10-08:** the [official trial](poc-a1-official-trial-2026-10-08.md) passed the
+scoped S1 scenario: B recovered after physical loss of A and its fresh-proof
+terminal payout was accepted on TN10. Full G5/G6 remains open.
 The fixture recipient private key is deliberately public **1**: never fund it.
 
 The frozen [ADR](adr/0003-a1-successor-reserve.md),
