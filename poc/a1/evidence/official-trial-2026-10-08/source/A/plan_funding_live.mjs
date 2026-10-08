@@ -1,0 +1,35 @@
+import {loadTerms} from './fixed_terms.mjs';
+import {fileURLToPath} from 'node:url';import path from 'node:path';
+// Offline funding construction only; no RPC or broadcasting API.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {execFileSync} from 'node:child_process';
+import {canonical,transaction,fundingStorageMass} from '@KPI_REPO@/scripts/a0_tn10.mjs';
+const root='@KPI_REPO@/.local/g5-preparation',dir=path.join(path.dirname(fileURLToPath(import.meta.url)),'live-execution');
+const sdk=createRequire(import.meta.url)('@KPI_REPO@/.local/sdk/kaspa-wasm32-sdk/nodejs/kaspa');
+const native='@KPI_REPO@/.local/worktrees/a1-poc/poc/a1/target/release/kpi-poc-a1',ref='@KPI_REPO@/.local/worktrees/a1-poc/poc/a1/target/release/a1_reference';
+const envPath='@KPI_REPO@/.env.tn10.local';assert.equal(fs.statSync(envPath).mode&0o777,0o600);
+const env={};for(const line of fs.readFileSync(envPath,'utf8').split(/\r?\n/)){const m=line.match(/^\s*([A-Z][A-Z0-9_]*)\s*=\s*(.*?)\s*$/);if(m)env[m[1]]=m[2].replace(/^(['"])(.*)\1$/,'$2');}
+assert.equal(env.KASPA_NETWORK,'tn10');const key=new sdk.PrivateKey(env.KPI_FUNDING_PRIVATE_KEY);assert.equal(key.toKeypair().toAddress('testnet-10').toString(),env.KPI_FUNDING_ADDRESS);
+const meta=JSON.parse(fs.readFileSync(dir+'/run-location.private.json'));const manifest=JSON.parse(fs.readFileSync(meta.path+'/public/manifest.json'));const {reserve,feeCap,maximumDebit}=loadTerms(dir,meta.path+'/public/manifest.json');
+assert.equal(manifest.network,'testnet-10');assert.equal(BigInt(manifest.states.s0.R),reserve);
+const spk=manifest.states.s0.spk_hex,to=sdk.addressFromScriptPublicKey(new sdk.ScriptPublicKey(parseInt(spk.slice(0,4),16),spk.slice(4)),'testnet').toString();assert.notEqual(to,env.KPI_FUNDING_ADDRESS);
+const context=JSON.parse(fs.readFileSync(dir+'/wallet-context-refreshed.json'));assert.equal(context.server.networkId,'testnet-10');assert.equal(context.server.isSynced,true);
+const chosen=context.utxos.entries.filter(e=>!e.utxoEntry.isCoinbase&&BigInt(e.utxoEntry.amount)>=maximumDebit).sort((a,b)=>BigInt(a.utxoEntry.amount)<BigInt(b.utxoEntry.amount)?-1:BigInt(a.utxoEntry.amount)>BigInt(b.utxoEntry.amount)?1:0)[0];assert.ok(chosen,'sufficient single noncoinbase input required');
+const e=chosen.utxoEntry;assert.equal(e.covenantId,null);
+const entries=[{address:env.KPI_FUNDING_ADDRESS,outpoint:chosen.outpoint,amount:BigInt(e.amount),scriptPublicKey:e.scriptPublicKey,blockDaaScore:BigInt(e.blockDaaScore),isCoinbase:e.isCoinbase}];
+const g=new sdk.Generator({entries,outputs:[{address:to,amount:reserve}],changeAddress:env.KPI_FUNDING_ADDRESS,priorityFee:1000000000n,networkId:'testnet-10'});
+const pending=await g.next();assert.ok(pending);assert.ok(!(await g.next()));pending.sign([key]);
+const tx=pending.transaction;let raw=canonical(tx);assert.equal(raw.version,0);assert.equal(raw.inputs.length,1);assert.deepEqual(raw.inputs[0].previousOutpoint,chosen.outpoint);
+const before=raw,generatorMass=raw.storageMass;tx.storageMass=fundingStorageMass([e.amount],raw.outputs.map(o=>o.value));raw=canonical(tx);assert.deepEqual({...raw,storageMass:generatorMass},before);
+assert.equal(raw.outputs[0].value,reserve.toString());assert.equal(raw.outputs[0].scriptPublicKey,spk);assert.equal(raw.outputs[0].covenant,null);
+const change=sdk.payToAddressScript(env.KPI_FUNDING_ADDRESS),changeSpk=change.version.toString(16).padStart(4,'0')+change.script;
+assert.ok(raw.outputs.length<=2&&raw.outputs.every((o,i)=>o.covenant===null&&(i===0||o.scriptPublicKey===changeSpk)));
+const fee=BigInt(e.amount)-raw.outputs.reduce((s,o)=>s+BigInt(o.value),0n);assert.ok(fee>0n&&fee<=feeCap);assert.ok(reserve+fee<=maximumDebit);
+const write=(name,v)=>fs.writeFileSync(dir+'/'+name,JSON.stringify(v,null,2),{flag:'wx',mode:0o600});
+const entrySpk=typeof e.scriptPublicKey==='string'?e.scriptPublicKey:e.scriptPublicKey.version.toString(16).padStart(4,'0')+e.scriptPublicKey.script;
+assert.match(entrySpk,/^[0-9a-f]+$/);assert.equal(entrySpk,changeSpk);
+const nativeEntry={...e,scriptPublicKey:entrySpk};
+write('funding-transaction.json',raw);write('funding-full-request.json',{transaction:raw,entry:nativeEntry});
+console.log(JSON.stringify({planned:true,broadcast:false}));

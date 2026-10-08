@@ -1,0 +1,556 @@
+{
+  "files": {
+    "A/assemble_live_package.py": {
+      "deployed_sha256": "e97f183f4605485488c72deb9080b24368bfcf9c7e321e52d266026b1a9a8cca",
+      "placeholders": []
+    },
+    "A/build_install_manifest.py": {
+      "deployed_sha256": "fb7dcceded3b8bbe19afa501cfcc5c00d5284a8feeee41436a4999d6fd70a003",
+      "placeholders": []
+    },
+    "A/confirm_S0.py": {
+      "deployed_sha256": "0554af2d2ed66437f98bcee77ce6b0198ae2f13915396059ee920a1c5ad18b70",
+      "placeholders": [
+        "@C_SSH_HOST@"
+      ]
+    },
+    "A/controller_access.py": {
+      "deployed_sha256": "d1c63d90eddf20cd0b89d7bd2c50cbb7330ddf9eef3b7fa1728772b39da9421b",
+      "placeholders": []
+    },
+    "A/endpoint_readiness.py": {
+      "deployed_sha256": "45595200e1c952fb166cc0c564a99927cb92440734a596d6aee1f520aeb2223d",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_HOME@",
+        "@KPI_REPO@"
+      ]
+    },
+    "A/endpoint_sdk_probe.mjs": {
+      "deployed_sha256": "e7805a02413ce6c689faceda8ae0ff7dbcf64f7ca6e64a3b43aac1299eb65375",
+      "placeholders": []
+    },
+    "A/fee_policy_adapter.py": {
+      "deployed_sha256": "bba825778a2798ca04206b47cb5da454c4c9878f6daa53212189961506e95f87",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "A/fee_refresh.py": {
+      "deployed_sha256": "e64c0d67b5410b4b2841f8f2137dafba903ba5edcea3bf58896b3806809fa218",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "A/finite_final_check.py": {
+      "deployed_sha256": "5e04ff5ebe273d3e4a9ae617dd5133d618d05ae397175f0ddbc919014b696e32",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@"
+      ]
+    },
+    "A/finite_install.py": {
+      "deployed_sha256": "bef0c6ece4bd2c4a81e3d6c13ca1fb0a156ddc97f5d05e74a40b6af7b48a5fbe",
+      "placeholders": [
+        "@C_ADDRESS@"
+      ]
+    },
+    "A/finite_launch.py": {
+      "deployed_sha256": "db84ca912410d5e43252703a9638d83a881cf1dd4a476fd35463be47a9db6e71",
+      "placeholders": [
+        "@B_SSH_HOST@"
+      ]
+    },
+    "A/finite_live.py": {
+      "deployed_sha256": "30bbc7b02995c013807c27e4e94480a0ea4d980a34b10d480518004a6f43db57",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@"
+      ]
+    },
+    "A/finite_live_activate.py": {
+      "deployed_sha256": "5507471bab193b6e37c74a34e7edcc4041b2b69e1fec6f05707a85bd2d4e30ea",
+      "placeholders": []
+    },
+    "A/fixed_terms.mjs": {
+      "deployed_sha256": "432d3adf55476a3a8952864d28e3dfa1643979471e6afac84122e8a1b47050d4",
+      "placeholders": []
+    },
+    "A/fixed_terms.py": {
+      "deployed_sha256": "7dcaaba5b2deee5dad74a89d55b4a069e420070f111f64bc5abb25df61e0471d",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "A/intent_broker.py": {
+      "deployed_sha256": "6306c37a77cab8b8d2ae846678a043942f697ac7aa1999f01468bae4bd672e1e",
+      "placeholders": []
+    },
+    "A/launcher_common.py": {
+      "deployed_sha256": "dc1ac83647a577fe42b1b2123d7b135449c746b8297f01e2ad94247c979dce8e",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_HOME@",
+        "@KPI_REPO@"
+      ]
+    },
+    "A/plan_funding_live.mjs": {
+      "deployed_sha256": "4f7c0a10747fc25278bacf067813a24443ce3e3339178cc5bd0197cc052d98e1",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "A/qualified-fee-preflight.py": {
+      "deployed_sha256": "09c4def9786a691153c7f8311d5a5f3053eb022de2211151dbff88959adf99b7",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "A/qualify_sandbox.py": {
+      "deployed_sha256": "ac465cc9e3e5b339822a22c139cf6b5a44b8c01006cb6b5dcd8059ff96366527",
+      "placeholders": []
+    },
+    "A/review_funding_live.mjs": {
+      "deployed_sha256": "566a06a30ce72c6e830b1d75cfe09a9fd84be5ed1df1ffa3b3cd73a439240b2d",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "A/rpc_contract.py": {
+      "deployed_sha256": "84d89e1995a225c9709aff54bb209e0e0336c8abb8c938c327ea56c2936cf006",
+      "placeholders": []
+    },
+    "A/safe_diagnostics.py": {
+      "deployed_sha256": "741fb57b4d729d677452dab7aff9ffe9961c55e4dffa7ac46200e92b3f083639",
+      "placeholders": []
+    },
+    "A/sdk_readonly.mjs": {
+      "deployed_sha256": "e00f5fd297d891ca3d6f596c2fd15316fe992ecc5779f7cf3af16fd95086e23f",
+      "placeholders": []
+    },
+    "A/start_worker.py": {
+      "deployed_sha256": "fa223813c1dd9aa1046ce5e91b4a828068601d63813a346ba685484643bd48ad",
+      "placeholders": []
+    },
+    "A/submit_funding_ready.mjs": {
+      "deployed_sha256": "6c60c59b54fb545b29c145f11b3868610aa2c920ec97b1301f62a78f7685c213",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "B/admin/finite_install.py": {
+      "deployed_sha256": "bef0c6ece4bd2c4a81e3d6c13ca1fb0a156ddc97f5d05e74a40b6af7b48a5fbe",
+      "placeholders": [
+        "@C_ADDRESS@"
+      ]
+    },
+    "B/admin/finite_live_activate.py": {
+      "deployed_sha256": "5507471bab193b6e37c74a34e7edcc4041b2b69e1fec6f05707a85bd2d4e30ea",
+      "placeholders": []
+    },
+    "B/admin/fixed_terms.py": {
+      "deployed_sha256": "7dcaaba5b2deee5dad74a89d55b4a069e420070f111f64bc5abb25df61e0471d",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "B/build_install_manifest.py": {
+      "deployed_sha256": "fb7dcceded3b8bbe19afa501cfcc5c00d5284a8feeee41436a4999d6fd70a003",
+      "placeholders": []
+    },
+    "B/finite_install.py": {
+      "deployed_sha256": "bef0c6ece4bd2c4a81e3d6c13ca1fb0a156ddc97f5d05e74a40b6af7b48a5fbe",
+      "placeholders": [
+        "@C_ADDRESS@"
+      ]
+    },
+    "B/new_base_check.py": {
+      "deployed_sha256": "0ec3b47b18a5904a9d62172a0bd39b147e4439d3c9317bffe0a64d4ef54920e7",
+      "placeholders": []
+    },
+    "B/software/B_controller_run.py": {
+      "deployed_sha256": "5c222ff6320744c3ad4fc6ba26404a53634c5cc0d31b998848c31e877b0aebd4",
+      "placeholders": []
+    },
+    "B/software/B_terminal_payout.py": {
+      "deployed_sha256": "71ec5040efb68cea48805f696b1db4a5d04348ed04374306ffdc55d431f2d61a",
+      "placeholders": []
+    },
+    "B/software/a1_check.py": {
+      "deployed_sha256": "ed667b3e26655e3e0f18d80f0c307edaaa7421cddacab5e2c3d04042ee988463",
+      "placeholders": []
+    },
+    "B/software/a1_recovery.py": {
+      "deployed_sha256": "6660f01b7a894dd4f17ee65ccafa228bf14c1d00d5ccda4dfcc0ae876effa432",
+      "placeholders": []
+    },
+    "B/software/a1_recovery_rehearsal.py": {
+      "deployed_sha256": "d39bd5e21f85a0a64f4c2604b0367004002f052b34a825cf94fd7176805b9d80",
+      "placeholders": []
+    },
+    "B/software/access_check.py": {
+      "deployed_sha256": "e4c4d1fe194f7f390878ee1f1b564c8d8c878b919e4632dd69e8249ae22c5f00",
+      "placeholders": []
+    },
+    "B/software/boundary_wait.py": {
+      "deployed_sha256": "7eea6aad33406cf48325d9c9f11e2195e7c4c023757ae4931640a290332f8a8e",
+      "placeholders": []
+    },
+    "B/software/capture_metadata.py": {
+      "deployed_sha256": "ac1d3205bbdd4b161332909f17a05a167e83528d10973967814007f7caa4bff2",
+      "placeholders": []
+    },
+    "B/software/durable_result.py": {
+      "deployed_sha256": "ee7adb94891d855f68c9dc05a3cd58c02a939ebffec35487d075e40a1b865838",
+      "placeholders": []
+    },
+    "B/software/finite_receipt.py": {
+      "deployed_sha256": "a495d4e206b6a9cfeb5dc110ccfec0d44f214403fc63d6fe4b87d24e65c024ab",
+      "placeholders": []
+    },
+    "B/software/historical_context.py": {
+      "deployed_sha256": "49e85365997ed7fb823de805b1d15c69e7a5e28c2b9b2a7f1ffd7ac821698ebb",
+      "placeholders": []
+    },
+    "B/software/history_chunks.py": {
+      "deployed_sha256": "c80327e59eef51d59a1cfb82aaa14478bd2667413c10705f60216f3ab9ce44a2",
+      "placeholders": []
+    },
+    "B/software/history_storage.py": {
+      "deployed_sha256": "240cf62dbf4e2ecb9065e4fc08d745fa7d60cb7971e364b74754efd19af60f30",
+      "placeholders": []
+    },
+    "B/software/indexed_discovery.py": {
+      "deployed_sha256": "23e9572c2dd48a05df81c226a940be3e08eb2fbad3a594d533e05fa44bacaccf",
+      "placeholders": []
+    },
+    "B/software/lifecycle_binding.py": {
+      "deployed_sha256": "78a6375853089c335d9bc78029fa25f0f5296cb6ac58ece634c3e2d71322ffd7",
+      "placeholders": []
+    },
+    "B/software/lifecycle_entry.py": {
+      "deployed_sha256": "e2c7ad282cf813c5cb24f915a71448f4f5b27006e5b0f2ad2ba215dc4bde5a7c",
+      "placeholders": []
+    },
+    "B/software/recover_exit.py": {
+      "deployed_sha256": "ee0c8850d4d3aa7c10e90f129263141ae6fee695d205e65334c5bc2f6c8bd9d9",
+      "placeholders": []
+    },
+    "B/software/recovery_download.py": {
+      "deployed_sha256": "1c3ede2f0c9c29eba3169ae9672b4eaae8858519311ed9f144a5547b9ba20e2d",
+      "placeholders": []
+    },
+    "B/software/recovery_errors.py": {
+      "deployed_sha256": "5980170272fd443e896f4de828371c2325280085a0eaa254de84e97c6240c6cc",
+      "placeholders": []
+    },
+    "B/software/recovery_supervisor.py": {
+      "deployed_sha256": "00238fc1f3e9f8cd7feaaf1d37ff00d68db9e9ce2aefcf81f2a72439d27efa8a",
+      "placeholders": []
+    },
+    "B/software/terminal_sdk.mjs": {
+      "deployed_sha256": "a2e32617d75ca2b59a540341c074c1275765be4c9bb6950dac2f209dfae5724d",
+      "placeholders": []
+    },
+    "B/software/terminal_sdk.py": {
+      "deployed_sha256": "3429a84321a39f01692cefd1bf5b1e78f68c5aae30d3344dc3d931fa21340e8a",
+      "placeholders": []
+    },
+    "B/software/terminal_sdk_gate.py": {
+      "deployed_sha256": "c34694380c5a944f631d273171316e873a97cf12cab7a0260492b7cf7bfd43c8",
+      "placeholders": []
+    },
+    "B/software/terminal_wire.mjs": {
+      "deployed_sha256": "2dae10c27afbef882b96624d366f918023e531e08b0174817cf34e72142cb24b",
+      "placeholders": []
+    },
+    "B/software/terminal_wire.py": {
+      "deployed_sha256": "8039363f7bf499dea1638949347bb06da3d7e1f16e5dee7e3fca1c5a1ff3b6a1",
+      "placeholders": []
+    },
+    "B/software/ws_fixture.py": {
+      "deployed_sha256": "238542453770000c79d6b442589ebdc4da6d81de0c218d2a4b5728619e7c5596",
+      "placeholders": []
+    },
+    "C/admin/finite_install.py": {
+      "deployed_sha256": "bef0c6ece4bd2c4a81e3d6c13ca1fb0a156ddc97f5d05e74a40b6af7b48a5fbe",
+      "placeholders": [
+        "@C_ADDRESS@"
+      ]
+    },
+    "C/admin/finite_live_activate.py": {
+      "deployed_sha256": "5507471bab193b6e37c74a34e7edcc4041b2b69e1fec6f05707a85bd2d4e30ea",
+      "placeholders": []
+    },
+    "C/admin/fixed_terms.py": {
+      "deployed_sha256": "7dcaaba5b2deee5dad74a89d55b4a069e420070f111f64bc5abb25df61e0471d",
+      "placeholders": [
+        "@KPI_REPO@"
+      ]
+    },
+    "C/build_install_manifest.py": {
+      "deployed_sha256": "fb7dcceded3b8bbe19afa501cfcc5c00d5284a8feeee41436a4999d6fd70a003",
+      "placeholders": []
+    },
+    "C/finite_install.py": {
+      "deployed_sha256": "bef0c6ece4bd2c4a81e3d6c13ca1fb0a156ddc97f5d05e74a40b6af7b48a5fbe",
+      "placeholders": [
+        "@C_ADDRESS@"
+      ]
+    },
+    "C/prefund_standby.py": {
+      "deployed_sha256": "497ea8056874ce6a71b34753e519fa7ab8f158426893c49adb4724939275a143",
+      "placeholders": []
+    },
+    "C/software/a1_check.py": {
+      "deployed_sha256": "ed667b3e26655e3e0f18d80f0c307edaaa7421cddacab5e2c3d04042ee988463",
+      "placeholders": []
+    },
+    "C/software/a1_fee_check.py": {
+      "deployed_sha256": "90ebef9588316ca073438f02542832e5a0e9b6662b4fa2c0bb9d2686631a8ce8",
+      "placeholders": []
+    },
+    "C/software/a1_recovery.py": {
+      "deployed_sha256": "6660f01b7a894dd4f17ee65ccafa228bf14c1d00d5ccda4dfcc0ae876effa432",
+      "placeholders": []
+    },
+    "C/software/boundary_controller_v2.py": {
+      "deployed_sha256": "4ec36cf90c483572ab77d5e582548a6b3df04e3b8d3d3cda54b6c7858bcefe2b",
+      "placeholders": []
+    },
+    "C/software/boundary_job.py": {
+      "deployed_sha256": "b47eae4e5bd2860139563bbf60ae51de455a10d5cde597522a623e8178765e1a",
+      "placeholders": []
+    },
+    "C/software/boundary_watch.py": {
+      "deployed_sha256": "19812b34bab625a877dbd4ae74b68bb7b9bf2f91444fccd66f9b14e4273b019a",
+      "placeholders": []
+    },
+    "C/software/bounded_log_read.py": {
+      "deployed_sha256": "322edf0209fa541502b70ee5d73dc1d105ed84cd5e174220c4df254f9e7a51b1",
+      "placeholders": []
+    },
+    "C/software/capacity.py": {
+      "deployed_sha256": "33fd72d352466c1f421f81734f74e8f2e24b7478e0630ce9fedc63c7d51cdbad",
+      "placeholders": []
+    },
+    "C/software/capture.py": {
+      "deployed_sha256": "88ed8771e5937f7ebb6731317ce16131d7b86f9df61fcfa18a95df2ec02860af",
+      "placeholders": []
+    },
+    "C/software/capture_metadata.py": {
+      "deployed_sha256": "ac1d3205bbdd4b161332909f17a05a167e83528d10973967814007f7caa4bff2",
+      "placeholders": []
+    },
+    "C/software/checkpoint_horizon.py": {
+      "deployed_sha256": "2a3d62f6ce31c239e19a8ca79543f18368c2328290a7b57a70408a8ceecb4eb0",
+      "placeholders": []
+    },
+    "C/software/control.py": {
+      "deployed_sha256": "c60baf94b8ee47ea4206778fe81e33593ec3f69168444c15a8a0e75fd80ee533",
+      "placeholders": []
+    },
+    "C/software/finite_capture.py": {
+      "deployed_sha256": "b47fcbf070706f404f815c21ed13abd363929384b72b7d9cbb4cea506fb1832e",
+      "placeholders": []
+    },
+    "C/software/finite_runtime.py": {
+      "deployed_sha256": "54691a54fa0bccf5a14390509a3b6456fd471883f2d40e9e9ee18159fc8d3fc8",
+      "placeholders": []
+    },
+    "C/software/fixture_provenance.py": {
+      "deployed_sha256": "fe823788b1cb844ec2a1dd6370dda03990dc7867d97adddacf3dd0b695b3887b",
+      "placeholders": []
+    },
+    "C/software/gateway.py": {
+      "deployed_sha256": "39a5e446cf1bf64584d91eca003fa8d45a3d254ad93eb1f54e1c73cbdcf44fb6",
+      "placeholders": []
+    },
+    "C/software/historical_context.py": {
+      "deployed_sha256": "49e85365997ed7fb823de805b1d15c69e7a5e28c2b9b2a7f1ffd7ac821698ebb",
+      "placeholders": []
+    },
+    "C/software/history_chunks.py": {
+      "deployed_sha256": "c80327e59eef51d59a1cfb82aaa14478bd2667413c10705f60216f3ab9ce44a2",
+      "placeholders": []
+    },
+    "C/software/history_storage.py": {
+      "deployed_sha256": "240cf62dbf4e2ecb9065e4fc08d745fa7d60cb7971e364b74754efd19af60f30",
+      "placeholders": []
+    },
+    "C/software/horizon_gate.py": {
+      "deployed_sha256": "b0314c91fbce2696e4e422fb14198c33cdad29fcf1cf024dc9cbb3398f1c9a85",
+      "placeholders": []
+    },
+    "C/software/independent_controller.py": {
+      "deployed_sha256": "e3a8f6f2c95490b750a6e7a8a4ad9a41ed977d07da62546a632dfea0bd3507b9",
+      "placeholders": []
+    },
+    "C/software/indexed_discovery.py": {
+      "deployed_sha256": "23e9572c2dd48a05df81c226a940be3e08eb2fbad3a594d533e05fa44bacaccf",
+      "placeholders": []
+    },
+    "C/software/lease_state.py": {
+      "deployed_sha256": "3e27408442be5678fa0bf7e97fb57c2aebb5c07b8807f872f4ef5d422a4a1706",
+      "placeholders": []
+    },
+    "C/software/live_schema_rehearsal.py": {
+      "deployed_sha256": "30d8f0a2d2f733479566bea5695f2c73bf9771b04c3ad1be463a8bff8c2ec024",
+      "placeholders": []
+    },
+    "C/software/recovery_errors.py": {
+      "deployed_sha256": "5980170272fd443e896f4de828371c2325280085a0eaa254de84e97c6240c6cc",
+      "placeholders": []
+    },
+    "C/software/recovery_index.py": {
+      "deployed_sha256": "44a0ff22def393c284d44930c209cf8e2b6d8d4a9fbea3d87e100c4e7d342911",
+      "placeholders": []
+    },
+    "C/software/result_gate.py": {
+      "deployed_sha256": "928179f429a4c6e6342a4d4b5b45fec92759aae21f6918002ae99fc8f53a8dc5",
+      "placeholders": []
+    },
+    "C/software/rpc_local.py": {
+      "deployed_sha256": "68c12dd6aa2bd1e4b6f81bcad489f38c1c88d9ea5e66465461e92258309bb0a1",
+      "placeholders": []
+    },
+    "C/software/seal_witness.py": {
+      "deployed_sha256": "8b7e9373311f2ca6c6c40a0a6a003f6c45f595e3b77806a54e66ae695e18e05d",
+      "placeholders": []
+    },
+    "C/software/terminal_body_check.py": {
+      "deployed_sha256": "b975578a5e3a026b43d9278742535d15f4bd5553770a8e7765f484064134cf73",
+      "placeholders": []
+    },
+    "C/software/terminal_fee_quotes.mjs": {
+      "deployed_sha256": "212e0f1b2565cf8d1a8bf143b2e1b7ff2aaacec6726991c92ae31454836f455a",
+      "placeholders": []
+    },
+    "C/software/terminal_payout.py": {
+      "deployed_sha256": "31b81964c4dff19310af01a4be19a73f4a6f4e44df41fb647eb27ee8e5e3515c",
+      "placeholders": []
+    },
+    "C/software/terminal_runtime.py": {
+      "deployed_sha256": "68a7b48febc59f391e445b9be34f7007da02f60a0da28d5e9ba3db75b08873d5",
+      "placeholders": []
+    },
+    "C/software/terminal_sdk_gate.py": {
+      "deployed_sha256": "c34694380c5a944f631d273171316e873a97cf12cab7a0260492b7cf7bfd43c8",
+      "placeholders": []
+    },
+    "C/software/ws_fixture.py": {
+      "deployed_sha256": "4498989a85dfe706dbc581ac85f04ff33b2e02c655455fff8ce7cbbea2e8f9a4",
+      "placeholders": []
+    },
+    "witness/assemble_actual_live.py": {
+      "deployed_sha256": "dbeec21c6e8ca7be2bf530809615fb3ef4c3c44e4f97caf5be70bac4ee13b63a",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/bind_standby_cwd.py": {
+      "deployed_sha256": "ce139a7851cc8822608fa10cb686094744577cdefd5ddf7de6ec30e164dcfed9",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/check_credit_BASE_B.py": {
+      "deployed_sha256": "11c7afcec87b3222f6255a93a65b6ec4f1de9321ec30f81d62601041256065d7",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/cold_bootstrap_gate.py": {
+      "deployed_sha256": "f091eeb4699d3a4ab74b28f8449d9f07d1f978e1af597ce4b5bea65f8147cdb9",
+      "placeholders": []
+    },
+    "witness/cold_route_preflight.py": {
+      "deployed_sha256": "08afc1aab30181e0d0a9d0d910e148256b72805e1c97fecd3a5c679ce0f55daa",
+      "placeholders": []
+    },
+    "witness/collector_standby_cwd_check.py": {
+      "deployed_sha256": "6f87dc3ee52067c36081f5360125beef93eb03ff31b51c078b4b0c54a34abe27",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/install_standby_cwd.py": {
+      "deployed_sha256": "940ae502d49fd7751cdc1ca7eb48e07adfaf041e744363567d7f346c7183b11f",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/prefund_standby_cwd.py": {
+      "deployed_sha256": "01f8da65dbea64b7ac1881d7a0901f0c3bb55bf3540c1cecedf36f87e1207fb6",
+      "placeholders": [
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/prepare_credentials.py": {
+      "deployed_sha256": "488eef351f33d77e910b47266805dd36b47315f68f9931d8f0b33711f6bb5596",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_ADDRESS@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/refresh_start_facts.py": {
+      "deployed_sha256": "0897dbd0036a8d14be0da2f4e088a652ce9a4320f1fe83c47a92b4327e2df473",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_ADDRESS@",
+        "@C_SSH_HOST@"
+      ]
+    },
+    "witness/retain_smoke_instance.py": {
+      "deployed_sha256": "42f3ce55916523919f6a9b6c17214541b065b20d6047a3152ff44a98ec2ce448",
+      "placeholders": [
+        "@B_SSH_HOST@"
+      ]
+    },
+    "witness/run_startup.py": {
+      "deployed_sha256": "93243e723bec28cadf3ff1a9383deb118222fab7322e642a5b089af31d2f9b65",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/stage_fresh_sources_public.py": {
+      "deployed_sha256": "cf952a81ffc38bc67a45a916c9232fce45c1751a25a1058bccb48a2225efb327",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    },
+    "witness/transfer_fresh_public.py": {
+      "deployed_sha256": "d9003079a72b7f119c17b74fc9e0ab7f055bda10528f8e23784083511ed16d2c",
+      "placeholders": [
+        "@B_SSH_HOST@",
+        "@C_SSH_HOST@",
+        "@KPI_REPO@"
+      ]
+    }
+  },
+  "placeholders": [
+    "@KPI_REPO@",
+    "@KPI_HOME@",
+    "@C_ADDRESS@",
+    "@C_SSH_HOST@",
+    "@B_SSH_HOST@"
+  ],
+  "run_id": "finite-cold-65b7dee37b3c4308a9f60e4f2a037353",
+  "schema": "kpi-a1-official-trial-source/v1"
+}

@@ -113,9 +113,32 @@ before funding:
 Bounds on amounts, recipients, fees, proofs, replay, one-attempt submission and
 the ≥120-second observation interval were not relaxed. The executed sources are
 bound by hashes in the public record (role-sources and submit-claim source
-hashes, plus a local source-snapshot hash). Consolidating these repairs into
-the repository, with tests, is follow-up work. Until then, checking out this
-branch alone does not reproduce the run.
+hashes, plus a local source-snapshot hash).
+
+### Published deployed sources
+
+The 113 Python/JavaScript sources of the deployed run package (A, B, C and
+the startup witness scripts) are published under
+[`poc/a1/evidence/official-trial-2026-10-08/source/`](../poc/a1/evidence/official-trial-2026-10-08/source/).
+32 of them contained machine-local values (local paths, the C host address,
+SSH host aliases); these are replaced by the placeholders `@KPI_REPO@`,
+`@KPI_HOME@`, `@C_ADDRESS@`, `@C_SSH_HOST@` and `@B_SSH_HOST@`. Nothing else
+was changed. `MANIFEST.json` records the SHA-256 of every deployed file.
+
+- `scripts/a1_trial_source.py verify --values <private values file>` substitutes
+  the operator's values and checks all 113 deployed hashes; on 2026-10-08 all
+  113 matched.
+- Without private values, `scripts/test_a1_trial_source.py` checks that the 81
+  unchanged files hash to the deployed bytes and that the C runtime pins
+  recompute to `one_submit_claim.sources_sha256` in the public record: the C
+  sources published here are the ones bound into C's single terminal
+  submission claim.
+
+These are the sources as executed, not a cleaned-up implementation. They
+depend on local build steps (package assembly, identity generation) and on
+machine-specific configuration that are not part of this directory, so this
+directory alone does not yet reproduce a run. A simpler reproducible runner is
+follow-up work.
 
 ## Rehearsals and earlier funded runs
 
