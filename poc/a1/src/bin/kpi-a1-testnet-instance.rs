@@ -32,11 +32,20 @@ fn read_terms(path: &Path) -> Result<Terms> {
             Value::String(s) if !s.is_empty() && s.bytes().all(|b| b.is_ascii_digit()) => {
                 Ok(s.parse()?)
             }
-            Value::Number(x) => x.as_u64().ok_or_else(|| format!("{n}: not u64 sompi").into()),
+            Value::Number(x) => x
+                .as_u64()
+                .ok_or_else(|| format!("{n}: not u64 sompi").into()),
             _ => Err(format!("{n}: integer sompi required").into()),
         }
     };
-    Ok(Terms { l0: get("l0")?, b0: get("b0")?, w: get("w")?, f0: get("f0")?, fc: get("fc")?, f1: get("f1")? })
+    Ok(Terms {
+        l0: get("l0")?,
+        b0: get("b0")?,
+        w: get("w")?,
+        f0: get("f0")?,
+        fc: get("fc")?,
+        f1: get("f1")?,
+    })
 }
 
 /// Fresh valid secp256k1 secret, never the public fixture key 1.
