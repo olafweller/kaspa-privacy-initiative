@@ -15,6 +15,40 @@ export const pins = {
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const stringify = x => JSON.stringify(x, (_, v) => typeof v === 'bigint' ? v.toString() : v);
 const spk = s => s.version.toString(16).padStart(4,'0') + s.script;
+export function diagnostic(p,error) {
+  const secrets=new Set();
+  const collect=v=>{
+    if(v&&typeof v==='object') for(const [name,value] of Object.entries(v)) {
+      if(/secret|private.?key|password|token|seed|mnemonic/i.test(name)&&typeof value==='string'&&value) secrets.add(value);
+      else if(value&&typeof value==='object') collect(value);
+    }
+  };
+  collect(p);
+  collect(process.env);
+  if(p?.wallet) {try {collect(JSON.parse(fs.readFileSync(p.wallet)));} catch {}}
+  for(const filename of p?.secret_files??[]) {try {
+    const raw=fs.readFileSync(filename);if(raw.length) for(const value of [raw.toString('hex'),raw.toString('hex').toUpperCase(),raw.toString('base64'),JSON.stringify([...raw])]) secrets.add(value);
+  } catch {}}
+  const redact=value=>{
+    let text=Buffer.isBuffer(value)?value.toString('utf8'):String(value??'');
+    for(const secret of [...secrets].sort((a,b)=>b.length-a.length)) text=text.split(secret).join('[REDACTED]');
+    return text.replace(/(?<![0-9a-f])[0-9a-f]{64}(?![0-9a-f])/gi,'[REDACTED-32-BYTE-HEX]');
+  };
+  const directory=p?.run_dir??p?.run??path.resolve('.local','diagnostic-run-'+crypto.randomUUID());
+  fs.mkdirSync(directory,{recursive:true,mode:0o700});
+  const filename=path.join(directory,'error-js-'+crypto.randomUUID()+'.private.json');
+  const chain=[];let current=error;
+  while(current) {
+    chain.push({type:redact(current.constructor?.name??typeof current),name:redact(current.name??''),message:redact(current.message??current),
+      traceback:redact(current.stack??new Error('Non-Error throw; bridge stack').stack),stdout:redact(current.stdout),stderr:redact(current.stderr)});
+    current=current.cause;
+  }
+  const record={schema:'kpi-a1-error/v1',type:chain[0]?.type,message:chain[0]?.message,traceback:chain[0]?.traceback,
+    causes:chain,locals_captured:false,secrets_redacted:true};
+  const fd=fs.openSync(filename,'wx',0o600);
+  try {fs.writeFileSync(fd,stringify(record)+'\n');fs.fsyncSync(fd);} finally {fs.closeSync(fd);}
+  return filename;
+}
 export function canonical(tx) {
   tx.finalize();
   return {version:tx.version,id:tx.id,inputs:tx.inputs.map(i=>({previousOutpoint:{transactionId:i.previousOutpoint.transactionId,index:i.previousOutpoint.index},
@@ -47,6 +81,15 @@ function normalizeUtxo(u) {
     covenantId:e.covenantId?.toString()??null}};
 }
 export async function execute(p, rpcFactory = (k,url)=>new k.RpcClient({url,networkId:'testnet-10'})) {
+  try {return await executeInner(p,rpcFactory);}
+  catch(error) {
+    const filename=diagnostic(p,error);
+    console.error('Full private SDK/RPC diagnostic: '+filename);
+    const wrapped=error instanceof Error?error:new Error('Non-Error SDK/RPC throw',{cause:error});
+    wrapped.diagnostic_path=filename;throw wrapped;
+  }
+}
+async function executeInner(p, rpcFactory) {
   for(const [n,h] of Object.entries(pins)) assert.equal(sha(fs.readFileSync(path.join(p.sdk_dir,n))),h,'SDK pin');
   const k=createRequire(import.meta.url)(path.join(p.sdk_dir,'kaspa.js'));
   if(p.op==='sdk-check') {
@@ -91,7 +134,9 @@ export async function execute(p, rpcFactory = (k,url)=>new k.RpcClient({url,netw
       catch(error) {
         // Submission contains public transaction bytes, never the wallet/claim
         // secret. Retain the error privately; transport loss is NOT rejection.
-        tx.free();return {status:'rpc-error',transactionId:p.transaction.id,error:String(error),definitive_rejection:false};
+        const error_path=diagnostic(p,error);
+        console.error('Full private submission diagnostic: '+error_path);
+        tx.free();return {status:'rpc-error',transactionId:p.transaction.id,error_path,submission_attempted:true,definitive_rejection:false};
       }
       assert.equal(result.transactionId,p.transaction.id);tx.free();return result;
     }
@@ -128,6 +173,10 @@ export async function execute(p, rpcFactory = (k,url)=>new k.RpcClient({url,netw
   } finally {await rpc.disconnect();}
 }
 if(process.argv[1]===new URL(import.meta.url).pathname) {
-  try {const p=JSON.parse(fs.readFileSync(0,'utf8'));process.stdout.write(stringify(await execute(p)));}
-  catch {console.error('A1 SDK/RPC operation failed; no automatic resubmission.');process.exitCode=1;}
+  let p;
+  try {p=JSON.parse(fs.readFileSync(0,'utf8'));process.stdout.write(stringify(await execute(p)));}
+  catch(error) {
+    const filename=error.diagnostic_path??diagnostic(p,error);
+    console.error('A1 SDK/RPC operation failed. Full private diagnostic: '+filename+'. No automatic resubmission.');process.exitCode=1;
+  }
 }

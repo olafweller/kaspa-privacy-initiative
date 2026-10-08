@@ -154,8 +154,13 @@ after proving, completes that expensive scan before the common race barrier,
 checks checkpoint/horizon survival at broadcast, and durably creates one exclusive
 submission intent. Unknown or
 rejected submissions never retry; use `verify` to reconcile. Copy both public
-attempt receipts for review. Only actual rejection plus one accepted exact body
-can close the race case; a second absent payout alone does not prove rejection.
+attempt receipts for review. A competitor whose SDK actually invoked submission
+reconciles the chain even after an RPC error. After ≥120 seconds it writes a
+`lost` result naming the winning txid, its own unaccepted txid and the single
+accepted S0 spend, instead of treating that expected race outcome as a failure.
+Both attempts and the winning exact body are required; failure to connect or
+serialize before submission does not establish a losing race attempt. An RPC
+error alone remains uncertain and is never described as definitive rejection.
 
 ## Adversarial second pass and qualification limits
 
@@ -202,4 +207,34 @@ Final A/B bodies were revalidated and source/binary/SDK receipts retained locall
 No network/RPC connection, test KAS, server mutation or push was used. Actual C
 history throughput/pruning, funding/submission, physical loss of A, an accepted
 payout sustained ≥120 seconds, and the live race remain untested. Phase A is
-complete at stop point 1, awaiting Claude's review; it is not trial readiness.
+completed at stop point 1; it is not trial readiness.
+
+## Claude review follow-up
+
+The operator accepted Claude's review of `75382db` with three changes before
+phase B. Every uncaught Python/JavaScript failure retains its full available
+exception type, message, traceback/stack and cause chain in a mode-0600
+`error-*.private.json` in the configured run directory; the failure message names
+that path. Child stderr/stdout is retained too. Locals and config/environment
+dumps are never captured. Known wallet/backup/environment secrets are redacted;
+unknown 32-byte hex values are masked as a fail-closed fallback, so public txids
+in diagnostics can also be masked. Exact public txids remain in intent/result
+receipts. A malformed config without a usable run path gets a private fallback
+diagnostic run under the source checkout's ignored `.local/` directory.
+
+At the operator's explicit request, `fund`, `discover` and `observe` have a
+default 1,800-second monotonic wait budget, configurable through
+`wait_timeout_seconds` (positive finite seconds). Nested discovery shares the
+outer observation budget; RPC subprocesses use its remaining time. Timeout
+stops with a clear diagnostic and never retries, changes terms, accepts a
+partial history or shortens the ≥120-second payout observation. A timed-out
+funding/submission may have reached the chain: retain the used identity and
+reconcile read-only, never rebroadcast it. This is an explicitly requested
+operational exception to the default uncapped-wait posture.
+
+The race loser result remains subject to the same Full/history/current-UTXO,
+exact-payout, one-transition and stable ≥120-second checks as the winner.
+Duplicate/conflicting accepted reserve spends or disappearance/reorg still
+stop. Tests cover diagnostics/redaction, shared wait budgets, expiry of all
+three waits, successful loser reconciliation, pre-submit failures and no retry.
+No cryptographic or protocol rule changed; no test-KAS is authorized by code.

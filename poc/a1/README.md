@@ -124,7 +124,7 @@ The [official trial of 2026-10-08](../../docs/poc-a1-official-trial-2026-10-08.m
 passed the scoped S1 scenario: autonomous B recovery after physical loss of A
 and an accepted fresh-proof terminal payout. Full G5/G6 remains open.
 
-## S0 runner (phase A, awaiting review)
+## S0 runner (reviewed, awaiting authorized rehearsal)
 
 `scripts/a1_trial.py` is the separate testnet-instance entry point. The harness
 above stays fixture-only. Build its existing binaries offline:
@@ -171,8 +171,10 @@ The runner observes exact accepted payout/spentness for ≥120 seconds;
 
 For the race, prepare distinct A/B bodies with `--live ... --prepare-only`, then
 run both commands with `--live ... --submit-prepared --submit-at UNIX_SECONDS`
-at the same future time. Review both submission receipts and the single accepted
-body; an ambiguous error is not a proven rejection. A role that finds S0 already
+at the same future time. The loser reconciles C's chain for ≥120 seconds and
+writes a result naming the winner, its own unaccepted txid and the single spent
+reserve. Review both actual submission attempts and the single accepted body;
+an ambiguous error alone is not a proven rejection. A role that finds S0 already
 spent stops before submission and does not demonstrate a simultaneous race.
 
 The optional real-proof integration test uses
@@ -181,3 +183,9 @@ instance. It builds synthetic funding/history, fresh A/B proofs, and checks the
 pinned SDK and native Full without RPC or KAS. Each invocation retains a new
 integration directory and exclusive evidence files. See the
 [runner design and trust boundaries](../../docs/poc-a1-trial-runner.md).
+
+Failures name a mode-0600 diagnostic in the run directory, retaining type,
+message, complete available stack/cause chain and child output without keys or
+locals. `fund`, `discover` and `observe` stop after 30 minutes by default; set
+`wait_timeout_seconds` in the private config to change that budget. Nested waits
+share the outer deadline. Timeout never authorizes a retry with the used identity.

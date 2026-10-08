@@ -6,13 +6,21 @@ proof). Loss/pruning/reorg stops the trial. Never retries a monetary submission.
 All retained files are private by default; publish only reviewed projections.
 """
 import argparse
+import base64
+from contextlib import contextmanager
+from functools import wraps
 import json
+import math
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
+import traceback
+import uuid
 
 import a1_check as c
 import a1_recovery as r
@@ -20,6 +28,60 @@ from a1_fee_check import fee_requirements
 from fractions import Fraction
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def diagnostic(run, error, config=None):
+    """Full exception chain and child output, without locals or secret material."""
+    config = config or {}; secrets = set()
+    def collect(value):
+        if isinstance(value, dict):
+            for name, item in value.items():
+                if re.search(r'secret|private.?key|password|token|seed|mnemonic', name, re.I) and isinstance(item,str) and item:
+                    secrets.add(item)
+                else: collect(item)
+        elif isinstance(value, list):
+            for item in value: collect(item)
+    collect(config)
+    collect(dict(os.environ))
+    wallet = config.get('wallet')
+    if wallet:
+        try: collect(json.loads(Path(wallet).read_text()))
+        except (OSError, ValueError): pass
+    for directory in (config.get('backup'), config.get('bundle')):
+        if directory:
+            for name in ('claim-secret.bin','recipient-key.bin'):
+                try:
+                    raw = (Path(directory)/name).read_bytes()
+                    if raw: secrets.update((raw.hex(),raw.hex().upper(),base64.b64encode(raw).decode(),repr(raw),str(list(raw))))
+                except OSError: pass
+    def redact(value):
+        text = value.decode(errors='replace') if isinstance(value,bytes) else str(value)
+        for secret in sorted(secrets,key=len,reverse=True): text = text.replace(secret,'[REDACTED]')
+        # Fail closed for unknown 32-byte hex keys, including invalid-key parser
+        # errors. Public txids in diagnostics are masked too; receipts retain them.
+        return re.sub(r'(?i)(?<![0-9a-f])[0-9a-f]{64}(?![0-9a-f])','[REDACTED-32-BYTE-HEX]',text)
+    run = Path(run); run.mkdir(parents=True,mode=0o700,exist_ok=True)
+    path = run/('error-python-'+uuid.uuid4().hex+'.private.json')
+    record = {'schema':'kpi-a1-error/v1','type':type(error).__module__+'.'+type(error).__qualname__,
+              'message':redact(error),'traceback':redact(''.join(traceback.format_exception(error))),
+              'locals_captured':False,'secrets_redacted':True}
+    child = error
+    while child is not None:
+        if isinstance(child,subprocess.SubprocessError):
+            record['subprocess'] = {name:redact(getattr(child,name,'')) for name in ('stdout','stderr')}
+            break
+        child = child.__cause__ or child.__context__
+    save(path,record)
+    return path
+
+
+def bounded_wait(stage):
+    def decorate(function):
+        @wraps(function)
+        def invoke(self,*args,**kwargs):
+            with self.waiting(stage): return function(self,*args,**kwargs)
+        return invoke
+    return decorate
 
 
 def save(path, value):
@@ -86,20 +148,47 @@ class Trial:
         self.bundle = Path(config['bundle']).resolve()
         self.binary = str(Path(config['binary']).resolve())
         self.reference = str(Path(config['reference_binary']).resolve())
+        limit = config.get('wait_timeout_seconds',1800)
+        c.require(type(limit) in (int,float) and math.isfinite(limit) and limit>0, 'positive finite wait_timeout_seconds required')
+        self.wait_seconds = limit; self._deadline = None; self._wait_stage = None
+
+    @contextmanager
+    def waiting(self,stage):
+        previous = (self._deadline,self._wait_stage)
+        end = time.monotonic()+self.wait_seconds
+        if self._deadline is None or end < self._deadline: self._deadline,self._wait_stage = end,stage
+        try:
+            self.remaining()
+            yield
+            self.remaining()
+        finally: self._deadline,self._wait_stage = previous
+
+    def remaining(self):
+        if self._deadline is None: return None
+        seconds = self._deadline-time.monotonic()
+        if seconds <= 0: raise TimeoutError(f'{self._wait_stage}: wait limit {self.wait_seconds} seconds reached; stopped, no resubmission')
+        return seconds
+
+    def pause(self,seconds=2):
+        remaining = self.remaining()
+        time.sleep(seconds if remaining is None else min(seconds,remaining))
+        self.remaining()
 
     def command(self, *args):
         env = dict(os.environ, TMPDIR=str(self.run))
         result = subprocess.run(list(map(str, args)), cwd=ROOT, env=env, check=True,
-                                capture_output=True, text=True)
+                                capture_output=True, text=True,timeout=self.remaining())
         return json.loads(result.stdout)
 
     def rpc(self, op, **values):
         # Crucially, reject before spawning a process or instantiating RpcClient.
         c.require(op == 'sdk-check' or self.live, 'network disabled: explicit --live required')
-        payload = dict(op=op, network='testnet-10', sdk_dir=self.cfg['sdk_dir'], **values)
+        payload = dict(op=op, network='testnet-10', sdk_dir=self.cfg['sdk_dir'],run_dir=str(self.run),
+                       secret_files=[str(Path(self.cfg[d])/n) for d in ('backup','bundle') if d in self.cfg
+                                     for n in ('claim-secret.bin','recipient-key.bin')],**values)
         if op != 'sdk-check': payload['rpc_url'] = self.cfg['rpc_url']
         result = subprocess.run(['node', str(ROOT/'scripts/a1_trial_rpc.mjs')],
-                                input=json.dumps(payload), capture_output=True, text=True, check=True)
+                                input=json.dumps(payload), capture_output=True, text=True, check=True,timeout=self.remaining())
         return json.loads(result.stdout)
 
     def manifest(self):
@@ -159,6 +248,7 @@ class Trial:
         snapshot = self.rpc('snapshot', scripts=scripts); horizon = snapshot['horizon']
         c.unhex(horizon, 32); cursor = checkpoint['hash']; pages = []
         while cursor != horizon:
+            self.remaining()
             response = self.rpc('page', start=cursor)
             c.require(not response['removedChainBlockHashes'], 'reorg during history fetch')
             added = response['addedChainBlockHashes']; groups = response['chainBlockAcceptedTransactions']
@@ -188,17 +278,21 @@ class Trial:
         return scan_history(self.manifest(), locator, checkpoint, history,
                             callback)
 
+    @bounded_wait('discover')
     def discover(self):
         # The node cannot atomically export a fixed history horizon and current
         # address UTXOs. If a spend lands between those reads, refresh the entire
         # read-only snapshot. Malformed bodies/terms, gaps and reorgs still halt.
         while True:
+            self.remaining()
             history = self.history()
             try: return history, self.scan(history)
             except c.Invalid as error:
+                path = diagnostic(self.run,error,self.cfg)
+                print('History reconciliation diagnostic: '+str(path),file=sys.stderr)
                 if str(error) not in ('unknown/missing current UTXO', 'terminal reserve still unspent'):
                     raise
-                time.sleep(2)
+                self.pause()
 
     def submit_once(self, label, body, entry=None):
         c.require(self.live, 'offline submission forbidden')
@@ -218,6 +312,7 @@ class Trial:
         save(self.run/(label+'-submission.json'), response)
         return response
 
+    @bounded_wait('fund')
     def fund(self):
         self.inspect(); manifest = self.manifest(); state = manifest['states']['s0']
         checkpoint = c.load_json(self.run/'checkpoint.json')
@@ -240,19 +335,20 @@ class Trial:
         self.rpc('survives', start=checkpoint['hash'])
         self.submit_once('fund', body)
         while True:
+            self.remaining()
             history = self.history()
             # Do not mistake an unconfirmed deposit for malformed history.
             accepted = any(tx['verboseData']['transactionId'] == body['id'] for p in history['pages']
                            for g in p['response']['chainBlockAcceptedTransactions'] for tx in g['acceptedTransactions'])
             point = locator['s0_txid_hex']+':'+locator['s0_index']
             if not accepted or point not in history['entries']:
-                time.sleep(2); continue
+                self.pause(); continue
             report = self.scan(history)
             if report['funding_body_verified']:
                 save(self.run/'s0-entry.json', history['entries'][point])
                 save(self.run/'fund-accepted.json', {'txid':body['id'], 'report':report})
                 return {'funding_txid':body['id'], 'amount_sompi':sompi(state['R'])}
-            time.sleep(2)
+            self.pause()
 
     def exit(self, role, history=None, prepare_only=False, submit_prepared=False, submit_at=None):
         label = role+'-exit'
@@ -297,8 +393,16 @@ class Trial:
             while time.time() < submit_at: time.sleep(max(0, min(1, submit_at-time.time())))
         self.rpc('survives', start=locator['scan_start_hash'])
         self.rpc('survives', start=current['horizon'])
-        self.submit_once(label, body, entry)
-        return self.observe(body['id'])
+        race = submit_at is not None
+        try: self.submit_once(label, body, entry)
+        except Exception as error:
+            path = diagnostic(self.run,error,self.cfg)
+            print('Submission diagnostic: '+str(path),file=sys.stderr)
+            unknown = self.run/(label+'-submission-unknown.json')
+            # Only a confirmed SDK submit invocation is a race attempt. Failed
+            # connection/serialization before submit cannot establish this case.
+            if not race or not unknown.exists() or c.load_json(unknown).get('submission_attempted') is not True: raise
+        return self.observe(body['id'],race=race)
 
     def check_terminal(self, body, entry, role):
         manifest = self.manifest(); locator, _ = self.locator(); branch = manifest['branches']['s0_terminal']
@@ -328,14 +432,21 @@ class Trial:
               'scope':'exact body and supplied entry validation; not node acceptance'})
         return result
 
-    def observe(self, expected=None):
+    @bounded_wait('observe')
+    def observe(self, expected=None,race=False):
         first = None; accepting = None
         while True:
+            self.remaining()
             history, report = self.discover()
             if report['state'] == 'terminal':
                 c.require(len(report['transitions']) == 1 and report['transitions'][0]['branch'] == 's0_terminal', 'unexpected successor/duplicate payout')
                 txid = report['transitions'][0]['txid']
-                c.require(expected is None or txid == expected, 'different race winner; verify public result')
+                c.require(expected is None or txid == expected or race, 'different race winner; verify public result')
+                lost = expected is not None and txid != expected
+                if lost:
+                    own = [tx for p in history['pages'] for g in p['response']['chainBlockAcceptedTransactions']
+                           for tx in g['acceptedTransactions'] if tx['verboseData']['transactionId'] == expected]
+                    c.require(not own, 'own transaction also accepted: invalid race evidence')
                 bodies = [tx for p in history['pages'] for g in p['response']['chainBlockAcceptedTransactions'] for tx in g['acceptedTransactions']
                           if tx['verboseData']['transactionId'] == txid]
                 hashes = {r.full_hash(tx) for tx in bodies}; c.require(len(hashes) == 1, 'ambiguous accepted body')
@@ -352,10 +463,14 @@ class Trial:
                                'payout_sompi':sompi(want['value']), 'fee_sompi':sompi(report['fees']),
                                'recipient':self.manifest()['recipient']['address'], 'observed_seconds':elapsed,
                                'reserve_spent':True, 'single_accepted_terminal':True, 'history':history}
+                    if race:
+                        outcome.update(outcome='lost' if lost else 'won',own_txid=expected,own_tx_accepted=not lost,
+                                       message=(f'verloren van txid {txid}; eigen tx niet geaccepteerd; reserve precies één keer uitgegeven'
+                                                if lost else f'gewonnen met txid {txid}; reserve precies één keer uitgegeven'))
                     save(self.run/('result-'+str(time.time_ns())+'.json'), outcome)
                     return {k:v for k,v in outcome.items() if k != 'history'}
             elif first is not None: raise c.Invalid('accepted payout disappeared')
-            time.sleep(2)
+            self.pause()
 
 
 def main():
@@ -393,8 +508,15 @@ def main():
 
 
 if __name__ == '__main__':
-    try: main()
-    except c.Invalid as error:
-        raise SystemExit('A1 step stopped: '+str(error)+'. No automatic resubmission.')
-    except (OSError, ValueError, KeyError, subprocess.SubprocessError):
-        raise SystemExit('A1 step failed safely; inspect local evidence. No automatic retry or submission.')
+    config = {}; run = ROOT/'.local'/('diagnostic-run-'+uuid.uuid4().hex)
+    try:
+        if '--config' in sys.argv:
+            config = c.load_json(Path(sys.argv[sys.argv.index('--config')+1]))
+            if isinstance(config,dict) and isinstance(config.get('run'),str): run = Path(config['run']).resolve()
+        main()
+    except BaseException as error:
+        if isinstance(error,SystemExit) and error.code in (None,0): raise
+        try: path = diagnostic(run,error,config if isinstance(config,dict) else {})
+        except Exception: raise SystemExit('A1 step failed; diagnostic could not be written in '+str(run)+'. No resubmission.')
+        reason = (' '+str(error)) if isinstance(error,TimeoutError) else ' '+type(error).__name__
+        raise SystemExit('A1 step stopped:'+reason+'. Full private diagnostic: '+str(path)+'. No automatic resubmission.')

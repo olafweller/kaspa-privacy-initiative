@@ -28,6 +28,12 @@ def synthetic_history(manifest, locator):
             'utxos':[{'outpoint':{'transactionId':txid,'index':7},'entry':entry}], 'entries':{txid+':7':entry}}
 
 
+class FakeClock:
+    def __init__(self): self.now = 0
+    def monotonic(self): return self.now
+    def sleep(self,seconds): self.now += seconds
+
+
 class TrialTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -160,9 +166,10 @@ class TrialTests(unittest.TestCase):
         history = self.terminal_history(); report = self.scan(history)
         with tempfile.TemporaryDirectory() as directory:
             trial = self.make_trial(directory)
-            with patch.object(trial,'discover',return_value=(history,report)) as reads, patch.object(t.time,'sleep'), patch.object(t.time,'monotonic',side_effect=[0,0,119,120]):
+            clock = FakeClock()
+            with patch.object(trial,'discover',return_value=(history,report)) as reads, patch.object(t.time,'sleep',clock.sleep), patch.object(t.time,'monotonic',clock.monotonic):
                 result = trial.observe('44'*32)
-            self.assertEqual(reads.call_count,3); self.assertEqual(result['observed_seconds'],120)
+            self.assertEqual(reads.call_count,61); self.assertEqual(result['observed_seconds'],120)
             self.assertTrue(result['reserve_spent']); self.assertIs(type(result['payout_sompi']),int)
 
     def test_wrong_or_disappearing_payout_never_gets_a_result(self):
@@ -172,7 +179,8 @@ class TrialTests(unittest.TestCase):
             wrong = copy.deepcopy(history); wrong['utxos'][0]['entry']['amount']='1'
             with patch.object(trial,'discover',return_value=(wrong,report)), self.assertRaises(c.Invalid): trial.observe()
             unspent = self.scan()
-            with patch.object(trial,'discover',side_effect=[(history,report),(self.history,unspent)]), patch.object(t.time,'sleep'), patch.object(t.time,'monotonic',side_effect=[0,0]), self.assertRaises(c.Invalid): trial.observe()
+            clock = FakeClock()
+            with patch.object(trial,'discover',side_effect=[(history,report),(self.history,unspent)]), patch.object(t.time,'sleep',clock.sleep), patch.object(t.time,'monotonic',clock.monotonic), self.assertRaises(c.Invalid): trial.observe()
             self.assertFalse(any(Path(directory).glob('result-*.json')))
 
     def test_checkpoint_refuses_an_already_funded_identity(self):
@@ -193,6 +201,125 @@ class TrialTests(unittest.TestCase):
             self.assertEqual(history['horizon'],'03'*32)
             self.assertEqual(history['pages'][0]['response']['addedChainBlockHashes'],['02'*32,'03'*32])
             self.assertEqual(len(history['pages'][0]['response']['chainBlockAcceptedTransactions']),2)
+
+    def test_loser_is_an_observed_single_spend_result(self):
+        history = self.terminal_history(); report = self.scan(history)
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.make_trial(directory); clock = FakeClock()
+            with patch.object(trial,'discover',return_value=(history,report)), patch.object(t.time,'sleep',clock.sleep), patch.object(t.time,'monotonic',clock.monotonic):
+                result = trial.observe('45'*32,race=True)
+            self.assertEqual(result['outcome'],'lost'); self.assertFalse(result['own_tx_accepted'])
+            self.assertEqual(result['txid'],'44'*32); self.assertTrue(result['single_accepted_terminal'])
+            self.assertIn('reserve precies één keer uitgegeven',result['message'])
+            self.assertEqual(result['observed_seconds'],120)
+            self.assertEqual(len(list(Path(directory).glob('result-*.json'))),1)
+
+    def test_loser_with_own_accepted_body_stops(self):
+        history = self.terminal_history(); report = self.scan(history)
+        own = body(self.manifest,(self.locator['s0_txid_hex'],7),'s0_terminal',self.d0,'45'*32)
+        history['pages'][1]['response']['chainBlockAcceptedTransactions'][0]['acceptedTransactions'].append(own)
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.make_trial(directory)
+            with patch.object(trial,'discover',return_value=(history,report)), self.assertRaises(c.Invalid): trial.observe('45'*32,race=True)
+            self.assertFalse(any(Path(directory).glob('result-*.json')))
+
+    def test_observe_and_nested_discover_share_configured_deadline(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.make_trial(directory); trial.wait_seconds = 3; clock = FakeClock()
+            trial.history = lambda: self.history
+            with patch.object(trial,'scan',side_effect=c.Invalid('unknown/missing current UTXO')), patch.object(t.time,'sleep',clock.sleep), patch.object(t.time,'monotonic',clock.monotonic), self.assertRaisesRegex(TimeoutError,'observe: wait limit 3'):
+                trial.observe()
+            self.assertEqual(clock.now,3); self.assertIsNone(trial._deadline)
+            self.assertFalse(any(Path(directory).glob('result-*.json')))
+
+    def test_fund_and_discover_wait_limits(self):
+        for action in ('fund','discover'):
+            with self.subTest(action=action), tempfile.TemporaryDirectory() as directory:
+                trial = self.make_trial(directory); trial.wait_seconds = 3; clock = FakeClock()
+                trial.inspect = lambda: {'parameter_consistency':True}
+                t.save(Path(directory)/'manifest.json',self.manifest)
+                checkpoint = dict(self.checkpoint,manifest_sha256=c.sha((Path(directory)/'manifest.json').read_bytes()))
+                t.save(Path(directory)/'checkpoint.json',checkpoint)
+                tx=copy.deepcopy(self.history['pages'][0]['response']['chainBlockAcceptedTransactions'][0]['acceptedTransactions'][0])
+                tx['id']=tx['verboseData']['transactionId']; tx['outputs'][7]['covenant']=None
+                trial.cfg.update(wallet='fixture-not-read',funding_validator='fixture-not-read')
+                trial.rpc = lambda op, **kw: {'native_full':True,'transaction':tx,'index':7} if op=='fund-plan' else {'survives':True}
+                trial.submit_once = lambda *args: None
+                trial.history = lambda: {'pages':[],'entries':{}}
+                with patch.object(trial,'scan',side_effect=c.Invalid('unknown/missing current UTXO')), patch.object(t.time,'sleep',clock.sleep), patch.object(t.time,'monotonic',clock.monotonic), self.assertRaisesRegex(TimeoutError,action+': wait limit 3'):
+                    getattr(trial,action)()
+                self.assertEqual(clock.now,3)
+
+    def test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.make_trial(directory); trial.cfg['sdk_dir']='fixture'
+            with patch.object(t.time,'monotonic',return_value=0), trial.waiting('discover'), patch.object(t.subprocess,'run',return_value=t.subprocess.CompletedProcess([],0,stdout='{}')) as command:
+                trial.rpc('sdk-check')
+                self.assertEqual(command.call_args.kwargs['timeout'],1800)
+            for value in (True,0,-1,float('nan'),float('inf')):
+                with self.subTest(value=value), self.assertRaises(c.Invalid): t.Trial(dict(trial.cfg,wait_timeout_seconds=value))
+
+    def test_python_diagnostic_full_chain_and_secret_redaction(self):
+        with tempfile.TemporaryDirectory() as directory:
+            secret='synthetic-secret-that-must-not-appear'
+            wallet=Path(directory)/'wallet.json';t.save(wallet,{'private_key':secret})
+            cfg={'wallet':str(wallet)}
+            try:
+                try: raise ValueError('root cause '+secret)
+                except ValueError as cause: raise t.subprocess.CalledProcessError(2,['fixture'],output=secret,stderr='detail '+secret) from cause
+            except Exception as error: filename=t.diagnostic(directory,error,cfg)
+            record=c.load_json(filename); raw=filename.read_text()
+            self.assertNotIn(secret,raw)
+            self.assertIn('ValueError',record['traceback']);self.assertIn('CalledProcessError',record['type'])
+            self.assertIn('Traceback',record['traceback']); self.assertIn('detail [REDACTED]',record['subprocess']['stderr'])
+            self.assertEqual(filename.stat().st_mode&0o777,0o600)
+
+    def test_cli_error_names_private_diagnostic(self):
+        with tempfile.TemporaryDirectory() as directory:
+            config=Path(directory)/'a1-trial.local.json';t.save(config,{'network':'mainnet','run':directory})
+            result=t.subprocess.run(['python3',str(t.ROOT/'scripts/a1_trial.py'),'--config',str(config),'c','checkpoint'],capture_output=True,text=True)
+            self.assertNotEqual(result.returncode,0)
+            filename=next(Path(directory).glob('error-python-*.private.json'))
+            self.assertIn(str(filename),result.stderr)
+            self.assertEqual(c.load_json(filename)['type'],'a1_check.Invalid')
+
+    def test_exit_reconciles_only_actual_race_submission_and_never_retries(self):
+        for attempted in (True,False):
+            with self.subTest(attempted=attempted), tempfile.TemporaryDirectory() as directory:
+                trial=self.make_trial(directory);trial.live=True;trial.cfg['backup']=directory
+                trial.inspect=lambda: None;trial.command=lambda *args: {'claim_secret_matches':True}
+                trial.locator=lambda: (self.locator,self.checkpoint)
+                trial.discover=lambda: (self.history,self.scan())
+                trial.check_terminal=lambda *args: {'full_valid':True}
+                tx=body(self.manifest,(self.locator['s0_txid_hex'],7),'s0_terminal',self.d0,'45'*32);tx['id']='45'*32
+                entry=self.history['entries'][self.locator['s0_txid_hex']+':7']
+                t.save(Path(directory)/'b-exit-prepared.json',{'transaction':tx,'entry':entry})
+                response={'status':'rpc-error','transactionId':tx['id'],'submission_attempted':attempted,'definitive_rejection':False}
+                def rpc(op,**kw): return response if op=='submit' else {'survives':True}
+                with patch.object(trial,'rpc',side_effect=rpc) as calls, patch.object(trial,'observe',return_value={'outcome':'lost'}) as observed:
+                    if attempted:
+                        self.assertEqual(trial.exit('b',submit_prepared=True,submit_at=0)['outcome'],'lost')
+                        observed.assert_called_once_with(tx['id'],race=True)
+                    else:
+                        with self.assertRaises(c.Invalid): trial.exit('b',submit_prepared=True,submit_at=0)
+                        observed.assert_not_called()
+                    with self.assertRaises(c.Invalid): trial.exit('b',submit_prepared=True,submit_at=0)
+                    self.assertEqual(sum(call.args[0]=='submit' for call in calls.call_args_list),1)
+
+    def test_js_diagnostic_type_stack_and_secret_redaction(self):
+        with tempfile.TemporaryDirectory() as directory:
+            wallet=Path(directory)/'wallet.json';secret='synthetic-secret-not-for-a-log'
+            t.save(wallet,{'private_key':secret})
+            code='import {diagnostic} from '+json.dumps((t.ROOT/'scripts/a1_trial_rpc.mjs').as_uri())+';'+r'''
+import fs from 'node:fs';const p=JSON.parse(fs.readFileSync(0));
+const secret=JSON.parse(fs.readFileSync(p.wallet)).private_key;
+console.log(diagnostic(p,new TypeError('private value '+secret,{cause:new Error('root '+secret)})));
+'''
+            result=t.subprocess.run(['node','--input-type=module','-e',code],input=json.dumps({'run_dir':directory,'wallet':str(wallet)}),capture_output=True,text=True,check=True)
+            filename=Path(result.stdout.strip());record=c.load_json(filename)
+            self.assertEqual(record['type'],'TypeError');self.assertIn('TypeError',record['traceback'])
+            self.assertNotIn(secret,filename.read_text());self.assertEqual(len(record['causes']),2)
+            self.assertEqual(filename.stat().st_mode&0o777,0o600)
 
 
 @unittest.skipUnless(os.environ.get('KPI_A1_TRIAL_INTEGRATION_CONFIG'), 'explicit local integration config required')
