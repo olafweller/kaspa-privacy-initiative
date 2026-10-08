@@ -146,6 +146,27 @@ class TrialTests(unittest.TestCase):
     def test_wrong_network_rejected(self):
         with self.assertRaises(c.Invalid): t.Trial({'network':'mainnet'})
 
+    def test_retained_prefix_is_below_tip_with_checked_selected_parent_headers(self):
+        code='''import assert from 'node:assert/strict';import {retainedBlock} from './scripts/a1_trial_rpc.mjs';
+const hash=i=>i.toString(16).padStart(64,'0');let requests=0;
+const rpc={async getBlock(p){requests++;assert.equal(p.includeTransactions,false);const i=parseInt(p.hash,16);
+return {block:{header:{hash:p.hash,blueScore:1000n-BigInt(i)},verboseData:{selectedParentHash:hash(i+1),isChainBlock:i>=64}}};}};
+const block=await retainedBlock(rpc,hash(0));assert.equal(block.header.hash,hash(64));assert.equal(requests,65);
+for(const mutation of [b=>b.header.hash=hash(99),b=>b.header.blueScore=1000n,b=>b.verboseData.selectedParentHash=b.header.hash,b=>b.verboseData.isChainBlock=false]) {
+const broken={async getBlock(p){const {block}=await rpc.getBlock(p);mutation(block);return {block};}};
+await assert.rejects(retainedBlock(broken,hash(0)));}
+console.log('{}');'''
+        t.subprocess.run(['node','--input-type=module','-e',code],cwd=t.ROOT,check=True,capture_output=True,text=True)
+
+    def test_reorg_still_halts_and_retains_the_exact_offending_response(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial=self.make_trial(directory);trial.locator=lambda:(self.locator,self.checkpoint)
+            removed={'removedChainBlockHashes':['02'*32],'addedChainBlockHashes':[],'chainBlockAcceptedTransactions':[]}
+            trial.rpc=lambda op,**kw: {'horizon':'03'*32,'utxos':[]} if op=='snapshot' else removed
+            with self.assertRaisesRegex(c.Invalid,'reorg during history fetch; exact RPC evidence:'):trial.history()
+            paths=list(Path(directory).glob('reorg-history-*.private.json'));self.assertEqual(len(paths),1)
+            self.assertEqual(c.load_json(paths[0])['response'],removed);self.assertEqual(paths[0].stat().st_mode&0o777,0o600)
+
     def test_wasm_none_survives_json_but_missing_full_fields_still_fail(self):
         tx = body(self.manifest,(self.locator['s0_txid_hex'],7),'s0_terminal',self.d0,'44'*32)
         for item in tx['inputs']: item['sequence']=str(item['sequence'])

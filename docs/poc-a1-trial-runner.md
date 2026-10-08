@@ -272,3 +272,25 @@ Offline replay of that same captured history passed with the cache: about
 native v1 IDs. The 27-case suite including both native integration cases passed
 after the serialization fix; the subsequent 28-case unit run (two integrations
 not selected) and the actual-history replays cover the cache addition.
+
+A later fresh rehearsal authenticated its deposit, then stopped on a selected
+chain removal during history pagination, before proving or submitting an exit.
+A subsequent read-only query still found its checkpoint selected and reserve
+unspent; the failing removed suffix was not retained, so its exact membership
+is unknown. A changing tip/horizon is the working explanation, not a demonstrated
+checkpoint reorg. The runner now retains the exact offending response, cursor,
+checkpoint and horizon if that condition occurs again.
+
+C checkpoints and history horizons now select the ancestor 64 selected-parent
+links below the initial node sink, before retaining a prefix. Each requested
+header hash and strictly decreasing blue score is checked; the final ancestor
+must be a current selected-chain block. This uses the pinned upstream
+`RpcBlockVerboseData.selected_parent_hash` (`rpc/core/src/model/block.rs`). It
+excludes the moving tip from the prefix to be retained. No removal of that
+retained checkpoint, horizon or any scanned prefix is allowed, no page is
+skipped, and Full accepted bodies/hashes, current-UTXO alignment and ≥120-second
+payout checks are unchanged. A new spend ahead of the mature horizon makes
+snapshot alignment wait, never authorizes a spend on incomplete history.
+64 links are a snapshot selection delay, not a finality or security guarantee;
+deep reorgs still halt. Two live read-only mature-prefix samples and their
+survival checks passed in about 10 and 11 seconds, respectively.

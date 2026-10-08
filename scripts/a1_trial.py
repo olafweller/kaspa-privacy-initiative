@@ -234,7 +234,8 @@ class Trial:
         c.unhex(observed['hash'], 32)
         record = {'hash':observed['hash'], 'blue_score':str(r.rpc_uint(observed['blue_score'])),
                   'daa_score':str(r.rpc_uint(observed['daa_score'])), 'instance_hex':manifest['instance_hex'],
-                  'genesis_hex':manifest['genesis_hex'], 'manifest_sha256':c.sha((self.bundle/'manifest.json').read_bytes())}
+                  'genesis_hex':manifest['genesis_hex'], 'manifest_sha256':c.sha((self.bundle/'manifest.json').read_bytes()),
+                  'selected_parent_depth':observed['selected_parent_depth'], 'reference_sink_hash':observed['reference_sink_hash']}
         save(self.run/'checkpoint.json', record)
         return {'checkpoint_retained':True, 'funded':False}
 
@@ -251,7 +252,10 @@ class Trial:
         while cursor != horizon:
             self.remaining()
             response = self.rpc('page', start=cursor)
-            c.require(not response['removedChainBlockHashes'], 'reorg during history fetch')
+            if response['removedChainBlockHashes']:
+                path = self.run/('reorg-history-'+str(time.time_ns())+'.private.json')
+                save(path,{'checkpoint':checkpoint,'horizon':horizon,'cursor':cursor,'response':response})
+                raise c.Invalid('reorg during history fetch; exact RPC evidence: '+str(path))
             added = response['addedChainBlockHashes']; groups = response['chainBlockAcceptedTransactions']
             c.require(added and len(groups) == len(added), 'missing/pruned history page')
             # RPC follows a moving tip; stop exactly at the initial snapshot.

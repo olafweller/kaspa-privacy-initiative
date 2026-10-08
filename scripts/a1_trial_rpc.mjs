@@ -83,6 +83,23 @@ function normalizeUtxo(u) {
     scriptPublicKey:spk(e.scriptPublicKey),blockDaaScore:e.blockDaaScore.toString(),isCoinbase:e.isCoinbase,
     covenantId:e.covenantId?.toString()??null}};
 }
+export async function retainedBlock(rpc, sink, depth=64) {
+  // Select a prefix below the moving tip BEFORE retaining it. All later
+  // checkpoint/horizon removals still halt; this is no reorg acceptance rule.
+  let hash=sink, previousScore;
+  for(let i=0;i<=depth;i++) {
+    const block=(await rpc.getBlock({hash,includeTransactions:false})).block;
+    assert.equal(block.header.hash,hash,'wrong selected-parent header');
+    const score=BigInt(block.header.blueScore);
+    assert.ok(previousScore===undefined||score<previousScore,'selected-parent score did not decrease');
+    if(i===depth) {
+      assert.equal(block.verboseData.isChainBlock,true,'retained ancestor is not selected');
+      return block;
+    }
+    previousScore=score;const parent=block.verboseData.selectedParentHash;
+    assert.match(parent,/^[0-9a-f]{64}$/);assert.notEqual(parent,hash,'selected-parent loop');hash=parent;
+  }
+}
 export async function execute(p, rpcFactory = (k,url)=>new k.RpcClient({url,networkId:'testnet-10'})) {
   try {return await executeInner(p,rpcFactory);}
   catch(error) {
@@ -112,12 +129,12 @@ async function executeInner(p, rpcFactory) {
     const address=s=>k.addressFromScriptPublicKey(s,'testnet-10').toString();
     const utxos=async scripts=>(await rpc.getUtxosByAddresses({addresses:scripts.map(address)})).entries.map(normalizeUtxo);
     if(p.op==='checkpoint') {
-      const block=(await rpc.getBlock({hash:dag.sink,includeTransactions:false})).block;
-      assert.equal(block.header.hash,dag.sink);assert.equal(block.verboseData.isChainBlock,true);
-      return {hash:dag.sink,blue_score:block.header.blueScore,daa_score:block.header.daaScore,utxos:await utxos(p.scripts)};
+      const block=await retainedBlock(rpc,dag.sink);
+      return {hash:block.header.hash,blue_score:block.header.blueScore,daa_score:block.header.daaScore,
+        selected_parent_depth:64,reference_sink_hash:dag.sink,utxos:await utxos(p.scripts)};
     }
     if(p.op==='page') return await rpc.getVirtualChainFromBlockV2({startHash:p.start,dataVerbosityLevel:'Full',minConfirmationCount:0});
-    if(p.op==='snapshot') return {horizon:dag.sink,utxos:await utxos(p.scripts)};
+    if(p.op==='snapshot') return {horizon:(await retainedBlock(rpc,dag.sink)).header.hash,utxos:await utxos(p.scripts)};
     if(p.op==='survives') {
       const delta=await rpc.getVirtualChainFromBlockV2({startHash:p.start,dataVerbosityLevel:'None',minConfirmationCount:0});
       assert.equal(delta.removedChainBlockHashes.length,0,'reorg: stop this trial');return {survives:true};
