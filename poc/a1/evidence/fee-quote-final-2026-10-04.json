@@ -1,0 +1,136 @@
+{
+  "headroom_rule": "Use max(source default relay floor, chosen current quote); require fixed fee >= ceil(5 * rate * normalized_non_contextual_mass / 4), using exact rational arithmetic.",
+  "network": "testnet-10",
+  "observations": [
+    {
+      "dag": {
+        "blockCount": "1260398",
+        "difficulty": 2245642.800081696,
+        "headerCount": "1260398",
+        "network": "testnet-10",
+        "pastMedianTime": "1791067461041",
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "sink": "83f0bce5f4eb747f129010d0c53fe69936757e474f405fa1d20e535162362715",
+        "tipHashes": [
+          "83f0bce5f4eb747f129010d0c53fe69936757e474f405fa1d20e535162362715",
+          "722c1d267974483d87c15319ab341161a8007a6369a97731bb4ef73d4877e556"
+        ],
+        "virtualDaaScore": "587348636",
+        "virtualParentHashes": [
+          "83f0bce5f4eb747f129010d0c53fe69936757e474f405fa1d20e535162362715",
+          "722c1d267974483d87c15319ab341161a8007a6369a97731bb4ef73d4877e556"
+        ]
+      },
+      "endpoint": "wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh",
+      "fees": {
+        "estimate": {
+          "lowBuckets": [
+            {
+              "estimatedSeconds": 0.0007647503798975695,
+              "feerate": 100
+            }
+          ],
+          "normalBuckets": [
+            {
+              "estimatedSeconds": 0.0007647503798975695,
+              "feerate": 100
+            },
+            {
+              "estimatedSeconds": 0.0007647503798975695,
+              "feerate": 100
+            }
+          ],
+          "priorityBucket": {
+            "estimatedSeconds": 0.0007647503798975695,
+            "feerate": 100
+          }
+        }
+      },
+      "info": {
+        "hasMessageId": true,
+        "hasNotifyCommand": true,
+        "isSynced": true,
+        "isUtxoIndexed": true,
+        "mempoolSize": "573",
+        "p2pId": "775951f1-03c7-4bcd-b4d4-9dc70b427099",
+        "serverVersion": "2.1.0"
+      },
+      "observed_at_utc": "2026-10-03T22:46:39.224Z",
+      "status": "observed"
+    },
+    {
+      "dag": {
+        "blockCount": "1260403",
+        "difficulty": 2244799.2008558526,
+        "headerCount": "1260403",
+        "network": "testnet-10",
+        "pastMedianTime": "1791067461041",
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "sink": "6eb65afc400316f97e1ea9bd37c655ebd2684bc6c1c57d458e21f216569ca122",
+        "tipHashes": [
+          "6eb65afc400316f97e1ea9bd37c655ebd2684bc6c1c57d458e21f216569ca122",
+          "8dd5269ee893a4f48897fd6489b20e237d2b062a786ee3e677d6672239a6f0b8"
+        ],
+        "virtualDaaScore": "587348641",
+        "virtualParentHashes": [
+          "6eb65afc400316f97e1ea9bd37c655ebd2684bc6c1c57d458e21f216569ca122",
+          "8dd5269ee893a4f48897fd6489b20e237d2b062a786ee3e677d6672239a6f0b8"
+        ]
+      },
+      "endpoint": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+      "fees": {
+        "estimate": {
+          "lowBuckets": [
+            {
+              "estimatedSeconds": 0.000601272932440168,
+              "feerate": 100
+            }
+          ],
+          "normalBuckets": [
+            {
+              "estimatedSeconds": 0.000601272932440168,
+              "feerate": 100
+            },
+            {
+              "estimatedSeconds": 0.000601272932440168,
+              "feerate": 100
+            }
+          ],
+          "priorityBucket": {
+            "estimatedSeconds": 0.000601272932440168,
+            "feerate": 100
+          }
+        }
+      },
+      "info": {
+        "hasMessageId": true,
+        "hasNotifyCommand": true,
+        "isSynced": true,
+        "isUtxoIndexed": true,
+        "mempoolSize": "1",
+        "p2pId": "00af0fba-3646-4f06-8be7-dbf5961e8f38",
+        "serverVersion": "2.1.0"
+      },
+      "observed_at_utc": "2026-10-03T22:46:39.546Z",
+      "status": "observed"
+    }
+  ],
+  "pins": {
+    "extracted_files_sha256": {
+      "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+      "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+      "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+    },
+    "rusty_kaspa_commit": "01b532e8b553523216471682649693af92f0fd16",
+    "sdk_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+    "sdk_version": "2.1.0"
+  },
+  "rpc_methods": [
+    "getInfo",
+    "getBlockDagInfo",
+    "getFeeEstimate"
+  ],
+  "schema": "kpi-a1-fee-observation/v1",
+  "scope": "Read-only external TN10 fee estimates; no submission, inclusion guarantee, node configuration attestation, or archive qualification.",
+  "source_default_relay_floor_sompi_per_gram": "100"
+}

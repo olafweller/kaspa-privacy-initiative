@@ -1,0 +1,37 @@
+{
+  "entry": {
+    "amount": 1071000000,
+    "blockDaaScore": 0,
+    "covenantId": null,
+    "isCoinbase": false,
+    "scriptPublicKey": "000051"
+  },
+  "transaction": {
+    "gas": "0",
+    "id": "c501fa7e6780be7ec52a32b88a16084d656f390e3f6cc7cdfb9b60d6683e0b42",
+    "inputs": [
+      {
+        "computeBudget": 1,
+        "previousOutpoint": {
+          "index": 7,
+          "transactionId": "4040404040404040404040404040404040404040404040404040404040404040"
+        },
+        "sequence": "18446744073709551615",
+        "sigOpCount": 0,
+        "signatureScript": ""
+      }
+    ],
+    "lockTime": "0",
+    "outputs": [
+      {
+        "covenant": null,
+        "scriptPublicKey": "0000aa20177e36eb9572c0ae779f84091d3c1c6cd9a0ed0da5d6cb612f0822a5d67742d887",
+        "value": "1070000000"
+      }
+    ],
+    "payload": "",
+    "storageMass": "1",
+    "subnetworkId": "0000000000000000000000000000000000000000",
+    "version": 1
+  }
+}

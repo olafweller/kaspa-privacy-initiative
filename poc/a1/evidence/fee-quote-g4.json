@@ -1,0 +1,134 @@
+{
+  "headroom_rule": "Use max(source default relay floor, chosen current quote); require fixed fee >= ceil(5 * rate * normalized_non_contextual_mass / 4), using exact rational arithmetic.",
+  "network": "testnet-10",
+  "observations": [
+    {
+      "dag": {
+        "blockCount": "1233190",
+        "difficulty": 2173893.0518723554,
+        "headerCount": "1233190",
+        "network": "testnet-10",
+        "pastMedianTime": "1791064768976",
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "sink": "dad3ba7a0c203ed344250ef5dd76bea11384968e6711fa859293319fa5333b42",
+        "tipHashes": [
+          "dad3ba7a0c203ed344250ef5dd76bea11384968e6711fa859293319fa5333b42"
+        ],
+        "virtualDaaScore": "587321428",
+        "virtualParentHashes": [
+          "dad3ba7a0c203ed344250ef5dd76bea11384968e6711fa859293319fa5333b42"
+        ]
+      },
+      "endpoint": "wss://electron-10.kaspa.blue/kaspa/testnet-10/wrpc/borsh",
+      "fees": {
+        "estimate": {
+          "lowBuckets": [
+            {
+              "estimatedSeconds": 0.0009689618496310229,
+              "feerate": 100
+            }
+          ],
+          "normalBuckets": [
+            {
+              "estimatedSeconds": 0.0009689618496310229,
+              "feerate": 100
+            },
+            {
+              "estimatedSeconds": 0.0009689618496310229,
+              "feerate": 100
+            }
+          ],
+          "priorityBucket": {
+            "estimatedSeconds": 0.0009689618496310229,
+            "feerate": 100
+          }
+        }
+      },
+      "info": {
+        "hasMessageId": true,
+        "hasNotifyCommand": true,
+        "isSynced": true,
+        "isUtxoIndexed": true,
+        "mempoolSize": "656",
+        "p2pId": "775951f1-03c7-4bcd-b4d4-9dc70b427099",
+        "serverVersion": "2.1.0"
+      },
+      "observed_at_utc": "2026-10-03T22:01:39.628Z",
+      "status": "observed"
+    },
+    {
+      "dag": {
+        "blockCount": "1233192",
+        "difficulty": 2173893.0518723554,
+        "headerCount": "1233192",
+        "network": "testnet-10",
+        "pastMedianTime": "1791064768976",
+        "pruningPointHash": "decd97c04aad0ef66f947fdc59446c999b57f3b7452889d9b8727c51421ba460",
+        "sink": "227abb460e51197d92bbf3fa2844a0dc557713f23883234d6cbb1ca0db70670b",
+        "tipHashes": [
+          "dad3ba7a0c203ed344250ef5dd76bea11384968e6711fa859293319fa5333b42",
+          "227abb460e51197d92bbf3fa2844a0dc557713f23883234d6cbb1ca0db70670b"
+        ],
+        "virtualDaaScore": "587321430",
+        "virtualParentHashes": [
+          "227abb460e51197d92bbf3fa2844a0dc557713f23883234d6cbb1ca0db70670b",
+          "dad3ba7a0c203ed344250ef5dd76bea11384968e6711fa859293319fa5333b42"
+        ]
+      },
+      "endpoint": "wss://vector-10.kaspa.green/kaspa/testnet-10/wrpc/borsh",
+      "fees": {
+        "estimate": {
+          "lowBuckets": [
+            {
+              "estimatedSeconds": 0.0007604981307352387,
+              "feerate": 100
+            }
+          ],
+          "normalBuckets": [
+            {
+              "estimatedSeconds": 0.0007604981307352387,
+              "feerate": 100
+            },
+            {
+              "estimatedSeconds": 0.0007604981307352387,
+              "feerate": 100
+            }
+          ],
+          "priorityBucket": {
+            "estimatedSeconds": 0.0007604981307352387,
+            "feerate": 100
+          }
+        }
+      },
+      "info": {
+        "hasMessageId": true,
+        "hasNotifyCommand": true,
+        "isSynced": true,
+        "isUtxoIndexed": true,
+        "mempoolSize": "57",
+        "p2pId": "00af0fba-3646-4f06-8be7-dbf5961e8f38",
+        "serverVersion": "2.1.0"
+      },
+      "observed_at_utc": "2026-10-03T22:01:39.871Z",
+      "status": "observed"
+    }
+  ],
+  "pins": {
+    "extracted_files_sha256": {
+      "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+      "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+      "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+    },
+    "rusty_kaspa_commit": "01b532e8b553523216471682649693af92f0fd16",
+    "sdk_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+    "sdk_version": "2.1.0"
+  },
+  "rpc_methods": [
+    "getInfo",
+    "getBlockDagInfo",
+    "getFeeEstimate"
+  ],
+  "schema": "kpi-a1-fee-observation/v1",
+  "scope": "Read-only external TN10 fee estimates; no submission, inclusion guarantee, node configuration attestation, or archive qualification.",
+  "source_default_relay_floor_sompi_per_gram": "100"
+}

@@ -1,11 +1,43 @@
 # A1 implementation plan
 
-**Status:** this page preserves the merged G0 handoff. Subsequent A1
-implementation is in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22),
-with local/native-synthetic G1–G4 evidence and repairs to its qualification
-checks. Full independent G5 remains open; live A1 G6 has not run. The requirements
-below are the specification, not a claim that the implementation is merged or
-that every gate has passed. See the PR's report for execution evidence.
+**Status:** this page preserves the G0 specification merged at
+`0193d1847aa53468d6056a925ffb60f2d69e5b23` and its implementation handoff.
+Separately authorized unfunded implementation is on `poc-a1-successor-state`
+in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22).
+Local/native-synthetic G1–G4 evidence and the supplemental-negative/fee-receipt
+qualification repairs are recorded in the [A1 report](poc-a1-proof-report.md).
+G5 tooling and isolated-container rehearsals do not close independent
+machine-loss/live-archive recovery. Full G5/G6 remains open; separately
+authorized scoped TN10 execution is recorded in the dated updates below.
+The requirements below are the specification,
+not a claim that A1 is merged or every gate has passed. Subsequent separate
+instructions authorized [live attempt 1](poc-a1-live-attempt-1.md): S0 funding,
+accepted S0 → S1, a failed independent recovery boundary, and a later separate
+terminal exit. Attempt 1 was not resumed or credited as G5/G6 success.
+The separately authorized [attempt 2](poc-a1-live-attempt-2.md) passed live C
+validation, physical whole-A loss and autonomous B start, then failed at live
+checkpoint parsing before B lineage/proving. **G5 FAILED — autonomous recovery
+did not complete during the live run.** Its later repaired offline replay and
+separate owner terminal exit do not change that result or complete full G6.
+These historical failures remain unchanged. This document authorizes no new
+live action or invariant change.
+
+**Update 2026-10-08 (S1):** the separately authorized [official trial](poc-a1-official-trial-2026-10-08.md)
+passed the scoped S1 autonomous-recovery scenario after physical loss of A,
+with one accepted fresh-proof terminal payout.
+
+**Update 2026-10-08 (S0):** the separately authorized
+[S0 trials](poc-a1-s0-trials-2026-10-08.md) completed a paid-out rehearsal,
+B recovery with A physically off, a direct A exit, and an ordered
+terminal-versus-terminal competing spend. Each successful identity paid
+22.1 native test KAS, with exact body/accounting checks and a later recheck
+after at least 120 seconds. The submission intents were 1.425702 seconds
+apart; B was accepted and the later A candidate rejected. This covers scoped
+positive recovery from both states and one live competing-spend variant.
+Full G5/G6 remains open: live archive/artifact-loss, malicious or divergent
+providers, controlled reorg/rollback, the other competing-branch variants,
+and future fee/resource liveness are not demonstrated. C-node, single-party
+setup and host integrity remain trusted; no anonymity or production claim.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -26,7 +58,7 @@ not promote the finite experiment into a note system or accept RFC-0001.
 
 ## Ordered work packages and gates
 
-| Gate | Future deliverable | Required evidence / dependency |
+| Gate | Deliverable / frozen requirement | Required evidence / dependency |
 | --- | --- | --- |
 | G0 — specification closure | Closed specification in ADR, matrix and this plan | Raw selectors and opcode framing, exact witness ABI, context bytes/hashes independently calculated, SPK/verifier pins, acyclic graph, artifact/checker/setup-receipt contract, discovery/topology, fee formulas and source-estimated resources are frozen. Closed as specification only; ADR acceptance remains project review. Implementation separately authorized. |
 | G1 — integer model and codec | Isolated A1 manifest/state model; byte-format vectors | Independently calculated golden examples, checked sums/ranges, forbidden states/modes, partial payout and rebate. Matrix 01–03, 09. No setup or funding until inconsistent manifests deterministically reject. |
@@ -41,14 +73,17 @@ files. Preserve A0 source, its historical evidence and its 30-outcome baseline;
 any shared-helper refactor needs independent justification and regression checks.
 Suggested A1 boundaries are manifest/accounting, canonical encoding, branch
 circuit, script construction, local validator harness, recovery bundle and
-optional later native transport. These are proposed responsibilities, not files
-created in this design task.
+optional later native transport. These were proposed responsibilities at G0;
+the separate implementation now uses these boundaries without changing the
+frozen graph or invariant scope.
 
 G1 implements the frozen schema and compares against the G0 independently
 calculated vectors. G2–G5 must reconcile on identical manifest/output bytes.
 The independent checker must not import the production serializer/compiler,
 and an adversarial reviewer should not author the safety assertion being
-evaluated. No implementation work is authorized by this design closure.
+evaluated. G0 design closure alone authorized no implementation. The subsequent
+explicit G1–G5 instruction authorized unfunded local falsification, not G6;
+the later bounded attempts 1/2 and owner exits had separate specific authorization.
 
 ## Frozen G0 handoff checklist
 
@@ -63,7 +98,7 @@ evaluated. No implementation work is authorized by this design closure.
 | Discovery | Retained `kpi-a1-locator/v1` S0 locator + pre-funding checkpoint. Independent indexed node/archive scans accepted bodies with native v2 Full, or v1 accepted-ID/body join; cursor pagination, pruning and removal/reorg rules. Matrix 22/23. |
 | Topology | A original, B clean recovery, C independent chain/archive accessible after A loss. Prefer fully synced local pinned node once independently available; do not await or disturb current sync. G5 records concrete machines/source capabilities. |
 | Fees | f0/fc/f1 frozen before funding using actual relay plus 25% quote-rate headroom; B0 >= max(f0,fc+f1) plus 10% refundable credit headroom. No post-funding fee modification/rescue. Matrix 24. |
-| Resources/layers | Source limits verified; S0 estimated 1.2–1.6 KiB, conservative 2-KiB qualification ceiling, one verifier 155000 grams plus surrounding work. G2/G4 measurements pending. ADR enforcement map prevents adapter/consensus conflation. Matrix 25. |
+| Resources/layers | Source limits verified; G0 estimated S0 at 1.2–1.6 KiB, conservative 2-KiB qualification ceiling, one verifier 155000 grams plus surrounding work. G2/G4 measurements were pending at handoff; current measurements are in the report. ADR enforcement map prevents adapter/consensus conflation. Matrix 25. |
 
 G0 closes what must be built and falsified, not circuit/setup correctness or
 artifact availability. Concrete A1 artifact bytes, source/checker commits, lock
@@ -157,18 +192,37 @@ insufficient fee or ambiguous state blocks a success claim. Passing never implie
 cryptographic correctness, production safety, anonymity, PQ security or a chosen
 production state architecture.
 
-## Implementation handoff boundary
+## Historical G0 and attempt-2 handoff boundaries
 
-G0 is closed as a source-grounded specification with independent codec
-calculations. PR #21 merged the finite A1 specification;
-that merge did not accept Candidate A/RFC-0001. No hard protocol
-blocker was identified from the pinned source review. Implementation subsequently began on a separate branch under its own instruction;
-its draft status and remaining gates are linked above, without funding or broadcast.
+The following records the earlier handoff. The dated updates above describe
+the subsequent scoped trials; they do not close every gate or authorize
+future live execution.
 
-The original handoff required independent checker/build/setup receipts, actual
-script/proof rejection and path traces, measured resource/fee affordability,
-stateful consensus races/reorgs, and clean-machine recovery with demonstrated
-independent archive availability. Until all G1–G5 pass, no reserve may be funded.
+G0 was closed as a source-grounded specification with independent codec
+calculations and subsequently merged through PR #21 by the project. This does
+not accept Candidate A/RFC-0001. The separately instructed implementation has
+executed the first two-VK native falsifier successfully and measures S0 at 1289
+bytes, one matching verifier and nine combined stack elements. No hard protocol
+blocker has been found. The implementation PR remains draft/unmerged.
+
+The report distinguishes model, actual native Full, native stateful consensus,
+SDK qualification, same-host namespace recovery and pending independent
+machine/archive evidence. Passing local checks or a namespace rehearsal does
+not close full G5. Attempt 1 failed safely before A loss; its separately
+settled terminal exit changes no gate requirement. Full G6 still requires all
+G1–G5 and separate instructions. Any separate bounded recovery attempt needs a
+new qualified/pinned checklist and explicit authority; this record supplies none.
+Attempt 2 reached the whole-A-loss boundary but failed before B lineage/proving.
+Before considering attempt 3, qualification must pin the separately retained
+metadata/diagnostics repair, exercise fractional live checkpoint timestamps with
+strict protocol fields, retain bounded sanitized child errors, and measure the
+actual deployed recovery path without diagnostic-only C memoization. The later
+20m29s offline replay and approximately 59.5-second owner-exit recheck do not
+satisfy the live recovery or frozen observation gates. This publication is ready
+for qualification review/planning and authorizes no attempt 3 or live action.
+Quotes/configuration must also be refreshed before
+future funding; the publicly known recipient fixture key must never be used.
+
 Actual hard protocol incompatibility stops work; failures must not be patched
 by weaker output/VK/accounting constraints. All security invariants and trusted
 single-party setup/chain-observation limits remain explicit and unchanged.

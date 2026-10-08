@@ -1,0 +1,138 @@
+{
+  "branches": [
+    {
+      "branch": "s0_continue",
+      "committed_storage_mass": "3128",
+      "compute_budget": 1706,
+      "decoded_negative_cases": [
+        {
+          "exact_readback_detected": true,
+          "mutation": "wrong-proof-byte",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "insufficient-budget",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "covenant-some-zero",
+          "native_full_rejected": true
+        }
+      ],
+      "decoded_transport_sha256": "e016ffa7df7275944a96c1bb7d1aea49e55834ce7be67d3892b2243861dc659b",
+      "fee_sompi": "30000000",
+      "full_hash": "77f81c97011dd7a83a39d81945ec26d59d14663b061ff58798f70efe21a2c117",
+      "independent_hash_encoder_agrees": true,
+      "literal_witness_and_proof_preserved": true,
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates.",
+      "native_full_after_decode": true,
+      "native_masses": {
+        "compute": 173073,
+        "storage": 3128,
+        "transient": 6972
+      },
+      "numeric_json_bytes": 3837,
+      "output_covenant_none_preserved": true,
+      "safe_json_bytes": 3853,
+      "safe_json_sha256": "45444c1eea5e19575fce7f766e13b78cc25ad69350f5ccb4f1ad44ab8713138a",
+      "txid": "c755e4f002b3423c84cb9bb7416ff96e1c0edc0bbd251c27dde1f91b17a0733b"
+    },
+    {
+      "branch": "s0_terminal",
+      "committed_storage_mass": "27",
+      "compute_budget": 1706,
+      "decoded_negative_cases": [
+        {
+          "exact_readback_detected": true,
+          "mutation": "wrong-proof-byte",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "insufficient-budget",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "covenant-some-zero",
+          "native_full_rejected": true
+        }
+      ],
+      "decoded_transport_sha256": "39ee82eb6c88e3684487108d977cb075664b131c3c8c364dece1c978e32254c1",
+      "fee_sompi": "30000000",
+      "full_hash": "068f2f73bc9f9e6996f9350273aa46e5d6428b208cf70978383ea1cef6e372d0",
+      "independent_hash_encoder_agrees": true,
+      "literal_witness_and_proof_preserved": true,
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates.",
+      "native_full_after_decode": true,
+      "native_masses": {
+        "compute": 172649,
+        "storage": 27,
+        "transient": 6756
+      },
+      "numeric_json_bytes": 3703,
+      "output_covenant_none_preserved": true,
+      "safe_json_bytes": 3717,
+      "safe_json_sha256": "8e2fda3ba56ee9b58103651453496ddc4bdabf70b5d72d971302005b9d4a6ce7",
+      "txid": "9e87b4e96f790f7a954a933d7b2faa5be7721e56b8861373e01ef6b0b7731c5c"
+    },
+    {
+      "branch": "s1_terminal",
+      "committed_storage_mass": "77",
+      "compute_budget": 1706,
+      "decoded_negative_cases": [
+        {
+          "exact_readback_detected": true,
+          "mutation": "wrong-proof-byte",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "insufficient-budget",
+          "native_full_rejected": true
+        },
+        {
+          "exact_readback_detected": true,
+          "mutation": "covenant-some-zero",
+          "native_full_rejected": true
+        }
+      ],
+      "decoded_transport_sha256": "d450cfa86c87cde2d896716784b720e8a2290ed3cecf56838fa92b805d2906a9",
+      "fee_sompi": "30000000",
+      "full_hash": "9e7411e277c990444e16ec0ce6ef462a81725cbf6d476afca1caf5f6c5d10f03",
+      "independent_hash_encoder_agrees": true,
+      "literal_witness_and_proof_preserved": true,
+      "mass_evidence": "Fresh native computation from exact SDK-decoded transaction and UTXO; equals original native fixture measurements, not legacy SDK helper estimates.",
+      "native_full_after_decode": true,
+      "native_masses": {
+        "compute": 171994,
+        "storage": 77,
+        "transient": 4136
+      },
+      "numeric_json_bytes": 2391,
+      "output_covenant_none_preserved": true,
+      "safe_json_bytes": 2405,
+      "safe_json_sha256": "ddec31c62c041fc40e7ea76f396e6c204c1a912f06ce93b78da48e8fa023f422",
+      "txid": "58a989d8c581dd101d30f7fd4414d6d7dbc76b231c33547f4d665881efe5d005"
+    }
+  ],
+  "extracted_files_sha256": {
+    "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+    "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+    "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+  },
+  "independent_reference_binary_sha256": "3d30a3a081671a706b08f2e30bc2f8d41e7f4ba7d837dba261e369889e677fb9",
+  "native_validator_binary_sha256": "a2dd5ab1b8431af037d279511467c5b3acbf29712c248f501d4c35e1d8360ae1",
+  "negative_guards": [
+    "cached wrong ID fails canonical equality",
+    "IEEE-754 sequence precision loss detected"
+  ],
+  "observed_at_utc": "2026-10-03T22:40:59.921Z",
+  "retained_decoded_public_requests": "/tmp/kpi-a1-sdk-roundtrip.aXuaN3",
+  "schema": "kpi-a1-sdk-roundtrip/v1",
+  "scope": "Offline unfunded three-branch final transaction serialization; no RPC, public-chain acceptance or wallet.",
+  "sdk_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+  "sdk_version": "2.1.0"
+}

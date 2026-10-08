@@ -1,0 +1,55 @@
+{
+  "schema": "kpi-a1-attempt-2-publication-checks/v1",
+  "at_UTC": "2026-10-06T07:07:45.189015+00:00",
+  "scope": "Offline documentation/evidence publication checks; not live G5/G6, replay performance qualification, or attempt 3.",
+  "base_PR22_HEAD": "f4a4ddc50a41aa5c640e0b43ff0962c9ed49e718",
+  "documentation": {
+    "markdown_files": 49,
+    "relative_path_links": 220,
+    "relative_heading_links": 18,
+    "passed": true
+  },
+  "fast_CI": {
+    "command": "bash scripts/ci_fast.sh",
+    "Python_tests": 46,
+    "Node_tests": 13,
+    "passed": true,
+    "syntax_and_whitespace_passed": true
+  },
+  "separately_retained_repair_regressions": {
+    "tests": 28,
+    "passed": true,
+    "warnings_as_errors": true,
+    "repository_CI_tests": false,
+    "exact_checkpoint_failure_reproduced": true,
+    "source_hashes": "public-record.json:repair.source_sha256"
+  },
+  "protected_files_byte_unchanged": 206,
+  "attempt_1_evidence_unchanged": true,
+  "protocol_tooling_invariants_ADRs_previous_evidence_unchanged": true,
+  "sanitization": {
+    "method": "Allowlisted receipt extraction and manual diff review; available actual claim/recipient values scanned in raw, lower/upper hex and base64 encodings. No private receipts/backups published.",
+    "available_private_values_checked": 2,
+    "passed": true
+  },
+  "offline_terminal_native_Full": {
+    "validator_sha256": "3884409aa1a59a24be7979a54ce591727cf5fa81a81527497a72f0ae5d0203e0",
+    "request_sha256": "b808ad3c43c0922ce28307001463d59aa40d0f8f18a89323c857c8cd33f33656",
+    "result": {
+      "consensus_full_hash_preimage_bytes": 1011,
+      "fee": "30000000",
+      "full_hash": "6b39e7a7ea925a1d76be13d8182e14f4a1aad5a1a345f39d1696777b2f094603",
+      "full_valid": true,
+      "mass_scope": "fresh native calculation from exact decoded transaction and supplied UTXO context; not chain acceptance",
+      "native_masses": {
+        "compute": 171994,
+        "storage": 77,
+        "transient": 4136
+      },
+      "txid": "16285ec837fba58db9a6782bcfc584f034c618975fd1e8358ddece9ad55fd228"
+    },
+    "chain_acceptance_checked_by_this_publication": false
+  },
+  "public_record_sha256": "dab327b9729f822759d60b31e4659883e7702156293c60ca3a79734ec36b0989",
+  "forbidden_actions_performed": false
+}

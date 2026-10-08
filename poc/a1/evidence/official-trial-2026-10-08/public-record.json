@@ -1,0 +1,214 @@
+{
+ "schema": "kpi-a1-official-trial-public/v1",
+ "run_id": "finite-cold-65b7dee37b3c4308a9f60e4f2a037353",
+ "live_date": "2026-10-08",
+ "network": "testnet-10",
+ "status": "PASS — autonomous S1 recovery and native terminal payout after physical loss of A. Not full G5/G6 closure.",
+ "publication_base_PR22_HEAD": "575d0e93afdb9d5f522d9fd5500026f3ca2ba018",
+ "provenance": "Allowlisted extraction from retained local operator report data (OFFICIAL-REPORT-DATA.json) and C/B return receipts; on-chain values cross-checked against the public TN10 index api-tn10.kaspa.org on 2026-10-08.",
+ "status_table": {
+  "S0 funding": "PASS",
+  "S0 -> S1": "PASS",
+  "C independent capture": "PASS",
+  "Physical whole-A loss": "PASS",
+  "C independent loss boundary before B release": "PASS",
+  "B independent S1 discovery (no S1 pointer from A)": "PASS",
+  "Fresh terminal proof + native Full": "PASS",
+  "Single terminal broadcast": "PASS",
+  "TN10 acceptance, exact payout/recipient, S1 spent": "PASS",
+  "Later observation >= 120 s": "PASS",
+  "S0 direct recovery": "NOT RUN",
+  "Competing-spend result": "NOT RUN",
+  "Full G5/G6": "OPEN"
+ },
+ "transactions": [
+  {
+   "kind": "funding_S0",
+   "txid": "158a06aaa00c8d93371e472d8f2d3fc340f3517ff4a8d2df329d15e862c6623f",
+   "full_hash": "7b3c3168c7b65ec42811881f19850dbaf3866b3037ef2365583f84a56d4d4825",
+   "input_sompi": 57825338900,
+   "input_outpoint": "92540e63ba198b9ad5c3faa6a64457bc12e39b430e96289df7254a234ae67ba9:1",
+   "outputs": [
+    {
+     "index": 0,
+     "kind": "S0_reserve",
+     "sompi": 3210000000
+    },
+    {
+     "index": 1,
+     "kind": "wallet_change",
+     "sompi": 53615134200
+    }
+   ],
+   "fee_sompi": 1000204700,
+   "accepting_block": "6903c0ca24968047bdebe0399ed41b6c7ccf9926f9fa10225ff4dcefa0b2ad23"
+  },
+  {
+   "kind": "continuation_S0_S1",
+   "txid": "52073b123ebef0c6d1e3966668c3676da5d258775cd7a4901931be54e90d7186",
+   "full_hash": "1819002808c7ceb417e6090c19ff710468a3d6c28c9edbb73a8cc0bb450c5680",
+   "input_sompi": 3210000000,
+   "input_outpoint": "158a06aaa00c8d93371e472d8f2d3fc340f3517ff4a8d2df329d15e862c6623f:0",
+   "outputs": [
+    {
+     "index": 0,
+     "kind": "S1_reserve",
+     "sompi": 1810000000
+    },
+    {
+     "index": 1,
+     "kind": "partial_payout",
+     "sompi": 400000000,
+     "recipient": "kaspatest:qq9yj8pss8x9kcvc8l6tcq7gsuk3f8mhrzs74vq7juskj8d5lhwx6e0ummdw7"
+    }
+   ],
+   "fee_sompi": 1000000000,
+   "accepting_block": "19aeb738a23d79559329b63e18d626afb7412b360d563bbe0f7764a92e043c0a"
+  },
+  {
+   "kind": "autonomous_S1_terminal",
+   "txid": "085f8fa5a0439dc7cc30c851805f6e44e637b8b2fe2cac0d930a7da250f0ff83",
+   "full_hash": "835ff9a0ddfcf7090c6428ecd960e1cc120cf9bad207a4e4a20026286946d96d",
+   "input_sompi": 1810000000,
+   "input_outpoint": "52073b123ebef0c6d1e3966668c3676da5d258775cd7a4901931be54e90d7186:0",
+   "outputs": [
+    {
+     "index": 0,
+     "kind": "terminal_payout",
+     "sompi": 810000000,
+     "recipient": "kaspatest:qq9yj8pss8x9kcvc8l6tcq7gsuk3f8mhrzs74vq7juskj8d5lhwx6e0ummdw7"
+    }
+   ],
+   "fee_sompi": 1000000000,
+   "accepting_block": "6111c1f1f8a7cd54ccd1d575e7960c623ac9532ceba1f84be7b658707c655e23",
+   "accepting_block_timestamp_unix_ms": 1791439558189,
+   "accepting_block_local_time": "2026-10-08T08:05:58.189000+02:00"
+  }
+ ],
+ "accounting_sompi": {
+  "reserve": 3210000000,
+  "to_recipient": 1210000000,
+  "reserve_fees": 2000000000,
+  "funding_fee": 1000204700,
+  "wallet_net_debit": 4210204700
+ },
+ "recipient": "kaspatest:qq9yj8pss8x9kcvc8l6tcq7gsuk3f8mhrzs74vq7juskj8d5lhwx6e0ummdw7",
+ "terminal": {
+  "txid": "085f8fa5a0439dc7cc30c851805f6e44e637b8b2fe2cac0d930a7da250f0ff83",
+  "full_hash": "835ff9a0ddfcf7090c6428ecd960e1cc120cf9bad207a4e4a20026286946d96d",
+  "payout_sompi": 810000000,
+  "fee_sompi": 1000000000,
+  "accepting_block_timestamp_ms": 1791439558189,
+  "accepting_blue_score": 579519799,
+  "initial_later_observation_seconds": 120.555685,
+  "blue_score_confirmations_at_return_check": 28766
+ },
+ "timeline_unix_seconds": {
+  "independent_C_loss_at": 1791439352.9781063,
+  "C_B_recovery_started_at": 1791439353.6420543,
+  "B_release_at": 1791439353.6664882,
+  "initial_at": 1791439653.0030777,
+  "later_at": 1791439773.5587623,
+  "first_reachable_after_absence_at": 1791442221.7132735,
+  "checked_at": 1791442371.3291159,
+  "absence_first_probe_at": 1791439328.7891374,
+  "absence_last_probe_at": 1791442218.6805336,
+  "C_A_return_fault_at": 1791442222.2227218
+ },
+ "A_absence_seconds": 2889.891,
+ "B_release_bound_to_C_loss_digest": "80de5a9984862acbcf014fbbd1ce6e879655137ff6ab913f99ad89531a214f5c",
+ "one_submit_claim": {
+  "one_attempt_only": true,
+  "intent_sha256": "659e752809d3a3560e626c12f02040edb2911f2f8d363b52693d18ebd431e918",
+  "sources_sha256": "c98ec5edda327fdd7c539e687019b63559678c197134a6502e64fdfec45fd2b8",
+  "full_hash": "835ff9a0ddfcf7090c6428ecd960e1cc120cf9bad207a4e4a20026286946d96d",
+  "txid": "085f8fa5a0439dc7cc30c851805f6e44e637b8b2fe2cac0d930a7da250f0ff83"
+ },
+ "retained_receipt_sha256": {
+  "intent.json": "659e752809d3a3560e626c12f02040edb2911f2f8d363b52693d18ebd431e918",
+  "submission-claimed.json": "e111adf0e7b79176a16f20fc70622c65020e3532a40d4b24fec58f547cb2202e",
+  "submission-result.json": "d9ff02df2f1e8525c19cfd5aa147580c31d1e1f4ec1c808bc1ea67b8d8923399",
+  "qualified-current.json": "d9c00c921a6849077e47b0c6ebbc4b5b1ad007d2ebac6121c7040e8caa77aea3",
+  "located-terminal.json": "3c08b226873c79e8486f80258cb1c0b1dc5905390cb98959dde06851138b3373",
+  "initial-observation.json": "8b5655582c6fd5a3dd4bc78170b10b42086ff8361efb2298ef70cdc845c879b7",
+  "later-observation.json": "04d6addc33a7e5da1c85cd98d089d4220f24b7a95f4ca02c84962135e6a1d281"
+ },
+ "C_probe_journal_sha256": "409dd944a03d09b31ec0500872a1888b9b7a309291e4857a8afcb75ec1102b1d",
+ "S1_seal_hashes": {
+  "checkpoint_sha256": "7a86151b6a724721042493cba3af69174c3c7e5ba25c85b817897adc26f7a97e",
+  "config_sha256": "61b5a1ca22655a32ba1b445786e218ee4dd8a37a814c9bfb0ae798bde537868b",
+  "history_manifest_sha256": "2827997961b5dc491cab4a922c1445d60a80587f9e130dc1e997b91d6f3637ab",
+  "native_sha256": "3884409aa1a59a24be7979a54ce591727cf5fa81a81527497a72f0ae5d0203e0",
+  "prefix_sha256": "ba3558097229130f8cf0a7b8d6a38a195a6b0ada45619fdd38556d00d5965693",
+  "role_sources_sha256": "66bacb2f231e2f52c0d199fd7307d49ba5e54d9d7a1a3302dc1f80364574b5cb",
+  "sdk_sha256": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf"
+ },
+ "runtime_provenance": {
+  "A1_worktree_head": "575d0e93afdb9d5f522d9fd5500026f3ca2ba018",
+  "local_repairs_not_in_repository": true,
+  "local_source_snapshot": {
+   "files": 87,
+   "aggregate_sha256": "fc9afb2e512418cf67308710e9d468d5a7867d5970bc7b81a0f6a366bfa6ecea",
+   "method": "sha256sum of sorted *.py/*.mjs/*.js/*.rs/*.sh under the local trial source tree, piped through sha256sum"
+  },
+  "clock_skew_tolerance_seconds": 2
+ },
+ "rehearsal_payout_txids": [
+  "bd2b02e7ee884fdece224f90c2c994fc87de122be08144292a421b8ce1f4b410",
+  "6e0b0af8c83e3884a274faf9a02c12b7ef13cebbd76280453251dcdb8129d927",
+  "490be6088f8f95b4598653ab027948a1008c07e20dd147ed094b9d6a9b078b50"
+ ],
+ "earlier_unpublished_funded_runs": [
+  {
+   "S0_txid": "3dc28adf34d33fd100f1bf7f3eb8d904cbc5fd26b9e72c64f37b0a9e32312606",
+   "S1_txid": "c5a3b7303687e5fc6f3fafa43d0fad4d5755c1ebc0ea999419c8a730134aa3d5",
+   "locked_sompi": 640000000
+  },
+  {
+   "S0_txid": "12a938b217f4babcec885eddb87ad78d22a8c6acc8ef0da94598bf869790711d",
+   "S1_txid": "d45f397b66a174b4bd15f8b8fc6323b094f8f56eb7e4b2bdb38b89f8f73365e9",
+   "locked_sompi": 640000000
+  },
+  {
+   "S0_txid": "5f0fdc65a5113e10d333b550e7babac9ae14a7f66ebfff3f43c6d50a2f8a8c8a",
+   "S1_txid": null,
+   "locked_sompi": 3210000000
+  },
+  {
+   "S0_txid": "2c58c9d12f4ca6e817616cbffb96503e59468e68716c71aedee0345f3fd9fd8f",
+   "S1_txid": null,
+   "locked_sompi": 3210000000
+  },
+  {
+   "S0_txid": "ed1e71773ae14b3a319998d483d9d578f6a41ebbbb6bd8715593c41c2fd53c1e",
+   "S1_txid": "fe75530acf324e3386ed01cbf6ed7634631a4ed9fdbb0f28e6b674494594d50d",
+   "locked_sompi": 1810000000
+  },
+  {
+   "S0_txid": "ea698fc3339b06a9e1bbcabfb4fb567ed95c388de35e529746859692ec310ac2",
+   "S1_txid": "18dd21a56d4122b4b9dd05a68bf26afd2b59312095d8fba28fff76f6120fb84d",
+   "locked_sompi": 1810000000
+  },
+  {
+   "S0_txid": "3d5ff090e8ca859ff19c131aff4086bb912351e10754e6e2064830bc57c1598c",
+   "S1_txid": "bd9928f2eca413d051d058950a9cb0441fcc20735b9640c1b8ee485e7821d698",
+   "locked_sompi": 1810000000
+  },
+  {
+   "S0_txid": "d5626ab510cb11bc97c3450826a331c33a3ad79b387c875eb45a28e85c697c5b",
+   "S1_txid": "b5848e10f9fde100564c439b0e1e157b73e16990b94f9036d4711b2065a114ca",
+   "locked_sompi": 0,
+   "separate_owner_exit_txid": "592c62fd447b7ee7adc8238df678acb7a269b036f4677f28373f2d1c0e6dc9f0"
+  }
+ ],
+ "withheld": [
+  "claim secrets",
+  "recipient private keys",
+  "backup/unlock material",
+  "SSH credentials",
+  "infrastructure configuration and logs",
+  "private receipts",
+  "setup toxic waste"
+ ],
+ "evidence_boundary": "finite same-owner S1 autonomous recovery and native terminal payout; not global G5/G6 closure or shielded protocol correctness"
+}

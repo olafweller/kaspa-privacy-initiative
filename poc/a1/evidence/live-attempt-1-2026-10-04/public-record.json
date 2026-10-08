@@ -1,0 +1,252 @@
+{
+  "B_C_independently_reread_receipt_hashes": {
+    "B": {
+      "classification_sha256": "c60ca749ce34101bc866effbff677081b7178b93f85fbad9eeaccb9e3c89fa0b",
+      "initial_receipt_sha256": "fc25c6993dbf1cba4925be7d02a094141629860b9782fed05cb65ccce924774f",
+      "later_receipt_sha256": "98fbb2c13272671459510869c0395664a494a0dcc51aae81489aa11653e1ab83",
+      "terminal_receipt_sha256": "3c4a6123406f5c654ceae4ca4bb8794a4fb03b9d62fdc0fba578c73c5950579e"
+    },
+    "C": {
+      "classification_sha256": "c60ca749ce34101bc866effbff677081b7178b93f85fbad9eeaccb9e3c89fa0b",
+      "initial_receipt_sha256": "fc25c6993dbf1cba4925be7d02a094141629860b9782fed05cb65ccce924774f",
+      "later_receipt_sha256": "98fbb2c13272671459510869c0395664a494a0dcc51aae81489aa11653e1ab83",
+      "terminal_receipt_sha256": "3c4a6123406f5c654ceae4ca4bb8794a4fb03b9d62fdc0fba578c73c5950579e"
+    }
+  },
+  "continuation": {
+    "C_independent_capture": true,
+    "S1_entry": {
+      "amount": 640000000,
+      "blockDaaScore": 588057966,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa207d856b9458f56701daf0b4ccf29b59c2904ccdae3c4ee4de747e48329513a70387"
+    },
+    "S1_outpoint": {
+      "index": 0,
+      "transactionId": "5027a249234a139807657454055578f2c84ed31be85d027a0e2f4254f341d294"
+    },
+    "accepted": true,
+    "fee_sompi": "30000000",
+    "full_hash": "836705133b3c80c7ad16d6055c284a52db86cd3b6e2a65715694246258a5da41",
+    "payout_sompi": "400000000",
+    "submissions": 1,
+    "txid": "5027a249234a139807657454055578f2c84ed31be85d027a0e2f4254f341d294"
+  },
+  "evidence_scope": "Allowlisted extraction of historical durable A/B/C receipts; hashes commit to retained originals, not a cryptographic light-client proof or complete recovery replica. No live action executed during publication.",
+  "experiment_date": "2026-10-04",
+  "failed_boundary": {
+    "A_powered_off": false,
+    "B_armed": false,
+    "B_failure_at_utc": "2026-10-04T18:32:19.309438+00:00",
+    "C_complete_boundary_receipt_created": false,
+    "C_raw_required_material_present_before_stall": true,
+    "G5_terminal_proof_generated": false,
+    "S1_unspent_and_backed_during_halt": true,
+    "capture_commits_during_B_wait": 19,
+    "capture_errors_during_B_wait": 0,
+    "client_status_timeout_seconds": 150,
+    "continuation_capture_at_utc": "2026-10-04T18:30:13.214474+00:00",
+    "invocation_count_scope": "Reconstructed algorithm/archive work count, not a retained trace of completed invocations.",
+    "native_hash_checker_invocations_required_by_frozen_replay": 1049867,
+    "no_demonstrated_proof_accounting_covenant_failure": true,
+    "original_stack_or_precise_B_exception_available": false,
+    "pages_at_stall": 77,
+    "recovery_started": false,
+    "root_cause_category": "historical validation holds status/probe lock; repeated prefix replay starves control plane",
+    "run_terminal_not_resumed": true
+  },
+  "funding": {
+    "C_independent_durable_S0_confirmation": true,
+    "S0_index": 0,
+    "fee_sompi": "704700",
+    "reserve_sompi": "1070000000",
+    "submissions": 1,
+    "txid": "c0968d6206fe0f2f5c9f96bae6d13a9d4a4ae8078a50c9401cba56bc50f323bb",
+    "wallet_debit_sompi": "1070704700"
+  },
+  "network": "testnet-10",
+  "original_B_terminal_failure_sha256": "035c73eec3d5035c1326d84fa48b5118287c328845c1b604d27ec44f2f8eb404",
+  "pins": {
+    "C_node_sha256": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+    "PR22_source_head": "2590e392ef97af6ea81aa8fc177a3996a7fa93a7",
+    "Rust": "1.91.0",
+    "SDK_archive_sha256": "ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124",
+    "SDK_version": "2.1.0",
+    "artifact_sha256": {
+      "inventory.json": "e90c03812fe9042efc5e1aab5ba9e0612609669ebfe0125d4ae55be8737c9b8b",
+      "manifest.json": "fcbc9f70e43f5be007c7d7085ab26ee98cd476dbb8278969f22a05669a61acdc",
+      "owner-intent.json": "4dd0d43d4ecfdf1d4cd05c2c7ca88bd15fbdb1e5080489f935a4658f91739ab2",
+      "s1.redeem": "91f7581f6c7145f4192a7c693455ef37442eb5edf6fe38fd32da345ae5996abb",
+      "s1_terminal.context.hex": "3a49948f9d03d85d4d2a3ab9c7e6d17da55c2e3b1ff621a5e94bcd40de08ad0a",
+      "s1_terminal.layout.json": "15995bd37d06a7349a083deb22e85e56595c72e41bf068abbe724ca2100b74be",
+      "s1_terminal.pk": "beb50c1a5c86bd5af6ce3b7716ec64e460a637e08a9098b877645a216de991c8",
+      "s1_terminal.r1cs": "1795352563a2e442bf30a321509c46231c12954e052b602de64a8e2a5210dd73",
+      "s1_terminal.vk": "803e7b13d68e0c75d11940a2598730b31df6e5ed488f09066c860c196aa7ed1d",
+      "setup-receipt.json": "fab60acdaa14c212e1da5fb4140bb6f0ab884add68bede0e6e77226f2dfa0100"
+    },
+    "checklist_sha256": "d4e565ba525822c73772b27dd45943ee89116b6460a5b1e18f1bcfd0db844f05",
+    "native_reference_sha256": "3d30a3a081671a706b08f2e30bc2f8d41e7f4ba7d837dba261e369889e677fb9",
+    "native_validator_sha256": "3884409aa1a59a24be7979a54ce591727cf5fa81a81527497a72f0ae5d0203e0",
+    "upstream_commit": "01b532e8b553523216471682649693af92f0fd16"
+  },
+  "publication_validation": {
+    "actual_live_claim_recipient_unlock_value_scan": "PASS (raw/hex/base64 variants; values not exported)",
+    "exported_request_exact_retained_SHA256": "PASS",
+    "offline_pinned_native_Full_matches_retained_result": "PASS",
+    "private_key_block_infrastructure_IP_path_endpoint_scan": "PASS",
+    "scope": "Documentation publication checks only; no RPC/chain action or G5 rerun"
+  },
+  "published_terminal_native_request_sha256": "bf82de3c666ca8330b0cc8c13f8fbca8dfe35db7d029946bc6870ad1b16499c2",
+  "remaining_claims": {
+    "G5_attempt_1": "FAILED \u2014 recovery boundary did not complete.",
+    "PR22_draft": true,
+    "fixed_fee_issue_23": "OPEN",
+    "full_G6_run": false,
+    "independent_G5_recovery": "OPEN",
+    "independent_whole_A_loss_recovery_proved": false,
+    "live_pruning_cycle_survival_observed": false,
+    "production_architecture_security_anonymity_PQ_claim": false
+  },
+  "repair_qualification": {
+    "B_tests": 12,
+    "C_tests": 22,
+    "cases": [
+      "delayed C validation/status",
+      "worker/status timeout",
+      "pending C validation process restart fail closed",
+      "actual B process restart prevents second arm",
+      "stale/wrong/replayed receipt",
+      "receipt just before/exactly at/just after wait deadline",
+      "receipt age with matching status",
+      "bounded retry/reconnect",
+      "semantic/authentication rejection no retry",
+      "lost/late arm response no retry or recovery",
+      "no duplicate arming/start",
+      "fault discards pending worker result",
+      "synthetic independent loss release/guard without A calls",
+      "native unfunded original/memoized receipt equality and missing-context/stale-checkpoint rejection",
+      "actual native validation child with responsive status and guarded durable receipt"
+    ],
+    "counts_overlap": true,
+    "passed": true,
+    "repair_source_sha256": {
+      "B_controller_run.py": "c9fe354e70a2d0c14e24bd9538d3a5b4e54732ae4e99316b997a2c897426f9eb",
+      "access_check.py": "21c13cea6817c2bc886e7426dde7cf78d210d981d588c194ab58b30754d6b6b6",
+      "boundary_job.py": "f4cf6a41d036839a2bd90b8bf43f56a24d6a4e655199b138318850b6b7bfcd9d",
+      "boundary_wait.py": "d96e702653cfa2baef9b5c6a63b28a6b968ef347579e82d77a5cecd58eb108df",
+      "independent_controller.py": "ad52ae9809708c8ebeb0ac687194457aa1a0966db957dff7a73c1e98d0f563f4",
+      "test_B_regressions.py": "cfc986354ad82923523f1234b690a4789ed0199f79f71190ae4640226d0fe6c5",
+      "test_native_boundary.py": "4f79cd3d2a83e1db0662cf866a6c85f9c7efc547b2c444af60f11c734593e08d",
+      "test_plumbing.py": "24a1c7b174b9a3104d58868cfb28155ef2360e841c1478d870ffd34332191bf7"
+    },
+    "scope": "Separate unfunded synthetic/process/native-fixture regressions; live S1 not a test target; repaired source staged, original deployed controllers/configuration not replaced. No physical A loss."
+  },
+  "retained_source_receipts_sha256": {
+    "B-regression-results-v3.json": "074b9bda6e6eb46361522801176ec9878c6e45ac50806b10649f983b5295990e",
+    "C-initial-observation.json": "fc25c6993dbf1cba4925be7d02a094141629860b9782fed05cb65ccce924774f",
+    "C-later-observation.json": "98fbb2c13272671459510869c0395664a494a0dcc51aae81489aa11653e1ab83",
+    "C-regression-results-v3.json": "16a2b77499e5f2367aab9db8c933e110859f42b10e766b9276002a5096e3f531",
+    "C-root-cause-metrics.json": "28d1ad7d0169aee6e73b976af1bc932c4142e5ff59fe997354e37cbb018741de",
+    "G5-final-classification.json": "c60ca749ce34101bc866effbff677081b7178b93f85fbad9eeaccb9e3c89fa0b",
+    "future-funded-run-checklist.json": "d4e565ba525822c73772b27dd45943ee89116b6460a5b1e18f1bcfd0db844f05",
+    "investigation-report.json": "025ca72bf3185f1aacf4816f427de0468c233b28f9ed88b0cf2a6093ba81a332",
+    "terminal-exit-broadcast-receipt.json": "3c4a6123406f5c654ceae4ca4bb8794a4fb03b9d62fdc0fba578c73c5950579e",
+    "terminal-exit-preparation-receipt.json": "c3d9309e2e0379e99afbd803bc0bf9a339fb531afa7a35382059d7ccb9758bfb"
+  },
+  "schema": "kpi-a1-live-attempt-1-public-record/v1",
+  "separate_terminal_exit": {
+    "C_accepted_body_matches_prepared": true,
+    "S1_consumed": true,
+    "SDK_roundtrip_exact": true,
+    "accepting_block_hash": "50dfe7ffda9fee556d37475e2c4ae548890449db7cf6037386cff4e166a0c27e",
+    "ambiguous_submission": false,
+    "broadcast_attempts": 1,
+    "compute_budget": 1706,
+    "conflicting_accepted_spend": false,
+    "exact_input": {
+      "index": 0,
+      "transactionId": "5027a249234a139807657454055578f2c84ed31be85d027a0e2f4254f341d294"
+    },
+    "fee_sompi": "30000000",
+    "fresh_prebroadcast_fee_policy_passed": true,
+    "fresh_proof": true,
+    "full_hash": "482e62cbae89f4b650205be5aef7f7478486bd50717784b8a96ecb7329463b9f",
+    "initial_blue_score_distance": 828,
+    "initial_observation_utc": "2026-10-04T20:05:58.205592+00:00",
+    "input_sompi": "640000000",
+    "later_blue_score_distance": 1802,
+    "later_interval_does_not_establish_matrix_120_second_later_interval": true,
+    "later_observation_utc": "2026-10-04T20:07:36.890737+00:00",
+    "native_Full_passed_on_A_B_C": true,
+    "native_Full_result": {
+      "consensus_full_hash_preimage_bytes": 1011,
+      "fee": "30000000",
+      "full_hash": "482e62cbae89f4b650205be5aef7f7478486bd50717784b8a96ecb7329463b9f",
+      "full_valid": true,
+      "mass_scope": "fresh native calculation from exact decoded transaction and supplied UTXO context; not chain acceptance",
+      "native_masses": {
+        "compute": 171994,
+        "storage": 77,
+        "transient": 4136
+      },
+      "txid": "c3e155010dacbdc5a367db183170a96df0ddf80efa34d1c73cbad4e08d2b8483"
+    },
+    "native_masses": {
+      "compute": 171994,
+      "storage": 77,
+      "transient": 4136
+    },
+    "observation_policy": "native minConfirmationCount=20; accepting-block blue-score distance >20; exact body/payout/reserve checks; later recheck required; not a finality proof",
+    "outputs": 1,
+    "payout_UTXO_at_later_observation": {
+      "entry": {
+        "amount": 610000000,
+        "blockDaaScore": 588115271,
+        "covenantId": null,
+        "isCoinbase": false,
+        "scriptPublicKey": "0000201a094963dbab9b4b2e9b0ed87e8df384a7ea9461e4a62bb5530db4e4825ce2caac"
+      },
+      "outpoint": {
+        "index": 0,
+        "transactionId": "c3e155010dacbdc5a367db183170a96df0ddf80efa34d1c73cbad4e08d2b8483"
+      }
+    },
+    "payout_sompi": "610000000",
+    "payout_unspent_at_later_observation": true,
+    "peak_RSS_KiB": 191644,
+    "prebroadcast_current_C_context_Full": {
+      "DAA_score": "588115235",
+      "passed": true,
+      "past_median_time": "1791144144765"
+    },
+    "proof_reused": false,
+    "proof_sha256": "474d493624bc372fb0a82cec0b8cddc25c182d6c9367e863336d57022bcb2afa",
+    "proving_command_scope": "exact fresh-terminal child including PK load, proving, standalone proof verification and native Full",
+    "proving_command_seconds": 10.630939554423094,
+    "recipient_SPK": "0000201a094963dbab9b4b2e9b0ed87e8df384a7ea9461e4a62bb5530db4e4825ce2caac",
+    "refunded_fee_credit_sompi": "10000000",
+    "remaining_principal_sompi": "600000000",
+    "reorg_observed": false,
+    "retry": false,
+    "seconds_between_observations": 98.68514442443848,
+    "seconds_from_submission_claim_to_later_observation": 181.9388735294342,
+    "separately_authorized": true,
+    "transaction_unchanged_at_broadcast": true,
+    "txid": "c3e155010dacbdc5a367db183170a96df0ddf80efa34d1c73cbad4e08d2b8483"
+  },
+  "status": {
+    "A powered off": "NO",
+    "B armed": "NO",
+    "Boundary receipt": "FAIL",
+    "C independent capture": "PASS",
+    "Fail-closed behavior": "PASS",
+    "Independent recovery": "NOT RUN",
+    "Overall G5 attempt": "FAILED",
+    "S0 -> S1": "PASS",
+    "S0 funding": "PASS",
+    "S1 fund safety": "PASS",
+    "Separate terminal exit": "PASS"
+  },
+  "withheld": "Original full receipts/logs and raw infrastructure archives remain retained outside Git. No private keys/seeds/claim secrets, backup ciphertext/unlock material, credentials, network endpoints, infrastructure paths/environment, setup randomness or unrelated wallet history is exported."
+}

@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "admissible_A1_artifact": false,
+      "case": "wrong_public_input_count",
+      "diagnostic_redeem_sha256": "9df881ca86c823ba12723f9def033dbb63c0e6d92905d93a3cc63f6e42606e07",
+      "expected_error_fragment": "arity",
+      "matching_diagnostic_P2SH": true,
+      "native_accepted": false,
+      "native_error": "utxo: SignatureInvalid(ZkIntegrity(\"ARK R1CS error: predicate arity doesn't match input\"))",
+      "observed_layer": "native-verifier-semantics"
+    },
+    {
+      "admissible_A1_artifact": false,
+      "case": "unknown_verifier_tag",
+      "diagnostic_redeem_sha256": "881d5748af43f672cddc8fdbab679ef7df7a6f00fb7a3a256ddb26f458a74971",
+      "expected_error_fragment": "Unknown tag",
+      "matching_diagnostic_P2SH": true,
+      "native_accepted": false,
+      "native_error": "utxo: SignatureInvalid(ZkIntegrity(\"Unknown tag: 34\"))",
+      "observed_layer": "native-verifier-semantics"
+    },
+    {
+      "admissible_A1_artifact": false,
+      "case": "trailing_immutable_vk_byte",
+      "diagnostic_redeem_sha256": "f7726b746e4b8b680b1ccd3219e85e87fc5867c3bd70e274a71ebc8380f99b02",
+      "expected_error_fragment": "verifying key has trailing bytes",
+      "matching_diagnostic_P2SH": true,
+      "native_accepted": false,
+      "native_error": "utxo: SignatureInvalid(ZkIntegrity(\"Groth16 verifying key has trailing bytes\"))",
+      "observed_layer": "native-verifier-semantics"
+    },
+    {
+      "admissible_A1_artifact": false,
+      "case": "unknown_input_SPK_version1_skips_invalid_empty_witness",
+      "native_accepted": true,
+      "observed_layer": "native-unknown-SPK-version-skip",
+      "scope": "upstream-diagnostic-only-A1-inspection-must-reject-version1"
+    }
+  ],
+  "matching_P2SH_positive": true,
+  "original_native_full_positive": true,
+  "original_reserve_artifacts_modified": false,
+  "schema": "kpi-a1-native-verifier-diagnostics/v1",
+  "scope": "fabricated-unfunded-UTXO-native-semantics-not-A1-acceptance-not-chain-state"
+}

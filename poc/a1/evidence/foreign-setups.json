@@ -1,0 +1,38 @@
+{
+  "branch": "s0_terminal",
+  "cases": [
+    {
+      "case": "same_relation_fresh_foreign_setup",
+      "foreign_proof_sha256": "a1aed4ddc2f3cef829ab813d3ebc71377bdc170a89252aea6324b4b56b6d37d1",
+      "foreign_relation_equals_original": true,
+      "foreign_vk_positive": true,
+      "foreign_vk_sha256": "ccd11cedf053fc00ad2e481869fcc62155e5750ae57215900bbb6c0bf1de0224",
+      "native_error": "utxo: SignatureInvalid(ZkIntegrity(\"Groth16 verification failed\"))",
+      "native_full_accepts": false,
+      "normalized_r1cs_sha256": "95884c65382552336ab4df2d98ec496e85ebb976f1288aef1547e849acab2bab",
+      "original_vk_accepts": false,
+      "private_material_persisted": false,
+      "scope": "immutable-key-pinning-only",
+      "setup_ms": "5770"
+    },
+    {
+      "case": "changed_instance_foreign_context_and_setup",
+      "foreign_proof_sha256": "3cd799bab8643fc0137920ad97b1994a5e4b581c911e2f373d8228e432b59599",
+      "foreign_relation_equals_original": false,
+      "foreign_vk_positive": true,
+      "foreign_vk_sha256": "0a6c595942a680b83675009f18ef2f9a024162c2c09eb9d8745a22e2817dea74",
+      "native_error": "utxo: SignatureInvalid(ZkIntegrity(\"Groth16 verification failed\"))",
+      "native_full_accepts": false,
+      "normalized_r1cs_sha256": "5f1c12b02b45ede7899719e8171d6c40bae3b01adf631c0dc5213849b8c724bc",
+      "original_vk_accepts": false,
+      "private_material_persisted": false,
+      "scope": "foreign-key-and-context-rejection-not-original-field-binding",
+      "setup_ms": "5879"
+    }
+  ],
+  "original_native_full_positive": true,
+  "reserve_artifacts_modified": false,
+  "schema": "kpi-a1-foreign-setup-results/v1",
+  "scope": "two-executed-foreign-proof-tests-no-funding-no-chain-acceptance",
+  "setup_trust": "ephemeral-single-party-diagnostic"
+}

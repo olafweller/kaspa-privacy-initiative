@@ -1,0 +1,45 @@
+{
+  "claim_equality_constraints": {
+    "end": 43696,
+    "start": 43664
+  },
+  "claim_hash_constraints": {
+    "end": 43664,
+    "start": 4182
+  },
+  "context_bytes": 226,
+  "context_tag_hash_constraints": {
+    "end": 119494,
+    "start": 43696
+  },
+  "public_range_constraints": [
+    {
+      "end": 766,
+      "start": 0
+    },
+    {
+      "end": 1532,
+      "start": 766
+    },
+    {
+      "end": 2394,
+      "start": 1532
+    },
+    {
+      "end": 3160,
+      "start": 2394
+    },
+    {
+      "end": 3926,
+      "start": 3160
+    }
+  ],
+  "secret_byte_constraints": {
+    "end": 4182,
+    "start": 3926
+  },
+  "tag_equality_constraints": {
+    "end": 119526,
+    "start": 119494
+  }
+}

@@ -1,8 +1,35 @@
 # A1 threat and test matrix
 
-**Status:** G0 specification closed; every A1 execution/security test below is
-**planned, not executed**. The ADR records the independently calculated G0
-context/selector/serialization vectors; these are not real-proof/script tests.
+**Status:** G0 merged; unfunded A1 execution results are recorded in the
+[implementation report](poc-a1-proof-report.md) and evidence ledger below.
+The ADR's independently calculated G0 context vectors remain separate from
+actual G2 real-proof/native-script tests. Full G5 independent machine/archive
+recovery remains open. [Live attempt 1](poc-a1-live-attempt-1.md) funded S0,
+accepted S0 → S1 and captured it independently on C, but failed the boundary:
+B never armed and A stayed online. A later separate terminal owner exit passed;
+it is not independent G5 recovery or full G6. This document authorizes no
+new live work.
+[Live attempt 2](poc-a1-live-attempt-2.md) passed C validation, physical whole-A
+loss and autonomous B start, then failed at checkpoint metadata parsing before
+B lineage/proving. **G5 FAILED — autonomous recovery did not complete during
+the live run.** Later offline replay and separately authorized owner exit do not
+change that failed live result or close full G5/G6. Frozen attacks/oracles and
+earlier evidence are unchanged.
+
+**Update 2026-10-08 (S1):** the [official trial](poc-a1-official-trial-2026-10-08.md) provides live
+evidence for the S1 recovery path of rows 11–12 and 22–23 (physical A loss,
+independent S1 discovery, fresh proof, accepted payout, ≥120 s later
+observation).
+
+**Update 2026-10-08 (S0):** the [S0 trials](poc-a1-s0-trials-2026-10-08.md)
+add a complete paid-out rehearsal, independent B recovery while A was physically
+off, direct A exit, and an ordered terminal-versus-terminal competing spend.
+Positive S0 recovery adds evidence to rows 11–12 and 22–23; it does not close
+their artifact-loss/archive-fault negatives. The competing intents were
+1.425702 seconds apart, with B accepted and A rejected; this supplements
+row 08 without covering its continuation races or simultaneous arrival.
+Full G5/G6 remains open. C-node and single-party setup trust remain explicit;
+there is no anonymity or production-safety claim.
 [ADR-0003](adr/0003-a1-successor-reserve.md) defines the finite S0/S1 graph,
 encoding and accounting. The [implementation plan](poc-a1-implementation-plan.md)
 assigns execution gates. No invariant is changed.
@@ -29,7 +56,7 @@ setups can occur solely because their keys differ; it does not establish that
 every intended context field participates in the relation. Failing only a P2SH
 mismatch also does not establish circuit context binding.
 
-## Planned attacks and oracles
+## Frozen attacks and oracles
 
 | ID / invariants | Attack or failure | Required assertion / test oracle |
 | --- | --- | --- |
@@ -59,6 +86,56 @@ mismatch also does not establish circuit context binding.
 | A1-24 / I-1, I-2, I-8, I-9, I-10 | Wrong relay floor, fixed fees lack headroom, setup terms changed after funding | Apply ADR's exact rational fee rules: branch 25% rate headroom, B0 >= max(f0,fc+f1) + 10% refundable credit headroom; default relay r=100000 sompi/kg, use actual config/standardness and <=5-minute quotes. Recompute fee-dependent scripts/keys before funding. Any funded insufficiency is liveness failure; no sponsor, bump, principal haircut/admin rescue. Different budget may be consensus-valid but adapter refuses unqualified exact budget; do not conflate that policy with script enforcement. |
 | A1-25 / I-5, I-9, I-11, I-15 | Source estimate mistaken for measured capacity; verifier count doubled or alternate body skips checks | First G2 falsifier records all branch bytes, peak main+alt stack/count, executed ops, VK/tag/verifier count and U_j; G4 records final committed budgets, native compute/storage/transient masses and relay results. S0 has two embedded VKs but executes one. Assert exact envelope version1/native/gas0/payload0/lock0 via script, and distinguish unconstrained sequence/budget from adapter defaults. Actual hard limit/semantic blocker stops work; estimate miss requires reviewed revision, never safety relaxation. |
 
+## Executed evidence ledger
+
+The [setup/G2 fixture index](../poc/a1/evidence/fixture-2026-10-03/public-evidence-index.json)
+contains G2's literal positives, 966 cases and native traces.
+[Supplemental native cases](../poc/a1/evidence/extra-native-negatives-repaired-2026-10-04.json),
+[66 original-context tests](../poc/a1/evidence/context-negatives.json),
+[foreign setups](../poc/a1/evidence/foreign-setups.json) and
+[native verifier diagnostics](../poc/a1/evidence/verifier-diagnostics.json)
+have separately classified layers. The original supplemental receipt had 142
+stale-ID decoder rejections and does not establish those native checks. Its
+replacement recomputes ID/mass and asserts the intended layer. Bound SDK/fee
+receipts reject mixed transactions/artifacts; fee replay uses a historical quote
+and is not fresh funding approval. See the report's qualification-repair section. A fabricated diagnostic SPK is not an A1
+accepted path; unknown input-version acceptance is an upstream diagnostic that
+A1 funding/artifact inspection must reject.
+The [post-artifact aggregate index](../poc/a1/evidence/evidence-index.json)
+additionally pins G3/G4/G5 receipts and is never inserted into setup/constants.
+The [v3 recovery receipt](../poc/a1/evidence/recovery-container-v3-2026-10-04/report.json)
+and timeline record actual native checkpoint/S0-locator retention before
+funding/continuation, then reuse of those exact old bytes after abrupt A loss.
+This is local program-order evidence, not physical-machine or live-archive G5.
+
+| Rows | Executed scope / evidence | Still outside demonstrated scope |
+| --- | --- | --- |
+| 01–03 | Checked integer Rust/Python model boundaries and golden accounting; actual native output/fee mutations; accepted direct/continued payouts in synthetic consensus | Variable private accounting, treasury or multi-user reserve |
+| 04 | Claim/secret and outpoint circuit tests, original-context wrong-secret test, copied-proof output/recipient mutations | Cryptographic soundness proof or audit |
+| 05 | Literal pinned keys, malformed proof/scalar/range corpus; native arity/tag/trailing-key diagnostics | Production-safe setup/gadget assurance |
+| 06–07 | Acyclic real setup order; every output script byte/value/version/count/order/metadata mutations; wrong branches and fresh foreign setup proofs | Unbounded successor graph or arbitrary recipients |
+| 08 | [Actual native race/replay receipts](../poc/a1/evidence/stateful-requalification-2026-10-04.json): two first-valid competing spends, exact and distinct-ID replay rejection; [live S0 trials](poc-a1-s0-trials-2026-10-08.md): ordered terminal-versus-terminal spend, one accepted payout and later candidate rejected | Live continuation-versus-continuation and continuation-versus-terminal variants; arrival while both candidates are unconfirmed |
+| 09 | Original-key instance/domain/stage/mode/range/outpoint tests; S1→S2 rejection; separate foreign-context/key tests | Copied identical-chain-state replay excluded by ADR |
+| 10 | [Native reorg + scanner accounting](../poc/a1/evidence/reorg-scanner-requalification-2026-10-04.json): actual removed/added chain groups, old outputs absent, final UTXOs exact; rollback/replay pointer/credits agree | Imported S0 checkpoint is not funding-lineage G5; no Bitcoin-only global-unspent claim |
+| 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks; [S1](poc-a1-official-trial-2026-10-08.md) and [S0](poc-a1-s0-trials-2026-10-08.md) live B recovery with A physically off, fresh proof and accepted native payout | Live missing/corrupt recovery-artifact and archive/pruning fault cycles. Earlier attempts remain failed; scoped positive recovery does not close full G5 |
+| 13 | Measured finite budgets; inadequate decoded budget rejects; [exact fee rules/forced failures](../poc/a1/evidence/fee-bound-qualification-2026-10-04.json) halt without changing terms | Guaranteed exit at arbitrary future rates |
+| 14 | Native fixed recipient derivation and actual backup-key/claim checks in clean B | Private note recipient spendability does not exist in A1 |
+| 15 | Observed circuit-specific setup, public VK/redeem pins, no bypass, no retained trapdoor material | Single-party setup trust, erasure/provenance proof, PQ unresolved |
+| 16 | [Pinned SDK roundtrips](../poc/a1/evidence/fixture-2026-10-03/sdk-roundtrip.json), BigInt u64 max, independent ID/FULL hash and fresh native masses, nine decoded native negatives; [live S0](poc-a1-s0-trials-2026-10-08.md) exact candidate SDK/Full validation and accepted-body readback | Live malicious/divergent-provider observation and archive fault integration |
+| 17 | Report lists public amounts/linkage/recipient/stage/timing and local witness exposure | No anonymity/confidential amount/unlinkability/PQ claim |
+| 18–20 | All 256 selectors each branch, multibyte/empty/equivalent pushes, every witness pair/slot, exact key/tag/ABI, output version and unknown-input diagnostic | Unknown input SPK versions are inadmissible, not magically script-enforced |
+| 21 | Independent intent/codec/scripts/R1CS reconstruction, actual key validation and observed receipt; schema/matrix/hash/intent mutation unit tests | Same-host automated observation is not an independent-human ceremony; opaque CRS/shared gadget trust remains |
+| 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled; [S1](poc-a1-official-trial-2026-10-08.md) and [S0](poc-a1-s0-trials-2026-10-08.md) live B lineage completion and payout, including complete multi-page Full histories | Live pruning/artifact-loss cycles, conflicting providers and controlled reorg/rollback; earlier attempt-2 checkpoint failure remains unchanged |
+| 24 | Historical quotes/replay, bound final-body receipts, rational 25-percent rate / 10-percent B0 headroom and 10-percent execution budget; forced high/stale quote/low credit/wrong budget negatives | Remote custom relay configuration/admission, later quotes and post-funding liveness |
+| 25 | Actual three-branch byte/resource/trace measurements, fresh native SDK-decoded masses; every measured path fits pinned limits; scoped [S1](poc-a1-official-trial-2026-10-08.md)/[S0](poc-a1-s0-trials-2026-10-08.md) live admission and exact native payouts | Complete G6 matrix and future fee/relay/resource liveness |
+
+The earlier qualification repair recorded 20 Rust, 46 A1 Python and 13 Node
+tests. The 2026-10-08 S0 runner additionally recorded 30 offline cases,
+including two native integrations. Runtime proof/case/SDK/native-chain results
+are separate from unit tests; none proves cryptographic correctness. Scoped
+TN10 execution was separately authorized and completed. Full G5/G6 remains
+open, and these records authorize no future live run.
+
 ## Invariant coverage and limits
 
 | Invariant | Principal rows / scope |
@@ -79,6 +156,25 @@ mismatch also does not establish circuit context binding.
 | I-14 spendability | 14; native recipient control tested; no new private note exists |
 | I-15 deterministic rejection | 02, 05–06, 12, 16; canonical bytes and malformed cases |
 | I-16 scoped privacy | 17; public/linkable lifecycle, no anonymity claim |
+
+The [attempt 1 record](poc-a1-live-attempt-1.md) and
+[sanitized ledger](../poc/a1/evidence/live-attempt-1-2026-10-04/public-record.json)
+add bounded live S0/S1 accounting, exact body/UTXO observation and separate exit
+evidence to rows 01–03, 07, 10, 13, 16 and 22–25. They do not establish live
+race/reorg/pruning coverage or rows 11–12's independent recovery. The separate
+exit's later observations were about 99 seconds apart; this does not establish
+the ≥120-second interval below. Frozen criteria are unchanged.
+
+The [attempt 2 record](poc-a1-live-attempt-2.md) and
+[sanitized ledger](../poc/a1/evidence/live-attempt-2-2026-10-05/public-record.json)
+add independent C lineage validation and the qualified physical A-loss/B-start
+boundary. B produced no live recovery lineage result, fresh proof, SDK receipt or
+terminal Full result. This observed glue failure is not a proof/covenant rejection
+test. The narrow repair's 28 tests exercise the real checkpoint schema and durable
+sanitized child diagnostics; these remain separate from the live failed run and
+the repository's unit-test totals. The memoized offline replay is diagnostic only.
+The separately authorized exit's 59.483394-second recheck does not establish the
+frozen ≥120-second interval. No oracle or invariant is weakened.
 
 ## Recovery inventory and measurable pass criteria
 
