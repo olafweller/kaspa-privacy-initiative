@@ -1,7 +1,9 @@
 # A1 trial runner — design
 
-Status: phase A reviewed, phase B rehearsal started on 2026-10-08 with operator
-approval; no complete payout rehearsal or official S0 result yet.
+Status: phase A reviewed; phase B completed locally on 2026-10-08 with operator
+approval. A successful real-payout rehearsal preceded three fresh official S0
+cases. Results await Claude's review and Olaf's publication decision; nothing
+has been pushed or published for this phase.
 Tooling for repeating A1 testnet trials; it
 changes no protocol rule, script, circuit or invariant.
 
