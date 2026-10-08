@@ -178,6 +178,6 @@ spent stops before submission and does not demonstrate a simultaneous race.
 The optional real-proof integration test uses
 `KPI_A1_TRIAL_INTEGRATION_CONFIG` pointing to a freshly observed unfunded local
 instance. It builds synthetic funding/history, fresh A/B proofs, and checks the
-pinned SDK and native Full without RPC or KAS. Run it only once per output
-directory: it deliberately retains exclusive evidence files. See the
+pinned SDK and native Full without RPC or KAS. Each invocation retains a new
+integration directory and exclusive evidence files. See the
 [runner design and trust boundaries](../../docs/poc-a1-trial-runner.md).

@@ -6,7 +6,6 @@ proof). Loss/pruning/reorg stops the trial. Never retries a monetary submission.
 All retained files are private by default; publish only reviewed projections.
 """
 import argparse
-import copy
 import json
 import os
 from pathlib import Path
@@ -189,6 +188,18 @@ class Trial:
         return scan_history(self.manifest(), locator, checkpoint, history,
                             callback)
 
+    def discover(self):
+        # The node cannot atomically export a fixed history horizon and current
+        # address UTXOs. If a spend lands between those reads, refresh the entire
+        # read-only snapshot. Malformed bodies/terms, gaps and reorgs still halt.
+        while True:
+            history = self.history()
+            try: return history, self.scan(history)
+            except c.Invalid as error:
+                if str(error) not in ('unknown/missing current UTXO', 'terminal reserve still unspent'):
+                    raise
+                time.sleep(2)
+
     def submit_once(self, label, body, entry=None):
         c.require(self.live, 'offline submission forbidden')
         # Both A and B may attempt one competing exit, each with a distinct body.
@@ -200,6 +211,9 @@ class Trial:
         except Exception:
             save(self.run/(label+'-submission-unknown.json'), {'txid':body['id'], 'outcome':'unknown-or-rejected; verify only, never retry'})
             raise
+        if response.get('status') == 'rpc-error':
+            save(self.run/(label+'-submission-unknown.json'), response)
+            raise c.Invalid('submission RPC error retained; reconcile outcome with verify, never retry')
         c.require(response['transactionId'] == body['id'], 'submission response ID mismatch')
         save(self.run/(label+'-submission.json'), response)
         return response
@@ -246,8 +260,8 @@ class Trial:
         self.inspect(); manifest = self.manifest(); locator, _ = self.locator()
         backup = Path(self.cfg['backup'])
         self.command(self.binary, 'check-backup', self.bundle, backup/'claim-secret.bin', backup/'recipient-key.bin')
-        history = self.history() if history is None else history
-        report = self.scan(history)
+        if history is None: history, report = self.discover()
+        else: report = self.scan(history)
         c.require(report['state'] == 's0' and report['lineage_history_complete'], 'S0 unavailable; no fallback exit')
         key = locator['s0_txid_hex']+':'+locator['s0_index']; entry = native_entry(history['entries'][key])
         c.require(entry['isCoinbase'] is False and entry['covenantId'] is None, 'invalid reserve context')
@@ -274,25 +288,30 @@ class Trial:
         if not (self.run/'s0-entry.json').exists(): save(self.run/'s0-entry.json', entry)
         if prepare_only: return {'prepared':True, 'txid':body['id'], 'submitted':False}
         c.require(self.live and history is not None, 'offline proof only; --prepare-only required')
-        if submit_at is not None:
-            # Absolute deadline only synchronizes competing submissions; never
-            # acts as a trial-expiry or weakens any funds/evidence check.
-            while time.time() < submit_at: time.sleep(max(0, min(1, submit_at-time.time())))
         # Re-fetch after expensive proving; reorg/spent/wrong entry fails before intent.
-        current = self.history(); current_report = self.scan(current)
+        current, current_report = self.discover()
         c.require(current_report['state'] == 's0' and native_entry(current['entries'][key]) == entry, 'stale/spent reserve before submission')
+        if submit_at is not None:
+            # Complete the expensive checks BEFORE the common race barrier.
+            # Native acceptance decides current spentness for both competitors.
+            while time.time() < submit_at: time.sleep(max(0, min(1, submit_at-time.time())))
+        self.rpc('survives', start=locator['scan_start_hash'])
+        self.rpc('survives', start=current['horizon'])
         self.submit_once(label, body, entry)
         return self.observe(body['id'])
 
     def check_terminal(self, body, entry, role):
         manifest = self.manifest(); locator, _ = self.locator(); branch = manifest['branches']['s0_terminal']
+        c.require(body['version'] == 1 and r.rpc_uint(body['lockTime']) == r.rpc_uint(body['gas']) == 0 and
+                  body['payload'] == '' and body['subnetworkId'] == '00'*20, 'wrong terminal envelope')
         c.require(len(body['inputs']) == 1 and body['inputs'][0]['previousOutpoint'] ==
                   {'transactionId':locator['s0_txid_hex'], 'index':int(locator['s0_index'])}, 'wrong exit input')
         c.require(body['inputs'][0]['sequence'] == str(2**64-(2 if role == 'a' else 1)), 'wrong race sequence')
         c.require(len(body['outputs']) == len(branch['outputs']), 'wrong exit outputs')
         for actual, expected in zip(body['outputs'], branch['outputs']):
             c.require(sompi(actual['value']) == sompi(expected['value']) and actual['scriptPublicKey'] == expected['spk_hex'] and actual['covenant'] is None, 'wrong payout')
-        decoded = self.rpc('sdk-check', transaction=body, entry=entry)['transaction']
+        sdk = self.rpc('sdk-check', transaction=body, entry=entry)
+        decoded = sdk['transaction']
         c.require(decoded == body, 'SDK exact readback failed')
         with tempfile.TemporaryDirectory(dir=self.run) as directory:
             request = Path(directory)/'validate.json'; save(request, {'transaction':decoded, 'entry':entry})
@@ -301,12 +320,18 @@ class Trial:
                   sompi(result['fee']) == sompi(branch['fee']), 'native Full/body/fee mismatch')
         _, _, _, minimum = fee_requirements(result['native_masses'], Fraction(100))
         c.require(sompi(branch['fee']) >= minimum, 'fixed exit fee below pinned relay requirement')
+        save(self.run/(role+'-exit-validation-'+str(time.time_ns())+'.json'),
+             {'native_full':result, 'sdk_files':sdk['sdk_files'], 'manifest_sha256':locator['artifact_index_sha256'],
+              'software_sha256':{name:c.sha(Path(path).read_bytes()) for name,path in
+                                 (('validator',self.binary),('reference',self.reference),
+                                  ('a1_trial.py',ROOT/'scripts/a1_trial.py'),('a1_trial_rpc.mjs',ROOT/'scripts/a1_trial_rpc.mjs'))},
+              'scope':'exact body and supplied entry validation; not node acceptance'})
         return result
 
     def observe(self, expected=None):
         first = None; accepting = None
         while True:
-            history = self.history(); report = self.scan(history)
+            history, report = self.discover()
             if report['state'] == 'terminal':
                 c.require(len(report['transitions']) == 1 and report['transitions'][0]['branch'] == 's0_terminal', 'unexpected successor/duplicate payout')
                 txid = report['transitions'][0]['txid']
@@ -351,6 +376,8 @@ def main():
     args = parser.parse_args(); os.umask(0o077)
     c.require(args.config.stat().st_mode & 0o777 == 0o600, 'config must be private mode 0600')
     trial = Trial(c.load_json(args.config), args.live)
+    if args.role != 'a' or args.action != 'new': trial.run.mkdir(parents=True, mode=0o700, exist_ok=True)
+    c.require(not trial.run.exists() or trial.run.stat().st_mode & 0o077 == 0, 'run directory must be private')
     tempfile.tempdir = str(trial.run)
     if args.role == 'verify':
         trial.inspect()
@@ -367,5 +394,7 @@ def main():
 
 if __name__ == '__main__':
     try: main()
-    except (c.Invalid, OSError, ValueError, KeyError, subprocess.SubprocessError):
+    except c.Invalid as error:
+        raise SystemExit('A1 step stopped: '+str(error)+'. No automatic resubmission.')
+    except (OSError, ValueError, KeyError, subprocess.SubprocessError):
         raise SystemExit('A1 step failed safely; inspect local evidence. No automatic retry or submission.')

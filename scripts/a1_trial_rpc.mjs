@@ -46,7 +46,7 @@ function normalizeUtxo(u) {
     scriptPublicKey:spk(e.scriptPublicKey),blockDaaScore:e.blockDaaScore.toString(),isCoinbase:e.isCoinbase,
     covenantId:e.covenantId?.toString()??null}};
 }
-export async function execute(p) {
+export async function execute(p, rpcFactory = (k,url)=>new k.RpcClient({url,networkId:'testnet-10'})) {
   for(const [n,h] of Object.entries(pins)) assert.equal(sha(fs.readFileSync(path.join(p.sdk_dir,n))),h,'SDK pin');
   const k=createRequire(import.meta.url)(path.join(p.sdk_dir,'kaspa.js'));
   if(p.op==='sdk-check') {
@@ -55,9 +55,9 @@ export async function execute(p) {
   assert.equal(p.network,'testnet-10');
   const url=new URL(p.rpc_url);
   assert.ok(['ws:','wss:'].includes(url.protocol) && ['127.0.0.1','localhost','[::1]'].includes(url.hostname),'use C loopback or an SSH tunnel');
-  const rpc=new k.RpcClient({url:p.rpc_url,networkId:'testnet-10'});
-  await rpc.connect({blockAsyncConnect:true,timeoutDuration:120000});
+  const rpc=rpcFactory(k,p.rpc_url); // Tests inject synthetic chain assertions; CLI never does.
   try {
+    await rpc.connect({blockAsyncConnect:true,strategy:'retry',timeoutDuration:120000});
     const info=await rpc.getServerInfo();
     assert.equal(info.networkId,'testnet-10');assert.equal(info.serverVersion,'2.1.0');
     assert.equal(info.isSynced,true);assert.equal(info.hasUtxoIndex,true);
@@ -86,7 +86,13 @@ export async function execute(p) {
           lockTime:BigInt(raw.lockTime),gas:BigInt(raw.gas),storageMass:BigInt(raw.storageMass)});
         assert.deepEqual(canonical(tx),raw);
       }
-      const result=await rpc.submitTransaction({transaction:tx,allowOrphan:false});
+      let result;
+      try {result=await rpc.submitTransaction({transaction:tx,allowOrphan:false});}
+      catch(error) {
+        // Submission contains public transaction bytes, never the wallet/claim
+        // secret. Retain the error privately; transport loss is NOT rejection.
+        tx.free();return {status:'rpc-error',transactionId:p.transaction.id,error:String(error),definitive_rejection:false};
+      }
       assert.equal(result.transactionId,p.transaction.id);tx.free();return result;
     }
     if(p.op==='fund-plan') {
@@ -109,7 +115,7 @@ export async function execute(p) {
       assert.equal(matches.length,1);assert.ok(raw.outputs.length<=2&&raw.outputs.every(o=>o.covenant===null &&
         (o.scriptPublicKey===p.spk&&BigInt(o.value)===BigInt(p.amount)||o.scriptPublicKey===spk(k.payToAddressScript(from)))));
       const fee=entries.reduce((s,x)=>s+BigInt(x.entry.amount),0n)-raw.outputs.reduce((s,o)=>s+BigInt(o.value),0n);
-      assert.ok(fee>0n);
+      assert.ok(fee>0n && fee<=10000000n,'funding fee exceeds inherited 0.1 test KAS cap');
       const context={entries:entries.map(x=>({outpoint:x.outpoint,amount:x.entry.amount,scriptPublicKeyHex:x.entry.scriptPublicKey,
         blockDaaScore:x.entry.blockDaaScore,isCoinbase:x.entry.isCoinbase,covenantId:x.entry.covenantId})),
         virtualDaaScore:dag.virtualDaaScore,pastMedianTime:dag.pastMedianTime};

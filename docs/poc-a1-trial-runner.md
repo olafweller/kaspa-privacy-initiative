@@ -150,7 +150,9 @@ relative locks under the existing script, while distinguishing transaction IDs.
 The changed A body gets its ID/storage mass recomputed and must pass Full again.
 Prepare both offline or online with `--prepare-only`, then use `--submit-prepared
 --submit-at UNIX_SECONDS` in parallel on A and B. Each rechecks current history
-after proving and durably creates one exclusive submission intent. Unknown or
+after proving, completes that expensive scan before the common race barrier,
+checks checkpoint/horizon survival at broadcast, and durably creates one exclusive
+submission intent. Unknown or
 rejected submissions never retry; use `verify` to reconcile. Copy both public
 attempt receipts for review. Only actual rejection plus one accepted exact body
 can close the race case; a second absent payout alone does not prove rejection.
@@ -173,5 +175,31 @@ can close the race case; a second absent payout alone does not prove rejection.
   RPC checks cannot make a dishonest C truthful. Offline synthetic history tests
   exercise rejection and real proof/SDK/Full paths, never testnet acceptance.
 
+Live history and UTXO RPC reads are not atomic. A reconciliation failure caused
+only by a missing current UTXO or a still-visible terminal reserve refreshes the
+complete read-only snapshot; it never permits a proof or submission using that
+inconsistent snapshot. Wrong terms/hashes, incomplete pages and reorgs still halt.
+The inherited A0 funding fee cap protects the wallet against accidental fee burn;
+exit fees remain exactly the independently inspected fixed terms.
+
 Protocol design remains ADR-0003; this transport/tooling choice introduces no
 new primitive or architecture. No mainnet or production-safety conclusion follows.
+
+## Phase A checks (2026-10-08)
+
+Locked/offline Rust 1.91.0 release build passed. One `a new` invocation completed
+the fresh unfunded instance and independent parameter observation in 74 seconds.
+15 runner unit tests and two native integration tests passed; the nine existing
+recovery tests and ten existing fee tests also passed (36 offline cases total).
+The integration uses synthetic accepted history, real fresh A/B proofs with
+distinct IDs, pinned SDK safe/numeric round trips, native Full, and an actual
+signed synthetic funding plan through the existing A0 Full validator. Malformed
+proof material, changed payout, corrupted/gapped/reordered history, checkpoint
+substitution and reorg cases fail safely. Retry intent, snapshot reconciliation
+and the ≥120-second observation condition are unit-tested with a simulated clock.
+Final A/B bodies were revalidated and source/binary/SDK receipts retained locally.
+
+No network/RPC connection, test KAS, server mutation or push was used. Actual C
+history throughput/pruning, funding/submission, physical loss of A, an accepted
+payout sustained ≥120 seconds, and the live race remain untested. Phase A is
+complete at stop point 1, awaiting Claude's review; it is not trial readiness.
