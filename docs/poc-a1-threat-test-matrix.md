@@ -7,16 +7,29 @@ actual G2 real-proof/native-script tests. Full G5 independent machine/archive
 recovery remains open. [Live attempt 1](poc-a1-live-attempt-1.md) funded S0,
 accepted S0 → S1 and captured it independently on C, but failed the boundary:
 B never armed and A stayed online. A later separate terminal owner exit passed;
-it is not independent G5 recovery or full G6. No further live work is authorized.
+it is not independent G5 recovery or full G6. This document authorizes no
+new live work.
 [Live attempt 2](poc-a1-live-attempt-2.md) passed C validation, physical whole-A
 loss and autonomous B start, then failed at checkpoint metadata parsing before
 B lineage/proving. **G5 FAILED — autonomous recovery did not complete during
 the live run.** Later offline replay and separately authorized owner exit do not
-close G5 or full G6. Frozen attacks/oracles and attempt 1 evidence are unchanged.
-**Update 2026-10-08:** the [official trial](poc-a1-official-trial-2026-10-08.md) provides live
+change that failed live result or close full G5/G6. Frozen attacks/oracles and
+earlier evidence are unchanged.
+
+**Update 2026-10-08 (S1):** the [official trial](poc-a1-official-trial-2026-10-08.md) provides live
 evidence for the S1 recovery path of rows 11–12 and 22–23 (physical A loss,
 independent S1 discovery, fresh proof, accepted payout, ≥120 s later
-observation). S0 direct recovery and other G5/G6 rows remain open.
+observation).
+
+**Update 2026-10-08 (S0):** the [S0 trials](poc-a1-s0-trials-2026-10-08.md)
+add a complete paid-out rehearsal, independent B recovery while A was physically
+off, direct A exit, and an ordered terminal-versus-terminal competing spend.
+Positive S0 recovery adds evidence to rows 11–12 and 22–23; it does not close
+their artifact-loss/archive-fault negatives. The competing intents were
+1.425702 seconds apart, with B accepted and A rejected; this supplements
+row 08 without covering its continuation races or simultaneous arrival.
+Full G5/G6 remains open. C-node and single-party setup trust remain explicit;
+there is no anonymity or production-safety claim.
 [ADR-0003](adr/0003-a1-successor-reserve.md) defines the finite S0/S1 graph,
 encoding and accounting. The [implementation plan](poc-a1-implementation-plan.md)
 assigns execution gates. No invariant is changed.
@@ -101,24 +114,27 @@ This is local program-order evidence, not physical-machine or live-archive G5.
 | 04 | Claim/secret and outpoint circuit tests, original-context wrong-secret test, copied-proof output/recipient mutations | Cryptographic soundness proof or audit |
 | 05 | Literal pinned keys, malformed proof/scalar/range corpus; native arity/tag/trailing-key diagnostics | Production-safe setup/gadget assurance |
 | 06–07 | Acyclic real setup order; every output script byte/value/version/count/order/metadata mutations; wrong branches and fresh foreign setup proofs | Unbounded successor graph or arbitrary recipients |
-| 08 | [Actual native race/replay receipts](../poc/a1/evidence/stateful-requalification-2026-10-04.json): two first-valid competing spends, exact and distinct-ID replay rejection | Public TN10 races/settlement |
+| 08 | [Actual native race/replay receipts](../poc/a1/evidence/stateful-requalification-2026-10-04.json): two first-valid competing spends, exact and distinct-ID replay rejection; [live S0 trials](poc-a1-s0-trials-2026-10-08.md): ordered terminal-versus-terminal spend, one accepted payout and later candidate rejected | Live continuation-versus-continuation and continuation-versus-terminal variants; arrival while both candidates are unconfirmed |
 | 09 | Original-key instance/domain/stage/mode/range/outpoint tests; S1→S2 rejection; separate foreign-context/key tests | Copied identical-chain-state replay excluded by ADR |
 | 10 | [Native reorg + scanner accounting](../poc/a1/evidence/reorg-scanner-requalification-2026-10-04.json): actual removed/added chain groups, old outputs absent, final UTXOs exact; rollback/replay pointer/credits agree | Imported S0 checkpoint is not funding-lineage G5; no Bitcoin-only global-unspent claim |
-| 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks; live attempt 2 passed whole-A-loss gate/autonomous B start | Attempt 1 failed before B armed/A loss; attempt 2 failed before B lineage/proving. Full G5 remains open; offline replay and owner exits do not close it |
+| 11–12 | Recovery scanner unit negatives and clean network-disabled Docker B fresh proof/direct/S1/abrupt fixtures; immutable inventory/artifact checks; [S1](poc-a1-official-trial-2026-10-08.md) and [S0](poc-a1-s0-trials-2026-10-08.md) live B recovery with A physically off, fresh proof and accepted native payout | Live missing/corrupt recovery-artifact and archive/pruning fault cycles. Earlier attempts remain failed; scoped positive recovery does not close full G5 |
 | 13 | Measured finite budgets; inadequate decoded budget rejects; [exact fee rules/forced failures](../poc/a1/evidence/fee-bound-qualification-2026-10-04.json) halt without changing terms | Guaranteed exit at arbitrary future rates |
 | 14 | Native fixed recipient derivation and actual backup-key/claim checks in clean B | Private note recipient spendability does not exist in A1 |
 | 15 | Observed circuit-specific setup, public VK/redeem pins, no bypass, no retained trapdoor material | Single-party setup trust, erasure/provenance proof, PQ unresolved |
-| 16 | [Pinned SDK roundtrips](../poc/a1/evidence/fixture-2026-10-03/sdk-roundtrip.json), BigInt u64 max, independent ID/FULL hash and fresh native masses, nine decoded native negatives | Live malicious/divergent-provider observation and complete RPC archive integration |
+| 16 | [Pinned SDK roundtrips](../poc/a1/evidence/fixture-2026-10-03/sdk-roundtrip.json), BigInt u64 max, independent ID/FULL hash and fresh native masses, nine decoded native negatives; [live S0](poc-a1-s0-trials-2026-10-08.md) exact candidate SDK/Full validation and accepted-body readback | Live malicious/divergent-provider observation and archive fault integration |
 | 17 | Report lists public amounts/linkage/recipient/stage/timing and local witness exposure | No anonymity/confidential amount/unlinkability/PQ claim |
 | 18–20 | All 256 selectors each branch, multibyte/empty/equivalent pushes, every witness pair/slot, exact key/tag/ABI, output version and unknown-input diagnostic | Unknown input SPK versions are inadmissible, not magically script-enforced |
 | 21 | Independent intent/codec/scripts/R1CS reconstruction, actual key validation and observed receipt; schema/matrix/hash/intent mutation unit tests | Same-host automated observation is not an independent-human ceremony; opaque CRS/shared gadget trust remains |
-| 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled; attempt 2 C independently validated continuation/S1 at commit 919 | Attempt 1 boundary failed; attempt 2 B checkpoint parsing failed. Autonomous B lineage completion and live pruning-cycle survival remain unproved |
+| 22–23 | Paginated native accepted-path discovery, current exact UTXOs, body hashes, scanner gap/duplicate/reorder/pruning/reorg tests; actual native reorg receipts separately coupled; [S1](poc-a1-official-trial-2026-10-08.md) and [S0](poc-a1-s0-trials-2026-10-08.md) live B lineage completion and payout, including complete multi-page Full histories | Live pruning/artifact-loss cycles, conflicting providers and controlled reorg/rollback; earlier attempt-2 checkpoint failure remains unchanged |
 | 24 | Historical quotes/replay, bound final-body receipts, rational 25-percent rate / 10-percent B0 headroom and 10-percent execution budget; forced high/stale quote/low credit/wrong budget negatives | Remote custom relay configuration/admission, later quotes and post-funding liveness |
-| 25 | Actual three-branch byte/resource/trace measurements, fresh native SDK-decoded masses; every measured path fits pinned limits | Live G6 measurements/admission/inclusion |
+| 25 | Actual three-branch byte/resource/trace measurements, fresh native SDK-decoded masses; every measured path fits pinned limits; scoped [S1](poc-a1-official-trial-2026-10-08.md)/[S0](poc-a1-s0-trials-2026-10-08.md) live admission and exact native payouts | Complete G6 matrix and future fee/relay/resource liveness |
 
-After qualification repair, 20 Rust tests, 46 A1 Python tests and 13 Node tests pass. Runtime proof/case/SDK/native-chain
-results above are separate from unit tests; none is proof of cryptographic
-correctness. Full G5 is not closed, and G6 remains unauthorized.
+The earlier qualification repair recorded 20 Rust, 46 A1 Python and 13 Node
+tests. The 2026-10-08 S0 runner additionally recorded 30 offline cases,
+including two native integrations. Runtime proof/case/SDK/native-chain results
+are separate from unit tests; none proves cryptographic correctness. Scoped
+TN10 execution was separately authorized and completed. Full G5/G6 remains
+open, and these records authorize no future live run.
 
 ## Invariant coverage and limits
 

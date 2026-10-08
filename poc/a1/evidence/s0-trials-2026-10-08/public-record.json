@@ -1,0 +1,503 @@
+{
+  "schema": "kpi-a1-s0-public-summary/v1",
+  "date": "2026-10-08",
+  "network": "testnet-10",
+  "asset": "native test KAS",
+  "scope": "operator summary of a successful rehearsal and three scoped S0 trials; raw receipts and Full histories retained locally, not included",
+  "cases": [
+    {
+      "case": "rehearsal-1",
+      "status": "failed",
+      "source_commit": "2c3a4387d6a39a58538be91e53dd963f96a8be2a",
+      "manifest_sha256": "2cdfce48e34fcb4db73cf1e673b83f5db4707de756d1a0894fe714b56cb84a78",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "0037d4dbe46e7e1b1915a7101aedd5a5dedc4f3df2f0f4decedbd1091c9bef49",
+      "failure_cause": "The SDK's JSON conversion dropped a covenant field whose value was undefined. The scanner rejected the incomplete history before a terminal attempt.",
+      "funding": {
+        "txid": "ee6e5cca082a5f2d67da8cd1e1203e9564e0ba01a871834d11120c2bce0aca04",
+        "full_hash": "1bb0cb748963679f2a778d7083ae77f0f09f6e5c1d17423d8199f2bb87963831",
+        "submission_intent_utc": "2026-10-08T14:57:42.109442Z",
+        "submission_intent_unix_ns": 1791471462109442640,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 816500
+      },
+      "payout": null
+    },
+    {
+      "case": "rehearsal-2",
+      "status": "unfunded-failure",
+      "source_commit": "6dde32d208b864cfb5b74930c849d758659800ca",
+      "manifest_sha256": "7a9651cdd74c5a596cceffed357db50acf43484d52dd5cbfa1d8dd7c0a6730b5",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "4588e68b0029521bc841aaf0b9e16480a3dd2455a392edd22085d7aca7dccb68",
+      "failure_cause": "A standalone transport connection ended with broken pipe. No funding or terminal submission.",
+      "funding": null,
+      "payout": null
+    },
+    {
+      "case": "rehearsal-3",
+      "status": "failed",
+      "source_commit": "6dde32d208b864cfb5b74930c849d758659800ca",
+      "manifest_sha256": "1bd3665b428a03b0fb8d6aeec28c78d61d4581ceab325b2efd504b37e869a85c",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "9a2a253521022884f952cebf3e52c6a3ebdd1d9f120daa9f3716236277f47498",
+      "failure_cause": "History fetch reported a reorg and halted before a terminal attempt. The failing removed-suffix response was not retained; a later query found the checkpoint still selected. The precise chain change is unproved.",
+      "funding": {
+        "txid": "ccd36b8ff22fa9b808abb0828b62dd7902fca642aca2c9c9fb9ae477cf74d372",
+        "full_hash": "625bf62dcdfc665c255925dde1eda07483d6d4bcce7fcba26a2584ef652d1b34",
+        "submission_intent_utc": "2026-10-08T15:28:46.932112Z",
+        "submission_intent_unix_ns": 1791473326932111982,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": null
+    },
+    {
+      "case": "rehearsal-4",
+      "status": "passed",
+      "source_commit": "c541dd51a8672241f885b1af4bf30b539297dda5",
+      "manifest_sha256": "8eaacee25eba3914b582ee7eb8e5abd4c5441a2631e009b51d2da764f3eb1346",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "24a3a09e30054de661e759d2dd0a8dfd52aba2b2f669874b90da31d493761957",
+      "failure_cause": null,
+      "funding": {
+        "txid": "998c35856aaf4dd39317c4db642cf4bc3141a8079349aff9ea77b9159c2435f8",
+        "full_hash": "e8c451ac331b77738cd6448d70c6047c11a3a9054911e00470c1587851135651",
+        "submission_intent_utc": "2026-10-08T15:44:28.837305Z",
+        "submission_intent_unix_ns": 1791474268837305137,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": {
+        "txid": "f9e9eb1f42550599ecbbfe09ebdfc50565f95873bc2e9e5a24dce814f2cf7235",
+        "full_hash": "518501beac716b208c611531b0b2db302b9fa1be7389154ea7dd61a2300fc758",
+        "payout_sompi": 2210000000,
+        "fee_sompi": 1000000000,
+        "observed_seconds": 153.51456819899977,
+        "reserve_spent": true,
+        "single_accepted_terminal": true,
+        "result_record_utc": "2026-10-08T15:52:07.089006Z",
+        "output_index": 0,
+        "actor": "A",
+        "submission": {
+          "txid": "f9e9eb1f42550599ecbbfe09ebdfc50565f95873bc2e9e5a24dce814f2cf7235",
+          "full_hash": "518501beac716b208c611531b0b2db302b9fa1be7389154ea7dd61a2300fc758",
+          "submission_intent_utc": "2026-10-08T15:48:04.360798Z",
+          "submission_intent_unix_ns": 1791474484360798486
+        },
+        "validation": [
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "f9e9eb1f42550599ecbbfe09ebdfc50565f95873bc2e9e5a24dce814f2cf7235",
+              "full_hash": "518501beac716b208c611531b0b2db302b9fa1be7389154ea7dd61a2300fc758",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "official-1",
+      "status": "passed",
+      "source_commit": "c541dd51a8672241f885b1af4bf30b539297dda5",
+      "manifest_sha256": "f64af34b81db837d3462222bbd6b2ffb1cb909c61007254e1d6751f043dbd152",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "84056b26e87e166a1c0eed19a8978556c481b53253e3af0006c148d378be1cc3",
+      "failure_cause": null,
+      "funding": {
+        "txid": "94545234e7075736181d08496dfa54c5140fb7ff1d3e795c8e73d527ace4c572",
+        "full_hash": "a51bad4a650aaa3c979ed9f7e44c24bb6929b7dcf163adefbc67aa6e39faa74d",
+        "submission_intent_utc": "2026-10-08T16:02:38.504050Z",
+        "submission_intent_unix_ns": 1791475358504049873,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": {
+        "txid": "292e6af065d065b7d1ce0580a8086a9ac8925a855fca03ea23c0fc084684efa6",
+        "full_hash": "ae095c022908efd1cd89ba5b9012802080d1b9a199990aa61f69fcb8e3156fdd",
+        "payout_sompi": 2210000000,
+        "fee_sompi": 1000000000,
+        "observed_seconds": 324.7253812550043,
+        "reserve_spent": true,
+        "single_accepted_terminal": true,
+        "result_record_utc": "2026-10-08T16:38:50.769085Z",
+        "output_index": 0,
+        "actor": "B",
+        "submission": {
+          "txid": "292e6af065d065b7d1ce0580a8086a9ac8925a855fca03ea23c0fc084684efa6",
+          "full_hash": "ae095c022908efd1cd89ba5b9012802080d1b9a199990aa61f69fcb8e3156fdd",
+          "submission_intent_utc": "2026-10-08T16:24:52.178187Z",
+          "submission_intent_unix_ns": 1791476692178187310
+        },
+        "validation": [
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "292e6af065d065b7d1ce0580a8086a9ac8925a855fca03ea23c0fc084684efa6",
+              "full_hash": "ae095c022908efd1cd89ba5b9012802080d1b9a199990aa61f69fcb8e3156fdd",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          }
+        ]
+      },
+      "recovery_timeline": {
+        "B_started_utc": "2026-10-08T16:15:30.313774Z",
+        "B_finished_utc": "2026-10-08T16:39:11.192624Z"
+      }
+    },
+    {
+      "case": "official-2",
+      "status": "passed",
+      "source_commit": "c541dd51a8672241f885b1af4bf30b539297dda5",
+      "manifest_sha256": "7e8504f09e57e2d7e5fce5f1db6008dcce309c1a2480c74077d1171875a45a4c",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "f9afd29db4089cb9632269804e126737c154cb825c36128764e4b40a7292ccc6",
+      "failure_cause": null,
+      "funding": {
+        "txid": "ae64bec7d7038c5c4551f4fd6313bfa80fa762090e8d618ad17e99dea3400b77",
+        "full_hash": "b52321d5c813a7b3794063d0d9323e277fa3a4ec3ff4bf632575d7155678f661",
+        "submission_intent_utc": "2026-10-08T17:00:25.066606Z",
+        "submission_intent_unix_ns": 1791478825066606088,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": {
+        "txid": "246d59964470674872610400a066f70d9af5311cf76ce66045625384e5cc9a47",
+        "full_hash": "d5f83755efacbd09aab387c3aff6e49dc7af2f5be5f9cc9ba28f1d44549a9785",
+        "payout_sompi": 2210000000,
+        "fee_sompi": 1000000000,
+        "observed_seconds": 141.84122190900007,
+        "reserve_spent": true,
+        "single_accepted_terminal": true,
+        "result_record_utc": "2026-10-08T17:05:12.766730Z",
+        "output_index": 0,
+        "actor": "A",
+        "submission": {
+          "txid": "246d59964470674872610400a066f70d9af5311cf76ce66045625384e5cc9a47",
+          "full_hash": "d5f83755efacbd09aab387c3aff6e49dc7af2f5be5f9cc9ba28f1d44549a9785",
+          "submission_intent_utc": "2026-10-08T17:02:18.312359Z",
+          "submission_intent_unix_ns": 1791478938312358660
+        },
+        "validation": [
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "246d59964470674872610400a066f70d9af5311cf76ce66045625384e5cc9a47",
+              "full_hash": "d5f83755efacbd09aab387c3aff6e49dc7af2f5be5f9cc9ba28f1d44549a9785",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "race-1",
+      "status": "failed",
+      "source_commit": "c541dd51a8672241f885b1af4bf30b539297dda5",
+      "manifest_sha256": "ff58ac7d662f477948f9ae8003df6dc1422da5c453cc271118cc9c6219374ac7",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "cde77531e8e097cf4f8aa08c36bf227512bfbb81fa360b6131b970a3c17d335d",
+      "failure_cause": "Executor command quoting produced a Python SyntaxError before B started. A only prepared a candidate. Neither terminal was submitted.",
+      "funding": {
+        "txid": "0f91a6cf070d056fcb6d6bbae6cca82fb01f49146e4e881c44526b9e5b1f92f4",
+        "full_hash": "46735271d682752b3ae2b9ce6f35860e2ba8c88e25ac93aa772d8105861fb847",
+        "submission_intent_utc": "2026-10-08T17:08:54.552815Z",
+        "submission_intent_unix_ns": 1791479334552815348,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": null
+    },
+    {
+      "case": "race-2",
+      "status": "passed",
+      "source_commit": "c541dd51a8672241f885b1af4bf30b539297dda5",
+      "manifest_sha256": "7cf2c7045d8fda871505868a198ef3544b0991d73f313c5470da759f1d575418",
+      "binaries_sha256": {
+        "binary": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed",
+        "constructor": "ed27ac0eaa56bd66ad67bc75e0a49754573dc85d97a82ef2a688fdc83e1abd75",
+        "reference_binary": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062"
+      },
+      "checkpoint_hash": "54686bbf1d73feed7236f4405eda221ccb80971386f19c25ffe87ae60e386f14",
+      "failure_cause": null,
+      "funding": {
+        "txid": "4ff7bf88309ed35ef82966f5954b09780aaefc28875a69e43de8b7ed446589de",
+        "full_hash": "51dc1e68766af23333bbbda251453ec0bf1a64b44d62e5982721764192917832",
+        "submission_intent_utc": "2026-10-08T17:17:12.218475Z",
+        "submission_intent_unix_ns": 1791479832218475341,
+        "output_index": 0,
+        "reserve_sompi": 3210000000,
+        "fee_sompi": 704700
+      },
+      "payout": {
+        "txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+        "full_hash": "28c1184ecb6e737ef3bcec48338fa1fb78c8340d3af08861ef8c65f52a59797c",
+        "payout_sompi": 2210000000,
+        "fee_sompi": 1000000000,
+        "observed_seconds": 334.2267938060104,
+        "reserve_spent": true,
+        "single_accepted_terminal": true,
+        "result_record_utc": "2026-10-08T17:41:31.807368Z",
+        "output_index": 0,
+        "actor": "B",
+        "submission": {
+          "txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+          "full_hash": "28c1184ecb6e737ef3bcec48338fa1fb78c8340d3af08861ef8c65f52a59797c",
+          "submission_intent_utc": "2026-10-08T17:28:16.228478Z",
+          "submission_intent_unix_ns": 1791480496228477903
+        },
+        "validation": [
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+              "full_hash": "28c1184ecb6e737ef3bcec48338fa1fb78c8340d3af08861ef8c65f52a59797c",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          },
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+              "full_hash": "28c1184ecb6e737ef3bcec48338fa1fb78c8340d3af08861ef8c65f52a59797c",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          }
+        ],
+        "outcome": "won",
+        "own_txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+        "own_tx_accepted": true,
+        "accepted_history_summary": {
+          "pages": 5,
+          "accepted_body_occurrences_checked": 218260,
+          "reserve_spender_txids": [
+            "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e"
+          ],
+          "winner_accepted_occurrences": 1,
+          "loser_accepted_occurrences": 0,
+          "horizon_hash": "42fa28210789398b1cc2e5ebe454af70eb085b03a2e14ab61681d37416dc842c"
+        }
+      },
+      "loser_result": {
+        "txid": "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e",
+        "full_hash": "28c1184ecb6e737ef3bcec48338fa1fb78c8340d3af08861ef8c65f52a59797c",
+        "payout_sompi": 2210000000,
+        "fee_sompi": 1000000000,
+        "observed_seconds": 323.3206580450001,
+        "reserve_spent": true,
+        "single_accepted_terminal": true,
+        "result_record_utc": "2026-10-08T17:41:48.791835Z",
+        "output_index": 0,
+        "actor": "A",
+        "submission": {
+          "txid": "804f7d169da6855362766e538638a4f4e20f134bbf33be86eb09f195059cf78a",
+          "full_hash": "72411cbebac8ce3df95279b367d333a0f35c1f99105f05871e548bce51ca0529",
+          "submission_intent_utc": "2026-10-08T17:28:17.654180Z",
+          "submission_intent_unix_ns": 1791480497654179662
+        },
+        "validation": [
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "804f7d169da6855362766e538638a4f4e20f134bbf33be86eb09f195059cf78a",
+              "full_hash": "72411cbebac8ce3df95279b367d333a0f35c1f99105f05871e548bce51ca0529",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          },
+          {
+            "native_full": {
+              "full_valid": true,
+              "txid": "804f7d169da6855362766e538638a4f4e20f134bbf33be86eb09f195059cf78a",
+              "full_hash": "72411cbebac8ce3df95279b367d333a0f35c1f99105f05871e548bce51ca0529",
+              "fee": 1000000000,
+              "native_masses": {
+                "compute": 172652,
+                "storage": 141,
+                "transient": 6768
+              }
+            },
+            "sdk_sha256": {
+              "kaspa.js": "6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf",
+              "kaspa_bg.wasm": "c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5",
+              "package.json": "8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0"
+            },
+            "software_sha256": {
+              "a1_trial.py": "421f00a383be407ce4ee0c294fd4a11a02771b9c73ae75d7d1b5027ebfcd7f7c",
+              "a1_trial_rpc.mjs": "2601bfc1948e5915066815cb8cae94171663de6552eed8909f56bf78a1926dfd",
+              "reference": "e4c7c1da60334e7897bd8d72204747555648690f910699afc05ffdd951c41062",
+              "validator": "3c69f9d616ad965d67e6292bc05ae70c1bd4c80b4d35911b3b1533a15460e9ed"
+            }
+          }
+        ],
+        "outcome": "lost",
+        "own_txid": "804f7d169da6855362766e538638a4f4e20f134bbf33be86eb09f195059cf78a",
+        "own_tx_accepted": false,
+        "accepted_history_summary": {
+          "pages": 5,
+          "accepted_body_occurrences_checked": 222566,
+          "reserve_spender_txids": [
+            "4b478659fa9e52fd094195c39c3dce70dba1d75585d7afdbff513a1b897aa91e"
+          ],
+          "winner_accepted_occurrences": 1,
+          "loser_accepted_occurrences": 0,
+          "horizon_hash": "a5a318d198d867f89e6f6309b4a6b36691a0ceb9c9dc44b614a8feff0a87e774"
+        }
+      }
+    }
+  ],
+  "race": {
+    "variant": "S0 terminal versus S0 terminal",
+    "scheduled_start_utc": "2026-10-08T17:28:00.000000Z",
+    "submission_intent_difference_seconds": 1.425701759,
+    "timing_scope": "durable intent timestamps before RPC calls, not exact network-arrival timestamps",
+    "second_submission_rejected_as": "orphan with allowOrphan=false",
+    "both_program_exit_codes": 0
+  },
+  "accounting": {
+    "funded_identities": 7,
+    "deposited_sompi": 22470000000,
+    "funding_fees_sompi": 5044700,
+    "native_payouts_sompi": 8840000000,
+    "terminal_fees_sompi": 4000000000,
+    "closed_unspent_reserves_sompi": 9630000000
+  },
+  "evidence_limits": [
+    "C validating-node assertions remain trusted; no light-client proof or C executable attestation.",
+    "The physical outage is operator-reported and supported by locally retained boot/heartbeat evidence, not hardware telemetry.",
+    "Single-party Groth16 setup and host integrity remain assumptions.",
+    "No anonymity, cryptographic-correctness, production-safety or permanent-finality claim.",
+    "No raw private configurations, logs, backups, transaction bodies or proving artifacts included.",
+    "Hashes identify public transaction bodies/artifacts/software; this summary alone cannot replay the complete experiment."
+  ]
+}

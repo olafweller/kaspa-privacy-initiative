@@ -7,8 +7,9 @@ in [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22
 Local/native-synthetic G1–G4 evidence and the supplemental-negative/fee-receipt
 qualification repairs are recorded in the [A1 report](poc-a1-proof-report.md).
 G5 tooling and isolated-container rehearsals do not close independent
-machine-loss/live-archive recovery. Full independent G5 remains open; G6 is
-unauthorized and unexecuted. The requirements below are the specification,
+machine-loss/live-archive recovery. Full G5/G6 remains open; separately
+authorized scoped TN10 execution is recorded in the dated updates below.
+The requirements below are the specification,
 not a claim that A1 is merged or every gate has passed. Subsequent separate
 instructions authorized [live attempt 1](poc-a1-live-attempt-1.md): S0 funding,
 accepted S0 → S1, a failed independent recovery boundary, and a later separate
@@ -18,12 +19,25 @@ validation, physical whole-A loss and autonomous B start, then failed at live
 checkpoint parsing before B lineage/proving. **G5 FAILED — autonomous recovery
 did not complete during the live run.** Its later repaired offline replay and
 separate owner terminal exit do not change that result or complete full G6.
-No further live action or invariant change is authorized.
-**Update 2026-10-08:** the separately authorized [official trial](poc-a1-official-trial-2026-10-08.md)
+These historical failures remain unchanged. This document authorizes no new
+live action or invariant change.
+
+**Update 2026-10-08 (S1):** the separately authorized [official trial](poc-a1-official-trial-2026-10-08.md)
 passed the scoped S1 autonomous-recovery scenario after physical loss of A,
-with one accepted fresh-proof terminal payout. S0 direct recovery, the
-competing-spend result and live adversarial cases remain open, so full G5/G6
-is not closed.
+with one accepted fresh-proof terminal payout.
+
+**Update 2026-10-08 (S0):** the separately authorized
+[S0 trials](poc-a1-s0-trials-2026-10-08.md) completed a paid-out rehearsal,
+B recovery with A physically off, a direct A exit, and an ordered
+terminal-versus-terminal competing spend. Each successful identity paid
+22.1 native test KAS, with exact body/accounting checks and a later recheck
+after at least 120 seconds. The submission intents were 1.425702 seconds
+apart; B was accepted and the later A candidate rejected. This covers scoped
+positive recovery from both states and one live competing-spend variant.
+Full G5/G6 remains open: live archive/artifact-loss, malicious or divergent
+providers, controlled reorg/rollback, the other competing-branch variants,
+and future fee/resource liveness are not demonstrated. C-node, single-party
+setup and host integrity remain trusted; no anonymity or production claim.
 The [ADR](adr/0003-a1-successor-reserve.md) and
 [threat/test matrix](poc-a1-threat-test-matrix.md) define the target and oracles.
 
@@ -178,7 +192,11 @@ insufficient fee or ambiguous state blocks a success claim. Passing never implie
 cryptographic correctness, production safety, anonymity, PQ security or a chosen
 production state architecture.
 
-## Original G0 handoff boundary and current execution boundary
+## Historical G0 and attempt-2 handoff boundaries
+
+The following records the earlier handoff. The dated updates above describe
+the subsequent scoped trials; they do not close every gate or authorize
+future live execution.
 
 G0 was closed as a source-grounded specification with independent codec
 calculations and subsequently merged through PR #21 by the project. This does
