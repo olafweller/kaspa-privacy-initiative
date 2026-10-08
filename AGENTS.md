@@ -21,6 +21,33 @@ The current goal is **research and testnet validation**, not mainnet launch.
 9. Preserve the invariants in `SECURITY-INVARIANTS.md`.
 10. Important architecture changes require an ADR.
 
+## Testnet trial practice
+
+These rules apply to testnet experiments (G5/G6 and similar trials). They do not
+relax any non-negotiable constraint or `SECURITY-INVARIANTS.md`. They supersede
+older agent memories that treat every failed trial as requiring a new frozen
+configuration, fresh qualification and a full review cycle.
+
+1. Test KAS is free. A failed trial is not a reason for ceremony: start a fresh
+   trial identity and retry. Never re-broadcast within a used trial identity;
+   retrying means a new identity, not a weaker check.
+2. Creating a fresh, unfunded trial identity must be one command that finishes
+   in minutes without manual review steps. If it does not, fix that first.
+3. Nothing is "ready for the trial" until the complete path, including the real
+   terminal broadcast and confirmation of the payout on testnet, has succeeded
+   at least once in a rehearsal. A passing partial test is not readiness.
+4. Strict checks belong where they prevent theft, inflation, double spends,
+   unauthorized exits or acceptance of unverifiable state. Operational limits
+   (timeouts, memory/disk caps, sampling intervals, sizes) must be generous and
+   must not be able to abort a trial on their own.
+5. Use one canonical representation for amounts (integer sompi) across A, B and
+   C. Convert at the boundary; never compare values of different types.
+6. Prefer the simplest design that proves the research question. Every extra
+   component, pin, lock or review layer is a new way to fail; add one only when
+   it protects funds or evidence integrity.
+7. Status updates to the user: short, plain language, only when something
+   changed (step reached, failure with cause, or decision needed). No
+   fixed-interval reports.
 ## Current research posture
 
 Do not assume that vProgs is required.
