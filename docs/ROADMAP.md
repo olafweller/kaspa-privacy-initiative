@@ -2,11 +2,13 @@
 
 This roadmap is intentionally research-first. Phases are research gates, not delivery promises. No state architecture or scaling path has been accepted.
 
-## Current evidence, 2026-10-04
+## Current evidence, 2026-10-08
 
 A0/A0.5 demonstrated a real Groth16-authorized funded TN10 reserve release and observed native test-KAS payout. The own node lacked complete UTXO sync; public native RPC endpoints supplied live UTXO/acceptance observations. This was not independent recovery, a privacy pool, an audit, production safety or architecture acceptance.
 
-[Draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) contains A1 local/native-synthetic G1–G4 work and qualification repairs. Full independent G5 remains open and live A1 G6 has not run. These narrow experiments do not pass the broader N-user gate below. Fixed-fee liveness [#23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23), independent artifact/history recovery, scalable state/setup design, P02 coverage and independent human security review remain blockers to broader claims. No A2 or production architecture is authorized by this status update.
+A1 has answered its core research question for the finite same-owner covenant: independent recovery and native exit from both [S0](poc-a1-s0-trials-2026-10-08.md) and [S1](poc-a1-official-trial-2026-10-08.md) were demonstrated on TN10 with the original machine physically off. The S0 trials also demonstrated direct exit and a competing-spend test: one terminal spend was accepted and the later candidate rejected, with submission intents about 1.4 seconds apart. These results are included in merged [PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22).
+
+The full G5/G6 matrix remains open. Remaining A1 tests will be targeted later only where they answer a still-relevant question. The research focus shifts to the multi-user privacy protocol, beginning with Phase 1's existing-work and feasibility map. A1 does not establish privacy or pass the broader N-user gate below. C/history availability and single-party setup remain trust assumptions; artifact/history-loss recovery, fixed-fee exit liveness [#23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23), scalability and independent security review remain open. No state architecture is accepted by these results.
 
 ## Phase 0 — Public foundation
 
