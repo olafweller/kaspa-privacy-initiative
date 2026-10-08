@@ -1,6 +1,7 @@
 # A1 trial runner — design
 
-Status: phase A implementation, 2026-10-08; offline validation, awaiting review.
+Status: phase A reviewed, phase B rehearsal started on 2026-10-08 with operator
+approval; no complete payout rehearsal or official S0 result yet.
 Tooling for repeating A1 testnet trials; it
 changes no protocol rule, script, circuit or invariant.
 
@@ -238,3 +239,36 @@ Duplicate/conflicting accepted reserve spends or disappearance/reorg still
 stop. Tests cover diagnostics/redaction, shared wait budgets, expiry of all
 three waits, successful loser reconciliation, pre-submit failures and no retry.
 No cryptographic or protocol rule changed; no test-KAS is authorized by code.
+
+## First live rehearsal finding
+
+The first authorized rehearsal deposited S0 and then halted before any terminal
+attempt: the strict scanner rejected an incomplete Full output. The pinned SDK
+exposes Rust `Option::None` as an **own** JavaScript property with value
+`undefined`; ordinary `JSON.stringify` erased the `covenant` field. Live inspection
+confirmed both the own property and the undefined value. Upstream
+`rpc/core/src/model/tx.rs` defines `RpcTransactionOutput.covenant` as an Option;
+`rpc/core/src/wasm/message.rs` converts accepted bodies through WASM serde, at
+the previously pinned commit `01b532e8b553523216471682649693af92f0fd16`.
+
+The bridge now preserves present undefined values as JSON null. It does not add
+absent fields: a genuinely missing covenant still fails the scanner. The
+regression test also checks unchanged Full hashes and a different hash when a
+covenant is present. A fresh, read-only capture of C's Full history authenticated
+the original funding body/current S0 through native ID checks; it did not submit
+or resume that halted identity. Its files, backup and diagnostic are retained.
+Any next rehearsal uses a fresh identity, with no rebroadcast of the old funding.
+
+A scan of 22,175 actual bodies took about 105 seconds. Page replay and repeated
+snapshots therefore cache pure native ID/hash results for unrelated v1 bodies,
+keyed by their independently computed complete Full body hash. Every asserted
+ID/hash, page sequence, UTXO and transition is still checked. Changed bodies get
+a new native check; changed asserted IDs fail against the cached native ID.
+Relevant reserve spends always rerun native Full using their current authenticated
+context. The cache does not retain acceptance or spentness assertions, survive
+the process, or shorten the required 120-second payout observation.
+Offline replay of that same captured history passed with the cache: about
+37 seconds initially and 8 seconds on the second scan, checking 11,261 distinct
+native v1 IDs. The 27-case suite including both native integration cases passed
+after the serialization fix; the subsequent 28-case unit run (two integrations
+not selected) and the actual-history replays cover the cache addition.

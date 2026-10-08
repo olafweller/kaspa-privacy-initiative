@@ -151,6 +151,7 @@ class Trial:
         limit = config.get('wait_timeout_seconds',1800)
         c.require(type(limit) in (int,float) and math.isfinite(limit) and limit>0, 'positive finite wait_timeout_seconds required')
         self.wait_seconds = limit; self._deadline = None; self._wait_stage = None
+        self._verified_ids = {}
 
     @contextmanager
     def waiting(self,stage):
@@ -272,9 +273,20 @@ class Trial:
         # Scanner independently recomputes v0 IDs and every Full hash already.
         # Only v1 IDs/relevant Full spends need the native reference subprocess.
         def callback(tx, context):
+            self.remaining()
             if tx['version'] == 0 and context is None:
                 return {'txid':tx['verboseData']['transactionId'], 'full_hash':r.full_hash(tx)}
-            return native(tx, context)
+            if context is not None: return native(tx, context)
+            # Replaying pages/snapshots repeats many unrelated immutable bodies.
+            # Cache only native ID/hash results by independently computed Full
+            # body hash. Scanner still checks every asserted ID/hash, page,
+            # current UTXO and reserve transition; relevant Full is never cached.
+            digest = r.full_hash(tx)
+            if digest not in self._verified_ids:
+                result = native(tx, None)
+                c.require(result.get('full_hash') == digest, 'native body/hash verification failed')
+                self._verified_ids[digest] = dict(result)
+            return dict(self._verified_ids[digest])
         return scan_history(self.manifest(), locator, checkpoint, history,
                             callback)
 

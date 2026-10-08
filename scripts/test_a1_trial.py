@@ -146,6 +146,49 @@ class TrialTests(unittest.TestCase):
     def test_wrong_network_rejected(self):
         with self.assertRaises(c.Invalid): t.Trial({'network':'mainnet'})
 
+    def test_wasm_none_survives_json_but_missing_full_fields_still_fail(self):
+        tx = body(self.manifest,(self.locator['s0_txid_hex'],7),'s0_terminal',self.d0,'44'*32)
+        for item in tx['inputs']: item['sequence']=str(item['sequence'])
+        code = '''import fs from 'node:fs';
+import {stringify} from './scripts/a1_trial_rpc.mjs';
+const tx=JSON.parse(fs.readFileSync(0,'utf8'));
+tx.outputs[0].covenant=undefined;tx.outputs[0].value=BigInt(tx.outputs[0].value);
+const none=JSON.parse(stringify(tx));delete tx.outputs[0].covenant;
+console.log(stringify({none,missing:tx}));'''
+        result=t.subprocess.run(['node','--input-type=module','-e',code],cwd=t.ROOT,
+                                input=json.dumps(tx),capture_output=True,text=True,check=True)
+        values=json.loads(result.stdout)
+        self.assertIsNone(values['none']['outputs'][0]['covenant'])
+        self.assertEqual(r.full_hash(values['none']),r.full_hash(tx))
+        with self.assertRaisesRegex(c.Invalid,'incomplete Full output'): r.full_hash(values['missing'])
+        values['none']['outputs'][0]['covenant']={'authorizingInput':0,'covenantId':'ab'*32}
+        self.assertNotEqual(r.full_hash(values['none']),r.full_hash(tx))
+
+    def test_only_unrelated_native_id_results_are_cached_by_exact_full_body(self):
+        unrelated={'version':1,'inputs':[], 'outputs':[{'value':1,'scriptPublicKey':'0000','covenant':None}],
+                   'lockTime':0,'subnetworkId':'00'*20,'gas':0,'payload':'','storageMass':0}
+        unrelated['verboseData']={'transactionId':'66'*32,'hash':r.full_hash(unrelated)}
+        history=copy.deepcopy(self.history)
+        history['pages'][0]['response']['chainBlockAcceptedTransactions'][0]['acceptedTransactions'].append(unrelated)
+        with tempfile.TemporaryDirectory() as directory:
+            trial=self.make_trial(directory);trial.locator=lambda:(self.locator,self.checkpoint)
+            with patch.object(r,'native_callback',return_value=fake_native) as factory:
+                native=unittest.mock.Mock(side_effect=fake_native);factory.return_value=native
+                trial.scan(history);trial.scan(history)
+                self.assertEqual(native.call_count,1)
+                poisoned=copy.deepcopy(history)
+                poisoned['pages'][0]['response']['chainBlockAcceptedTransactions'][0]['acceptedTransactions'][-1]['verboseData']['transactionId']='77'*32
+                with self.assertRaisesRegex(c.Invalid,'native body/hash verification failed'):trial.scan(poisoned)
+                self.assertEqual(native.call_count,1)
+                changed=copy.deepcopy(history)
+                tx=changed['pages'][0]['response']['chainBlockAcceptedTransactions'][0]['acceptedTransactions'][-1]
+                tx['outputs'][0]['value']=2;tx['verboseData']['hash']=r.full_hash(tx)
+                trial.scan(changed);self.assertEqual(native.call_count,2)
+                terminal=body(self.manifest,(self.locator['s0_txid_hex'],7),'s0_terminal',self.d0,'44'*32)
+                history['pages'][1]=page('02'*32,['03'*32],[[terminal]]);history['utxos']=[]
+                trial.scan(history);trial.scan(history)
+                self.assertEqual(native.call_count,4)  # Both reserve spends rerun native Full.
+
     def test_read_only_snapshot_alignment_retry_keeps_corruption_strict(self):
         with tempfile.TemporaryDirectory() as directory:
             trial = self.make_trial(directory); trial.history = lambda: self.history

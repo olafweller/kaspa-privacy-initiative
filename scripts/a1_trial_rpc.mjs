@@ -13,7 +13,10 @@ export const pins = {
   'package.json':'8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0',
 };
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
-const stringify = x => JSON.stringify(x, (_, v) => typeof v === 'bigint' ? v.toString() : v);
+// Pinned WASM responses expose Option::None as an own undefined property.
+// Preserve it as JSON null; JSON.stringify's default would erase Full fields.
+// Genuinely absent properties stay absent and the strict scanner rejects them.
+export const stringify = x => JSON.stringify(x, (_, v) => v === undefined ? null : typeof v === 'bigint' ? v.toString() : v);
 const spk = s => s.version.toString(16).padStart(4,'0') + s.script;
 export function diagnostic(p,error) {
   const secrets=new Set();
