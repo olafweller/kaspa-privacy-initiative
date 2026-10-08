@@ -123,3 +123,61 @@ no attempt 3, funding or broadcast. Attempt 1 records remain unchanged.
 The [official trial of 2026-10-08](../../docs/poc-a1-official-trial-2026-10-08.md)
 passed the scoped S1 scenario: autonomous B recovery after physical loss of A
 and an accepted fresh-proof terminal payout. Full G5/G6 remains open.
+
+## S0 runner (phase A, awaiting review)
+
+`scripts/a1_trial.py` is the separate testnet-instance entry point. The harness
+above stays fixture-only. Build its existing binaries offline:
+
+```sh
+cd poc/a1
+cargo +1.91.0 build --locked --offline --release
+```
+
+Use a mode-0600, Git-ignored `a1-trial.local.json` per machine. Required fields:
+`network` = `testnet-10`; `run`, `bundle`, `retained`, `backup`; `binary`,
+`reference_binary`, `sdk_dir`. A's new-instance config also supplies `constructor`
+and `terms` (for example the repository's `tn10-trial-terms.json`). Supply absolute
+paths locally. With linked worktrees, put experiment output inside the main
+repository's `.local/`, outside the source worktree: the existing setup observer
+requires a clean committed source and output outside that source checkout.
+`run`, `bundle`, `retained`, and `backup` must be separate, fresh directories.
+
+For future authorized phase B, add `rpc_url`: C's loopback wRPC address, reached
+by A/B over an operator-established SSH tunnel. A's funding step also needs
+`funding_validator` (the existing A0 binary) and a mode-0600 `wallet` JSON with
+`network` = `testnet-10` and `private_key`. Never commit any of these local values.
+The A0 binary can be built with the same locked/offline toolchain in `poc/a0`.
+
+```sh
+# Offline: one fresh, unfunded identity; no manual setup review steps.
+python3 scripts/a1_trial.py --config a1-trial.local.json a new
+# Offline tests; history here is recorded or explicitly synthetic, not acceptance.
+python3 scripts/a1_trial.py --config a1-trial.local.json b recover --history HISTORY.json --prepare-only
+python3 scripts/a1_trial.py --config a1-trial.local.json verify --history HISTORY.json
+python3 -m unittest discover -s scripts -p 'test_a1_trial.py' -v
+```
+
+Phase B command order (only after review and explicit trial authorization):
+C `--live c checkpoint`; copy its unchanged `checkpoint.json` to A;
+A `--live a fund`; independently retain the public bundle, owner intent/setup
+receipt, `checkpoint.json`, `locator.json`, and authenticated `s0-entry.json` on
+B/C. Copy **only** the two private backup files separately to B. Never send A's
+wallet or entire directory. For S0 recovery, physically switch A off before
+B `--live b recover`. For direct owner exit use A `--live a exit-s0` instead.
+Each case uses a new identity. C must keep Full history from the checkpoint.
+The runner observes exact accepted payout/spentness for ≥120 seconds;
+`--live verify` repeats that public check. A used identity is never resubmitted.
+
+For the race, prepare distinct A/B bodies with `--live ... --prepare-only`, then
+run both commands with `--live ... --submit-prepared --submit-at UNIX_SECONDS`
+at the same future time. Review both submission receipts and the single accepted
+body; an ambiguous error is not a proven rejection. A role that finds S0 already
+spent stops before submission and does not demonstrate a simultaneous race.
+
+The optional real-proof integration test uses
+`KPI_A1_TRIAL_INTEGRATION_CONFIG` pointing to a freshly observed unfunded local
+instance. It builds synthetic funding/history, fresh A/B proofs, and checks the
+pinned SDK and native Full without RPC or KAS. Run it only once per output
+directory: it deliberately retains exclusive evidence files. See the
+[runner design and trust boundaries](../../docs/poc-a1-trial-runner.md).

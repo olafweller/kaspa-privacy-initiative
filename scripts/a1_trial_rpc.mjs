@@ -1,0 +1,127 @@
+// Private stdin/stdout bridge for a1_trial.py. No connection in sdk-check mode.
+// SDK and funding handling follow a1_serialization.mjs and a0_tn10.mjs.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
+import {execFileSync} from 'node:child_process';
+
+export const pins = {
+  'kaspa.js':'6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf',
+  'kaspa_bg.wasm':'c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5',
+  'package.json':'8b61fefaba842c41b805291d95b2f9e81778ec590813a6c34eddcd316659b8d0',
+};
+const sha = b => crypto.createHash('sha256').update(b).digest('hex');
+const stringify = x => JSON.stringify(x, (_, v) => typeof v === 'bigint' ? v.toString() : v);
+const spk = s => s.version.toString(16).padStart(4,'0') + s.script;
+export function canonical(tx) {
+  tx.finalize();
+  return {version:tx.version,id:tx.id,inputs:tx.inputs.map(i=>({previousOutpoint:{transactionId:i.previousOutpoint.transactionId,index:i.previousOutpoint.index},
+    signatureScript:i.signatureScript??'',sequence:i.sequence.toString(),sigOpCount:i.sigOpCount,computeBudget:i.computeBudget})),
+    outputs:tx.outputs.map(o=>({value:o.value.toString(),scriptPublicKey:spk(o.scriptPublicKey),covenant:o.covenant?
+      {authorizingInput:o.covenant.authorizingInput,covenantId:o.covenant.covenantId.toString()}:null})),
+    lockTime:tx.lockTime.toString(),subnetworkId:tx.subnetworkId,gas:tx.gas.toString(),payload:tx.payload,storageMass:tx.storageMass.toString()};
+}
+export function decode(k, raw, entry) {
+  const safe={...raw,inputs:raw.inputs.map(i=>({transactionId:i.previousOutpoint.transactionId,index:i.previousOutpoint.index,
+    signatureScript:i.signatureScript,sequence:i.sequence,sigOpCount:i.sigOpCount,computeBudget:i.computeBudget,
+    utxo:{...entry,address:null,amount:String(entry.amount),blockDaaScore:String(entry.blockDaaScore)}}))};
+  const tx=k.Transaction.deserializeFromSafeJSON(JSON.stringify(safe));
+  const decoded=k.Transaction.deserializeFromSafeJSON(tx.serializeToSafeJSON());
+  const numeric=k.Transaction.deserializeFromJSON(decoded.serializeToJSON());
+  for(const t of [tx,decoded,numeric]) {
+    assert.deepEqual(canonical(t),raw,'SDK body changed');
+    const u=t.inputs[0].utxo;
+    assert.deepEqual({amount:u.amount.toString(),scriptPublicKey:spk(u.scriptPublicKey),blockDaaScore:u.blockDaaScore.toString(),
+      isCoinbase:u.isCoinbase,covenantId:u.entry.covenantId?.toString()??null},
+      {...entry,amount:String(entry.amount),blockDaaScore:String(entry.blockDaaScore)},'SDK entry changed');
+    assert.deepEqual({transactionId:u.outpoint.transactionId,index:u.outpoint.index},raw.inputs[0].previousOutpoint);
+  }
+  tx.free(); numeric.free(); return decoded;
+}
+function normalizeUtxo(u) {
+  const e=u.entry??u;
+  return {outpoint:{transactionId:e.outpoint.transactionId,index:e.outpoint.index},entry:{amount:e.amount.toString(),
+    scriptPublicKey:spk(e.scriptPublicKey),blockDaaScore:e.blockDaaScore.toString(),isCoinbase:e.isCoinbase,
+    covenantId:e.covenantId?.toString()??null}};
+}
+export async function execute(p) {
+  for(const [n,h] of Object.entries(pins)) assert.equal(sha(fs.readFileSync(path.join(p.sdk_dir,n))),h,'SDK pin');
+  const k=createRequire(import.meta.url)(path.join(p.sdk_dir,'kaspa.js'));
+  if(p.op==='sdk-check') {
+    const tx=decode(k,p.transaction,p.entry);const body=canonical(tx);tx.free();return {transaction:body,sdk_files:pins};
+  }
+  assert.equal(p.network,'testnet-10');
+  const url=new URL(p.rpc_url);
+  assert.ok(['ws:','wss:'].includes(url.protocol) && ['127.0.0.1','localhost','[::1]'].includes(url.hostname),'use C loopback or an SSH tunnel');
+  const rpc=new k.RpcClient({url:p.rpc_url,networkId:'testnet-10'});
+  await rpc.connect({blockAsyncConnect:true,timeoutDuration:120000});
+  try {
+    const info=await rpc.getServerInfo();
+    assert.equal(info.networkId,'testnet-10');assert.equal(info.serverVersion,'2.1.0');
+    assert.equal(info.isSynced,true);assert.equal(info.hasUtxoIndex,true);
+    const dag=await rpc.getBlockDagInfo();assert.equal(dag.network,'testnet-10');
+    // The validated C node is trusted for chain assertions, not a light client.
+    const address=s=>k.addressFromScriptPublicKey(s,'testnet-10').toString();
+    const utxos=async scripts=>(await rpc.getUtxosByAddresses({addresses:scripts.map(address)})).entries.map(normalizeUtxo);
+    if(p.op==='checkpoint') {
+      const block=(await rpc.getBlock({hash:dag.sink,includeTransactions:false})).block;
+      assert.equal(block.header.hash,dag.sink);assert.equal(block.verboseData.isChainBlock,true);
+      return {hash:dag.sink,blue_score:block.header.blueScore,daa_score:block.header.daaScore,utxos:await utxos(p.scripts)};
+    }
+    if(p.op==='page') return await rpc.getVirtualChainFromBlockV2({startHash:p.start,dataVerbosityLevel:'Full',minConfirmationCount:0});
+    if(p.op==='snapshot') return {horizon:dag.sink,utxos:await utxos(p.scripts)};
+    if(p.op==='survives') {
+      const delta=await rpc.getVirtualChainFromBlockV2({startHash:p.start,dataVerbosityLevel:'None',minConfirmationCount:0});
+      assert.equal(delta.removedChainBlockHashes.length,0,'reorg: stop this trial');return {survives:true};
+    }
+    if(p.op==='submit') {
+      let tx;
+      if(p.entry) tx=decode(k,p.transaction,p.entry);
+      else {
+        const raw=p.transaction;
+        tx=new k.Transaction({...raw,inputs:raw.inputs.map(i=>({...i,sequence:BigInt(i.sequence)})),
+          outputs:raw.outputs.map(o=>({...o,value:BigInt(o.value),covenant:undefined})),
+          lockTime:BigInt(raw.lockTime),gas:BigInt(raw.gas),storageMass:BigInt(raw.storageMass)});
+        assert.deepEqual(canonical(tx),raw);
+      }
+      const result=await rpc.submitTransaction({transaction:tx,allowOrphan:false});
+      assert.equal(result.transactionId,p.transaction.id);tx.free();return result;
+    }
+    if(p.op==='fund-plan') {
+      assert.equal(fs.statSync(p.wallet).mode&0o777,0o600,'private wallet mode');
+      const wallet=JSON.parse(fs.readFileSync(p.wallet));assert.equal(wallet.network,'testnet-10');
+      const key=new k.PrivateKey(wallet.private_key),from=key.toKeypair().toAddress('testnet-10').toString();
+      const to=address(p.spk);assert.notEqual(from,to);
+      const available=(await rpc.getUtxosByAddresses({addresses:[from]})).entries;
+      const generator=new k.Generator({entries:available,outputs:[{address:to,amount:BigInt(p.amount)}],changeAddress:from,
+        priorityFee:500000n,networkId:'testnet-10'});
+      const pending=await generator.next();assert.ok(pending);assert.ok(!(await generator.next()),'one funding transaction required');pending.sign([key]);
+      const tx=pending.transaction;let raw=canonical(tx);assert.equal(raw.version,0);
+      const entries=raw.inputs.map(i=>normalizeUtxo(available.find(u=>{
+        const e=u.entry??u;return e.outpoint.transactionId===i.previousOutpoint.transactionId && e.outpoint.index===i.previousOutpoint.index;
+      })));assert.ok(new Set(entries.map(x=>`${x.outpoint.transactionId}:${x.outpoint.index}`)).size===entries.length);
+      const exact=x=>{const n=BigInt(x);assert.ok(n>=0n&&n<=BigInt(Number.MAX_SAFE_INTEGER));return Number(n);};
+      const mass=k.calculateStorageMass('testnet-10',entries.map(x=>exact(x.entry.amount)),raw.outputs.map(o=>exact(o.value)));
+      assert.notEqual(mass,undefined);tx.storageMass=mass;raw=canonical(tx);
+      const matches=raw.outputs.map((o,index)=>({o,index})).filter(({o})=>o.scriptPublicKey===p.spk&&BigInt(o.value)===BigInt(p.amount)&&o.covenant===null);
+      assert.equal(matches.length,1);assert.ok(raw.outputs.length<=2&&raw.outputs.every(o=>o.covenant===null &&
+        (o.scriptPublicKey===p.spk&&BigInt(o.value)===BigInt(p.amount)||o.scriptPublicKey===spk(k.payToAddressScript(from)))));
+      const fee=entries.reduce((s,x)=>s+BigInt(x.entry.amount),0n)-raw.outputs.reduce((s,o)=>s+BigInt(o.value),0n);
+      assert.ok(fee>0n);
+      const context={entries:entries.map(x=>({outpoint:x.outpoint,amount:x.entry.amount,scriptPublicKeyHex:x.entry.scriptPublicKey,
+        blockDaaScore:x.entry.blockDaaScore,isCoinbase:x.entry.isCoinbase,covenantId:x.entry.covenantId})),
+        virtualDaaScore:dag.virtualDaaScore,pastMedianTime:dag.pastMedianTime};
+      fs.writeFileSync(p.context_file,stringify(context),{flag:'wx',mode:0o600});
+      fs.writeFileSync(p.body_file,stringify(raw),{flag:'wx',mode:0o600});
+      const checked=JSON.parse(execFileSync(p.funding_validator,['live','check-generic',p.context_file,p.body_file],{encoding:'utf8',stdio:['ignore','pipe','pipe']}));
+      assert.equal(BigInt(checked.fee_sompi),fee);return {transaction:raw,index:matches[0].index,fee:fee.toString(),native_full:true};
+    }
+    throw Error('unknown RPC operation');
+  } finally {await rpc.disconnect();}
+}
+if(process.argv[1]===new URL(import.meta.url).pathname) {
+  try {const p=JSON.parse(fs.readFileSync(0,'utf8'));process.stdout.write(stringify(await execute(p)));}
+  catch {console.error('A1 SDK/RPC operation failed; no automatic resubmission.');process.exitCode=1;}
+}
