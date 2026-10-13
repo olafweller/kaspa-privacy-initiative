@@ -8,6 +8,7 @@ The initiative should build on mature ideas and current Kaspa capabilities rathe
 
 ## Kaspa-specific
 
+- [technical-discussion-michael-sutton-based-apps-2026-10.md](technical-discussion-michael-sutton-based-apps-2026-10.md) — October external feedback as reported by Olaf; source boundaries and a proposed offline Based App/KIP-21 interval-completeness experiment.
 - [existing-kaspa-privacy.md](existing-kaspa-privacy.md) — existing proposals, experiments, and claims.
 - [kaspa-toccata-vprogs.md](kaspa-toccata-vprogs.md) — live primitives and evolving based-app tooling.
 - [kaspa-post-quantum-experiments.md](kaspa-post-quantum-experiments.md) — PQ signature experiments on Kaspa (STARK-verified, script-verified, covenant-enforced); input for issue #19.

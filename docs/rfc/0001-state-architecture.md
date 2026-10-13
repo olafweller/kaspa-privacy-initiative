@@ -2,7 +2,7 @@
 
 **Status:** Open
 
-**Date:** 2026-10-02; comparison updated 2026-10-08.
+**Date:** 2026-10-02; comparison updated 2026-10-08; external input recorded 2026-10-13.
 
 **Review owner:** project review; no architecture accepted by this draft.
 
@@ -20,6 +20,8 @@ The three candidates in [ARCHITECTURE.md](../ARCHITECTURE.md) share native-KAS b
 Fund safety, independent recovery, sender/receiver unlinkability, hidden internal amounts and useful scale are simultaneous requirements. A recoverable system with inadequate privacy or scale fails the goal. Native deposit/withdrawal amounts and destinations at public boundaries remain visible; no stronger claim is made.
 
 This RFC proposes an investigation order, not an architecture decision, cryptographic selection or authorization to implement/run Phase 2. A, B and C remain open; batching is an option within the comparison.
+
+The [October discussion with Michael Sutton, as reported by Olaf](../../research/technical-discussion-michael-sutton-based-apps-2026-10.md), adds external technical input favoring investigation of a single Based App/KIP-21 model for shared shielded state. It is not an approved transcript, formal endorsement or architecture decision. The note separates reported advice, checked primary sources, KPI interpretations and hypotheses.
 
 ## Constraints
 
@@ -167,7 +169,9 @@ These questions are inputs to a later review/decision; no construction below is 
 
 ## Proposed direction / outcome
 
-**Not decided. Provisional recommendation for review:** investigate a common logical anonymity domain, using A as the smallest settlement control and comparing optional batching on A with C early. Keep B as an explicit alternative, requiring coherent cross-shard nullification/backing and measured privacy as well as concurrency. A common logical domain need not mean one physical state object; none of these hypotheses is accepted.
+**Not decided. Provisional recommendation for review:** investigate a common logical anonymity domain, prioritizing an early single-Based-App/KIP-21 feasibility experiment for C while retaining A, including optional batching, as the smallest settlement comparison baseline. Keep B open but defer initial sharding work pending measured evidence that a scaling requirement warrants its cross-shard nullification, backing and privacy complexity. A common logical domain need not mean one physical state object; none of these hypotheses is accepted.
+
+The [proposed ten-operation experiment](../../research/technical-discussion-michael-sutton-based-apps-2026-10.md#proposed-small-feasibility-poc) targets authenticated batch-input completeness: reconstruct canonical lane ordering, prove the full interval, omit three included operations while claiming the same interval and demonstrate rejection, then reconstruct with a second executor. Start offline and unfunded; TN10 testing requires separate authorization, with native-KAS deposit/exit integration investigated later. This may address A + batching's input-set verification gap, but does not establish privacy, progress under censorship/executor failure, permissionless exits, discovery, fee privacy or recovery after pruning. Full cross-app vProgs composability is not assumed necessary for this test.
 
 The rationale is the combination of mature [Orchard][O] and [RAILGUN][R] note/membership patterns, material native [verification charges][Tags] and [resource limits][Budgets], and explicit [pruning/recovery gaps][Retention]. A is a useful control for exposing conservation and native output bindings with few execution components. Its single-state contention prevents treating that simplicity as a scaling argument. C's batching/integration may help but adds ordered-replay, confidential-execution and prototype-runtime obligations. B may parallelize work, but global spentness and observable routing can cancel its scale/privacy advantage.
 
