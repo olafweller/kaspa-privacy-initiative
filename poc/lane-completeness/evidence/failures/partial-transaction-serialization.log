@@ -1,0 +1,4 @@
+
+thread 'main' (26742) panicked at /home/agent/.cargo/git/checkouts/rusty-kaspa-410e06d1fde91a92/01b532e/consensus/core/src/tx/serde_impl.rs:171:30:
+v1+ transaction inputs must carry a ComputeBudget mass
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

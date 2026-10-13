@@ -1,0 +1,6 @@
+{
+  "accepted": false,
+  "error": "ZkIntegrity(\"R0: control_id mismatch: 34530b42028fb631c90e1226bb0e750d4b9b593840d45216f75dca449dac7734\")",
+  "script_units": 25006390,
+  "verification_ms": 0.575414
+}

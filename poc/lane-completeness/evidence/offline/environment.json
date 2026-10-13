@@ -1,0 +1,24 @@
+{
+  "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "cpu_quota": "400000 100000",
+  "memory_limit_bytes": 17179869184,
+  "python": "3.12.14",
+  "host_rust": "rustc 1.91.0 (f8297e351 2025-10-28)",
+  "guest_rust": "rustc 1.97.0-dev (e638c6cfe 2026-07-15)",
+  "r0vm": "risc0-r0vm 3.0.3",
+  "prover": "official r0vm local IPC, CPU, RAYON_NUM_THREADS=4, no dev mode",
+  "upstreams": {
+    "kpi": "ccbdfbc7b5d2f601089e9dc5254719c523a64010",
+    "docs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "kips": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
+    "rusty-kaspa": "01b532e8b553523216471682649693af92f0fd16",
+    "vprogs": "f9b84a863a7c7c20586a9cf947550475e894f72e"
+  },
+  "artifact_sha256": {
+    "r0vm": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+    "cargo-risczero.tgz": "71a0adaa64235be13e9b8471bea5c4ded64bf97c6bd1eb9c2285b966c0b62fee",
+    "risc0-toolchain-1.97.tar.gz": "100b597d605b706bec94e1d32bfaaf5851df8d75173f986d4b56a3e90916be53",
+    "embedded-recursion_zkr.zip": "744b999f0a35b3c86753311c7efb2a0054be21727095cf105af6ee7d3f4d8849"
+  }
+}

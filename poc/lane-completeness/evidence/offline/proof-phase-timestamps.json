@@ -1,0 +1,8 @@
+{
+  "method": "Linux process start ticks plus kernel boot epoch compared with artifact mtimes; inferred phase durations, about one-second epoch resolution",
+  "process_start_unix_seconds": 1791886052.71,
+  "full_receipt_mtime_unix_seconds": 1791886509.5609424,
+  "full_receipt_elapsed_seconds_inferred": 456.85094237327576,
+  "omitted_receipt_mtime_unix_seconds": 1791886975.791118,
+  "omitted_receipt_elapsed_seconds_inferred": 466.2301754951477
+}

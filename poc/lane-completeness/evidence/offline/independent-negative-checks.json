@@ -1,0 +1,26 @@
+{
+  "omit_3_6_9_same_anchor": {
+    "rejected": true,
+    "error": "complete per-block reconstruction mismatch"
+  },
+  "reorder_accepted_ids": {
+    "rejected": true,
+    "error": "complete per-block reconstruction mismatch"
+  },
+  "missing_body": {
+    "rejected": true,
+    "error": "'45b28a1df151c52197dce1f30434d1522b7018dbd8c8150c42f0ca67b52133f6'"
+  },
+  "corrupted_payload": {
+    "rejected": true,
+    "error": "transaction/payload ID mismatch"
+  },
+  "wrong_start_tip": {
+    "rejected": true,
+    "error": ""
+  },
+  "wrong_smt_sibling": {
+    "rejected": true,
+    "error": "canonical endpoint mismatch"
+  }
+}

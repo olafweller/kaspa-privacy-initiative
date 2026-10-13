@@ -1,0 +1,13 @@
+{
+  "SECURITY-INVARIANTS.md": {
+    "unchanged": true,
+    "sha256": "44cf983d06c8895c61a492107f65487725331a1b2f93d1c89e7353fb5399733d"
+  },
+  "docs/rfc/0001-state-architecture.md": {
+    "unchanged": true,
+    "sha256": "25638527837ad6e04a0191c0277cc880382d3701bacbc220620052466442d1de"
+  },
+  "a1_and_prior_a0_evidence": {
+    "unchanged": true
+  }
+}

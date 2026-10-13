@@ -1,0 +1,16 @@
+{
+  "command": [
+    "target/debug/kpi-lane-host",
+    "prove",
+    "evidence/offline",
+    "guest/target/riscv32im-risc0-zkvm-elf/release/kpi-lane-guest"
+  ],
+  "exit_code": 101,
+  "wall_seconds": 922.7615836389998,
+  "user_cpu_seconds": 3612.902991,
+  "system_cpu_seconds": 5.023165,
+  "max_rss_kib": 9578828,
+  "rss_scope": "Linux RUSAGE_CHILDREN: largest individual process RSS in waited tree, not summed simultaneous memory",
+  "major_page_faults": 0,
+  "minor_page_faults": 5560155
+}

@@ -1,0 +1,18 @@
+[workspace]
+members = ["common", "host"]
+exclude = ["guest", "vendor/covenant"]
+resolver = "2"
+
+[workspace.dependencies]
+kaspa-hashes = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master", default-features = false }
+kaspa-seq-commit = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master", default-features = false }
+kaspa-smt = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master", default-features = false }
+vprogs-l1-utils = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e" }
+
+[profile.dev]
+opt-level = 2
+debug = 0
+
+[profile.release]
+debug = 0
+

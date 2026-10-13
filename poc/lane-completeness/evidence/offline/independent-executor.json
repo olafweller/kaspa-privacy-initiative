@@ -1,0 +1,19 @@
+{
+  "scope": "independent Python synthetic fixture reconstruction",
+  "operations": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "state": "058afe34eba1b57bf89efd7f1276064a891ec98b4f95e47d3b760714d74665a0",
+  "lane_tip": "0b740d69d0808272d1e960cc50097f0e248e7c97d08ee4338d2d690447c5a981",
+  "seq_commit": "ee0c69df80c332c84ac643bb61ba5e502cd299f6d9f1c591c7df8503f052eaf2",
+  "endpoint_verified": true
+}

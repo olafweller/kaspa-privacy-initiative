@@ -1,0 +1,49 @@
+    Updating crates.io index
+    Updating git repository `https://github.com/kaspanet/rusty-kaspa`
+    Updating git repository `https://github.com/kaspanet/vprogs`
+     Locking 182 packages to latest compatible versions
+      Adding enum-ordinalize v4.4.2 (requires Rust 1.89)
+      Adding enum-ordinalize-derive v4.4.2 (requires Rust 1.89)
+      Adding generic-array v0.14.7 (available: v0.14.9)
+      Adding kaspa-hashes v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8) (requires Rust 1.91.0)
+      Adding kaspa-merkle v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8) (requires Rust 1.91.0)
+      Adding kaspa-seq-commit v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8) (requires Rust 1.91.0)
+      Adding kaspa-smt v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8) (requires Rust 1.91.0)
+      Adding kaspa-utils v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8) (requires Rust 1.91.0)
+      Adding risc0-zkvm v3.0.3 (available: v3.0.6)
+      Adding ruint v1.20.1 (requires Rust 1.90)
+      Adding serde v1.0.228 (available: v1.0.229)
+      Adding serde_core v1.0.228 (available: v1.0.229)
+      Adding serde_derive v1.0.228 (available: v1.0.229)
+      Adding wasm-bindgen v0.2.100 (available: v0.2.129)
+      Adding wasm-bindgen-backend v0.2.100 (available: v0.2.104)
+      Adding wasm-bindgen-macro v0.2.100 (available: v0.2.129)
+      Adding wasm-bindgen-macro-support v0.2.100 (available: v0.2.129)
+      Adding wasm-bindgen-shared v0.2.100 (available: v0.2.129)
+ Downloading crates ...
+  Downloaded risc0-core v3.0.2
+  Downloaded risc0-zkvm-platform v2.2.3
+  Downloaded risc0-groth16 v3.0.5
+  Downloaded risc0-binfmt v3.0.5
+  Downloaded risc0-zkp v3.0.5
+  Downloaded risc0-circuit-recursion v4.0.5
+  Downloaded risc0-zkos-v1compat v2.2.3
+  Downloaded risc0-circuit-keccak v4.0.6
+  Downloaded risc0-circuit-rv32im v4.0.5
+error: rustc 1.88.0-dev is not supported by the following packages:
+  enum-ordinalize@4.4.2 requires rustc 1.89
+  enum-ordinalize-derive@4.4.2 requires rustc 1.89
+  kaspa-hashes@2.1.0 requires rustc 1.91.0
+  kaspa-hashes@2.1.0 requires rustc 1.91.0
+  kaspa-hashes@2.1.0 requires rustc 1.91.0
+  kaspa-merkle@2.1.0 requires rustc 1.91.0
+  kaspa-seq-commit@2.1.0 requires rustc 1.91.0
+  kaspa-smt@2.1.0 requires rustc 1.91.0
+  kaspa-smt@2.1.0 requires rustc 1.91.0
+  kaspa-smt@2.1.0 requires rustc 1.91.0
+  kaspa-utils@2.1.0 requires rustc 1.91.0
+  ruint@1.20.1 requires rustc 1.90
+Either upgrade rustc or select compatible dependency versions with
+`cargo update <name>@<current-ver> --precise <compatible-ver>`
+where `<compatible-ver>` is the latest version supporting rustc 1.88.0-dev
+

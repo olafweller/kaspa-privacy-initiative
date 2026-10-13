@@ -1,0 +1,121 @@
+{
+  "bounded_script_verification": {
+    "accepted": true,
+    "error": null,
+    "script_units": 25006391,
+    "verification_ms": 35.516965
+  },
+  "broadcast": false,
+  "compute_budget": 2500,
+  "compute_mass_grams": 474267,
+  "default_relay_fee_floor_sompi_before_fee_inputs": 47426700,
+  "estimated_transaction_bytes": 223897,
+  "fee_paid_sompi": 0,
+  "fee_scope": "estimate for synthetic one-input no-fee body; not mempool validation or fees actually paid",
+  "fits_tn10_mass_limits_before_fee_inputs": true,
+  "full_proof": {
+    "reverified": true
+  },
+  "funded": false,
+  "guest_image_id": "0881c8caf405ccaf72c41e3c8a0a3a7dd48a4aaf55f040c4de2d759a6c4226f1",
+  "partial_proof": {
+    "reverified": true
+  },
+  "redeem_bytes": 557,
+  "results": {
+    "changed_continuation_value": {
+      "accepted": false,
+      "error": "VerifyError",
+      "script_units": 4981,
+      "verification_ms": 0.09509200000000001
+    },
+    "corrupt_claim": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"R0: journal digest mismatch detected\")",
+      "script_units": 25006390,
+      "verification_ms": 36.170222
+    },
+    "corrupt_seal": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"R0: control_id mismatch: 00b08565f0795d1bbb246e2d30e5ee00e4dfe60baf3498173dddec04e4c7e327\")",
+      "script_units": 25006390,
+      "verification_ms": 0.418946
+    },
+    "cross_covenant": {
+      "accepted": false,
+      "error": "covenant context: WrongGenesisCovenantId(0, 5455555555555555555555555555555555555555555555555555555555555555)"
+    },
+    "cross_lane": {
+      "accepted": false,
+      "error": "EvalFalse",
+      "script_units": 1146,
+      "verification_ms": 0.085628
+    },
+    "full_interval": {
+      "accepted": true,
+      "error": null,
+      "script_units": 25006391,
+      "verification_ms": 35.292539999999995
+    },
+    "omit_three_same_interval": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"Verification failed\")",
+      "script_units": 25006390,
+      "verification_ms": 35.924504000000006
+    },
+    "partial_executor_supplied_anchor_control": {
+      "accepted": true,
+      "error": null,
+      "script_units": 25006391,
+      "verification_ms": 36.935915
+    },
+    "partial_proof_claims_full_tip": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"Verification failed\")",
+      "script_units": 25006390,
+      "verification_ms": 36.542618
+    },
+    "replay_against_successor_state": {
+      "accepted": false,
+      "error": "EvalFalse",
+      "script_units": 1146,
+      "verification_ms": 0.029164
+    },
+    "unknown_or_orphan_anchor": {
+      "accepted": false,
+      "error": "BlockNotSelected(\"7373737373737373737373737373737373737373737373737373737373737373\")",
+      "script_units": 1147,
+      "verification_ms": 0.061731999999999995
+    },
+    "wrong_canonical_anchor": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"Verification failed\")",
+      "script_units": 25006390,
+      "verification_ms": 33.964155000000005
+    },
+    "wrong_new_state": {
+      "accepted": false,
+      "error": "ZkIntegrity(\"Verification failed\")",
+      "script_units": 25006390,
+      "verification_ms": 33.881322
+    },
+    "wrong_old_state": {
+      "accepted": false,
+      "error": "EvalFalse",
+      "script_units": 1146,
+      "verification_ms": 0.126709
+    }
+  },
+  "scope": "REAL_PROOFS_NATIVE_SCRIPT_SYNTHETIC_L1_ANCHOR_ONLY",
+  "script_units": 25006391,
+  "settlement_id": "de31a0c8be7e52f77b40dc729a5857d8f25165beb18c9c1c1bdeaf067b3215fd",
+  "signature_script_bytes": 223662,
+  "storage_mass_grams": 0,
+  "transient_mass_grams": 895588,
+  "underbudget_rejected": {
+    "accepted": false,
+    "error": "ExceededCommittedScriptUnits { used: 25006390, limit: 9999 }",
+    "script_units": 6390,
+    "verification_ms": 0.16097099999999998
+  }
+}

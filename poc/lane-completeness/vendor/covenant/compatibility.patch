@@ -1,0 +1,106 @@
+--- src/script.rs
++++ src/script.rs
+@@ -82,16 +82,16 @@
+ /// against the live `risc0_circuit_recursion::POSEIDON2_CONTROL_IDS` so any upstream rotation
+ /// trips at test time rather than silently breaking the on-chain Succinct precompile.
+ pub mod succinct_consts {
+-    /// `resolve.zkr` poseidon2 control id.
+-    ///
+-    /// Every `ProverOpts::succinct()` proof with at least one assumption (every real batch
+-    /// composes its per-tx receipts as assumptions) ends with a `resolve.zkr` step, so the
+-    /// outer receipt's `control_id` is the poseidon2 control id for `resolve.zkr` published
+-    /// in `risc0_circuit_recursion::control_id::POSEIDON2_CONTROL_IDS`.
++    /// PoC adaptation: single-segment monolithic `lift_rv32im_v2_20.zkr` control id.
++    /// The upstream runtime pins resolve.zkr because it composes assumptions.
++    /// This guest has no assumptions. Keep an exact pin to the official allowed
++    /// lift circuit; native verification still checks the allowed-control root,
++    /// guest image, empty assumptions and exact journal. Other segment shapes
++    /// are intentionally unsupported by this fixed experiment covenant.
+     pub const SUCCINCT_CONTROL_ID: [u8; 32] = [
+-        0x53, 0xa7, 0xb2, 0x3d, 0x07, 0xf9, 0x9e, 0x5d, 0x56, 0x85, 0xe8, 0x58, 0x74, 0xf5, 0x18,
+-        0x1e, 0x84, 0x86, 0xaa, 0x26, 0x7a, 0x0a, 0xe6, 0x07, 0xff, 0xe9, 0xba, 0x47, 0xc8, 0xbd,
+-        0xda, 0x4a,
++        0x34, 0x53, 0x0b, 0x42, 0x02, 0x8f, 0xb6, 0x31, 0xc9, 0x0e, 0x12, 0x26, 0xbb, 0x0e, 0x75,
++        0x0d, 0x4b, 0x9b, 0x59, 0x38, 0x40, 0xd4, 0x52, 0x16, 0xf7, 0x5d, 0xca, 0x44, 0x9d, 0xac,
++        0x77, 0x34,
+     ];
+ 
+     /// kaspa `OpZkPrecompile` hashfn tag for risc0 `poseidon2`, the only recursion hash kaspa
+@@ -1318,17 +1318,17 @@
+         use super::super::succinct_consts::*;
+ 
+         #[test]
+-        fn succinct_control_id_matches_resolve_zkr_poseidon2() {
++        fn succinct_control_id_matches_monolithic_lift_poseidon2() {
+             let live: [u8; 32] = POSEIDON2_CONTROL_IDS
+                 .iter()
+-                .find_map(|(name, digest)| (*name == "resolve.zkr").then_some(*digest))
+-                .expect("resolve.zkr present in POSEIDON2_CONTROL_IDS")
++                .find_map(|(name, digest)| (*name == "lift_rv32im_v2_20.zkr").then_some(*digest))
++                .expect("lift_rv32im_v2_20.zkr present in POSEIDON2_CONTROL_IDS")
+                 .as_bytes()
+                 .try_into()
+                 .expect("digest is 32 bytes");
+             assert_eq!(
+                 SUCCINCT_CONTROL_ID, live,
+-                "SUCCINCT_CONTROL_ID must match the live resolve.zkr poseidon2 control id",
++                "SUCCINCT_CONTROL_ID must match the live monolithic lift poseidon2 control id",
+             );
+         }
+     }
+--- src/settlement.rs
++++ src/settlement.rs
+@@ -177,7 +177,7 @@
+         );
+         let sig_cache = Cache::new(1);
+         let reused = SigHashReusedValuesUnsync::new();
+-        let flags = EngineFlags { covenants_enabled: true, ..Default::default() };
++        let flags = EngineFlags::default();
+         let populated = PopulatedTransaction::new(tx, vec![utxo.clone()]);
+         let cov_ctx =
+             CovenantsContext::from_tx(&populated).expect("covenant continuity validation");
+@@ -323,7 +323,7 @@
+ fn sig_script_dev(redeem: &[u8], input: &SettlementDevInput<'_>) -> Vec<u8> {
+     // Dev sig_script is small (no seal), but use the covenants-enabled flags for parity with
+     // the production sig_script builder.
+-    ScriptBuilder::with_flags(EngineFlags { covenants_enabled: true, ..Default::default() })
++    ScriptBuilder::with_flags(EngineFlags::default())
+         .add_data(input.deposit_spk_hash)
+         .unwrap()
+         .add_data(input.claimed_seq_commit.as_slice())
+@@ -367,7 +367,7 @@
+     // `ScriptBuilder::new()` (covenants_enabled=false) enforces. Building with
+     // covenants-enabled flags raises the cap to the 1 MB post-Toccata limit, which the
+     // settlement covenant requires anyway (it spends a Toccata covenant UTXO).
+-    ScriptBuilder::with_flags(EngineFlags { covenants_enabled: true, ..Default::default() })
++    ScriptBuilder::with_flags(EngineFlags::default())
+         .add_data(witness.claim)
+         .unwrap()
+         .add_data(&witness.control_index.to_le_bytes())
+@@ -410,7 +410,7 @@
+     compressed_proof: &[u8],
+     deposit_spk_hash: &[u8; 32],
+ ) -> Vec<u8> {
+-    ScriptBuilder::with_flags(EngineFlags { covenants_enabled: true, ..Default::default() })
++    ScriptBuilder::with_flags(EngineFlags::default())
+         .add_data(compressed_proof)
+         .unwrap()
+         .add_data(deposit_spk_hash)
+@@ -786,7 +786,7 @@
+         );
+         let sig_cache = Cache::new(1);
+         let reused = SigHashReusedValuesUnsync::new();
+-        let flags = EngineFlags { covenants_enabled: true, ..Default::default() };
++        let flags = EngineFlags::default();
+         let populated = PopulatedTransaction::new(tx, vec![utxo.clone()]);
+         let cov_ctx =
+             CovenantsContext::from_tx(&populated).expect("covenant continuity validation");
+@@ -1109,7 +1109,7 @@
+         );
+         let sig_cache = Cache::new(1);
+         let reused = SigHashReusedValuesUnsync::new();
+-        let flags = EngineFlags { covenants_enabled: true, ..Default::default() };
++        let flags = EngineFlags::default();
+         let populated = PopulatedTransaction::new(tx, vec![utxo.clone()]);
+         let cov_ctx =
+             CovenantsContext::from_tx(&populated).expect("covenant continuity validation");
