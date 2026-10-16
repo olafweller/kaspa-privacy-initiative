@@ -34,9 +34,9 @@
   "full.receipt.bin": "639a413eb64fd68af6475cf9c767406a496b51dbe0ff9ca18af1b4413fa6b7bb",
   "identity.json": "ec6466d770fb438e523747fba731d69a3f824a64a16078ef87523e9c66585fd7",
   "input-prepared.json": "2a423b07d3622dc5eb488b148008873df5590faadd7ba1f9a4b72176a96e1284",
-  "integration-profile-tests.log": "9c17e21d0bc66bb04e88a17b1e8ef6ce5765422c7afa83ff8682b32fffbb455d",
-  "integration-profile20-tests.log": "03f3d907b7f83369a5b9c636a718718469ea2b6dedd53c2a4e7439e96c4df171",
-  "integration-rust-tests.log": "108daefc44f63894d54ce16e87274bd23653f63149229cf48d55187327974281",
+  "integration-profile-tests.log.gz": "522d9782e2745052788e3bd63c013f58c4f176db3c041e3e95c925c8e28bf6c7",
+  "integration-profile20-tests.log.gz": "6dd99af5e9c77686af207ddb0696e2628f073e2361785dc100774dcd1e2f8aab",
+  "integration-rust-tests.log.gz": "1a86df3494de079baeed43f07066a901c8f87681bb7cf86e4c008de1ff00b69d",
   "integration-source-sha256.json": "b4fad2f3097961b8af127cdf50a5a7b23271e45c051699b4574a707d14960ae2",
   "invalid-settlement-builder-process.json": "ef7fd48c358241abc38e4f6170002867faed866b44fbbcb066e1ca923445a336",
   "invalid-settlement-rejected.json": "764cbbcbd2e3af60fc412f579407e6504fc19bd138c5497ef20d64559baddf93",
@@ -64,7 +64,8 @@
   "settlement-transaction.json": "7bf8d69645d3938f77256e526cc606d5ad3e71403540b1fe45de9839d63511ee",
   "successful-trial-public.tar.gz": "ad97e6af0b55e7d789b546bbbf35dd0a5c4472f136ac8dab20c542e12d4360e5",
   "test-wallet-accounting.json": "2a5446732b3efd58ac9190d55f3dfaf32c359fe4e6fa28dccb3cca90e4393f48",
+  "validation.json": "3a62d5bb724ad6b3c5ceb12f511b135d7b0f883ea9c8c12d8b24dcfe92d651e4",
   "vps-deployed-hashes.txt": "b3e506c693ad218fdc921dcdd7e0393a75750ea2880ecf0f3d927d7dd81c74bc",
   "vps-runtime.txt": "da1f31c8e85c06baf26fa1fb1e75ea5df4987f3ad36634e3967b9fbb61359685",
-  "wallet-tests.log": "5361e16a43b72e12cbaa08040616850f47a907e69e26d13d30c0ff186f011f0c"
+  "wallet-tests.log.gz": "978ec4719d284ba145f7cea614460dc712b8a66916419b21cf20e72e435ea4ff"
 }

@@ -1,0 +1,23 @@
+{
+  "code_commit": "1fe49134b22dcf06d6a41c51d1be2759ede03c78",
+  "wallet_unit_tests_passed": 34,
+  "adversarial_relation_test_passed_in_lift19_and_lift20_builds": true,
+  "capture_mutation_tests_passed": {
+    "native_capture": 8,
+    "final_kpi_capture": 8
+  },
+  "independent_ids_state_tip_anchor_agree": true,
+  "real_receipt_sdk_and_exact_journal_verified": true,
+  "wrong_state_rejected_by_tn10_proof_verifier": true,
+  "valid_settlement_confirmed_and_successor_queried": true,
+  "old_outpoint_spent": true,
+  "all_test_funding_accounted": true,
+  "historical_evidence_hashes_unchanged": 25,
+  "historical_sources_unchanged": 22,
+  "authorized_source_exceptions": [
+    "vendor/covenant/Cargo.toml",
+    "vendor/covenant/src/script.rs"
+  ],
+  "documentation_links_and_syntax_checks_passed": true,
+  "raw_test_log_note": "Gzip stores verbatim test output, including original EOF blank lines."
+}
