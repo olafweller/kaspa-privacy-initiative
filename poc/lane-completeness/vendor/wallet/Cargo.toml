@@ -1,0 +1,21 @@
+[package]
+name = "vprogs-l1-wallet"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "ISC"
+
+[workspace]
+
+[dependencies]
+kaspa-addresses = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-consensus-core = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-hashes = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-rpc-core = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-txscript = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+log = "0.4"
+secp256k1 = "0.29.1"
+tap = "1.0.1"
+thiserror = "2"
+vprogs-core-codec = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e" }
+vprogs-core-types = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e" }

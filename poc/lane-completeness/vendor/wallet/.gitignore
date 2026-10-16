@@ -1,0 +1,3 @@
+# These directories contain vendored Rust source, not generated build output.
+!src/build/
+!src/build/**

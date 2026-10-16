@@ -1,0 +1,41 @@
+--- a/src/build/funding.rs
++++ b/src/build/funding.rs
+@@ -219 +219 @@
+-        limit: params.block_mass_limits().raw_post().storage,
++        limit: params.block_mass_limits.storage,
+@@ -661 +661 @@
+-        let limit = params.block_mass_limits().raw_post().storage;
++        let limit = params.block_mass_limits.storage;
+--- a/src/build/pricing.rs
++++ b/src/build/pricing.rs
+@@ -50 +50 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+@@ -86 +86 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+@@ -137 +137 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+--- a/src/build/testing.rs
++++ b/src/build/testing.rs
+@@ -77 +77 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+@@ -102 +102 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+@@ -133 +133 @@
+-    let cofactors = params.block_mass_limits().raw_post().cofactors();
++    let cofactors = params.block_mass_limits.cofactors();
+@@ -144 +144 @@
+-    let limit = params.block_mass_limits().raw_post().storage;
++    let limit = params.block_mass_limits.storage;
+--- a/src/build/viability.rs
++++ b/src/build/viability.rs
+@@ -35 +35 @@
+-    let limit = params.block_mass_limits().raw_post().storage;
++    let limit = params.block_mass_limits.storage;
+@@ -69 +69 @@
+-        let limit = params.block_mass_limits().raw_post().storage;
++        let limit = params.block_mass_limits.storage;
