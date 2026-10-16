@@ -66,8 +66,10 @@ end anchor. This connects the retained offline relation to actual input,
 funding, UTXO state, proof verification and confirmation.
 
 Use a seed transaction outside the measured interval to activate the lane.
-Bootstrap the covenant at the corresponding tip and the explicit initial KPI
-state, then publish three operations. The preactivated checkpoint is intentional:
+Publish three operations, capture the interval and profile the actual guest
+execution before choosing its fixed circuit. Bootstrap a catch-up covenant at
+the known seed tip and explicit initial state, then prove against the actual
+covenant identity. The preactivated checkpoint is intentional:
 the old guest does not prove first-touch, expiry/reactivation or a general
 bootstrap history. No mandatory count-to-three check is added to its relation.
 
@@ -96,3 +98,13 @@ journal checks remain. See [live pin patch](../vendor/covenant/live19.patch).
 This illustrates why the general solution should use a compatible established
 recursive proving trajectory with its resolve pin, rather than advertise this
 fixed-shape monolithic experiment as a general vProgs runtime.
+
+
+The later capture also demonstrated that SMT witness depth changes execution
+size even with three operations. The reproducible path therefore profiles the
+actual captured workload **before** bootstrap, selects the explicit official
+lift-19 or lift-20 builder, and rechecks the real-input profile after inserting
+the actual covenant ID. This execution-only measurement creates no receipt and
+is never represented as proof verification. The real proof and node validation
+remain mandatory. The added stage avoids guessing verifier identity from an
+operation count; it does not widen any deployed covenant's accepted circuits.

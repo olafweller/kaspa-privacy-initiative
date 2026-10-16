@@ -265,6 +265,26 @@ fn verify(capture: &Value, subnet: &[u8; 20], attack: &str) -> Result<Value> {
 
 fn main() -> Result<()> {
     let args: Vec<_> = std::env::args().collect();
+    if args.get(1).map(String::as_str) == Some("profile") {
+        ensure(
+            std::env::var("RISC0_DEV_MODE").is_err(),
+            "development mode forbidden",
+        )?;
+        let input: kpi_lane_common::Input = serde_json::from_slice(&fs::read(&args[2])?)?;
+        let program = fs::read(&args[3])?;
+        let env = risc0_zkvm::ExecutorEnv::builder().write(&input)?.build()?;
+        let execution = risc0_zkvm::default_executor().execute(env, &program)?;
+        ensure(
+            execution.journal.bytes
+                == kpi_lane_common::journal(&input, &kpi_lane_common::execute(&input)),
+            "profile journal mismatch",
+        )?;
+        println!(
+            "{}",
+            json!({"scope":"EXECUTION_ONLY_NO_CRYPTOGRAPHIC_PROOF", "segments":execution.segments.iter().map(|s|json!({"po2":s.po2,"cycles":s.cycles})).collect::<Vec<_>>()})
+        );
+        return Ok(());
+    }
     if args.get(1).map(String::as_str) == Some("prove") {
         let input: kpi_lane_common::Input = serde_json::from_slice(&fs::read(&args[2])?)?;
         println!(

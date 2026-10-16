@@ -6,6 +6,10 @@ publish = false
 
 [workspace]
 
+[features]
+default = ["monolithic-lift19"]
+monolithic-lift19 = ["vprogs-zk-backend-risc0-covenant/monolithic-lift19"]
+
 [dependencies]
 kaspa-hashes = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
 kaspa-seq-commit = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
@@ -20,7 +24,7 @@ secp256k1 = "0.29.1"
 kaspa-addresses = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
 kpi-lane-common = { path = "../common" }
 kaspa-txscript = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
-vprogs-zk-backend-risc0-covenant = { path = "../vendor/covenant", features = ["monolithic-lift19"] }
+vprogs-zk-backend-risc0-covenant = { path = "../vendor/covenant" }
 risc0-zkvm = "=3.0.3"
 risc0-binfmt = "=3.0.4"
 risc0-zkos-v1compat = "=2.2.2"

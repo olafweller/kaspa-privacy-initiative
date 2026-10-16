@@ -9,6 +9,7 @@ assert(trial?.startsWith(root + '/trial-') && !trial.includes('..'));
 const prepared = JSON.parse(fs.readFileSync(path.join(trial, 'prepared.json')));
 const input = JSON.parse(fs.readFileSync(path.join(trial, 'input.json')));
 const bootstrap = JSON.parse(fs.readFileSync(path.join(trial, 'bootstrap-transaction.json')));
+assert([root+'/kpi-tn10-integration-lift19-v2',root+'/kpi-tn10-integration-lift20-v2'].includes(prepared.builderBinary),'explicit circuit-specific builder required');
 const wallet = JSON.parse(fs.readFileSync(root + '/test-wallet.public.json'));
 const save = (name, value) => fs.writeFileSync(path.join(trial, name), JSON.stringify(value, null, 2) + '\n', {flag: 'wx', mode: 0o600});
 assert(!fs.existsSync(path.join(trial, 'settlement-submission-intent.json')), 'inspect previous submission before any retry');
@@ -29,7 +30,7 @@ async function build(label, invalidState) {
   const request={kind:'settlement',invalidState,input,end:prepared.end,receiptPath:path.join(trial,'full.receipt.bin'),covenantUtxo:entry,
     server:s,utxos:await call('getUtxosByAddresses',{addresses:[wallet.address]}),feeEstimate:await call('getFeeEstimate')};
   save(label+'-request.json',request);
-  const r=spawnSync(root+'/kpi-tn10-integration-lift19',['build',prepared.lane,root+'/test-wallet.key',path.join(trial,label+'-request.json'),
+  const r=spawnSync(prepared.builderBinary,['build',prepared.lane,root+'/test-wallet.key',path.join(trial,label+'-request.json'),
     path.join(trial,label+'-transaction.json'),root+'/guest.program.bin'],{encoding:'utf8',maxBuffer:32*1024*1024});
   save(label+'-builder-process.json',{status:r.status,stdout:r.stdout,stderr:r.stderr});
   assert.equal(r.status,0,'real proof and covenant-state validation must pass before submission');

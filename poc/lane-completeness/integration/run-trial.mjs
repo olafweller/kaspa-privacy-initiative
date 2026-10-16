@@ -8,7 +8,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 
 const root = '/opt/kpi-pr31-cloud-20261017';
-const binary = root + '/kpi-tn10-integration-lift19';
+const binary = root + '/kpi-tn10-integration-lift19-v2';
 const program = root + '/guest.program.bin';
 const wallet = JSON.parse(fs.readFileSync(root + '/test-wallet.public.json'));
 assert.equal(wallet.network, 'testnet-10');
@@ -89,8 +89,6 @@ try {
   const proof = await call('getSeqCommitLaneProof', {blockHash: seed.hash, laneKey});
   assert(proof.lane, 'seed must activate lane');
   save('start-proof.json', proof);
-  const bootstrap = await prepare('bootstrap', {kind: 'bootstrap', tip: proof.lane.tip});
-  await submit('bootstrap', bootstrap);
   let end;
   for (const number of [1, 2, 3]) {
     end = await submit('operation-' + number, await prepare('operation-' + number, {kind: 'activity', number}));
@@ -100,11 +98,12 @@ try {
   const capture = spawnSync('/opt/kpi-cloud-https/bin/node', [root + '/capture-v2.mjs', path.join(trial, 'capture.json'), laneKey, '50', seed.hash, end.hash], {encoding: 'utf8', maxBuffer: 32 * 1024 * 1024});
   save('capture-process.json', {status: capture.status, stdout: capture.stdout, stderr: capture.stderr});
   assert.equal(capture.status, 0);
-  const input = execute(['export', lane, path.join(trial, 'capture.json'), bootstrap.covenantId]);
-  fs.writeFileSync(path.join(trial, 'input.json'), input, {flag: 'wx'});
-  save('prepared.json', {status: 'REAL_INPUT_CAPTURED_PROOF_AND_SETTLEMENT_PENDING', start: seed.hash, end: end.hash, covenantId: bootstrap.covenantId,
-    bootstrapId: bootstrap.transactionId, lane, laneKey, trial});
-  console.log('CAPTURE_PREPARED ' + trial);
+  // Profile the ACTUAL workload before locking a fixed-circuit covenant.
+  // Placeholder identity is for execution profiling only, never proof/settlement.
+  const input = execute(['export', lane, path.join(trial, 'capture.json'), '00'.repeat(32)]);
+  fs.writeFileSync(path.join(trial, 'profile-input.json'), input, {flag: 'wx'});
+  save('input-prepared.json', {status: 'REAL_INPUT_CAPTURED_BOOTSTRAP_PENDING_PROFILE', start: seed.hash, end: end.hash, lane, laneKey, trial});
+  console.log('CAPTURE_READY_FOR_PROFILE ' + trial);
 } catch (error) {
   save('failure.json', {at: new Date().toISOString(), error: error.message});
   console.error(error.message); process.exitCode = 1;
