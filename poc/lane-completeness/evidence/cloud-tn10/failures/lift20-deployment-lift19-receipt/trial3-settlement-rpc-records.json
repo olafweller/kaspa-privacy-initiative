@@ -1,0 +1,30 @@
+[
+  {
+    "method": "getServerInfo",
+    "request": {},
+    "raw": "{\"id\":1,\"method\":\"getServerInfo\",\"params\":{\"hasUtxoIndex\":true,\"isSynced\":true,\"networkId\":\"testnet-10\",\"rpcApiRevision\":0,\"rpcApiVersion\":1,\"serverVersion\":\"2.1.0\",\"virtualDaaScore\":598583876}}"
+  },
+  {
+    "method": "getUtxosByAddresses",
+    "request": {
+      "addresses": [
+        "kaspatest:ppnd427hl8tka3vpyfulyarw4l0tkxjpv7arg4xttsga3zpldcdfysptpc4qp"
+      ]
+    },
+    "raw": "{\"id\":2,\"method\":\"getUtxosByAddresses\",\"params\":{\"entries\":[{\"address\":\"kaspatest:ppnd427hl8tka3vpyfulyarw4l0tkxjpv7arg4xttsga3zpldcdfysptpc4qp\",\"outpoint\":{\"index\":0,\"transactionId\":\"c859ba9961d4e8f4129d2dd1c001a5719cd4a897734379ad5f1f1668d5944097\"},\"utxoEntry\":{\"amount\":100000000,\"blockDaaScore\":598580910,\"covenantId\":\"306ddcca85afd37711f9ae295ee8f166786abdedd4d9189356ce7c3d1db45a4c\",\"isCoinbase\":false,\"scriptPublicKey\":\"0000aa2066daabd7f9d76ec5812279f2746eafdebb1a4167ba3454cb5c11d8883f6e1a9287\"}}]}}"
+  },
+  {
+    "method": "getUtxosByAddresses",
+    "request": {
+      "addresses": [
+        "kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp"
+      ]
+    },
+    "raw": "{\"id\":3,\"method\":\"getUtxosByAddresses\",\"params\":{\"entries\":[{\"address\":\"kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp\",\"outpoint\":{\"index\":0,\"transactionId\":\"22022431d49e9bdbc15e27550b98ac1d899b89a6289ffedb15e3d56350af3196\"},\"utxoEntry\":{\"amount\":999695153875,\"blockDaaScore\":598580967,\"covenantId\":null,\"isCoinbase\":false,\"scriptPublicKey\":\"00002031717cff4ba3ace006774fa29f4a6b7434d1b4ee4f85e6e25ddd31d09183aec3ac\"}}]}}"
+  },
+  {
+    "method": "getFeeEstimate",
+    "request": {},
+    "raw": "{\"id\":4,\"method\":\"getFeeEstimate\",\"params\":{\"estimate\":{\"lowBuckets\":[{\"estimatedSeconds\":0.0016170103929018036,\"feerate\":100.0}],\"normalBuckets\":[{\"estimatedSeconds\":0.0016170103929018036,\"feerate\":100.0},{\"estimatedSeconds\":0.0016170103929018036,\"feerate\":100.0}],\"priorityBucket\":{\"estimatedSeconds\":0.0016170103929018036,\"feerate\":100.0}}}}"
+  }
+]

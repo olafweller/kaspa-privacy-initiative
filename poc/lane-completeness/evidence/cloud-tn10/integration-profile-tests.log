@@ -1,0 +1,9 @@
+   Compiling kpi-tn10-integration v0.1.0 (/workspace/kaspa-privacy-initiative/poc/lane-completeness/integration)
+    Finished `release` profile [optimized] target(s) in 3.29s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_tn10_integration-4c14c25faad2aa9c)
+
+running 1 test
+test proofs::retained::tests::adversarial_relation_checks ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

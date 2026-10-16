@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".local/pr31/kpi-integration-lift19-v2",
+    "prove",
+    ".local/pr31/kpi-input-5.json",
+    ".local/pr31/live-proof-5",
+    "poc/lane-completeness/evidence/offline/guest.program.bin"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 446.4924488040001,
+  "user_cpu_seconds": 1738.163211,
+  "system_cpu_seconds": 4.925644,
+  "max_rss_kib": 9571132,
+  "rss_scope": "Linux RUSAGE_CHILDREN: largest individual process RSS in waited tree, not summed simultaneous memory",
+  "major_page_faults": 0,
+  "minor_page_faults": 3249883
+}

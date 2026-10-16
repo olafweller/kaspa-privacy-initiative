@@ -1,0 +1,12 @@
+{
+  "status": "CIRCUIT_MATCHED_BOOTSTRAP_REAL_PROOF_PENDING",
+  "start": "9c784f6d59317708a7fe8b99d92043c6a20248f560f24c16f1afe75b0cb0410b",
+  "end": "96e3c2cd62aacf3715a97ef4f23a2d889290c76e20dd659ff4633f043d60e559",
+  "lane": "4b353df600000000000000000000000000000000",
+  "laneKey": "9862cd80eef2e3677905c3795fe975850b508661e22b15de9278e37b6e47e1bf",
+  "trial": "/opt/kpi-pr31-cloud-20261017/trial-2026-10-16T23-25-52-928Z-9510ed7d",
+  "builderBinary": "/opt/kpi-pr31-cloud-20261017/kpi-tn10-integration-lift20-v2",
+  "circuit": 20,
+  "covenantId": "e6788864cc27af8807de23dbcd8ec63523af6d78bf700c916f4a2ab40f0b949a",
+  "bootstrapId": "ca97ea8f8795124bfad5231f720758193668e90d4c2ff946f5b629750846031b"
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".local/ci-target/release/kpi-tn10-integration",
+    "prove",
+    ".local/pr31/kpi-input.json",
+    ".local/pr31/live-proof",
+    "poc/lane-completeness/evidence/offline/guest.program.bin"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 237.26037486199994,
+  "user_cpu_seconds": 921.993419,
+  "system_cpu_seconds": 2.179116,
+  "max_rss_kib": 4807312,
+  "rss_scope": "Linux RUSAGE_CHILDREN: largest individual process RSS in waited tree, not summed simultaneous memory",
+  "major_page_faults": 0,
+  "minor_page_faults": 2191248
+}

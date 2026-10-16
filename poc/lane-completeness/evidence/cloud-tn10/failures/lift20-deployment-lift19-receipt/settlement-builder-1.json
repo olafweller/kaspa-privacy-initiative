@@ -1,0 +1,5 @@
+{
+  "status": 101,
+  "stdout": "",
+  "stderr": "\nthread 'main' (3354801) panicked at /workspace/kaspa-privacy-initiative/poc/lane-completeness/vendor/covenant/src/settlement.rs:198:22:\ncovenant settlement script must verify before sizing its budget: ZkIntegrity(\"R0: control_id mismatch: 8c2fdd36ede09a4b9d316a43c51f1160cbd8876659c5f35810c3a119c60d3843\")\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+}

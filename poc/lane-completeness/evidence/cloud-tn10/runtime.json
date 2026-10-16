@@ -1,0 +1,86 @@
+{
+  "code_commit": "1fe49134b22dcf06d6a41c51d1be2759ede03c78",
+  "code_base": "902cbe950e1c1c50e17fee56d58e31b16c61ef22",
+  "binary_sha256": "a36ce8dcabc39ab1b6d2744f99a17d32cc166f39a4cd5899462a948366c950d0",
+  "guest_program_sha256": "5db959e31467f8e7e0e99c3e6515f15753758e260bac775e1973cc533942b776",
+  "guest_image_id": "0881c8caf405ccaf72c41e3c8a0a3a7dd48a4aaf55f040c4de2d759a6c4226f1",
+  "r0vm_sha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "cloud": {
+    "rust": "1.91.0",
+    "python": "3.12.14",
+    "cpu_limit": 4,
+    "memory_limit_bytes": 17179869184,
+    "proof_mode": "real succinct local CPU IPC; RISC0_DEV_MODE absent",
+    "prover_executable": ".local/pr31/kpi-integration-lift19-v2 (prover independent of builder feature)"
+  },
+  "vps": {
+    "host": "vmi3633138",
+    "root_shell": true,
+    "node_service": "kpi-tn10",
+    "node_pid_before": 43275,
+    "node_version": "2.1.0",
+    "network": "testnet-10",
+    "synced": true,
+    "utxo_index": true,
+    "cpu_count": 6,
+    "memory_mib": 17984,
+    "available_memory_mib_observed": 12261,
+    "free_disk_gib_observed": 772,
+    "nodejs": "22.22.3",
+    "local_json_rpc": "ws://127.0.0.1:18210",
+    "local_borsh_rpc": "ws://127.0.0.1:17210",
+    "rust_toolchain_present": false,
+    "project_dir": "/opt/kpi-pr31-cloud-20261017"
+  },
+  "funding": {
+    "network": "testnet-10",
+    "amount_sompi": 1000000000000,
+    "transaction_id": "a93ab8a5d17d4b254bf28fd35422d50d65df15190dbcc6a2b091026f7df3ce21",
+    "wallet_address": "kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp"
+  },
+  "upstream": {
+    "kaspanet/kips": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
+    "kaspanet/docs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "kaspanet/vprogs": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "kaspanet/rusty-kaspa_latest_reviewed": "f7d7877363fb97c2ec6871be0e8cbc351d44df10",
+    "kaspanet/rusty-kaspa_built": "01b532e8b553523216471682649693af92f0fd16"
+  },
+  "earlier_adapter_commit": "1bf5a8ae5afeca37986a97f5f46cece695824e62",
+  "artifacts": {
+    "kpi-tn10-integration-lift19-v2": {
+      "sha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+      "circuit": 19
+    },
+    "kpi-tn10-integration-lift20-v2": {
+      "sha256": "a36ce8dcabc39ab1b6d2744f99a17d32cc166f39a4cd5899462a948366c950d0",
+      "circuit": 20
+    }
+  },
+  "selected_circuit": 20,
+  "profile_is_cryptographic_proof": false,
+  "final_trial": "trial-2026-10-16T23-25-52-928Z-9510ed7d",
+  "final_profile_before_bootstrap": {
+    "segments": 1,
+    "po2": 20,
+    "cycles": 471889,
+    "cryptographic_proof": false
+  },
+  "final_profile_after_real_identity": {
+    "scope": "EXECUTION_ONLY_NO_CRYPTOGRAPHIC_PROOF",
+    "segments": [
+      {
+        "cycles": 471889,
+        "po2": 20
+      }
+    ]
+  },
+  "outcome": {
+    "status": "REAL_PROOF_SETTLED_TN10",
+    "valid_transaction_id": "ad65b24e74d8e4f2d225089265bac635357d88b51a84a34e20f7a6f66c551d67",
+    "invalid_transaction_id": "32483de8122c25246507c47e32d0f4679e388bc8b02d6b3cbdb48de0af7aad0d",
+    "old_covenant_spent": true,
+    "continuation_amount_sompi": 100000000,
+    "settlement_fee_sompi": 59474875,
+    "node_pid_after": 43275
+  }
+}

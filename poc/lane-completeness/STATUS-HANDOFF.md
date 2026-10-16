@@ -1,16 +1,62 @@
-# Based App Feasibility PoC — status and handoff
+# Based App feasibility — Cloud/TN10 status and handoff
 
-**Date: 2026-10-13. Status: offline feasibility demonstrated; the full TN10 PoC is incomplete.**
-This document is the resumption point. The owner has authorized committing and
-pushing the existing PoC and this handoff to `codex/lane-completeness-poc`, with a
-draft PR for review. **That publication authorization does not authorize changing
-the experiment, starting the next phase, obtaining funds, broadcasting transactions
-or merging the PR.** Further experimental work awaits the owner's review.
+**Updated: 2026-10-17 (Europe/Amsterdam). Real proof generated in Cloud;
+valid settlement confirmed on TN10; wrong-state variant rejected by the node.**
 
-Repository documents are written in English. Communication with the owner in
-the originating chat is in Dutch. The checkpoint and publication preparation
-inspect sources, stored results and hashes; they do not generate new proofs,
-execute the application again or run new network experiments.
+The owner authorized continuing PR31, remote VPS work, TN10 test-KAS funding and
+broadcasts for this integration, plus commit/push to the existing workbranch.
+That supersedes the 2026-10-13 publication-only authorization. Mainnet, real
+funds, a production architecture and merging the PR remain outside this task.
+Repository documents stay English; owner communication stays Dutch.
+
+## Current resumption point
+
+- Workbranch: `codex/lane-completeness-poc`, draft PR31. Final adapter source:
+  `1fe49134b22dcf06d6a41c51d1be2759ede03c78`. Exact upstream revisions,
+  artifact/source hashes and execution locations are retained in
+  [Cloud/TN10 evidence](evidence/cloud-tn10/).
+- Existing Cloud root access to `vmi3633138` works. Keep using that authenticated
+  terminal and localhost node RPC; no laptop, external RPC, VPN or new listener
+  is required. Node `kpi-tn10`, version 2.1.0, network `testnet-10`, synced with
+  UTXO index, PID 43275. Do not restart it for these finite project jobs.
+- Isolated VPS project: `/opt/kpi-pr31-cloud-20261017`. Its funded test-fee wallet
+  key stays there, mode 0600; never copy it into evidence, chat or the repository.
+- Current trial: `trial-2026-10-16T23-25-52-928Z-9510ed7d`, three public KPI
+  operations in 33 real selected-chain blocks. Rust and Python agree on every
+  selected ID, app state, lane tip and end commitment. Same-anchor omission fails.
+- This path captures real input first, profiles guest execution without a proof,
+  bootstraps the matching fixed-circuit catch-up covenant, then rechecks the
+  profile with the actual covenant ID before real proving. Profiling is not
+  cryptographic evidence. No development receipt or development redeem is used.
+- Valid settlement: `ad65b24e74d8e4f2d225089265bac635357d88b51a84a34e20f7a6f66c551d67`. The node rejected
+  `32483de8122c25246507c47e32d0f4679e388bc8b02d6b3cbdb48de0af7aad0d` with `ZK Integrity: Verification failed`.
+  The old outpoint is spent and the continuation preserves the covenant ID and
+  one test-KAS. Receipt: 223,930 bytes; proving: 446.427 s; peak individual RSS
+  about 9.13 GiB. This is a real succinct proof, not a development receipt.
+- Original 25 evidence files remain byte-identical. The optional lift-19 feature
+  changes only the covenant manifest/script among the original source snapshot;
+  its default/offline build still uses lift-20. Other recorded sources are
+  unchanged. Failed trials and their funded outputs are preserved.
+
+Read [current results](RESULTS.md), [upstream reuse](integration/UPSTREAM-REUSE.md),
+[commands and stage boundaries](integration/README.md), and
+[adversarial review](ADVERSARIAL-REVIEW.md). Do not replay a historical trial.
+Inspect submission intents and actual node outcomes after any transport error.
+The finite input/bootstrap/settlement VPS jobs have completed; real proving ran
+in Cloud. There is no unfinished experiment job to resume. Saved public captures/receipts support replay without the wallet key.
+
+The smallest next KPI property after this integration is authenticated native
+KAS deposit/exit accounting and a confirmed authorized payout, reusing canonical
+bridge components. The public SHA-256 fold has no notes, nullifiers, shielded
+value, deposit or exit implementation. A general proving/runtime path must also
+replace this experiment's fixed circuit-shape limitation. No privacy or full
+RFC-0001 architecture acceptance follows from this toy integration.
+
+## Historical offline checkpoint — 2026-10-13
+
+The material below records the earlier offline checkpoint and its then-proposed
+next experiment. Its authorization/status statements are historical; use the
+current resumption point and results above for further work.
 
 ## Status of the seven intended milestones
 
@@ -146,7 +192,7 @@ retained SDK timers.
   policy are unverified; zero-fee synthetic bodies cannot be broadcast as prepared.
   Native deposit/exit, shielded funds, privacy and permissionless exits are unproved.
 
-## Smallest next falsifiable experiment — proposal, not authorized
+## Historical next-experiment proposal — recorded 2026-10-13
 
 **First replace the artificial anchor with a read-only capture of one real, short
 TN10 user-lane interval containing at least one accepted transaction.** Use an

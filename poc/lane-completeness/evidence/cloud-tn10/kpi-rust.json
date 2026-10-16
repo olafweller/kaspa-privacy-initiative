@@ -1,0 +1,42 @@
+{
+  "negative_controls": {
+    "omit": {
+      "reason": "derived lane does not match fixed TN10 end anchor",
+      "rejected": true
+    },
+    "reorder": {
+      "exercised": false,
+      "reason": "negative control had no applicable activity"
+    },
+    "substitute-id": {
+      "reason": "derived lane does not match fixed TN10 end anchor",
+      "rejected": true
+    }
+  },
+  "valid": {
+    "accepted_lane_transactions": 3,
+    "blocks": 33,
+    "end": "96e3c2cd62aacf3715a97ef4f23a2d889290c76e20dd659ff4633f043d60e559",
+    "lane": "4b353df600000000000000000000000000000000",
+    "lane_key": "9862cd80eef2e3677905c3795fe975850b508661e22b15de9278e37b6e47e1bf",
+    "lane_tip": "7a71eaa94cbba2e30040e08003b116811112c2a040efecab85df0c389818cfd8",
+    "network": "testnet-10",
+    "ordered_transaction_ids": [
+      "e591738ac54f2abe0c00d55e80ca84c95929daad8b21683bbf4d93483300245a",
+      "31ee2b1f659b06b4b5276c8ccb695564f01c373be5196595fe6c561787c88d38",
+      "cf319b1b8d85113c4d2b8aff5aab4f6a15889a38c29cb51f0ee4959001fe5619"
+    ],
+    "recognized_kpi_operations": [
+      1,
+      2,
+      3
+    ],
+    "scope": "LIVE_TN10_COMMITMENT_RECONSTRUCTION_NOT_ZK_OR_SETTLEMENT",
+    "seq_commit": "957d30928d987f2c7fa50b85d1ad6a8bc2de66d9375e9079a849ef209a73bacd",
+    "settlement": false,
+    "start": "9c784f6d59317708a7fe8b99d92043c6a20248f560f24c16f1afe75b0cb0410b",
+    "state_from_initial_domain": "2c056837bb51248de9c75454b20abf4f4d4efe10c62af9349c54abdfda4c8117",
+    "trust": "one owner-operated consensus-validating node; no second independent node",
+    "zk_proof": false
+  }
+}

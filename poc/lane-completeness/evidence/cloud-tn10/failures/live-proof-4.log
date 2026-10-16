@@ -1,0 +1,7 @@
+
+thread 'main' (17508) panicked at src/../../host/src/main.rs:392:10:
+real CPU proving failed: rx len failed
+
+Caused by:
+    failed to fill whole buffer
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

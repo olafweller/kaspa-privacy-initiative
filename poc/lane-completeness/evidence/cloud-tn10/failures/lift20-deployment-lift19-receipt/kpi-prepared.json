@@ -1,0 +1,10 @@
+{
+  "status": "REAL_INPUT_CAPTURED_PROOF_AND_SETTLEMENT_PENDING",
+  "start": "4c9765228707dc35c19f8df595fd72899c7d6308de8f8b8a0ada59f8b4d7d1f9",
+  "end": "f84653509df80676fb8d3ca92161f30abdc43335aae2d77b1ed6ea0b89975e98",
+  "covenantId": "306ddcca85afd37711f9ae295ee8f166786abdedd4d9189356ce7c3d1db45a4c",
+  "bootstrapId": "c859ba9961d4e8f4129d2dd1c001a5719cd4a897734379ad5f1f1668d5944097",
+  "lane": "4b118e2200000000000000000000000000000000",
+  "laneKey": "bec39b97e065386b2d53d4acf3d4127c93523f06fd6c952cee7eb68c4a22f54d",
+  "trial": "/opt/kpi-pr31-cloud-20261017/trial-2026-10-16T23-12-53-708Z-b183fffc"
+}

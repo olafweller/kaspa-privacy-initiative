@@ -1,0 +1,8 @@
+MainPID=43275
+ActiveState=active
+adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f  /usr/local/lib/kpi-tn10/kaspad
+6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf  /opt/kpi-cloud-https/sdk/kaspa.js
+c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5  /opt/kpi-cloud-https/sdk/kaspa_bg.wasm
+700 root /opt/kpi-pr31-cloud-20261017
+600 root /opt/kpi-pr31-cloud-20261017/test-wallet.key
+v22.22.3

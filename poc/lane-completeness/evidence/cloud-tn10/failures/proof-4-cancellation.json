@@ -1,0 +1,5 @@
+{
+  "reason": "Execution-only profile established po2=20; the already bootstrapped identity pins lift-19. Stop incompatible work and preserve diagnostics; use profile-before-bootstrap path.",
+  "signal": "SIGTERM",
+  "target": "only this task's r0vm child for kpi-input-4.json"
+}

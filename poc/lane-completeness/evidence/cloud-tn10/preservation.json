@@ -1,0 +1,10 @@
+{
+  "historical_evidence_files": 25,
+  "historical_evidence_unchanged": true,
+  "historical_sources_unchanged": 22,
+  "authorized_source_changes": [
+    "vendor/covenant/src/script.rs",
+    "vendor/covenant/Cargo.toml"
+  ],
+  "reason": "Explicit optional lift-19 circuit identity; default offline behavior keeps lift-20. Original exact source snapshot remains commit 902cbe9."
+}

@@ -1,0 +1,55 @@
+{
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 598581578
+  },
+  "trials": [
+    {
+      "trial": "trial-2026-10-16T23-11-39-380Z-a13fb718",
+      "bootstrapId": "6e466e3bd4762ea8410efaa4101040317a5a37a5cd3580b562993765c0971e75",
+      "covenantId": "c8363c4b585d63bf21b74aed225be1e1c28691a75b9fae4268a3a7e86ebc0cea",
+      "unspentCovenantEntries": [
+        {
+          "address": "kaspatest:pqk43e9hq36cqpkh96a0v6ptkj76d6tpg9rrdzlsdfzyw8dr4s862l3laklzu",
+          "outpoint": {
+            "index": 0,
+            "transactionId": "6e466e3bd4762ea8410efaa4101040317a5a37a5cd3580b562993765c0971e75"
+          },
+          "utxoEntry": {
+            "amount": 100000000,
+            "blockDaaScore": 598580171,
+            "covenantId": "c8363c4b585d63bf21b74aed225be1e1c28691a75b9fae4268a3a7e86ebc0cea",
+            "isCoinbase": false,
+            "scriptPublicKey": "0000aa202d58e4b704758006d72ebaf6682bb4bda6e9614146368bf06a44471da3ac0fa587"
+          }
+        }
+      ]
+    },
+    {
+      "trial": "trial-2026-10-16T23-12-10-903Z-11a7f2c7",
+      "bootstrapId": "b492ebe482fc95a3028f107279842f57fe22766dacb3a185a07f7bbb046cbf17",
+      "covenantId": "9a72bebcc653970294f4ff43dcef5a1864f9430d3b6795ef0e401e93e7209b2a",
+      "unspentCovenantEntries": [
+        {
+          "address": "kaspatest:pqzx3lrldclsywq5dw9u0x2yp4apluh5w0ha9344stwjgttgpuhpvcmslw5qt",
+          "outpoint": {
+            "index": 0,
+            "transactionId": "b492ebe482fc95a3028f107279842f57fe22766dacb3a185a07f7bbb046cbf17"
+          },
+          "utxoEntry": {
+            "amount": 100000000,
+            "blockDaaScore": 598580482,
+            "covenantId": "9a72bebcc653970294f4ff43dcef5a1864f9430d3b6795ef0e401e93e7209b2a",
+            "isCoinbase": false,
+            "scriptPublicKey": "0000aa200468fc7f6e3f0238146b8bc799440d7a1ff2f473efd2c6b582dd242d680f2e1687"
+          }
+        }
+      ]
+    }
+  ]
+}

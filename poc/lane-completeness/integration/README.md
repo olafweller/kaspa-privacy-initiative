@@ -129,6 +129,8 @@ node poc/lane-completeness/integration/upload.mjs .local/pr31/live-proof/full.re
 python3 poc/lane-completeness/integration/remote.py exec 'systemd-run --unit=kpi-pr31-settle-NEW --property=WorkingDirectory=/opt/kpi-pr31-cloud-20261017 --property=UMask=0077 --property=Nice=10 --property=StandardOutput=append:/opt/kpi-pr31-cloud-20261017/settle-NEW.log --property=StandardError=append:/opt/kpi-pr31-cloud-20261017/settle-NEW.log /opt/kpi-cloud-https/bin/node /opt/kpi-pr31-cloud-20261017/settle-trial-v4.mjs /opt/kpi-pr31-cloud-20261017/TRIAL'
 ```
 
+The prover command is independent of the host binary's covenant-builder feature:
+its receipt records the actual circuit; the selected L1 builder must match it.
 `RISC0_DEV_MODE` must be **absent**. The builder verifies the receipt image and
 exact expected journal, requires a succinct receipt and matches the real covenant
 UTXO's identity/value/script. The invalid variant changes the claimed successor
@@ -154,3 +156,17 @@ Per-block reorder controls need two lane transactions in one accepting block;
 otherwise the Rust report explicitly says not exercised. Cross-block ordering,
 same-anchor omission, ID substitution and malformed/replayed evidence have
 separate scoped checks; do not infer an unexecuted control from a passing suite.
+
+
+To check the retained final capture without node access or wallet keys:
+
+```bash
+mkdir -p .local/pr31
+gzip -dc poc/lane-completeness/evidence/cloud-tn10/kpi-capture.json.gz > .local/pr31/retained-kpi-capture.json
+.local/pr31/kpi-integration-lift19-v2 verify 4b353df600000000000000000000000000000000 .local/pr31/retained-kpi-capture.json
+PYTHONPATH=.local/pr31/python python3 poc/lane-completeness/integration/check_capture.py .local/pr31/retained-kpi-capture.json 4b353df600000000000000000000000000000000
+```
+
+This checks the retained node observation; it does not independently synchronize
+consensus or attest that a single node's report is honest. The original raw
+responses and final receipt/journal remain separate evidence artifacts.

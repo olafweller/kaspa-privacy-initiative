@@ -1,0 +1,70 @@
+   Compiling sha2 v0.10.9
+   Compiling kaspa-smt v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-utils v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-hashes v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-math v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-muhash v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-merkle v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-txscript-errors v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling risc0-zkp v3.0.4
+   Compiling kaspa-consensus-core v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling ark-crypto-primitives v0.6.0
+   Compiling ark-groth16 v0.6.0
+   Compiling risc0-binfmt v3.0.4
+   Compiling risc0-circuit-recursion v4.0.4
+   Compiling kaspa-mining-errors v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-txscript v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-notify v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-consensus-client v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-consensus-wasm v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-consensus-notify v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-index-core v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling kaspa-rpc-core v2.1.0 (https://github.com/kaspanet/rusty-kaspa?branch=master#01b532e8)
+   Compiling vprogs-l1-wallet v0.1.0 (/workspace/kaspa-privacy-initiative/poc/lane-completeness/vendor/wallet)
+    Finished `release` profile [optimized] target(s) in 33.74s
+     Running unittests src/lib.rs (.local/ci-target/release/deps/vprogs_l1_wallet-08645f0496f44b45)
+
+running 34 tests
+test build::activity::tests::activity_fee_covers_the_built_transactions_floor ... ok
+test build::activity::tests::payload_heavy_activity_fee_covers_the_transient_floor ... ok
+test build::funding::tests::floor_policy_pays_exactly_the_mempool_floor ... ok
+test build::funding::tests::floor_policy_funding_outcome_is_pinned_for_every_shape ... ok
+test build::funding::tests::floor_policy_reports_insufficient_funds_for_a_zero_value_output_below_the_dropped_floor ... ok
+test build::funding::tests::fund_adds_an_input_when_change_is_required ... ok
+test build::funding::tests::fund_accumulates_inputs_past_a_payout_shortfall ... ok
+test build::funding::tests::fund_drops_an_unviable_change ... ok
+test build::funding::tests::fund_reports_insufficient_funds_for_empty_candidates ... ok
+test build::funding::tests::fund_keeps_a_viable_change ... ok
+test build::funding::tests::fund_reports_insufficient_candidates ... ok
+test build::funding::tests::fund_keeps_a_change_exactly_at_the_viable_floor ... ok
+test build::funding::tests::fund_reports_storage_infeasible_fixed_outputs ... ok
+test build::funding::tests::target_feerate_at_exact_floor_availability_does_not_panic_with_change_required ... ok
+test build::funding::tests::target_feerate_at_exact_floor_availability_drops_change_instead_of_panicking ... ok
+test build::funding::tests::target_feerate_drops_an_unviable_change ... ok
+test build::funding::tests::target_feerate_prices_a_byte_dominated_layout_exactly ... ok
+test build::funding::tests::target_feerate_prices_a_storage_dominated_layout_exactly ... ok
+test build::funding::tests::target_feerate_adds_an_input_when_the_fee_eats_the_change ... ok
+test build::funding::tests::target_feerate_reports_insufficient_candidates ... ok
+test build::funding::tests::unreachable_target_never_degrades_to_a_storage_infeasible_dropped_funding ... ok
+test build::funding::tests::target_feerate_rounds_the_fee_up_to_the_node_rate ... ok
+test build::funding::tests::unreachable_target_degrades_to_a_dropped_change_funding ... ok
+test build::funding::tests::unreachable_target_degrades_to_the_deepest_affordable_funding ... ok
+test build::payout::tests::pay_to_address_drops_an_unviable_change ... ok
+test build::payout::tests::pay_to_address_fee_covers_the_built_transactions_floor ... ok
+test build::pricing::tests::rate_fee_corrects_past_a_single_sompi_above_the_f64_integer_range ... ok
+test build::pricing::tests::rate_fee_never_rounds_below_the_requested_rate_at_an_f64_boundary ... ok
+test build::pricing::tests::required_fee_accepts_a_fee_a_non_monotone_pm_no_longer_raises ... ok
+test build::viability::tests::min_viable_change_is_exact_at_the_boundary ... ok
+test build::viability::tests::min_viable_change_reports_infeasible_fixed_outputs ... ok
+test build::settlement::tests::settlement_fee_covers_the_built_transactions_floor ... ok
+test build::tests::built_shapes_meet_the_mempool_floor ... ok
+test build::settlement::tests::witness_heavy_settlement_fee_covers_the_transient_floor ... ok
+
+test result: ok. 34 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests vprogs_l1_wallet
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

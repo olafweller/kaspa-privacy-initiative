@@ -1,0 +1,35 @@
+{
+  "scope": "REAL_RISC_ZERO_PROOF_ACCEPTED_ON_TN10",
+  "developmentMode": false,
+  "network": "testnet-10",
+  "validTransactionId": "ad65b24e74d8e4f2d225089265bac635357d88b51a84a34e20f7a6f66c551d67",
+  "invalidTransactionId": "32483de8122c25246507c47e32d0f4679e388bc8b02d6b3cbdb48de0af7aad0d",
+  "invalidRejection": "{\"code\":0,\"message\":\"Rejected transaction 32483de8122c25246507c47e32d0f4679e388bc8b02d6b3cbdb48de0af7aad0d: failed to verify the signature script: ZK Integrity: Verification failed\",\"data\":null}",
+  "acceptingBlock": "dfe2081a9b66903a85dc599287facd2199a972b65e7e3bc1d8044626db3b24b1",
+  "continuation": {
+    "address": "kaspatest:pq290tyj076uv7erun86ygglv865aj4gms9we2jyzxjxmjk2gv5cvu4thrthr",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "ad65b24e74d8e4f2d225089265bac635357d88b51a84a34e20f7a6f66c551d67"
+    },
+    "utxoEntry": {
+      "amount": 100000000,
+      "blockDaaScore": 598594116,
+      "covenantId": "e6788864cc27af8807de23dbcd8ec63523af6d78bf700c916f4a2ab40f0b949a",
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa201457ac927fb5c67b23e4cfa2211f61f54ecaa8dc0aecaa4411a46dcaca43298687"
+    }
+  },
+  "oldCovenantSpent": true,
+  "feeSompi": 59474875,
+  "newState": "2c056837bb51248de9c75454b20abf4f4d4efe10c62af9349c54abdfda4c8117",
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 598594131
+  }
+}
