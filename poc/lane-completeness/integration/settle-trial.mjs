@@ -29,7 +29,7 @@ async function build(label, invalidState) {
   const request={kind:'settlement',invalidState,input,end:prepared.end,receiptPath:path.join(trial,'full.receipt.bin'),covenantUtxo:entry,
     server:s,utxos:await call('getUtxosByAddresses',{addresses:[wallet.address]}),feeEstimate:await call('getFeeEstimate')};
   save(label+'-request.json',request);
-  const r=spawnSync(root+'/kpi-tn10-integration',['build',prepared.lane,root+'/test-wallet.key',path.join(trial,label+'-request.json'),
+  const r=spawnSync(root+'/kpi-tn10-integration-lift19',['build',prepared.lane,root+'/test-wallet.key',path.join(trial,label+'-request.json'),
     path.join(trial,label+'-transaction.json'),root+'/guest.program.bin'],{encoding:'utf8',maxBuffer:32*1024*1024});
   save(label+'-builder-process.json',{status:r.status,stdout:r.stdout,stderr:r.stderr});
   assert.equal(r.status,0,'real proof and covenant-state validation must pass before submission');

@@ -1,0 +1,33 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -8,0 +9,5 @@
++
++[features]
++# Separate fixed-circuit covenant identity for the shorter live workload.
++# The historical offline build keeps its original lift-20 pin by default.
++monolithic-lift19 = []
+--- a/src/script.rs
++++ b/src/script.rs
+@@ -90,0 +91 @@
++    #[cfg(not(feature = "monolithic-lift19"))]
+@@ -94,0 +96,9 @@
++    ];
++
++    /// Official lift-19 identity for the shorter live PoC. This is a separate
++    /// covenant script, fixed at bootstrap, not a prover-selected verifier pin.
++    #[cfg(feature = "monolithic-lift19")]
++    pub const SUCCINCT_CONTROL_ID: [u8; 32] = [
++        0x8c, 0x2f, 0xdd, 0x36, 0xed, 0xe0, 0x9a, 0x4b, 0x9d, 0x31, 0x6a, 0x43, 0xc5, 0x1f, 0x11,
++        0x60, 0xcb, 0xd8, 0x87, 0x66, 0x59, 0xc5, 0xf3, 0x58, 0x10, 0xc3, 0xa1, 0x19, 0xc6, 0x0d,
++        0x38, 0x43,
+@@ -1321,0 +1332,5 @@
++            let circuit = if cfg!(feature = "monolithic-lift19") {
++                "lift_rv32im_v2_19.zkr"
++            } else {
++                "lift_rv32im_v2_20.zkr"
++            };
+@@ -1324,2 +1339,2 @@
+-                .find_map(|(name, digest)| (*name == "lift_rv32im_v2_20.zkr").then_some(*digest))
+-                .expect("lift_rv32im_v2_20.zkr present in POSEIDON2_CONTROL_IDS")
++                .find_map(|(name, digest)| (*name == circuit).then_some(*digest))
++                .expect("selected monolithic lift circuit present in POSEIDON2_CONTROL_IDS")

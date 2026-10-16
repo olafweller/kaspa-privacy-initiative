@@ -29,3 +29,20 @@ remote vProgs crate to `f9b84a8`. Compile/reproduction uses `--locked` and verif
 those sources before running. Upstream tests are retained, but their separate
 test dependencies are not installed by this adaptation; tested use is the host
 experiment's real-proof native script suite. This is not an upstream test run.
+
+
+## Live integration extension — 2026-10-17
+
+[Live pin patch](live19.patch) is relative to PR31 commit `902cbe9`, separate from
+the original upstream compatibility patch. `monolithic-lift19` is an optional
+feature selecting the exact official `lift_rv32im_v2_19.zkr` identity for the
+shorter live workload. The integration enables it; the original offline host
+workspace does not, preserving its lift-20 behavior. A new script/SPK/covenant
+is bootstrapped for this choice. It cannot upgrade any previously funded UTXO.
+
+The guest, proof relation, ABI, allowed-control root, image and empty-assumptions
+checks are unchanged. A valid lift-19 receipt rejected under a lift-20 deployment
+is retained as a failed compatibility trial. Segment shapes outside the selected
+fixed circuit remain unsupported. The historical source manifest now differs
+only at this crate's manifest and script source; its 25 evidence files and all
+other recorded sources remain unchanged, with the original sources in `902cbe9`.

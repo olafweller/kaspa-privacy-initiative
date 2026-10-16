@@ -20,7 +20,7 @@ secp256k1 = "0.29.1"
 kaspa-addresses = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
 kpi-lane-common = { path = "../common" }
 kaspa-txscript = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
-vprogs-zk-backend-risc0-covenant = { path = "../vendor/covenant" }
+vprogs-zk-backend-risc0-covenant = { path = "../vendor/covenant", features = ["monolithic-lift19"] }
 risc0-zkvm = "=3.0.3"
 risc0-binfmt = "=3.0.4"
 risc0-zkos-v1compat = "=2.2.2"

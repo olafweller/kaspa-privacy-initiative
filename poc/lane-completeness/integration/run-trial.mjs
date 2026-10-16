@@ -8,7 +8,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 
 const root = '/opt/kpi-pr31-cloud-20261017';
-const binary = root + '/kpi-tn10-integration';
+const binary = root + '/kpi-tn10-integration-lift19';
 const program = root + '/guest.program.bin';
 const wallet = JSON.parse(fs.readFileSync(root + '/test-wallet.public.json'));
 assert.equal(wallet.network, 'testnet-10');

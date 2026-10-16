@@ -7,6 +7,11 @@ license = "ISC"
 
 [workspace]
 
+[features]
+# Separate fixed-circuit covenant identity for the shorter live workload.
+# The historical offline build keeps its original lift-20 pin by default.
+monolithic-lift19 = []
+
 [dependencies]
 kaspa-consensus-core = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
 kaspa-hashes = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }

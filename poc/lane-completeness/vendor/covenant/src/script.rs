@@ -88,10 +88,20 @@ pub mod succinct_consts {
     /// lift circuit; native verification still checks the allowed-control root,
     /// guest image, empty assumptions and exact journal. Other segment shapes
     /// are intentionally unsupported by this fixed experiment covenant.
+    #[cfg(not(feature = "monolithic-lift19"))]
     pub const SUCCINCT_CONTROL_ID: [u8; 32] = [
         0x34, 0x53, 0x0b, 0x42, 0x02, 0x8f, 0xb6, 0x31, 0xc9, 0x0e, 0x12, 0x26, 0xbb, 0x0e, 0x75,
         0x0d, 0x4b, 0x9b, 0x59, 0x38, 0x40, 0xd4, 0x52, 0x16, 0xf7, 0x5d, 0xca, 0x44, 0x9d, 0xac,
         0x77, 0x34,
+    ];
+
+    /// Official lift-19 identity for the shorter live PoC. This is a separate
+    /// covenant script, fixed at bootstrap, not a prover-selected verifier pin.
+    #[cfg(feature = "monolithic-lift19")]
+    pub const SUCCINCT_CONTROL_ID: [u8; 32] = [
+        0x8c, 0x2f, 0xdd, 0x36, 0xed, 0xe0, 0x9a, 0x4b, 0x9d, 0x31, 0x6a, 0x43, 0xc5, 0x1f, 0x11,
+        0x60, 0xcb, 0xd8, 0x87, 0x66, 0x59, 0xc5, 0xf3, 0x58, 0x10, 0xc3, 0xa1, 0x19, 0xc6, 0x0d,
+        0x38, 0x43,
     ];
 
     /// kaspa `OpZkPrecompile` hashfn tag for risc0 `poseidon2`, the only recursion hash kaspa
@@ -1319,10 +1329,15 @@ mod tests {
 
         #[test]
         fn succinct_control_id_matches_monolithic_lift_poseidon2() {
+            let circuit = if cfg!(feature = "monolithic-lift19") {
+                "lift_rv32im_v2_19.zkr"
+            } else {
+                "lift_rv32im_v2_20.zkr"
+            };
             let live: [u8; 32] = POSEIDON2_CONTROL_IDS
                 .iter()
-                .find_map(|(name, digest)| (*name == "lift_rv32im_v2_20.zkr").then_some(*digest))
-                .expect("lift_rv32im_v2_20.zkr present in POSEIDON2_CONTROL_IDS")
+                .find_map(|(name, digest)| (*name == circuit).then_some(*digest))
+                .expect("selected monolithic lift circuit present in POSEIDON2_CONTROL_IDS")
                 .as_bytes()
                 .try_into()
                 .expect("digest is 32 bytes");

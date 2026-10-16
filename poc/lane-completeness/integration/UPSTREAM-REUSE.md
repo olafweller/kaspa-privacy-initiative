@@ -38,7 +38,7 @@ the deployed artifact; a source-to-binary reproducible build is not claimed.
 | `getSeqCommitLaneProof` and Kaspa SMT/hash helpers | Use the actual local-node start/end witnesses and header anchors. Reuse `OwnedSmtProof`, `ActivityDigestBuilder`, `activity_leaf`, `mergeset_context_hash`, `lane_tip_next` and seqcommit composition. A second Python implementation cross-checks the same capture. |
 | Native transaction decoding/hashing | Reuse `RpcOptionalTransaction -> Transaction`, native transaction IDs and `transaction_v1_rest_preimage`. Never trust a separately supplied payload/ID pair. Raw RPC strings retain u64 values exactly. |
 | vProgs wallet construction | Reuse activity, fee-input/change, storage-mass, signing and settlement construction, with the documented mass-limit API patch. Add change to the upstream one-output bootstrap template. |
-| vProgs settlement ABI and covenant | Reuse the existing adapted covenant and 352-byte journal. Real settlement binds the current covenant/state, guest identity, lane, claimed successor and selected-chain end anchor. Preserve both previously documented covenant adaptations. |
+| vProgs settlement ABI and covenant | Reuse the existing adapted covenant and 352-byte journal. Real settlement binds the current covenant/state, guest identity, lane, claimed successor and selected-chain end anchor. The live build additionally selects the official lift-19 control identity via an explicit feature; the offline default remains lift-20. Both remain fixed-circuit covenants, with the same image/root/journal checks. |
 | vProgs recursive proving/runtime | Available reference architecture, not required to reimplement for this narrow monolithic app. The retained real RISC Zero guest proves the KPI fold directly. This trial does not validate the full recursive runner or cross-app composition. |
 | Canonical bridge deposits/exits | Existing reuse candidates, outside this trial. Publishing a public operation and advancing a covenant is not a shielded deposit, transfer or withdrawal. |
 
@@ -76,3 +76,23 @@ No private notes, nullifiers, shielded liabilities, bridge or exit subsystem is
 introduced. Security invariants and the historical offline evidence remain in
 force. The owner explicitly authorized this TN10 integration in the current
 request, superseding the earlier handoff's publication-only scope.
+
+
+## Observed monolithic proof-shape boundary
+
+The first real live receipt used 524,288 padded cycles (one segment) and the
+SDK verified it. Its official control ID was
+`8c2fdd36ede09a4b9d316a43c51f1160cbd8876659c5f35810c3a119c60d3843`
+(`lift_rv32im_v2_19.zkr`). The existing offline covenant fixed
+`lift_rv32im_v2_20.zkr` and correctly rejected it in local script evaluation
+before any settlement broadcast. This is a retained compatibility failure, not
+an invalid computation or a TN10 rejection.
+
+The new `monolithic-lift19` feature fixes the shorter circuit into a **fresh**
+covenant identity; default/offline behavior remains lift-20. No existing UTXO is
+upgraded, no verifier assertion is removed and no executor-selected control ID
+is trusted. Program-image, allowed-control-root, empty-assumptions and exact
+journal checks remain. See [live pin patch](../vendor/covenant/live19.patch).
+This illustrates why the general solution should use a compatible established
+recursive proving trajectory with its resolve pin, rather than advertise this
+fixed-shape monolithic experiment as a general vProgs runtime.
