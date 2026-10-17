@@ -189,4 +189,7 @@ The [recursive adapter review](poc/takeover/README.md) now isolates composition
 from those open questions. A coarse public state resource can exercise the
 reference recursive interface locally; it does not establish scalable private
 state, true native expiry, missing-history recovery or guaranteed exits. A fresh
-long-gap TN10 rehearsal remains a separate empirical question.
+long-gap TN10 rehearsal has now [completed through native payout](poc/takeover/LIVE-REHEARSAL.md)
+after a 175-blue-score stop gap. This narrows that empirical question for the
+tested same-owner/node public replay; it leaves the above recovery and privacy
+questions open.

@@ -30,3 +30,12 @@ See [execution plan](../../poc/takeover/PLAN.md). Existing research on Orchard,
 Aztec, RAILGUN, Monero and MWEB identifies authenticated history and user keys as
 recovery inputs; none supplies a drop-in Kaspa proof/DA mechanism. Reuse the
 established RISC Zero composition here, with no new cryptographic primitive.
+
+## Observed qualification, 2026-10-17
+
+The [fresh rehearsal](../../poc/takeover/LIVE-REHEARSAL.md) completed native deposit,
+recursive credit, clean public reconstruction, withdrawal after a 175-blue-score
+observed stop gap, recursive settlement and confirmed native payout. Native
+fixed-endpoint omission and bridge/replay controls were rejected; remaining
+reserve matches account balance. This qualifies this isolated public instance,
+not independent recovery, expiry, privacy or a production architecture.

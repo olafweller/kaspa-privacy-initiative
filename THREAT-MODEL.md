@@ -236,4 +236,8 @@ fixed captured commitment, since accepting a prover-derived anchor alone cannot
 show omission resistance. Lane expiry/reset remains unsupported and rejected in
 the batch guest. The experiment retains one owner's historical node/archive
 trust and public balances; no independent-operator, pruning-recovery or privacy
-claim is added. Rehearsal, funding and actual native payout remain separate.
+claim is added. The [fresh TN10 rehearsal](poc/takeover/LIVE-REHEARSAL.md)
+separately confirms actual payout after clean public replay and a 175-score stop
+gap; native omission, bridge-diversion and spent-input controls were rejected.
+A canonical-chain observation does not establish general reorg recovery; the
+runner halts on a detected reorg and never automatically retries broadcasts.

@@ -1,6 +1,8 @@
 # Long-gap public-account takeover experiment
 
-Status: preparation, 2026-10-17. Follow-up to PR31/32; no new trial funded yet.
+Status: completed fresh rehearsal on 2026-10-17, including native payout.
+See [measured results and limits](LIVE-REHEARSAL.md). This plan records the
+intended scope; further trials require a fresh identity.
 
 Question: can an executor reconstructed from public data process a new authorized
 withdrawal after more than the old adapter's 100-blue-score bound, using real

@@ -4,13 +4,14 @@ Local review resumed by the owner on 2026-10-17. Workbranch:
 `codex/takeover-local-review`, based on main `335fbca`. The original imported
 source checkpoint is commit `b4cb2bb`. The historical
 [paused handoff](STATUS-HANDOFF.md) remains a record of the earlier task.
-The current authorization covers development and local tests using retained
-public data; stop before new TN10 transactions.
+That local-review authorization initially covered retained public data only.
 
 **Subsequent authorization, 2026-10-17:** after completion of that local review,
 the owner instructed continuing with the fresh TN10 rehearsal. See
 [live rehearsal](LIVE-REHEARSAL.md). The local-review boundary below describes
-the completed checkpoint, not a renewed request for permission.
+the completed checkpoint, not a renewed request for permission. The fresh
+rehearsal has now completed through confirmed native payout, after an observed
+175-blue-score stop gap and clean public reconstruction.
 
 This experiment reuses the native-value account relation as one serial SMT
 resource, then uses the pinned vProgs batch and aggregate verifiers. It has no
@@ -82,12 +83,12 @@ its ignored artifacts. The historical gate's host binary and its sources differ
 from the new bundle runner; never treat the old gate as evidence for the new
 transaction path.
 
-## Remaining trial boundary
+## Historical local-review boundary
 
 No new wallet, funding, transaction, stop/restart of the node or VPS experiment
-belongs to this local review. A future fresh TN10 rehearsal must still establish
+belongs to this local review. The subsequently completed fresh TN10 rehearsal separately established
 actual bootstrap/UTXO binding, confirmed deposits, a gap over 100 blue scores
 below native expiry, public replay in a clean directory, recursive settlement
-and actual authorized native payout. Passing local checks alone does not satisfy
+and actual authorized native payout; see the linked live report. Passing local checks alone does not satisfy
 the repository's complete-rehearsal requirement. The old funded instances and
 six-test-KAS PR32 balance remain untouched.

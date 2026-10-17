@@ -1,4 +1,4 @@
-# Local recursive review evidence
+# Recursive review and TN10 evidence
 
 See the [review](../LOCAL-REVIEW.md), [machine-readable result](local-review.json)
 and [artifact archive](local-review-artifacts.tar.gz). The JSON records the
@@ -39,3 +39,15 @@ print('Artifact hashes match; this is an integrity check, not a security audit.'
 
 Repeat build/preparation/proof commands are in the [adapter README](../README.md).
 No automated command in this evidence sends TN10 transactions.
+
+## Fresh live TN10 evidence
+
+The subsequent [confirmed rehearsal](../LIVE-REHEARSAL.md) has a separate
+[verified result](tn10-rehearsal.json) and [archive](tn10-rehearsal-artifacts.tar.gz).
+Use the same integrity code above with `tn10-rehearsal.json`. It retains all 89
+public VPS files in `vps-public.tar.gz` with a second per-file manifest, eight
+real proof receipts and journals, prepared inputs, clean replay, measured proof
+resources, program/source hashes and audit logs, including the corrected
+read-only accounting failure. Wallet keys are outside the public trial and
+are not included. Local host proof reports remain separate from actual native
+acceptance records. The live report states the exact same-owner/node scope.

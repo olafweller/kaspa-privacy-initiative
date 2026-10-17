@@ -338,6 +338,9 @@ for an isolated experiment: the complete public account state is one SMT
 resource, transaction journals feed reference batch verification and batch
 receipts feed reference aggregation. This deliberately serial state model is not
 a production scheduler or privacy design. The source-pinned local review checks
-historical public inputs; a new long-gap TN10 rehearsal and actual payout remain
-separate. Native expiry is rejected inside the batch guest; unavailable public
-history can halt recovery. No privileged withdrawal path is introduced.
+historical public inputs. A separate [fresh TN10 rehearsal](../poc/takeover/LIVE-REHEARSAL.md)
+now confirms a deposit, clean public reconstruction after a 175-blue-score stop
+gap, recursive settlement and native payout, with reserve matching the remaining
+account balance. This used the same owner/node and retained public archive.
+Native expiry is rejected inside the batch guest; unavailable public history
+can halt recovery. No privileged withdrawal path is introduced.

@@ -237,7 +237,9 @@ latest endpoint. No private-state or operator-loss recovery claim follows.
 The isolated [ADR-0005](../adr/0005-long-gap-recursive-takeover.md) follow-up
 reuses reference recursive transaction/batch/aggregate interfaces with one coarse
 public-account resource. Its [review scope](../../poc/takeover/README.md) separates
-local historical-input checks from the planned fresh TN10 long-gap rehearsal.
+local historical-input checks from the [completed fresh TN10 rehearsal](../../poc/takeover/LIVE-REHEARSAL.md).
+The latter confirms native payout after clean public replay and a 175-blue-score
+stop gap, using the same owner/node and retained public archive.
 Native lane expiry, unavailable archives, independent recovery, privacy and
 mandatory progress remain open; this does not select Candidate C or close the
 N-user shutdown gate.
