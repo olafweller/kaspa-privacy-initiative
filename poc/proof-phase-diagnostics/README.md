@@ -61,4 +61,8 @@ pressure interfaces are explicitly recorded as unavailable. Neither logs nor
 execution-segment counts are interpreted as completed proofs.
 
 `test_resources.py` exercises failure propagation and whole-process-group timeout
-handling with a sleeping descendant, without running any prover.
+handling with a sleeping descendant, without running any prover. These unit
+tests use deterministic auxiliary cgroup-counter files so they also run on CI
+hosts with a different cgroup hierarchy; process groups, /proc sampling and
+address-space limits remain real. The actual diagnostic runner requires and
+records the real declared environment's cgroup interfaces.

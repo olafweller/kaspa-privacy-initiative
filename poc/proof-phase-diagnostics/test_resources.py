@@ -17,9 +17,19 @@ class Resources(unittest.TestCase):
     def setUp(self):
         self.previous_cpus = runner.CPUS
         runner.CPUS = set(sorted(os.sched_getaffinity(0))[:4])
+        # GitHub hosts may expose a different cgroup hierarchy. Exercise the
+        # real process groups, /proc sampling and hard limits while providing
+        # deterministic auxiliary environment counters for these unit tests.
+        self.previous_cgroup = runner.CGROUP
+        self.cgroup_directory = tempfile.TemporaryDirectory()
+        runner.CGROUP = Path(self.cgroup_directory.name)
+        (runner.CGROUP / 'memory.events').write_text('max 0\noom 0\noom_kill 0\n')
+        (runner.CGROUP / 'cpu.stat').write_text('usage_usec 0\nuser_usec 0\nsystem_usec 0\n')
 
     def tearDown(self):
         runner.CPUS = self.previous_cpus
+        runner.CGROUP = self.previous_cgroup
+        self.cgroup_directory.cleanup()
 
     def test_nonzero_exit_not_a_success(self):
         with tempfile.TemporaryDirectory() as directory:
