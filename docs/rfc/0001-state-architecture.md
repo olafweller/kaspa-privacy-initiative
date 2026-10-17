@@ -243,3 +243,17 @@ stop gap, using the same owner/node and retained public archive.
 Native lane expiry, unavailable archives, independent recovery, privacy and
 mandatory progress remain open; this does not select Candidate C or close the
 N-user shutdown gate.
+
+## 2026-10-17 scoped feasibility conclusion
+
+The [acceptance matrix](../based-app-feasibility-2026-10-17.md) finds all five
+public Based App criteria satisfied by PRs #31–#33, including native rejection
+of omission at an unchanged endpoint and actual native payout. The [final review](../../poc/takeover/FINAL-REVIEW.md)
+adds read-only receipt/order/accounting verification. No new trial was needed
+to close this narrow integration question. This is not independent human review.
+
+Development now focuses on [shielded native KAS](../shielded-kas-next.md): hidden
+ownership/value, nullifiers, witness privacy, delivery, accounting and native
+exits. Candidate C has scoped backend evidence; choosing a private state/proof
+architecture still requires comparison and a separately reviewed ADR. This RFC,
+its production/privacy objections and the common N-user shutdown gate stay open.

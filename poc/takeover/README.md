@@ -13,6 +13,10 @@ the completed checkpoint, not a renewed request for permission. The fresh
 rehearsal has now completed through confirmed native payout, after an observed
 175-blue-score stop gap and clean public reconstruction.
 
+The [final review](FINAL-REVIEW.md) and [five-criterion feasibility conclusion](../../docs/based-app-feasibility-2026-10-17.md)
+record completion of this scoped investigation and read-only evidence checks.
+Development now focuses on [shielded native KAS](../../docs/shielded-kas-next.md).
+
 This experiment reuses the native-value account relation as one serial SMT
 resource, then uses the pinned vProgs batch and aggregate verifiers. It has no
 private notes, privacy, new asset or general resource scheduler. See

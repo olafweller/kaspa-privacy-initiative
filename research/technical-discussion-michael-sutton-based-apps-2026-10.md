@@ -6,6 +6,16 @@
 
 These notes paraphrase Michael's advice **as reported by Olaf** in the brief supplied for this note. They are not an approved transcript, contain no direct quotations, and have not been represented as reviewed by Michael. The conversation is not an architecture decision, formal endorsement of KPI, or evidence that a KPI implementation works. [RFC-0001](../docs/rfc/0001-state-architecture.md) remains Open.
 
+## Subsequent experiment outcome, 2026-10-17
+
+The [scoped feasibility conclusion](../docs/based-app-feasibility-2026-10-17.md)
+now records the real TN10 results from PRs #31–#33 against five acceptance
+criteria, including valid settlement and same-endpoint omission rejection.
+The planning note below remains historical; the final report states the actual
+workloads and boundaries. No endorsement or independent review is attributed to
+Michael by these subsequent results. Development focus moves to
+[shielded native KAS and financial privacy](../docs/shielded-kas-next.md).
+
 ## Michael's advice as reported by Olaf
 
 Michael suggested investigating the existing **Based App architecture as the primary candidate for KPI's execution and settlement model**, particularly for a shared shielded state. Olaf reported the following architectural guidance:

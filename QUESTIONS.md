@@ -193,3 +193,12 @@ long-gap TN10 rehearsal has now [completed through native payout](poc/takeover/L
 after a 175-blue-score stop gap. This narrows that empirical question for the
 tested same-owner/node public replay; it leaves the above recovery and privacy
 questions open.
+
+## After the public Based App feasibility milestone
+
+The [five-criterion integration question](docs/based-app-feasibility-2026-10-17.md)
+is answered positively for the recorded public TN10 experiments. It does not
+close P01-P03 in full or private note/nullifier, financial-privacy, discovery,
+exit-fee and recovery questions. The [next work package](docs/shielded-kas-next.md)
+prioritizes these private-protocol requirements against the existing issues;
+new public runtime/operator infrastructure needs a demonstrated purpose.

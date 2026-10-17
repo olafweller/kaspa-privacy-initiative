@@ -4,6 +4,20 @@ KPI asks whether current Kaspa primitives can support optional privacy for nativ
 KAS, with correct backing and exits that survive loss of the usual services.
 We are testing assumptions, not launching a privacy pool.
 
+## Current review checkpoint, 2026-10-17
+
+Start with the [Based App feasibility conclusion](based-app-feasibility-2026-10-17.md)
+and [PR33 final review](../poc/takeover/FINAL-REVIEW.md). Five criteria have real
+TN10 evidence, with archived receipts and a read-only reproduction path. The
+public-account result establishes no financial privacy or independent recovery.
+The next review target is the [shielded-KAS payment statement and work plan](shielded-kas-next.md),
+especially owner authorization, hidden-value conservation, nullifier domains,
+private witness handling and native exit backing. No production architecture is
+selected. AI-assisted review is not independent human review.
+
+The A0/A1 source tasks below remain useful historical control reviews. They are
+not instructions to repeat completed trials or substitute A1 for a privacy pool.
+
 ## What exists
 
 - **A0/A0.5:** a real Groth16 proof spent a funded TN10 test reserve and a native
@@ -11,17 +25,19 @@ We are testing assumptions, not launching a privacy pool.
   native RPC endpoints supplied live UTXO/acceptance observations. See the
   [report](poc-a0.md) and merged commit
   [`3a1efa8`](https://github.com/olafweller/kaspa-privacy-initiative/commit/3a1efa8db9672025f5282970703cb7256428c1be).
-- **A1:** [draft PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22)
-  tests S0→S1 plus a partial payout, S0 direct exit, and S1 terminal exit for one
-  fixed recipient. Local/native-synthetic G1–G4 evidence exists. Its negative-test
-  and fee-receipt qualification defects have a repair under review; use the
-  PR's current report for receipts and exact gate status.
-- **Not established:** independent G5 machine/archive recovery, live A1 G6,
-  private transfers, notes/nullifiers, anonymity, scalable throughput, an audit
-  or production safety. Same-host container recovery does not close G5.
+- **A1:** merged [PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22)
+  demonstrated scoped S0/S1 native exits and recovery with the original machine
+  off. See the [dated trial](poc-a1-official-trial-2026-10-08.md). This is one fixed
+  recipient with retained artifacts; the full G5/G6 matrix and N-user gate remain
+  open.
+- **Based App:** PRs #31–#33 establish the narrower public sequencing-to-settlement
+  path, including native bridge payout. See the current checkpoint above.
+- **Not established:** shielded notes/transfers, financial privacy, independent
+  N-user shutdown recovery, general pruning/expiry/reorg recovery, scalable
+  throughput, an audit or production safety.
 
-Candidate A is the current experimental baseline because it is the smallest
-falsifiable use of current L1 primitives. [RFC-0001](rfc/0001-state-architecture.md)
+Candidate A remains a control for the smallest falsifiable use of current L1
+primitives; Based App components now have scoped integration evidence. [RFC-0001](rfc/0001-state-architecture.md)
 remains open. A0/A1 are evidence, not production architecture acceptance; future
 notes/nullifiers/private transfers may require major redesign or another design.
 BN254/Groth16 is an experiment-compatible choice, not a final proof system or PQ
@@ -93,7 +109,7 @@ is insufficient lineage evidence; PK hashes cannot recreate lost PK bytes.
 
 ## Report a finding
 
-Comment on PR #22 or a linked issue with the exact commit, file, assumption,
+Comment on the relevant PR or a linked issue with the exact commit, file, assumption,
 small reproduction, expected/actual result and consequence. State what you did
 not test. Use [SECURITY.md](../SECURITY.md) for sensitive findings involving
 potential deployed funds. No human audit is implied by submitting a review.

@@ -241,3 +241,14 @@ separately confirms actual payout after clean public replay and a 175-score stop
 gap; native omission, bridge-diversion and spent-input controls were rejected.
 A canonical-chain observation does not establish general reorg recovery; the
 runner halts on a detected reorg and never automatically retries broadcasts.
+
+## Privacy work after the Based App checkpoint
+
+The [feasibility conclusion](docs/based-app-feasibility-2026-10-17.md) covers public
+ordering/execution/settlement. The next [shielded-KAS specification](docs/shielded-kas-next.md)
+must explicitly cover chain observers, executors, hosted provers, RPC providers
+and recipient discovery. A prover receiving plaintext witnesses is a privacy
+trust dependency; lane payloads, resource access, fee funding, ciphertext retrieval
+and timing can leak relationships despite a ZK execution proof. No privacy
+requirement is satisfied by the public-account result. Existing fund-safety,
+recovery and independent-review requirements remain unchanged.

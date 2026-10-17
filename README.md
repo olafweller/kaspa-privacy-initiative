@@ -8,7 +8,7 @@
 
 ## Start here and help shape the research
 
-The first public milestone is a feasibility and architecture review. Developers, researchers, security reviewers, and people who can identify a broken assumption are welcome. No state architecture, proof system, or production implementation has been accepted.
+The [scoped Based App feasibility milestone](docs/based-app-feasibility-2026-10-17.md) is complete: PRs #31–#33 demonstrate real TN10 lane ordering through proved execution and accepted settlement, including native payout and same-endpoint omission rejection. The development focus now moves to [shielded native KAS and financial privacy](docs/shielded-kas-next.md). No production architecture or privacy protocol has been accepted. Developers, researchers and security reviewers are welcome.
 
 - Start with the compact [external reviewer guide](docs/REVIEWER-GUIDE.md): three small review tasks and reproduction commands.
 - Read the [candidate architectures](docs/ARCHITECTURE.md) and [open RFC-0001](docs/rfc/0001-state-architecture.md).

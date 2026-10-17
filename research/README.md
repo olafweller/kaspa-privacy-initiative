@@ -4,6 +4,8 @@ The initiative should build on mature ideas and current Kaspa capabilities rathe
 
 ## Latest review
 
+- [Based App feasibility conclusion](../docs/based-app-feasibility-2026-10-17.md) — five scoped TN10 acceptance criteria, retained evidence and limitations; development now focuses on [shielded native KAS](../docs/shielded-kas-next.md).
+
 - [phase1-source-review-2026-10-08.md](phase1-source-review-2026-10-08.md) — dated source-only comparison, search boundaries and open privacy, scale, recovery, fee and migration questions.
 
 ## Kaspa-specific

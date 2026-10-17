@@ -146,7 +146,7 @@ When architecture changes:
 
 1. Work from the public GitHub issues and the current RFCs/ADRs rather than recreating bootstrap work.
 2. Keep Kaspa/Toccata/vProgs research evidence current, source-grounded, and pinned to exact upstream files/commits where practical.
-3. Prioritize the open architecture and feasibility work in P01-P03 before substantial cryptographic implementation.
+3. The scoped public Based App feasibility milestone is complete; follow `docs/based-app-feasibility-2026-10-17.md` and the owner-directed `docs/shielded-kas-next.md` priorities. Focus on shielded native KAS and financial privacy, with P01-P03 source refresh/design review before substantial cryptographic implementation. Do not expand public-account runtime or operator infrastructure without a demonstrated requirement.
 4. Preserve the invariants in `SECURITY-INVARIANTS.md`. Do not weaken or reinterpret an invariant silently; any proposed change must be explicit and reviewed.
 5. Keep facts, interpretations, hypotheses, and unverified claims clearly separated.
 6. Before implementing notes, nullifiers, proving, exits, wallet scanning, or private state, inspect the relevant mature protocol designs and current Kaspa work first.

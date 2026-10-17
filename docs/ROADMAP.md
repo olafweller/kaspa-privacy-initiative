@@ -2,7 +2,23 @@
 
 This roadmap is intentionally research-first. Phases are research gates, not delivery promises. No state architecture or scaling path has been accepted.
 
-## Current evidence, 2026-10-08
+## Current focus, 2026-10-17
+
+The five-criterion [Based App feasibility assessment](based-app-feasibility-2026-10-17.md)
+is complete for the public-account TN10 experiment in PRs #31–#33: accepted L1
+ordering, correct execution, real proofs, confirmed settlement/payout and native
+rejection of omission at the same endpoint. This is a scoped integration result,
+not completion of the privacy protocol, I-10 or the N-user recovery gate.
+
+Development now prioritizes [shielded native KAS and financial privacy](shielded-kas-next.md):
+a reviewed private-payment statement, established note/nullifier/delivery
+mechanisms, exact backing and fees, private witness handling and a minimal
+private-transfer-to-native-exit experiment. Existing Based App components are a
+tested candidate backend; neither a full runtime nor an independent operator
+network is the immediate deliverable. Phase 1 source refresh and Phase 2 design
+review support this privacy work. All later exit/recovery requirements remain.
+
+## Earlier A0/A1 evidence, 2026-10-08
 
 A0/A0.5 demonstrated a real Groth16-authorized funded TN10 reserve release and observed native test-KAS payout. The own node lacked complete UTXO sync; public native RPC endpoints supplied live UTXO/acceptance observations. This was not independent recovery, a privacy pool, an audit, production safety or architecture acceptance.
 

@@ -51,3 +51,13 @@ resources, program/source hashes and audit logs, including the corrected
 read-only accounting failure. Wallet keys are outside the public trial and
 are not included. Local host proof reports remain separate from actual native
 acceptance records. The live report states the exact same-owner/node scope.
+
+## Final review replay
+
+The separate [final-review.json](final-review.json) records read-only SDK
+re-verification of all eight live receipts, eight changed-journal and eight
+wrong-program rejections, independent Python native-order/state/accounting checks,
+the repeated PR32 audit and review-tool hashes. Original evidence archives are
+unchanged. [Reproduction commands](../FINAL-REVIEW.md) need no keys, RPC or prover.
+This is additional verification of recorded observations, not another independent
+node/operator or new on-chain test.

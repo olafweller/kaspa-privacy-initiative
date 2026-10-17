@@ -1,0 +1,300 @@
+{
+  "scope": "AI_ASSISTED_FINAL_REVIEW_OF_RETAINED_PUBLIC_TN10_EVIDENCE",
+  "reviewedLiveCheckpoint": "38b8537988c434a085d2d3c4712a03049599db63",
+  "reviewUtilitiesCommit": "96be08212e36b35289cce651cbdc3a5a0729ee27",
+  "blockingFindings": [],
+  "independentHumanReview": false,
+  "newTN10Broadcasts": 0,
+  "additionalLiveTestRequiredForFiveCriteria": false,
+  "originalGuestAndFundedBuilderSourcesUnchanged": true,
+  "sourceSnapshotDifference": "Host Cargo.toml adds only the read-only verifier binary; original executed source hashes remain historical provenance.",
+  "sdkReverification": {
+    "prefix": {
+      "developmentMode": false,
+      "receipts": [
+        {
+          "changedJournalRejected": true,
+          "file": "aggregate-receipt.bin",
+          "image": "14bedaace438fe568000405a947909bcdd7df82e8458bc3a87e6d85bdfdab166",
+          "journalBytes": 352,
+          "kind": "aggregate",
+          "wrongProgramRejected": true
+        },
+        {
+          "changedJournalRejected": true,
+          "file": "b00041-receipt.bin",
+          "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+          "journalBytes": 273,
+          "kind": "batch",
+          "wrongProgramRejected": true
+        },
+        {
+          "changedJournalRejected": true,
+          "file": "b00041-t00002-receipt.bin",
+          "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+          "journalBytes": 212,
+          "kind": "transaction",
+          "wrongProgramRejected": true
+        }
+      ],
+      "scope": "OFFLINE_SDK_RECEIPT_REVERIFICATION_NOT_NEW_CHAIN_OBSERVATION"
+    },
+    "omission": {
+      "developmentMode": false,
+      "receipts": [
+        {
+          "changedJournalRejected": true,
+          "file": "aggregate-receipt.bin",
+          "image": "14bedaace438fe568000405a947909bcdd7df82e8458bc3a87e6d85bdfdab166",
+          "journalBytes": 352,
+          "kind": "aggregate",
+          "wrongProgramRejected": true
+        },
+        {
+          "changedJournalRejected": true,
+          "file": "b00132-receipt.bin",
+          "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+          "journalBytes": 273,
+          "kind": "batch",
+          "wrongProgramRejected": true
+        }
+      ],
+      "scope": "OFFLINE_SDK_RECEIPT_REVERIFICATION_NOT_NEW_CHAIN_OBSERVATION"
+    },
+    "final": {
+      "developmentMode": false,
+      "receipts": [
+        {
+          "changedJournalRejected": true,
+          "file": "aggregate-receipt.bin",
+          "image": "14bedaace438fe568000405a947909bcdd7df82e8458bc3a87e6d85bdfdab166",
+          "journalBytes": 352,
+          "kind": "aggregate",
+          "wrongProgramRejected": true
+        },
+        {
+          "changedJournalRejected": true,
+          "file": "b00132-receipt.bin",
+          "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+          "journalBytes": 314,
+          "kind": "batch",
+          "wrongProgramRejected": true
+        },
+        {
+          "changedJournalRejected": true,
+          "file": "b00132-t00001-receipt.bin",
+          "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+          "journalBytes": 253,
+          "kind": "transaction",
+          "wrongProgramRejected": true
+        }
+      ],
+      "scope": "OFFLINE_SDK_RECEIPT_REVERIFICATION_NOT_NEW_CHAIN_OBSERVATION"
+    }
+  },
+  "publicOrderAndAccountingAudit": {
+    "scope": "OFFLINE_RECORDED_L1_ORDER_STATE_AND_ACCOUNTING_AUDIT_NOT_NEW_CHAIN_OBSERVATION",
+    "outerMembersVerified": 127,
+    "publicVpsMembersVerified": 89,
+    "orderedInputsAndContexts": {
+      "prefix": {
+        "lane_tip": "8bf07b6fdf514587e4273df48ea981d0706ef4c5485313a6579f1077da71b6f0",
+        "seq_commit": "194c1511d4b7dfb51c490430ff285e99e15182f027eba9627c788fe4437fe6ee",
+        "ordered_transaction_ids": [
+          "99841e1d44764deb8ab7411df629391f67bd2e3a0f785b0c267d2405aeb8b632"
+        ],
+        "recognized_kpi_operations": [],
+        "state_from_initial_domain": "4336dff42b8b4c8cb34e25851d4ef9bd3208e083065d8eb156c781bfa5d6ef91"
+      },
+      "final": {
+        "lane_tip": "5bbc1ac7e29dfccaa002d8feb3d090a0f4f72f14449e86877b1171e9ccefce05",
+        "seq_commit": "79103b0039e118b99565588a0112f257e7c74b26416c3cd94f2b2abc714eb11b",
+        "ordered_transaction_ids": [
+          "2e803f6fffbb30ebb4d5d85531212cd85742a084b14d530311ed0fbc0b4226b3"
+        ],
+        "recognized_kpi_operations": [],
+        "state_from_initial_domain": "4336dff42b8b4c8cb34e25851d4ef9bd3208e083065d8eb156c781bfa5d6ef91"
+      }
+    },
+    "confirmedTransactionCount": 9,
+    "totalFeesSompi": 193850800,
+    "paidPrincipalSompi": 400000000,
+    "refundedRentSompi": 50000000,
+    "remainingReserveSompi": 600000000,
+    "remainingAccountBalanceSompi": 600000000,
+    "unpaidClaimsSompi": 0,
+    "gapFromObservedStopTipBlueScores": 175,
+    "sameEndpointOmissionRejectedByNode": true,
+    "cleanPublicReplayMatched": true,
+    "independentOperator": false,
+    "privacy": false,
+    "zkVerification": "Separate kpi-takeover-verify command; this Python audit is not a proof verifier."
+  },
+  "pr32AccountingAudit": {
+    "scope": "INDEPENDENT_PUBLIC_ACCOUNTING_AND_JOURNAL_AUDIT_NOT_ZK_VERIFIER",
+    "initialSponsorSompi": 999432038000,
+    "endingDomainsSompi": {
+      "sponsor": 997888618200,
+      "userNative": 649163800,
+      "stateRent": 100000000,
+      "userReserve": 600000000
+    },
+    "originalMembersVerified": 120,
+    "confirmedTransactions": 10,
+    "feesSompi": {
+      "fund-user": 407600,
+      "seed": 328200,
+      "bootstrap": 416600,
+      "deposit": 433200,
+      "unauthorized": 409800,
+      "withdraw": 403000,
+      "replay": 403000,
+      "prefix-settlement": 95160600,
+      "final-settlement": 95252000,
+      "payout": 1042000
+    },
+    "totalFeesSompi": 194256000,
+    "backingStagesSompi": [
+      {
+        "stage": "initial",
+        "spendable": 0,
+        "unpaidClaims": 0,
+        "reserved": 0
+      },
+      {
+        "stage": "deposit_on_L1_uncredited",
+        "spendable": 0,
+        "unpaidClaims": 0,
+        "reserved": 1000000000
+      },
+      {
+        "stage": "deposit_settled",
+        "spendable": 1000000000,
+        "unpaidClaims": 0,
+        "reserved": 1000000000
+      },
+      {
+        "stage": "withdrawal_settled_unpaid",
+        "spendable": 600000000,
+        "unpaidClaims": 400000000,
+        "reserved": 1000000000
+      },
+      {
+        "stage": "payout_confirmed",
+        "spendable": 600000000,
+        "unpaidClaims": 0,
+        "reserved": 600000000
+      }
+    ],
+    "allEntitlementsIncludingRentSompi": [
+      {
+        "stage": "initial",
+        "principalLiability": 0,
+        "rentClaim": 0,
+        "totalLiability": 0,
+        "reservedPrincipal": 0,
+        "reservedPermissionRent": 0,
+        "totalReserved": 0
+      },
+      {
+        "stage": "deposit_on_L1_uncredited",
+        "principalLiability": 0,
+        "rentClaim": 0,
+        "totalLiability": 0,
+        "reservedPrincipal": 1000000000,
+        "reservedPermissionRent": 0,
+        "totalReserved": 1000000000
+      },
+      {
+        "stage": "deposit_settled",
+        "principalLiability": 1000000000,
+        "rentClaim": 0,
+        "totalLiability": 1000000000,
+        "reservedPrincipal": 1000000000,
+        "reservedPermissionRent": 0,
+        "totalReserved": 1000000000
+      },
+      {
+        "stage": "withdrawal_settled_unpaid",
+        "principalLiability": 1000000000,
+        "rentClaim": 50000000,
+        "totalLiability": 1050000000,
+        "reservedPrincipal": 1000000000,
+        "reservedPermissionRent": 50000000,
+        "totalReserved": 1050000000
+      },
+      {
+        "stage": "payout_confirmed",
+        "principalLiability": 600000000,
+        "rentClaim": 0,
+        "totalLiability": 600000000,
+        "reservedPrincipal": 600000000,
+        "reservedPermissionRent": 0,
+        "totalReserved": 600000000
+      }
+    ],
+    "stateRentSompi": 100000000,
+    "permissionRentRefundSompi": 50000000,
+    "nativePrincipalPaidSompi": 400000000,
+    "journals": {
+      "prefix": {
+        "state": "632337b5c1c690a3bef9231c2777f9896dad799db21d1335ff4cd31456d53e23",
+        "seq": "1166aafa38f427874d78fff8981660ecc3b20cb880c0ec6e314ac01221e94148"
+      },
+      "final": {
+        "state": "11e0060285b73a72ea132fb79f8e620c9ae586462b723f5d6db0800b90ca3cb8",
+        "seq": "b692970f461e88fdc3bfb072ffa39d00de018aeada1194ec2c6000d87fc385c1"
+      },
+      "omission": {
+        "state": "632337b5c1c690a3bef9231c2777f9896dad799db21d1335ff4cd31456d53e23",
+        "seq": "30b77b082eeb0a965d8845fa46fd0f7b9eda5e8ed44a168ddaf279192cb484dc"
+      }
+    },
+    "remainingIndependentRecoveryProven": false
+  },
+  "pr31NativeOrder": {
+    "lane_tip": "7a71eaa94cbba2e30040e08003b116811112c2a040efecab85df0c389818cfd8",
+    "seq_commit": "957d30928d987f2c7fa50b85d1ad6a8bc2de66d9375e9079a849ef209a73bacd",
+    "ordered_transaction_ids": [
+      "e591738ac54f2abe0c00d55e80ca84c95929daad8b21683bbf4d93483300245a",
+      "31ee2b1f659b06b4b5276c8ccb695564f01c373be5196595fe6c561787c88d38",
+      "cf319b1b8d85113c4d2b8aff5aab4f6a15889a38c29cb51f0ee4959001fe5619"
+    ],
+    "recognized_kpi_operations": [
+      1,
+      2,
+      3
+    ],
+    "state_from_initial_domain": "2c056837bb51248de9c75454b20abf4f4d4efe10c62af9349c54abdfda4c8117"
+  },
+  "rustAdapterTestsPassed": 7,
+  "sourceSha256": {
+    "poc/takeover/audit.py": "bf8e2f96f93b6be3351931dab2d20b8dee4645c5768441ac0bc876d5702ff8cb",
+    "poc/takeover/host/src/bin/verify.rs": "a839168e23a151ef853228ef49696b4f448a326391a19425fa5fbbea8c8820d1",
+    "poc/takeover/host/Cargo.toml": "8a4ac1ca5a88a3ae99373e01f12e6405add38d7db4405cc2df4904d7443fdda5",
+    "poc/native-value/audit.py": "74deab27e1bff19d4e1a2939638ae7f5870ee27969df7b6a98fbf4b108260706",
+    "poc/lane-completeness/integration/check_capture.py": "c0e55e75649984774cc387cc272975687cc4b3bcd6908796e5690e41fa27f49f",
+    "poc/lane-completeness/independent_executor.py": "162a43a54a0a8b400ea90f9901a5656f8fd0ddcdb759c0c4d377b146c626234f"
+  },
+  "verifierBinarySha256": "d6e96ad30c0d3ce73f641aca8d1e6173fab96179017b019f24daf5b46992e5f3",
+  "limitations": [
+    "same owner/node and retained public data",
+    "no financial privacy",
+    "no true lane expiry or general reorg recovery",
+    "no mandatory progress",
+    "no independent human cryptographic audit"
+  ],
+  "acceptanceCriteria": {
+    "BA-1 real accepted L1 ordering": "SATISFIED_FOR_RECORDED_PUBLIC_TN10_EXPERIMENT",
+    "BA-2 correct public execution": "SATISFIED_FOR_RECORDED_PUBLIC_TN10_EXPERIMENT",
+    "BA-3 real cryptographic receipts": "SATISFIED_FOR_RECORDED_PUBLIC_TN10_EXPERIMENT",
+    "BA-4 native settlement and payout": "SATISFIED_FOR_RECORDED_PUBLIC_TN10_EXPERIMENT",
+    "BA-5 same-endpoint omission rejection": "SATISFIED_FOR_RECORDED_PUBLIC_TN10_EXPERIMENT"
+  },
+  "localFastChecks": {
+    "pythonCases": 81,
+    "pythonSkipped": 2,
+    "nodeTestsPassed": 13,
+    "syntaxDocsAndExactU64": "passed"
+  }
+}

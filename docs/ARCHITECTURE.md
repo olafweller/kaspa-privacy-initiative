@@ -344,3 +344,14 @@ gap, recursive settlement and native payout, with reserve matching the remaining
 account balance. This used the same owner/node and retained public archive.
 Native expiry is rejected inside the batch guest; unavailable public history
 can halt recovery. No privileged withdrawal path is introduced.
+
+## Feasibility checkpoint and private-protocol focus
+
+The [five-criterion assessment](based-app-feasibility-2026-10-17.md) concludes the
+public Based App integration milestone from PRs #31–#33. Ordering completeness
+within a claimed interval, correct public execution and native settlement are
+established for those experiments; privacy, mandatory progress and independent
+recovery are not. The next [shielded-KAS work package](shielded-kas-next.md) must
+specify confidential ownership/value, spentness, retained data and exact native
+backing before implementation. A/B/C remain comparison candidates, not accepted
+production designs. No new primitive or admin path is selected by this checkpoint.
