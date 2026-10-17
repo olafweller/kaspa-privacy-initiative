@@ -3,8 +3,8 @@
 Date: 2026-10-17. Owner-authorized local development/review resumed after the
 historical pause. New TN10 transactions remain outside this review.
 
-Status: native tests and retained-capture preparation passed; recursive proof
-execution is in progress. This document will be finalized with that result.
+Status: local review passed, including the full real recursive proof chain and
+fixed-captured-anchor native script verification. No new TN10 trial was run.
 
 ## Corrections
 
@@ -43,17 +43,52 @@ handling and exact reconstruction of prior RPC derivatives.
 
 The prepare executable and retained native validator replay the original
 `prefix2` and `final2` public captures. The resulting application state equals
-the retained PR32 state byte-for-byte as structured data: initially zero, then
+the retained PR32 state exactly as structured data: initially zero, then
 1,000,000,000 sompi spendable, then 600,000,000 sompi spendable plus the
 400,000,000 sompi exit claim. State/tip continuity between intervals matches.
 Omitting an accepted transaction changes the derived commitment against the
 same endpoint. Altering a payload while preserving its claimed native ID fails
 native capture validation. The repeatable harness is [check_retained.py](check_retained.py).
+Omission is checked during preparation. The real proof run uses the complete
+interval; its wrong-anchor script control is separate from generating a new
+omitted-input proof. A newly proved omission bundle is not part of this review.
 
 The combined interval is a documented derivative of those two contiguous
 historical captures, not a newly fetched node response. It has 55 selected-chain
 blocks, four lane transactions and four active batches. Original compressed
 captures remain unchanged on main. No privacy or independent-node claim follows.
+The historical withdrawal was already paid in PR32; replay here creates no new
+native entitlement or payout.
+
+## Real recursive proof result
+
+The full combined interval completed with exit code 0: four transaction proofs,
+four batch proofs and one aggregate proof, all real succinct receipts. Every
+receipt passed SDK image/journal verification; every guest journal matched its
+prepared bytes. Development mode was absent. The aggregate resolved four batch
+assumptions and used the official resolve control ID
+`53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a`.
+
+The local native Kaspa script engine accepted the aggregate with the fixed
+commitment from the captured endpoint and rejected a deliberately wrong one.
+It consumed 25,006,924 script units. Eleven separately recorded execution
+rejections cover missing transaction receipts (four), expired-lane flags (four),
+missing batch receipts, a wrong batch-image assumption and a wrong transaction-
+image assumption. These have actual execution error details, not inferred
+protocol rejection from a failed build/start.
+
+Whole run: 1,635.358 seconds (27.26 minutes), maximum individual-process RSS
+4,820,868 KiB (about 4.60 GiB). Aggregate proof: 271.645 seconds, one 262,144-cycle
+segment, 352-byte journal. This remains local script/proof evidence with a local
+accessor; no full node economic validation, current chain observation, actual
+settlement or new payout was performed. The 201-score gap test is synthetic;
+the real historical interval has 55 blocks and is not the planned long-gap trial.
+
+The [machine-readable result](evidence/local-review.json) and
+[artifact archive](evidence/local-review-artifacts.tar.gz) retain prepared inputs,
+rebuilt programs, receipts, journals, source/prover hashes, profiles, failure
+records and selected logs. The final capture harness produced byte-identical
+proof inputs to the ones actually executed. See [evidence notes](evidence/README.md).
 
 ## Source and artifact reconciliation
 
@@ -107,3 +142,5 @@ than 100 blue scores below native expiry, replay public data in a clean process,
 settle the real recursive proof and confirm native payout. The old funded
 instances and PR32's six-test-KAS balance are untouched. No project VPS job,
 wallet, funding, broadcast or node restart was performed by this local review.
+Only native v1 transaction preimages are supported. An unsupported native version
+halts this experiment; it is not treated as a supported application no-op.

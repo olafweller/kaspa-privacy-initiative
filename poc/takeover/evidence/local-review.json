@@ -1,0 +1,298 @@
+{
+  "scope": "LOCAL_RETAINED_PUBLIC_INPUT_RECURSIVE_REVIEW",
+  "sourceCommit": "1afd7dfdb873b5179b686c9383b29158a0e9e6b4",
+  "mainBaseline": "335fbca8103e28af9ba15aedfd56d22350b1cbd2",
+  "actualTN10Settlement": false,
+  "newTN10Transactions": 0,
+  "rustAdapterTestsPassed": 7,
+  "rustNativeValueRegressionTestsPassed": 3,
+  "pythonTests": {
+    "cases": 81,
+    "skipped": 2
+  },
+  "nodeTestsPassed": 13,
+  "prepared": {
+    "scope": "RETAINED_PUBLIC_CAPTURE_PREPARATION_NO_NEW_PROOFS",
+    "actualTN10Settlement": false,
+    "cases": {
+      "prefix2": {
+        "matchesRetainedState": true,
+        "batches": 2,
+        "spendableSompi": 1000000000,
+        "omissionChangesFixedEndpointCommitment": true
+      },
+      "final2": {
+        "matchesRetainedState": true,
+        "batches": 2,
+        "spendableSompi": 600000000,
+        "stateAndTipContinuePrefix": true,
+        "omissionChangesFixedEndpointCommitment": true
+      },
+      "combined": {
+        "matchesRetainedState": true,
+        "blocks": 55,
+        "batches": 4,
+        "transactions": 4,
+        "spendableSompi": 600000000,
+        "contiguousCaptureEndpoints": true
+      }
+    },
+    "programSha256": {
+      "transaction": "de65172a74788e859d92679e74e194d26c496acf1a2586be378677be75e5560f",
+      "batch": "bce31b9532217415999c6fb9d7b2304e08c99a59c3e93b21075b258a05a86013",
+      "aggregate": "20c9f861a080a2ff947f5d3628e8d5e54c3aa2aaa31b75dc43f1b32367a54cdf"
+    },
+    "tamperedNativeBodyRejected": true
+  },
+  "proofRun": {
+    "resources": {
+      "command": [
+        ".local/ci-target/release/kpi-takeover-host",
+        "bundle",
+        ".local/takeover/review-replay-03/combined",
+        ".local/takeover/rebuilt-programs-01",
+        ".local/takeover/review-bundle-01"
+      ],
+      "seconds": 1635.3577003239998,
+      "exitCode": 0,
+      "userSeconds": 6330.432225,
+      "systemSeconds": 13.990732,
+      "maxIndividualProcessRssKiB": 4820868
+    },
+    "complete": {
+      "actualTN10Settlement": false,
+      "developmentMode": false,
+      "fixedCapturedAnchorAccepted": true,
+      "nativeScriptEngineVerifiedWithDerivedAnchor": true,
+      "omittedTransactions": 0,
+      "scope": "REAL_RECURSIVE_PUBLIC_BUNDLE",
+      "spendableSompi": 600000000,
+      "stateRoot": "90dffb462356fb5f2aed775de9ee0506dd7f36af02e1a0a621b3cd2900706f52",
+      "wrongAnchorRejected": true
+    },
+    "proofs": {
+      "b00034-t00002": {
+        "assumptionsSupplied": 0,
+        "controlId": "8c2fdd36ede09a4b9d316a43c51f1160cbd8876659c5f35810c3a119c60d3843",
+        "developmentMode": false,
+        "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+        "journalBytes": 186,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 248.542579233,
+        "stats": "SessionStats { segments: 1, total_cycles: 524288, user_cycles: 240531, paging_cycles: 69587, reserved_cycles: 214170 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00034": {
+        "assumptionsSupplied": 1,
+        "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+        "developmentMode": false,
+        "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+        "journalBytes": 273,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 119.244624217,
+        "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 37739, paging_cycles: 41675, reserved_cycles: 51658 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00054": {
+        "assumptionsSupplied": 1,
+        "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+        "developmentMode": false,
+        "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+        "journalBytes": 273,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 120.259120696,
+        "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 37754, paging_cycles: 41675, reserved_cycles: 51643 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00044": {
+        "assumptionsSupplied": 1,
+        "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+        "developmentMode": false,
+        "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+        "journalBytes": 314,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 118.921562319,
+        "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 39473, paging_cycles: 43054, reserved_cycles: 48545 }",
+        "syntheticEmptyBatch": false
+      },
+      "aggregate": {
+        "assumptionsSupplied": 4,
+        "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+        "developmentMode": false,
+        "image": "14bedaace438fe568000405a947909bcdd7df82e8458bc3a87e6d85bdfdab166",
+        "journalBytes": 352,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 271.645412771,
+        "stats": "SessionStats { segments: 1, total_cycles: 262144, user_cycles: 123404, paging_cycles: 65486, reserved_cycles: 73254 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00044-t00003": {
+        "assumptionsSupplied": 0,
+        "controlId": "8c2fdd36ede09a4b9d316a43c51f1160cbd8876659c5f35810c3a119c60d3843",
+        "developmentMode": false,
+        "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+        "journalBytes": 253,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 244.438581327,
+        "stats": "SessionStats { segments: 1, total_cycles: 524288, user_cycles: 256969, paging_cycles: 69431, reserved_cycles: 197888 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00023": {
+        "assumptionsSupplied": 1,
+        "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+        "developmentMode": false,
+        "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+        "journalBytes": 273,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 119.575449388,
+        "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 38438, paging_cycles: 41327, reserved_cycles: 51307 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00054-t00002": {
+        "assumptionsSupplied": 0,
+        "controlId": "8c2fdd36ede09a4b9d316a43c51f1160cbd8876659c5f35810c3a119c60d3843",
+        "developmentMode": false,
+        "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+        "journalBytes": 211,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 250.076564284,
+        "stats": "SessionStats { segments: 1, total_cycles: 524288, user_cycles: 238766, paging_cycles: 67912, reserved_cycles: 217610 }",
+        "syntheticEmptyBatch": false
+      },
+      "b00023-t00053": {
+        "assumptionsSupplied": 0,
+        "controlId": "e7934a23ddce1423b425cf32aa23be29f48cd40e0b6ff9376dce6f3bf9d0bc35",
+        "developmentMode": false,
+        "image": "50e554e2ec71fa74ac6753a55ebc467d110259b805e10ccad75da2422052d290",
+        "journalBytes": 212,
+        "scope": "REAL_SUCCINCT_PROOF",
+        "seconds": 141.211002841,
+        "stats": "SessionStats { segments: 1, total_cycles: 262144, user_cycles: 173954, paging_cycles: 76505, reserved_cycles: 11685 }",
+        "syntheticEmptyBatch": false
+      }
+    },
+    "executionRejections": {
+      "b00023-missing-transaction-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest 2982dddf1080b2a0e5ede71d8355293023680d565a85dfd5469e4c6f57e9a39a, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "aggregate-missing-batches-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest 6e2ae7d46f037d70cad8b7528c08c7111f170d73e2d018b31926491b1fda91b0, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "aggregate-wrong-image-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest 6e2ae7d46f037d70cad8b7528c08c7111f170d73e2d018b31926491b1fda91b0, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00054-expired-lane-rejected": {
+        "error": "Guest panicked: lane expiry is not supported by this experiment",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00054-missing-transaction-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest dd01083abcea7f55ba7dfc7a055a4f07f7a77581e4400db22658bd6e158a033c, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00023-expired-lane-rejected": {
+        "error": "Guest panicked: lane expiry is not supported by this experiment",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00044-expired-lane-rejected": {
+        "error": "Guest panicked: lane expiry is not supported by this experiment",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00034-expired-lane-rejected": {
+        "error": "Guest panicked: lane expiry is not supported by this experiment",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00034-missing-transaction-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest d8d71734b9b249272c157a9b9b0a44a55eec926d7fd412448d82510d806d6177, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "batch-wrong-transaction-image-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest 2982dddf1080b2a0e5ede71d8355293023680d565a85dfd5469e4c6f57e9a39a, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      },
+      "b00044-missing-transaction-rejected": {
+        "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest bff9dc2acb135522528632626c92f22090d8d146bfd65ed8859a75f56b2c66df, control root 0000000000000000000000000000000000000000000000000000000000000000",
+        "scope": "EXECUTION_LAYER_REJECTION_NOT_TN10"
+      }
+    }
+  },
+  "sourceSnapshot": {
+    "scope": "LOCAL_RECURSIVE_BUNDLE_BUILD_SNAPSHOT",
+    "importCommit": "b4cb2bbbfbd9d3770c679477cd54313678097811",
+    "mainBaseline": "335fbca8103e28af9ba15aedfd56d22350b1cbd2",
+    "sourceSha256": {
+      "poc/lane-completeness/Cargo.toml": "890b35a67b6188f0941a9588e7a31d9659781b7f9edc109475122267c56ec056",
+      "poc/lane-completeness/common/Cargo.toml": "df39df0bfbc8c90187a2ee316d426d50dacd45574950f8c9694e5c4520e56170",
+      "poc/lane-completeness/common/src/lib.rs": "d53b8460295675f41e392a9c6a5e421068fb68d51cf783aa517983ede961c291",
+      "poc/lane-completeness/vendor/wallet/Cargo.lock": "ceb1535b717ec5c473a49a20cb23563b9e9fb4de919da0c76a0eb1addf1ad045",
+      "poc/lane-completeness/vendor/wallet/Cargo.toml": "8c489ab55557952bcd4a98ddf2deac99ac5cf9585348356fdec92e81af5d6725",
+      "poc/lane-completeness/vendor/wallet/src/build/activity.rs": "d065ab4dfb4b6e992113d4e622593801c7ed3adfa9714e68437ce51d14138942",
+      "poc/lane-completeness/vendor/wallet/src/build/bootstrap.rs": "f4f829daf298c1eabcdd745d906e8f5b60178c42ec84ef7fbe35831098a75fb1",
+      "poc/lane-completeness/vendor/wallet/src/build/carrier.rs": "a45ca36d71f951d063243c6d7585951a4be0f5a37b4ccf8fb46998e0619f3cc6",
+      "poc/lane-completeness/vendor/wallet/src/build/funding.rs": "b262f816c9ba8ebe88c8357d336beb5aa1f647690a2565bb5f783e6ee14fe4ea",
+      "poc/lane-completeness/vendor/wallet/src/build/payout.rs": "cfbfddbc6cf1e6d6846e3ca748615e0cd344e9c63b3bb4385e25d8a440fa98e5",
+      "poc/lane-completeness/vendor/wallet/src/build/pricing.rs": "cedb7b6316ef3c1133b310de606db3c8d915f729d0849a67e98de3c4c436230a",
+      "poc/lane-completeness/vendor/wallet/src/build/settlement.rs": "aaa478b4a9b9f2c6a03be82d8d54665a8a0172d8ed3f652610d27b97ad8d1c0f",
+      "poc/lane-completeness/vendor/wallet/src/build/testing.rs": "b87e89a5f5af3ce425fecf230b8779c217c79c5388cfaf1fd5b71672275f87a0",
+      "poc/lane-completeness/vendor/wallet/src/build/viability.rs": "f5e47fa330f7452dfb2f2d360007f0a4ba9940ca33cea239c373605984607ff8",
+      "poc/lane-completeness/vendor/wallet/src/build.rs": "244e01fe3e784846828682297883405e188b84a1a4387c328a3b6b60852b0faa",
+      "poc/lane-completeness/vendor/wallet/src/lib.rs": "35bbdda195d604c9aa2200ed7b61850c2daab3244484d978883499c756341b92",
+      "poc/native-value/Cargo.toml": "fcf08e648aa6a8dc90804521c8f7b050f4d6d699f8e0d1d7246170422e282881",
+      "poc/native-value/common/Cargo.toml": "69dc2ef66a607c5fb3e74014150ca20dec696b08b1991d0186922c91123960ab",
+      "poc/native-value/common/src/lib.rs": "bc0dddff56f076523a228930a85a1f0d71e1adf732a36041e6311e2ec5f24906",
+      "poc/native-value/host/src/actions.rs": "fcc56ff3729bccf9472280bc31f1c481c50a87faefab8d37746be4da4da4af53",
+      "poc/takeover/Cargo.lock": "2017aca5d752b9000a8781a4665137aa9d76cd0c8c6cbdc2944b9167ac761695",
+      "poc/takeover/Cargo.toml": "9c4fdec4e6f70b70d8d5ebf4b9f9f56fbe3db2d257b18ee865d6e2d47d3f0e6a",
+      "poc/takeover/aggregate-guest/Cargo.lock": "99a263e4437337e8ac984acfb70b2d74768854bfb63da814273b3dbcf19befc5",
+      "poc/takeover/aggregate-guest/Cargo.toml": "f0360f9650f3d3f292e6b926df38e3ceda227245c0206ab8b28b1f331424a512",
+      "poc/takeover/aggregate-guest/src/main.rs": "7bc1683ab660d3baaa73067eb16eee3e2864e7f238018b585b4d0412a564bde6",
+      "poc/takeover/batch-guest/Cargo.lock": "bc59c51c8a37a4a66564bc6a755ef4d825a948bf63d4241c2f78c5fc946f2487",
+      "poc/takeover/batch-guest/Cargo.toml": "13e2704dafe6e0698dd35dde1f8ff9e0c329ef5af40e62858ce6e287e57e1a06",
+      "poc/takeover/batch-guest/src/main.rs": "fba5aba6f86ca5f619c8c0b9e22e9fcd369003c081e2ae71e3f30574b5228918",
+      "poc/takeover/build-guests.sh": "38d41c5436c0e7290e4757d24c44fd07ab38c5c1bb2e89acce52e9e7fbb9939f",
+      "poc/takeover/common/Cargo.toml": "6b5a5ff57dba2245e6b5bfc750dd20773dbe50556bf5844a2be589a2395b3880",
+      "poc/takeover/common/src/lib.rs": "ef867bc47a12067a13196d27a21558326ba7138be0ac0142be2483ed2f755efe",
+      "poc/takeover/host/Cargo.toml": "f949d6b7d2bf15437553283d35165ca0252fdd3acf01aca2d1252be934d5f323",
+      "poc/takeover/host/src/bin/build.rs": "acdb1760cb9067e450797813deaabca83710edee8b8f47a3e52caabf2888b75a",
+      "poc/takeover/host/src/bin/prepare.rs": "fdf2a2269705cadd1e6a48fdff32106aaa26ed5f68c69b1fae9827b7b698707a",
+      "poc/takeover/host/src/main.rs": "674403f1d06e28a4af961f15cc3d0fa921949c4a38e6374ccd4b274ab93bc141",
+      "poc/takeover/host/tests/relation.rs": "0ab2ce8f2adc0bf8e76fbb09f940f3e446fb2e09c0475744504585174aa751ae",
+      "poc/takeover/measure.py": "a3e2d5ff737e41562d72bcb34d1bba4dedcc6a5007e654dd004e217e3a8ebdfd",
+      "poc/takeover/transaction-guest/Cargo.lock": "c570c82bb1c34a713f6e31ac4a107df319f2664a6492f3fc2bd008731e6b525c",
+      "poc/takeover/transaction-guest/Cargo.toml": "1e0366bbbd1a178a805a75477b5b05fdb231b5f5f739279cfb4f01a7cc71fa8e",
+      "poc/takeover/transaction-guest/src/main.rs": "78364598b3e11a830f9e67b3a28c48ef2e960f1ed99acfcfb547ab2c94051c65",
+      "poc/takeover/vendor/covenant/Cargo.toml": "78e268531fab65cc8ebc9a56f31511d9bc9a5d10fb362c596dae77ea5e7e6896",
+      "poc/takeover/vendor/covenant/build.rs": "302ef26cbd5ff681051bd3d432d9cc6a897b781ec7518742d1a23da17ff45651",
+      "poc/takeover/vendor/covenant/src/bootstrap.rs": "00a7f0b6edd067ea5953ad86dec67cd818ec7d7ab2f408ae9aa9b40fdaaa5220",
+      "poc/takeover/vendor/covenant/src/lib.rs": "3da34a56725b1ece1ef5bbbc4d2e968d7bbe8c2c0b4c2c96e3ae8ac14ffa3e9c",
+      "poc/takeover/vendor/covenant/src/script.rs": "de63b73557aa640ff496fe88751cd8fad601d896929e1e7d02011b90151c5dfb",
+      "poc/takeover/vendor/covenant/src/settlement/settlement_dev_input.rs": "e1d0de1308db20ceb1e7f1b1ec7634391db639fdc5c6ea99d5a3dd9fb962e4b9",
+      "poc/takeover/vendor/covenant/src/settlement/settlement_input.rs": "d442f11a935fe862b43d7082920ec560032ff8e17c7ca83d23a467adedb938bc",
+      "poc/takeover/vendor/covenant/src/settlement/settlement_witness.rs": "c1a333a7105473b78667961f745ed471e32b0d538a74a1c821ea360b3d088961",
+      "poc/takeover/vendor/covenant/src/settlement/succinct_witness.rs": "5ae256bf72657a12b15e8a0b1497537205694cbb9088c10aa6eed4e4b9a6342e",
+      "poc/takeover/vendor/covenant/src/settlement.rs": "6859a89f8fbf3f916afbf9d017903376bbcb15240cff655c7e585ac1941b8e8e"
+    },
+    "hostSha256": "d99bec7adbdb6031683b9750daeb7cab88d24f1744efda68145e192122bd43b3",
+    "hostRust": "rustc 1.91.0 (f8297e351 2025-10-28)",
+    "guestRust": "rustc 1.97.0-dev (e638c6cfe 2026-07-15)",
+    "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+    "programSha256": {
+      "transaction": "de65172a74788e859d92679e74e194d26c496acf1a2586be378677be75e5560f",
+      "batch": "bce31b9532217415999c6fb9d7b2304e08c99a59c3e93b21075b258a05a86013",
+      "aggregate": "20c9f861a080a2ff947f5d3628e8d5e54c3aa2aaa31b75dc43f1b32367a54cdf"
+    },
+    "prover": "ipc",
+    "RAYON_NUM_THREADS": 4,
+    "developmentMode": false,
+    "reviewSourceCommit": "1afd7dfdb873b5179b686c9383b29158a0e9e6b4"
+  },
+  "retainedHarnessSha256": "c65672e338815a7d00861eeeb1b1b264bf8b7b3043788a1525e03c2951c71fa0",
+  "artifactArchive": {
+    "path": "local-review-artifacts.tar.gz",
+    "bytes": 3161358,
+    "sha256": "b860f1fdba7bd3cb3ecd86f06b6fe9861081b4a5a2ad844329583dfda7a40604",
+    "manifestEntries": 89
+  }
+}
