@@ -103,8 +103,14 @@ a new login or installation. This preparation leaves it unchanged.
 After PR #41 merged at `c2037893936508d6d61dcb9ee78aea6ba4515aab`, the
 explicit `cuda-qualification-20261017-pr41` tag started
 [publication run 39067028926](https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39067028926).
-Starting a build is not evidence of successful publication; its final digest and
-pull result must be retained once available.
+That first run stopped before the CUDA build because the clean runner lacked
+the public package output's parent directory. The CPU build and actual five-seal
+comparison had passed. `package.py` now creates missing parent directories while
+still refusing to overwrite an existing output directory. Its full local run
+against a fresh nested output succeeded. The initial tag is retained unchanged;
+publication must use a new explicit tag for this correction. Starting a build is
+not evidence of publication; the final registry digest and pull result remain
+required.
 
 A new read-only check reached the already configured Contabo host: Python
 3.12.3, systemd 255, synchronized time, approximately 826.7 GB available under

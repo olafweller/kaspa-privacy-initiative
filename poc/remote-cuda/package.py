@@ -56,7 +56,7 @@ def build(host, out):
     assert set(contents) == set(manifest)
     for name, data in contents.items():
         assert sha(data) == manifest[name]['sha256'] and len(data) == manifest[name]['bytes']
-    out.mkdir()
+    out.mkdir(parents=True)
     inputs = {}
     for name in INPUTS:
         data = contents['assets/'+name]
