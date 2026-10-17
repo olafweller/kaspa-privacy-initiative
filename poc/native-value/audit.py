@@ -166,7 +166,16 @@ def audit(root):
               dict(stage='withdrawal_settled_unpaid', spendable=600_000_000, unpaidClaims=400_000_000, reserved=1_000_000_000),
               dict(stage='payout_confirmed', spendable=600_000_000, unpaidClaims=0, reserved=600_000_000)]
     assert all(s['spendable'] + s['unpaidClaims'] <= s['reserved'] for s in stages)
+    post = e.json('postcheck.json')
+    initial_sponsor = sum(v['utxoEntry']['amount'] for v in e.json('fund-user-request.json')['utxos']['entries'])
+    ending_domains = {'sponsor': post['balancesSompi']['sponsor'],
+                      'userNative': post['balancesSompi']['user'],
+                      'stateRent': post['continuation']['utxoEntry']['amount'],
+                      'userReserve': sum(v['utxoEntry']['amount'] for v in post['reserve']['entries'])}
+    assert initial_sponsor == sum(ending_domains.values()) + sum(fees.values())
+    assert ending_domains['stateRent'] == 100_000_000 and not post['claims']['entries']
     return {'scope': 'INDEPENDENT_PUBLIC_ACCOUNTING_AND_JOURNAL_AUDIT_NOT_ZK_VERIFIER',
+            'initialSponsorSompi': initial_sponsor, 'endingDomainsSompi': ending_domains,
             'originalMembersVerified': len(manifest), 'confirmedTransactions': len(confirmed),
             'feesSompi': fees, 'totalFeesSompi': sum(fees.values()),
             'backingStagesSompi': stages, 'stateRentSompi': 100_000_000,
