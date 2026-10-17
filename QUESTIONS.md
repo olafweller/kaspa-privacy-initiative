@@ -2,6 +2,11 @@
 
 The initiative should treat these as questions to answer, not conclusions to defend.
 
+The [local receipt-classification follow-up](poc/proof-classification/RESULTS.md)
+executes valid-invalid-valid processing, but needs 880 proof segments; no outer
+receipt or actual accepted-lane integration is demonstrated. Affordable proved
+classification, full private note rules and complete native budgets remain open.
+
 The [A0.5 terminal reserve experiment](docs/poc-a0.md) and its retained-key/native-RPC
 adapter test one narrow proof-authorized payout. They do not answer the open
 private-state, independent-recovery or anonymity questions. [Draft A1 PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) adds local/native-synthetic successor-liability evidence and qualification repairs; full G5 and live G6 remain unclosed/unexecuted respectively. Fixed-fee exit liveness is tracked in [issue #23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23).

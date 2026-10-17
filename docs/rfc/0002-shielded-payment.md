@@ -130,6 +130,17 @@ availability and censorship analysis. Neither is implemented or accepted here.
 If no practical path is found, report a blocker rather than weakening ordering
 or silently excluding malformed private operations.
 
+Follow-up: [ADR-0007](../adr/0007-local-proof-classification.md) and the
+[classification results](../../poc/proof-classification/RESULTS.md) implement and
+execute a bounded canonical receipt verifier with valid-invalid-valid outcomes.
+The operation excludes proof bytes from the wallet intent but includes them in
+the computed native v1 ID. The endpoint is a local fixed ordered fixture, not
+a new accepted-lane proof. Actual ordinary verification requires 870,829,938
+user cycles / 880 segments; no outer receipt was generated. This leaves a
+concrete proof-cost and real-lane integration blocker rather than closing the
+invalid-operation requirement. The specialized route remains an unmeasured
+comparison and no production format/construction is selected.
+
 ## Witness boundary, recipient and recovery
 
 The initial design assumes local wallet proving. Raw private note contents,

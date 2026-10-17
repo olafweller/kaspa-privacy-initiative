@@ -61,11 +61,22 @@ RISC0_PROVER=ipc RISC0_SERVER_PATH=/path/to/pinned/r0vm RAYON_NUM_THREADS=4 \
 
 Use `poc/takeover/measure.py PREFIX COMMAND...` to retain wall time, maximum
 individual-process RSS and stdout/stderr without environment/credential values.
-The profiler has a 256-million-cycle research ceiling; reaching it is a recorded
-blocker, never a proven invalid-operation result. Proof generation is manual;
+The profiler has a 4,294,967,296-cycle research ceiling after the initial
+268,435,456-cycle ceiling was reached. A limit error is never a proven invalid
+operation. The `prove` command is available but was not run on the measured
+880-segment sequence; see [results and the proof-cost blocker](RESULTS.md).
+Proof generation is manual;
 CI exercises host compilation and deterministic parser/format tests only.
 
 Compare the full proxy payload and native estimated bytes/compute/transient
 masses with pinned consensus parameters. The delivery size, fee input shell and
 receipt codec are explicit experimental choices, not a chosen production format.
 Storage mass and actual fee/admission need authenticated UTXO/node context.
+
+The machine-readable evidence and hash-checked artifact archive are retained in
+[evidence](evidence/README.md). `classifier reuse PROGRAMS OLD_WALLETS NEW_FIXTURE`
+reverifies and reuses existing wallet receipts without regenerating them.
+`classifier check FIXTURE NEW_CHECKS` derives malformed-receipt fixtures and runs
+real-seal mutation tests. `classifier verify PROGRAMS FIXTURE PROOFS` is available
+to check a later outer receipt against the exact expected root, IDs and outcomes;
+no such outer receipt is claimed by this package.

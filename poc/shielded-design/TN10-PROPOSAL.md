@@ -5,6 +5,13 @@ work package performs no new TN10 transaction and selects no production protocol
 See [RFC-0002](../../docs/rfc/0002-shielded-payment.md), [visibility](VISIBILITY.md)
 and [results](RESULTS.md).
 
+The [local classification follow-up](../proof-classification/RESULTS.md) executes
+valid-invalid-valid against bound native-ID fixtures, but its ordinary verifier
+costs 870,829,938 user cycles / 880 segments and has no outer receipt. Its complete
+proxy operation uses 897,028 transient mass out of a pinned 1,000,000 block limit.
+Decisions 2 and 3 below remain open: compare a cheaper proof/classifier format,
+produce the enforced result and bind actual accepted-lane data before funding.
+
 ## One experiment
 
 Use a fresh pool/identity, native test-KAS only, with separate Alice and Bob wallet

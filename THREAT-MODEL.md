@@ -265,3 +265,12 @@ Uncommitted rent sponsor funds are not backing; the model requires an explicit
 funding step before creating an exit rent entitlement. Missing recursive evidence
 currently aborts, so deterministic invalidity/no-op handling remains a real
 liveness/completeness design blocker. See the [adversarial review](poc/shielded-design/ADVERSARIAL-REVIEW.md).
+
+The [ordinary-verifier experiment](poc/proof-classification/RESULTS.md) checks
+canonical submitted proof bytes and reduced field/path encodings in the guest;
+local omission/substitution against a fixed expected endpoint aborts. Correct
+sequence outcomes were executed, not proved in an outer receipt. Verification
+cost and almost-block-sized receipts expose a resource/availability concern:
+an invalid seal can fail late and consume nearly the full verification work.
+No fee-based denial-of-service protection, arbitrary accepted-lane totality,
+real L1 authentication, complete private statement or production safety follows.

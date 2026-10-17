@@ -381,3 +381,11 @@ unimplemented. Intent must exclude proof bytes to avoid a circular native-ID
 binding. PR34's shared economic single-consumption and voluntary migration/legacy
 requirements remain open. [ADR-0006](adr/0006-shielded-design-local-work-package.md)
 records the bounded local research decision only.
+
+The [local classification follow-up](../poc/proof-classification/RESULTS.md),
+under [ADR-0007](adr/0007-local-proof-classification.md), executes ordinary
+receipt verification on canonical proof bytes and obtains valid-invalid-valid
+outcomes. Its full run requires 870,829,938 user cycles and 880 proof segments;
+no outer receipt was generated. The native-ID sequence is a fixed local fixture,
+not an accepted TN10 endpoint. Affordable proved classification and real-lane
+integration remain blockers; this result does not qualify the privacy circuit.

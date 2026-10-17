@@ -26,11 +26,11 @@ fn wire<T: serde::Serialize>(v: &T) -> Result<Vec<u8>> {
 fn tx(op: Vec<u8>, i: u32) -> Transaction {
     Transaction::new(
         1,
-        vec![TransactionInput::new(
+        vec![TransactionInput::new_with_compute_budget(
             TransactionOutpoint::new(Hash::from_bytes([0x36; 32]), i),
             vec![0; 65],
             0,
-            1,
+            100,
         )],
         vec![TransactionOutput::new(
             100_000_000,
@@ -97,6 +97,9 @@ fn prepare(programs: &Path, out: &Path) -> Result<()> {
         save(out, &format!("{label}-operation.bin"), &op)?;
         ops.push(op);
     }
+    finish_fixture(&ops, out, image)
+}
+fn finish_fixture(ops: &[Vec<u8>], out: &Path, image: [u8; 32]) -> Result<()> {
     let a = ops[0].clone();
     let c = ops[1].clone();
     // Keep the authentic intent, corrupt the submitted seal. This is not missing
@@ -214,8 +217,89 @@ fn execute(program: &[u8], input: &[u8]) -> Result<risc0_zkvm::SessionInfo> {
     b.write_slice(&[u32::try_from(input.len())?])
         .write_slice(input)
         .segment_limit_po2(20)
-        .session_limit(Some(256 * 1024 * 1024));
+        .session_limit(Some(4 * 1024 * 1024 * 1024));
     Ok(default_executor().execute(b.build()?, program)?)
+}
+fn check_fixture(fixture: &Path, out: &Path) -> Result<()> {
+    fs::create_dir(out)?;
+    let a = fs::read(fixture.join("wallet-a-operation.bin"))?;
+    let c = fs::read(fixture.join("wallet-c-operation.bin"))?;
+    let image: [u8; 32] = a[106..138].try_into()?;
+    let body = &a[..protocol::INTENT_LEN];
+    let bytes = &a[protocol::INTENT_LEN + 4..];
+    let original: Receipt = bincode::deserialize(bytes)?;
+    assert_eq!(protocol::classify(&a, image), 0);
+    let baseline: Vec<Vec<u8>> = [a.clone(), a.clone(), c.clone()]
+        .into_iter()
+        .map(|mut op| {
+            op[protocol::INTENT_LEN + 4..protocol::INTENT_LEN + 8]
+                .copy_from_slice(&3u32.to_le_bytes());
+            op
+        })
+        .collect();
+    save(out, "encoding-baseline.bin", &batch(&baseline, None).0)?;
+    let mut results = vec![];
+    for i in 0..64 {
+        let mut r = original.clone();
+        let risc0_zkvm::InnerReceipt::Succinct(s) = &mut r.inner else {
+            unreachable!()
+        };
+        let index = i * (s.seal.len() - 1) / 63;
+        s.seal[index] = (s.seal[index] + 1) % 2_013_265_921;
+        let code = protocol::classify(&protocol::operation(body, &bincode::serialize(&r)?), image);
+        assert_ne!(code, 0);
+        results.push(json!({"sealWord":index,"outcome":code}));
+    }
+    for mode in [
+        "field",
+        "path",
+        "index",
+        "exponent",
+        "truncated-seal",
+        "wrong-journal",
+    ] {
+        let mut r = original.clone();
+        let risc0_zkvm::InnerReceipt::Succinct(s) = &mut r.inner else {
+            unreachable!()
+        };
+        match mode {
+            "field" => s.seal[40] = u32::MAX,
+            "path" => s.control_inclusion_proof.digests[0] = [u32::MAX; 8].into(),
+            "index" => s.control_inclusion_proof.index = 256,
+            "exponent" => s.seal[32] = 25,
+            "truncated-seal" => s.seal.truncate(32),
+            "wrong-journal" => r.journal.bytes[0] ^= 1,
+            _ => unreachable!(),
+        }
+        let op = protocol::operation(body, &bincode::serialize(&r)?);
+        let code = protocol::classify(&op, image);
+        assert_eq!(code, 2);
+        save(
+            out,
+            &format!("{mode}.bin"),
+            &batch(&[a.clone(), op, c.clone()], None).0,
+        )?;
+        results.push(json!({"case":mode,"outcome":code}));
+    }
+    let oversized = protocol::operation(body, &vec![0; protocol::MAX_PROOF + 1]);
+    assert_eq!(protocol::classify(&oversized, image), 2);
+    save(
+        out,
+        "oversized-proof.bin",
+        &batch(&[a.clone(), oversized, c.clone()], None).0,
+    )?;
+    for end in [0, 1, 4, 8, 12, 100, bytes.len() / 2, bytes.len() - 1] {
+        assert_ne!(
+            protocol::classify(&protocol::operation(body, &bytes[..end]), image),
+            0
+        );
+    }
+    save(
+        out,
+        "checks.json",
+        &serde_json::to_vec_pretty(&json!({"scope":"HOST_TESTS_NOT_GUEST_PROOFS",
+        "realReceiptMutations":results,"receiptPrefixTruncations":8,"oversizedProofRejected":true}))?,
+    )
 }
 fn profile(programs: &Path, fixture: &Path, out: &Path, label: &str) -> Result<()> {
     fs::create_dir(out)?;
@@ -237,11 +321,20 @@ fn profile(programs: &Path, fixture: &Path, out: &Path, label: &str) -> Result<(
                 vec![0, 3, 0]
             } else if label == "replay" {
                 vec![0, 4, 0]
+            } else if label == "encoding-baseline" {
+                vec![2, 2, 2]
             } else {
                 vec![0, 2, 0]
             };
             assert_eq!(codes, expected);
-            assert_eq!(balances, vec![600_000_000, 600_000_000, 500_000_000]);
+            assert_eq!(
+                balances,
+                if label == "encoding-baseline" {
+                    vec![1_000_000_000; 3]
+                } else {
+                    vec![600_000_000, 600_000_000, 500_000_000]
+                }
+            );
             report["userCycles"] = json!(s.cycles());
             report["segments"] = json!(s.segments.iter().map(|s| s.po2).collect::<Vec<_>>());
             report["outcomes"] = json!(codes);
@@ -270,6 +363,38 @@ pub(super) fn run(a: &[String]) -> Result<()> {
         return Err("classifier prepare|profile|prove ...".into());
     }
     match a[2].as_str() {
+        "reuse" if a.len()==6 => {
+            let image: [u8;32] = compute_image_id(&fs::read(Path::new(&a[3]).join("wallet.program.bin"))?)?.into();
+            let source=Path::new(&a[4]);let out=Path::new(&a[5]);fs::create_dir(out)?;
+            for entry in fs::read_dir(source)? {
+                let entry=entry?;
+                if entry.file_name().to_string_lossy().starts_with("wallet-") { fs::copy(entry.path(),out.join(entry.file_name()))?; }
+            }
+            let ops=[fs::read(out.join("wallet-a-operation.bin"))?,fs::read(out.join("wallet-c-operation.bin"))?];
+            for op in &ops { assert_eq!(protocol::classify(op,image),0); }
+            finish_fixture(&ops,out,image)
+        }
+        "check" if a.len()==5 => check_fixture(Path::new(&a[3]),Path::new(&a[4])),
+        "verify" if a.len()==6 => {
+            let programs=Path::new(&a[3]);let fixture=Path::new(&a[4]);let proofs=Path::new(&a[5]);
+            let expected: Value=serde_json::from_slice(&fs::read(fixture.join("fixture.json"))?)?;
+            let receipt: Receipt=bincode::deserialize(&fs::read(proofs.join("classifier-receipt.bin"))?)?;
+            receipt.verify_with_context(&risc0_zkvm::VerifierContext::default().with_dev_mode(false),
+                compute_image_id(&fs::read(programs.join("classifier.program.bin"))?)?)?;
+            let mut journal=hex::decode(expected["orderedRoot"].as_str().ok_or("root")?)?;
+            journal.extend(1_000_000_000u64.to_le_bytes());journal.extend(3u32.to_le_bytes());
+            for (i,(code,balance)) in [(0,600_000_000u64),(3,600_000_000),(0,500_000_000)].into_iter().enumerate() {
+                journal.extend(hex::decode(expected["operations"][i]["nativeId"].as_str().ok_or("native ID")?)?);
+                journal.push(code);journal.extend(balance.to_le_bytes());
+            }
+            assert_eq!(receipt.journal.bytes,journal);
+            let mut changed=receipt.clone();changed.journal.bytes[76]^=1;
+            assert!(changed.verify(compute_image_id(&fs::read(programs.join("classifier.program.bin"))?)?).is_err());
+            println!("{}",json!({"scope":"SDK_REVERIFIED_LOCAL_PROXY_PROOF_NOT_L1_ACCEPTANCE",
+                "expectedOrderedRoot":expected["orderedRoot"],"outcomes":[0,3,0],"balances":[600_000_000,600_000_000,500_000_000],
+                "tamperedJournalRejected":true,"developmentMode":false}));
+            Ok(())
+        }
         "inspect" if a.len() == 4 || a.len() == 5 => {
             let receipt: Receipt = bincode::deserialize(&fs::read(&a[3])?)?;
             let inner = receipt.inner.succinct()?;

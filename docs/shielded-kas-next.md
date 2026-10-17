@@ -18,6 +18,14 @@ noncircular proof-carrying payload and authenticated deposit recovery require
 review before the [conditional TN10 proposal](../poc/shielded-design/TN10-PROPOSAL.md).
 The model/proxy proof do not establish financial privacy or close the issues below.
 
+The [classification follow-up](../poc/proof-classification/RESULTS.md) executes
+the correct valid-invalid-valid sequence using ordinary verification of real
+wallet proof bytes. It costs 870,829,938 user cycles / 880 segments; no outer
+classification proof was produced. A complete proxy native operation already
+uses 89.7% of the pinned block transient capacity. Compare the previously named
+specialized proof route before building the full private relation around this
+path. Keep real accepted-lane integration, private economics and funding gated.
+
 ## First work package: define the private payment statement
 
 Work through existing issues rather than inventing a second backlog:

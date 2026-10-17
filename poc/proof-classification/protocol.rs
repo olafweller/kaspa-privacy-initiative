@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 
 pub const MAX_PROOF: usize = 240_000;
 pub const INTENT_LEN: usize = 570;
-pub const MAX_OPERATION: usize = INTENT_LEN + 4 + MAX_PROOF;
+pub const MAX_OPERATION: usize = 250_000; // Entire pinned native block footprint, including bad proofs.
 pub const MAX_BATCH: usize = 3;
 pub const MAX_INPUT: usize = 32 + 8 + 4 + MAX_BATCH * (4 + 4096 + 4 + MAX_OPERATION);
 pub const NETWORK: [u8; 32] = [0x10; 32]; // LOCAL domain, not the real TN10 genesis.
