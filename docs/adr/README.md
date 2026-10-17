@@ -41,5 +41,6 @@ Use [0000-template.md](0000-template.md).
 - [ADR-0007: bounded local proof-byte classification experiment](0007-local-proof-classification.md)
 - [ADR-0008: specialized BN254/Groth16 comparison](0008-specialized-groth16-comparison.md)
 - [ADR-0009: bounded accelerated BN254 qualification](0009-accelerated-bn254-qualification.md)
+- [ADR-0010: approved 128M outer classification proof](0010-approved-128m-outer-proof.md)
 
 The open state architecture comparison is [RFC-0001](../rfc/0001-state-architecture.md).
