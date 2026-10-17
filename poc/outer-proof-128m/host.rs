@@ -39,7 +39,7 @@ fn sha(bytes: &[u8]) -> String {
 fn image() -> Result<Digest> {
     Ok(hex::decode(IMAGE)?.as_slice().try_into()?)
 }
-fn program(programs: &Path) -> Result<Vec<u8>> {
+pub(super) fn program(programs: &Path) -> Result<Vec<u8>> {
     assert_eq!(
         super::accelerated_bn254::expected_image(programs)?,
         image()?
@@ -146,7 +146,7 @@ fn prepare(a: &[String]) -> Result<()> {
         "proofWholeJobSecondsLimit":3600,"mainJournalSha256":sha(&main),"cases":cases}))?,
     )
 }
-fn gate(
+pub(super) fn gate(
     programs: &Path,
     fixtures: &Path,
     expected: &Path,

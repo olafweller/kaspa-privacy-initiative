@@ -15,6 +15,8 @@ mod groth16_comparison;
 mod outer_proof_128m;
 #[path = "../../../proof-classification/host.rs"]
 mod proof_classification;
+#[path = "../../../proof-phase-diagnostics/host.rs"]
+mod proof_phase_diagnostics;
 #[path = "../../../shielded-design/compat/host.rs"]
 mod wallet_compat;
 
@@ -166,6 +168,9 @@ fn main() -> Result<()> {
     }
     if args.get(1).is_some_and(|s| s == "outer-proof-128m") {
         return outer_proof_128m::run(&args);
+    }
+    if args.get(1).is_some_and(|s| s == "phase-diagnostics") {
+        return proof_phase_diagnostics::run(&args);
     }
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);

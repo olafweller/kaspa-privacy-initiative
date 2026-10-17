@@ -3,6 +3,8 @@
 **Owner-directed pause, 2026-10-17:** close PR #39 as the completed bounded
 research result and resume only on a new owner instruction. See the
 [pause handoff](STATUS-HANDOFF.md) for preserved evidence and the deferred next step.
+The owner subsequently resumed only the [bounded phase diagnostics](../proof-phase-diagnostics/PLAN.md);
+this historical experiment and its results remain unchanged.
 
 Local unfunded successor to [PR38](../accelerated-bn254/RESULTS.md), following the
 [predeclared plan](PLAN.md) and [ADR 0010](../../docs/adr/0010-approved-128m-outer-proof.md).

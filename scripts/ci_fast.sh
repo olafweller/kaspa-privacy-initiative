@@ -7,10 +7,11 @@ python3 scripts/check_docs.py
 python3 - <<'PY'
 import ast
 from pathlib import Path
-for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')) + list(Path('poc/shielded-design').rglob('*.py')) + list(Path('poc/groth16-comparison').rglob('*.py')) + list(Path('poc/accelerated-bn254').rglob('*.py')) + list(Path('poc/outer-proof-128m').rglob('*.py')):
+for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')) + list(Path('poc/shielded-design').rglob('*.py')) + list(Path('poc/groth16-comparison').rglob('*.py')) + list(Path('poc/accelerated-bn254').rglob('*.py')) + list(Path('poc/outer-proof-128m').rglob('*.py')) + list(Path('poc/proof-phase-diagnostics').rglob('*.py')):
     ast.parse(file.read_text(), filename=str(file))
 print('Python syntax: OK')
 PY
+python3 -m unittest discover -s poc/proof-phase-diagnostics -p 'test_*.py' -v
 if compgen -G 'scripts/test_*.py' >/dev/null; then
     python3 -m unittest discover -s scripts -p 'test_*.py' -v
 else
