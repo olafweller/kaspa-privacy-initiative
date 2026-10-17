@@ -5,6 +5,9 @@
 PR #39 and its preserved [pause handoff](../poc/outer-proof-128m/STATUS-HANDOFF.md).
 Only that local unfunded diagnostic package is resumed; broader private-note
 implementation and TN10 integration remain deferred.
+The [diagnostic result](../poc/proof-phase-diagnostics/RESULTS.md) now retains five
+verified partial receipts. Before another full job, qualify the same assets on
+the official CUDA proving path; that environment experiment has not been run.
 
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).

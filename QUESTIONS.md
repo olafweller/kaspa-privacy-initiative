@@ -24,6 +24,12 @@ returning a receipt. Which segment-proving/compression work and memory/cache
 behavior dominate the bounded prover cost? The complete cost remains unknown;
 do not infer total proving throughput from execution time or claim a receipt.
 
+The [bounded phase diagnostics](poc/proof-phase-diagnostics/RESULTS.md) now retain
+five real partial receipts, independently reverified: two full segments cost
+415-421 seconds each, lift 33-34 seconds and join 36 seconds. Can the official
+pinned CUDA prover qualify these same assets at a suitable cost before another
+full attempt? Full-session proof costs and GPU compatibility remain unmeasured.
+
 The [A0.5 terminal reserve experiment](docs/poc-a0.md) and its retained-key/native-RPC
 adapter test one narrow proof-authorized payout. They do not answer the open
 private-state, independent-recovery or anonymity questions. [Draft A1 PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) adds local/native-synthetic successor-liability evidence and qualification repairs; full G5 and live G6 remain unclosed/unexecuted respectively. Fixed-fee exit liveness is tracked in [issue #23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23).

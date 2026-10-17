@@ -4,6 +4,8 @@ Local unfunded follow-up to the [PR #39 results](../outer-proof-128m/RESULTS.md)
 The owner resumed the [deferred work](../outer-proof-128m/STATUS-HANDOFF.md).
 The [predeclared plan](PLAN.md), committed as `47ed371`, preserves the classifier,
 SDK, statement, segment configuration and original research outcomes.
+The [results](RESULTS.md) retain five verified partial receipts and measured costs;
+the complete classifier receipt remains unproduced.
 
 Use the official RISC Zero 3.0.3 APIs demonstrated in
 [client.rs](https://github.com/risc0/risc0/blob/v3.0.3/risc0/zkvm/src/host/api/client.rs)

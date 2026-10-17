@@ -49,7 +49,7 @@ for name in sorted(allowed_assets):
     if path.exists():
         add('assets/' + name, path)
 for pattern in ('*build*.log', '*tests.log', '*runner*.log', 'retained-inspection.json',
-                'fast-checks.log'):
+                'fast-checks.log', 'hardware-and-sdk.json'):
     for path in sorted(local.glob(pattern)):
         add('local/' + path.name, path)
 tracked = subprocess.check_output(['git', 'ls-files'], cwd=root, text=True).splitlines()
@@ -62,9 +62,20 @@ for name in tracked:
 
 session = json.loads((assets / 'session.json').read_text())
 summary = json.loads((run / 'preflight-repair/summary.json').read_text())
+assert summary['completedAllPhases']
+assert summary['aggregateSecondsIncludingPreflightRepair'] < 3600
+assert all(p['exitCode'] == 0 and p['limitExceeded'] is None for p in summary['phases'])
+old_runtime = json.loads((root / '.local/outer-proof-128m/source-and-inputs.json').read_text())
+new_runtime = json.loads((run / 'preflight-repair/attempt.json').read_text())
+assert new_runtime['r0vmSha256'] == old_runtime['toolchain']['r0vmSha256']
 for index in (24, 25):
     assert sha(files[f'assets/segments/{index}.bincode']) == session['segments'][index]['assetSha256']
 verified = [name for name in allowed_assets if name.endswith('-verified.json') and (assets / name).exists()]
+assert len(verified) == 5
+assert json.loads((assets / 'separate-verification.json').read_text())['verified']
+for name in verified:
+    checkpoint = json.loads((assets / name).read_text())
+    assert checkpoint['receiptSha256'] == sha(files['assets/' + name.replace('-verified.json', '.bin')])
 manifest = {name: {'bytes': len(data), 'sha256': sha(data)} for name, data in sorted(files.items())}
 old_archive = root / 'poc/outer-proof-128m/evidence/local-outer-proof-artifacts.tar.gz'
 old_sha = sha(old_archive.read_bytes())

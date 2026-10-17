@@ -416,3 +416,10 @@ receipt, using four logical CPUs and 9.19 GiB peak sampled summed RSS. This clos
 the missing replay/continuation execution checks, not the outer-receipt milestone.
 Profiling actual proof production/compression remains necessary before expanding
 to private notes; no new setup, accepted L1 endpoint or native funding is added.
+
+The [bounded phase diagnostics](../poc/proof-phase-diagnostics/RESULTS.md) retain
+two segment proofs, two lifts and an actual adjacent join, all independently
+reverified. Segment proving dominates the measured costs; the original guest,
+wallet relation and proving architecture are unchanged. These middle-segment
+receipts are not a complete classifier proof. The next proposed qualification
+is the official pinned CUDA proving path on the same retained assets.

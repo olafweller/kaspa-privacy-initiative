@@ -57,3 +57,8 @@ budget increase follows. Receipt verification entry points are implemented but
 cannot be exercised without a receipt. Full execution qualification is closed;
 actual practical outer-proof production and separate seal verification remain
 open. CPU/RSS, cgroup pressure, source and exact last-stage evidence are retained.
+
+An owner-resumed [bounded follow-up](../../poc/proof-phase-diagnostics/RESULTS.md)
+separately proves two retained segments, lifts and joins them, and independently
+verifies all five partial receipts. This does not revise the one-hour full-job
+outcome or the original 32M target; full-classifier proving remains open.

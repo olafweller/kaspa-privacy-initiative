@@ -298,3 +298,10 @@ without a receipt. No negative control relies on that timeout. Separate real
 receipt verification and its wrong-image/journal checks are implemented but
 unexecuted without the missing artifact. The fixed synthetic relation, local
 ordering source, setup and private-note/native backing limitations remain.
+
+The [follow-up phase diagnostics](poc/proof-phase-diagnostics/RESULTS.md) verify
+actual middle-segment, lift and join receipts, including altered seal/claim
+rejection in a separate process. Workload association uses the trusted pinned
+SDK export and asset hashes. These partial transition proofs do not establish
+a cryptographically composed path from the initial image to the full journal;
+they cannot replace the full-receipt identity/journal checks or native settlement.

@@ -162,6 +162,12 @@ returned receipt. Full replay/continuation execution is now measured, but real
 outer-proof completion and separate seal verification remain unqualified. No
 private-note circuit, setup or native/TN10 integration is added.
 
+The [subsequent phase diagnostics](../../poc/proof-phase-diagnostics/RESULTS.md)
+produce and independently verify two actual segment receipts, their lifts and a
+valid join, preserving this small wallet relation and classifier. They identify
+measured phase costs without a complete classifier receipt. Full-session
+image/journal verification and all private-note/native-integration gates stay open.
+
 ## Witness boundary, recipient and recovery
 
 The initial design assumes local wallet proving. Raw private note contents,
