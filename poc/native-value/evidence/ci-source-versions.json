@@ -1,0 +1,17 @@
+{
+  "note": "Observed successful full Code/Documentation CI on source commits before final evidence-only delivery. See PR32 for checks on the delivered head. No chain actions run in CI.",
+  "runs": [
+    {
+      "commit": "c8562c5f4d956ccadf23034114483bcb405f78f1",
+      "documentationRun": 38986307042,
+      "codeRun": 38986307049,
+      "conclusion": "success"
+    },
+    {
+      "commit": "d274b75593ec268397aaf13aefdd3b67ad14c33c",
+      "documentationRun": 38987371299,
+      "codeRun": 38987371411,
+      "conclusion": "success"
+    }
+  ]
+}

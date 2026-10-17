@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".local/ci-target/release/kpi-native-host",
+    "prove",
+    ".local/native-value/recut-final-input.json",
+    ".local/native-value/guest-v1.program.bin",
+    ".local/native-value/final-v2-proof"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 450.27578798800005,
+  "user_cpu_seconds": 1735.560671,
+  "system_cpu_seconds": 3.428508,
+  "max_rss_kib": 9587516,
+  "rss_scope": "Linux RUSAGE_CHILDREN: largest individual process RSS in waited tree, not summed simultaneous memory",
+  "major_page_faults": 0,
+  "minor_page_faults": 2790805
+}

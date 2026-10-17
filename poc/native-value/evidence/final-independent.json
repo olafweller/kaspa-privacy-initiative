@@ -1,0 +1,17 @@
+{
+  "scope": "INDEPENDENT_PYTHON_LIVE_CAPTURE_NOT_ZK",
+  "valid": {
+    "lane_tip": "3bc636fefb4b5d601ac6076330849b2d63e910cce527ebe812ac83f7cbae8433",
+    "seq_commit": "b692970f461e88fdc3bfb072ffa39d00de018aeada1194ec2c6000d87fc385c1",
+    "ordered_transaction_ids": [
+      "63f273fede2629e4e26ebc8e287cd2023a5b4a5dc686a28625a51a7dca208c6f",
+      "9dfeb601a2f945bd48371552f306de0ca5c8d88f40880260a534f4d532ac2190"
+    ],
+    "recognized_kpi_operations": [],
+    "state_from_initial_domain": "4336dff42b8b4c8cb34e25851d4ef9bd3208e083065d8eb156c781bfa5d6ef91"
+  },
+  "omission": {
+    "rejected": true,
+    "reason": "derived lane does not match fixed TN10 end anchor"
+  }
+}

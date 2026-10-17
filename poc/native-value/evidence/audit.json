@@ -1,0 +1,122 @@
+{
+  "scope": "INDEPENDENT_PUBLIC_ACCOUNTING_AND_JOURNAL_AUDIT_NOT_ZK_VERIFIER",
+  "initialSponsorSompi": 999432038000,
+  "endingDomainsSompi": {
+    "sponsor": 997888618200,
+    "userNative": 649163800,
+    "stateRent": 100000000,
+    "userReserve": 600000000
+  },
+  "originalMembersVerified": 120,
+  "confirmedTransactions": 10,
+  "feesSompi": {
+    "fund-user": 407600,
+    "seed": 328200,
+    "bootstrap": 416600,
+    "deposit": 433200,
+    "unauthorized": 409800,
+    "withdraw": 403000,
+    "replay": 403000,
+    "prefix-settlement": 95160600,
+    "final-settlement": 95252000,
+    "payout": 1042000
+  },
+  "totalFeesSompi": 194256000,
+  "backingStagesSompi": [
+    {
+      "stage": "initial",
+      "spendable": 0,
+      "unpaidClaims": 0,
+      "reserved": 0
+    },
+    {
+      "stage": "deposit_on_L1_uncredited",
+      "spendable": 0,
+      "unpaidClaims": 0,
+      "reserved": 1000000000
+    },
+    {
+      "stage": "deposit_settled",
+      "spendable": 1000000000,
+      "unpaidClaims": 0,
+      "reserved": 1000000000
+    },
+    {
+      "stage": "withdrawal_settled_unpaid",
+      "spendable": 600000000,
+      "unpaidClaims": 400000000,
+      "reserved": 1000000000
+    },
+    {
+      "stage": "payout_confirmed",
+      "spendable": 600000000,
+      "unpaidClaims": 0,
+      "reserved": 600000000
+    }
+  ],
+  "allEntitlementsIncludingRentSompi": [
+    {
+      "stage": "initial",
+      "principalLiability": 0,
+      "rentClaim": 0,
+      "totalLiability": 0,
+      "reservedPrincipal": 0,
+      "reservedPermissionRent": 0,
+      "totalReserved": 0
+    },
+    {
+      "stage": "deposit_on_L1_uncredited",
+      "principalLiability": 0,
+      "rentClaim": 0,
+      "totalLiability": 0,
+      "reservedPrincipal": 1000000000,
+      "reservedPermissionRent": 0,
+      "totalReserved": 1000000000
+    },
+    {
+      "stage": "deposit_settled",
+      "principalLiability": 1000000000,
+      "rentClaim": 0,
+      "totalLiability": 1000000000,
+      "reservedPrincipal": 1000000000,
+      "reservedPermissionRent": 0,
+      "totalReserved": 1000000000
+    },
+    {
+      "stage": "withdrawal_settled_unpaid",
+      "principalLiability": 1000000000,
+      "rentClaim": 50000000,
+      "totalLiability": 1050000000,
+      "reservedPrincipal": 1000000000,
+      "reservedPermissionRent": 50000000,
+      "totalReserved": 1050000000
+    },
+    {
+      "stage": "payout_confirmed",
+      "principalLiability": 600000000,
+      "rentClaim": 0,
+      "totalLiability": 600000000,
+      "reservedPrincipal": 600000000,
+      "reservedPermissionRent": 0,
+      "totalReserved": 600000000
+    }
+  ],
+  "stateRentSompi": 100000000,
+  "permissionRentRefundSompi": 50000000,
+  "nativePrincipalPaidSompi": 400000000,
+  "journals": {
+    "prefix": {
+      "state": "632337b5c1c690a3bef9231c2777f9896dad799db21d1335ff4cd31456d53e23",
+      "seq": "1166aafa38f427874d78fff8981660ecc3b20cb880c0ec6e314ac01221e94148"
+    },
+    "final": {
+      "state": "11e0060285b73a72ea132fb79f8e620c9ae586462b723f5d6db0800b90ca3cb8",
+      "seq": "b692970f461e88fdc3bfb072ffa39d00de018aeada1194ec2c6000d87fc385c1"
+    },
+    "omission": {
+      "state": "632337b5c1c690a3bef9231c2777f9896dad799db21d1335ff4cd31456d53e23",
+      "seq": "30b77b082eeb0a965d8845fa46fd0f7b9eda5e8ed44a168ddaf279192cb484dc"
+    }
+  },
+  "remainingIndependentRecoveryProven": false
+}

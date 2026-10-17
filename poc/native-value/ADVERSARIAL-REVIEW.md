@@ -41,6 +41,12 @@ change, and consume/continue the claim tree. Its final claim also refunds the
 sponsor-funded rent to the recipient. No payment from the sponsor wallet can be
 counted as the 4-test-KAS reserve principal payout.
 
+The permission rent refund is also a user entitlement once the claim output is
+created. Count its 0.5 test-KAS liability against that already-locked 0.5 output,
+separately from the 10-test-KAS principal ledger; it is no longer free treasury
+value. Total unpaid-stage entitlement is 10.5 against 10.5 reserved. State rent
+and uncommitted sponsor fees remain excluded.
+
 App debit does not mean payment: before claim spend, balance 6 plus unpaid claim
 4 is still a liability of 10 against reserve 10. Only confirmed claim consumption
 and actual recipient/reserve UTXOs establish 6+0<=6. Balanced mutations send the

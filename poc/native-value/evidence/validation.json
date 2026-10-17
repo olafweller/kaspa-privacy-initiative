@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "8ea98c21a7783fe3e6bf90533c74fbccec8a1635",
+  "rustTests": 3,
+  "realSDKReverifications": 3,
+  "originalPublicMembersAudited": 120,
+  "independentLaneCaptures": 2,
+  "allNewCycleFundsReconciled": true,
+  "documentationMarkdownFiles": 73,
+  "documentationRelativeLinks": 402,
+  "historicalOfflineEvidenceHashesUnchanged": true,
+  "onlyPR31CloudChanges": "Documented nonce derivatives, archive and manifest; original raw RPC strings and binary proofs unchanged",
+  "secretsPackaged": false,
+  "nativeNodeNegativeTests": 6,
+  "confirmedNativeTransactions": 10,
+  "developmentProofs": false,
+  "privacyProven": false,
+  "independentRecoveryProven": false,
+  "allUserEntitlementsIncludingPermissionRentChecked": true
+}

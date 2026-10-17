@@ -1,5 +1,12 @@
 # Based App feasibility — Cloud/TN10 status and handoff
 
+> **Follow-up completed 2026-10-17 UTC:** PR31 remains the integration milestone.
+> Separate draft PR32 on `codex/native-value-cycle` now records the public native
+> 10/4/6 cycle, actual payout and live cryptographic omission rejection. Continue
+> from the [native-value handoff](../native-value/STATUS-HANDOFF.md) and
+> [results](../native-value/RESULTS.md). The checkpoint below describes PR31;
+> its proposed deposit/exit next step is superseded by that completed follow-up.
+
 **Updated: 2026-10-17 (Europe/Amsterdam). Real proof generated in Cloud;
 valid settlement confirmed on TN10; wrong-state variant rejected by the node.**
 

@@ -1,0 +1,12 @@
+0
+MainPID=43275
+ActiveState=active
+adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f  /usr/local/lib/kpi-tn10/kaspad
+6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf  /opt/kpi-cloud-https/sdk/kaspa.js
+c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5  /opt/kpi-cloud-https/sdk/kaspa_bg.wasm
+6
+               total        used        free      shared  buff/cache   available
+Mem:           17984        6407         221           1        3896       11576
+Swap:              0           0           0
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1       968G  197G  771G  21% /

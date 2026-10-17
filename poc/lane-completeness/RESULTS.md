@@ -1,3 +1,10 @@
+> **Separate follow-up, 2026-10-17 UTC:** [PR32 native-value results](../native-value/RESULTS.md)
+> add a real public 10/4/6 deposit/withdrawal/payout cycle and native same-anchor
+> omission rejection. PR31's scope/results below remain their historical milestone.
+> Its derived acceptance nonces/public archive have lossless corrections with
+> [recorded provenance](evidence/cloud-tn10/integer-correction.json); original RPC
+> and binary proof bytes are unchanged. No old trial was repeated.
+
 # Cloud/VPS TN10 integration — 2026-10-17
 
 **A real KPI execution proof generated in Codex Cloud settled on TN10. The node

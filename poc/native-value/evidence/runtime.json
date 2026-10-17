@@ -1,0 +1,92 @@
+{
+  "scope": "PUBLIC_NATIVE_TEST_KAS_CYCLE_REAL_PROOFS_AND_TN10_PAYOUT",
+  "date": "2026-10-17 UTC",
+  "basePR": 31,
+  "baseCommit": "68100588133175442dab2b0a56ed6d784dc015ea",
+  "followupPR": 32,
+  "branch": "codex/native-value-cycle",
+  "sourceCommit": "8ea98c21a7783fe3e6bf90533c74fbccec8a1635",
+  "guestAndHostV1Source": "11906ef1e71af7a4d9d12b242a7ee9f6c9ca5f99",
+  "hostV2DriverSource": "c8562c5f4d956ccadf23034114483bcb405f78f1",
+  "verificationAndAuditBaseline": "d274b75593ec268397aaf13aefdd3b67ad14c33c",
+  "sourceFiles": "source-sha256.json",
+  "image": "52c214c2a4789cb882ac7f4c25996bcba3e0693dec1c8c0c1c093f262dcc6cf0",
+  "artifacts": {
+    "host-v1": "35630880b9dd8f2221289ab8b2196dd3dcafd5f2ba21740d0b7ee7029fb1eed4",
+    "host-v2": "75ca61264f773eeb94e2c67ceb1fb83a3826bbbbdba28f540fb818404ced8024",
+    "r0vm": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+    "guest.program.bin": "6832c63e0af8ec33e6adf0ccbe13f4390eb603b22bb8bcd4b771f93087a702c9",
+    "guest.raw.elf": "10576de39b23c17c674e598af832c1525b6cd5aebabb4b4990a8b333b444e4bf"
+  },
+  "upstream": {
+    "vprogs": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "kips": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
+    "docs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "rustyKaspaCurrentMaster": "f7d7877363fb97c2ec6871be0e8cbc351d44df10",
+    "rustyKaspaDependencyPin": "01b532e8b553523216471682649693af92f0fd16"
+  },
+  "locations": {
+    "developmentAndRealProving": "Codex Cloud /workspace/kaspa-privacy-initiative",
+    "VPSProject": "/opt/kpi-pr31-cloud-20261017/native-value",
+    "RPC": "ws://127.0.0.1:18210",
+    "transport": "existing authenticated root admin WSS terminal",
+    "keys": "VPS-only, outside packaged trial"
+  },
+  "trial": {
+    "trial": "/opt/kpi-pr31-cloud-20261017/native-value/trial-2026-10-17T00-14-55-563Z-47c6d76b",
+    "lane": "6b2756b200000000000000000000000000000000",
+    "laneKey": "b7a69959c0c7389984390a6273dd50892b9ed697eb096faef0e08fe1f45cac30",
+    "network": "testnet-10",
+    "owner": "41550c3e0a8f187835cd5a583b98619fc675d34ac2dd1d5b0aef932ca9624f3a",
+    "userAddress": "kaspatest:qpq42rp7p283s7p4e4d9swucvx0uvawnftpd682mpthext9fvf8n5d32v9fth",
+    "userKeyPath": "/opt/kpi-pr31-cloud-20261017/native-value/secrets/trial-2026-10-17T00-14-55-563Z-47c6d76b.key",
+    "start": "5bfd34096be2a333adf1d95b55b65d4147ddfe787ac61d320906077940995301",
+    "prefixEnd": "94b86adae86e5d2fc94dab1761e026efd4bae0ad9650b140ad74bfb6bce78972",
+    "end": "7535227bf481646dd6ebf472d596feaa1e2586b78e4f2d7c5e3757a8dc78aa6c",
+    "bootstrapId": "c914f4dfc89e0c20ecec009833ac7befc876bcf63f9b4bbca70828a6d2bd84e7",
+    "covenantId": "15596ff6d40ac3b83be9787b622db05d649d19d36c1ddee648e9e362f38bbe15",
+    "withdrawalId": "63f273fede2629e4e26ebc8e287cd2023a5b4a5dc686a28625a51a7dca208c6f",
+    "resegmentedBeforeProving": true,
+    "originalSegmentation": "original-segmentation"
+  },
+  "transactionIds": {
+    "fund-user": "07a63ceb71b52b7dc663f65394a129d1a48b9abd7c603b2e8d372b8297844fe8",
+    "seed": "e437249eedc646466a7ee16c2bb56dddf561ef55c853da54ef9a251152041597",
+    "bootstrap": "c914f4dfc89e0c20ecec009833ac7befc876bcf63f9b4bbca70828a6d2bd84e7",
+    "deposit": "2ff3fac19ab657293aea9885e6efe28b474bd2db50e426a3579c439174885afb",
+    "unauthorized": "40060b1b1921a8d7a1877b74a2c7e43d21927428c341a9c604c748c876833bdb",
+    "withdraw": "63f273fede2629e4e26ebc8e287cd2023a5b4a5dc686a28625a51a7dca208c6f",
+    "replay": "9dfeb601a2f945bd48371552f306de0ca5c8d88f40880260a534f4d532ac2190",
+    "prefix-settlement": "5025d386522a734b5c780baca1725455b93267d0c2507cf6b4d7d94b7be0461b",
+    "final-settlement": "1585391d16c3a0de7dd82c3f79621300b8116a5425c082c03200c81daba2b454",
+    "omission-settlement": "18d10a5447bd3d5a1b67c2802bc8c070a7ccded30733d0a65054cba44545d0af",
+    "payout": "772897261ef2b6500a475b616b9636395c901e75ae09150d9403d12caa23239b",
+    "payout-underpay": "bac8390be1226a0fa8716db1458a85ad747b1e16d2b01ffdc3821cc6a351e551",
+    "payout-reserve": "ebc80fe6b4fe483edc655a2623e80f45ec7aee5fae09c79c9ed902554c43adbf",
+    "payout-recipient": "cd0c7bd00d4a8e9ce34690f59f450f8f7ecadd096b28d11d8982d25725a322bb",
+    "payout-replay": "0a4df8a0067d901466fafa2495b828fc629543441602599e5bd236efaf83be4a",
+    "auth-receiver": "e73225879b80c754e64d9b2c1462d991b423cca5d951c95f4e95a6d9a9628062"
+  },
+  "acceptingBlocks": {
+    "prefix-settlement": "26bfbe6ff675b09c1bb5ff5a7076e92de4c84d4384e329d6bb38a94530f7ef22",
+    "final-settlement": "a17d6e9b626c7f98487e4a931c1c774646c18eaba0861e06b4a3b3e6bb9cce70",
+    "payout": "264695195dcf8922ed437e15498612a92800001e76bb09b32b8f33d2be256fdf"
+  },
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 598632357
+  },
+  "nodePIDBeforeAndAfter": 43275,
+  "nodeRestarted": false,
+  "newNetworkInfrastructure": false,
+  "developmentMode": false,
+  "privacy": false,
+  "independentRecovery": false,
+  "mandatoryLatestEndpointRule": false,
+  "completedAccountingAndFinishSource": "a39fbb92586f4525414fef0cabf574276563966d"
+}
