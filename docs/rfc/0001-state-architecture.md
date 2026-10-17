@@ -257,3 +257,19 @@ ownership/value, nullifiers, witness privacy, delivery, accounting and native
 exits. Candidate C has scoped backend evidence; choosing a private state/proof
 architecture still requires comparison and a separately reviewed ADR. This RFC,
 its production/privacy objections and the common N-user shutdown gate stay open.
+
+## Privacy-preserving version migration research
+
+**New cross-candidate requirement (open, 2026-10-17):** Can KPI enable voluntary migration between independently verifiable protocol versions without requiring publicly linkable unshielding, while retaining independent access to valid claims for users who remain on older versions? This is a requirement to investigate before the first production architecture is fixed, **not** an assertion that any candidate already supports it or that migrations are perfectly anonymous.
+
+Compare immutable parallel pools and proof-authorized cross-version migration against other non-privileged alternatives. Specify authentic old/new pool identities, guest/verifier versions, separate or shared lanes, note/nullifier domain separation, old-note consumption, new-note creation, anti-replay and downgrade rules, reserve movement, fee liability and unpaid exits. No admin key or upgrade authority may bypass normal user authorization or enable unbacked claims.
+
+The research and eventual scoped test plan should demonstrate or explicitly identify blockers for:
+
+1. A user with a valid shielded note migrating to a newer version without a mandatory transparent unshield/reshield round trip; check actual amounts, timing, fees, lane activity, encrypted note delivery and public metadata for cross-version linkability.
+2. Multiple users migrating or remaining on the old version, including dormant users who learn about an upgrade much later; no project-imposed expiration of valid legacy claims, subject to documented network/cryptography/data-availability limitations.
+3. One-time old-claim consumption and exact conservation of native KAS backing, including in-flight migrations, pending exit permissions, rent/refunds and independently authenticated payout destinations.
+4. Correct rejection of a double redemption across old and new versions, mismatched version/pool identifiers, unauthorized transfers, rollback/replay and downgrade attempts.
+5. Independent reconstruction, note discovery, proving and exit or completion for non-migrating and migrating users after all default executors, indexers and provers disappear, including defined pruning/retention and fee constraints.
+
+Distinguish privacy preservation for a shielded transfer from migration that is *unlinkable* to outside observers; neither follows automatically from using a ZK proof. Compare existing systems and documented lessons (including [Orchard](../../research/zcash-orchard.md) and [RAILGUN](../../research/railgun.md)) without assuming their mechanisms transfer to Kaspa. Coordinate with [issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19) for post-quantum cryptographic agility, but treat ordinary security/functionality upgrades as a broader problem. Future selection needs its own reviewed ADR and evidence; this addition does not decide RFC-0001, modify invariants, authorize new TN10 tests, or block the finite Based App feasibility conclusion.

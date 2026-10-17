@@ -146,3 +146,15 @@ The project succeeds when it can continue without its original contributors.
 ## 24. Financial privacy is the product
 
 The core goal is useful, robust, permissionless privacy for native KAS — not speculation around a new asset.
+
+## 25. Privacy-preserving protocol evolution
+
+KPI should be designed from its first production version to permit future improvements without unnecessarily compromising existing users' funds, self-custody, or financial privacy.
+
+Research independently verifiable, immutable protocol versions and voluntary, user-authorized migration. Investigate migration directly between shielded domains without requiring a publicly linkable unshield-and-reshield round trip. Neither direct migration nor preservation of anonymity is assumed technically solved.
+
+Users who do not migrate should retain independently executable access to valid claims in legacy versions, including after the original operators disappear. Specify the necessary user-held secrets, publicly available history, software, verifier support, fee access, and network assumptions; do not promise unconditional perpetual access.
+
+No migration or upgrade mechanism may grant a privileged party authority to move, freeze, confiscate, or mint user funds, or to bypass value conservation and proof verification. Explicitly study replay and double-spend protection across versions, unpaid exits, downgrade attacks, and linkability through amounts, timing, fees, and metadata.
+
+Evaluate these requirements before fixing the first production pool/covenant architecture. See [the architecture research](docs/ARCHITECTURE.md#protocol-evolution-and-privacy-preserving-migration) and [RFC-0001](docs/rfc/0001-state-architecture.md#privacy-preserving-version-migration-research).

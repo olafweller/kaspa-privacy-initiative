@@ -355,3 +355,15 @@ recovery are not. The next [shielded-KAS work package](shielded-kas-next.md) mus
 specify confidential ownership/value, spentness, retained data and exact native
 backing before implementation. A/B/C remain comparison candidates, not accepted
 production designs. No new primitive or admin path is selected by this checkpoint.
+
+## Protocol evolution and privacy-preserving migration
+
+**Status: design requirement and open research, not a selected upgrade mechanism.** See [principle 25](../PRINCIPLES.md#25-privacy-preserving-protocol-evolution), [RFC-0001](rfc/0001-state-architecture.md#privacy-preserving-version-migration-research), and existing [issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19) on cryptographic/PQ migration.
+
+Before defining the first production shielded pool, evaluate how future versions could be deployed without giving an administrator the power to rewrite existing verification rules or seize reserve assets. Favor independently verifiable version identities and voluntary user authorization; immutable parallel versions are a candidate, not an accepted decision.
+
+A user should not be forced to make a transparent withdrawal and fresh deposit merely to adopt improved privacy rules. Investigate a proof-authorized, value-conserving shielded-to-shielded migration path with authenticated old/new pool identities, spentness across versions, exact reserve/exit accounting, and no privileged bypass. A direct mechanism may require additional covenant capabilities and does not automatically conceal timing, amounts, origin/destination links, fees, or network metadata.
+
+A user who never upgrades must not be silently stranded by project policy or a discontinued website. Specify how valid legacy claims remain independently spendable or recoverable when executors, provers and maintainers disappear, which old verifier/programs and public histories must remain accessible, and what user-held notes/witnesses/backups are required. Unchangeable contracts alone cannot guarantee availability if data, consensus support, fee access, or cryptographic security are lost.
+
+Any proposed migration mechanism must be tested for unauthorized movement, reserve conservation, double claims across versions, replay/downgrades, partially completed migration and unpaid exits. Compare privacy leakage under low activity and long dormant periods, and include old-version users in the multi-user recovery/shutdown test. Do not implement or approve a migration path solely on these requirements; select it only after a separate reviewed RFC/ADR and scoped test evidence.
