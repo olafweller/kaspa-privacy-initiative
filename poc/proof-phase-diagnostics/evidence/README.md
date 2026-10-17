@@ -5,6 +5,12 @@ The [manifest and measured outcome](comparison.json) and
 bounded diagnostics, including the pre-proof integration failure and repair.
 The original PR #39 archive remains unchanged.
 
+- Archive: **2,001,456 bytes**, **107** checked regular members.
+- SHA-256: `01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc`.
+- Reporting/source snapshot: `757ae8f`; proof-producing host: `ca9b186`;
+  original execution export: `bdee079`.
+- Original aggregate diagnostic clock: **1,058.525 seconds**, under 3,600 seconds.
+
 The archive contains two real segment receipts, their two real lifted receipts,
 one actual joined receipt, per-artifact verification checkpoints and the
 separate-process verification result. It also retains selected new trace bytes,

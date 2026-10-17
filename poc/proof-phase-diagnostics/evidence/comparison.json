@@ -1,0 +1,1201 @@
+{
+  "scope": "LOCAL_UNFUNDED_PARTIAL_PROOF_PHASE_DIAGNOSTICS_NOT_FULL_CLASSIFIER",
+  "sourceSnapshotCommit": "757ae8f12eefde34e6e54eee8768d29ff3172ada",
+  "originalPr39ArchiveSha256": "eb39eb23d6dd7da2f55a45711fbcac2acaad844dee94e30e2a91d6f6705a1710",
+  "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
+  "predeclaredPlanCommit": "47ed371",
+  "selectedSegments": [
+    {
+      "assetBytes": 154065,
+      "assetSha256": "140ee3a025ec3c6f1f2b2d637479b31fdd9a1b038a2e5d30745c96d4395db3e3",
+      "index": 24,
+      "oldTraceByteMatch": false,
+      "oldTraceSha256": "c438342b453acbd86d3128ff56fbb7327f7eb59ddf09dd5bb3c28164d65774aa",
+      "po2": 20,
+      "userCycleEnd": 24543857,
+      "userCycleStart": 23572404,
+      "userCycles": 971453
+    },
+    {
+      "assetBytes": 157461,
+      "assetSha256": "cbf54333ea65113b2dce9c3f9a33a8d4315d72f66ec01bcd9df9ac728be4eb89",
+      "index": 25,
+      "oldTraceByteMatch": false,
+      "oldTraceSha256": "514ecf25ecb0b88e2f71bf44c9f4d5ec1087bfb405fe2a1033e657457f0abfdc",
+      "po2": 20,
+      "userCycleEnd": 25514292,
+      "userCycleStart": 24543857,
+      "userCycles": 970435
+    }
+  ],
+  "priorTraceByteMatches": 0,
+  "initialPreflightOutcome": {
+    "completedAllPhases": false,
+    "seconds": 3.181211158000224,
+    "phases": [
+      {
+        "phase": "export",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "export",
+          "/workspace/kaspa-privacy-initiative/.local/accelerated-bn254/programs-final",
+          "/workspace/kaspa-privacy-initiative/.local/groth16-comparison/fixtures-reviewed",
+          "/workspace/kaspa-privacy-initiative/.local/outer-proof-128m/expectations",
+          "/workspace/kaspa-privacy-initiative/.local/outer-proof-128m/qualification",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "/tmp/.tmpdSt2cX"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 2.8295053760011797,
+        "phaseSecondsLimit": 120,
+        "sampledOwnUserSeconds": 2.87,
+        "sampledOwnSystemSeconds": 0.05,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 68694016,
+        "peakSampledThreads": 3,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 2.998747,
+        "kernelWaitSystemSeconds": 0.072476,
+        "kernelWaitMaxIndividualProcessRssKiB": 54648,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11296,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 31635153695,
+          "cpu.stat:user_usec": 31259759453,
+          "cpu.stat:system_usec": 375394242,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 145682,
+          "cpu.stat:nr_throttled": 59428,
+          "cpu.stat:throttled_usec": 780340874,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11296,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 31638265066,
+          "cpu.stat:user_usec": 31262778009,
+          "cpu.stat:system_usec": 375487056,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 145710,
+          "cpu.stat:nr_throttled": 59428,
+          "cpu.stat:throttled_usec": 780340874,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 3111371,
+          "cpu.stat:user_usec": 3018556,
+          "cpu.stat:system_usec": 92814,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 28,
+          "cpu.stat:nr_throttled": 0,
+          "cpu.stat:throttled_usec": 0,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "segment-24",
+        "status": "failed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "segment",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "24"
+        ],
+        "exitCode": 1,
+        "limitExceeded": null,
+        "seconds": 0.20685793799930252,
+        "phaseSecondsLimit": 900,
+        "sampledOwnUserSeconds": 0.07,
+        "sampledOwnSystemSeconds": 0.0,
+        "observedProcessIdentities": 1,
+        "peakSampledSummedRssBytes": 4124672,
+        "peakSampledThreads": 1,
+        "peakSampledActiveProcesses": 1,
+        "kernelWaitUserSeconds": 0.07987699999999999,
+        "kernelWaitSystemSeconds": 0.0040539999999999994,
+        "kernelWaitMaxIndividualProcessRssKiB": 9804,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11296,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 31638265717,
+          "cpu.stat:user_usec": 31262778660,
+          "cpu.stat:system_usec": 375487056,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 145710,
+          "cpu.stat:nr_throttled": 59428,
+          "cpu.stat:throttled_usec": 780340874,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11296,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 31638355575,
+          "cpu.stat:user_usec": 31262862319,
+          "cpu.stat:system_usec": 375493255,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 145712,
+          "cpu.stat:nr_throttled": 59428,
+          "cpu.stat:throttled_usec": 780340874,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 89858,
+          "cpu.stat:user_usec": 83659,
+          "cpu.stat:system_usec": 6199,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 2,
+          "cpu.stat:nr_throttled": 0,
+          "cpu.stat:throttled_usec": 0,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "lift-24",
+        "status": "not-attempted"
+      },
+      {
+        "phase": "segment-25",
+        "status": "not-attempted"
+      },
+      {
+        "phase": "lift-25",
+        "status": "not-attempted"
+      },
+      {
+        "phase": "join",
+        "status": "not-attempted"
+      },
+      {
+        "phase": "verify",
+        "status": "not-attempted"
+      }
+    ]
+  },
+  "diagnosticOutcome": {
+    "completedAllPhases": true,
+    "seconds": 942.1889381419969,
+    "aggregateSecondsIncludingPreflightRepair": 1058.5245881990995,
+    "phases": [
+      {
+        "phase": "segment-24",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "segment",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "24"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 421.4718215999965,
+        "phaseSecondsLimit": 899.7931420620007,
+        "sampledOwnUserSeconds": 1646.56,
+        "sampledOwnSystemSeconds": 2.47,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 9840926720,
+        "peakSampledThreads": 11,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 1646.584167,
+        "kernelWaitSystemSeconds": 2.546125,
+        "kernelWaitMaxIndividualProcessRssKiB": 9599960,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11296,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 31674967961,
+          "cpu.stat:user_usec": 31298025861,
+          "cpu.stat:system_usec": 376942099,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 146063,
+          "cpu.stat:nr_throttled": 59428,
+          "cpu.stat:throttled_usec": 780340874,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 33328646987,
+          "cpu.stat:user_usec": 32947863412,
+          "cpu.stat:system_usec": 380783575,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 150278,
+          "cpu.stat:nr_throttled": 63363,
+          "cpu.stat:throttled_usec": 784323387,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 466,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 1653679026,
+          "cpu.stat:user_usec": 1649837551,
+          "cpu.stat:system_usec": 3841476,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 4215,
+          "cpu.stat:nr_throttled": 3935,
+          "cpu.stat:throttled_usec": 3982513,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "lift-24",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "lift",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "24"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 34.36202145799325,
+        "phaseSecondsLimit": 450,
+        "sampledOwnUserSeconds": 127.87,
+        "sampledOwnSystemSeconds": 0.45,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 1498910720,
+        "peakSampledThreads": 11,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 127.90505,
+        "kernelWaitSystemSeconds": 0.48061299999999996,
+        "kernelWaitMaxIndividualProcessRssKiB": 1452108,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 33328646987,
+          "cpu.stat:user_usec": 32947863412,
+          "cpu.stat:system_usec": 380783575,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 150278,
+          "cpu.stat:nr_throttled": 63363,
+          "cpu.stat:throttled_usec": 784323387,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 33457423799,
+          "cpu.stat:user_usec": 33076029008,
+          "cpu.stat:system_usec": 381394791,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 150622,
+          "cpu.stat:nr_throttled": 63631,
+          "cpu.stat:throttled_usec": 784538970,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 128776812,
+          "cpu.stat:user_usec": 128165596,
+          "cpu.stat:system_usec": 611216,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 344,
+          "cpu.stat:nr_throttled": 268,
+          "cpu.stat:throttled_usec": 215583,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "segment-25",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "segment",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "25"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 415.5051130799984,
+        "phaseSecondsLimit": 900,
+        "sampledOwnUserSeconds": 1627.44,
+        "sampledOwnSystemSeconds": 1.91,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 9840320512,
+        "peakSampledThreads": 11,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 1627.469584,
+        "kernelWaitSystemSeconds": 1.956909,
+        "kernelWaitMaxIndividualProcessRssKiB": 9599524,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 33457423799,
+          "cpu.stat:user_usec": 33076029008,
+          "cpu.stat:system_usec": 381394791,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 150622,
+          "cpu.stat:nr_throttled": 63631,
+          "cpu.stat:throttled_usec": 784538970,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35091336463,
+          "cpu.stat:user_usec": 34706574438,
+          "cpu.stat:system_usec": 384762025,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 154777,
+          "cpu.stat:nr_throttled": 67600,
+          "cpu.stat:throttled_usec": 789204114,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 1633912664,
+          "cpu.stat:user_usec": 1630545430,
+          "cpu.stat:system_usec": 3367234,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 4155,
+          "cpu.stat:nr_throttled": 3969,
+          "cpu.stat:throttled_usec": 4665144,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "lift-25",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "lift",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets",
+          "25"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 33.51327892699919,
+        "phaseSecondsLimit": 450,
+        "sampledOwnUserSeconds": 125.95,
+        "sampledOwnSystemSeconds": 0.34,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 1498812416,
+        "peakSampledThreads": 11,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 126.162767,
+        "kernelWaitSystemSeconds": 0.405431,
+        "kernelWaitMaxIndividualProcessRssKiB": 1452100,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35091337973,
+          "cpu.stat:user_usec": 34706574438,
+          "cpu.stat:system_usec": 384763535,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 154777,
+          "cpu.stat:nr_throttled": 67600,
+          "cpu.stat:throttled_usec": 789204114,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35218249748,
+          "cpu.stat:user_usec": 34833002091,
+          "cpu.stat:system_usec": 385247656,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 155112,
+          "cpu.stat:nr_throttled": 67865,
+          "cpu.stat:throttled_usec": 789399171,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 126911775,
+          "cpu.stat:user_usec": 126427653,
+          "cpu.stat:system_usec": 484121,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 335,
+          "cpu.stat:nr_throttled": 265,
+          "cpu.stat:throttled_usec": 195057,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "join",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "join",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 36.756298884996795,
+        "phaseSecondsLimit": 600,
+        "sampledOwnUserSeconds": 128.29,
+        "sampledOwnSystemSeconds": 0.42,
+        "observedProcessIdentities": 2,
+        "peakSampledSummedRssBytes": 1521836032,
+        "peakSampledThreads": 11,
+        "peakSampledActiveProcesses": 2,
+        "kernelWaitUserSeconds": 128.665727,
+        "kernelWaitSystemSeconds": 0.496743,
+        "kernelWaitMaxIndividualProcessRssKiB": 1473952,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35218249748,
+          "cpu.stat:user_usec": 34833002091,
+          "cpu.stat:system_usec": 385247656,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 155112,
+          "cpu.stat:nr_throttled": 67865,
+          "cpu.stat:throttled_usec": 789399171,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35347799995,
+          "cpu.stat:user_usec": 34961938735,
+          "cpu.stat:system_usec": 385861259,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 155479,
+          "cpu.stat:nr_throttled": 68133,
+          "cpu.stat:throttled_usec": 789598063,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 129550247,
+          "cpu.stat:user_usec": 128936644,
+          "cpu.stat:system_usec": 613603,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 367,
+          "cpu.stat:nr_throttled": 268,
+          "cpu.stat:throttled_usec": 198892,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      },
+      {
+        "phase": "verify",
+        "status": "completed",
+        "command": [
+          "/workspace/kaspa-privacy-initiative/.local/ci-target/release/kpi-takeover-host",
+          "phase-diagnostics",
+          "verify",
+          "/workspace/kaspa-privacy-initiative/.local/proof-phase-diagnostics/run-01/assets"
+        ],
+        "exitCode": 0,
+        "limitExceeded": null,
+        "seconds": 0.4069862079995801,
+        "phaseSecondsLimit": 120,
+        "sampledOwnUserSeconds": 0.35,
+        "sampledOwnSystemSeconds": 0.0,
+        "observedProcessIdentities": 1,
+        "peakSampledSummedRssBytes": 11276288,
+        "peakSampledThreads": 1,
+        "peakSampledActiveProcesses": 1,
+        "kernelWaitUserSeconds": 0.35606,
+        "kernelWaitSystemSeconds": 0.004135,
+        "kernelWaitMaxIndividualProcessRssKiB": 11156,
+        "cgroupBefore": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35347799995,
+          "cpu.stat:user_usec": 34961938735,
+          "cpu.stat:system_usec": 385861259,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 155479,
+          "cpu.stat:nr_throttled": 68133,
+          "cpu.stat:throttled_usec": 789598063,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupAfter": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 11762,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 35348166360,
+          "cpu.stat:user_usec": 34962296785,
+          "cpu.stat:system_usec": 385869574,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 155483,
+          "cpu.stat:nr_throttled": 68133,
+          "cpu.stat:throttled_usec": 789598063,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cgroupDelta": {
+          "memory.events:low": 0,
+          "memory.events:high": 0,
+          "memory.events:max": 0,
+          "memory.events:oom": 0,
+          "memory.events:oom_kill": 0,
+          "memory.events:oom_group_kill": 0,
+          "cpu.stat:usage_usec": 366365,
+          "cpu.stat:user_usec": 358050,
+          "cpu.stat:system_usec": 8315,
+          "cpu.stat:nice_usec": 0,
+          "cpu.stat:nr_periods": 4,
+          "cpu.stat:nr_throttled": 0,
+          "cpu.stat:throttled_usec": 0,
+          "cpu.stat:nr_bursts": 0,
+          "cpu.stat:burst_usec": 0
+        },
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "perProcessAddressSpaceLimitBytes": 12884901888,
+        "sampledSummedGroupRssStopThresholdBytes": 12884901888,
+        "samplingNote": "CPU uses own counters by PID/start time, no waited-child double counting; short-lived or exiting processes can be missed. RSS can double-count shared pages and miss peaks. Cgroup deltas are environment-wide, not exclusively attributable to this job."
+      }
+    ]
+  },
+  "verifiedPartialCheckpoints": [
+    "join-verified.json",
+    "lift-24-verified.json",
+    "lift-25-verified.json",
+    "segment-24-verified.json",
+    "segment-25-verified.json"
+  ],
+  "separateVerification": {
+    "devMode": false,
+    "exactJournalCheckedDuringExecutionOnly": true,
+    "scope": "FIVE_PARTIAL_RECEIPTS_NOT_FULL_CLASSIFIER",
+    "segmentIndices": [
+      24,
+      25
+    ],
+    "verified": true
+  },
+  "fullClassifierReceiptProduced": false,
+  "archiveManifest": {
+    "assets/expected-journal.bin": {
+      "bytes": 167,
+      "sha256": "625f5c4cc784d3736663b796174e5342cd9ab95ee62507f6680a128f95d99ce2"
+    },
+    "assets/input.bin": {
+      "bytes": 2675,
+      "sha256": "56e5010fd63dfd974d4f166a58c24bd4e0ae6bb38d437b9d624a8b8b850f5c90"
+    },
+    "assets/join-started.json": {
+      "bytes": 149,
+      "sha256": "3284a14cdcf5923eaf3e5fcf03464185dda7c6aa0bf89fdc89e8691107c2a50c"
+    },
+    "assets/join-verified.json": {
+      "bytes": 1159,
+      "sha256": "fdfcf06383ab80963b57123cf6f85988666b616f3bfde7d0cbab9b05b2011346"
+    },
+    "assets/join.bin": {
+      "bytes": 223154,
+      "sha256": "4f2ff8ce1f65c587ef9f5896811fe32edc63b1ac402711898dff9245359ec22d"
+    },
+    "assets/lift-24-started.json": {
+      "bytes": 121,
+      "sha256": "18717bb16a6dde34a837fdb08b467a52e46de48a10b2186d77188ab0d47369da"
+    },
+    "assets/lift-24-verified.json": {
+      "bytes": 364,
+      "sha256": "a2375d701c69c8d12fc92ccdb52b3e5dbe5cbb0627f02c88b886aefda567cb4d"
+    },
+    "assets/lift-24.bin": {
+      "bytes": 223154,
+      "sha256": "cb9cb9d27ad05e503b7e91d3d52a7e9daeaae3d83151eac18ba19b07c323336c"
+    },
+    "assets/lift-25-started.json": {
+      "bytes": 121,
+      "sha256": "8a17af485daa150a88039c1fdc6f8fd44a4361ae0972f9cfd51ab00ae3e9a295"
+    },
+    "assets/lift-25-verified.json": {
+      "bytes": 364,
+      "sha256": "e80f0c8b15a42140ff95e004ea26fdb8b42c01061219468d332e436d6c26181c"
+    },
+    "assets/lift-25.bin": {
+      "bytes": 223154,
+      "sha256": "8ec63613ead1b3c90b6f40c9293d5de367b0e7ff1987173b9294d1e155836515"
+    },
+    "assets/program.bin": {
+      "bytes": 965260,
+      "sha256": "3db122223c3c374ee7a858cc9063b0627d224778c6bed571cc24c23796f30739"
+    },
+    "assets/segment-24-started.json": {
+      "bytes": 130,
+      "sha256": "725968822d7e2c3e36b4295df466153170634b0afc9b48f01c6139d07307d390"
+    },
+    "assets/segment-24-verified.json": {
+      "bytes": 1140,
+      "sha256": "18c03261d63987b72ad34be0c19bc6fb62190c3ac4bb789b3dd4649d677336eb"
+    },
+    "assets/segment-24.bin": {
+      "bytes": 281314,
+      "sha256": "3328236cadbd5b6a93d9bce74ce4af299d5647a7761a8b800180950ddbdb4a51"
+    },
+    "assets/segment-25-started.json": {
+      "bytes": 130,
+      "sha256": "ffc11f9cac5bd606851ba13968af48f0e3732d9d91e30030b34b23752c0436b7"
+    },
+    "assets/segment-25-verified.json": {
+      "bytes": 1142,
+      "sha256": "a9689dea2e4b75105de81782d211e6705d87cd4e71c67accf2a83e329e99307b"
+    },
+    "assets/segment-25.bin": {
+      "bytes": 281314,
+      "sha256": "c01374c2a51800c59b770da9d40d0347fe59ecc6fc8608fb27c49b0203138cf0"
+    },
+    "assets/segments/24.bincode": {
+      "bytes": 154065,
+      "sha256": "140ee3a025ec3c6f1f2b2d637479b31fdd9a1b038a2e5d30745c96d4395db3e3"
+    },
+    "assets/segments/25.bincode": {
+      "bytes": 157461,
+      "sha256": "cbf54333ea65113b2dce9c3f9a33a8d4315d72f66ec01bcd9df9ac728be4eb89"
+    },
+    "assets/separate-verification.json": {
+      "bytes": 190,
+      "sha256": "169c149d562fae4d6a053b4377d2ce44f6c9288e17ac2090e866c2c2c125d5d9"
+    },
+    "assets/session-claim.bin": {
+      "bytes": 320,
+      "sha256": "b30c300bd01dcfe590811789b3814d1e31750d701cf800b039465746555fc21f"
+    },
+    "assets/session.json": {
+      "bytes": 47314,
+      "sha256": "6e93e41dab801c1ef44d996e135648e2ed9e742145c3b2fb39078bb75495292e"
+    },
+    "attempt/attempt.json": {
+      "bytes": 529,
+      "sha256": "8fee38654c556c1dee5f577a2bd0cb3187ef198398df7edd0df04f0e429604e2"
+    },
+    "attempt/export.resources.json": {
+      "bytes": 3038,
+      "sha256": "671c819857db396c80de7288e512539da8ee04af4315fa71f6605399b37a964a"
+    },
+    "attempt/export.samples.jsonl": {
+      "bytes": 480,
+      "sha256": "3b401ea9584c50e33e2b5302698d8a7855a9c5e88274a692bbabb2f59419f731"
+    },
+    "attempt/export.started.json": {
+      "bytes": 1236,
+      "sha256": "970c574db4c73e6fc0da68c14f0e6622112ac056bbba51ffb19b2b02719e22d3"
+    },
+    "attempt/export.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/export.stdout.log": {
+      "bytes": 543,
+      "sha256": "6e7e19e452c585beeec84edc8a52deb2bf89cc8637329821d6c189010d71250a"
+    },
+    "attempt/preflight-repair/attempt.json": {
+      "bytes": 600,
+      "sha256": "5dd68d06c4b6af6a289a31a686314e9098aa7da2329b76a943d6f66c65c820be"
+    },
+    "attempt/preflight-repair/join.resources.json": {
+      "bytes": 2704,
+      "sha256": "8f7411a3e7ccc56126887e6940f6ace2f8fb4d3c0b5db6c61addfde8646f3abb"
+    },
+    "attempt/preflight-repair/join.samples.jsonl": {
+      "bytes": 6046,
+      "sha256": "41820bf46b47c6ba9138686b2378ff70518ac6c96d3c1e49b96a828ae3d2ceef"
+    },
+    "attempt/preflight-repair/join.started.json": {
+      "bytes": 879,
+      "sha256": "15703da52e80f1082ca9a45707d2a34d46e5df6027352f78615814563cb77fe0"
+    },
+    "attempt/preflight-repair/join.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/join.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/lift-24.resources.json": {
+      "bytes": 2723,
+      "sha256": "7f3a16ac995dd97ddba61db44c743aa17cec360ca8d052b298a8c04257089ce8"
+    },
+    "attempt/preflight-repair/lift-24.samples.jsonl": {
+      "bytes": 5711,
+      "sha256": "03a634fc06d3f27c6705c4ff7702b212bb2d8a06dd7b9c0f4f44ebb3d3eb1277"
+    },
+    "attempt/preflight-repair/lift-24.started.json": {
+      "bytes": 891,
+      "sha256": "83ba00d2bb74f627f80d5eccb11ba8bd70700a189c68792bc35190117f45de24"
+    },
+    "attempt/preflight-repair/lift-24.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/lift-24.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/lift-25.resources.json": {
+      "bytes": 2713,
+      "sha256": "e30984fc9f450ab4d87ea53688408cb6d71d090eaa2ae914b9f34ec1e1a221ed"
+    },
+    "attempt/preflight-repair/lift-25.samples.jsonl": {
+      "bytes": 5536,
+      "sha256": "26678da475cdeb3d6f3568fe3c12d6b20e9b8f38225057d89cf124656b16ca35"
+    },
+    "attempt/preflight-repair/lift-25.started.json": {
+      "bytes": 887,
+      "sha256": "ade6d8bb6bc84ec6cb1046deb12a432a5909cd3616f66bd38b97dad8376a8ea2"
+    },
+    "attempt/preflight-repair/lift-25.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/lift-25.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/progress-join.json": {
+      "bytes": 15564,
+      "sha256": "a40b09d859fea4da6b1afe755115ae01d0d1bd168f72f16559c5cd1eebfd91c5"
+    },
+    "attempt/preflight-repair/progress-lift-24.json": {
+      "bytes": 6263,
+      "sha256": "987ade8bed84c8981e4b976a9c8db919f1a1d2dc21e8196dd415ba02e85824d3"
+    },
+    "attempt/preflight-repair/progress-lift-25.json": {
+      "bytes": 12479,
+      "sha256": "5a4d910b667df340517df8d28877acf7a2039213ba466c71a8f813ee082bdd0d"
+    },
+    "attempt/preflight-repair/progress-segment-25.json": {
+      "bytes": 9378,
+      "sha256": "8abf57cd6162076cc9a426a2631d29778b5b98e07d5c917a8122237e375ad70a"
+    },
+    "attempt/preflight-repair/progress-verify.json": {
+      "bytes": 18625,
+      "sha256": "f6ab23795a4c735c3863c506a92d422465e5093bfafd919434eec153ac03704a"
+    },
+    "attempt/preflight-repair/progress.json": {
+      "bytes": 3152,
+      "sha256": "4b6674e587e19312f69b74b598b2d6adccdac2333fe02547d673ff38f5197db0"
+    },
+    "attempt/preflight-repair/segment-24.resources.json": {
+      "bytes": 2740,
+      "sha256": "7aab763d8abe39f6cd5a3d3b492c4504e9880b4144cae32d95078dc4e7642d62"
+    },
+    "attempt/preflight-repair/segment-24.samples.jsonl": {
+      "bytes": 68751,
+      "sha256": "99a8ce35d55f74344b2dfa5d0350b0e741bb1131e18ca95056235bc60b43d679"
+    },
+    "attempt/preflight-repair/segment-24.started.json": {
+      "bytes": 907,
+      "sha256": "b75bf49c0917896f1eb117b19b451a1e2fc11c9d909ca57ec90e2ec1db26de8e"
+    },
+    "attempt/preflight-repair/segment-24.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/segment-24.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/segment-25.resources.json": {
+      "bytes": 2724,
+      "sha256": "6f9be99205ff389cc546de6c87449dc6ed58c44c1aa82b235507eb1c65e55401"
+    },
+    "attempt/preflight-repair/segment-25.samples.jsonl": {
+      "bytes": 67680,
+      "sha256": "7c187d121eb45f163ca381662143db7a9f4de0ffdbbb6cdabc3a33abecf5fefe"
+    },
+    "attempt/preflight-repair/segment-25.started.json": {
+      "bytes": 893,
+      "sha256": "b3cfedbb98df171f0527157152b105e0c9e62cf75a7e4578866540f3d75346aa"
+    },
+    "attempt/preflight-repair/segment-25.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/segment-25.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/summary.json": {
+      "bytes": 18753,
+      "sha256": "ea6fe25f3e3a64a2da4f40a9d84bbc4511f7233719f3f43c21dd07bb38438842"
+    },
+    "attempt/preflight-repair/verify.resources.json": {
+      "bytes": 2678,
+      "sha256": "5a2faa35cced3e17266780edea5917062a6b2dd4e10e3ee02a0019df2d81800b"
+    },
+    "attempt/preflight-repair/verify.samples.jsonl": {
+      "bytes": 160,
+      "sha256": "da94aea69291c827b97c101a7b66bd903286093bde0dfdb4a808aed78b5dcf95"
+    },
+    "attempt/preflight-repair/verify.started.json": {
+      "bytes": 883,
+      "sha256": "b1df4a81be6564b588950bcb8ec5dc88b1690e9a599f9618ad02ec710f5c6345"
+    },
+    "attempt/preflight-repair/verify.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/preflight-repair/verify.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/progress-segment-24.json": {
+      "bytes": 6561,
+      "sha256": "ae9b7d1aa58464d22fcfbc98427fdf8227660a5cad72f9c81d6037a23f600e72"
+    },
+    "attempt/progress.json": {
+      "bytes": 3462,
+      "sha256": "5706892fd6cb089d393b596c312934da14e4fdb567333a1147d39aeac83ebe7c"
+    },
+    "attempt/segment-24.resources.json": {
+      "bytes": 2711,
+      "sha256": "3dd6eea35e58e93c818a98b7e9533ce43b7253da19ba9748668caa6e59f6bc90"
+    },
+    "attempt/segment-24.samples.jsonl": {
+      "bytes": 159,
+      "sha256": "3a9df31a7b388e92bce7c0b66c56354c8aee8263fbbf8557b6f580bd97e273e6"
+    },
+    "attempt/segment-24.started.json": {
+      "bytes": 892,
+      "sha256": "f1138abecfa8e6ba62d50533f2aee8b5c367a96f29a88681fe14b617310fdc28"
+    },
+    "attempt/segment-24.stderr.log": {
+      "bytes": 76,
+      "sha256": "4a4d3759cbff626df0fa07f9349b9a7de58ccfaa96fbbffbbffc939d55a4d5c8"
+    },
+    "attempt/segment-24.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempt/summary.json": {
+      "bytes": 6978,
+      "sha256": "c9ad2fb327e48f056898f4bb1b696f459c9bdd1326ef7b93d765aea07891b87d"
+    },
+    "local/build.stderr.log": {
+      "bytes": 157,
+      "sha256": "8e5b71f00ac8ec4e9a558af005bb838d2f79e71f488b7a0404a44ef641423017"
+    },
+    "local/build.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local/fast-checks.log": {
+      "bytes": 20501,
+      "sha256": "0f147377669afce82e582d4bacfe5a5ed18a563ab72bedaa04f67cf0d91ad0a5"
+    },
+    "local/hardware-and-sdk.json": {
+      "bytes": 716,
+      "sha256": "260620208238413559adea743647f258bb4872ac76eedc7d8c05deee8b20757d"
+    },
+    "local/host-tests.log": {
+      "bytes": 953,
+      "sha256": "eef847df721bc61b315a2b569644d09f8c76541463bcb9608837d17fcd9a6499"
+    },
+    "local/repair-build-final.stderr.log": {
+      "bytes": 157,
+      "sha256": "08a10896a12e6353260855d27c4f3afd5fdc2530d903fadb46342232fc51638e"
+    },
+    "local/repair-build-final.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local/repair-build.stderr.log": {
+      "bytes": 2995,
+      "sha256": "0937df450e94643ffa3cde8679dc90354fa314deaba7e199f571061142f0709e"
+    },
+    "local/repair-build.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local/repair-runner.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local/repair-runner.stdout.log": {
+      "bytes": 433,
+      "sha256": "d70c10b0143b0bca150baa90923e7aa66027a82d8202bdd7cd2793a3eac515af"
+    },
+    "local/resource-tests.log": {
+      "bytes": 318,
+      "sha256": "ae146a76c3bb45c5a11c113e08694cef30e6d6332ac7f66465f2d98c7f421556"
+    },
+    "local/retained-inspection.json": {
+      "bytes": 21218,
+      "sha256": "ae065649d247618cc17c3182c4e44053a817dd94acd796cbce40869b00bd373b"
+    },
+    "local/runner.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local/runner.stdout.log": {
+      "bytes": 137,
+      "sha256": "4ca751aec0366f970b771f467f465f5233347b6f9a0dc5035c984bac76011c1b"
+    },
+    "local/rust-tests.log": {
+      "bytes": 2694,
+      "sha256": "2430bdc4de930bff56de07206559b635ae6c0159b0d8164634aa152d11984c77"
+    },
+    "old-temporary-traces/24.bincode": {
+      "bytes": 154065,
+      "sha256": "c438342b453acbd86d3128ff56fbb7327f7eb59ddf09dd5bb3c28164d65774aa"
+    },
+    "old-temporary-traces/25.bincode": {
+      "bytes": 157461,
+      "sha256": "514ecf25ecb0b88e2f71bf44c9f4d5ec1087bfb405fe2a1033e657457f0abfdc"
+    },
+    "source/poc/accelerated-bn254/host.rs": {
+      "bytes": 9627,
+      "sha256": "35bdb43911bf38af8bab9073856e17a7792c844f567249b387fca7f752df31f6"
+    },
+    "source/poc/outer-proof-128m/host.rs": {
+      "bytes": 12977,
+      "sha256": "315358d64aa798b77a1dbfb936217cae2f4c30a2b966f6b6964a8a12442274ee"
+    },
+    "source/poc/proof-phase-diagnostics/ADVERSARIAL-REVIEW.md": {
+      "bytes": 2221,
+      "sha256": "b8a78eb7ca8e412a1f8b8acca684bc070dd9397c1b23f7551235a117956b4aa3"
+    },
+    "source/poc/proof-phase-diagnostics/PLAN.md": {
+      "bytes": 4856,
+      "sha256": "bc44cb5ebc9391a6792796b8aba2fb37a730c96070d7fbf45f6c05ac94584895"
+    },
+    "source/poc/proof-phase-diagnostics/README.md": {
+      "bytes": 3755,
+      "sha256": "ff60f92e75b655fd8e31ca8f32d2bb235da4699c87a6219b049a4e482aee150b"
+    },
+    "source/poc/proof-phase-diagnostics/RESULTS.md": {
+      "bytes": 8133,
+      "sha256": "1d928613afd465c76d50529f3772e5d05f908cb7b58d7f6cd46a4d3d97f85aaa"
+    },
+    "source/poc/proof-phase-diagnostics/collect_evidence.py": {
+      "bytes": 5758,
+      "sha256": "8aa022428bbd982de4c786964ccf410e7ba8fda869786ec86381d91b1fe8bc82"
+    },
+    "source/poc/proof-phase-diagnostics/host.rs": {
+      "bytes": 11142,
+      "sha256": "6ee3f68792d9dfc1df63b197fcaa7f6f542cce0dcd906bdbd278febf52857b4c"
+    },
+    "source/poc/proof-phase-diagnostics/run.py": {
+      "bytes": 10721,
+      "sha256": "36dce440f32def7198f0ac70022a6dd69b1c27e8e2b1f4285a6777c89d6ca002"
+    },
+    "source/poc/proof-phase-diagnostics/test_resources.py": {
+      "bytes": 2367,
+      "sha256": "b88b87d320fe549b0f778b29dbaf6f94ef587385c5a3de5a79b77c4bb939e31f"
+    },
+    "source/poc/takeover/Cargo.lock": {
+      "bytes": 148648,
+      "sha256": "6e2715918e0dfb9d1a9968021513065bc6653d8ae22d4b97d9b2d5e7d993e0ea"
+    },
+    "source/poc/takeover/host/Cargo.toml": {
+      "bytes": 2351,
+      "sha256": "b0d062c0ef1eb1d8db31dac19177034b4c2134ee277a04d8f391dbec47209bf7"
+    },
+    "source/poc/takeover/host/src/main.rs": {
+      "bytes": 19554,
+      "sha256": "62a25be5abbb6bc036da3226abb859be4566d5eb887d00e1028fe257a370e5e3"
+    },
+    "source/scripts/ci_fast.sh": {
+      "bytes": 1741,
+      "sha256": "e9626daab75aedc53984145ac60bf4a9017048a86259bb9ea0d64666399290da"
+    }
+  },
+  "archive": {
+    "name": "local-phase-artifacts.tar.gz",
+    "bytes": 2001456,
+    "sha256": "01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
+    "regularMembers": 107
+  }
+}
