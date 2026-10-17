@@ -1,5 +1,9 @@
 # Next focus: shielded native KAS and financial privacy
 
+**Work paused by the owner, 2026-10-17.** Finish PR #39 and preserve the
+[pause handoff](../poc/outer-proof-128m/STATUS-HANDOFF.md). The follow-up experiments
+below remain deferred until a new owner instruction; there is no automatic restart.
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

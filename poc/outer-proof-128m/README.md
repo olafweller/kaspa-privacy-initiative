@@ -1,5 +1,9 @@
 # Approved 128M outer classification proof
 
+**Owner-directed pause, 2026-10-17:** close PR #39 as the completed bounded
+research result and resume only on a new owner instruction. See the
+[pause handoff](STATUS-HANDOFF.md) for preserved evidence and the deferred next step.
+
 Local unfunded successor to [PR38](../accelerated-bn254/RESULTS.md), following the
 [predeclared plan](PLAN.md) and [ADR 0010](../../docs/adr/0010-approved-128m-outer-proof.md).
 The owner explicitly approved full 128M adversarial qualification followed
