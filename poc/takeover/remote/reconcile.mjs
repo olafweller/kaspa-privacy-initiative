@@ -17,12 +17,12 @@ try{
  const balances={};for(const [role,address]of Object.entries({sponsor:sponsor.address,fee:identity.keys.fee.address,user:identity.keys.user.address}))balances[role]=await call('getUtxosByAddresses',{addresses:[address]});
  const fees=done.feesSompi,fee=n=>BigInt(fees[n]);
  const sponsorStart=sum(read('fund-fee-request.json').utxos.entries);
- assert.equal(sum(balances.sponsor),sponsorStart-2500000000n-fee('fund-fee'));
+ assert.equal(sum(balances.sponsor.entries),sponsorStart-2500000000n-fee('fund-fee'));
  const feeWalletFees=['fund-user','seed','bootstrap','prefix-settlement','final-settlement','payout'].reduce((n,label)=>n+fee(label),0n);
- assert.equal(sum(balances.fee),2500000000n-1200000000n-100000000n-50000000n-feeWalletFees);
- assert.equal(sum(balances.user),1200000000n-1000000000n+450000000n-fee('deposit')-fee('withdraw'));
+ assert.equal(sum(balances.fee.entries),2500000000n-1200000000n-100000000n-50000000n-feeWalletFees);
+ assert.equal(sum(balances.user.entries),1200000000n-1000000000n+450000000n-fee('deposit')-fee('withdraw'));
  const totalFees=Object.values(fees).reduce((n,v)=>n+BigInt(v),0n);
- assert.equal(sum(balances.fee)+sum(balances.user)+600000000n+100000000n,
+ assert.equal(sum(balances.fee.entries)+sum(balances.user.entries)+600000000n+100000000n,
               2500000000n-(totalFees-fee('fund-fee')));
  const canonical={};for(const label of Object.keys(fees)){
   const accepted=read(label+'-accepted.json');const {block}=await call('getBlock',{hash:accepted.header.hash,includeTransactions:false});assert(block.verboseData.isChainBlock);canonical[label]=block.header;
@@ -33,4 +33,4 @@ try{
   feeAndUserPrincipalReconciled:true,stateRentSompi:100000000,reservedNativeSompi:600000000,
   appSpendableSompi:600000000,unpaidClaimsSompi:0});
  console.log('FINAL_ACCOUNTING_RECONCILED');
-}finally{save('reconciliation-rpc.json',records);ws.close();}
+}finally{save('reconciliation-rpc-v2.json',records);ws.close();}
