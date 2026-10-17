@@ -1,0 +1,10 @@
+[package]
+name = "kpi-takeover-aggregate-guest"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std"] }
+vprogs-zk-abi = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e", default-features = false }
+vprogs-zk-backend-risc0-api = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e", default-features = false, features = ["guest"] }

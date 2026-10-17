@@ -1,0 +1,9 @@
+[package]
+name = "kpi-takeover-transaction-guest"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+kpi-takeover-common = { path = "../common" }
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std"] }

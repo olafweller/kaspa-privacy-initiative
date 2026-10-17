@@ -1,0 +1,627 @@
+//! Adapter of the PR32 native builder. See ../../ORIGIN.md.
+use app::runtime;
+use kaspa_addresses::{Address, Prefix, Version};
+use kaspa_consensus_core::{
+    config::params::TESTNET_PARAMS, hashing::tx::transaction_v1_rest_preimage, sign::sign,
+    subnets::SubnetworkId, tx::*,
+};
+use kaspa_hashes::Hash;
+use kaspa_rpc_core::{RpcTransaction, RpcUtxosByAddressesEntry};
+use kpi_native_common::{self as app, State};
+use risc0_zkvm::sha::Digestible;
+use risc0_zkvm::{compute_image_id, Receipt};
+use serde_json::{json, Value};
+use std::{error::Error, fs, path::Path, str::FromStr};
+use vprogs_l1_wallet::build::*;
+use vprogs_zk_abi::withdrawal::StandardSpk;
+use vprogs_zk_backend_risc0_api::{
+    build_delegate_entry_script, build_permission_redeem_script, PermissionTreeAccumulator,
+};
+use vprogs_zk_backend_risc0_covenant::{
+    script::{build_redeem_script, redeem_script_len, CommonPins, RedeemPins, SuccinctPins},
+    Settlement, SettlementInput, SettlementWitness, SuccinctWitness,
+};
+#[allow(dead_code)]
+#[path = "../../../../native-value/host/src/actions.rs"]
+mod actions;
+type Result<T> = std::result::Result<T, Box<dyn Error>>;
+fn read(p: &str) -> Result<Value> {
+    Ok(serde_json::from_slice(&fs::read(p)?)?)
+}
+fn save(p: &str, v: &Value) -> Result<()> {
+    use std::io::Write;
+    let mut f = fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(p)?;
+    f.write_all(&serde_json::to_vec_pretty(v)?)?;
+    Ok(())
+}
+fn hash(v: &Value) -> Result<Hash> {
+    Ok(Hash::from_str(v.as_str().ok_or("hash")?)?)
+}
+fn num(v: &Value) -> Result<u64> {
+    v.as_u64().ok_or_else(|| "missing exact u64".into())
+}
+fn require(ok: bool, msg: &str) -> Result<()> {
+    if ok {
+        Ok(())
+    } else {
+        Err(msg.into())
+    }
+}
+fn pins<'a>(image: &'a [u8; 32], key: &'a Hash) -> RedeemPins<'a> {
+    RedeemPins::Succinct(SuccinctPins {
+        common: CommonPins {
+            program_id: image,
+            tx_image_id: &IMAGES.get().expect("fixed images").0,
+            batch_image_id: &IMAGES.get().expect("fixed images").1,
+            lane_key: key,
+            permission_output_value: app::PERMISSION_RENT,
+        },
+    })
+}
+fn initial(lane: &[u8; 20], tip: &Hash, program: &[u8]) -> Vec<u8> {
+    let image = compute_image_id(program).unwrap().into();
+    let key = kaspa_seq_commit::hashing::lane_key(lane);
+    let pins = pins(&image, &key);
+    let state = kpi_takeover_common::root(&State::default());
+    build_redeem_script(&state, tip, redeem_script_len(&state, &pins), &pins)
+}
+struct Anchor(Hash, Hash);
+impl kaspa_txscript::seq_commit_accessor::SeqCommitAccessor for Anchor {
+    fn is_chain_ancestor_from_pov(&self, b: Hash) -> Option<bool> {
+        Some(b == self.0)
+    }
+    fn seq_commitment_within_depth(&self, b: Hash) -> Option<Hash> {
+        (b == self.0).then_some(self.1)
+    }
+}
+static IMAGES: std::sync::OnceLock<([u8; 32], [u8; 32])> = std::sync::OnceLock::new();
+fn main() -> Result<()> {
+    require(
+        std::env::var("RISC0_DEV_MODE").is_err(),
+        "development mode forbidden",
+    )?;
+    let a: Vec<_> = std::env::args().collect();
+    require(
+        a.len() == 6 && a[1] == "build",
+        "build VPS_KEY REQUEST NEW_OUTPUT AGGREGATE_PROGRAM",
+    )?;
+    let root = Path::new(&a[5]).parent().ok_or("program directory")?;
+    IMAGES
+        .set((
+            compute_image_id(&fs::read(root.join("transaction.program.bin"))?)?.into(),
+            compute_image_id(&fs::read(root.join("batch.program.bin"))?)?.into(),
+        ))
+        .map_err(|_| "images already fixed")?;
+    build(&a)
+}
+fn witness_payload(
+    owner: &[u8; 32],
+    amount: u64,
+    recipient: &[u8; 32],
+    prev: &Transaction,
+    unauthorized: bool,
+) -> Vec<u8> {
+    let (idx, _, entries) = actions::sorted_user_config_positions(actions::user_resource_id(owner));
+    let access = actions::encode_access_metadata(&entries);
+    let action = actions::encode_withdraw_action(idx, amount, &StandardSpk::PubKey(recipient));
+    let acts = actions::encode_actions_section(&[action]);
+    let rest = transaction_v1_rest_preimage(prev);
+    let digest = vprogs_l1_utils::payload_digest_v1(&prev.payload);
+    let probe = actions::encode_signers_section(&[actions::encode_witness_signer(idx, 0, 0, 0, 0)]);
+    let offset = (access.len() + probe.len() + acts.len()) as u32;
+    let sig = actions::encode_signers_section(&[actions::encode_witness_signer(
+        idx,
+        if unauthorized { 1 } else { 0 },
+        offset,
+        rest.len() as u32,
+        offset + rest.len() as u32,
+    )]);
+    [access, sig, acts, rest, digest.to_vec()].concat()
+}
+// A one-funding-input builder, retaining the upstream signing/mass helpers.
+// More complex settlement funding reuses settlement_transaction below.
+fn ordinary(
+    point: TransactionOutpoint,
+    entry: UtxoEntry,
+    key: secp256k1::Keypair,
+    address: &Address,
+    lane: SubnetworkId,
+    payload: Vec<u8>,
+    outputs: Vec<TransactionOutput>,
+) -> Result<Transaction> {
+    let fixed = outputs
+        .iter()
+        .try_fold(0u64, |a, o| a.checked_add(o.value))
+        .ok_or("output overflow")?;
+    let mut fee = 100_000u64;
+    loop {
+        let mut outs = outputs.clone();
+        outs.push(TransactionOutput::new(
+            entry
+                .amount
+                .checked_sub(fixed)
+                .and_then(|n| n.checked_sub(fee))
+                .ok_or("insufficient sponsor funds")?,
+            kaspa_txscript::pay_to_address_script(address),
+        ));
+        let t = Transaction::new(
+            1,
+            vec![TransactionInput::new(point, vec![], 0, 1)],
+            outs,
+            0,
+            lane.clone(),
+            0,
+            payload.clone(),
+        );
+        let mut t = sign(
+            MutableTransaction::with_entries(t, vec![entry.clone()]),
+            key,
+        )
+        .tx;
+        let required = min_fee(&TESTNET_PARAMS, &t)
+            .checked_mul(2)
+            .ok_or("fee overflow")?;
+        if required > fee {
+            fee = required;
+            continue;
+        }
+        commit_storage_mass(&TESTNET_PARAMS, &t, &[entry]);
+        t.finalize();
+        return Ok(t);
+    }
+}
+fn build(a: &[String]) -> Result<()> {
+    let req = read(&a[3])?;
+    require(
+        req["server"]["networkId"] == "testnet-10" && req["server"]["isSynced"] == true,
+        "wrong network/unsynced",
+    )?;
+    let secret = secp256k1::SecretKey::from_str(fs::read_to_string(&a[2])?.trim())?;
+    let key = secp256k1::Keypair::from_secret_key(secp256k1::SECP256K1, &secret);
+    let owner = key.x_only_public_key().0.serialize();
+    let address = Address::new(Prefix::Testnet, Version::PubKey, &owner);
+    let es: Vec<RpcUtxosByAddressesEntry> =
+        serde_json::from_value(req["utxos"]["entries"].clone())?;
+    let mut candidates = vec![];
+    for e in es {
+        require(e.address.as_ref() == Some(&address), "foreign fee address")?;
+        let entry: UtxoEntry = e.utxo_entry.into();
+        require(
+            entry.covenant_id.is_none(),
+            "protocol covenant cannot fund fees",
+        )?;
+        if !entry.is_coinbase
+            || entry.block_daa_score + TESTNET_PARAMS.blockrate.coinbase_maturity
+                <= num(&req["server"]["virtualDaaScore"])?
+        {
+            candidates.push((e.outpoint.into(), entry));
+        }
+    }
+    candidates.sort_by_key(|(_, e)| std::cmp::Reverse(e.amount));
+    require(!candidates.is_empty(), "no funding")?;
+    let (point, entry) = candidates[0].clone();
+    let subnet: [u8; 20] = hex::decode(req["lane"].as_str().ok_or("lane")?)?
+        .try_into()
+        .map_err(|_| "lane length")?;
+    let network = SubnetworkId::from_bytes(subnet);
+    let mut meta = json!({"network":"testnet-10","address":address.to_string(),"kind":req["kind"]});
+    let mut extra = vec![];
+    let tx = match req["kind"].as_str().ok_or("kind")? {
+        "replay" => ordinary(
+            point,
+            entry.clone(),
+            key,
+            &address,
+            network,
+            hex::decode(req["payload"].as_str().ok_or("replay payload")?)?,
+            vec![],
+        )?,
+        "activity" => ordinary(
+            point,
+            entry.clone(),
+            key,
+            &address,
+            network,
+            b"KPI-NATIVE-SEED".to_vec(),
+            vec![],
+        )?,
+        "fund-user" => {
+            let pk: [u8; 32] = hex::decode(req["recipient"].as_str().ok_or("recipient")?)?
+                .try_into()
+                .map_err(|_| "pubkey")?;
+            let spk = StandardSpk::PubKey(&pk).to_script_bytes();
+            ordinary(
+                point,
+                entry.clone(),
+                key,
+                &address,
+                network,
+                vec![],
+                vec![TransactionOutput::new(
+                    num(&req["amount"])?,
+                    ScriptPublicKey::new(0, spk.as_slice().to_vec().into()),
+                )],
+            )?
+        }
+        "deposit" | "bad-deposit" | "double-deposit" => {
+            let covenant: [u8; 32] = hash(&req["covenantId"])?.into();
+            let pk: [u8; 32] = hex::decode(req["owner"].as_str().ok_or("owner")?)?
+                .try_into()
+                .map_err(|_| "owner")?;
+            let mut payload = actions::deposit_payload(&pk, 0);
+            if req["kind"] == "double-deposit" {
+                let (idx, _, entries) =
+                    actions::sorted_user_config_positions(actions::user_resource_id(&pk));
+                let lock =
+                    runtime::lock::LockEnum::Schnorr(runtime::lock_variants::SchnorrLockView {
+                        pubkey: &pk,
+                    });
+                let action = actions::encode_deposit_action(idx, 0, &lock);
+                payload = [
+                    actions::encode_access_metadata(&entries),
+                    actions::encode_signers_section(&[]),
+                    actions::encode_actions_section(&[action.clone(), action]),
+                ]
+                .concat();
+            }
+            let spk = if req["kind"] == "bad-deposit" {
+                kaspa_txscript::pay_to_address_script(&address)
+            } else {
+                kaspa_txscript::standard::pay_to_script_hash_script(&build_delegate_entry_script(
+                    &covenant,
+                ))
+            };
+            ordinary(
+                point,
+                entry.clone(),
+                key,
+                &address,
+                network,
+                payload,
+                vec![TransactionOutput::new(num(&req["amount"])?, spk)],
+            )?
+        }
+        "withdraw" => {
+            let pk: [u8; 32] = hex::decode(req["owner"].as_str().ok_or("owner")?)?
+                .try_into()
+                .map_err(|_| "owner")?;
+            let recipient: [u8; 32] = hex::decode(req["recipient"].as_str().ok_or("recipient")?)?
+                .try_into()
+                .map_err(|_| "recipient")?;
+            let prev_rpc: RpcTransaction =
+                serde_json::from_value(req["previousTransaction"].clone())?;
+            let prev: Transaction = prev_rpc.try_into()?;
+            let required = TransactionOutpoint::new(prev.id(), num(&req["previousIndex"])? as u32);
+            let (point, entry) = candidates
+                .iter()
+                .find(|(p, _)| *p == required)
+                .cloned()
+                .ok_or("witness funding output not unspent")?;
+            let payload = witness_payload(
+                &pk,
+                num(&req["amount"])?,
+                &recipient,
+                &prev,
+                req["badWitness"] == true,
+            );
+            ordinary(point, entry, key, &address, network, payload, vec![])?
+        }
+        "bootstrap" => {
+            let program = fs::read(&a[5])?;
+            let redeem = initial(&subnet, &hash(&req["tip"])?, &program);
+            let (template, covenant) = covenant_bootstrap_transaction(
+                &redeem,
+                100_000_000,
+                point,
+                entry.clone(),
+                key,
+                &TESTNET_PARAMS,
+            );
+            let mut fee = 100_000;
+            let tx = loop {
+                let mut t = template.clone();
+                t.outputs.push(TransactionOutput::new(
+                    entry
+                        .amount
+                        .checked_sub(100_000_000 + fee)
+                        .ok_or("bootstrap funding")?,
+                    kaspa_txscript::pay_to_address_script(&address),
+                ));
+                t = sign(
+                    MutableTransaction::with_entries(t, vec![entry.clone()]),
+                    key,
+                )
+                .tx;
+                let required = min_fee(&TESTNET_PARAMS, &t) * 2;
+                if required > fee {
+                    fee = required;
+                    continue;
+                }
+                commit_storage_mass(&TESTNET_PARAMS, &t, &[entry.clone()]);
+                t.finalize();
+                break t;
+            };
+            meta["covenantId"] = json!(covenant.to_string());
+            meta["covenantAddress"] = json!(kaspa_txscript::extract_script_pub_key_address(
+                &tx.outputs[0].script_public_key,
+                Prefix::Testnet
+            )?
+            .to_string());
+            meta["depositAddress"] = json!(kaspa_txscript::extract_script_pub_key_address(
+                &kaspa_txscript::standard::pay_to_script_hash_script(&build_delegate_entry_script(
+                    &covenant.into()
+                )),
+                Prefix::Testnet
+            )?
+            .to_string());
+            tx
+        }
+        "settlement" => {
+            let program = fs::read(&a[5])?;
+            let receipt: Receipt =
+                bincode::deserialize(&fs::read(req["receiptPath"].as_str().ok_or("receipt")?)?)?;
+            receipt.verify(compute_image_id(&program)?)?;
+            let j = &receipt.journal.bytes;
+            require(j.len() == 352, "journal size")?;
+            let jh = |i| Hash::from_bytes(j[i..i + 32].try_into().unwrap());
+            require(
+                j[192..224] == IMAGES.get().unwrap().0 && j[224..256] == IMAGES.get().unwrap().1,
+                "wrong inner images",
+            )?;
+            let cov: RpcUtxosByAddressesEntry =
+                serde_json::from_value(req["covenantUtxo"].clone())?;
+            let covid = jh(160);
+            require(cov.utxo_entry.covenant_id == Some(covid), "wrong covenant")?;
+            let cov_entry: UtxoEntry = cov.utxo_entry.into();
+            let cov_point: TransactionOutpoint = cov.outpoint.into();
+            let end = hash(&req["end"])?;
+            let image = compute_image_id(&program)?.into();
+            let lane = jh(320);
+            let r = receipt.inner.succinct()?;
+            let claim = r.claim.digest().into();
+            let seal: Vec<_> = r.seal.iter().flat_map(|n| n.to_le_bytes()).collect();
+            let control: Vec<_> = r
+                .control_inclusion_proof
+                .digests
+                .iter()
+                .flat_map(|d| <[u8; 32]>::from(*d))
+                .collect();
+            let settlement = Settlement::build(&SettlementInput {
+                covenant_id: covid,
+                pins: pins(&image, &lane),
+                prev_state: j[0..32].try_into()?,
+                prev_lane_tip: &jh(32),
+                new_state: j[64..96].try_into()?,
+                new_lane_tip: &jh(96),
+                block_prove_to: end,
+                prev_outpoint: cov_point,
+                value: cov_entry.amount,
+                witness: SettlementWitness::Succinct(SuccinctWitness {
+                    seal: &seal,
+                    claim: &claim,
+                    control_index: r.control_inclusion_proof.index,
+                    control_digests: &control,
+                    deposit_spk_hash: j[288..320].try_into()?,
+                }),
+                permission_spk_hash: j[256..288].try_into()?,
+            });
+            require(
+                cov_entry.script_public_key
+                    == kaspa_txscript::standard::pay_to_script_hash_script(&settlement.prev_redeem),
+                "prior state/tip mismatch",
+            )?;
+            let budget = settlement.covenant_compute_budget(covid, &Anchor(end, jh(128)));
+            meta["newState"] = json!(jh(64).to_string());
+            meta["newTip"] = json!(jh(96).to_string());
+            meta["derivedSeq"] = json!(jh(128).to_string());
+            meta["permissionHash"] = json!(jh(256).to_string());
+            meta["computeBudget"] = json!(u16::from(budget));
+            extra.push((cov_point, cov_entry.clone()));
+            settlement_transaction(SettlementTx {
+                settlement_tx: settlement.transaction,
+                covenant_entry: cov_entry,
+                covenant_compute_budget: budget,
+                fee_candidates: candidates.clone(),
+                keypair: key,
+                address: &address,
+                fee_policy: FeePolicy::TargetFeerate(200.0),
+                params: &TESTNET_PARAMS,
+            })?
+        }
+        "payout" => payout(&req, &candidates, key, &address, &mut extra)?,
+        _ => return Err("unknown builder kind".into()),
+    };
+    let total = tx
+        .inputs
+        .iter()
+        .try_fold(0u64, |n, i| {
+            let entry = candidates
+                .iter()
+                .chain(extra.iter())
+                .find(|(p, _)| *p == i.previous_outpoint)
+                .ok_or("unknown transaction input")?;
+            n.checked_add(entry.1.amount).ok_or("input overflow")
+        })
+        .map_err(|s: &str| s.to_string())?;
+    let sum = tx
+        .outputs
+        .iter()
+        .try_fold(0u64, |n, o| n.checked_add(o.value))
+        .ok_or("output sum overflow")?;
+    let fee = total.checked_sub(sum).ok_or("value creation")?;
+    require(fee <= 200_000_000, "unexpected fee >2 test-KAS")?;
+    meta["feeSompi"] = json!(fee);
+    meta["transactionId"] = json!(tx.id().to_string());
+    meta["transaction"] = serde_json::to_value(RpcTransaction::from(&tx))?;
+    meta["outputAddresses"] = json!(tx
+        .outputs
+        .iter()
+        .map(|o| kaspa_txscript::extract_script_pub_key_address(
+            &o.script_public_key,
+            Prefix::Testnet
+        )
+        .map(|a| a.to_string()))
+        .collect::<std::result::Result<Vec<_>, _>>()?);
+    save(&a[4], &meta)
+}
+fn payout(
+    req: &Value,
+    candidates: &[(TransactionOutpoint, UtxoEntry)],
+    key: secp256k1::Keypair,
+    address: &Address,
+    extra: &mut Vec<(TransactionOutpoint, UtxoEntry)>,
+) -> Result<Transaction> {
+    use kaspa_consensus_core::{
+        hashing::sighash::SigHashReusedValuesUnsync, mass::units::ComputeBudget,
+        subnets::SUBNETWORK_ID_NATIVE,
+    };
+    use kaspa_txscript::{
+        caches::Cache, covenants::CovenantsContext, engine_context::EngineContext,
+        script_builder::ScriptBuilder, standard::pay_to_script_hash_script, EngineFlags,
+        TxScriptEngine,
+    };
+    let permission: RpcUtxosByAddressesEntry =
+        serde_json::from_value(req["permissionUtxo"].clone())?;
+    let delegate: RpcUtxosByAddressesEntry = serde_json::from_value(req["delegateUtxo"].clone())?;
+    let cov = hash(&req["covenantId"])?;
+    require(
+        permission.utxo_entry.covenant_id == Some(cov),
+        "permission wrong covenant",
+    )?;
+    require(
+        delegate.utxo_entry.covenant_id.is_none(),
+        "delegate must be unbound",
+    )?;
+    let pe: UtxoEntry = permission.utxo_entry.into();
+    let de: UtxoEntry = delegate.utxo_entry.into();
+    let pp: TransactionOutpoint = permission.outpoint.into();
+    let dp: TransactionOutpoint = delegate.outpoint.into();
+    let pk: [u8; 32] = hex::decode(req["recipient"].as_str().ok_or("recipient")?)?
+        .try_into()
+        .map_err(|_| "recipient")?;
+    let amount = num(&req["amount"])?;
+    require(amount > 0 && amount <= de.amount, "payout exceeds delegate")?;
+    let dest = StandardSpk::PubKey(&pk);
+    let leaf = PermissionTreeAccumulator::hash_leaf(dest, amount);
+    let empty = PermissionTreeAccumulator::hash_empty();
+    let root = PermissionTreeAccumulator::hash_branch(&leaf, &empty);
+    let redeem = build_permission_redeem_script(&root, 1, 1);
+    require(
+        pe.script_public_key == pay_to_script_hash_script(&redeem),
+        "claim amount/recipient mismatch",
+    )?;
+    let delegate_redeem = build_delegate_entry_script(&cov.into());
+    let delegate_spk = pay_to_script_hash_script(&delegate_redeem);
+    require(
+        de.script_public_key == delegate_spk,
+        "foreign delegate input",
+    )?;
+    let mut b = ScriptBuilder::new();
+    for _ in 0..2 {
+        b.add_data(&empty)?.add_i64(0)?;
+    }
+    b.add_data(dest.to_script_bytes().as_slice())?
+        .add_data(&amount.to_le_bytes())?
+        .add_i64(i64::try_from(amount)?)?
+        .add_data(&redeem)?;
+    let perm_sig = b.drain();
+    let delegate_sig = ScriptBuilder::new().add_data(&delegate_redeem)?.drain();
+    let (fp, fe) = candidates[0].clone();
+    let outputs = vec![
+        TransactionOutput::new(
+            amount.checked_add(pe.amount).ok_or("rent overflow")?,
+            ScriptPublicKey::new(0, dest.to_script_bytes().as_slice().to_vec().into()),
+        ),
+        TransactionOutput::new(de.amount - amount, delegate_spk),
+    ];
+    require(de.amount > amount, "this trial retains nonzero backing")?;
+    let mut fee = 100_000u64;
+    let tx = loop {
+        let mut outs = outputs.clone();
+        outs.push(TransactionOutput::new(
+            fe.amount.checked_sub(fee).ok_or("fee funds")?,
+            kaspa_txscript::pay_to_address_script(address),
+        ));
+        // Balanced negative attacks use the same valid permission witness; freed reserve/payout
+        // goes into sponsor change so a script rejection, rather than imbalance, is exercised.
+        let attack = req["attack"].as_str().unwrap_or("");
+        if attack == "underpay" {
+            outs[0].value -= 1;
+            outs[2].value += 1;
+        }
+        if attack == "reserve" {
+            outs[1].value -= 1;
+            outs[2].value += 1;
+        }
+        if attack == "recipient" {
+            outs[0].script_public_key = kaspa_txscript::pay_to_address_script(address);
+        }
+        let mut t = Transaction::new(
+            1,
+            vec![
+                TransactionInput::new(pp, perm_sig.clone(), 0, 1),
+                TransactionInput::new(dp, delegate_sig.clone(), 0, 1),
+                TransactionInput::new(fp, vec![], 0, 1),
+            ],
+            outs,
+            0,
+            SUBNETWORK_ID_NATIVE,
+            0,
+            vec![],
+        );
+        let entries = vec![pe.clone(), de.clone(), fe.clone()];
+        // Measure both bridge inputs on the valid shape, then retain those budgets on negatives.
+        let mut honest = t.clone();
+        if attack == "underpay" {
+            honest.outputs[0].value += 1;
+            honest.outputs[2].value -= 1;
+        }
+        if attack == "reserve" {
+            honest.outputs[1].value += 1;
+            honest.outputs[2].value -= 1;
+        }
+        if attack == "recipient" {
+            honest.outputs[0].script_public_key =
+                ScriptPublicKey::new(0, dest.to_script_bytes().as_slice().to_vec().into());
+        }
+        let pop = PopulatedTransaction::new(&honest, entries.clone());
+        let ctx = CovenantsContext::from_tx(&pop)?;
+        let cache = Cache::new(1000);
+        let reused = SigHashReusedValuesUnsync::new();
+        let accessor = Anchor(Hash::from_bytes([0; 32]), Hash::from_bytes([0; 32]));
+        for i in 0..2 {
+            let ec = EngineContext::new(&cache)
+                .with_reused(&reused)
+                .with_seq_commit_accessor(&accessor)
+                .with_covenants_ctx(&ctx);
+            let mut vm = TxScriptEngine::from_transaction_input(
+                &pop,
+                &honest.inputs[i],
+                i,
+                &entries[i],
+                ec,
+                EngineFlags::default(),
+            );
+            vm.execute()?;
+            let budget = ComputeBudget::checked_covering_script_units(vm.used_script_units())
+                .ok_or("bridge budget")?;
+            t.inputs[i].compute_commit = budget.into();
+        }
+        t = sign(MutableTransaction::with_entries(t, entries.clone()), key).tx;
+        t.inputs[0].signature_script = perm_sig.clone();
+        t.inputs[1].signature_script = delegate_sig.clone();
+        let required = min_fee(&TESTNET_PARAMS, &t) * 2;
+        if required > fee {
+            fee = required;
+            continue;
+        }
+        commit_storage_mass(&TESTNET_PARAMS, &t, &entries);
+        t.finalize();
+        break t;
+    };
+    extra.extend([(pp, pe), (dp, de)]);
+    Ok(tx)
+}

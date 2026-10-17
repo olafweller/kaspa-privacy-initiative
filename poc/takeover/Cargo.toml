@@ -1,0 +1,4 @@
+[workspace]
+members = ["host", "common"]
+exclude = ["vendor/covenant", "transaction-guest", "batch-guest", "aggregate-guest"]
+resolver = "2"
