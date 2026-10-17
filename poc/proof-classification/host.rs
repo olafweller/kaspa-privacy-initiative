@@ -313,6 +313,44 @@ fn check_fixture(fixture: &Path, out: &Path) -> Result<()> {
         "realReceiptMutations":results,"receiptPrefixTruncations":8,"oversizedProofRejected":true}))?,
     )
 }
+pub(crate) fn expected_authentication_abort(label: &str, message: &str) -> bool {
+    match label {
+        "host-verdict" => message == "Guest panicked: assertion failed: r.0.is_empty()",
+        "withheld" | "substituted" | "omitted" | "reordered" => {
+            message.starts_with("Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [")
+                && message.contains("\n right: [")
+        }
+        _ => false,
+    }
+}
+#[cfg(test)]
+mod abort_tests {
+    use super::expected_authentication_abort;
+    #[test]
+    fn unrelated_runtime_failures_cannot_pass_authentication_controls() {
+        let intended = "Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [1]\n right: [2]";
+        for label in ["withheld", "substituted", "omitted", "reordered"] {
+            assert!(expected_authentication_abort(label, intended));
+            for wrong in [
+                "Session limit exceeded: 32000000 >= 32000000",
+                "out of memory",
+                "IPC connection failed",
+                "Guest panicked: assertion failed: another check",
+                "",
+            ] {
+                assert!(!expected_authentication_abort(label, wrong));
+            }
+        }
+        let trailing = "Guest panicked: assertion failed: r.0.is_empty()";
+        assert!(expected_authentication_abort("host-verdict", trailing));
+        assert!(!expected_authentication_abort("host-verdict", intended));
+        assert!(!expected_authentication_abort("withheld", trailing));
+        assert!(!expected_authentication_abort(
+            "valid-invalid-valid",
+            intended
+        ));
+    }
+}
 fn profile(programs: &Path, fixture: &Path, out: &Path, label: &str) -> Result<()> {
     fs::create_dir(out)?;
     let program = fs::read(programs.join("classifier.program.bin"))?;
@@ -354,18 +392,12 @@ fn profile(programs: &Path, fixture: &Path, out: &Path, label: &str) -> Result<(
             save(out, "journal.bin", bytes)?;
         }
         Err(e) => {
-            if ![
-                "withheld",
-                "substituted",
-                "omitted",
-                "reordered",
-                "host-verdict",
-            ]
-            .contains(&label)
-            {
+            let message = format!("{e:#}");
+            if !expected_authentication_abort(label, &message) {
                 return Err(e);
             }
-            report["authenticationAbort"] = json!(format!("{e:#}"));
+            report["authenticationAbort"] = json!(message);
+            report["expectedAuthenticationFailureConfirmed"] = json!(true);
         }
     }
     save(out, "report.json", &serde_json::to_vec_pretty(&report)?)

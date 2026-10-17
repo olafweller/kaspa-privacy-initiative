@@ -77,6 +77,13 @@ eight truncations and 14 intent-binding mutations. CI adds three parser/domain
 tests, including 256 deterministic arbitrary-encoding vectors. These checks do
 not constitute a totality proof or independent cryptographic audit.
 
+Post-review harness correction: authentication controls now require the exact
+expected guest assertion category, including the dedicated trailing-input check
+for a host verdict. Session limits, memory/IPC failures and unrelated guest
+panics fail the test instead of being counted as authentication success. The
+five real negative executions were repeated with this stronger check and are
+retained in [expected-abort-review.json](evidence/expected-abort-review.json).
+
 The main cost fixture's corrupt middle receipt shares intent A with the first
 operation; the explicit outcome 3 is checked before replay handling. An additional
 `invalid-unspent` control isolates that condition: corrupt C appears while its
