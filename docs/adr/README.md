@@ -39,5 +39,6 @@ Use [0000-template.md](0000-template.md).
 - [ADR-0002: A0 terminal reserve-release experiment](0002-a0-reserve-release-experiment.md)
 - [ADR-0003: A1 finite successor reserve and independent terminal exit](0003-a1-successor-reserve.md)
 - [ADR-0007: bounded local proof-byte classification experiment](0007-local-proof-classification.md)
+- [ADR-0008: specialized BN254/Groth16 comparison](0008-specialized-groth16-comparison.md)
 
 The open state architecture comparison is [RFC-0001](../rfc/0001-state-architecture.md).

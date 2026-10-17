@@ -274,3 +274,11 @@ cost and almost-block-sized receipts expose a resource/availability concern:
 an invalid seal can fail late and consume nearly the full verification work.
 No fee-based denial-of-service protection, arbitrary accepted-lane totality,
 real L1 authentication, complete private statement or production safety follows.
+
+The [specialized wallet comparison](poc/groth16-comparison/RESULTS.md) retains
+full checked decoding of untrusted curve/subgroup points while loading immutable
+prepared constants already checked against the selected VK. Both exact parameter
+bytes and program identity must be pinned. Circuit-specific setup introduces a
+soundness trust assumption; fresh one-party research entropy is not a production
+ceremony. Small real proofs do not establish completed in-guest classification:
+that execution still exceeds its 32-million-cycle research cap.

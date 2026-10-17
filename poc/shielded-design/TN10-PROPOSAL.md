@@ -12,6 +12,11 @@ proxy operation uses 897,028 transient mass out of a pinned 1,000,000 block limi
 Decisions 2 and 3 below remain open: compare a cheaper proof/classifier format,
 produce the enforced result and bind actual accepted-lane data before funding.
 
+The [specialized Groth16 comparison](../groth16-comparison/RESULTS.md) improves
+publication to 702-byte proxy operations / 3,868 transient mass, but still has
+no completed classifier run or outer receipt within its declared budget. It
+does not close decisions 1–5 or qualify the full private payload/native trial.
+
 ## One experiment
 
 Use a fresh pool/identity, native test-KAS only, with separate Alice and Bob wallet

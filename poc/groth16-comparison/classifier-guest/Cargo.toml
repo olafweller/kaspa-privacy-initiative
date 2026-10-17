@@ -1,0 +1,13 @@
+[package]
+name = "kpi-groth16-classifier-guest"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std", "disable-dev-mode"] }
+kpi-groth16-comparison = { path = "../common" }
+kpi-takeover-common = { path = "../../takeover/common" }
+ark-bn254 = { version = "=0.5.0", default-features = false, features = ["curve", "std"] }
+ark-groth16 = { version = "=0.5.0", default-features = false, features = ["std"] }
+ark-serialize = { version = "=0.5.0", default-features = false, features = ["std"] }

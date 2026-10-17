@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 [dependencies]
+kpi-groth16-comparison = { path = "../../groth16-comparison/common", features = ["circuit", "parallel"] }
+ark-bn254 = "=0.5.0"
+ark-groth16 = "=0.5.0"
+ark-serialize = "=0.5.0"
 risc0-zkvm = "=3.0.3"
 risc0-binfmt = "=3.0.4"
 risc0-zkos-v1compat = "=2.2.2"

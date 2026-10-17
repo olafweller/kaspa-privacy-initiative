@@ -93,6 +93,7 @@ dependencies = [
  "ark-crypto-primitives-macros",
  "ark-ec 0.5.0",
  "ark-ff 0.5.0",
+ "ark-r1cs-std 0.5.0",
  "ark-relations 0.5.1",
  "ark-serialize 0.5.0",
  "ark-snark 0.5.1",
@@ -102,7 +103,9 @@ dependencies = [
  "digest",
  "fnv",
  "merlin",
+ "rayon",
  "sha2",
+ "tracing",
 ]
 
 [[package]]
@@ -160,6 +163,7 @@ dependencies = [
  "num-bigint",
  "num-integer",
  "num-traits",
+ "rayon",
  "zeroize",
 ]
 
@@ -202,6 +206,7 @@ dependencies = [
  "num-bigint",
  "num-traits",
  "paste",
+ "rayon",
  "zeroize",
 ]
 
@@ -282,6 +287,7 @@ dependencies = [
  "ark-relations 0.5.1",
  "ark-serialize 0.5.0",
  "ark-std 0.5.0",
+ "rayon",
 ]
 
 [[package]]
@@ -314,6 +320,7 @@ dependencies = [
  "educe",
  "fnv",
  "hashbrown 0.15.5",
+ "rayon",
 ]
 
 [[package]]
@@ -407,6 +414,7 @@ dependencies = [
  "arrayvec",
  "digest",
  "num-bigint",
+ "rayon",
 ]
 
 [[package]]
@@ -477,6 +485,7 @@ checksum = "246a225cc6131e9ee4f24619af0f19d67761fff15d7ccc22e42b80846e69449a"
 dependencies = [
  "num-traits",
  "rand 0.8.8",
+ "rayon",
 ]
 
 [[package]]
@@ -2813,6 +2822,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "kpi-groth16-comparison"
+version = "0.1.0"
+dependencies = [
+ "ark-bn254 0.5.0",
+ "ark-crypto-primitives 0.5.0",
+ "ark-ec 0.5.0",
+ "ark-ff 0.5.0",
+ "ark-groth16 0.5.0",
+ "ark-r1cs-std 0.5.0",
+ "ark-relations 0.5.1",
+ "ark-serialize 0.5.0",
+ "bincode",
+ "risc0-zkvm",
+ "serde",
+]
+
+[[package]]
 name = "kpi-lane-common"
 version = "0.1.0"
 dependencies = [
@@ -2857,6 +2883,9 @@ dependencies = [
 name = "kpi-takeover-host"
 version = "0.1.0"
 dependencies = [
+ "ark-bn254 0.5.0",
+ "ark-groth16 0.5.0",
+ "ark-serialize 0.5.0",
  "bincode",
  "hex",
  "kaspa-addresses",
@@ -2865,6 +2894,7 @@ dependencies = [
  "kaspa-rpc-core",
  "kaspa-seq-commit",
  "kaspa-txscript",
+ "kpi-groth16-comparison",
  "kpi-native-common",
  "kpi-takeover-common",
  "rand 0.8.8",

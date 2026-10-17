@@ -141,6 +141,13 @@ concrete proof-cost and real-lane integration blocker rather than closing the
 invalid-operation requirement. The specialized route remains an unmeasured
 comparison and no production format/construction is selected.
 
+The [specialized comparison](../../poc/groth16-comparison/RESULTS.md) now implements
+the second candidate directly (not receipt compression). Same hashes/ranges and
+96-byte statement, 128-byte proofs, 702-byte operations; the ordinary verifier
+still exceeds the declared 32-million-cycle budget. Its one-party test setup is
+not a production ceremony. No completed outer receipt or funded trial follows;
+keep full note construction and native integration gated.
+
 ## Witness boundary, recipient and recovery
 
 The initial design assumes local wallet proving. Raw private note contents,

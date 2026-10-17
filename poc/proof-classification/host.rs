@@ -23,7 +23,7 @@ fn wire<T: serde::Serialize>(v: &T) -> Result<Vec<u8>> {
         .flat_map(u32::to_le_bytes)
         .collect())
 }
-fn tx(op: Vec<u8>, i: u32) -> Transaction {
+pub(crate) fn tx(op: Vec<u8>, i: u32) -> Transaction {
     Transaction::new(
         1,
         vec![TransactionInput::new_with_compute_budget(
@@ -42,7 +42,7 @@ fn tx(op: Vec<u8>, i: u32) -> Transaction {
         op,
     )
 }
-fn batch(ops: &[Vec<u8>], expected: Option<[u8; 32]>) -> (Vec<u8>, [u8; 32]) {
+pub(crate) fn batch(ops: &[Vec<u8>], expected: Option<[u8; 32]>) -> (Vec<u8>, [u8; 32]) {
     let mut records = vec![];
     let mut root = [0; 32];
     for (i, op) in ops.iter().enumerate() {

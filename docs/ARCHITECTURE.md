@@ -389,3 +389,12 @@ outcomes. Its full run requires 870,829,938 user cycles and 880 proof segments;
 no outer receipt was generated. The native-ID sequence is a fixed local fixture,
 not an accepted TN10 endpoint. Affordable proved classification and real-lane
 integration remain blockers; this result does not qualify the privacy circuit.
+
+The [specialized Groth16 comparison](../poc/groth16-comparison/RESULTS.md), under
+[ADR-0008](adr/0008-specialized-groth16-comparison.md), retains the same small
+SHA-256/u64 statement and reduces complete proxy operations to 702 bytes.
+Its ordinary in-guest verifier does not finish the agreed 32-million-cycle run,
+so no outer receipt is produced. Circuit-specific setup and immutable prepared
+parameter pins are explicit new assumptions. Compact wallet proofs are promising
+for publication, but affordable proved classification and actual private/native
+integration remain open.

@@ -26,6 +26,12 @@ uses 89.7% of the pinned block transient capacity. Compare the previously named
 specialized proof route before building the full private relation around this
 path. Keep real accepted-lane integration, private economics and funding gated.
 
+The [Groth16 follow-up](../poc/groth16-comparison/RESULTS.md) produces actual
+specialized 128-byte wallet proofs with the same small predicate, but the outer
+classifier exceeds its 32-million-cycle budget. Next resolve the maintained
+BN254 backend/budget question and produce one complete outer receipt before
+expanding to the private note circuit. No new funded TN10 experiment is ready.
+
 ## First work package: define the private payment statement
 
 Work through existing issues rather than inventing a second backlog:
