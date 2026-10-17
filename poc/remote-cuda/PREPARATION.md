@@ -9,6 +9,10 @@ This records preparation, not a GPU experiment. PR #40 is merged at
   receipts and checks seal/claim mutation rejection. A genuinely sealed but
   substituted segment/lift, with adjusted unsigned metadata, is rejected against
   the pinned CPU expectations. Altering a join seal is rejected as well.
+  An explicit incomplete-run command verifies a single retained segment and
+  reports one receipt, not five; the strict command rejects that incomplete
+  set, and mutating the single seal is rejected. Signal/timeout failures cannot
+  count as rejection evidence.
 - Nine Python tests cover lease cost/duration/host constraints, archive traversal
   and duplicate entries, Pod-bound one-time configuration, HTTP authentication,
   guard requirement, duplicate starts, disconnect/restart behavior, independent
@@ -18,6 +22,19 @@ This records preparation, not a GPU experiment. PR #40 is merged at
 - The public source archive is checked against SHA-256
   `01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc` and
   all 107 original manifest entries before preparing the small fixed workload.
+- Repository fast checks pass: Markdown paths, Python syntax, the two existing
+  phase-control tests, nine new remote-control tests, 81 script tests (two
+  optional cases skipped), 13 Node tests and 24 private-payment model tests.
+  Locked release takeover tests pass (13 tests), as does Rust formatting.
+
+The retained public bundle is `evidence/public-package.tar.gz`, 9,288,223 bytes,
+SHA-256 `323efa23bf042895ddac7b2531a7628c72664849aec26c3f528cadb93d964805`.
+It records host-source revision `b5be7e8083f765124042e8c45f58ac2fd363c66d` and
+CPU verifier SHA-256
+`ee60c3fb5ff9fc6c125ad41019e74188d68814f1b1a2fc6bc101ddab184202a7`.
+Input and claim identities remain those of PR #40. The evidence manifest lists
+the retained files and their hashes. Verification of real CPU receipts does not
+claim that simulated GPU/controller transport produced those receipts.
 
 Build result and exact generated artifact identities are recorded in this file
 and `evidence/` once local image validation completes. The public package can be

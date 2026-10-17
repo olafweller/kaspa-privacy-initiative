@@ -45,8 +45,7 @@ jobs:
         working-directory: kpi
         run: |
           bash poc/remote-cuda/build_image.sh .local/cuda-build-context kpi-cuda-qualification:prepare
-          docker run --rm --entrypoint python3 kpi-cuda-qualification:prepare -m py_compile /opt/kpi/app/service.py /opt/kpi/app/worker.py
-          docker run --rm --entrypoint cat kpi-cuda-qualification:prepare /opt/kpi/package/cuda-build.json
+          python3 poc/remote-cuda/check_image.py kpi-cuda-qualification:prepare
       - name: Publish reviewed build
         if: inputs.publish
         working-directory: kpi

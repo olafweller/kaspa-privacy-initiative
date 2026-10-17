@@ -6,7 +6,7 @@
     "segment-24": "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
     "segment-25": "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9"
   },
-  "cpuVerifierSha256": "44b3f1cfddc44cfa10cc4b6b17e3376bce34de5b6104226a2d84cf555e4a8cff",
+  "cpuVerifierSha256": "ee60c3fb5ff9fc6c125ad41019e74188d68814f1b1a2fc6bc101ddab184202a7",
   "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
   "inputs": {
     "expected-journal.bin": {
@@ -40,5 +40,5 @@
   },
   "referenceArchiveSha256": "01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
   "scope": "FIXED_PR40_PARTIAL_CUDA_QUALIFICATION",
-  "sourceRevision": "1764ea38ae6aaa1dd0551012d61e04c7d1088c56"
+  "sourceRevision": "b5be7e8083f765124042e8c45f58ac2fd363c66d"
 }

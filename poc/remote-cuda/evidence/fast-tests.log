@@ -5,7 +5,7 @@ test_aggregate_timeout_kills_ipc_descendant (test_resources.Resources.test_aggre
 test_nonzero_exit_not_a_success (test_resources.Resources.test_nonzero_exit_not_a_success) ... ok
 
 ----------------------------------------------------------------------
-Ran 2 tests in 1.429s
+Ran 2 tests in 1.433s
 
 OK
 test_archive_traversal_and_duplicate_names_rejected (test_remote.Remote.test_archive_traversal_and_duplicate_names_rejected) ... ok
@@ -19,7 +19,7 @@ test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.te
 test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 1.533s
+Ran 9 tests in 1.531s
 
 OK
 test_accounting_exact_rebate (test_a1_check.IndependentCodecTests.test_accounting_exact_rebate) ... ok
@@ -75,11 +75,11 @@ test_cli_error_names_private_diagnostic (test_a1_trial.TrialTests.test_cli_error
 test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail (test_a1_trial.TrialTests.test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail) ... ok
 test_exact_payout_is_checked_again_at_120_seconds (test_a1_trial.TrialTests.test_exact_payout_is_checked_again_at_120_seconds) ... ok
 test_exclusive_private_evidence_writes (test_a1_trial.TrialTests.test_exclusive_private_evidence_writes) ... ok
-test_exit_reconciles_only_actual_race_submission_and_never_retries (test_a1_trial.TrialTests.test_exit_reconciles_only_actual_race_submission_and_never_retries) ... Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmprk_pkl_8/error-python-42c81b21a9e24f28b63a80894ed5d6c4.private.json
-Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpb4i29tsc/error-python-e6a55c04365b49549fc9ae9400483266.private.json
+test_exit_reconciles_only_actual_race_submission_and_never_retries (test_a1_trial.TrialTests.test_exit_reconciles_only_actual_race_submission_and_never_retries) ... Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpqagg4_xu/error-python-6a9f90b402914debb1b6cbf3a6021c36.private.json
+Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpd788vkso/error-python-6fa9d55bfb434eec805b99dc8f95d4e2.private.json
 ok
-test_fund_and_discover_wait_limits (test_a1_trial.TrialTests.test_fund_and_discover_wait_limits) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpexe34mr6/error-python-4becddc7005a49b6869b7e13a535874a.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpexe34mr6/error-python-ec61c54ce30848caa1ed47fe557b7335.private.json
+test_fund_and_discover_wait_limits (test_a1_trial.TrialTests.test_fund_and_discover_wait_limits) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpl8ps4upj/error-python-90eff597d0e24f2db44a93e703998bda.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpl8ps4upj/error-python-b7e00adacd364d63be9148c1e7e08b41.private.json
 ok
 test_intent_survives_unknown_response_and_is_never_retried (test_a1_trial.TrialTests.test_intent_survives_unknown_response_and_is_never_retried) ... ok
 test_js_diagnostic_type_stack_and_secret_redaction (test_a1_trial.TrialTests.test_js_diagnostic_type_stack_and_secret_redaction) ... ok
@@ -88,17 +88,17 @@ test_loser_with_own_accepted_body_stops (test_a1_trial.TrialTests.test_loser_wit
 test_missing_corrupt_reordered_history_stops_before_submission (test_a1_trial.TrialTests.test_missing_corrupt_reordered_history_stops_before_submission) ... ok
 test_moving_tip_export_is_trimmed_to_fixed_horizon (test_a1_trial.TrialTests.test_moving_tip_export_is_trimmed_to_fixed_horizon) ... ok
 test_network_default_denies_before_process_spawn (test_a1_trial.TrialTests.test_network_default_denies_before_process_spawn) ... ok
-test_observe_and_nested_discover_share_configured_deadline (test_a1_trial.TrialTests.test_observe_and_nested_discover_share_configured_deadline) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpbak3rln9/error-python-41b42cd1b602479e9086369914656a87.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpbak3rln9/error-python-ede1547ceec541aba71e35fbd0dcda8c.private.json
+test_observe_and_nested_discover_share_configured_deadline (test_a1_trial.TrialTests.test_observe_and_nested_discover_share_configured_deadline) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpdkd2_u20/error-python-b2a4659b1041439dad57c893a40ffb71.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpdkd2_u20/error-python-6f026a9f6ad64be7b75125747df5d3ca.private.json
 ok
 test_only_unrelated_native_id_results_are_cached_by_exact_full_body (test_a1_trial.TrialTests.test_only_unrelated_native_id_results_are_cached_by_exact_full_body) ... ok
 test_public_rpc_error_is_retained_without_claiming_rejection (test_a1_trial.TrialTests.test_public_rpc_error_is_retained_without_claiming_rejection) ... ok
 test_python_diagnostic_full_chain_and_secret_redaction (test_a1_trial.TrialTests.test_python_diagnostic_full_chain_and_secret_redaction) ... ok
-test_read_only_snapshot_alignment_retry_keeps_corruption_strict (test_a1_trial.TrialTests.test_read_only_snapshot_alignment_retry_keeps_corruption_strict) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpr7do4wo2/error-python-80e80209a36342f7bd5f78678ba55f5a.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpr7do4wo2/error-python-f7a2b9c4caad478ba03fcbcb05a48e49.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpr7do4wo2/error-python-7ef4d663b8ec4f46b47d85321648f4ba.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpr7do4wo2/error-python-5d8a393b7f144cfc846aaadd74db66ec.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpr7do4wo2/error-python-c5e9458a020a4d51a1a91c3cbd863708.private.json
+test_read_only_snapshot_alignment_retry_keeps_corruption_strict (test_a1_trial.TrialTests.test_read_only_snapshot_alignment_retry_keeps_corruption_strict) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpy2ztqycc/error-python-c602421354dc4b1fab6c15def4e144f3.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpy2ztqycc/error-python-5a1806bda4684a83b4f3b417ed8ec312.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpy2ztqycc/error-python-1884ad24ee7b49da9e5fc3d3f863b101.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpy2ztqycc/error-python-2ad8262c446147538f593181dfc9fdf8.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpy2ztqycc/error-python-08723488c914423ebf05378b4d130046.private.json
 ok
 test_reorg_still_halts_and_retains_the_exact_offending_response (test_a1_trial.TrialTests.test_reorg_still_halts_and_retains_the_exact_offending_response) ... ok
 test_retained_prefix_is_below_tip_with_checked_selected_parent_headers (test_a1_trial.TrialTests.test_retained_prefix_is_below_tip_with_checked_selected_parent_headers) ... ok
@@ -116,86 +116,86 @@ test_unchanged_templates_hash_to_deployed_bytes (test_a1_trial_source.TrialSourc
 test_wrong_values_are_reported_and_rejected (test_a1_trial_source.TrialSourceTemplates.test_wrong_values_are_reported_and_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 81 tests in 0.461s
+Ran 81 tests in 0.442s
 
 OK (skipped=2)
 TAP version 13
 # Subtest: native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
 ok 1 - native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
   ---
-  duration_ms: 5.736006
+  duration_ms: 5.388457
   type: 'test'
   ...
 # Subtest: missing metadata or a covenant substitution cannot silently become None
 ok 2 - missing metadata or a covenant substitution cannot silently become None
   ---
-  duration_ms: 2.99209
+  duration_ms: 2.880989
   type: 'test'
   ...
 # Subtest: overflow and noninteger budgets do not survive roundtrip
 ok 3 - overflow and noninteger budgets do not survive roundtrip
   ---
-  duration_ms: 2.080736
+  duration_ms: 2.2904
   type: 'test'
   ...
 # Subtest: archived decimal-string genesis header reloads and hashes independently
 ok 4 - archived decimal-string genesis header reloads and hashes independently
   ---
-  duration_ms: 1.402163
+  duration_ms: 1.621603
   type: 'test'
   ...
 # Subtest: cached header hash cannot conceal a changed nonce or overflowing u64
 ok 5 - cached header hash cannot conceal a changed nonce or overflowing u64
   ---
-  duration_ms: 0.474775
+  duration_ms: 0.479763
   type: 'test'
   ...
 # Subtest: generic v0 mass is the storage component, not overall compute mass
 ok 6 - generic v0 mass is the storage component, not overall compute mass
   ---
-  duration_ms: 0.76981
+  duration_ms: 0.802519
   type: 'test'
   ...
 # Subtest: f64-only mass helper refuses values that could lose integer precision
 ok 7 - f64-only mass helper refuses values that could lose integer precision
   ---
-  duration_ms: 5.468342
+  duration_ms: 5.611652
   type: 'test'
   ...
 # Subtest: fixed A0 fee can use a slower bounded bucket without changing accounting
 ok 8 - fixed A0 fee can use a slower bounded bucket without changing accounting
   ---
-  duration_ms: 0.203417
+  duration_ms: 0.217428
   type: 'test'
   ...
 # Subtest: unaffordable, stale-duration or malformed fee estimates fail closed
 ok 9 - unaffordable, stale-duration or malformed fee estimates fail closed
   ---
-  duration_ms: 0.669389
+  duration_ms: 0.812043
   type: 'test'
   ...
 # Subtest: an advertised complete schema never authorizes funding
 ok 10 - an advertised complete schema never authorizes funding
   ---
-  duration_ms: 0.779615
+  duration_ms: 1.1356
   type: 'test'
   ...
 # Subtest: mainnet, an unsynced node and absent UTXO indexing fail closed
 ok 11 - mainnet, an unsynced node and absent UTXO indexing fail closed
   ---
-  duration_ms: 0.287844
+  duration_ms: 0.337559
   type: 'test'
   ...
 # Subtest: missing compute budget, mass or covenant metadata blocks the REST route
 ok 12 - missing compute budget, mass or covenant metadata blocks the REST route
   ---
-  duration_ms: 0.184408
+  duration_ms: 0.191439
   type: 'test'
   ...
 # Subtest: HTTP errors and unavailable observations cannot establish compatibility
 ok 13 - HTTP errors and unavailable observations cannot establish compatibility
   ---
-  duration_ms: 0.93537
+  duration_ms: 1.011935
   type: 'test'
   ...
 1..13
@@ -206,7 +206,7 @@ ok 13 - HTTP errors and unavailable observations cannot establish compatibility
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 157.201151
+# duration_ms 159.788372
 PASS: lossless nonce/u64 roundtrip, exact sompi arithmetic, unsafe/negative/overflow rejection
 PASS: both derived acceptances equal original RPC records, including exact u64 nonce
 test_complete_alice_bob_cycle_and_change (test_model.PaymentModelTests.test_complete_alice_bob_cycle_and_change) ... ok
@@ -235,6 +235,6 @@ test_wrong_anchor_and_membership (test_model.PaymentModelTests.test_wrong_anchor
 test_wrong_deposit_commitment_or_amount (test_model.PaymentModelTests.test_wrong_deposit_commitment_or_amount) ... ok
 
 ----------------------------------------------------------------------
-Ran 24 tests in 0.052s
+Ran 24 tests in 0.056s
 
 OK

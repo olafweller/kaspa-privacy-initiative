@@ -71,4 +71,4 @@ if __name__ == '__main__':
         elif command == 'fetch':
             print(json.dumps(fetch(lease, Path(sys.argv[3]), token)))
         else:
-            raise SystemExit('status LEASE | start LEASE | fetch LEASE NEW_DIRECTORY | unpack ARCHIVE SHA256 NEW_DIRECTORY | verify PACKAGE DOWNLOADED')
+            raise SystemExit('status LEASE | start LEASE | fetch LEASE NEW_DIRECTORY | unpack ARCHIVE SHA256 NEW_DIRECTORY | verify[-partial] PACKAGE DOWNLOADED')
