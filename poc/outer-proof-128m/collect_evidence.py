@@ -49,8 +49,8 @@ for folder in ['expectations', 'qualification', 'proof-output', 'verification']:
     for path in sorted((local / folder).rglob('*')):
         if path.is_file():
             add('local/' + path.relative_to(local).as_posix(), path)
-for pattern in ['proof-job.*', 'build.*', 'watchdog-check.*', 'source-and-inputs.json',
-                'qualification-summary.json', 'proof-os-snapshots.jsonl',
+for pattern in ['proof-job.*', 'verify-job.*', 'build.*', 'watchdog-check.*', 'source-and-inputs.json',
+                'qualification-summary.json', 'proof-os-snapshots.jsonl', 'hardware.json', 'proof-cpu.*',
                 'rust-tests.log', 'adapter-tests.log', 'fast-checks-final.log']:
     for path in sorted(local.glob(pattern)):
         add('local/' + path.relative_to(local).as_posix(), path)
@@ -76,15 +76,22 @@ summary = {
     'sourceSnapshotCommit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
     'runtimeSourceAndInputs': source,
     'qualifiedExistingCases': 24,
+    'executedMainProfile': json.loads((local / 'proof-output/profile-complete.json').read_text()),
+    'hardwareAndLimits': json.loads((local / 'hardware.json').read_text()),
     'proofAttemptCount': 1,
     'proofJobResourceReport': resource,
+    'processGroupCpuSampling': json.loads((local / 'proof-cpu.summary.json').read_text()),
     'proofCompleted': complete is not None,
     'proofCompletion': complete,
     'separateProcessReceiptVerification': verification,
     'proofFailure': json.loads((local / 'proof-output/prover-error.json').read_text())
-    if (local / 'proof-output/prover-error.json').exists() else None,
+    if (local / 'proof-output/prover-error.json').exists() else
+    (None if complete else {'resourceLimitExceeded': resource['limitExceeded'],
+                           'processExitCode': resource['exitCode'],
+                           'details': 'See retained process logs and resource report; no completed receipt.'}),
     'lastCompletedHostStage': 'proof-complete' if complete else
-    ('execution-profile-complete' if (local / 'proof-output/profile-complete.json').exists() else 'job-started'),
+    ('candidate-receipt-returned' if (local / 'proof-output/candidate-receipt.bin').exists() else
+     ('execution-profile-complete' if (local / 'proof-output/profile-complete.json').exists() else 'job-started')),
     'archiveManifest': manifest,
 }
 with tarfile.open(archive_path, 'w:gz') as archive:

@@ -290,3 +290,11 @@ existing library arithmetic. This introduces a pinned backend implementation and
 a new expected classifier image, not new host validity authority or setup.
 The 32M practical cap still fails; no outer receipt, general replay qualification
 at a larger budget, L1 endpoint or production stability claim follows.
+
+The [subsequent approved 128M attempt](poc/outer-proof-128m/RESULTS.md) qualifies
+all existing full replay/continuation and malformed/authentication cases. One
+actual succinct-proof call is stopped at its one-hour process-group ceiling
+without a receipt. No negative control relies on that timeout. Separate real
+receipt verification and its wrong-image/journal checks are implemented but
+unexecuted without the missing artifact. The fixed synthetic relation, local
+ordering source, setup and private-note/native backing limitations remain.

@@ -155,6 +155,13 @@ format and validation. It still misses the predeclared 32M practical target;
 there is no outer receipt. A new explicit practical-budget experiment, full
 adversarial qualification and actual one-hour-bounded proving remain prerequisites.
 
+The [explicitly approved 128M successor](../../poc/outer-proof-128m/RESULTS.md)
+qualifies all 24 existing adversarial executions and makes exactly one real
+succinct-proof attempt. The whole process group is stopped at one hour with no
+returned receipt. Full replay/continuation execution is now measured, but real
+outer-proof completion and separate seal verification remain unqualified. No
+private-note circuit, setup or native/TN10 integration is added.
+
 ## Witness boundary, recipient and recovery
 
 The initial design assumes local wallet proving. Raw private note contents,

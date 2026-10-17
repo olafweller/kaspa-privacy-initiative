@@ -5,6 +5,8 @@ Local unfunded successor to [PR38](../accelerated-bn254/RESULTS.md), following t
 The owner explicitly approved full 128M adversarial qualification followed
 directly by one actual outer-proof attempt with a 3,600-second whole-job limit.
 Historical 32M results and the old 128M calibration are preserved unchanged.
+The [results](RESULTS.md) record all 24 passing executions and the single proof
+attempt's wall-limit stop without a receipt.
 
 ## Retained statement and authentication
 
@@ -44,6 +46,12 @@ summed-RSS stop threshold. The host's cgroup separately has a 16 GiB cap and a
 4-CPU quota. Summed RSS can count shared pages twice and samples can miss brief
 peaks; the report distinguishes it from the kernel maximum individual-process
 RSS and from physical cgroup usage.
+
+[monitor_cpu.py](monitor_cpu.py) additionally retains cumulative `/proc` CPU
+counters for the proof process group. A hard-killed parent may never reap its
+prover child, so the parent's final `wait4` usage can omit that child's work.
+The sampled cumulative counters and kernel accounting are reported separately;
+sampling can miss exit transitions and must not be represented as exact totals.
 
 The outer job gets 3,600 seconds total; every qualifying execution gets 900
 seconds and 128M cycles. On a stop condition the runner kills the whole process

@@ -47,3 +47,13 @@ the owner explicitly approved this single attempt. Retaining the 32M cap would
 block it by definition. A larger automatic retry or simpler statement would not
 answer the approved experiment. An actual receipt closes only this local compact
 wallet-classification milestone, not financial privacy or native settlement.
+
+## Outcome
+
+[All 24 qualification cases pass](../../poc/outer-proof-128m/RESULTS.md). One real
+succinct-proof job is stopped by the predeclared whole-group wall watchdog at
+3,600 seconds without returning a candidate or completed receipt. No retry or
+budget increase follows. Receipt verification entry points are implemented but
+cannot be exercised without a receipt. Full execution qualification is closed;
+actual practical outer-proof production and separate seal verification remain
+open. CPU/RSS, cgroup pressure, source and exact last-stage evidence are retained.

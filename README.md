@@ -15,6 +15,7 @@ The [scoped Based App feasibility milestone](docs/based-app-feasibility-2026-10-
 - The [proof-byte classification follow-up](poc/proof-classification/RESULTS.md) executes the correct sequence but exposes an 880-segment proof-cost blocker; no outer classification receipt or funded privacy trial is claimed.
 - The [specialized Groth16 comparison](poc/groth16-comparison/RESULTS.md) measures real 128-byte wallet proofs and compact operations; in-guest verification still exceeds its agreed budget, with no outer receipt or funded privacy trial.
 - The [accelerated BN254 qualification](poc/accelerated-bn254/RESULTS.md) completes the same real-proof sequence in a 117.47M-cycle calibration; it still exceeds the declared 32M practical target, so no outer proof was attempted.
+- The [approved 128M outer-proof experiment](poc/outer-proof-128m/RESULTS.md) passes all 24 full/narrow execution checks; its single real proof attempt stops at one hour without returning a receipt.
 - Read the [candidate architectures](docs/ARCHITECTURE.md) and [open RFC-0001](docs/rfc/0001-state-architecture.md).
 - Challenge the [security invariants](SECURITY-INVARIANTS.md), [threat model](THREAT-MODEL.md), and [open questions](QUESTIONS.md) with evidence.
 - Join the [welcome discussion](https://github.com/olafweller/kaspa-privacy-initiative/discussions/17) for ideas and questions, or use [Issues](https://github.com/olafweller/kaspa-privacy-initiative/issues) for concrete research tasks and corrections.

@@ -407,3 +407,12 @@ demonstrated. This still fails the predeclared 32M practical cap; no outer proof
 is attempted. A new classifier identity is pinned before execution. An explicit
 larger practical-budget decision and full-sequence adversarial qualification
 must precede any one-hour outer-proof attempt or private-note expansion.
+
+The owner-approved [128M proof experiment](../poc/outer-proof-128m/RESULTS.md),
+under [ADR-0010](adr/0010-approved-128m-outer-proof.md), completes all 24 full/narrow
+adversarial execution cases with the same classifier image. Its one real
+succinct-proof attempt is stopped at the one-hour whole-job limit without a
+receipt, using four logical CPUs and 9.19 GiB peak sampled summed RSS. This closes
+the missing replay/continuation execution checks, not the outer-receipt milestone.
+Profiling actual proof production/compression remains necessary before expanding
+to private notes; no new setup, accepted L1 endpoint or native funding is added.
