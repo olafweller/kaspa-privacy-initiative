@@ -7,6 +7,11 @@ source checkpoint is commit `b4cb2bb`. The historical
 The current authorization covers development and local tests using retained
 public data; stop before new TN10 transactions.
 
+**Subsequent authorization, 2026-10-17:** after completion of that local review,
+the owner instructed continuing with the fresh TN10 rehearsal. See
+[live rehearsal](LIVE-REHEARSAL.md). The local-review boundary below describes
+the completed checkpoint, not a renewed request for permission.
+
 This experiment reuses the native-value account relation as one serial SMT
 resource, then uses the pinned vProgs batch and aggregate verifiers. It has no
 private notes, privacy, new asset or general resource scheduler. See

@@ -331,20 +331,23 @@ fn bundle(args: &[String]) -> Result<()> {
         &ap,
         std::slice::from_ref(&receipt),
     )?;
-    let first = m["batches"]
-        .as_array()
-        .ok_or("batches")?
-        .first()
-        .ok_or("empty bundle")?;
-    let stem = first["stem"].as_str().ok_or("stem")?;
-    let first_batch = fs::read(source.join(format!("{stem}.bin")))?;
-    reject_execution(
-        target,
-        "batch-wrong-transaction-image",
-        &first_batch,
-        &bp,
-        std::slice::from_ref(&receipt),
-    )?;
+    // An omission control may leave every batch empty. Such a batch has no
+    // transaction assumption, so a wrong transaction receipt cannot be tested.
+    if let Some(first) = m["batches"].as_array().ok_or("batches")?.iter().find(|b| {
+        b["transactions"]
+            .as_array()
+            .is_some_and(|txs| !txs.is_empty())
+    }) {
+        let stem = first["stem"].as_str().ok_or("stem")?;
+        let first_batch = fs::read(source.join(format!("{stem}.bin")))?;
+        reject_execution(
+            target,
+            "batch-wrong-transaction-image",
+            &first_batch,
+            &bp,
+            std::slice::from_ref(&receipt),
+        )?;
+    }
     assert_eq!(
         receipt.journal.bytes,
         fs::read(source.join("aggregate.journal.bin"))?
