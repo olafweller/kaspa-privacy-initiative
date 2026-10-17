@@ -1,0 +1,44 @@
+{
+  "cpuClaims": {
+    "join": "7917795912b2877505c126d8a996d19089603eb8044dee3cd76fff08caf4cc31",
+    "lift-24": "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
+    "lift-25": "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9",
+    "segment-24": "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
+    "segment-25": "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9"
+  },
+  "cpuVerifierSha256": "ee60c3fb5ff9fc6c125ad41019e74188d68814f1b1a2fc6bc101ddab184202a7",
+  "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
+  "inputs": {
+    "expected-journal.bin": {
+      "bytes": 167,
+      "sha256": "625f5c4cc784d3736663b796174e5342cd9ab95ee62507f6680a128f95d99ce2"
+    },
+    "input.bin": {
+      "bytes": 2675,
+      "sha256": "56e5010fd63dfd974d4f166a58c24bd4e0ae6bb38d437b9d624a8b8b850f5c90"
+    },
+    "program.bin": {
+      "bytes": 965260,
+      "sha256": "3db122223c3c374ee7a858cc9063b0627d224778c6bed571cc24c23796f30739"
+    },
+    "segments/24.bincode": {
+      "bytes": 154065,
+      "sha256": "140ee3a025ec3c6f1f2b2d637479b31fdd9a1b038a2e5d30745c96d4395db3e3"
+    },
+    "segments/25.bincode": {
+      "bytes": 157461,
+      "sha256": "cbf54333ea65113b2dce9c3f9a33a8d4315d72f66ec01bcd9df9ac728be4eb89"
+    },
+    "session-claim.bin": {
+      "bytes": 320,
+      "sha256": "b30c300bd01dcfe590811789b3814d1e31750d701cf800b039465746555fc21f"
+    },
+    "session.json": {
+      "bytes": 47314,
+      "sha256": "6e93e41dab801c1ef44d996e135648e2ed9e742145c3b2fb39078bb75495292e"
+    }
+  },
+  "referenceArchiveSha256": "01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
+  "scope": "FIXED_PR40_PARTIAL_CUDA_QUALIFICATION",
+  "sourceRevision": "b5be7e8083f765124042e8c45f58ac2fd363c66d"
+}

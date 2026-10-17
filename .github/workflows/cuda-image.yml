@@ -1,0 +1,70 @@
+name: Prepare CUDA qualification image
+
+# Explicit manual preparation only. Never allocates a Pod or runs a GPU proof.
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the tested image to GHCR after the build
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      CARGO_BUILD_JOBS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/kpi/.local/ci-target
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: kpi
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: kaspanet/rusty-kaspa
+          ref: 01b532e8b553523216471682649693af92f0fd16
+          path: upstream/rusty-kaspa
+          persist-credentials: false
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            kpi/.local/ci-target
+          key: rust-ubuntu24-x64-1.91.0-01b532e-takeover-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+          restore-keys: |
+            rust-ubuntu24-x64-1.91.0-01b532e-takeover-
+      - name: Build and check the independent CPU verifier and fixed package
+        working-directory: kpi
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang libclang-dev llvm-dev cmake pkg-config libssl-dev protobuf-compiler
+          rustup toolchain install 1.91.0 --profile minimal
+          export BINDGEN_EXTRA_CLANG_ARGS="-isystem $(cc -print-file-name=include)"
+          cargo +1.91.0 build --locked --release --manifest-path poc/takeover/Cargo.toml --bin kpi-takeover-host
+          python3 poc/remote-cuda/check_cpu_compare.py .local/ci-target/release/kpi-takeover-host
+          python3 poc/remote-cuda/package.py .local/ci-target/release/kpi-takeover-host .local/remote-cuda-preparation/dist
+      - name: Build CUDA kernels without a GPU
+        working-directory: kpi
+        run: |
+          bash poc/remote-cuda/build_image.sh .local/cuda-build-context kpi-cuda-qualification:prepare
+          python3 poc/remote-cuda/check_image.py kpi-cuda-qualification:prepare
+      - name: Publish reviewed build
+        if: inputs.publish
+        working-directory: kpi
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-cuda-qualification:prepare "$task_tag"
+          docker push "$task_tag"
+          docker image inspect "$task_tag" --format '{{json .RepoDigests}}' >> "$GITHUB_STEP_SUMMARY"
+          docker logout ghcr.io

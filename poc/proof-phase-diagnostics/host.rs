@@ -258,6 +258,88 @@ fn verify(out: &Path) -> Result<()> {
         "segmentIndices":SELECTED,"exactJournalCheckedDuringExecutionOnly":true}),
     )
 }
+fn compare(out: &Path, partial: bool) -> Result<()> {
+    // Independent PR40 expectations, never identities or claims supplied by
+    // the remote prover. Receipt bytes themselves need not match CPU bytes.
+    let m = manifest(out)?;
+    for (field, expected) in [
+        (
+            "programSha256",
+            "3db122223c3c374ee7a858cc9063b0627d224778c6bed571cc24c23796f30739",
+        ),
+        (
+            "inputSha256",
+            "56e5010fd63dfd974d4f166a58c24bd4e0ae6bb38d437b9d624a8b8b850f5c90",
+        ),
+        (
+            "journalSha256",
+            "625f5c4cc784d3736663b796174e5342cd9ab95ee62507f6680a128f95d99ce2",
+        ),
+    ] {
+        assert_eq!(m[field], expected);
+    }
+    let expected_claims = [
+        "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
+        "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9",
+    ];
+    let mut verified = 0;
+    for (position, (i, trace)) in [
+        (
+            24,
+            "140ee3a025ec3c6f1f2b2d637479b31fdd9a1b038a2e5d30745c96d4395db3e3",
+        ),
+        (
+            25,
+            "cbf54333ea65113b2dce9c3f9a33a8d4315d72f66ec01bcd9df9ac728be4eb89",
+        ),
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        assert_eq!(
+            sha(&fs::read(out.join(format!("segments/{i}.bincode")))?),
+            trace
+        );
+        if !partial || out.join(format!("segment-{i}.bin")).exists() {
+            let segment = read_segment(out, i)?;
+            assert_eq!(
+                segment.claim.digest().to_string(),
+                expected_claims[position]
+            );
+            verified += 1;
+        }
+        if !partial || out.join(format!("lift-{i}.bin")).exists() {
+            let lifted = read_lift(out, i)?;
+            assert_eq!(lifted.claim.digest().to_string(), expected_claims[position]);
+            verified += 1;
+        }
+    }
+    if !partial || out.join("join.bin").exists() {
+        let left = read_lift(out, 24)?.claim.as_value()?.clone();
+        let right = read_lift(out, 25)?.claim.as_value()?.clone();
+        assert_eq!(left.post.digest(), right.pre.digest());
+        let joined: SuccinctReceipt<ReceiptClaim> =
+            bincode::deserialize(&fs::read(out.join("join.bin"))?)?;
+        succinct_check(&joined, &left.join(&right))?;
+        assert_eq!(
+            joined.claim.digest().to_string(),
+            "7917795912b2877505c126d8a996d19089603eb8044dee3cd76fff08caf4cc31"
+        );
+        verified += 1;
+    }
+    assert!(verified > 0, "no returned receipts to verify");
+    json_save(
+        out,
+        "cpu-comparison.json",
+        json!({
+        "scope":"RETURNED_PARTIAL_CLAIMS_MATCH_PINNED_PR40_CPU_BASELINE_NOT_FULL_CLASSIFIER",
+        "verified":true,"developmentMode":false,"expectedProgramImage":IMAGE,
+        "referenceArchiveSha256":"01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
+        "allFiveSealsVerified":verified==5,"receiptsVerified":verified,
+        "allowIncompleteDiagnostic":partial,"sealAndClaimMutationsRejected":true,
+        "independentCpuClaimsMatched":true}),
+    )
+}
 pub(super) fn run(a: &[String]) -> Result<()> {
     assert!(std::env::var_os("RISC0_DEV_MODE").is_none());
     let command = a.get(2).ok_or("missing diagnostic command")?.as_str();
@@ -276,6 +358,10 @@ pub(super) fn run(a: &[String]) -> Result<()> {
         }
         "join" if a.len() == 4 => join(out),
         "verify" if a.len() == 4 => verify(out),
-        _ => Err("phase-diagnostics export|segment|lift|join|verify ...".into()),
+        "compare" if a.len() == 4 => compare(out, false),
+        "compare-partial" if a.len() == 4 => compare(out, true),
+        _ => Err(
+            "phase-diagnostics export|segment|lift|join|verify|compare|compare-partial ...".into(),
+        ),
     }
 }

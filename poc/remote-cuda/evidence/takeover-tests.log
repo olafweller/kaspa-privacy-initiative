@@ -1,0 +1,57 @@
+   Compiling kpi-takeover-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/takeover/host)
+    Finished `release` profile [optimized] target(s) in 2.19s
+     Running unittests src/lib.rs (.local/ci-target/release/deps/kpi_takeover_common-414d7590c7cc134d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/build.rs (.local/ci-target/release/deps/kpi_takeover_build-92b068d379ff4f3e)
+
+running 2 tests
+test bridge_tests::native_owner_signature_binds_payload_recipient ... ok
+test bridge_tests::permission_payout_and_balanced_mutations ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_takeover_host-1b9a696e3196d1d6)
+
+running 6 tests
+test groth16_comparison::tests::secret_and_complete_intent_cannot_be_substituted ... ok
+test proof_classification::abort_tests::unrelated_runtime_failures_cannot_pass_authentication_controls ... ok
+test proof_classification::protocol::tests::deterministic_arbitrary_encoding_vectors_never_accept ... ok
+test proof_classification::protocol::tests::intent_excludes_proof_but_native_order_includes_it ... ok
+test proof_classification::protocol::tests::malformed_proof_lengths_and_tags_are_bounded ... ok
+test groth16_comparison::tests::exact_sha_relation_and_integer_boundaries ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.08s
+
+     Running unittests src/bin/prepare.rs (.local/ci-target/release/deps/kpi_takeover_prepare-5d69fa694d7fd9d2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/verify.rs (.local/ci-target/release/deps/kpi_takeover_verify-da1d3dd627ba4dd6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/relation.rs (.local/ci-target/release/deps/relation-7d88bd6ac29ee049)
+
+running 5 tests
+test authorized_withdrawal_emits_exact_claim_and_replay_is_noop ... ok
+test batch_checks_context_order_image_and_receipt_and_allows_gap_over_100 ... ok
+test deposit_noops_and_replay_preserve_accounting ... ok
+test native_id_lane_preimage_and_prior_state_binding ... ok
+test aggregate_rejects_missing_receipts_and_broken_state_tip_lane_covenant_image_continuity ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests kpi_takeover_common
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

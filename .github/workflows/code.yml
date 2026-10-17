@@ -124,4 +124,6 @@ jobs:
           cargo +1.91.0 test --locked --release --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" -- --test-threads=2
           if [[ "$KPI_CI_COMPONENT" == takeover ]]; then
             cargo +1.91.0 test --locked --release --manifest-path poc/takeover/Cargo.toml -p kpi-accelerated-bn254
+            cargo +1.91.0 build --locked --release --manifest-path poc/takeover/Cargo.toml --bin kpi-takeover-host
+            python3 poc/remote-cuda/check_cpu_compare.py .local/ci-target/release/kpi-takeover-host
           fi

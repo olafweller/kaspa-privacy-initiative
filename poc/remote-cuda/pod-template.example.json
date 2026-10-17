@@ -1,0 +1,15 @@
+{
+  "computeType": "GPU",
+  "gpuTypeIds": ["NVIDIA L40S"],
+  "gpuCount": 1,
+  "cloudType": "SECURE",
+  "imageName": "REPLACE_WITH_REVIEWED_REGISTRY_IMAGE_AT_SHA256_DIGEST",
+  "containerDiskInGb": 90,
+  "volumeInGb": 10,
+  "volumeMountPath": "/workspace",
+  "minCudaVersion": "12.8",
+  "ports": ["8080/http"],
+  "env": {
+    "KPI_GPU_TOKEN": "INJECT_FROM_PROVIDER_SECRET_STORE_NOT_FROM_THIS_EXAMPLE"
+  }
+}

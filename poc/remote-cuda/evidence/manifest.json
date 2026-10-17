@@ -1,0 +1,34 @@
+{
+  "scope": "UNPAID_CPU_ONLY_PREPARATION_NOT_CUDA_EXECUTION",
+  "packageSourceRevision": "b5be7e8083f765124042e8c45f58ac2fd363c66d",
+  "files": {
+    "baseline-cpu-comparison.json": {
+      "bytes": 504,
+      "sha256": "7098a0ab4aaa451589ad2a4e1c2a3fcddc745e0744b575a1e375155143329488"
+    },
+    "control-tests.log": {
+      "bytes": 1563,
+      "sha256": "d67f7b876903884c995e3cba34fa214675864b2742bddce4ee1651de2eea329f"
+    },
+    "cpu-comparison-tests.log": {
+      "bytes": 128,
+      "sha256": "e3aa85e3e0653e69ef349791e79b3e23f849b1f7c21565c44fb6defbc580feec"
+    },
+    "fast-tests.log": {
+      "bytes": 22065,
+      "sha256": "fead77116f64c1ad07bed6c4a0ae062dfbc9a2d75776112dad320294e0d86c32"
+    },
+    "public-package.tar.gz": {
+      "bytes": 9288223,
+      "sha256": "323efa23bf042895ddac7b2531a7628c72664849aec26c3f528cadb93d964805"
+    },
+    "takeover-tests.log": {
+      "bytes": 2694,
+      "sha256": "ebf879ea2bf8c8d403f3b7c6d64d55976d1b6a1b42c0ea9938668778685716c6"
+    },
+    "workload.json": {
+      "bytes": 1816,
+      "sha256": "9f83b3f4c396acf6b55db154af729d1911aa12e1f6f1a7bda7cca1295076ffd7"
+    }
+  }
+}
