@@ -281,9 +281,11 @@ class Pool:
         if claim['paid'] or (recipient, amount(principal), amount(rent), amount(remaining_reserve)) != (
                 claim['recipient'], claim['amount'], claim['rent'], self.reserve - claim['amount']):
             raise ValueError('payout recipient/principal/rent/reserve/spent claim')
+        # Validate the full native output before committing any economic changes.
+        payout_value = total([principal, rent])
         claim['paid'] = True; self.reserve = remaining_reserve; self.rent_reserve -= rent
         self.rent_paid += rent
-        self.invariant(); return total([principal, rent])
+        self.invariant(); return payout_value
 
     def pay_fee(self, identity, recipient, value):
         claim = self.fees[identity]

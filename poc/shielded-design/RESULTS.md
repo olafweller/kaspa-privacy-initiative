@@ -27,8 +27,13 @@ and [artifact archive](evidence/local-compatibility-artifacts.tar.gz).
 
 ## Measured outcome
 
-All 23 model tests pass, including 64 seeded conservation/replay vectors. The
-model's native-payout result is explicitly simulated, not a new chain payment.
+All 24 model tests pass, including 64 seeded conservation/replay vectors. The
+original evidence run contained 23 tests; the review regression adds full-state
+atomicity at the `u64` principal-plus-rent boundary. The regression failed before
+the fix: an overflowing payout had already marked its claim paid and reduced
+reserves. The full output sum is now checked before any economic mutation; the
+exact maximum output succeeds and overflowing outputs leave all state unchanged.
+The model's native-payout result is explicitly simulated, not a new chain payment.
 
 | Real main-chain proof | Seconds | Padded cycles | User cycles | Retained receipt bytes |
 | --- | ---: | ---: | ---: | ---: |

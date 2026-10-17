@@ -200,6 +200,31 @@ class PaymentModelTests(unittest.TestCase):
         self.pool.pay_fee(out['id'],'model-relayer',1000);self.assertEqual(self.pool.reserve,999_999_000)
         with self.assertRaises(ValueError):self.pool.pay_fee(out['id'],'model-relayer',1000)
 
+    def test_payout_total_boundary_and_overflow_preserve_entire_state(self):
+        rent = 50_000_000
+        for principal in [MAX, MAX - rent + 1, MAX - rent]:
+            with self.subTest(principal=principal):
+                pool = Pool(self.oracle)
+                note = self.alice.note(principal, 'payout-boundary')
+                event = pool.funded_deposit('boundary-deposit', note, self.alice)
+                self.assertTrue(pool.process(self.oracle.credit(event, note, self.alice.address))['accepted'])
+                pool.fund_rent(rent)
+                proof = self.oracle.spend(self.alice, [note], [], list(pool.commitments),
+                                          withdrawal={'recipient': 'alice-native', 'amount': principal})
+                result = pool.process(proof)
+                self.assertTrue(result['accepted'])
+                before = copy.deepcopy({k:v for k,v in pool.__dict__.items() if k != 'verifier'})
+                if principal > MAX - rent:
+                    with self.assertRaisesRegex(ValueError, 'integer sompi/range'):
+                        pool.payout(result['id'], 'alice-native', principal, rent, 0)
+                    self.assertEqual(before, {k:v for k,v in pool.__dict__.items() if k != 'verifier'})
+                    pool.invariant()
+                else:
+                    self.assertEqual(pool.payout(result['id'], 'alice-native', principal, rent, 0), MAX)
+                    self.assertTrue(pool.claims[result['id']]['paid'])
+                    self.assertEqual((pool.reserve, pool.rent_reserve, pool.rent_paid), (0, 0, rent))
+                    pool.invariant()
+
     def test_seeded_conservation_and_atomic_rejection_vectors(self):
         rng=random.Random(20261017)
         for n in range(64):
