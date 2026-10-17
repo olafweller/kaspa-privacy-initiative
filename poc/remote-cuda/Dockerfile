@@ -4,7 +4,10 @@ ENV CARGO_HOME=/opt/cargo RUSTUP_HOME=/opt/rustup
 ENV PATH=/opt/cargo/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 COPY recursion_zkr.zip /opt/build/recursion_zkr.zip
 COPY build_cuda.sh /opt/build/build_cuda.sh
-RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh
+RUN --mount=type=secret,id=system_ca,mode=0444 \
+    --mount=type=cache,id=kpi-risc0-303-source,target=/tmp/risc0,sharing=locked \
+    --mount=type=cache,id=kpi-risc0-303-clang-rust189-target,target=/opt/cuda-target,sharing=locked \
+    bash /opt/build/build_cuda.sh
 
 FROM nvidia/cuda:12.8.1-base-ubuntu24.04@sha256:e711c99333fdfe8ae1e677b4972be6c5021f0128a1d31f775c7e58d88921b6a9
 RUN --mount=type=secret,id=system_ca,mode=0444 \

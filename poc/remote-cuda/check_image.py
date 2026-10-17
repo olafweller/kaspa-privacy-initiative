@@ -22,6 +22,7 @@ def check(image):
     assert metadata['features'] == ['cuda', 'disable-dev-mode']
     assert metadata['sourceCommit'] == '14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6'
     assert metadata['nvccFlags'] == '-arch=sm_89'
+    assert metadata['rustVersion'].startswith('rustc 1.89.0 ')
     files = json.loads(docker('run', '--rm', '--entrypoint', 'python3', image, '-c',
         'import hashlib,json; from pathlib import Path; '
         'paths=["/opt/kpi/app/"+n+".py" for n in ("common","worker","service")]+ '
