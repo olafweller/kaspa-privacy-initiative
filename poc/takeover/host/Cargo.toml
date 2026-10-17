@@ -38,3 +38,7 @@ path = "src/bin/prepare.rs"
 [[bin]]
 name = "kpi-takeover-build"
 path = "src/bin/build.rs"
+
+[[bin]]
+name = "kpi-takeover-verify"
+path = "src/bin/verify.rs"
