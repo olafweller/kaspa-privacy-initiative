@@ -57,6 +57,26 @@
     "cloud-process-restart.json": {
       "bytes": 727,
       "sha256": "ddbb1715f71fc66c5c8637746d02a0620885947a9de7c4f67b07f580e55342ac"
+    },
+    "publication.json": {
+      "bytes": 1444,
+      "sha256": "df7efafad3df770d2e2cd757bc0a97c7bc7a7eb011b33b1060d2e86455efef52"
+    },
+    "published-image-smoke.json": {
+      "bytes": 2003,
+      "sha256": "dc3d482a29291f991f44a0e34aa5ef76192de3d4872afa5019d7442bb4d8ccff"
+    },
+    "cloud-registry-access.json": {
+      "bytes": 345,
+      "sha256": "efa38e835a3052523cfeb0d15132c4cd299769c1196b95eca22b43a2ecdf8fb5"
+    },
+    "cloud-published-image-smoke.json": {
+      "bytes": 2003,
+      "sha256": "dc3d482a29291f991f44a0e34aa5ef76192de3d4872afa5019d7442bb4d8ccff"
+    },
+    "published-policy-comparison.json": {
+      "bytes": 1013,
+      "sha256": "02b5839bfbf27ee21b0e88fb806c36bc57a1c3b12ce90aad6b29c20641dbf324"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",

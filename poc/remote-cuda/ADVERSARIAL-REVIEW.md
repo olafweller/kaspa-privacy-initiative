@@ -24,3 +24,11 @@ The existing B recovery VPS is the owner's candidate guard host, not a new
 independent operator network. Inspect it without touching old recovery secrets or
 restarting its services. Actual deployment requires an image digest, live network
 and credential configuration, quote, guard connectivity and provider read-back.
+
+The later `qualify_guard.py` host rehearsal supplies explicit fake provider and
+artifact callbacks to every guard instance. It uses a fresh output directory and
+separate Python processes, records source hashes and labels both simulated time
+and provider stop. A subprocess failure prevents the final success report. It
+does not read credentials, reboot the host or establish live rental protection.
+The clean-runner packaging fix creates missing parents only; it retains refusal
+to reuse an existing output directory and all fixture/hash/CPU-receipt checks.

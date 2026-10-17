@@ -83,9 +83,9 @@ These were compiler/build attempts, not GPU proof attempts or cryptographic
 rejections. The independent repository CPU verifier remains on Rust 1.91.
 
 The public package and image can be regenerated with [START.md](START.md).
-The image still requires reviewed registry publication and a pull check before
-rental. BuildKit's source/target caches and the local image are preparation
-artifacts, not a connection to a GPU provider.
+The original image above is a local preparation build. The separately rebuilt
+and published image is identified below. BuildKit's source/target caches and the
+local image are preparation artifacts, not a connection to a GPU provider.
 
 ## Current Cloud and independent host
 
@@ -109,8 +109,41 @@ comparison had passed. `package.py` now creates missing parent directories while
 still refusing to overwrite an existing output directory. Its full local run
 against a fresh nested output succeeded. The initial tag is retained unchanged;
 publication must use a new explicit tag for this correction. Starting a build is
-not evidence of publication; the final registry digest and pull result remain
-required.
+not evidence of publication by itself.
+
+## Published image and independent Cloud pull
+
+The replacement [run 39067230794](https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39067230794)
+completed successfully from revision `81f2b90c7bc3aaddd44fecda222bb5d6de731616`,
+tagged `cuda-qualification-20261017-pr41-r2`. The immutable deployment reference is:
+
+```text
+ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743
+```
+
+This rebuild preserves the pinned RISC Zero source/configuration, three service
+source hashes, classifier image, fixture bytes and expected CPU claims. Its
+actual prover binary SHA-256 is
+`4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb`,
+and its image ID is
+`sha256:416b30c4f57156016f46568a0ebcb2f73a2fc4af30b1868131a3511fce9c9912`.
+These are the published build's identities, distinct from the earlier local
+build. The builder step took 1,086.2 seconds; Cargo reports 17 minutes 15 seconds.
+
+The publication job pulled this exact digest back and repeated the CPU-only
+container checks. Cloud independently confirmed anonymous registry access and
+the returned digest, downloaded the image and repeated those checks. Source and
+binary hashes, authentication, lease binding, unguarded-start refusal and
+non-driver libraries passed. The real five retained CPU receipts were verified
+during packaging and image construction. See `evidence/publication.json`,
+`published-image-smoke.json`, `cloud-registry-access.json` and
+`cloud-published-image-smoke.json`. `published-policy-comparison.json` also
+checks the image's actual input files against the original package's hashes
+and confirms the independently expected program and claims are unchanged.
+These are build/transport/CPU results;
+`gpuExecutionQualified` remains false and no proof job was started.
+
+## Independent host preparation
 
 A new read-only check reached the already configured Contabo host: Python
 3.12.3, systemd 255, synchronized time, approximately 826.7 GB available under
@@ -130,7 +163,6 @@ must repeat this qualification and the existing backup-failure deadline tests.
 No paid resource, provider key, live RunPod API/proxy request, GPU driver test,
 CUDA kernel execution, GPU speedup, actual VRAM peak, provider stop/persistence
 test or bill exists for this package. No full classifier receipt was attempted.
-The image still needs publication by digest and a pull check before rental.
 Connection/credential checks, independent guard installation and live provider
 schema/read-back remain deployment gates. Research receipts alone do not
 establish a financial privacy protocol or production readiness.

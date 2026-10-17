@@ -1,0 +1,6 @@
+{
+  "scope": "REGISTRY_ACCESS_CHECK_NOT_GPU_EXECUTION",
+  "registryDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+  "anonymousManifestAccess": true,
+  "returnedDigest": "sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743"
+}

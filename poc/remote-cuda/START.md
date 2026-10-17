@@ -15,7 +15,8 @@ creating or reviewing this PR.
    a reviewed revision to GHCR using GitHub's job token. Record its registry
    digest, not just a mutable tag. Make it publicly pullable or configure a
    read-only registry pull credential in RunPod. Do not assume package visibility.
-   This preparation has not published a registry image.
+   The published build and checked immutable reference are recorded in
+   [PREPARATION.md](PREPARATION.md); use that digest for the planned qualification.
    Alternatively, push an explicit `cuda-qualification-*` tag on the reviewed
    revision to run the same build/publication. Publication pulls the immutable
    digest back from GHCR and repeats the CPU-only container checks. An
@@ -45,6 +46,16 @@ creating or reviewing this PR.
    and the 60-second clock advance are simulated; it does not reboot the host,
    contact RunPod or prove a live provider stop. Retain `qualification.json` and
    run the existing control tests on the host to check backup-failure deadlines.
+   For those tests, also copy `test_remote.py`, `service.py`, `worker.py` and
+   `package.py` beside the guard. As the dedicated service user, set `TMPDIR` to
+   a writable qualification subdirectory on the state filesystem and run:
+
+   ```bash
+   PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s /opt/kpi-remote-cuda -p test_remote.py -v
+   ```
+
+   These thirteen tests use simulated jobs/provider responses and a short local
+   process timeout; they do not start a proof, use a GPU or call RunPod.
 5. Generate a fresh scoped service token through a secret manager (32+ ASCII
    characters). Inject the same `KPI_GPU_TOKEN` into the Pod and guard; configure
    Codex's scoped credential separately. Keep the RunPod account API key only

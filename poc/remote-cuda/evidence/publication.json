@@ -1,0 +1,34 @@
+{
+  "scope": "PUBLICATION_PREPARATION_NOT_GPU_EXECUTION",
+  "initialRun": {
+    "id": 39067028926,
+    "sourceRevision": "c2037893936508d6d61dcb9ee78aea6ba4515aab",
+    "result": "failed",
+    "lastCompletedStage": "CPU host build and independent comparison of five retained receipts",
+    "failure": "Package output parent directory absent on clean runner",
+    "cudaBuildStarted": false,
+    "imagePublished": false
+  },
+  "correction": {
+    "sourceRevision": "81f2b90c7bc3aaddd44fecda222bb5d6de731616",
+    "change": "Create output parents while preserving refusal to overwrite an existing output directory",
+    "freshNestedLocalPackagingPassed": true,
+    "repositoryFastChecksPassed": true
+  },
+  "replacementRun": {
+    "id": 39067230794,
+    "tag": "cuda-qualification-20261017-pr41-r2",
+    "result": "success",
+    "immutableRegistryDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+    "lastObservedStage": "Published, pulled by digest and CPU-only container checks passed",
+    "sourceRevision": "81f2b90c7bc3aaddd44fecda222bb5d6de731616",
+    "cudaBuilderSeconds": 1086.2,
+    "cargoBuildTime": "17m 15s",
+    "ciDigestPullAndSmokePassed": true,
+    "cloudDigestPullAndSmokePassed": true,
+    "anonymousRegistryAccess": true,
+    "originalInputsAndClaimsPreserved": true
+  },
+  "gpuRented": false,
+  "gpuExecutionQualified": false
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "PUBLISHED_INPUT_AND_CLAIM_BINDING_NOT_GPU_EXECUTION",
+  "registryDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+  "sourceRevision": "81f2b90c7bc3aaddd44fecda222bb5d6de731616",
+  "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
+  "referenceArchiveSha256": "01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
+  "inputAndClaimPolicyMatchesOriginal": true,
+  "actualInputBytesMatchOriginalHashes": true,
+  "cpuClaims": {
+    "join": "7917795912b2877505c126d8a996d19089603eb8044dee3cd76fff08caf4cc31",
+    "lift-24": "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
+    "lift-25": "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9",
+    "segment-24": "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
+    "segment-25": "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9"
+  }
+}
