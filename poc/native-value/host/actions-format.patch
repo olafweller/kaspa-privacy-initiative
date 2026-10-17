@@ -1,0 +1,48 @@
+--- upstream/examples/tn10-runtime/src/actions.rs
++++ host/src/actions.rs
+@@ -263,8 +263,12 @@
+ 
+     /// Signs `msg` (already a 32-byte digest), returning the 64-byte BIP-340 signature.
+     pub fn sign(&self, msg: &[u8]) -> [u8; 64] {
+-        let digest: [u8; 32] = msg.try_into().expect("sig message must be a 32-byte digest");
+-        SECP256K1.sign_schnorr(&Message::from_digest(digest), &self.keypair).serialize()
++        let digest: [u8; 32] = msg
++            .try_into()
++            .expect("sig message must be a 32-byte digest");
++        SECP256K1
++            .sign_schnorr(&Message::from_digest(digest), &self.keypair)
++            .serialize()
+     }
+ }
+ 
+@@ -370,9 +374,16 @@
+ ) -> Vec<u8> {
+     let config_id: [u8; 32] = *config_resource_id();
+     let access_meta = encode_access_metadata(&[(config_id, AccessType::Write)]);
+-    let genesis_lock = LockEnum::Schnorr(SchnorrLockView { pubkey: &GENESIS_SCHNORR_BYTES });
+-    let action =
+-        encode_config_action(ACTION_TAG_INIT, 0, min_withdrawal, covenant_id, &genesis_lock);
++    let genesis_lock = LockEnum::Schnorr(SchnorrLockView {
++        pubkey: &GENESIS_SCHNORR_BYTES,
++    });
++    let action = encode_config_action(
++        ACTION_TAG_INIT,
++        0,
++        min_withdrawal,
++        covenant_id,
++        &genesis_lock,
++    );
+     let actions_section = encode_actions_section(&[action]);
+ 
+     let probe = encode_signers_section(&[encode_witness_signer(0, input_idx, 0, 0, 0)]);
+@@ -432,7 +443,9 @@
+     let user_id = user_resource_id(user_pubkey);
+     let (user_idx, _config_idx, entries) = sorted_user_config_positions(user_id);
+     let access_meta = encode_access_metadata(&entries);
+-    let initial_lock = LockEnum::Schnorr(SchnorrLockView { pubkey: user_pubkey });
++    let initial_lock = LockEnum::Schnorr(SchnorrLockView {
++        pubkey: user_pubkey,
++    });
+     let action = encode_deposit_action(user_idx, output_idx, &initial_lock);
+     let actions_section = encode_actions_section(&[action]);
+     let signers_section = encode_signers_section(&[]);

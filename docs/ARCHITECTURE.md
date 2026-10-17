@@ -318,3 +318,14 @@ Evaluate each against:
 - [Kaspa builder overview](https://kaspa.org/build)
 - [Kaspa based-app documentation](https://github.com/kaspanet/docs/blob/main/content/docs/toccata/based-apps.mdx)
 - [vProgs repository](https://github.com/kaspanet/vprogs)
+
+## Public based-app native-value integration experiment
+
+[ADR-0004](adr/0004-public-based-app-native-value.md) scopes the authorized
+[public native-value PoC](../poc/native-value/MAPPING.md) following PR31. It combines
+existing vProgs account Deposit/Withdraw actions and delegate/permission scripts
+with the demonstrated monolithic lane proof. Public balances are temporary test
+state, not private notes or a new asset. User backing excludes state-covenant
+rent and sponsor fees; an unpaid permission claim remains a liability until L1
+consumes it into a payout. Full runtime composition, privacy, mandatory processing
+progress and independent recovery remain open. RFC-0001 remains Open.

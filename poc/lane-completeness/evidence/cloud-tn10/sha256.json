@@ -1,5 +1,5 @@
 {
-  "bootstrap-accepted.json": "b5b5d7ad97c06dfcaf054dcba809b0cf220093fd2bf1a14dbf1a735abab83a72",
+  "bootstrap-accepted.json": "3af816f3f191250d70a976a8a1060316ba7f4b3df3f5ee430fd2abcbfd54b31a",
   "bootstrap-transaction.json": "817f83cdd6d13d01b8589e6d1a2897f05e78773fa9e2ac71e59bd08ca0b33f4e",
   "execution-profile-5.json": "45b50d950f7a1fb1829eb74e15e3d9cf0802ec26b779af9ff4b4db41a40fb9b6",
   "execution-profile-real-5.json": "45b50d950f7a1fb1829eb74e15e3d9cf0802ec26b779af9ff4b4db41a40fb9b6",
@@ -68,5 +68,5 @@
   "vps-deployed-hashes.txt": "b3e506c693ad218fdc921dcdd7e0393a75750ea2880ecf0f3d927d7dd81c74bc",
   "vps-runtime.txt": "da1f31c8e85c06baf26fa1fb1e75ea5df4987f3ad36634e3967b9fbb61359685",
   "wallet-tests.log.gz": "978ec4719d284ba145f7cea614460dc712b8a66916419b21cf20e72e435ea4ff",
-  "integer-correction.json": "906e6692c53523a72a288ca2e739917e96cc078e294f36d27c91f087abb1a856"
+  "integer-correction.json": "abdf4e282313b8545db33ca08ab231cbfda748f0e3ca95d632b9e19e1f9f8662"
 }

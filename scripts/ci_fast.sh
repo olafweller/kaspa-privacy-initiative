@@ -18,4 +18,9 @@ else
 fi
 for kpi_ci_js in scripts/*.mjs; do node --check "$kpi_ci_js"; done
 node --test scripts/*.test.mjs
+if [[ -f poc/lane-completeness/integration/test-exact-json.mjs ]]; then
+    node poc/lane-completeness/integration/test-exact-json.mjs
+    python3 poc/lane-completeness/integration/check_rpc_derivatives.py
+    for kpi_ci_js in poc/lane-completeness/integration/*.mjs poc/native-value/remote/*.mjs; do node --check "$kpi_ci_js"; done
+fi
 git diff --check

@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import * as JSON from './exact-json.mjs';
 const base='/opt/kpi-pr31-cloud-20261017';
 const root=base+'/native-value';
-const binary=root+'/host-v1';
+const binary=root+'/host-v2';
 const program=root+'/guest-v1.program.bin';
 const [stage,trialArg,labelArg]=process.argv.slice(2);
 const exec=(args)=>{const p=spawnSync(binary,args,{encoding:'utf8',maxBuffer:64*1024*1024});assert.equal(p.status,0,'builder failed: '+p.stderr);return p.stdout;};
@@ -100,6 +100,14 @@ try{
   const built=await build(label+'-settlement',{kind:'settlement',input,end:label==='prefix'?meta.prefixEnd:meta.end,receiptPath:trial+'/'+label+'-receipt.bin',covenantUtxo:ce});
   const rejection=await submit(label+'-settlement',built,label==='omission');
   if(label==='omission')assert(/ZK Integrity.*Verification failed|ZkIntegrity/i.test(rejection),'unrelated omission rejection');
+ }else if(stage==='auth-negative'){
+  const withdrawal=read(trial+'/withdraw-transaction.json');
+  const original=await build('auth-receiver-original',{kind:'withdraw',owner:identity.owner,recipient:identity.owner,amount:100000000,previousTransaction:withdrawal.transaction,previousIndex:0},true);
+  // The original is a construction control only; broadcast its altered body once.
+  const spk=Buffer.from((await call('getUtxosByAddresses',{addresses:[sponsor.address]})).entries[0].utxoEntry.scriptPublicKey,'hex');assert.equal(spk.length,36);assert.equal(spk.readUInt16LE(0),0);assert.equal(spk[2],32);assert.equal(spk[35],0xac);const pub=spk.subarray(3,35).toString('hex');
+  exec(['mutate-recipient',trial+'/auth-receiver-original-transaction.json',pub,trial+'/auth-receiver-transaction.json']);
+  const reason=await submit('auth-receiver',read(trial+'/auth-receiver-transaction.json'),true);
+  assert(/signature script|signature|false/i.test(reason),'unrelated owner-signature rejection');
  }else if(stage==='payout'){
   const final=read(trial+'/final-settlement-transaction.json'),bootstrap=read(trial+'/bootstrap-transaction.json');
   const permission=(await call('getUtxosByAddresses',{addresses:[final.outputAddresses[1]]})).entries.find(e=>e.outpoint.transactionId===final.transactionId&&e.outpoint.index===1);assert(permission);
@@ -112,6 +120,8 @@ try{
   const payout=recipientUtxos.entries.find(e=>e.outpoint.transactionId===t.transactionId&&e.outpoint.index===0);assert(payout);assert.equal(payout.utxoEntry.amount,450000000);
   const reserve=reserveUtxos.entries.find(e=>e.outpoint.transactionId===t.transactionId&&e.outpoint.index===1);assert(reserve);assert.equal(reserve.utxoEntry.amount,600000000);
   assert(!permissions.entries.some(e=>e.outpoint.transactionId===final.transactionId),'claim not consumed');
+  const replay=await build('payout-replay',fields);assert.notEqual(replay.transactionId,t.transactionId,'distinct signed attack transaction required');
+  const replayReason=await submit('payout-replay',replay,true);assert(/orphan|missing|unknown|not found|already spent/i.test(replayReason),'unrelated claim replay rejection');
   save(trial+'/payout-result.json',{payout,reserve,permissionConsumed:true,principalSompi:400000000,rentRefundSompi:50000000,spendableSompi:600000000,unpaidClaimsSompi:0,feeSompi:t.feeSompi});
  }else throw Error('unknown stage');
 }catch(e){save(trial+'/'+stage+'-'+(labelArg??'job')+'-failure.json',{error:e.message,at:new Date().toISOString()});console.error(e.message);process.exitCode=1;}

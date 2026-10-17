@@ -209,3 +209,16 @@ two endpoint URLs do not prove operator independence. Corroborate the accepted
 block/body and payout/spentness, fail closed on disagreement, and never describe
 this route as local validation of the entire live UTXO set. The original local
 full transaction validator and on-chain covenant remain the authorization path.
+
+## Public native-value based-app experiment boundary
+
+The [ADR-0004](docs/adr/0004-public-based-app-native-value.md) experiment exposes
+all account balances, public keys, requests, recipients, deposits and payouts.
+The prover receives public state only; random signing keys stay on the VPS.
+New attack surfaces under test are fabricated/repeated credit, failed-command
+side effects, recipient redirection, omission at a fixed authentic lane anchor,
+permission replay and reserve/change diversion. Imported runtime actions and
+permission scripts enforce different parts of that boundary; see the
+[enforcement map](poc/native-value/MAPPING.md). Host checks alone are not proof
+of theft prevention. Missing public witnesses can halt progress; there is no
+admin bypass or new reserve key. Independent recovery remains untested.

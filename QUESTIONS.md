@@ -174,3 +174,13 @@ See [research/legal-operational-questions.md](research/legal-operational-questio
 - Which security-critical decisions require specialist human review?
 - How do we prevent AI-generated assumptions from silently becoming protocol design?
 - Which invariants can be machine-tested, model-checked, fuzzed, or formally verified?
+
+## Public based-app native-value integration follow-up
+
+The [2026-10-17 source map](poc/native-value/MAPPING.md) identifies existing
+Deposit/Withdraw actions, delegate reserve scripts and permission claims. The
+bounded experiment is [ADR-0004](docs/adr/0004-public-based-app-native-value.md).
+Outstanding questions remain: scalable proof composition beyond the fixed
+monolithic circuit, data availability and takeover after pruning/reorg, a stated
+progress policy (no mandatory latest checkpoint was found), private authorization
+and confidential execution. Passing the public cycle would not resolve them.

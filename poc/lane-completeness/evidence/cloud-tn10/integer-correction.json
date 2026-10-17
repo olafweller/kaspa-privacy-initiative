@@ -11,5 +11,19 @@
   "previous_commit": "68100588133175442dab2b0a56ed6d784dc015ea",
   "correction": "Re-extracted entire derived observation with Python arbitrary-precision JSON integers. Raw RPC and historical public archives remain byte-identical. Archives contain the historical rounded derivatives; consult raw records or this corrected derivative. No transaction or proof was rerun.",
   "old_nonce": 3037550573469842400,
-  "exact_nonce": 3037550573469842379
+  "exact_nonce": 3037550573469842379,
+  "additional_corrections": [
+    {
+      "derived_file": "bootstrap-accepted.json",
+      "previous_sha256": "b5b5d7ad97c06dfcaf054dcba809b0cf220093fd2bf1a14dbf1a735abab83a72",
+      "old_nonce": 3037550572497115000,
+      "exact_nonce": 3037550572497114884,
+      "provenance": {
+        "file": "successful-trial-public.tar.gz",
+        "member": "trial-2026-10-16T23-25-52-928Z-9510ed7d/bootstrap-rpc-records.json",
+        "record_index": 36,
+        "source_sha256": "ad97e6af0b55e7d789b546bbbf35dd0a5c4472f136ac8dab20c542e12d4360e5"
+      }
+    }
+  ]
 }

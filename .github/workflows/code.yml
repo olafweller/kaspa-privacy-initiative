@@ -34,7 +34,7 @@ jobs:
           python3 - <<'PY'
           import json, os, subprocess
           from pathlib import Path
-          components = [name for name in ('a0', 'a1') if Path(f'poc/{name}/Cargo.toml').is_file()]
+          components = [name for name in ('a0', 'a1', 'native-value') if Path(f'poc/{name}/Cargo.toml').is_file()]
           assert components, 'No experimental Rust component found'
           sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
@@ -107,5 +107,9 @@ jobs:
         run: |
           test "$(git -C ../upstream/rusty-kaspa rev-parse HEAD)" = 01b532e8b553523216471682649693af92f0fd16
           export BINDGEN_EXTRA_CLANG_ARGS="-isystem $(cc -print-file-name=include)"
-          cargo +1.91.0 fmt --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" --check
+          if [[ "$KPI_CI_COMPONENT" == native-value ]]; then
+            cargo +1.91.0 fmt --manifest-path poc/native-value/Cargo.toml -p kpi-native-common -p kpi-native-host --check
+          else
+            cargo +1.91.0 fmt --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" --check
+          fi
           cargo +1.91.0 test --locked --release --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" -- --test-threads=2

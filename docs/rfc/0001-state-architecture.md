@@ -219,3 +219,15 @@ A0/A1 answer their scoped reserve questions, not the multi-user note, DA, fee-pr
 [V]: ../../research/kaspa-toccata-vprogs.md#vprogs-components--provisional-assessment
 [VReadme]: https://github.com/kaspanet/vprogs/blob/f9b84a863a7c7c20586a9cf947550475e894f72e/README.md
 [Gate]: ../ROADMAP.md#early-exit-and-recovery-gate
+
+## 2026-10-17 public bridge integration follow-up
+
+PR31 established real ordered input and proof settlement. The owner has now
+explicitly authorized the bounded native-value experiment in
+[ADR-0004](../adr/0004-public-based-app-native-value.md). The
+[source/enforcement map](../../poc/native-value/MAPPING.md) separates L1 data
+collection, account execution, native backing and permission payout. Reusing
+these components does not select Candidate C for production. Completeness of a
+chosen interval is separate from mandatory progress; the inspected accessor
+permits eligible recent selected-chain anchors rather than prescribing one
+latest endpoint. No private-state or operator-loss recovery claim follows.
