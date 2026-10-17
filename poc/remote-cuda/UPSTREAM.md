@@ -7,6 +7,10 @@ Checked 2026-10-17. These are source/build facts, not evidence of live rental be
   `risc0-r0vm` features `cuda,disable-dev-mode`, Rust 1.91.0.
   [CUDA build support](https://github.com/risc0/risc0/blob/14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6/risc0/build_kernel/src/lib.rs)
   honors `NVCC_APPEND_FLAGS`; `-arch=sm_89` avoids build-time GPU discovery.
+- Native C/C++ compilation explicitly uses Clang, following upstream's
+  [compiler selection](https://github.com/risc0/risc0/blob/14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6/.github/actions/sccache/action.yml).
+  The image build uses four Cargo workers and records the actual Clang/NVCC
+  versions. These build resources are separate from the diagnostic process limits.
 - [Local proving documentation](https://dev.risczero.com/api/generating-proofs/local-proving)
   distinguishes CUDA build toolkit and runtime; first-use compilation can take
   minutes. Compiler success alone does not prove GPU acceleration.

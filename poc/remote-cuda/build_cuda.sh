@@ -24,7 +24,10 @@ test "$(git -C /tmp/risc0 rev-parse HEAD)" = 14b5d588dd01cf4f7ba804d8bb0a61264e6
 echo '744b999f0a35b3c86753311c7efb2a0054be21727095cf105af6ee7d3f4d8849  /opt/build/recursion_zkr.zip' | sha256sum --check
 export RECURSION_SRC_PATH=/opt/build/recursion_zkr.zip
 export NVCC_APPEND_FLAGS=-arch=sm_89
-export CARGO_BUILD_JOBS=2
+# Upstream's Linux build selects Clang; GCC's generated Keccak CPU kernels
+# are exceptionally slow to compile. This affects the build, not proof limits.
+export CC=clang CXX=clang++
+export CARGO_BUILD_JOBS=4
 cd /tmp/risc0
 cargo +1.91.0 build --locked --release -p risc0-r0vm --features cuda,disable-dev-mode
 install -D -m 0755 target/release/r0vm /opt/kpi/bin/r0vm-cuda
@@ -38,6 +41,8 @@ report={'sourceCommit':'14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6',
         'upstreamCargoLockSha256':hashlib.sha256(Path('Cargo.lock').read_bytes()).hexdigest(),
         'rustVersion':subprocess.check_output(['rustc','+1.91.0','--version'],text=True).strip(),
         'nvccVersion':subprocess.check_output(['nvcc','--version'],text=True),
+        'cxxVersion':subprocess.check_output(['clang++','--version'],text=True),
+        'buildJobs':4,
         'gpuExecutionQualified':False}
 Path('/opt/kpi/cuda-build.json').write_text(json.dumps(report,indent=2)+'\n')
 PY
