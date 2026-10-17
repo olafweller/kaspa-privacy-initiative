@@ -1,0 +1,241 @@
+{
+  "implementationSourceCommit": "86a5f2f540c238dd69815e08f32f86a784498632",
+  "scope": "LOCAL_SYNTHETIC_WALLET_PROOF_COMPOSITION_AND_IDEAL_MODEL_NOT_FUNDED_PRIVACY",
+  "baselineMain": "f777e57674f11ce17366faae4b3dfb0cf5caef29",
+  "nativeDependency": "01b532e8b553523216471682649693af92f0fd16",
+  "vprogsDependency": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+  "risc0Version": "3.0.3",
+  "complete": {
+    "actualTN10Settlement": false,
+    "adapterImage": "824cb02945e97e49898a67cd306dd3b1198e8693631c0e2adb2635015412d939",
+    "changedWalletJournalSdkRejected": true,
+    "developmentMode": false,
+    "fixedCapturedAnchorScriptAccepted": true,
+    "fixture": "Public archived deposit relation plus synthetic preimage and checked sum; not an actual private payment.",
+    "fullPrivateCircuit": false,
+    "invalidProofCanBeProvenNoop": false,
+    "invalidProofHandlingBlocker": "env::verify composition establishes validity; missing/wrong evidence aborts. No cryptographically proved invalidity/no-op classifier implemented.",
+    "ownershipMembershipNullifierCiphertextConstraints": false,
+    "realSuccinctReceipts": 4,
+    "resolvedWalletThroughAggregate": true,
+    "scope": "LOCAL_SYNTHETIC_WALLET_COMPOSITION_WITH_REFERENCE_NATIVE_SCRIPT",
+    "walletImage": "14e32aa574013d26b88883f89fbb6291f508d3f35dd52806e1c944704f32f404",
+    "wrongAnchorScriptRejected": true
+  },
+  "fourProofResources": {
+    "command": [
+      ".local/ci-target/release/kpi-takeover-host",
+      "wallet-compat",
+      ".local/feasibility/review-33/prefix-prepared",
+      ".local/feasibility/review-33/programs",
+      ".local/shielded-design/programs-04",
+      ".local/shielded-design/compat-result"
+    ],
+    "seconds": 595.9577388590005,
+    "exitCode": 0,
+    "userSeconds": 2298.088212,
+    "systemSeconds": 6.067407,
+    "maxIndividualProcessRssKiB": 4793748
+  },
+  "proofReports": {
+    "wallet": {
+      "assumptionsSupplied": 0,
+      "controlId": "c32b3627d2b3d60c64adf523a98bd16c0ff607471f3d6630d1f26d5e9406d841",
+      "developmentMode": false,
+      "image": "14e32aa574013d26b88883f89fbb6291f508d3f35dd52806e1c944704f32f404",
+      "journalBytes": 96,
+      "scope": "REAL_SUCCINCT_PROOF",
+      "seconds": 63.123251566,
+      "stats": "SessionStats { segments: 1, total_cycles: 65536, user_cycles: 26068, paging_cycles: 25761, reserved_cycles: 13707 }",
+      "syntheticEmptyBatch": false
+    },
+    "adapter": {
+      "assumptionsSupplied": 1,
+      "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+      "developmentMode": false,
+      "image": "824cb02945e97e49898a67cd306dd3b1198e8693631c0e2adb2635015412d939",
+      "journalBytes": 212,
+      "scope": "REAL_SUCCINCT_PROOF",
+      "seconds": 282.872891244,
+      "stats": "SessionStats { segments: 1, total_cycles: 524288, user_cycles: 209640, paging_cycles: 79829, reserved_cycles: 234819 }",
+      "syntheticEmptyBatch": false
+    },
+    "batch": {
+      "assumptionsSupplied": 1,
+      "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+      "developmentMode": false,
+      "image": "fac3707f1e6bf1c5363a2b968545bc5c361934a48a376b8083d4c14247a61f70",
+      "journalBytes": 273,
+      "scope": "REAL_SUCCINCT_PROOF",
+      "seconds": 123.533970689,
+      "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 38438, paging_cycles: 41327, reserved_cycles: 51307 }",
+      "syntheticEmptyBatch": false
+    },
+    "aggregate": {
+      "assumptionsSupplied": 1,
+      "controlId": "53a7b23d07f99e5d5685e85874f5181e8486aa267a0ae607ffe9ba47c8bdda4a",
+      "developmentMode": false,
+      "image": "14bedaace438fe568000405a947909bcdd7df82e8458bc3a87e6d85bdfdab166",
+      "journalBytes": 352,
+      "scope": "REAL_SUCCINCT_PROOF",
+      "seconds": 125.447631956,
+      "stats": "SessionStats { segments: 1, total_cycles: 131072, user_cycles: 45553, paging_cycles: 35993, reserved_cycles: 49526 }",
+      "syntheticEmptyBatch": false
+    }
+  },
+  "isolatedWalletMeasurement": {
+    "resources": {
+      "command": [
+        ".local/ci-target/release/kpi-takeover-host",
+        "wallet-metrics",
+        ".local/feasibility/review-33/prefix-prepared",
+        ".local/feasibility/review-33/programs",
+        ".local/shielded-design/programs-04",
+        ".local/shielded-design/compat-result",
+        ".local/shielded-design/wallet-metrics-result"
+      ],
+      "seconds": 61.17604969599961,
+      "exitCode": 0,
+      "userSeconds": 235.90313,
+      "systemSeconds": 0.580168,
+      "maxIndividualProcessRssKiB": 1459284
+    },
+    "proof": {
+      "assumptionsSupplied": 0,
+      "controlId": "c32b3627d2b3d60c64adf523a98bd16c0ff607471f3d6630d1f26d5e9406d841",
+      "developmentMode": false,
+      "image": "14e32aa574013d26b88883f89fbb6291f508d3f35dd52806e1c944704f32f404",
+      "journalBytes": 96,
+      "scope": "REAL_SUCCINCT_PROOF",
+      "seconds": 60.987243266,
+      "stats": "SessionStats { segments: 1, total_cycles: 65536, user_cycles: 26068, paging_cycles: 25761, reserved_cycles: 13707 }",
+      "syntheticEmptyBatch": false
+    }
+  },
+  "matchedExecution": {
+    "adapterPo2": [
+      19
+    ],
+    "adapterUserCycles": 209640,
+    "additionalUserCycles": 35686,
+    "baselinePo2": [
+      18
+    ],
+    "baselineUserCycles": 173954,
+    "includesDecodingBindingAndCompositionCall": true,
+    "journalIdentical": true,
+    "scope": "EXECUTION_PROFILES_NOT_ADDITIONAL_OUTER_PROOFS"
+  },
+  "executionAbortsNotProvenNoops": {
+    "missing-wallet-rejected": {
+      "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest c2f05b736b25563b69d93ba4de1990b45eba4b065c6c747ffedd681ec4f00fd0, control root 0000000000000000000000000000000000000000000000000000000000000000",
+      "scope": "LOCAL_EXECUTION_ABORT_NOT_PROVEN_NOOP_OR_NATIVE_REJECTION"
+    },
+    "host-forged-reject-rejected": {
+      "error": "Guest panicked: host cannot declare the wallet operation invalid",
+      "scope": "LOCAL_EXECUTION_ABORT_NOT_PROVEN_NOOP_OR_NATIVE_REJECTION"
+    },
+    "wrong-wallet-journal-rejected": {
+      "error": "sys_verify_integrity: no receipt found to resolve assumption: claim digest c5c4d96996639fa08bdf111c53d80ec912d9773498b15cffe02a09563492caf6, control root 0000000000000000000000000000000000000000000000000000000000000000",
+      "scope": "LOCAL_EXECUTION_ABORT_NOT_PROVEN_NOOP_OR_NATIVE_REJECTION"
+    },
+    "wallet-inflation-rejected": {
+      "error": "Guest panicked: assertion `left == right` failed\n  left: Some(1000000001)\n right: Some(1000000000)",
+      "scope": "LOCAL_EXECUTION_ABORT_NOT_PROVEN_NOOP_OR_NATIVE_REJECTION"
+    }
+  },
+  "modelTests": {
+    "tests": 23,
+    "seededConservationVectors": 64,
+    "scope": "IDEAL_PROOF_ORACLE_NOT_CRYPTOGRAPHIC_ENFORCEMENT"
+  },
+  "totalRealReceiptsGenerated": 5,
+  "receiptsInMainChain": 4,
+  "extraWalletReceiptReason": "isolated peak memory measurement; not another outer/candidate proof",
+  "recordedReceiptBytes": {
+    "wallet": 223418,
+    "adapter": 223650,
+    "batch": 223772,
+    "aggregate": 223930
+  },
+  "sourceSnapshot": {
+    "sourceSha256": {
+      "poc/shielded-design/compat/build.sh": "b93924f67c4ad21fb61215441df43b91bdecaa2ae8b68fc09400c51302a2ee5a",
+      "poc/shielded-design/compat/host.rs": "db9bd642cae550fa584bde77b92c4bcd5f52e1639c961af442d1007fb3c66809",
+      "poc/shielded-design/compat/types.rs": "ceef7832067e069b946631e78950c52ade0625439cf5db16c11130f5eb52ba3a",
+      "poc/shielded-design/compat/wallet-image.rs": "455191e9c0c14d366610a100a7923cd1a751b71cd66fe0f9bcd855f5ee2974fb",
+      "poc/shielded-design/compat/adapter-guest/Cargo.lock": "5efd6b82f6081c8305808b70311dcaa09e27dfddd25c9ff4105e1e8fe8504458",
+      "poc/shielded-design/compat/adapter-guest/Cargo.toml": "8c2674b847069869b32b28de7683bb2cf13737dfa2e601f84068a5d4c22b4180",
+      "poc/shielded-design/compat/wallet-guest/Cargo.lock": "355065c8ca386d634de88e80b62f4b84df42abe98e301047d79b7d6df6a98b91",
+      "poc/shielded-design/compat/wallet-guest/Cargo.toml": "3677852c0da75c6b47ec70278cc95d0986e8501f44ad770da1851295e1ec7048",
+      "poc/shielded-design/compat/adapter-guest/src/main.rs": "30d3ddac5a7f41bee40e12d5fbd2be26b165ef5e7ee901d2cc58acb1566e2c74",
+      "poc/shielded-design/compat/wallet-guest/src/main.rs": "1acb06b62f368e3b48646e2caedea41d66ffe48d5506824978e4e5eb67fdbf8f",
+      "poc/takeover/host/src/main.rs": "fd9649cdd464ad1bf4609eb8b4eebf954b45f31969f9a1639aa2e7c05f74e575",
+      "poc/takeover/host/Cargo.toml": "8a4ac1ca5a88a3ae99373e01f12e6405add38d7db4405cc2df4904d7443fdda5",
+      "poc/takeover/Cargo.lock": "2017aca5d752b9000a8781a4665137aa9d76cd0c8c6cbdc2944b9167ac761695"
+    },
+    "hostSha256": "8aa23d6ebc90c97b2c0a341a05ec3750b29314e7e94acf53c9f423aa352d37c7",
+    "programSha256": {
+      "wallet.raw.elf": "84e550c665bcc2b14be658d60011e26975c3bcfff577c77fd929c212922a4518",
+      "wallet.program.bin": "07506502cafb33575ca0cae25bc884b1dc8b05e0d79dcf0de7f14b746c5b4dab",
+      "adapter.raw.elf": "d5515209fc21177387f080a2380f15e8ecd13cadbb90678a3d9adc12ea818d18",
+      "adapter.program.bin": "cd01fc2a0f45bcabd3dde563ead19a0cc7eb07726bea972a69f9ff6b168994bc"
+    }
+  },
+  "measurementSourceSnapshot": {
+    "sourceSha256": {
+      "poc/shielded-design/compat/build.sh": "b93924f67c4ad21fb61215441df43b91bdecaa2ae8b68fc09400c51302a2ee5a",
+      "poc/shielded-design/compat/host.rs": "2bb11b70cec7159426539ce3e857ab66d3c06950745aa94ebb88ab85322a5c94",
+      "poc/shielded-design/compat/types.rs": "ceef7832067e069b946631e78950c52ade0625439cf5db16c11130f5eb52ba3a",
+      "poc/shielded-design/compat/wallet-image.rs": "455191e9c0c14d366610a100a7923cd1a751b71cd66fe0f9bcd855f5ee2974fb",
+      "poc/shielded-design/compat/adapter-guest/Cargo.lock": "5efd6b82f6081c8305808b70311dcaa09e27dfddd25c9ff4105e1e8fe8504458",
+      "poc/shielded-design/compat/adapter-guest/Cargo.toml": "8c2674b847069869b32b28de7683bb2cf13737dfa2e601f84068a5d4c22b4180",
+      "poc/shielded-design/compat/wallet-guest/Cargo.lock": "355065c8ca386d634de88e80b62f4b84df42abe98e301047d79b7d6df6a98b91",
+      "poc/shielded-design/compat/wallet-guest/Cargo.toml": "3677852c0da75c6b47ec70278cc95d0986e8501f44ad770da1851295e1ec7048",
+      "poc/shielded-design/compat/adapter-guest/src/main.rs": "30d3ddac5a7f41bee40e12d5fbd2be26b165ef5e7ee901d2cc58acb1566e2c74",
+      "poc/shielded-design/compat/wallet-guest/src/main.rs": "1acb06b62f368e3b48646e2caedea41d66ffe48d5506824978e4e5eb67fdbf8f",
+      "poc/takeover/host/src/main.rs": "51b31f0f19b6f42f56d6df1a0224ed7e6d462ad7b6e9b0bc31526cd8dd7fd46c",
+      "poc/takeover/host/Cargo.toml": "8a4ac1ca5a88a3ae99373e01f12e6405add38d7db4405cc2df4904d7443fdda5",
+      "poc/takeover/Cargo.lock": "2017aca5d752b9000a8781a4665137aa9d76cd0c8c6cbdc2944b9167ac761695"
+    },
+    "hostSha256": "983d90fd152bcf708a5c2aaef54b4224273d2e0381f6364c1e041262f5a51c9f"
+  },
+  "proverSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "currentModelSha256": {
+    "model.py": "2798f8b19f2ca4792781e265be0815e0b162d482adb9fb0723d9f8e3ab2f8da9",
+    "run_model.py": "86d5b227b9004d26ab2fdece343e915b6a8c40c3d709e863045f5a1ad88e49a6",
+    "test_model.py": "7ef682c2a2c3a368e43e6dbb7c840c9a2307249540f958c61c6632c2188805ce"
+  },
+  "hardware": {
+    "provingThreads": 4,
+    "cpuQuota": "400000 100000",
+    "memoryLimitBytes": 17179869184,
+    "hostRust": "1.91.0",
+    "guestRust": "1.97.0-dev e638c6cfe",
+    "r0vm": "3.0.3"
+  },
+  "fastChecks": {
+    "legacyPythonCases": 81,
+    "legacyPythonSkipped": 2,
+    "nodeTests": 13,
+    "modelTests": 23,
+    "takeoverRustTests": 7
+  },
+  "referenceArtifactSha256": "63ee0cbad7bac9530a956aca70cfe92daee5c125f5007803487e455a942f9f67",
+  "newTN10Broadcasts": 0,
+  "actualPrivateTN10Payment": false,
+  "effectiveAnonymityEstablished": false,
+  "fundedTrialReady": false,
+  "blockers": [
+    "complete private ownership/membership/nullifier/delivery relation",
+    "enforced invalid-proof classification without arbitrary skip or whole-batch-only halt",
+    "noncircular intent/proof native payload, availability and mass budget",
+    "authenticated funded-deposit credit/recovery and native private payout integration"
+  ],
+  "artifactArchive": {
+    "path": "local-compatibility-artifacts.tar.gz",
+    "bytes": 3194103,
+    "sha256": "3f09e71c29505f5dd0f78eb561fa2c59e4cc6a35476e4f5af2e9484523f54c40",
+    "manifestEntries": 97
+  }
+}
