@@ -148,6 +148,13 @@ still exceeds the declared 32-million-cycle budget. Its one-party test setup is
 not a production ceremony. No completed outer receipt or funded trial follows;
 keep full note construction and native integration gated.
 
+The [accelerated candidate qualification](../../poc/accelerated-bn254/RESULTS.md)
+demonstrates pinned-VM compatibility and full valid-invalid-valid execution at
+117.47M cycles under the separately labelled 128M calibration, preserving proof
+format and validation. It still misses the predeclared 32M practical target;
+there is no outer receipt. A new explicit practical-budget experiment, full
+adversarial qualification and actual one-hour-bounded proving remain prerequisites.
+
 ## Witness boundary, recipient and recovery
 
 The initial design assumes local wallet proving. Raw private note contents,

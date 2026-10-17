@@ -43,3 +43,12 @@ weaken decoding or expand into private notes/TN10 transactions to obtain success
 Single-party research setup assumptions persist unchanged. No additional secret
 witness enters the classifier. Backend qualification is distinct from a complete
 classification receipt and from real accepted-lane/native settlement integration.
+
+## Outcome
+
+The [completed measurement](../../poc/accelerated-bn254/RESULTS.md) qualifies the
+candidate's build/runtime compatibility and observes its bigint2 path in a
+dynamic smoke profile. The full original fixture completes in 117,473,222 cycles
+under the separate calibration cap. Practical 32M execution still fails, so the
+conditional outer proof is not attempted. No budget is redefined retrospectively.
+A future 128M practical phase is a concrete proposed decision, not this result.

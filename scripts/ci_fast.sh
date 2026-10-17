@@ -7,7 +7,7 @@ python3 scripts/check_docs.py
 python3 - <<'PY'
 import ast
 from pathlib import Path
-for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')) + list(Path('poc/shielded-design').rglob('*.py')) + list(Path('poc/groth16-comparison').rglob('*.py')):
+for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')) + list(Path('poc/shielded-design').rglob('*.py')) + list(Path('poc/groth16-comparison').rglob('*.py')) + list(Path('poc/accelerated-bn254').rglob('*.py')):
     ast.parse(file.read_text(), filename=str(file))
 print('Python syntax: OK')
 PY

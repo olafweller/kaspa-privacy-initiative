@@ -12,6 +12,12 @@ real wallet proofs, while in-guest verification exceeds its agreed 32-million-cy
 cap. Which maintained verifier backend and declared practical budget can produce
 the complete outer classification receipt without weakening the statement?
 
+The [concrete accelerated backend](poc/accelerated-bn254/RESULTS.md) is compatible
+and completes the same sequence in 117.47M cycles, measured under a separate 128M
+calibration cap. Should a new practical 128M experiment qualify full adversarial
+execution and attempt one real outer proof within the unchanged one-hour cap?
+The original 32M result and absence of any outer receipt remain unchanged.
+
 The [A0.5 terminal reserve experiment](docs/poc-a0.md) and its retained-key/native-RPC
 adapter test one narrow proof-authorized payout. They do not answer the open
 private-state, independent-recovery or anonymity questions. [Draft A1 PR #22](https://github.com/olafweller/kaspa-privacy-initiative/pull/22) adds local/native-synthetic successor-liability evidence and qualification repairs; full G5 and live G6 remain unclosed/unexecuted respectively. Fixed-fee exit liveness is tracked in [issue #23](https://github.com/olafweller/kaspa-privacy-initiative/issues/23).

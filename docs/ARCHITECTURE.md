@@ -398,3 +398,12 @@ so no outer receipt is produced. Circuit-specific setup and immutable prepared
 parameter pins are explicit new assumptions. Compact wallet proofs are promising
 for publication, but affordable proved classification and actual private/native
 integration remain open.
+
+The [accelerated BN254 qualification](../poc/accelerated-bn254/RESULTS.md), under
+[ADR-0009](adr/0009-accelerated-bn254-qualification.md), reuses those exact proofs
+and finishes the full correct sequence in a separately bounded calibration:
+117,473,222 cycles, 118 segments. Actual pinned-VM/precompile compatibility is
+demonstrated. This still fails the predeclared 32M practical cap; no outer proof
+is attempted. A new classifier identity is pinned before execution. An explicit
+larger practical-budget decision and full-sequence adversarial qualification
+must precede any one-hour outer-proof attempt or private-note expansion.

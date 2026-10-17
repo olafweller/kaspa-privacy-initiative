@@ -282,3 +282,11 @@ bytes and program identity must be pinned. Circuit-specific setup introduces a
 soundness trust assumption; fresh one-party research entropy is not a production
 ceremony. Small real proofs do not establish completed in-guest classification:
 that execution still exceeds its 32-million-cycle research cap.
+
+The [accelerated backend experiment](poc/accelerated-bn254/RESULTS.md) subsequently
+completes the same full sequence at 117.47M cycles in its labelled 128M calibration,
+retaining checked submitted-point decoding before coordinate conversion into
+existing library arithmetic. This introduces a pinned backend implementation and
+a new expected classifier image, not new host validity authority or setup.
+The 32M practical cap still fails; no outer receipt, general replay qualification
+at a larger budget, L1 endpoint or production stability claim follows.
