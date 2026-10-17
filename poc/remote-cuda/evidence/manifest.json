@@ -53,6 +53,10 @@
     "workload.json": {
       "bytes": 1816,
       "sha256": "9f83b3f4c396acf6b55db154af729d1911aa12e1f6f1a7bda7cca1295076ffd7"
+    },
+    "cloud-process-restart.json": {
+      "bytes": 727,
+      "sha256": "ddbb1715f71fc66c5c8637746d02a0620885947a9de7c4f67b07f580e55342ac"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",

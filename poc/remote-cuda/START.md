@@ -32,6 +32,19 @@ creating or reviewing this PR.
    values into a chat, Git, a unit file, command arguments or uploaded artifacts.
    Enable service startup/restart after the real lease is written. A missing
    lease must not be replaced by a guessed Pod identity.
+   Before adding credentials or a real lease, copy `qualify_guard.py` beside the
+   guard and run it as the dedicated service user with a **new** output directory
+   on the intended state filesystem:
+
+   ```bash
+   python3 /opt/kpi-remote-cuda/qualify_guard.py /var/lib/kpi-cuda-guard/recovery-qualification
+   ```
+
+   This uses separate Python processes to reproduce a truncated saved copy,
+   repair it and recheck it after another process restart. All provider responses
+   and the 60-second clock advance are simulated; it does not reboot the host,
+   contact RunPod or prove a live provider stop. Retain `qualification.json` and
+   run the existing control tests on the host to check backup-failure deadlines.
 5. Generate a fresh scoped service token through a secret manager (32+ ASCII
    characters). Inject the same `KPI_GPU_TOKEN` into the Pod and guard; configure
    Codex's scoped credential separately. Keep the RunPod account API key only

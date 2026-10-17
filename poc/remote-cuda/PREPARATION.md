@@ -100,6 +100,25 @@ The owner identified the former A1 role-B Linux VPS as the proposed independent
 guard host. Its availability was reported by the owner, not established through
 a new login or installation. This preparation leaves it unchanged.
 
+After PR #41 merged at `c2037893936508d6d61dcb9ee78aea6ba4515aab`, the
+explicit `cuda-qualification-20261017-pr41` tag started
+[publication run 39067028926](https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39067028926).
+Starting a build is not evidence of successful publication; its final digest and
+pull result must be retained once available.
+
+A new read-only check reached the already configured Contabo host: Python
+3.12.3, systemd 255, synchronized time, approximately 826.7 GB available under
+`/var/lib`, and the existing `kpi-tn10` service active. No guard was installed,
+no existing service was restarted and no trial credentials were inspected.
+Whether this is the owner's intended B-VPS is awaiting confirmation; reachability
+of the TN10 host alone does not establish that identity.
+
+`qualify_guard.py` provides a credential-free, simulated-provider recovery test
+across three separate Python processes on the selected filesystem. Its Cloud
+run passed, as recorded in `evidence/cloud-process-restart.json`; this is not a
+B-VPS run, a host reboot, a live provider stop or a CUDA result. The intended host
+must repeat this qualification and the existing backup-failure deadline tests.
+
 ## Not established
 
 No paid resource, provider key, live RunPod API/proxy request, GPU driver test,

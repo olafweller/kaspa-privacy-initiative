@@ -1,0 +1,18 @@
+{
+  "scope": "SIMULATED_PROVIDER_REAL_FILESYSTEM_AND_SEPARATE_PROCESS_RESTARTS",
+  "host": "f6c7e659f173",
+  "python": "3.12.14",
+  "archiveBytes": 51,
+  "archiveSha256": "094e4e30fb8a7f2110c182ec03f992590249c174efc4eee58e2fe57f3c0b7d25",
+  "truncatedCopyRepaired": true,
+  "restartRecheckedCopyAndRetainedGrace": true,
+  "simulatedProviderStopConfirmed": true,
+  "liveProviderCalled": false,
+  "hostRebooted": false,
+  "gpuUsed": false,
+  "sourceSha256": {
+    "common.py": "841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83",
+    "watchdog.py": "2c8258d16b3c2f4ff73992be0097993cb476c85584f53e27f5590f3172f35475",
+    "qualify_guard.py": "0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc"
+  }
+}
