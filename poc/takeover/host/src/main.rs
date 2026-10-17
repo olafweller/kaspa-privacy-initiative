@@ -11,6 +11,8 @@ type Result<T> = std::result::Result<T, Box<dyn Error>>;
 mod accelerated_bn254;
 #[path = "../../../groth16-comparison/host.rs"]
 mod groth16_comparison;
+#[path = "../../../outer-proof-128m/host.rs"]
+mod outer_proof_128m;
 #[path = "../../../proof-classification/host.rs"]
 mod proof_classification;
 #[path = "../../../shielded-design/compat/host.rs"]
@@ -161,6 +163,9 @@ fn main() -> Result<()> {
     }
     if args.get(1).is_some_and(|s| s == "accelerated-bn254") {
         return accelerated_bn254::run(&args);
+    }
+    if args.get(1).is_some_and(|s| s == "outer-proof-128m") {
+        return outer_proof_128m::run(&args);
     }
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);

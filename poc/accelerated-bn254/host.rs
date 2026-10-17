@@ -5,7 +5,7 @@ use kpi_groth16_comparison::{self as reference, proxy};
 const PRACTICAL: u64 = 32_000_000;
 const CALIBRATION: u64 = 128_000_000;
 
-fn reference_journal(input: &[u8], setup: &Path) -> Result<Vec<u8>> {
+pub(super) fn reference_journal(input: &[u8], setup: &Path) -> Result<Vec<u8>> {
     let (pvk, key) = super::groth16_comparison::load_pvk(setup)?;
     let mut r = proxy::Reader(input);
     let root = r.take(32).map_err(|_| "root")?;
@@ -48,7 +48,7 @@ fn reference_journal(input: &[u8], setup: &Path) -> Result<Vec<u8>> {
     assert_eq!(computed, root);
     Ok(journal)
 }
-fn bounded_env(input: &[u8], budget: u64) -> Result<risc0_zkvm::ExecutorEnv<'static>> {
+pub(super) fn bounded_env(input: &[u8], budget: u64) -> Result<risc0_zkvm::ExecutorEnv<'static>> {
     assert!([PRACTICAL, CALIBRATION].contains(&budget));
     let mut b = ExecutorEnv::builder();
     b.write_slice(&[u32::try_from(input.len())?])
@@ -58,7 +58,7 @@ fn bounded_env(input: &[u8], budget: u64) -> Result<risc0_zkvm::ExecutorEnv<'sta
         .session_limit(Some(budget));
     Ok(b.build()?)
 }
-fn expected_image(programs: &Path) -> Result<risc0_zkvm::sha::Digest> {
+pub(super) fn expected_image(programs: &Path) -> Result<risc0_zkvm::sha::Digest> {
     let identity: Value = serde_json::from_slice(&fs::read(programs.join("identity.json"))?)?;
     let bytes = hex::decode(
         identity["expectedProgramImage"]
@@ -83,6 +83,8 @@ fn profile(a: &[String]) -> Result<()> {
     let label = &a[7];
     let budget = match a[8].as_str() {
         "practical" => PRACTICAL,
+        // New owner-approved phase. Does not revise either historical profile.
+        "approved-128m" => CALIBRATION,
         "calibration" if label == "valid-invalid-valid" => CALIBRATION,
         _ => return Err("undeclared profile".into()),
     };
