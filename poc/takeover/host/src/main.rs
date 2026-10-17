@@ -7,10 +7,10 @@ use serde_json::{json, Value};
 use std::{error::Error, fs, path::Path, time::Instant};
 use vprogs_core_codec::Writer;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
-#[path = "../../../shielded-design/compat/host.rs"]
-mod wallet_compat;
 #[path = "../../../proof-classification/host.rs"]
 mod proof_classification;
+#[path = "../../../shielded-design/compat/host.rs"]
+mod wallet_compat;
 
 fn save(dir: &Path, name: &str, bytes: &[u8]) -> Result<()> {
     use std::io::Write;

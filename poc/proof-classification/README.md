@@ -49,14 +49,13 @@ Use the pinned native/RISC Zero prerequisites from [PR35](../shielded-design/REA
 `RISC0_DEV_MODE` must be absent. Build the host and use new directories throughout:
 
 ```bash
+export CARGO_TARGET_DIR="$PWD/.local/ci-target"
 cargo +1.91.0 build --locked --release --manifest-path poc/takeover/Cargo.toml --bin kpi-takeover-host
 bash poc/proof-classification/build.sh PROGRAMS_NEW
 RISC0_PROVER=ipc RISC0_SERVER_PATH=/path/to/pinned/r0vm RAYON_NUM_THREADS=4 \
   .local/ci-target/release/kpi-takeover-host classifier prepare PROGRAMS_NEW FIXTURE_NEW
 RISC0_PROVER=ipc RISC0_SERVER_PATH=/path/to/pinned/r0vm \
   .local/ci-target/release/kpi-takeover-host classifier profile PROGRAMS_NEW FIXTURE_NEW PROFILE_NEW valid-invalid-valid
-RISC0_PROVER=ipc RISC0_SERVER_PATH=/path/to/pinned/r0vm RAYON_NUM_THREADS=4 \
-  .local/ci-target/release/kpi-takeover-host classifier prove PROGRAMS_NEW FIXTURE_NEW PROOF_NEW
 ```
 
 Use `poc/takeover/measure.py PREFIX COMMAND...` to retain wall time, maximum

@@ -45,7 +45,7 @@ def main():
         assert a == b
     files = {}
     dirs = ['fixture-complete', 'profile-4b-result', 'baseline-result',
-            'malformed-fixtures', 'check-final', 'source-files', 'source-final-files',
+            'malformed-fixtures', 'check-final', 'check-review', 'invalid-unspent-result', 'source-files', 'source-final-files', 'source-review-files',
             'programs-06', 'fixture-01', 'programs-02']
     dirs += [p.name for p in local.glob('result-*') if p.is_dir()]
     for dirname in dirs:
@@ -62,9 +62,10 @@ def main():
     files['current-source/poc/takeover/host/src/main.rs'] = (root / 'poc/takeover/host/src/main.rs').read_bytes()
     assert not any(n.endswith(('.key', '.pem', '.env')) for n in files)
     assert not any(n.endswith('classifier-receipt.bin') for n in files)
-    for snapshot in ['source', 'source-final']:
+    for snapshot in ['source', 'source-final', 'source-review']:
         manifest = read(local / f'{snapshot}.json')
-        directory = 'source-files' if snapshot == 'source' else 'source-final-files'
+        directory = {'source': 'source-files', 'source-final': 'source-final-files',
+                     'source-review': 'source-review-files'}[snapshot]
         for name, expected in manifest['sha256'].items():
             assert digest((local / directory / name).read_bytes()) == expected
     manifest = {n: {'bytes': len(b), 'sha256': digest(b)} for n, b in sorted(files.items())}
@@ -95,11 +96,12 @@ def main():
         'walletGenerationThenMassFailureResources': read(local / 'prepare-final.resources.json'),
         'fixture': fixture, 'profile': profile, 'baseline': baseline,
         'profileResources': read(local / 'profile-4b.resources.json'),
+        'unspentInvalidThenValidControl': read(local / 'invalid-unspent-result/report.json'),
         'initialProfileLimitFailure': read(local / 'profile-main.resources.json'),
         'executionCeilingCycles': 4_294_967_296, 'maxReceiptBytes': 240_000,
         'maxOperationBytes': 250_000, 'negativeExecutionControls': negatives,
         'realReceiptHostMutations': read(local / 'check-final/checks.json'),
-        'sourceSnapshots': [read(local / 'source.json'), read(local / 'source-final.json')],
+        'sourceSnapshots': [read(local / f'{name}.json') for name in ['source', 'source-final', 'source-review']],
         'programSha256': {p.name: digest(p.read_bytes()) for p in (local / 'programs-06').glob('*.program.bin')},
         'hardware': {'cpuQuota': Path('/sys/fs/cgroup/cpu.max').read_text().strip(),
                      'memoryLimitBytes': int(Path('/sys/fs/cgroup/memory.max').read_text()),

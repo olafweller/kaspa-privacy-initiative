@@ -229,6 +229,18 @@ fn check_fixture(fixture: &Path, out: &Path) -> Result<()> {
     let bytes = &a[protocol::INTENT_LEN + 4..];
     let original: Receipt = bincode::deserialize(bytes)?;
     assert_eq!(protocol::classify(&a, image), 0);
+    // Isolate cryptographic invalidity from replay: C is still unconsumed at
+    // this middle operation, and its genuine proof must succeed afterwards.
+    let bad_c = protocol::operation(
+        &c[..protocol::INTENT_LEN],
+        &altered_proof(&c[protocol::INTENT_LEN + 4..])?,
+    );
+    assert_eq!(protocol::classify(&bad_c, image), 3);
+    save(
+        out,
+        "invalid-unspent.bin",
+        &batch(&[a.clone(), bad_c, c.clone()], None).0,
+    )?;
     let baseline: Vec<Vec<u8>> = [a.clone(), a.clone(), c.clone()]
         .into_iter()
         .map(|mut op| {
@@ -317,7 +329,7 @@ fn profile(programs: &Path, fixture: &Path, out: &Path, label: &str) -> Result<(
                 .chunks_exact(41)
                 .map(|r| u64::from_le_bytes(r[33..41].try_into().unwrap()))
                 .collect();
-            let expected = if label == "valid-invalid-valid" {
+            let expected = if ["valid-invalid-valid", "invalid-unspent"].contains(&label) {
                 vec![0, 3, 0]
             } else if label == "replay" {
                 vec![0, 4, 0]

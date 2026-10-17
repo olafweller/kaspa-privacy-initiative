@@ -77,6 +77,13 @@ eight truncations and 14 intent-binding mutations. CI adds three parser/domain
 tests, including 256 deterministic arbitrary-encoding vectors. These checks do
 not constitute a totality proof or independent cryptographic audit.
 
+The main cost fixture's corrupt middle receipt shares intent A with the first
+operation; the explicit outcome 3 is checked before replay handling. An additional
+`invalid-unspent` control isolates that condition: corrupt C appears while its
+intent is still unconsumed, then genuine C succeeds. It also returns `[0, 3, 0]`
+with the unchanged middle balance. Neither invalid-proof processing nor later
+acceptance is inferred merely from a replay rejection.
+
 ## What remains blocked
 
 The practical requirement is still a **proved**, affordable processing path tied
