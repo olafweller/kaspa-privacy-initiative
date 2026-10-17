@@ -41,7 +41,7 @@ proven gas or a production stability/security guarantee.
 | Practical run limit | 32,000,000 cycles / 600 seconds |
 | Practical outcome | Session limit exceeded; first valid classification incomplete |
 | Separate calibration limit | 128,000,000 cycles / 900 seconds |
-| Complete calibration | **117,473,222 cycles**, 118 segments |
+| Complete calibration | **117,473,222 cycles**, 121 segments |
 | Calibration executor wall time | **2.85 seconds** (not proof generation) |
 | Outcomes | **[0, 3, 0]** |
 | Proxy balances | **[600,000,000, 600,000,000, 500,000,000]** integer sompi |

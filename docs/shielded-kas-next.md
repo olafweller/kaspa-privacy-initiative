@@ -33,7 +33,7 @@ BN254 backend/budget question and produce one complete outer receipt before
 expanding to the private note circuit. No new funded TN10 experiment is ready.
 
 The [bounded accelerated backend](../poc/accelerated-bn254/RESULTS.md) now completes
-the real-proof sequence at 117.47M cycles (118 segments) in its separate calibration.
+the real-proof sequence at 117.47M cycles (121 segments) in its separate calibration.
 It is compatible with the existing pinned VM but does not meet the 32M practical
 cap; no outer proof ran. The next concrete budget decision is a declared 128M
 practical experiment, retaining full adversarial controls and the one-hour proof

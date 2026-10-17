@@ -402,7 +402,7 @@ integration remain open.
 The [accelerated BN254 qualification](../poc/accelerated-bn254/RESULTS.md), under
 [ADR-0009](adr/0009-accelerated-bn254-qualification.md), reuses those exact proofs
 and finishes the full correct sequence in a separately bounded calibration:
-117,473,222 cycles, 118 segments. Actual pinned-VM/precompile compatibility is
+117,473,222 cycles, 121 segments. Actual pinned-VM/precompile compatibility is
 demonstrated. This still fails the predeclared 32M practical cap; no outer proof
 is attempted. A new classifier identity is pinned before execution. An explicit
 larger practical-budget decision and full-sequence adversarial qualification
