@@ -103,8 +103,15 @@ not fetch wallet data or setup material.
    never accept it. Final `verify` requires all five receipts. For an interrupted
    run, retain all partial receipts and stage logs; report which comparison was
    incomplete. The guard's durable hash-named archive survives Pod stop and can
-   be copied back if the proxy is already unavailable; extract only through
-   `package.checked_archive`, not unrestricted shell tar extraction.
+   be copied back if the proxy is already unavailable. With the archive and
+   expected hash from the guard's durable `latest-artifact.json`, use:
+
+   ```bash
+   python3 poc/remote-cuda/control.py unpack SAVED.tar.gz EXPECTED_SHA256 .local/gpu-recovered
+   python3 poc/remote-cuda/control.py verify .local/remote-cuda-preparation/dist .local/gpu-recovered
+   ```
+
+   This uses bounded, path-checked extraction rather than unrestricted shell tar.
 6. Inspect the final CPU comparison, every phase's actual GPU process evidence,
    wall/CPU time, sampled RSS/VRAM and build identity. A hash-checked download or
    a Pod-written report alone is not independent verification. Missing CUDA/PID

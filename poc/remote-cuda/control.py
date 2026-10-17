@@ -11,16 +11,21 @@ from common import json_request, lease_check, request, sha
 from package import checked_archive, write
 
 
+def unpack(data, expected_sha, output):
+    assert sha(data) == expected_sha
+    output.mkdir()
+    path = output/'download.tar.gz'
+    write(path, data)
+    for name, content in checked_archive(path, expected_sha).items():
+        write(output/name, content)
+
+
 def fetch(lease, output, token):
     lease_check(lease)
     status = json_request(lease['serviceUrl']+'/v1/status', token)
     data = request(lease['serviceUrl']+'/v1/artifacts', token)
     assert len(data) == status['artifact']['bytes'] and sha(data) == status['artifact']['sha256']
-    output.mkdir()
-    path = output/'download.tar.gz'
-    write(path, data)
-    for name, content in checked_archive(path, sha(data)).items():
-        write(output/name, content)
+    unpack(data, status['artifact']['sha256'], output)
     write(output/'download-status.json', (json.dumps(status, indent=2)+'\n').encode())
     return {'downloaded': True, 'sha256': sha(data), 'cpuVerified': False}
 
@@ -51,6 +56,9 @@ if __name__ == '__main__':
     command = sys.argv[1]
     if command == 'verify':
         print(json.dumps(verify(Path(sys.argv[2]), Path(sys.argv[3])), indent=2))
+    elif command == 'unpack':
+        unpack(Path(sys.argv[2]).read_bytes(), sys.argv[3], Path(sys.argv[4]))
+        print('Checked and unpacked archive; independent CPU verification still required.')
     else:
         lease = json.loads(Path(sys.argv[2]).read_text())
         lease_check(lease)
@@ -62,4 +70,4 @@ if __name__ == '__main__':
         elif command == 'fetch':
             print(json.dumps(fetch(lease, Path(sys.argv[3]), token)))
         else:
-            raise SystemExit('status LEASE | start LEASE | fetch LEASE NEW_DIRECTORY | verify PACKAGE DOWNLOADED')
+            raise SystemExit('status LEASE | start LEASE | fetch LEASE NEW_DIRECTORY | unpack ARCHIVE SHA256 NEW_DIRECTORY | verify PACKAGE DOWNLOADED')

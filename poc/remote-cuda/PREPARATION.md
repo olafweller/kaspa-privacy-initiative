@@ -9,11 +9,12 @@ This records preparation, not a GPU experiment. PR #40 is merged at
   receipts and checks seal/claim mutation rejection. A genuinely sealed but
   substituted segment/lift, with adjusted unsigned metadata, is rejected against
   the pinned CPU expectations. Altering a join seal is rejected as well.
-- Eight Python tests cover lease cost/duration/host constraints, archive traversal
+- Nine Python tests cover lease cost/duration/host constraints, archive traversal
   and duplicate entries, Pod-bound one-time configuration, HTTP authentication,
   guard requirement, duplicate starts, disconnect/restart behavior, independent
   mocked stop/read-back, false stop acknowledgment and real process-group timeout
-  with credential stripping. HTTP/provider simulation is not rental evidence.
+  with credential stripping, and durable terminal backup before stop after
+  controller loss. HTTP/provider simulation is not rental evidence.
 - The public source archive is checked against SHA-256
   `01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc` and
   all 107 original manifest entries before preparing the small fixed workload.

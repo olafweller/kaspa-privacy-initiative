@@ -16,6 +16,7 @@ from common import lease_check
 from package import checked_archive
 from service import App, Job, handler, ThreadingHTTPServer
 from watchdog import Guard
+from common import sha
 import worker
 
 TOKEN = 'unit-test-token-not-a-credential-000000000'
@@ -161,6 +162,37 @@ class Remote(unittest.TestCase):
             guard = Guard(rental, Path(directory), 'test-only', TOKEN,
                           json_call=provider, now=lambda: rental['stopUnix'])
             self.assertFalse(guard.step())
+
+    def test_terminal_backup_survives_controller_loss_before_stop(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rental = lease()
+            clock = [rental['createdUnix']]
+            archive = b'explicitly simulated archive; not proof evidence'
+            stopped = [False]
+            def provider(url, token, method='GET', value=None):
+                if url.endswith('/stop'):
+                    stopped[0] = True
+                    return {}
+                if url.endswith('/v1/configure'):
+                    return {'configured': True, 'leaseDigest': lease_check(rental)}
+                if url.endswith('/v1/guard'):
+                    return {'armed': True, 'leaseDigest': lease_check(rental), 'stopUnix': rental['stopUnix']}
+                if url.endswith('/v1/status'):
+                    return {'state': 'completed', 'leaseDigest': lease_check(rental),
+                            'artifact': {'sha256': sha(archive), 'bytes': len(archive)}}
+                return {'id': rental['podId'], 'createdAt': rental['createdUnix'],
+                    'gpuCount': 1, 'gpuTypeId': 'NVIDIA L40S', 'costPerHr': 1.09,
+                    'volumeInGb': 10, 'memoryInGb': 32, 'vcpuCount': 4,
+                    'desiredStatus': 'EXITED' if stopped[0] else 'RUNNING'}
+            guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider,
+                          bytes_call=lambda *args: archive, now=lambda: clock[0])
+            self.assertFalse(guard.step())
+            self.assertEqual((Path(directory)/(sha(archive)+'.tar.gz')).read_bytes(), archive)
+            self.assertFalse(json.loads((Path(directory)/'latest-artifact.json').read_text())['cpuVerified'])
+            self.assertFalse(stopped[0])
+            clock[0] += 61
+            self.assertTrue(guard.step())
+            self.assertTrue(stopped[0])
 
     def test_timeout_kills_real_descendant_and_strips_credentials(self):
         with tempfile.TemporaryDirectory() as directory:

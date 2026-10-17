@@ -1,0 +1,10 @@
+{
+  "allFiveSealsVerified": true,
+  "developmentMode": false,
+  "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
+  "independentCpuClaimsMatched": true,
+  "referenceArchiveSha256": "01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
+  "scope": "FIVE_PARTIAL_CLAIMS_MATCH_PINNED_PR40_CPU_BASELINE_NOT_FULL_CLASSIFIER",
+  "sealAndClaimMutationsRejected": true,
+  "verified": true
+}
