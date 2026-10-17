@@ -49,6 +49,9 @@ fn export(a: &[String]) -> Result<()> {
         |info, asset| {
             let i = rows.len();
             let bytes = asset.as_bytes()?;
+            // SDK export names are not FileSegmentRef's N.bincode names.
+            // Normalize explicitly instead of assuming an SDK output filename.
+            fs::write(segments.join(format!("{i}.bincode")), &bytes)?;
             let old_bytes = fs::read(old.join(format!("{i}.bincode"))).ok();
             rows.push(json!({"index":i,"po2":info.po2,"userCycles":info.cycles,
                 "userCycleStart":user_cycle,"userCycleEnd":user_cycle+u64::from(info.cycles),

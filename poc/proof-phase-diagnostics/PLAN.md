@@ -67,3 +67,15 @@ cryptographic composition is claimed. Preserve the full succinct receipt as the
 open milestone. Keep the original 32M failure, calibration and one-hour PR #39
 timeout intact. Report measured phase costs separately from any extrapolation,
 including fresh-process initialization and variation between segments.
+
+## Pre-proof integration correction
+
+The first export completed, but a host file lookup failed before its first
+`prove_segment` call or started checkpoint: SDK `AssetRequest::Path` exports
+`segment-N`, whereas the adapter expected `N.bincode`. Preserve that failure.
+Normalize the already exported, hash-checked bytes into explicit adapter paths;
+do not execute the guest again. One explicit guarded `--repair-preflight`
+continuation may proceed, charging file-lookup time to the same segment budget
+and all inspection/build/repair time to the **original** 3,600-second clock.
+No proof API has yet run; no proof/resource failure may be retried through this
+exception. The continuation itself has no second repair path.

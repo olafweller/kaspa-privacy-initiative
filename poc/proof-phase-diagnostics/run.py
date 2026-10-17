@@ -148,18 +148,47 @@ def phase(command, limit, prefix, deadline):
 
 
 def main():
+    repair = sys.argv[1:2] == ['--repair-preflight']
+    if repair:
+        del sys.argv[1]
     host, programs, fixtures, expectations, qualification, old, output = map(
         lambda v: Path(v).resolve(), sys.argv[1:])
     assert 'RISC0_DEV_MODE' not in os.environ
     assert os.environ.get('RISC0_PROVER') == 'ipc'
     assert CPUS <= os.sched_getaffinity(0)
-    output.mkdir()  # Never reuse an attempt directory.
+    if not repair:
+        output.mkdir()  # Never reuse a proof attempt directory.
     started = time.monotonic()
     deadline = started+3600
     assets = output / 'assets'
+    initial_elapsed = 0
+    if repair:
+        initial = json.loads((output / 'summary.json').read_text())
+        assert initial['phases'][0]['status'] == 'completed'
+        failed = initial['phases'][1]
+        assert failed['phase'] == 'segment-24' and failed['exitCode'] == 1
+        assert failed['limitExceeded'] is None
+        assert not (assets / 'segment-24-started.json').exists()
+        assert not list(assets.glob('segment-*.bin'))
+        assert (output / 'segment-24.stderr.log').read_text().strip() == \
+            'Error: Os { code: 2, kind: NotFound, message: "No such file or directory" }'
+        attempt = json.loads((output / 'attempt.json').read_text())
+        initial_elapsed = time.time()-attempt['unixSeconds']
+        assert 0 <= initial_elapsed < 3600
+        deadline -= initial_elapsed  # Original clock, including repair/build time.
+        session = json.loads((assets / 'session.json').read_text())
+        for row in session['segments']:
+            source = assets / 'segments' / f'segment-{row["index"]}'
+            data = source.read_bytes()
+            assert hashlib.sha256(data).hexdigest() == row['assetSha256']
+            with (assets / 'segments' / f'{row["index"]}.bincode').open('xb') as target:
+                target.write(data)
+        output = output / 'preflight-repair'
+        output.mkdir()  # Exactly one explicit repair; not automatic retry logic.
     save(output / 'attempt.json', {
         'scope': 'ONE_AGGREGATE_BOUNDED_DIAGNOSTIC_ATTEMPT',
         'aggregateSecondsLimit': 3600, 'unixSeconds': time.time(),
+        'initialElapsedSecondsIncludingPreflightRepair': initial_elapsed,
         'sourceRevision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
         'hostSha256': hashlib.sha256(host.read_bytes()).hexdigest(),
         'r0vmSha256': hashlib.sha256(Path(os.environ['RISC0_SERVER_PATH']).read_bytes()).hexdigest(),
@@ -176,6 +205,11 @@ def main():
              ('lift-25', 450, ['lift', str(assets), '25']),
              ('join', 600, ['join', str(assets)]),
              ('verify', 120, ['verify', str(assets)])]
+    if repair:
+        tasks = tasks[1:]
+        # Charge the failed file lookup against the same segment phase budget.
+        name, limit, arguments = tasks[0]
+        tasks[0] = (name, limit-initial['phases'][1]['seconds'], arguments)
     results = []
     failed = False
     for name, limit, arguments in tasks:
@@ -190,7 +224,9 @@ def main():
              else output / f'progress-{name}.json', {'phases': results})
         print(f'END {name} status={results[-1]["status"]} seconds={result["seconds"]:.3f}', flush=True)
     save(output / 'summary.json', {'completedAllPhases': all(r['status'] == 'completed' for r in results),
-                                 'seconds': time.monotonic()-started, 'phases': results})
+                                 'seconds': time.monotonic()-started,
+                                 'aggregateSecondsIncludingPreflightRepair': initial_elapsed+time.monotonic()-started,
+                                 'phases': results})
 
 
 if __name__ == '__main__':
