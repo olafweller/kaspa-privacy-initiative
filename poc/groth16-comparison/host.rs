@@ -8,7 +8,7 @@ use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
 use kpi_groth16_comparison::{self as g16, circuit::WalletCircuit, proxy};
 use std::io::{BufReader, BufWriter};
 
-fn load_pvk(setup: &Path) -> Result<(PreparedVerifyingKey<Bn254>, [u8; 32])> {
+pub(super) fn load_pvk(setup: &Path) -> Result<(PreparedVerifyingKey<Bn254>, [u8; 32])> {
     let vk_bytes = fs::read(setup.join("vk.bin"))?;
     let vk = VerifyingKey::<Bn254>::deserialize_compressed(&vk_bytes[..])?;
     let pvk = PreparedVerifyingKey::<Bn254>::deserialize_compressed(

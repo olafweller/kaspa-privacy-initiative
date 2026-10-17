@@ -7,6 +7,8 @@ use serde_json::{json, Value};
 use std::{error::Error, fs, path::Path, time::Instant};
 use vprogs_core_codec::Writer;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
+#[path = "../../../accelerated-bn254/host.rs"]
+mod accelerated_bn254;
 #[path = "../../../groth16-comparison/host.rs"]
 mod groth16_comparison;
 #[path = "../../../proof-classification/host.rs"]
@@ -156,6 +158,9 @@ fn main() -> Result<()> {
     }
     if args.get(1).is_some_and(|s| s == "groth16") {
         return groth16_comparison::run(&args);
+    }
+    if args.get(1).is_some_and(|s| s == "accelerated-bn254") {
+        return accelerated_bn254::run(&args);
     }
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);

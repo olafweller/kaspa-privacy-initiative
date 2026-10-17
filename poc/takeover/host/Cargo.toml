@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 [dependencies]
+kpi-accelerated-bn254 = { path = "../../accelerated-bn254/common" }
 kpi-groth16-comparison = { path = "../../groth16-comparison/common", features = ["circuit", "parallel"] }
 ark-bn254 = "=0.5.0"
 ark-groth16 = "=0.5.0"

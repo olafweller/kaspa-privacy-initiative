@@ -1,0 +1,11 @@
+[package]
+name = "kpi-accelerated-bn254-classifier"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std", "disable-dev-mode"] }
+kpi-accelerated-bn254 = { path = "../common" }
+kpi-groth16-comparison = { path = "../../groth16-comparison/common" }
+kpi-takeover-common = { path = "../../takeover/common" }

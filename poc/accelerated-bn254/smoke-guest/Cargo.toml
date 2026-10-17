@@ -1,0 +1,9 @@
+[package]
+name = "kpi-accelerated-bn254-smoke"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std", "disable-dev-mode"] }
+substrate-bn = { git = "https://github.com/risc0/paritytech-bn", rev = "22108fe8c6ea1ebc1358fc4fd6854a6bf46e3509" }
