@@ -62,6 +62,10 @@ not fetch wallet data or setup material.
    `pod-template.example.json`, replacing placeholders via provider UI/secret
    mechanisms. Expose only `8080/http` through the HTTPS proxy. The process boots
    unconfigured and cannot start proof work without a lease and guard heartbeat.
+   RunPod's NVIDIA runtime must inject `libcuda.so.1`, NVML and `nvidia-smi`;
+   retain `NVIDIA_DRIVER_CAPABILITIES=compute,utility`. CPU-only image validation
+   records the absent driver and cannot start the CUDA prover. Do not substitute
+   a driver stub or count a CPU fallback as GPU qualification.
 2. On the independent VPS, with provider/service secrets supplied securely, run:
 
    ```bash

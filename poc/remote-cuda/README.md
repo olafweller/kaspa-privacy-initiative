@@ -47,7 +47,7 @@ circuit, private witness upload, full-classifier attempt or TN10 transaction.
 | `make_lease.py` | Read actual provider creation time, quote and resources; never create/start a Pod |
 | `control.py` | Short HTTPS start/status/fetch requests; independent CPU verification of downloaded results |
 | `check_cpu_compare.py`, `test_remote.py` | Real CPU receipt checks and explicitly simulated transport/watchdog tests |
-| `check_image.py` | CPU-only image startup, linked libraries, version, authentication and lease binding; no proof job |
+| `check_image.py` | CPU-only service startup, source/binary hashes, driver dependency, authentication and lease binding; no proof job |
 
 One GPU, one attempt; **3,600 seconds aggregate diagnostic time**, including
 first-use CUDA initialization, all five APIs and final comparison. Phase ceilings:

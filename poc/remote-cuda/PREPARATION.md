@@ -38,10 +38,46 @@ Input and claim identities remain those of PR #40. The evidence manifest lists
 the retained files and their hashes. Verification of real CPU receipts does not
 claim that simulated GPU/controller transport produced those receipts.
 
-Build result and exact generated artifact identities are recorded in this file
-and `evidence/` once local image validation completes. The public package can be
-regenerated with the commands in [START.md](START.md); generated `.local` output
-is not a remotely published container image.
+## CUDA build and CPU-only container validation
+
+The image was successfully built with upstream source unchanged, Rust 1.89.0,
+Clang 18.1.3, NVCC 12.8.93, `sm_89` and `cuda,disable-dev-mode`. The build recipe
+is recorded at `40198bcc556bca3761499ed35c766885a611c355`. Four build workers
+were used; this is separate from the later diagnostic process limits. The
+successful builder step took 1,160.6 seconds, including its setup; Cargo reports
+17 minutes 52 seconds. No GPU was present or used.
+
+- Local image ID:
+  `sha256:8d0c70c2e5fdfd3c571a5bb6a96de821b58b3a88333fa5401e750623b82fa712`.
+- Image size: 525,986,230 bytes. This is a local image identity, **not** a
+  published registry digest or an actual rental pull measurement.
+- CUDA prover binary SHA-256:
+  `5ff8e229363d67a473af217b94d5c393d65b21edfbcd7c5a924da0cc0e6634ac`.
+- The image build actually ran the independent five-receipt CPU comparison
+  inside the runtime image; it passed. CPU baseline receipts are not copied into
+  the final service image.
+- `check_image.py` passed actual image startup, Python compilation, source and
+  binary hash checks, HTTP authentication, Pod/lease binding and refusal to
+  start proof work without an independent guard. No proof job was started.
+- All non-driver shared libraries resolve. `libcuda.so.1` is absent on this
+  CPU-only host and must be supplied by the real NVIDIA container runtime.
+  Accordingly, `proverVersion` is null: the CUDA executable could not be launched
+  locally. Source SDK version 3.0.3 is recorded by the successful build. No driver
+  stub or CPU fallback was substituted; GPU execution remains unqualified.
+
+See `evidence/container-smoke.json`, `cuda-build.json`, `cuda-build.log` and
+`build-packages.txt`. The successful build follows two preparation findings:
+the initial GCC build was abandoned after about 40 minutes with a generated
+CPU kernel still compiling; upstream explicitly selects Clang. The Clang build
+with Rust 1.91 then hit two upstream warnings treated as errors. Using the tag's
+declared Rust 1.89 resolved them while preserving the upstream warning policy.
+These were compiler/build attempts, not GPU proof attempts or cryptographic
+rejections. The independent repository CPU verifier remains on Rust 1.91.
+
+The public package and image can be regenerated with [START.md](START.md).
+The image still requires reviewed registry publication and a pull check before
+rental. BuildKit's source/target caches and the local image are preparation
+artifacts, not a connection to a GPU provider.
 
 ## Current Cloud and independent host
 

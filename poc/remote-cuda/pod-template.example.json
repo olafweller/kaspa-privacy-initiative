@@ -10,6 +10,7 @@
   "minCudaVersion": "12.8",
   "ports": ["8080/http"],
   "env": {
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility",
     "KPI_GPU_TOKEN": "INJECT_FROM_PROVIDER_SECRET_STORE_NOT_FROM_THIS_EXAMPLE"
   }
 }

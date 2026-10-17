@@ -6,6 +6,14 @@
       "bytes": 504,
       "sha256": "7098a0ab4aaa451589ad2a4e1c2a3fcddc745e0744b575a1e375155143329488"
     },
+    "build-packages.txt": {
+      "bytes": 7631,
+      "sha256": "1419ec8d6fec1a10336a21264aba47504c5c9cf08ed791030b1a63af3da9d1a3"
+    },
+    "container-smoke.json": {
+      "bytes": 2003,
+      "sha256": "f3783b1081a27469067913b089b121e0e30a39a1a61c8d528763dc20160643f0"
+    },
     "control-tests.log": {
       "bytes": 1563,
       "sha256": "2df18a51adcb3e1461bf36049bf9ab076e2118285b623d521abc431fd04cae31"
@@ -14,13 +22,29 @@
       "bytes": 128,
       "sha256": "e3aa85e3e0653e69ef349791e79b3e23f849b1f7c21565c44fb6defbc580feec"
     },
+    "cuda-build.json": {
+      "bytes": 835,
+      "sha256": "a2596cec1ed713319851917e221301c10e6c7663bfe613f3317d568f8496048f"
+    },
+    "cuda-build.log": {
+      "bytes": 115667,
+      "sha256": "9ed1d3a30bf341da2f072b1c7ebf66c9eb8b57e2c7f1af027507a57155702570"
+    },
     "fast-tests.log": {
-      "bytes": 22065,
-      "sha256": "064e2a4afe663f433b992b503d95308fecbd512e640c8d4d205c19cd13fdda72"
+      "bytes": 22064,
+      "sha256": "5a181c2bce34c547e3be5295d19074a5a22b1227a769b1845e399dbbb6c4b1fe"
+    },
+    "gcc-build-abandoned.log": {
+      "bytes": 137124,
+      "sha256": "2695d334644bb4048861db669ec8225e6422488ad9663dca87482c6ea9b310ac"
     },
     "public-package.tar.gz": {
       "bytes": 9288223,
       "sha256": "323efa23bf042895ddac7b2531a7628c72664849aec26c3f528cadb93d964805"
+    },
+    "rust191-build-failure.log": {
+      "bytes": 137638,
+      "sha256": "cff00807b9670f02240d3ac7da0baa4297880d5f5fa7a09f98e42a071f2b3854"
     },
     "takeover-tests.log": {
       "bytes": 2694,
@@ -30,5 +54,8 @@
       "bytes": 1816,
       "sha256": "9f83b3f4c396acf6b55db154af729d1911aa12e1f6f1a7bda7cca1295076ffd7"
     }
-  }
+  },
+  "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",
+  "successfulImageBuild": true,
+  "gpuExecutionQualified": false
 }

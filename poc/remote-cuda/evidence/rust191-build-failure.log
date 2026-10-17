@@ -1,0 +1,2041 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.94kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.4s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/nvidia/cuda:12.8.1-base-ubuntu24.04@sha256:e711c99333fdfe8ae1e677b4972be6c5021f0128a1d31f775c7e58d88921b6a9
+#4 DONE 0.5s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [builder 1/4] FROM docker.io/nvidia/cuda:12.8.1-base-ubuntu24.04@sha256:e711c99333fdfe8ae1e677b4972be6c5021f0128a1d31f775c7e58d88921b6a9
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 22.86MB 0.1s done
+#7 DONE 0.1s
+
+#8 [builder 2/4] COPY recursion_zkr.zip /opt/build/recursion_zkr.zip
+#8 CACHED
+
+#9 [builder 3/4] COPY build_cuda.sh /opt/build/build_cuda.sh
+#9 DONE 1.7s
+
+#10 [stage-1  2/11] RUN --mount=type=secret,id=system_ca,mode=0444     set -e; if test -f /run/secrets/system_ca; then       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca update;       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca install -y --no-install-recommends python3 ca-certificates util-linux;     else apt-get update && apt-get install -y --no-install-recommends python3 ca-certificates util-linux; fi;     rm -rf /var/lib/apt/lists/*
+#10 1.661 Get:1 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease [1578 B]
+#10 1.678 Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#10 1.805 Get:3 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#10 1.858 Get:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  Packages [1919 kB]
+#10 2.100 Get:5 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#10 2.447 Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1409 kB]
+#10 2.599 Get:7 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#10 2.834 Get:8 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#10 3.297 Get:9 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1549 kB]
+#10 3.363 Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#10 3.615 Get:11 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2122 kB]
+#10 3.962 Get:12 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+#10 4.748 Get:13 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#10 5.436 Get:14 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#10 6.398 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2231 kB]
+#10 7.015 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+#10 7.445 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2168 kB]
+#10 7.617 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1729 kB]
+#10 8.320 Get:19 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#10 8.605 Get:20 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#10 8.717 Get:21 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+#10 8.725 Fetched 35.5 MB in 7s (4897 kB/s)
+#10 8.725 Reading package lists...
+#10 9.561 W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+#10 9.566 Reading package lists...
+#10 ...
+
+#11 [builder 4/4] RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh
+#11 1.227 Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#11 1.310 Get:2 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease [1578 B]
+#11 1.421 Get:3 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  Packages [1919 kB]
+#11 1.498 Get:4 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#11 1.553 Get:5 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2122 kB]
+#11 2.140 Get:6 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#11 2.317 Get:7 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#11 2.616 Get:8 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#11 2.651 Get:9 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1409 kB]
+#11 2.729 Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#11 3.517 Get:11 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1549 kB]
+#11 3.778 Get:12 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+#11 3.855 Get:13 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#11 4.820 Get:14 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#11 5.314 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2168 kB]
+#11 5.781 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1729 kB]
+#11 6.607 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+#11 6.899 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2231 kB]
+#11 7.741 Get:19 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#11 7.843 Get:20 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#11 8.007 Get:21 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+#11 8.018 Fetched 35.5 MB in 7s (5202 kB/s)
+#11 8.018 Reading package lists...
+#11 ...
+
+#10 [stage-1  2/11] RUN --mount=type=secret,id=system_ca,mode=0444     set -e; if test -f /run/secrets/system_ca; then       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca update;       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca install -y --no-install-recommends python3 ca-certificates util-linux;     else apt-get update && apt-get install -y --no-install-recommends python3 ca-certificates util-linux; fi;     rm -rf /var/lib/apt/lists/*
+#10 9.566 Reading package lists...
+#10 10.44 Building dependency tree...
+#10 10.70 Reading state information...
+#10 10.90 The following additional packages will be installed:
+#10 10.90   bsdutils libblkid1 libexpat1 libmount1 libpython3-stdlib
+#10 10.90   libpython3.12-minimal libpython3.12-stdlib libsmartcols1 libuuid1
+#10 10.90   media-types mount netbase python3-minimal python3.12 python3.12-minimal
+#10 10.90   tzdata
+#10 10.90 Suggested packages:
+#10 10.90   cryptsetup-bin nfs-common python3-doc python3-tk python3-venv
+#10 10.90   python3.12-venv python3.12-doc binutils binfmt-support dosfstools kbd
+#10 10.90   util-linux-extra util-linux-locales
+#10 10.90 Recommended packages:
+#10 10.90   bsdextrautils uuid-runtime
+#10 10.96 The following NEW packages will be installed:
+#10 10.96   libexpat1 libpython3-stdlib libpython3.12-minimal libpython3.12-stdlib
+#10 10.96   media-types netbase python3 python3-minimal python3.12 python3.12-minimal
+#10 10.97   tzdata
+#10 10.97 The following packages will be upgraded:
+#10 10.97   bsdutils ca-certificates libblkid1 libmount1 libsmartcols1 libuuid1 mount
+#10 10.97   util-linux
+#10 11.09 8 upgraded, 11 newly installed, 0 to remove and 62 not upgraded.
+#10 11.09 Need to get 8220 kB of archives.
+#10 11.09 After this operation, 25.6 MB of additional disk space will be used.
+#10 11.09 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdutils amd64 1:2.39.3-9ubuntu6.6 [96.4 kB]
+#10 11.41 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 util-linux amd64 2.39.3-9ubuntu6.6 [1128 kB]
+#10 12.32 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mount amd64 2.39.3-9ubuntu6.6 [118 kB]
+#10 12.71 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.17 [839 kB]
+#10 12.98 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.6 [98.9 kB]
+#10 13.31 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.17 [2335 kB]
+#10 13.64 Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-minimal amd64 3.12.3-0ubuntu2.1 [27.4 kB]
+#10 13.77 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 media-types all 10.1.0 [27.5 kB]
+#10 13.96 Get:9 http://archive.ubuntu.com/ubuntu noble/main amd64 netbase all 6.4 [13.1 kB]
+#10 14.23 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 tzdata all 2026e-0ubuntu0.24.04.1 [282 kB]
+#10 14.86 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.17 [2071 kB]
+#10 15.51 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.17 [651 kB]
+#10 16.25 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-stdlib amd64 3.12.3-0ubuntu2.1 [10.1 kB]
+#10 16.37 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3 amd64 3.12.3-0ubuntu2.1 [23.0 kB]
+#10 16.50 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid1 amd64 2.39.3-9ubuntu6.6 [124 kB]
+#10 16.65 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount1 amd64 2.39.3-9ubuntu6.6 [134 kB]
+#10 16.78 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsmartcols1 amd64 2.39.3-9ubuntu6.6 [66.3 kB]
+#10 16.88 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libuuid1 amd64 2.39.3-9ubuntu6.6 [36.6 kB]
+#10 16.93 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 ca-certificates all 20260601~24.04.1 [139 kB]
+#10 17.05 debconf: delaying package configuration, since apt-utils is not installed
+#10 17.08 Fetched 8220 kB in 6s (1377 kB/s)
+#10 17.10 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#10 17.10 Preparing to unpack .../bsdutils_1%3a2.39.3-9ubuntu6.6_amd64.deb ...
+#10 17.10 Unpacking bsdutils (1:2.39.3-9ubuntu6.6) over (1:2.39.3-9ubuntu6.2) ...
+#10 17.12 Setting up bsdutils (1:2.39.3-9ubuntu6.6) ...
+#10 17.14 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#10 17.14 Preparing to unpack .../util-linux_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 17.14 Unpacking util-linux (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 17.18 Setting up util-linux (2.39.3-9ubuntu6.6) ...
+#10 17.29 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#10 17.29 Preparing to unpack .../mount_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 17.30 Unpacking mount (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 17.31 Selecting previously unselected package libpython3.12-minimal:amd64.
+#10 17.31 Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#10 17.31 Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+#10 17.36 Selecting previously unselected package libexpat1:amd64.
+#10 17.36 Preparing to unpack .../libexpat1_2.6.1-2ubuntu0.6_amd64.deb ...
+#10 17.36 Unpacking libexpat1:amd64 (2.6.1-2ubuntu0.6) ...
+#10 17.38 Selecting previously unselected package python3.12-minimal.
+#10 17.38 Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#10 17.38 Unpacking python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#10 17.43 Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+#10 17.43 Setting up libexpat1:amd64 (2.6.1-2ubuntu0.6) ...
+#10 17.43 Setting up python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#10 18.04 Selecting previously unselected package python3-minimal.
+#10 18.04 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5485 files and directories currently installed.)
+#10 18.04 Preparing to unpack .../0-python3-minimal_3.12.3-0ubuntu2.1_amd64.deb ...
+#10 18.04 Unpacking python3-minimal (3.12.3-0ubuntu2.1) ...
+#10 18.05 Selecting previously unselected package media-types.
+#10 18.05 Preparing to unpack .../1-media-types_10.1.0_all.deb ...
+#10 18.05 Unpacking media-types (10.1.0) ...
+#10 18.07 Selecting previously unselected package netbase.
+#10 18.07 Preparing to unpack .../2-netbase_6.4_all.deb ...
+#10 18.07 Unpacking netbase (6.4) ...
+#10 18.09 Selecting previously unselected package tzdata.
+#10 18.09 Preparing to unpack .../3-tzdata_2026e-0ubuntu0.24.04.1_all.deb ...
+#10 18.09 Unpacking tzdata (2026e-0ubuntu0.24.04.1) ...
+#10 18.22 Selecting previously unselected package libpython3.12-stdlib:amd64.
+#10 18.22 Preparing to unpack .../4-libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb ...
+#10 18.22 Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+#10 18.30 Selecting previously unselected package python3.12.
+#10 18.30 Preparing to unpack .../5-python3.12_3.12.3-1ubuntu0.17_amd64.deb ...
+#10 18.30 Unpacking python3.12 (3.12.3-1ubuntu0.17) ...
+#10 18.32 Selecting previously unselected package libpython3-stdlib:amd64.
+#10 18.32 Preparing to unpack .../6-libpython3-stdlib_3.12.3-0ubuntu2.1_amd64.deb ...
+#10 18.32 Unpacking libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+#10 18.33 Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+#10 18.44 Selecting previously unselected package python3.
+#10 18.44 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6455 files and directories currently installed.)
+#10 18.44 Preparing to unpack .../python3_3.12.3-0ubuntu2.1_amd64.deb ...
+#10 18.45 Unpacking python3 (3.12.3-0ubuntu2.1) ...
+#10 18.46 Preparing to unpack .../libblkid1_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 18.46 Unpacking libblkid1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 18.48 Setting up libblkid1:amd64 (2.39.3-9ubuntu6.6) ...
+#10 18.49 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6476 files and directories currently installed.)
+#10 18.49 Preparing to unpack .../libmount1_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 18.50 Unpacking libmount1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 18.51 Setting up libmount1:amd64 (2.39.3-9ubuntu6.6) ...
+#10 18.52 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6476 files and directories currently installed.)
+#10 18.53 Preparing to unpack .../libsmartcols1_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 18.53 Unpacking libsmartcols1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 18.55 Setting up libsmartcols1:amd64 (2.39.3-9ubuntu6.6) ...
+#10 18.56 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6476 files and directories currently installed.)
+#10 18.56 Preparing to unpack .../libuuid1_2.39.3-9ubuntu6.6_amd64.deb ...
+#10 18.57 Unpacking libuuid1:amd64 (2.39.3-9ubuntu6.6) over (2.39.3-9ubuntu6.2) ...
+#10 18.58 Setting up libuuid1:amd64 (2.39.3-9ubuntu6.6) ...
+#10 18.59 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6476 files and directories currently installed.)
+#10 18.60 Preparing to unpack .../ca-certificates_20260601~24.04.1_all.deb ...
+#10 18.60 Unpacking ca-certificates (20260601~24.04.1) over (20240203) ...
+#10 18.66 Setting up media-types (10.1.0) ...
+#10 18.66 Setting up tzdata (2026e-0ubuntu0.24.04.1) ...
+#10 18.71 debconf: unable to initialize frontend: Dialog
+#10 18.71 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#10 18.71 debconf: falling back to frontend: Readline
+#10 18.71 debconf: unable to initialize frontend: Readline
+#10 18.71 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/x86_64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+#10 18.71 debconf: falling back to frontend: Teletype
+#10 18.74 Configuring tzdata
+#10 18.74 ------------------
+#10 18.74 
+#10 18.74 Please select the geographic area in which you live. Subsequent configuration
+#10 18.74 questions will narrow this down by presenting a list of cities, representing
+#10 18.74 the time zones in which they are located.
+#10 18.74 
+#10 18.74   1. Africa      4. Arctic    7. Australia  10. Pacific
+#10 18.74   2. America     5. Asia      8. Europe     11. Etc
+#10 18.74   3. Antarctica  6. Atlantic  9. Indian     12. Legacy
+#10 18.74 Geographic area: 
+#10 18.74 Use of uninitialized value $_[1] in join or string at /usr/share/perl5/Debconf/DbDriver/Stack.pm line 112.
+#10 18.74 
+#10 18.74 Current default time zone: '/UTC'
+#10 18.75 Local time is now:      Sat Oct 17 19:28:52 UTC 2026.
+#10 18.75 Universal Time is now:  Sat Oct 17 19:28:52 UTC 2026.
+#10 18.75 Run 'dpkg-reconfigure tzdata' if you wish to change it.
+#10 18.75 
+#10 18.75 Use of uninitialized value $val in substitution (s///) at /usr/share/perl5/Debconf/Format/822.pm line 84, <GEN6> line 4.
+#10 18.75 Use of uninitialized value $val in concatenation (.) or string at /usr/share/perl5/Debconf/Format/822.pm line 85, <GEN6> line 4.
+#10 18.76 Setting up ca-certificates (20260601~24.04.1) ...
+#10 18.81 debconf: unable to initialize frontend: Dialog
+#10 18.81 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#10 18.81 debconf: falling back to frontend: Readline
+#10 18.81 debconf: unable to initialize frontend: Readline
+#10 18.81 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/x86_64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+#10 18.81 debconf: falling back to frontend: Teletype
+#10 19.73 Updating certificates in /etc/ssl/certs...
+#10 20.32 rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+#10 20.32 14 added, 39 removed; done.
+#10 20.34 Setting up mount (2.39.3-9ubuntu6.6) ...
+#10 20.34 Setting up netbase (6.4) ...
+#10 20.35 Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+#10 20.35 Setting up python3.12 (3.12.3-1ubuntu0.17) ...
+#10 ...
+
+#11 [builder 4/4] RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh
+#11 8.018 Reading package lists...
+#11 8.827 W: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+#11 8.833 Reading package lists...
+#11 9.756 Building dependency tree...
+#11 10.03 Reading state information...
+#11 10.28 The following additional packages will be installed:
+#11 10.28   binutils binutils-common binutils-x86-64-linux-gnu bzip2 clang-18 cmake-data
+#11 10.28   cpp cpp-13 cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu cuda-crt-12-8
+#11 10.28   cuda-nvvm-12-8 dpkg dpkg-dev g++ g++-13 g++-13-x86-64-linux-gnu
+#11 10.28   g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base gcc-13-x86-64-linux-gnu
+#11 10.28   gcc-14-base gcc-x86-64-linux-gnu git-man libarchive13t64 libasan8 libatomic1
+#11 10.28   libbinutils libbrotli1 libbsd0 libbz2-1.0 libc-bin libc-dev-bin libc6
+#11 10.28   libc6-dev libcc1-0 libclang-common-18-dev libclang-cpp18 libclang1-18
+#11 10.28   libcrypt-dev libctf-nobfd0 libctf0 libcurl3t64-gnutls libcurl4t64
+#11 10.28   libdpkg-perl libedit2 liberror-perl libexpat1 libgc1 libgcc-13-dev libgcc-s1
+#11 10.28   libgdbm-compat4t64 libgdbm6t64 libgmp10 libgmpxx4ldbl libgomp1 libgprofng0
+#11 10.28   libgssapi-krb5-2 libhwasan0 libicu74 libisl23 libitm1 libjansson4
+#11 10.28   libjsoncpp25 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libllvm18
+#11 10.28   liblsan0 liblzma5 libmpc3 libmpfr6 libnghttp2-14 libobjc-13-dev libobjc4
+#11 10.28   libperl5.38t64 libpkgconf3 libprotobuf32t64 libprotoc32t64 libpsl5t64
+#11 10.28   libpython3-stdlib libpython3.12-minimal libpython3.12-stdlib libquadmath0
+#11 10.28   librhash0 librtmp1 libsframe1 libssh-4 libssl3t64 libstdc++-13-dev
+#11 10.29   libstdc++6 libtsan2 libubsan1 libuv1t64 libxml2 linux-libc-dev
+#11 10.29   llvm-18-linker-tools lto-disabled-list make media-types netbase openssl
+#11 10.29   patch perl perl-base perl-modules-5.38 pkgconf pkgconf-bin python3-minimal
+#11 10.29   python3.12 python3.12-minimal rpcsvc-proto tzdata xz-utils
+#11 10.29 Suggested packages:
+#11 10.29   binutils-doc gprofng-gui bzip2-doc clang-18-doc wasi-libc cmake-doc
+#11 10.29   cmake-format elpa-cmake-mode ninja-build cpp-doc gcc-13-locales cpp-13-doc
+#11 10.29   debsig-verify debian-keyring g++-multilib g++-13-multilib gcc-13-doc
+#11 10.29   gcc-multilib manpages-dev autoconf automake libtool flex bison gdb gcc-doc
+#11 10.29   gcc-13-multilib gdb-x86-64-linux-gnu gettext-base git-daemon-run
+#11 10.29   | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+#11 10.29   git-mediawiki git-svn lrzip manpages glibc-doc locales libnss-nis
+#11 10.29   libnss-nisplus bzr gdbm-l10n gmp-doc libgmp10-doc libmpfr-dev krb5-doc
+#11 10.29   krb5-user libssl-doc libstdc++-13-doc make-doc ed diffutils-doc perl-doc
+#11 10.29   libterm-readline-gnu-perl | libterm-readline-perl-perl
+#11 10.29   libtap-harness-archive-perl protobuf-mode-el python3-doc python3-tk
+#11 10.29   python3-venv python3.12-venv python3.12-doc binfmt-support
+#11 10.29 Recommended packages:
+#11 10.29   llvm-18-dev fakeroot libalgorithm-merge-perl less ssh-client manpages
+#11 10.29   manpages-dev libc-devtools libclang-rt-18-dev libfile-fcntllock-perl
+#11 10.29   liblocale-gettext-perl krb5-locales publicsuffix libprotobuf-dev
+#11 10.46 The following NEW packages will be installed:
+#11 10.46   binutils binutils-common binutils-x86-64-linux-gnu build-essential bzip2
+#11 10.46   clang clang-18 cmake cmake-data cpp cpp-13 cpp-13-x86-64-linux-gnu
+#11 10.46   cpp-x86-64-linux-gnu cuda-cccl-12-8 cuda-crt-12-8 cuda-cudart-dev-12-8
+#11 10.46   cuda-driver-dev-12-8 cuda-nvcc-12-8 cuda-nvvm-12-8 curl dpkg-dev g++ g++-13
+#11 10.46   g++-13-x86-64-linux-gnu g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base
+#11 10.46   gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu git git-man libarchive13t64
+#11 10.46   libasan8 libatomic1 libbinutils libbrotli1 libbsd0 libc-dev-bin libc6-dev
+#11 10.46   libcc1-0 libclang-common-18-dev libclang-cpp18 libclang1-18 libcrypt-dev
+#11 10.46   libctf-nobfd0 libctf0 libcurl3t64-gnutls libcurl4t64 libdpkg-perl libedit2
+#11 10.46   liberror-perl libexpat1 libgc1 libgcc-13-dev libgdbm-compat4t64 libgdbm6t64
+#11 10.46   libgmp-dev libgmpxx4ldbl libgomp1 libgprofng0 libgssapi-krb5-2 libhwasan0
+#11 10.46   libicu74 libisl23 libitm1 libjansson4 libjsoncpp25 libk5crypto3 libkeyutils1
+#11 10.46   libkrb5-3 libkrb5support0 libllvm18 liblsan0 libmpc3 libmpfr6 libnghttp2-14
+#11 10.46   libobjc-13-dev libobjc4 libperl5.38t64 libpkgconf3 libprotobuf32t64
+#11 10.46   libprotoc32t64 libpsl5t64 libpython3-stdlib libpython3.12-minimal
+#11 10.46   libpython3.12-stdlib libquadmath0 librhash0 librtmp1 libsframe1 libssh-4
+#11 10.46   libssl-dev libstdc++-13-dev libtsan2 libubsan1 libuv1t64 libxml2
+#11 10.46   linux-libc-dev llvm-18-linker-tools lto-disabled-list make media-types
+#11 10.46   netbase patch perl perl-modules-5.38 pkg-config pkgconf pkgconf-bin
+#11 10.46   protobuf-compiler python3 python3-minimal python3.12 python3.12-minimal
+#11 10.46   rpcsvc-proto tzdata xz-utils
+#11 10.46 The following packages will be upgraded:
+#11 10.46   ca-certificates dpkg gcc-14-base libbz2-1.0 libc-bin libc6 libgcc-s1
+#11 10.46   libgmp10 liblzma5 libssl3t64 libstdc++6 openssl perl-base
+#11 10.54 13 upgraded, 118 newly installed, 0 to remove and 57 not upgraded.
+#11 10.54 Need to get 268 MB of archives.
+#11 10.54 After this operation, 1055 MB of additional disk space will be used.
+#11 10.54 Get:1 http://security.ubuntu.com/ubuntu noble-security/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+#11 10.72 Get:2 http://security.ubuntu.com/ubuntu noble-security/main amd64 curl amd64 8.5.0-2ubuntu10.16 [226 kB]
+#11 10.73 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dpkg amd64 1.22.6ubuntu6.6 [1282 kB]
+#11 10.78 Get:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-cccl-12-8 12.8.90-1 [966 kB]
+#11 10.97 Get:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-driver-dev-12-8 12.8.90-1 [29.1 kB]
+#11 11.00 Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.16 [337 kB]
+#11 11.14 Get:7 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-cudart-dev-12-8 12.8.90-1 [1257 kB]
+#11 11.33 Get:8 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-crt-12-8 12.8.93-1 [81.1 kB]
+#11 11.50 Get:9 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-nvvm-12-8 12.8.93-1 [43.8 MB]
+#11 11.67 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl-base amd64 5.38.2-3.2ubuntu0.6 [1826 kB]
+#11 12.29 Get:11 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  cuda-nvcc-12-8 12.8.93-1 [36.0 MB]
+#11 12.57 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-14-base amd64 14.2.0-4ubuntu2~24.04.1 [51.0 kB]
+#11 12.68 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-s1 amd64 14.2.0-4ubuntu2~24.04.1 [78.4 kB]
+#11 12.82 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++6 amd64 14.2.0-4ubuntu2~24.04.1 [792 kB]
+#11 12.90 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6 amd64 2.39-0ubuntu8.9 [3264 kB]
+#11 13.01 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-bin amd64 2.39-0ubuntu8.9 [682 kB]
+#11 13.06 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl3t64 amd64 3.0.13-0ubuntu3.16 [1945 kB]
+#11 13.28 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.17 [839 kB]
+#11 13.65 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.6 [98.9 kB]
+#11 13.81 Get:20 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.17 [2335 kB]
+#11 13.99 Get:21 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-minimal amd64 3.12.3-0ubuntu2.1 [27.4 kB]
+#11 14.12 Get:22 http://archive.ubuntu.com/ubuntu noble/main amd64 media-types all 10.1.0 [27.5 kB]
+#11 14.16 Get:23 http://archive.ubuntu.com/ubuntu noble/main amd64 netbase all 6.4 [13.1 kB]
+#11 14.29 Get:24 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 tzdata all 2026e-0ubuntu0.24.04.1 [282 kB]
+#11 14.43 Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbz2-1.0 amd64 1.0.8-5.1ubuntu0.1 [34.6 kB]
+#11 14.65 Get:26 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblzma5 amd64 5.6.1+really5.4.5-1ubuntu0.3 [127 kB]
+#11 15.10 Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.17 [2071 kB]
+#11 15.64 Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.17 [651 kB]
+#11 15.92 Get:29 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-stdlib amd64 3.12.3-0ubuntu2.1 [10.1 kB]
+#11 16.06 Get:30 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3 amd64 3.12.3-0ubuntu2.1 [23.0 kB]
+#11 16.13 Get:31 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl-modules-5.38 all 5.38.2-3.2ubuntu0.6 [3110 kB]
+#11 16.41 Get:32 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm6t64 amd64 1.23-5.1build1 [34.4 kB]
+#11 16.58 Get:33 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm-compat4t64 amd64 1.23-5.1build1 [6710 B]
+#11 16.72 Get:34 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libperl5.38t64 amd64 5.38.2-3.2ubuntu0.6 [4864 kB]
+#11 17.09 Get:35 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl amd64 5.38.2-3.2ubuntu0.6 [231 kB]
+#11 17.10 Ign:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgmp10 amd64 2:6.3.0+dfsg-2ubuntu6.1
+#11 17.30 Get:37 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 openssl amd64 3.0.13-0ubuntu3.16 [1004 kB]
+#11 18.02 Get:38 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 ca-certificates all 20260601~24.04.1 [139 kB]
+#11 18.13 Get:39 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbsd0 amd64 0.12.1-1build1.1 [41.2 kB]
+#11 18.43 Get:40 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5support0 amd64 1.20.1-6ubuntu2.10 [34.9 kB]
+#11 18.68 Get:41 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libk5crypto3 amd64 1.20.1-6ubuntu2.10 [81.9 kB]
+#11 19.01 Get:42 http://archive.ubuntu.com/ubuntu noble/main amd64 libkeyutils1 amd64 1.6.3-3build1 [9490 B]
+#11 19.06 Get:43 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5-3 amd64 1.20.1-6ubuntu2.10 [348 kB]
+#11 ...
+
+#10 [stage-1  2/11] RUN --mount=type=secret,id=system_ca,mode=0444     set -e; if test -f /run/secrets/system_ca; then       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca update;       apt-get -o Acquire::https::CaInfo=/run/secrets/system_ca install -y --no-install-recommends python3 ca-certificates util-linux;     else apt-get update && apt-get install -y --no-install-recommends python3 ca-certificates util-linux; fi;     rm -rf /var/lib/apt/lists/*
+#10 21.08 Setting up libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+#10 21.08 Setting up python3 (3.12.3-0ubuntu2.1) ...
+#10 21.09 running python rtupdate hooks for python3.12...
+#10 21.09 running python post-rtupdate hooks for python3.12...
+#10 21.16 Processing triggers for libc-bin (2.39-0ubuntu8.3) ...
+#10 21.17 Processing triggers for ca-certificates (20260601~24.04.1) ...
+#10 21.18 Updating certificates in /etc/ssl/certs...
+#10 21.56 0 added, 0 removed; done.
+#10 21.56 Running hooks in /etc/ca-certificates/update.d...
+#10 21.56 done.
+#10 DONE 21.6s
+
+#11 [builder 4/4] RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh
+#11 19.31 Get:44 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgssapi-krb5-2 amd64 1.20.1-6ubuntu2.10 [143 kB]
+#11 19.79 Get:45 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libicu74 amd64 74.2-1ubuntu3.1 [10.9 MB]
+#11 20.90 Get:46 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2 amd64 2.9.14+dfsg-1.3ubuntu3.10 [764 kB]
+#11 21.54 Get:47 http://archive.ubuntu.com/ubuntu noble/main amd64 libedit2 amd64 3.1-20230828-1build1 [97.6 kB]
+#11 21.84 Get:48 http://archive.ubuntu.com/ubuntu noble/main amd64 libjansson4 amd64 2.14-2build2 [32.8 kB]
+#11 22.21 Get:49 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnghttp2-14 amd64 1.59.0-1ubuntu0.4 [74.6 kB]
+#11 22.63 Get:50 http://archive.ubuntu.com/ubuntu noble/main amd64 libpsl5t64 amd64 0.21.2-1.1build1 [57.1 kB]
+#11 22.82 Get:51 http://archive.ubuntu.com/ubuntu noble/main amd64 libuv1t64 amd64 1.48.0-1.1build1 [97.3 kB]
+#11 23.13 Get:52 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 xz-utils amd64 5.6.1+really5.4.5-1ubuntu0.3 [267 kB]
+#11 23.81 Get:53 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-common amd64 2.42-4ubuntu2.10 [240 kB]
+#11 24.34 Get:54 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsframe1 amd64 2.42-4ubuntu2.10 [15.7 kB]
+#11 24.60 Get:55 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbinutils amd64 2.42-4ubuntu2.10 [577 kB]
+#11 25.50 Get:56 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf-nobfd0 amd64 2.42-4ubuntu2.10 [98.0 kB]
+#11 26.05 Get:57 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf0 amd64 2.42-4ubuntu2.10 [94.5 kB]
+#11 26.53 Get:58 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgprofng0 amd64 2.42-4ubuntu2.10 [849 kB]
+#11 27.22 Ign:59 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.42-4ubuntu2.10
+#11 27.33 Get:60 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils amd64 2.42-4ubuntu2.10 [18.2 kB]
+#11 27.55 Get:61 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-dev-bin amd64 2.39-0ubuntu8.9 [20.4 kB]
+#11 27.75 Get:62 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-libc-dev amd64 6.8.0-147.147 [1595 kB]
+#11 28.25 Get:63 http://archive.ubuntu.com/ubuntu noble/main amd64 libcrypt-dev amd64 1:4.4.36-4build1 [112 kB]
+#11 28.48 Get:64 http://archive.ubuntu.com/ubuntu noble/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu7 [67.4 kB]
+#11 28.81 Get:65 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6-dev amd64 2.39-0ubuntu8.9 [2126 kB]
+#11 29.11 Get:66 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-base amd64 13.3.0-6ubuntu2~24.04.1 [51.6 kB]
+#11 29.21 Get:67 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libisl23 amd64 0.26-3build1.1 [680 kB]
+#11 29.32 Get:68 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpfr6 amd64 4.2.1-1build1.1 [353 kB]
+#11 29.62 Get:69 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpc3 amd64 1.3.1-1build1.1 [54.6 kB]
+#11 30.00 Get:70 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [10.7 MB]
+#11 30.97 Get:71 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13 amd64 13.3.0-6ubuntu2~24.04.1 [1042 B]
+#11 31.08 Get:72 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [5326 B]
+#11 31.21 Get:73 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp amd64 4:13.2.0-7ubuntu1 [22.4 kB]
+#11 31.31 Get:74 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcc1-0 amd64 14.2.0-4ubuntu2~24.04.1 [48.0 kB]
+#11 31.45 Get:75 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgomp1 amd64 14.2.0-4ubuntu2~24.04.1 [148 kB]
+#11 31.58 Get:76 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libitm1 amd64 14.2.0-4ubuntu2~24.04.1 [29.7 kB]
+#11 31.70 Get:77 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libatomic1 amd64 14.2.0-4ubuntu2~24.04.1 [10.5 kB]
+#11 31.91 Get:78 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libasan8 amd64 14.2.0-4ubuntu2~24.04.1 [3027 kB]
+#11 32.69 Get:79 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblsan0 amd64 14.2.0-4ubuntu2~24.04.1 [1322 kB]
+#11 32.90 Get:80 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtsan2 amd64 14.2.0-4ubuntu2~24.04.1 [2772 kB]
+#11 33.31 Get:81 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libubsan1 amd64 14.2.0-4ubuntu2~24.04.1 [1184 kB]
+#11 33.96 Get:82 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libhwasan0 amd64 14.2.0-4ubuntu2~24.04.1 [1641 kB]
+#11 34.17 Get:83 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libquadmath0 amd64 14.2.0-4ubuntu2~24.04.1 [153 kB]
+#11 34.63 Get:84 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2681 kB]
+#11 34.84 Get:85 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [21.1 MB]
+#11 35.14 Get:86 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13 amd64 13.3.0-6ubuntu2~24.04.1 [494 kB]
+#11 35.36 Get:87 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [1212 B]
+#11 35.40 Get:88 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc amd64 4:13.2.0-7ubuntu1 [5018 B]
+#11 35.61 Get:89 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2420 kB]
+#11 36.43 Ign:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1
+#11 36.52 Get:91 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13 amd64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+#11 36.59 Get:92 http://archive.ubuntu.com/ubuntu noble/main amd64 g++-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [964 B]
+#11 36.70 Get:93 http://archive.ubuntu.com/ubuntu noble/main amd64 g++ amd64 4:13.2.0-7ubuntu1 [1100 B]
+#11 36.78 Get:94 http://archive.ubuntu.com/ubuntu noble/main amd64 make amd64 4.3-4.1build2 [180 kB]
+#11 36.99 Get:95 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdpkg-perl all 1.22.6ubuntu6.6 [268 kB]
+#11 37.68 Get:96 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 bzip2 amd64 1.0.8-5.1ubuntu0.1 [34.6 kB]
+#11 37.93 Get:97 http://archive.ubuntu.com/ubuntu noble/main amd64 patch amd64 2.7.6-7build3 [104 kB]
+#11 38.19 Get:98 http://archive.ubuntu.com/ubuntu noble/main amd64 lto-disabled-list all 47 [12.4 kB]
+#11 38.30 Get:99 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dpkg-dev all 1.22.6ubuntu6.6 [1074 kB]
+#11 38.37 Get:100 http://archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+#11 38.49 Get:101 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libllvm18 amd64 1:18.1.3-1ubuntu1 [27.5 MB]
+#11 39.45 Get:102 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libclang-cpp18 amd64 1:18.1.3-1ubuntu1 [13.5 MB]
+#11 39.73 Get:103 http://archive.ubuntu.com/ubuntu noble/main amd64 libgc1 amd64 1:8.2.6-1build1 [90.3 kB]
+#11 40.03 Get:104 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 libobjc4 amd64 14.2.0-4ubuntu2~24.04.1 [47.1 kB]
+#11 40.25 Get:105 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 libobjc-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [194 kB]
+#11 40.48 Get:106 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 libclang-common-18-dev amd64 1:18.1.3-1ubuntu1 [736 kB]
+#11 41.21 Get:107 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 llvm-18-linker-tools amd64 1:18.1.3-1ubuntu1 [1314 kB]
+#11 41.46 Get:108 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libclang1-18 amd64 1:18.1.3-1ubuntu1 [7803 kB]
+#11 42.56 Get:109 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 clang-18 amd64 1:18.1.3-1ubuntu1 [80.0 kB]
+#11 42.77 Get:110 http://archive.ubuntu.com/ubuntu noble/universe amd64 clang amd64 1:18.0-59~exp2 [5846 B]
+#11 42.89 Get:111 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libarchive13t64 amd64 3.7.2-2ubuntu0.9 [383 kB]
+#11 43.10 Get:112 http://archive.ubuntu.com/ubuntu noble/main amd64 libbrotli1 amd64 1.1.0-2build2 [331 kB]
+#11 43.67 Get:113 http://archive.ubuntu.com/ubuntu noble/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build7 [56.3 kB]
+#11 43.85 Get:114 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-4 amd64 0.10.6-2ubuntu0.5 [191 kB]
+#11 44.20 Get:115 http://archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+#11 44.59 Get:116 http://archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+#11 44.83 Get:117 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+#11 45.87 Get:118 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+#11 47.10 Get:119 http://archive.ubuntu.com/ubuntu noble/main amd64 liberror-perl all 0.17029-2 [25.6 kB]
+#11 47.19 Get:120 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 git-man all 1:2.43.0-1ubuntu7.3 [1100 kB]
+#11 47.55 Get:121 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 git amd64 1:2.43.0-1ubuntu7.3 [3680 kB]
+#11 47.80 Get:122 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgmpxx4ldbl amd64 2:6.3.0+dfsg-2ubuntu6.1 [9888 B]
+#11 48.00 Get:123 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgmp-dev amd64 2:6.3.0+dfsg-2ubuntu6.1 [340 kB]
+#11 48.65 Get:124 http://archive.ubuntu.com/ubuntu noble/main amd64 libpkgconf3 amd64 1.8.1-2build1 [30.7 kB]
+#11 48.98 Get:125 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libprotobuf32t64 amd64 3.21.12-8.2ubuntu0.3 [923 kB]
+#11 49.40 Get:126 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libprotoc32t64 amd64 3.21.12-8.2ubuntu0.3 [683 kB]
+#11 50.13 Get:127 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl-dev amd64 3.0.13-0ubuntu3.16 [2409 kB]
+#11 50.36 Get:128 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf-bin amd64 1.8.1-2build1 [20.7 kB]
+#11 50.50 Get:129 http://archive.ubuntu.com/ubuntu noble/main amd64 pkgconf amd64 1.8.1-2build1 [16.8 kB]
+#11 50.73 Get:130 http://archive.ubuntu.com/ubuntu noble/main amd64 pkg-config amd64 1.8.1-2build1 [7264 B]
+#11 50.95 Get:131 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 protobuf-compiler amd64 3.21.12-8.2ubuntu0.3 [29.0 kB]
+#11 51.16 Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgmp10 amd64 2:6.3.0+dfsg-2ubuntu6.1 [253 kB]
+#11 51.38 Get:59 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.42-4ubuntu2.10 [2463 kB]
+#11 51.66 Get:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [12.2 MB]
+#11 52.15 debconf: delaying package configuration, since apt-utils is not installed
+#11 52.18 Fetched 268 MB in 42s (6453 kB/s)
+#11 52.19 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.19 Preparing to unpack .../dpkg_1.22.6ubuntu6.6_amd64.deb ...
+#11 52.20 Unpacking dpkg (1.22.6ubuntu6.6) over (1.22.6ubuntu6.1) ...
+#11 52.29 Setting up dpkg (1.22.6ubuntu6.6) ...
+#11 52.39 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.39 Preparing to unpack .../perl-base_5.38.2-3.2ubuntu0.6_amd64.deb ...
+#11 52.40 Unpacking perl-base (5.38.2-3.2ubuntu0.6) over (5.38.2-3.2build2) ...
+#11 52.60 Setting up perl-base (5.38.2-3.2ubuntu0.6) ...
+#11 52.62 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.62 Preparing to unpack .../gcc-14-base_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 52.62 Unpacking gcc-14-base:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...
+#11 52.63 Setting up gcc-14-base:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 52.65 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.65 Preparing to unpack .../libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 52.65 Unpacking libgcc-s1:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...
+#11 52.66 Setting up libgcc-s1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 52.68 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.68 Preparing to unpack .../libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 52.69 Unpacking libstdc++6:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...
+#11 52.71 Setting up libstdc++6:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 52.73 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5166 files and directories currently installed.)
+#11 52.73 Preparing to unpack .../libc6_2.39-0ubuntu8.9_amd64.deb ...
+#11 52.80 Unpacking libc6:amd64 (2.39-0ubuntu8.9) over (2.39-0ubuntu8.3) ...
+#11 52.88 Setting up libc6:amd64 (2.39-0ubuntu8.9) ...
+#11 53.95 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5165 files and directories currently installed.)
+#11 53.95 Preparing to unpack .../libc-bin_2.39-0ubuntu8.9_amd64.deb ...
+#11 53.95 Unpacking libc-bin (2.39-0ubuntu8.9) over (2.39-0ubuntu8.3) ...
+#11 53.98 Setting up libc-bin (2.39-0ubuntu8.9) ...
+#11 54.00 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5164 files and directories currently installed.)
+#11 54.00 Preparing to unpack .../libssl3t64_3.0.13-0ubuntu3.16_amd64.deb ...
+#11 54.00 Unpacking libssl3t64:amd64 (3.0.13-0ubuntu3.16) over (3.0.13-0ubuntu3.5) ...
+#11 54.05 Setting up libssl3t64:amd64 (3.0.13-0ubuntu3.16) ...
+#11 54.06 Selecting previously unselected package libpython3.12-minimal:amd64.
+#11 54.06 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5164 files and directories currently installed.)
+#11 54.06 Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#11 54.07 Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+#11 54.12 Selecting previously unselected package libexpat1:amd64.
+#11 54.12 Preparing to unpack .../libexpat1_2.6.1-2ubuntu0.6_amd64.deb ...
+#11 54.12 Unpacking libexpat1:amd64 (2.6.1-2ubuntu0.6) ...
+#11 54.14 Selecting previously unselected package python3.12-minimal.
+#11 54.14 Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#11 54.14 Unpacking python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#11 54.19 Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+#11 54.19 Setting up libexpat1:amd64 (2.6.1-2ubuntu0.6) ...
+#11 54.19 Setting up python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#11 54.83 Selecting previously unselected package python3-minimal.
+#11 54.83 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5483 files and directories currently installed.)
+#11 54.83 Preparing to unpack .../python3-minimal_3.12.3-0ubuntu2.1_amd64.deb ...
+#11 54.83 Unpacking python3-minimal (3.12.3-0ubuntu2.1) ...
+#11 54.85 Selecting previously unselected package media-types.
+#11 54.85 Preparing to unpack .../media-types_10.1.0_all.deb ...
+#11 54.85 Unpacking media-types (10.1.0) ...
+#11 54.87 Selecting previously unselected package netbase.
+#11 54.87 Preparing to unpack .../archives/netbase_6.4_all.deb ...
+#11 54.87 Unpacking netbase (6.4) ...
+#11 54.88 Selecting previously unselected package tzdata.
+#11 54.88 Preparing to unpack .../tzdata_2026e-0ubuntu0.24.04.1_all.deb ...
+#11 54.88 Unpacking tzdata (2026e-0ubuntu0.24.04.1) ...
+#11 55.01 Preparing to unpack .../libbz2-1.0_1.0.8-5.1ubuntu0.1_amd64.deb ...
+#11 55.01 Unpacking libbz2-1.0:amd64 (1.0.8-5.1ubuntu0.1) over (1.0.8-5.1build0.1) ...
+#11 55.03 Setting up libbz2-1.0:amd64 (1.0.8-5.1ubuntu0.1) ...
+#11 55.05 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6046 files and directories currently installed.)
+#11 55.05 Preparing to unpack .../liblzma5_5.6.1+really5.4.5-1ubuntu0.3_amd64.deb ...
+#11 55.05 Unpacking liblzma5:amd64 (5.6.1+really5.4.5-1ubuntu0.3) over (5.6.1+really5.4.5-1build0.1) ...
+#11 55.07 Setting up liblzma5:amd64 (5.6.1+really5.4.5-1ubuntu0.3) ...
+#11 55.08 Selecting previously unselected package libpython3.12-stdlib:amd64.
+#11 55.08 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6046 files and directories currently installed.)
+#11 55.08 Preparing to unpack .../libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb ...
+#11 55.09 Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+#11 55.20 Selecting previously unselected package python3.12.
+#11 55.20 Preparing to unpack .../python3.12_3.12.3-1ubuntu0.17_amd64.deb ...
+#11 55.20 Unpacking python3.12 (3.12.3-1ubuntu0.17) ...
+#11 55.22 Selecting previously unselected package libpython3-stdlib:amd64.
+#11 55.22 Preparing to unpack .../libpython3-stdlib_3.12.3-0ubuntu2.1_amd64.deb ...
+#11 55.22 Unpacking libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+#11 55.23 Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+#11 55.35 Selecting previously unselected package python3.
+#11 55.35 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6453 files and directories currently installed.)
+#11 55.35 Preparing to unpack .../0-python3_3.12.3-0ubuntu2.1_amd64.deb ...
+#11 55.35 Unpacking python3 (3.12.3-0ubuntu2.1) ...
+#11 55.37 Selecting previously unselected package perl-modules-5.38.
+#11 55.37 Preparing to unpack .../1-perl-modules-5.38_5.38.2-3.2ubuntu0.6_all.deb ...
+#11 55.37 Unpacking perl-modules-5.38 (5.38.2-3.2ubuntu0.6) ...
+#11 55.71 Selecting previously unselected package libgdbm6t64:amd64.
+#11 55.71 Preparing to unpack .../2-libgdbm6t64_1.23-5.1build1_amd64.deb ...
+#11 55.71 Unpacking libgdbm6t64:amd64 (1.23-5.1build1) ...
+#11 55.72 Selecting previously unselected package libgdbm-compat4t64:amd64.
+#11 55.72 Preparing to unpack .../3-libgdbm-compat4t64_1.23-5.1build1_amd64.deb ...
+#11 55.72 Unpacking libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+#11 55.73 Selecting previously unselected package libperl5.38t64:amd64.
+#11 55.73 Preparing to unpack .../4-libperl5.38t64_5.38.2-3.2ubuntu0.6_amd64.deb ...
+#11 55.73 Unpacking libperl5.38t64:amd64 (5.38.2-3.2ubuntu0.6) ...
+#11 55.92 Selecting previously unselected package perl.
+#11 55.92 Preparing to unpack .../5-perl_5.38.2-3.2ubuntu0.6_amd64.deb ...
+#11 55.93 Unpacking perl (5.38.2-3.2ubuntu0.6) ...
+#11 55.95 Preparing to unpack .../6-libgmp10_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb ...
+#11 55.95 Unpacking libgmp10:amd64 (2:6.3.0+dfsg-2ubuntu6.1) over (2:6.3.0+dfsg-2ubuntu6) ...
+#11 55.97 Setting up libgmp10:amd64 (2:6.3.0+dfsg-2ubuntu6.1) ...
+#11 55.99 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8486 files and directories currently installed.)
+#11 56.00 Preparing to unpack .../000-openssl_3.0.13-0ubuntu3.16_amd64.deb ...
+#11 56.00 Unpacking openssl (3.0.13-0ubuntu3.16) over (3.0.13-0ubuntu3.5) ...
+#11 56.02 Preparing to unpack .../001-ca-certificates_20260601~24.04.1_all.deb ...
+#11 56.03 Unpacking ca-certificates (20260601~24.04.1) over (20240203) ...
+#11 56.06 Selecting previously unselected package libbsd0:amd64.
+#11 56.06 Preparing to unpack .../002-libbsd0_0.12.1-1build1.1_amd64.deb ...
+#11 56.07 Unpacking libbsd0:amd64 (0.12.1-1build1.1) ...
+#11 56.08 Selecting previously unselected package libkrb5support0:amd64.
+#11 56.08 Preparing to unpack .../003-libkrb5support0_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 56.08 Unpacking libkrb5support0:amd64 (1.20.1-6ubuntu2.10) ...
+#11 56.09 Selecting previously unselected package libk5crypto3:amd64.
+#11 56.09 Preparing to unpack .../004-libk5crypto3_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 56.09 Unpacking libk5crypto3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 56.11 Selecting previously unselected package libkeyutils1:amd64.
+#11 56.11 Preparing to unpack .../005-libkeyutils1_1.6.3-3build1_amd64.deb ...
+#11 56.11 Unpacking libkeyutils1:amd64 (1.6.3-3build1) ...
+#11 56.12 Selecting previously unselected package libkrb5-3:amd64.
+#11 56.12 Preparing to unpack .../006-libkrb5-3_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 56.12 Unpacking libkrb5-3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 56.14 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#11 56.14 Preparing to unpack .../007-libgssapi-krb5-2_1.20.1-6ubuntu2.10_amd64.deb ...
+#11 56.15 Unpacking libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) ...
+#11 56.16 Selecting previously unselected package libicu74:amd64.
+#11 56.16 Preparing to unpack .../008-libicu74_74.2-1ubuntu3.1_amd64.deb ...
+#11 56.16 Unpacking libicu74:amd64 (74.2-1ubuntu3.1) ...
+#11 56.34 Selecting previously unselected package libxml2:amd64.
+#11 56.34 Preparing to unpack .../009-libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb ...
+#11 56.34 Unpacking libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+#11 56.36 Selecting previously unselected package libedit2:amd64.
+#11 56.36 Preparing to unpack .../010-libedit2_3.1-20230828-1build1_amd64.deb ...
+#11 56.37 Unpacking libedit2:amd64 (3.1-20230828-1build1) ...
+#11 56.38 Selecting previously unselected package libjansson4:amd64.
+#11 56.38 Preparing to unpack .../011-libjansson4_2.14-2build2_amd64.deb ...
+#11 56.38 Unpacking libjansson4:amd64 (2.14-2build2) ...
+#11 56.39 Selecting previously unselected package libnghttp2-14:amd64.
+#11 56.39 Preparing to unpack .../012-libnghttp2-14_1.59.0-1ubuntu0.4_amd64.deb ...
+#11 56.39 Unpacking libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#11 56.41 Selecting previously unselected package libpsl5t64:amd64.
+#11 56.41 Preparing to unpack .../013-libpsl5t64_0.21.2-1.1build1_amd64.deb ...
+#11 56.41 Unpacking libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#11 56.42 Selecting previously unselected package libuv1t64:amd64.
+#11 56.42 Preparing to unpack .../014-libuv1t64_1.48.0-1.1build1_amd64.deb ...
+#11 56.42 Unpacking libuv1t64:amd64 (1.48.0-1.1build1) ...
+#11 56.43 Selecting previously unselected package xz-utils.
+#11 56.43 Preparing to unpack .../015-xz-utils_5.6.1+really5.4.5-1ubuntu0.3_amd64.deb ...
+#11 56.43 Unpacking xz-utils (5.6.1+really5.4.5-1ubuntu0.3) ...
+#11 56.45 Selecting previously unselected package binutils-common:amd64.
+#11 56.45 Preparing to unpack .../016-binutils-common_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.45 Unpacking binutils-common:amd64 (2.42-4ubuntu2.10) ...
+#11 56.47 Selecting previously unselected package libsframe1:amd64.
+#11 56.47 Preparing to unpack .../017-libsframe1_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.47 Unpacking libsframe1:amd64 (2.42-4ubuntu2.10) ...
+#11 56.59 Selecting previously unselected package libbinutils:amd64.
+#11 56.59 Preparing to unpack .../018-libbinutils_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.59 Unpacking libbinutils:amd64 (2.42-4ubuntu2.10) ...
+#11 56.61 Selecting previously unselected package libctf-nobfd0:amd64.
+#11 56.61 Preparing to unpack .../019-libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.61 Unpacking libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+#11 56.62 Selecting previously unselected package libctf0:amd64.
+#11 56.62 Preparing to unpack .../020-libctf0_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.62 Unpacking libctf0:amd64 (2.42-4ubuntu2.10) ...
+#11 56.63 Selecting previously unselected package libgprofng0:amd64.
+#11 56.63 Preparing to unpack .../021-libgprofng0_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.64 Unpacking libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+#11 56.66 Selecting previously unselected package binutils-x86-64-linux-gnu.
+#11 56.66 Preparing to unpack .../022-binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.66 Unpacking binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+#11 56.75 Selecting previously unselected package binutils.
+#11 56.75 Preparing to unpack .../023-binutils_2.42-4ubuntu2.10_amd64.deb ...
+#11 56.75 Unpacking binutils (2.42-4ubuntu2.10) ...
+#11 56.76 Selecting previously unselected package libc-dev-bin.
+#11 56.76 Preparing to unpack .../024-libc-dev-bin_2.39-0ubuntu8.9_amd64.deb ...
+#11 56.77 Unpacking libc-dev-bin (2.39-0ubuntu8.9) ...
+#11 56.78 Selecting previously unselected package linux-libc-dev:amd64.
+#11 56.78 Preparing to unpack .../025-linux-libc-dev_6.8.0-147.147_amd64.deb ...
+#11 56.78 Unpacking linux-libc-dev:amd64 (6.8.0-147.147) ...
+#11 56.94 Selecting previously unselected package libcrypt-dev:amd64.
+#11 56.94 Preparing to unpack .../026-libcrypt-dev_1%3a4.4.36-4build1_amd64.deb ...
+#11 56.94 Unpacking libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+#11 56.96 Selecting previously unselected package rpcsvc-proto.
+#11 56.96 Preparing to unpack .../027-rpcsvc-proto_1.4.2-0ubuntu7_amd64.deb ...
+#11 56.96 Unpacking rpcsvc-proto (1.4.2-0ubuntu7) ...
+#11 56.97 Selecting previously unselected package libc6-dev:amd64.
+#11 56.97 Preparing to unpack .../028-libc6-dev_2.39-0ubuntu8.9_amd64.deb ...
+#11 56.97 Unpacking libc6-dev:amd64 (2.39-0ubuntu8.9) ...
+#11 57.08 Selecting previously unselected package gcc-13-base:amd64.
+#11 57.08 Preparing to unpack .../029-gcc-13-base_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 57.08 Unpacking gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 57.09 Selecting previously unselected package libisl23:amd64.
+#11 57.09 Preparing to unpack .../030-libisl23_0.26-3build1.1_amd64.deb ...
+#11 57.09 Unpacking libisl23:amd64 (0.26-3build1.1) ...
+#11 57.11 Selecting previously unselected package libmpfr6:amd64.
+#11 57.11 Preparing to unpack .../031-libmpfr6_4.2.1-1build1.1_amd64.deb ...
+#11 57.12 Unpacking libmpfr6:amd64 (4.2.1-1build1.1) ...
+#11 57.13 Selecting previously unselected package libmpc3:amd64.
+#11 57.13 Preparing to unpack .../032-libmpc3_1.3.1-1build1.1_amd64.deb ...
+#11 57.13 Unpacking libmpc3:amd64 (1.3.1-1build1.1) ...
+#11 57.15 Selecting previously unselected package cpp-13-x86-64-linux-gnu.
+#11 57.15 Preparing to unpack .../033-cpp-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 57.15 Unpacking cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 57.34 Selecting previously unselected package cpp-13.
+#11 57.34 Preparing to unpack .../034-cpp-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 57.35 Unpacking cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 57.36 Selecting previously unselected package cpp-x86-64-linux-gnu.
+#11 57.36 Preparing to unpack .../035-cpp-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 57.36 Unpacking cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 57.37 Selecting previously unselected package cpp.
+#11 57.37 Preparing to unpack .../036-cpp_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 57.38 Unpacking cpp (4:13.2.0-7ubuntu1) ...
+#11 57.39 Selecting previously unselected package libcc1-0:amd64.
+#11 57.39 Preparing to unpack .../037-libcc1-0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.39 Unpacking libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.40 Selecting previously unselected package libgomp1:amd64.
+#11 57.40 Preparing to unpack .../038-libgomp1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.40 Unpacking libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.42 Selecting previously unselected package libitm1:amd64.
+#11 57.42 Preparing to unpack .../039-libitm1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.42 Unpacking libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.43 Selecting previously unselected package libatomic1:amd64.
+#11 57.43 Preparing to unpack .../040-libatomic1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.43 Unpacking libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.45 Selecting previously unselected package libasan8:amd64.
+#11 57.45 Preparing to unpack .../041-libasan8_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.45 Unpacking libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.57 Selecting previously unselected package liblsan0:amd64.
+#11 57.57 Preparing to unpack .../042-liblsan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.58 Unpacking liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.60 Selecting previously unselected package libtsan2:amd64.
+#11 57.60 Preparing to unpack .../043-libtsan2_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.60 Unpacking libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.65 Selecting previously unselected package libubsan1:amd64.
+#11 57.65 Preparing to unpack .../044-libubsan1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.65 Unpacking libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.68 Selecting previously unselected package libhwasan0:amd64.
+#11 57.68 Preparing to unpack .../045-libhwasan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.68 Unpacking libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.71 Selecting previously unselected package libquadmath0:amd64.
+#11 57.71 Preparing to unpack .../046-libquadmath0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 57.71 Unpacking libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 57.72 Selecting previously unselected package libgcc-13-dev:amd64.
+#11 57.72 Preparing to unpack .../047-libgcc-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 57.72 Unpacking libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 57.79 Selecting previously unselected package gcc-13-x86-64-linux-gnu.
+#11 57.79 Preparing to unpack .../048-gcc-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 57.79 Unpacking gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 58.06 Selecting previously unselected package gcc-13.
+#11 58.06 Preparing to unpack .../049-gcc-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 58.06 Unpacking gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 58.08 Selecting previously unselected package gcc-x86-64-linux-gnu.
+#11 58.08 Preparing to unpack .../050-gcc-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 58.08 Unpacking gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 58.09 Selecting previously unselected package gcc.
+#11 58.09 Preparing to unpack .../051-gcc_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 58.09 Unpacking gcc (4:13.2.0-7ubuntu1) ...
+#11 58.10 Selecting previously unselected package libstdc++-13-dev:amd64.
+#11 58.10 Preparing to unpack .../052-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 58.11 Unpacking libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 58.26 Selecting previously unselected package g++-13-x86-64-linux-gnu.
+#11 58.26 Preparing to unpack .../053-g++-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 58.26 Unpacking g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 58.40 Selecting previously unselected package g++-13.
+#11 58.40 Preparing to unpack .../054-g++-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 58.40 Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 58.41 Selecting previously unselected package g++-x86-64-linux-gnu.
+#11 58.41 Preparing to unpack .../055-g++-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 58.42 Unpacking g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 58.43 Selecting previously unselected package g++.
+#11 58.43 Preparing to unpack .../056-g++_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#11 58.43 Unpacking g++ (4:13.2.0-7ubuntu1) ...
+#11 58.44 Selecting previously unselected package make.
+#11 58.44 Preparing to unpack .../057-make_4.3-4.1build2_amd64.deb ...
+#11 58.44 Unpacking make (4.3-4.1build2) ...
+#11 58.45 Selecting previously unselected package libdpkg-perl.
+#11 58.45 Preparing to unpack .../058-libdpkg-perl_1.22.6ubuntu6.6_all.deb ...
+#11 58.45 Unpacking libdpkg-perl (1.22.6ubuntu6.6) ...
+#11 58.47 Selecting previously unselected package bzip2.
+#11 58.47 Preparing to unpack .../059-bzip2_1.0.8-5.1ubuntu0.1_amd64.deb ...
+#11 58.47 Unpacking bzip2 (1.0.8-5.1ubuntu0.1) ...
+#11 58.49 Selecting previously unselected package patch.
+#11 58.49 Preparing to unpack .../060-patch_2.7.6-7build3_amd64.deb ...
+#11 58.49 Unpacking patch (2.7.6-7build3) ...
+#11 58.50 Selecting previously unselected package lto-disabled-list.
+#11 58.50 Preparing to unpack .../061-lto-disabled-list_47_all.deb ...
+#11 58.50 Unpacking lto-disabled-list (47) ...
+#11 58.51 Selecting previously unselected package dpkg-dev.
+#11 58.51 Preparing to unpack .../062-dpkg-dev_1.22.6ubuntu6.6_all.deb ...
+#11 58.51 Unpacking dpkg-dev (1.22.6ubuntu6.6) ...
+#11 58.53 Selecting previously unselected package build-essential.
+#11 58.53 Preparing to unpack .../063-build-essential_12.10ubuntu1_amd64.deb ...
+#11 58.53 Unpacking build-essential (12.10ubuntu1) ...
+#11 58.54 Selecting previously unselected package libllvm18:amd64.
+#11 58.54 Preparing to unpack .../064-libllvm18_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 58.55 Unpacking libllvm18:amd64 (1:18.1.3-1ubuntu1) ...
+#11 59.04 Selecting previously unselected package libclang-cpp18.
+#11 59.04 Preparing to unpack .../065-libclang-cpp18_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 59.04 Unpacking libclang-cpp18 (1:18.1.3-1ubuntu1) ...
+#11 59.24 Selecting previously unselected package libgc1:amd64.
+#11 59.24 Preparing to unpack .../066-libgc1_1%3a8.2.6-1build1_amd64.deb ...
+#11 59.24 Unpacking libgc1:amd64 (1:8.2.6-1build1) ...
+#11 59.25 Selecting previously unselected package libobjc4:amd64.
+#11 59.25 Preparing to unpack .../067-libobjc4_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#11 59.25 Unpacking libobjc4:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 59.26 Selecting previously unselected package libobjc-13-dev:amd64.
+#11 59.26 Preparing to unpack .../068-libobjc-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#11 59.26 Unpacking libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 59.28 Selecting previously unselected package libclang-common-18-dev:amd64.
+#11 59.28 Preparing to unpack .../069-libclang-common-18-dev_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 59.28 Unpacking libclang-common-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+#11 59.34 Selecting previously unselected package llvm-18-linker-tools.
+#11 59.34 Preparing to unpack .../070-llvm-18-linker-tools_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 59.34 Unpacking llvm-18-linker-tools (1:18.1.3-1ubuntu1) ...
+#11 59.36 Selecting previously unselected package libclang1-18.
+#11 59.36 Preparing to unpack .../071-libclang1-18_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 59.37 Unpacking libclang1-18 (1:18.1.3-1ubuntu1) ...
+#11 59.48 Selecting previously unselected package clang-18.
+#11 59.48 Preparing to unpack .../072-clang-18_1%3a18.1.3-1ubuntu1_amd64.deb ...
+#11 59.48 Unpacking clang-18 (1:18.1.3-1ubuntu1) ...
+#11 59.49 Selecting previously unselected package clang.
+#11 59.50 Preparing to unpack .../073-clang_1%3a18.0-59~exp2_amd64.deb ...
+#11 59.50 Unpacking clang (1:18.0-59~exp2) ...
+#11 59.51 Selecting previously unselected package libarchive13t64:amd64.
+#11 59.51 Preparing to unpack .../074-libarchive13t64_3.7.2-2ubuntu0.9_amd64.deb ...
+#11 59.51 Unpacking libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+#11 59.52 Selecting previously unselected package libbrotli1:amd64.
+#11 59.52 Preparing to unpack .../075-libbrotli1_1.1.0-2build2_amd64.deb ...
+#11 59.52 Unpacking libbrotli1:amd64 (1.1.0-2build2) ...
+#11 59.54 Selecting previously unselected package librtmp1:amd64.
+#11 59.54 Preparing to unpack .../076-librtmp1_2.4+20151223.gitfa8646d.1-2build7_amd64.deb ...
+#11 59.54 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#11 59.55 Selecting previously unselected package libssh-4:amd64.
+#11 59.55 Preparing to unpack .../077-libssh-4_0.10.6-2ubuntu0.5_amd64.deb ...
+#11 59.55 Unpacking libssh-4:amd64 (0.10.6-2ubuntu0.5) ...
+#11 59.57 Selecting previously unselected package libcurl4t64:amd64.
+#11 59.57 Preparing to unpack .../078-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+#11 59.57 Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#11 59.59 Selecting previously unselected package libjsoncpp25:amd64.
+#11 59.59 Preparing to unpack .../079-libjsoncpp25_1.9.5-6build1_amd64.deb ...
+#11 59.59 Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+#11 59.60 Selecting previously unselected package librhash0:amd64.
+#11 59.60 Preparing to unpack .../080-librhash0_1.4.3-3build1_amd64.deb ...
+#11 59.60 Unpacking librhash0:amd64 (1.4.3-3build1) ...
+#11 59.61 Selecting previously unselected package cmake-data.
+#11 59.62 Preparing to unpack .../081-cmake-data_3.28.3-1build7_all.deb ...
+#11 59.62 Unpacking cmake-data (3.28.3-1build7) ...
+#11 60.33 Selecting previously unselected package cmake.
+#11 60.33 Preparing to unpack .../082-cmake_3.28.3-1build7_amd64.deb ...
+#11 60.33 Unpacking cmake (3.28.3-1build7) ...
+#11 60.47 Selecting previously unselected package cuda-cccl-12-8.
+#11 60.47 Preparing to unpack .../083-cuda-cccl-12-8_12.8.90-1_amd64.deb ...
+#11 60.47 Unpacking cuda-cccl-12-8 (12.8.90-1) ...
+#11 60.75 Selecting previously unselected package cuda-driver-dev-12-8.
+#11 60.75 Preparing to unpack .../084-cuda-driver-dev-12-8_12.8.90-1_amd64.deb ...
+#11 60.75 Unpacking cuda-driver-dev-12-8 (12.8.90-1) ...
+#11 60.77 Selecting previously unselected package cuda-cudart-dev-12-8.
+#11 60.77 Preparing to unpack .../085-cuda-cudart-dev-12-8_12.8.90-1_amd64.deb ...
+#11 60.77 Unpacking cuda-cudart-dev-12-8 (12.8.90-1) ...
+#11 60.85 Selecting previously unselected package cuda-crt-12-8.
+#11 60.85 Preparing to unpack .../086-cuda-crt-12-8_12.8.93-1_amd64.deb ...
+#11 60.85 Unpacking cuda-crt-12-8 (12.8.93-1) ...
+#11 60.87 Selecting previously unselected package cuda-nvvm-12-8.
+#11 60.87 Preparing to unpack .../087-cuda-nvvm-12-8_12.8.93-1_amd64.deb ...
+#11 60.87 Unpacking cuda-nvvm-12-8 (12.8.93-1) ...
+#11 61.86 Selecting previously unselected package cuda-nvcc-12-8.
+#11 61.86 Preparing to unpack .../088-cuda-nvcc-12-8_12.8.93-1_amd64.deb ...
+#11 61.86 Unpacking cuda-nvcc-12-8 (12.8.93-1) ...
+#11 62.87 Selecting previously unselected package curl.
+#11 62.87 Preparing to unpack .../089-curl_8.5.0-2ubuntu10.16_amd64.deb ...
+#11 62.88 Unpacking curl (8.5.0-2ubuntu10.16) ...
+#11 62.89 Selecting previously unselected package libcurl3t64-gnutls:amd64.
+#11 62.89 Preparing to unpack .../090-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_amd64.deb ...
+#11 62.89 Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+#11 62.91 Selecting previously unselected package liberror-perl.
+#11 62.91 Preparing to unpack .../091-liberror-perl_0.17029-2_all.deb ...
+#11 62.91 Unpacking liberror-perl (0.17029-2) ...
+#11 62.93 Selecting previously unselected package git-man.
+#11 62.93 Preparing to unpack .../092-git-man_1%3a2.43.0-1ubuntu7.3_all.deb ...
+#11 62.93 Unpacking git-man (1:2.43.0-1ubuntu7.3) ...
+#11 62.95 Selecting previously unselected package git.
+#11 62.95 Preparing to unpack .../093-git_1%3a2.43.0-1ubuntu7.3_amd64.deb ...
+#11 62.95 Unpacking git (1:2.43.0-1ubuntu7.3) ...
+#11 63.08 Selecting previously unselected package libgmpxx4ldbl:amd64.
+#11 63.08 Preparing to unpack .../094-libgmpxx4ldbl_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb ...
+#11 63.08 Unpacking libgmpxx4ldbl:amd64 (2:6.3.0+dfsg-2ubuntu6.1) ...
+#11 63.10 Selecting previously unselected package libgmp-dev:amd64.
+#11 63.10 Preparing to unpack .../095-libgmp-dev_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb ...
+#11 63.10 Unpacking libgmp-dev:amd64 (2:6.3.0+dfsg-2ubuntu6.1) ...
+#11 63.12 Selecting previously unselected package libpkgconf3:amd64.
+#11 63.12 Preparing to unpack .../096-libpkgconf3_1.8.1-2build1_amd64.deb ...
+#11 63.12 Unpacking libpkgconf3:amd64 (1.8.1-2build1) ...
+#11 63.13 Selecting previously unselected package libprotobuf32t64:amd64.
+#11 63.13 Preparing to unpack .../097-libprotobuf32t64_3.21.12-8.2ubuntu0.3_amd64.deb ...
+#11 63.13 Unpacking libprotobuf32t64:amd64 (3.21.12-8.2ubuntu0.3) ...
+#11 63.17 Selecting previously unselected package libprotoc32t64:amd64.
+#11 63.17 Preparing to unpack .../098-libprotoc32t64_3.21.12-8.2ubuntu0.3_amd64.deb ...
+#11 63.17 Unpacking libprotoc32t64:amd64 (3.21.12-8.2ubuntu0.3) ...
+#11 63.19 Selecting previously unselected package libssl-dev:amd64.
+#11 63.19 Preparing to unpack .../099-libssl-dev_3.0.13-0ubuntu3.16_amd64.deb ...
+#11 63.19 Unpacking libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+#11 63.28 Selecting previously unselected package pkgconf-bin.
+#11 63.28 Preparing to unpack .../100-pkgconf-bin_1.8.1-2build1_amd64.deb ...
+#11 63.28 Unpacking pkgconf-bin (1.8.1-2build1) ...
+#11 63.29 Selecting previously unselected package pkgconf:amd64.
+#11 63.29 Preparing to unpack .../101-pkgconf_1.8.1-2build1_amd64.deb ...
+#11 63.29 Unpacking pkgconf:amd64 (1.8.1-2build1) ...
+#11 63.31 Selecting previously unselected package pkg-config:amd64.
+#11 63.31 Preparing to unpack .../102-pkg-config_1.8.1-2build1_amd64.deb ...
+#11 63.31 Unpacking pkg-config:amd64 (1.8.1-2build1) ...
+#11 63.32 Selecting previously unselected package protobuf-compiler.
+#11 63.32 Preparing to unpack .../103-protobuf-compiler_3.21.12-8.2ubuntu0.3_amd64.deb ...
+#11 63.32 Unpacking protobuf-compiler (3.21.12-8.2ubuntu0.3) ...
+#11 63.34 Setting up media-types (10.1.0) ...
+#11 63.34 Setting up libprotobuf32t64:amd64 (3.21.12-8.2ubuntu0.3) ...
+#11 63.34 Setting up libkeyutils1:amd64 (1.6.3-3build1) ...
+#11 63.34 Setting up lto-disabled-list (47) ...
+#11 63.34 Setting up libgdbm6t64:amd64 (1.23-5.1build1) ...
+#11 63.34 Setting up libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+#11 63.35 Setting up libbrotli1:amd64 (1.1.0-2build2) ...
+#11 63.35 Setting up libuv1t64:amd64 (1.48.0-1.1build1) ...
+#11 63.35 Setting up binutils-common:amd64 (2.42-4ubuntu2.10) ...
+#11 63.35 Setting up libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#11 63.35 Setting up libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#11 63.36 Setting up linux-libc-dev:amd64 (6.8.0-147.147) ...
+#11 63.36 Setting up libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+#11 63.36 Setting up libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.36 Setting up bzip2 (1.0.8-5.1ubuntu0.1) ...
+#11 63.36 Setting up libsframe1:amd64 (2.42-4ubuntu2.10) ...
+#11 63.36 Setting up libjansson4:amd64 (2.14-2build2) ...
+#11 63.36 Setting up libkrb5support0:amd64 (1.20.1-6ubuntu2.10) ...
+#11 63.37 Setting up tzdata (2026e-0ubuntu0.24.04.1) ...
+#11 63.43 
+#11 63.43 Current default time zone: 'Etc/UTC'
+#11 63.43 Local time is now:      Sat Oct 17 19:29:38 UTC 2026.
+#11 63.43 Universal Time is now:  Sat Oct 17 19:29:38 UTC 2026.
+#11 63.43 Run 'dpkg-reconfigure tzdata' if you wish to change it.
+#11 63.43 
+#11 63.43 Setting up cuda-driver-dev-12-8 (12.8.90-1) ...
+#11 63.44 Setting up libpkgconf3:amd64 (1.8.1-2build1) ...
+#11 63.44 Setting up libgmpxx4ldbl:amd64 (2:6.3.0+dfsg-2ubuntu6.1) ...
+#11 63.44 Setting up rpcsvc-proto (1.4.2-0ubuntu7) ...
+#11 63.44 Setting up gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 63.44 Setting up make (4.3-4.1build2) ...
+#11 63.45 Setting up libmpfr6:amd64 (4.2.1-1build1.1) ...
+#11 63.45 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#11 63.45 Setting up xz-utils (5.6.1+really5.4.5-1ubuntu0.3) ...
+#11 63.45 update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+#11 63.45 update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist
+#11 63.46 update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist
+#11 63.46 Setting up perl-modules-5.38 (5.38.2-3.2ubuntu0.6) ...
+#11 63.46 Setting up libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.46 Setting up libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+#11 63.46 Setting up libmpc3:amd64 (1.3.1-1build1.1) ...
+#11 63.47 Setting up libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.47 Setting up patch (2.7.6-7build3) ...
+#11 63.47 Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+#11 63.47 Setting up pkgconf-bin (1.8.1-2build1) ...
+#11 63.47 Setting up libclang-common-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+#11 63.48 Setting up libk5crypto3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 63.48 Setting up libgc1:amd64 (1:8.2.6-1build1) ...
+#11 63.48 Setting up libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.48 Setting up libicu74:amd64 (74.2-1ubuntu3.1) ...
+#11 63.48 Setting up libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.49 Setting up librhash0:amd64 (1.4.3-3build1) ...
+#11 63.49 Setting up libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+#11 63.49 Setting up libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.49 Setting up git-man (1:2.43.0-1ubuntu7.3) ...
+#11 63.50 Setting up netbase (6.4) ...
+#11 63.50 Setting up cmake-data (3.28.3-1build7) ...
+#11 63.51 Setting up libkrb5-3:amd64 (1.20.1-6ubuntu2.10) ...
+#11 63.51 Setting up libperl5.38t64:amd64 (5.38.2-3.2ubuntu0.6) ...
+#11 63.51 Setting up libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.51 Setting up libprotoc32t64:amd64 (3.21.12-8.2ubuntu0.3) ...
+#11 63.52 Setting up libbinutils:amd64 (2.42-4ubuntu2.10) ...
+#11 63.52 Setting up cuda-cccl-12-8 (12.8.90-1) ...
+#11 63.52 Setting up libisl23:amd64 (0.26-3build1.1) ...
+#11 63.52 Setting up libc-dev-bin (2.39-0ubuntu8.9) ...
+#11 63.52 Setting up openssl (3.0.13-0ubuntu3.16) ...
+#11 63.53 Setting up libbsd0:amd64 (0.12.1-1build1.1) ...
+#11 63.53 Setting up libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+#11 63.53 Setting up libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.53 Setting up liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.54 Setting up libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 63.54 Setting up cuda-cudart-dev-12-8 (12.8.90-1) ...
+#11 63.54 Setting up libctf0:amd64 (2.42-4ubuntu2.10) ...
+#11 63.54 Setting up libgmp-dev:amd64 (2:6.3.0+dfsg-2ubuntu6.1) ...
+#11 63.54 Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+#11 63.55 Setting up protobuf-compiler (3.21.12-8.2ubuntu0.3) ...
+#11 63.55 Setting up cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 63.55 Setting up python3.12 (3.12.3-1ubuntu0.17) ...
+#11 64.26 Setting up libedit2:amd64 (3.1-20230828-1build1) ...
+#11 64.26 Setting up libobjc4:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#11 64.26 Setting up pkgconf:amd64 (1.8.1-2build1) ...
+#11 64.27 Setting up ca-certificates (20260601~24.04.1) ...
+#11 65.17 Updating certificates in /etc/ssl/certs...
+#11 65.72 rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+#11 65.72 14 added, 39 removed; done.
+#11 65.73 Setting up perl (5.38.2-3.2ubuntu0.6) ...
+#11 65.74 Setting up libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+#11 65.74 Setting up libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.10) ...
+#11 65.74 Setting up pkg-config:amd64 (1.8.1-2build1) ...
+#11 65.75 Setting up libdpkg-perl (1.22.6ubuntu6.6) ...
+#11 65.75 Setting up libssh-4:amd64 (0.10.6-2ubuntu0.5) ...
+#11 65.75 Setting up libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.75 Setting up libc6-dev:amd64 (2.39-0ubuntu8.9) ...
+#11 65.76 Setting up libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+#11 65.76 Setting up libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.76 Setting up libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.76 Setting up libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+#11 65.76 Setting up libllvm18:amd64 (1:18.1.3-1ubuntu1) ...
+#11 65.77 Setting up binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+#11 65.77 Setting up cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 65.77 Setting up libclang1-18 (1:18.1.3-1ubuntu1) ...
+#11 65.77 Setting up cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.77 Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#11 65.78 Setting up gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.78 Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+#11 65.78 Setting up python3 (3.12.3-0ubuntu2.1) ...
+#11 65.85 Setting up binutils (2.42-4ubuntu2.10) ...
+#11 65.86 Setting up dpkg-dev (1.22.6ubuntu6.6) ...
+#11 65.86 Setting up liberror-perl (0.17029-2) ...
+#11 65.86 Setting up gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.86 Setting up git (1:2.43.0-1ubuntu7.3) ...
+#11 65.87 Setting up llvm-18-linker-tools (1:18.1.3-1ubuntu1) ...
+#11 65.87 Setting up cpp (4:13.2.0-7ubuntu1) ...
+#11 65.88 Setting up cmake (3.28.3-1build7) ...
+#11 65.88 Setting up curl (8.5.0-2ubuntu10.16) ...
+#11 65.89 Setting up libclang-cpp18 (1:18.1.3-1ubuntu1) ...
+#11 65.89 Setting up g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.89 Setting up gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 65.89 Setting up clang-18 (1:18.1.3-1ubuntu1) ...
+#11 65.89 Setting up gcc (4:13.2.0-7ubuntu1) ...
+#11 65.90 Setting up clang (1:18.0-59~exp2) ...
+#11 65.91 Setting up g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#11 65.91 Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#11 65.91 Setting up g++ (4:13.2.0-7ubuntu1) ...
+#11 65.92 update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+#11 65.92 update-alternatives: warning: skip creation of /usr/share/man/man1/c++.1.gz because associated file /usr/share/man/man1/g++.1.gz (of link group c++) doesn't exist
+#11 65.92 Setting up build-essential (12.10ubuntu1) ...
+#11 65.92 Setting up cuda-crt-12-8 (12.8.93-1) ...
+#11 65.92 Setting up cuda-nvvm-12-8 (12.8.93-1) ...
+#11 65.93 Setting up cuda-nvcc-12-8 (12.8.93-1) ...
+#11 65.93 Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+#11 65.93 Processing triggers for ca-certificates (20260601~24.04.1) ...
+#11 65.94 Updating certificates in /etc/ssl/certs...
+#11 66.29 0 added, 0 removed; done.
+#11 66.29 Running hooks in /etc/ca-certificates/update.d...
+#11 66.29 done.
+#11 66.49 info: downloading installer
+#11 66.98 info: profile set to minimal
+#11 66.98 info: default host tuple is x86_64-unknown-linux-gnu
+#11 66.98 info: syncing channel updates for 1.91.0-x86_64-unknown-linux-gnu
+#11 66.98 warn: RUSTUP_USE_CURL is set; the curl backend is deprecated,
+#11 66.98             please file an issue if the default download backend does not work for your use case
+#11 67.09 warn: RUSTUP_USE_CURL is set; the curl backend is deprecated,
+#11 67.09             please file an issue if the default download backend does not work for your use case
+#11 67.30 info: latest update on 2025-10-30 for version 1.91.0 (f8297e351 2025-10-28)
+#11 67.30 info: downloading 3 components
+#11 67.30 warn: RUSTUP_USE_CURL is set; the curl backend is deprecated,
+#11 67.30             please file an issue if the default download backend does not work for your use case
+#11 67.53 warn: RUSTUP_USE_CURL is set; the curl backend is deprecated,
+#11 67.53             please file an issue if the default download backend does not work for your use case
+#11 68.07 warn: RUSTUP_USE_CURL is set; the curl backend is deprecated,
+#11 68.07             please file an issue if the default download backend does not work for your use case
+#11 75.76 
+#11 75.76 info: default toolchain set to 1.91.0-x86_64-unknown-linux-gnu
+#11 75.77   1.91.0-x86_64-unknown-linux-gnu installed - rustc 1.91.0 (f8297e351 2025-10-28)
+#11 75.77 
+#11 75.77 
+#11 75.77 Rust is installed now. Great!
+#11 75.77 
+#11 75.77 To get started you may need to restart your current shell.
+#11 75.77 This would reload your PATH environment variable to include
+#11 75.77 Cargo's bin directory (/opt/cargo/bin).
+#11 75.77 
+#11 75.77 To configure your current shell, you need to source the
+#11 75.77 corresponding env file under /opt/cargo.
+#11 75.77 
+#11 75.77 Consider running the right command for your shell (note the leading DOT):
+#11 75.77 . "/opt/cargo/env" # For sh/ash/dash/pdksh/bash
+#11 75.77 cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu
+#11 75.77 CC_x86_64-unknown-linux-gnu = None
+#11 75.77 cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu
+#11 75.77 CC_x86_64_unknown_linux_gnu = None
+#11 75.77 cargo:rerun-if-env-changed=HOST_CC
+#11 75.77 HOST_CC = None
+#11 75.77 cargo:rerun-if-env-changed=CC
+#11 75.77 CC = None
+#11 75.77 cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+#11 75.78 cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+#11 75.78 CRATE_CC_NO_DEFAULTS = None
+#11 75.78 cargo:rerun-if-env-changed=CFLAGS
+#11 75.78 CFLAGS = None
+#11 75.78 cargo:rerun-if-env-changed=HOST_CFLAGS
+#11 75.78 HOST_CFLAGS = None
+#11 75.78 cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu
+#11 75.78 CFLAGS_x86_64_unknown_linux_gnu = None
+#11 75.78 cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu
+#11 75.78 CFLAGS_x86_64-unknown-linux-gnu = None
+#11 75.80 hint: Using 'master' as the name for the initial branch. This default branch name
+#11 75.80 hint: is subject to change. To configure the initial branch name to use in all
+#11 75.80 hint: of your new repositories, which will suppress this warning, call:
+#11 75.80 hint: 
+#11 75.80 hint: 	git config --global init.defaultBranch <name>
+#11 75.80 hint: 
+#11 75.80 hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+#11 75.80 hint: 'development'. The just-created branch can be renamed via this command:
+#11 75.80 hint: 
+#11 75.80 hint: 	git branch -m <name>
+#11 75.80 Initialized empty Git repository in /tmp/risc0/.git/
+#11 79.88 From https://github.com/risc0/risc0
+#11 79.88  * branch            14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6 -> FETCH_HEAD
+#11 80.34 HEAD is now at 14b5d58 Cut 3.0.2: Bump versions to 3.0.2
+#11 80.39 /opt/build/recursion_zkr.zip: OK
+#11 80.45     Updating crates.io index
+#11 86.63  Downloading crates ...
+#11 86.75   Downloaded approx v0.5.1
+#11 86.76   Downloaded ahash v0.8.11
+#11 86.77   Downloaded ark-bn254 v0.5.0
+#11 86.78   Downloaded addchain v0.2.0
+#11 86.78   Downloaded anstyle-query v1.1.2
+#11 86.79   Downloaded anstyle v1.0.10
+#11 86.80   Downloaded anstream v0.6.18
+#11 86.81   Downloaded ark-ec v0.5.0
+#11 86.82   Downloaded ark-ff-asm v0.5.0
+#11 86.83   Downloaded ark-ff-macros v0.4.2
+#11 86.83   Downloaded ark-ff v0.5.0
+#11 86.85   Downloaded ark-ff v0.3.0
+#11 86.86   Downloaded ark-poly v0.5.0
+#11 86.87   Downloaded ark-snark v0.5.1
+#11 86.88   Downloaded ark-serialize v0.3.0
+#11 86.88   Downloaded ark-serialize-derive v0.5.0
+#11 86.89   Downloaded arraydeque v0.5.1
+#11 86.89   Downloaded ark-std v0.5.0
+#11 86.90   Downloaded ark-relations v0.5.1
+#11 86.91   Downloaded ark-serialize v0.4.2
+#11 86.91   Downloaded ark-ff-macros v0.3.0
+#11 86.92   Downloaded auto_impl v1.3.0
+#11 86.94   Downloaded async-trait v0.1.88
+#11 86.96   Downloaded bitflags v2.9.0
+#11 86.97   Downloaded bindgen v0.72.0
+#11 87.00   Downloaded bitflags v1.3.2
+#11 87.02   Downloaded arrayvec v0.7.6
+#11 87.03   Downloaded backtrace v0.3.74
+#11 87.04   Downloaded ark-ff v0.4.2
+#11 87.05   Downloaded block-buffer v0.10.4
+#11 87.06   Downloaded blake2 v0.10.6
+#11 87.07   Downloaded ark-groth16 v0.5.0
+#11 87.07   Downloaded bitvec v1.0.1
+#11 87.12   Downloaded borsh-derive v1.5.7
+#11 87.14   Downloaded cargo_metadata v0.19.2
+#11 87.14   Downloaded cfg_aliases v0.2.1
+#11 87.15   Downloaded clang-sys v1.8.1
+#11 87.16   Downloaded clap_lex v0.7.4
+#11 87.16   Downloaded colorchoice v1.0.3
+#11 87.17   Downloaded cobs v0.2.3
+#11 87.17   Downloaded clap_builder v4.5.37
+#11 87.19   Downloaded clap v4.5.37
+#11 87.21   Downloaded const_format_proc_macros v0.2.34
+#11 87.22   Downloaded crossbeam-utils v0.8.21
+#11 87.23   Downloaded crypto-common v0.1.6
+#11 87.23   Downloaded crunchy v0.2.3
+#11 87.24   Downloaded crc32fast v1.4.2
+#11 87.25   Downloaded cust_core v0.1.1
+#11 87.25   Downloaded darling_macro v0.20.11
+#11 87.26   Downloaded deranged v0.4.0
+#11 87.26   Downloaded der v0.7.10
+#11 87.28   Downloaded darling v0.20.11
+#11 87.29   Downloaded cust_raw v0.11.3
+#11 87.29   Downloaded derivative v2.2.0
+#11 87.31   Downloaded cust_derive v0.2.0
+#11 87.31   Downloaded cust v0.3.2
+#11 87.32   Downloaded derive_builder v0.20.2
+#11 87.34   Downloaded cpp_demangle v0.4.4
+#11 87.34   Downloaded const_format v0.2.34
+#11 87.35   Downloaded circom-witnesscalc v0.2.1
+#11 87.44   Downloaded dirs v6.0.0
+#11 87.45   Downloaded dyn-clone v1.0.19
+#11 87.45   Downloaded either v1.15.0
+#11 87.46   Downloaded duplicate v2.0.0
+#11 87.48   Downloaded downloader v0.2.8
+#11 87.48   Downloaded downcast-rs v1.2.1
+#11 87.49   Downloaded displaydoc v0.2.5
+#11 87.49   Downloaded docker-generate v0.1.3
+#11 87.50   Downloaded embedded-io v0.4.0
+#11 87.50   Downloaded elf v0.7.4
+#11 87.51   Downloaded downcast-rs v2.0.1
+#11 87.51   Downloaded educe v0.6.0
+#11 87.54   Downloaded fastrlp v0.4.0
+#11 87.55   Downloaded erased-serde v0.4.6
+#11 87.56   Downloaded enum-map-derive v0.17.0
+#11 87.56   Downloaded fixed-hash v0.8.0
+#11 87.56   Downloaded ff v0.13.1
+#11 87.57   Downloaded encoding_rs v0.8.35
+#11 87.59   Downloaded futures-core v0.3.31
+#11 87.60   Downloaded form_urlencoded v1.2.1
+#11 87.60   Downloaded flate2 v1.1.1
+#11 87.61   Downloaded fixedbitset v0.4.2
+#11 87.61   Downloaded find_cuda_helper v0.2.0
+#11 87.61   Downloaded ff_derive v0.13.1
+#11 87.62   Downloaded futures-task v0.3.31
+#11 87.62   Downloaded futures-macro v0.3.31
+#11 87.62   Downloaded futures-io v0.3.31
+#11 87.62   Downloaded futures v0.3.31
+#11 87.63   Downloaded funty v2.0.0
+#11 87.64   Downloaded futures-channel v0.3.31
+#11 87.64   Downloaded futures-sink v0.3.31
+#11 87.65   Downloaded futures-executor v0.3.31
+#11 87.65   Downloaded getrandom v0.3.2
+#11 87.66   Downloaded getrandom v0.2.16
+#11 87.66   Downloaded glam v0.20.5
+#11 87.68   Downloaded hash32 v0.2.1
+#11 87.68   Downloaded hex-literal v0.4.1
+#11 87.68   Downloaded heapless v0.7.17
+#11 87.69   Downloaded hashbrown v0.12.3
+#11 87.70   Downloaded heck v0.5.0
+#11 87.70   Downloaded glob v0.3.2
+#11 87.70   Downloaded futures-util v0.3.31
+#11 87.72   Downloaded gimli v0.31.1
+#11 87.73   Downloaded hex v0.4.3
+#11 87.73   Downloaded hashbrown v0.15.2
+#11 87.74   Downloaded hashbrown v0.14.5
+#11 87.75   Downloaded http-body-util v0.1.3
+#11 87.75   Downloaded httpdate v1.0.3
+#11 87.76   Downloaded httparse v1.10.1
+#11 87.76   Downloaded hyper-rustls v0.27.5
+#11 87.76   Downloaded hyper-util v0.1.11
+#11 87.77   Downloaded hyper v1.6.0
+#11 87.78   Downloaded icu_locid_transform_data v1.5.1
+#11 87.78   Downloaded icu_locid v1.5.0
+#11 87.79   Downloaded iana-time-zone v0.1.63
+#11 87.79   Downloaded icu_locid_transform v1.5.0
+#11 87.80   Downloaded icu_collections v1.5.0
+#11 87.81   Downloaded http v1.3.1
+#11 87.81   Downloaded http-body v1.0.1
+#11 87.81   Downloaded home v0.5.11
+#11 87.81   Downloaded hashlink v0.10.0
+#11 87.82   Downloaded generic-array v0.14.7
+#11 87.82   Downloaded icu_normalizer_data v1.5.1
+#11 87.82   Downloaded icu_normalizer v1.5.0
+#11 87.82   Downloaded gdbstub_arch v0.3.1
+#11 87.83   Downloaded gdbstub v0.7.5
+#11 87.84   Downloaded icu_provider_macros v1.5.0
+#11 87.84   Downloaded ident_case v1.0.1
+#11 87.85   Downloaded icu_provider v1.5.0
+#11 87.85   Downloaded idna_adapter v1.2.0
+#11 87.85   Downloaded idna v1.0.3
+#11 87.85   Downloaded impl-codec v0.6.0
+#11 87.86   Downloaded darling_core v0.20.11
+#11 87.86   Downloaded include_bytes_aligned v0.1.4
+#11 87.86   Downloaded impl-trait-for-tuples v0.2.3
+#11 87.86   Downloaded icu_properties_data v1.5.1
+#11 87.87   Downloaded ipnet v2.11.0
+#11 87.88   Downloaded itoa v1.0.15
+#11 87.88   Downloaded indicatif v0.17.11
+#11 87.88   Downloaded jobserver v0.1.33
+#11 87.88   Downloaded is_terminal_polyfill v1.70.1
+#11 87.89   Downloaded itertools v0.11.0
+#11 87.89   Downloaded indexmap v2.11.0
+#11 87.89   Downloaded inventory v0.3.20
+#11 87.89   Downloaded indexmap v1.9.3
+#11 87.90   Downloaded icu_properties v1.5.1
+#11 87.90   Downloaded equivalent v1.0.2
+#11 87.90   Downloaded enum-ordinalize v4.3.0
+#11 87.90   Downloaded foldhash v0.1.5
+#11 87.90   Downloaded fnv v1.0.7
+#11 87.90   Downloaded fallible-iterator v0.3.0
+#11 87.91   Downloaded errno v0.3.11
+#11 87.91   Downloaded fastrand v2.3.0
+#11 87.91   Downloaded fastrlp v0.3.1
+#11 87.91   Downloaded enum-ordinalize-derive v4.3.1
+#11 87.91   Downloaded enum-map v2.7.3
+#11 87.91   Downloaded embedded-io v0.6.1
+#11 87.91   Downloaded dirs-sys v0.5.0
+#11 87.91   Downloaded derive_more-impl v2.0.1
+#11 87.92   Downloaded derive_more v2.0.1
+#11 87.92   Downloaded derive_builder_macro v0.20.2
+#11 87.92   Downloaded itertools v0.14.0
+#11 87.93   Downloaded itertools v0.13.0
+#11 87.93   Downloaded itertools v0.10.5
+#11 87.94   Downloaded derive_builder_core v0.20.2
+#11 87.94   Downloaded directories v6.0.0
+#11 87.94   Downloaded digest v0.10.7
+#11 87.94   Downloaded digest v0.9.0
+#11 87.94   Downloaded keccak v0.1.5
+#11 87.95   Downloaded lazy_static v1.5.0
+#11 87.95   Downloaded lazy-regex-proc_macros v3.4.1
+#11 87.95   Downloaded lazy-regex v3.4.1
+#11 87.95   Downloaded kameo_macros v0.16.0
+#11 87.95   Downloaded kameo v0.16.0
+#11 87.96   Downloaded crossbeam-epoch v0.9.18
+#11 87.96   Downloaded crossbeam-deque v0.8.6
+#11 87.96   Downloaded cpufeatures v0.2.17
+#11 87.97   Downloaded convert_case v0.8.0
+#11 87.97   Downloaded const-oid v0.9.6
+#11 87.97   Downloaded console v0.15.11
+#11 87.97   Downloaded clap_derive v4.5.32
+#11 87.97   Downloaded chrono v0.4.40
+#11 87.98   Downloaded cexpr v0.6.0
+#11 87.98   Downloaded cfg-if v1.0.0
+#11 87.99   Downloaded liblzma v0.4.2
+#11 87.99   Downloaded libloading v0.8.8
+#11 87.99   Downloaded libc v0.2.172
+#11 88.01   Downloaded cc v1.2.19
+#11 88.01   Downloaded bytes v1.10.1
+#11 88.01   Downloaded bumpalo v3.17.0
+#11 88.02   Downloaded cargo-platform v0.1.9
+#11 88.02   Downloaded camino v1.1.9
+#11 88.02   Downloaded byteorder v1.5.0
+#11 88.02   Downloaded bytemuck_derive v1.9.3
+#11 88.02   Downloaded bytemuck v1.22.0
+#11 88.02   Downloaded byte-slice-cast v1.2.3
+#11 88.02   Downloaded borsh v1.5.7
+#11 88.03   Downloaded ark-std v0.3.0
+#11 88.03   Downloaded blst v0.3.15
+#11 88.04   Downloaded bit-vec v0.8.0
+#11 88.04   Downloaded axum-extra v0.10.1
+#11 88.04   Downloaded autocfg v1.4.0
+#11 88.05   Downloaded ark-serialize v0.5.0
+#11 88.05   Downloaded anstyle-parse v0.2.6
+#11 88.05   Downloaded aho-corasick v1.1.3
+#11 88.05   Downloaded ark-ff-macros v0.5.0
+#11 88.06   Downloaded log v0.4.27
+#11 88.06   Downloaded lock_api v0.4.12
+#11 88.06   Downloaded matchit v0.8.4
+#11 88.06   Downloaded maybe-async v0.2.10
+#11 88.07   Downloaded matchers v0.1.0
+#11 88.07   Downloaded libm v0.2.13
+#11 88.08   Downloaded malachite v0.4.22
+#11 88.08   Downloaded liblzma-sys v0.4.4
+#11 88.11   Downloaded managed v0.8.0
+#11 88.11   Downloaded litemap v0.7.5
+#11 88.11   Downloaded ark-ff-asm v0.4.2
+#11 88.11   Downloaded allocator-api2 v0.2.21
+#11 88.11   Downloaded axum-core v0.5.2
+#11 88.12   Downloaded ark-r1cs-std v0.5.0
+#11 88.12   Downloaded base64 v0.22.1
+#11 88.13   Downloaded mime v0.3.17
+#11 88.13   Downloaded memmap2 v0.9.5
+#11 88.13   Downloaded merlin v3.0.0
+#11 88.13   Downloaded matrixmultiply v0.3.9
+#11 88.13   Downloaded ark-crypto-primitives v0.5.0
+#11 88.14   Downloaded bincode v1.3.3
+#11 88.14   Downloaded base64ct v1.8.0
+#11 88.14   Downloaded malachite-q v0.4.22
+#11 88.16   Downloaded axum v0.8.4
+#11 88.17   Downloaded malachite-base v0.4.22
+#11 88.21   Downloaded malachite-float v0.4.22
+#11 88.23   Downloaded linux-raw-sys v0.4.15
+#11 88.26   Downloaded num_cpus v1.16.0
+#11 88.27   Downloaded opentelemetry-http v0.30.0
+#11 88.27   Downloaded num-bigint-dig v0.8.4
+#11 88.27   Downloaded once_cell v1.21.3
+#11 88.27   Downloaded opentelemetry-appender-tracing v0.30.0
+#11 88.27   Downloaded object v0.36.7
+#11 88.28   Downloaded nvtx v1.3.0
+#11 88.28   Downloaded nvml-wrapper v0.11.0
+#11 88.28   Downloaded option-ext v0.2.0
+#11 88.29   Downloaded parity-scale-codec v3.7.5
+#11 88.29   Downloaded nvml-wrapper-sys v0.9.0
+#11 88.29   Downloaded opentelemetry_sdk v0.30.0
+#11 88.29   Downloaded opentelemetry v0.30.0
+#11 88.30   Downloaded number_prefix v0.4.0
+#11 88.30   Downloaded opentelemetry-proto v0.30.0
+#11 88.30   Downloaded num_enum_derive v0.7.4
+#11 88.30   Downloaded num_enum v0.7.4
+#11 88.31   Downloaded num-traits v0.2.19
+#11 88.31   Downloaded num-bigint v0.4.6
+#11 88.31   Downloaded num-bigint v0.3.3
+#11 88.31   Downloaded nom v7.1.3
+#11 88.32   Downloaded ndarray v0.16.1
+#11 88.32   Downloaded mio v1.0.3
+#11 88.33   Downloaded num-iter v0.1.45
+#11 88.33   Downloaded num-integer v0.1.46
+#11 88.33   Downloaded num-derive v0.4.2
+#11 88.33   Downloaded num-conv v0.1.0
+#11 88.33   Downloaded num-complex v0.4.6
+#11 88.33   Downloaded nu-ansi-term v0.46.0
+#11 88.33   Downloaded no_std_strings v0.1.3
+#11 88.33   Downloaded overload v0.1.1
+#11 88.34   Downloaded multimap v0.10.0
+#11 88.34   Downloaded multi_index_map_derive v0.15.0
+#11 88.34   Downloaded multi_index_map v0.15.0
+#11 88.34   Downloaded mint v0.5.9
+#11 88.34   Downloaded parity-scale-codec-derive v3.7.5
+#11 88.34   Downloaded miniz_oxide v0.8.8
+#11 88.35   Downloaded minimal-lexical v0.2.1
+#11 88.36   Downloaded opentelemetry-otlp v0.30.0
+#11 88.36   Downloaded parking_lot v0.12.3
+#11 88.37   Downloaded memchr v2.7.4
+#11 88.38   Downloaded parking_lot_core v0.9.10
+#11 88.38   Downloaded percent-encoding v2.3.1
+#11 88.39   Downloaded pem-rfc7468 v0.7.0
+#11 88.39   Downloaded paste v1.0.15
+#11 88.41   Downloaded pest v2.8.0
+#11 88.42   Downloaded malachite-nz v0.4.22
+#11 88.63   Downloaded proc-macro2-diagnostics v0.10.1
+#11 88.64   Downloaded radium v0.7.0
+#11 88.65   Downloaded rand v0.9.1
+#11 88.66   Downloaded rand_chacha v0.3.1
+#11 88.66   Downloaded rand v0.8.5
+#11 88.67   Downloaded rawpointer v0.2.1
+#11 88.67   Downloaded rand_core v0.9.3
+#11 88.68   Downloaded regex-automata v0.1.10
+#11 88.69   Downloaded regex v1.11.1
+#11 88.74   Downloaded rayon-core v1.12.1
+#11 88.75   Downloaded rayon v1.10.0
+#11 88.78   Downloaded rrs-lib v0.1.0
+#11 88.78   Downloaded ring v0.17.14
+#11 88.88   Downloaded reqwest v0.12.15
+#11 88.90   Downloaded signature v2.2.0
+#11 88.91   Downloaded smallvec v1.15.0
+#11 88.91   Downloaded ruzstd v0.7.3
+#11 88.92   Downloaded serde v1.0.219
+#11 88.93   Downloaded spin v0.9.8
+#11 88.94   Downloaded serde_with v3.12.0
+#11 88.96   Downloaded subtle v2.6.1
+#11 88.96   Downloaded strum_macros v0.27.1
+#11 88.97   Downloaded strum v0.27.1
+#11 88.97   Downloaded syn v2.0.100
+#11 88.99   Downloaded synstructure v0.13.1
+#11 88.99   Downloaded tempfile v3.20.0
+#11 89.00   Downloaded threadpool v1.8.1
+#11 89.00   Downloaded thread_local v1.1.8
+#11 89.01   Downloaded thiserror-impl v2.0.12
+#11 89.01   Downloaded thiserror v2.0.12
+#11 89.03   Downloaded thiserror v1.0.69
+#11 89.04   Downloaded time-core v0.1.4
+#11 89.05   Downloaded time-macros v0.2.22
+#11 89.05   Downloaded time v0.3.41
+#11 89.07   Downloaded tinyvec_macros v0.1.1
+#11 89.07   Downloaded tokio-macros v2.5.0
+#11 89.07   Downloaded tokio-rustls v0.26.2
+#11 89.08   Downloaded tokio-stream v0.1.17
+#11 89.09   Downloaded tinyvec v1.9.0
+#11 89.10   Downloaded toml_datetime v0.6.9
+#11 89.10   Downloaded tokio-util v0.7.15
+#11 89.11   Downloaded tinystr v0.7.6
+#11 89.12   Downloaded thiserror-impl v1.0.69
+#11 89.12   Downloaded toml v0.8.22
+#11 89.21   Downloaded typed-arena v2.0.2
+#11 89.21   Downloaded unicode-ident v1.0.18
+#11 89.22   Downloaded tracing v0.1.41
+#11 89.23   Downloaded unicode-segmentation v1.12.0
+#11 89.23   Downloaded utf8_iter v1.0.4
+#11 89.23   Downloaded uuid v1.16.0
+#11 89.24   Downloaded wide v0.7.32
+#11 89.25   Downloaded write16 v1.0.0
+#11 89.25   Downloaded unicode-xid v0.2.6
+#11 89.26   Downloaded wrapcenum-derive v0.4.1
+#11 89.26   Downloaded wyz v0.5.1
+#11 89.26   Downloaded wtns-file v0.1.5
+#11 89.26   Downloaded yansi v1.0.1
+#11 89.27   Downloaded winnow v0.7.12
+#11 89.28   Downloaded webpki-roots v0.26.8
+#11 89.29   Downloaded zerofrom-derive v0.1.6
+#11 89.29   Downloaded zeroize_derive v1.4.2
+#11 89.29   Downloaded zerovec-derive v0.10.3
+#11 89.30   Downloaded zopfli v0.8.2
+#11 89.30   Downloaded zerocopy v0.7.35
+#11 89.33   Downloaded zeroize v1.8.1
+#11 89.33   Downloaded zerofrom v0.1.6
+#11 89.33   Downloaded zerocopy v0.8.24
+#11 89.38   Downloaded zerovec v0.10.4
+#11 89.39   Downloaded yoke-derive v0.7.5
+#11 89.39   Downloaded yoke v0.7.5
+#11 89.39   Downloaded yaml-rust2 v0.10.1
+#11 89.42   Downloaded writeable v0.5.5
+#11 89.42   Downloaded zip v2.6.1
+#11 89.43   Downloaded which v4.4.2
+#11 89.43   Downloaded want v0.3.1
+#11 89.43   Downloaded version_check v0.9.5
+#11 89.43   Downloaded vek v0.15.10
+#11 89.43   Downloaded utf8parse v0.2.2
+#11 89.43   Downloaded valuable v0.1.1
+#11 89.44   Downloaded utf16_iter v1.0.5
+#11 89.44   Downloaded url v2.5.4
+#11 89.44   Downloaded untrusted v0.9.0
+#11 89.44   Downloaded unicode-width v0.2.0
+#11 89.45   Downloaded typetag v0.2.20
+#11 89.45   Downloaded tokio v1.44.2
+#11 89.49   Downloaded tracing-subscriber v0.3.19
+#11 89.49   Downloaded tracing-subscriber v0.2.25
+#11 89.50   Downloaded typenum v1.18.0
+#11 89.50   Downloaded tonic v0.13.1
+#11 89.50   Downloaded unarray v0.1.4
+#11 89.50   Downloaded uint v0.9.5
+#11 89.50   Downloaded ucd-trie v0.1.7
+#11 89.51   Downloaded typetag-impl v0.2.20
+#11 89.51   Downloaded typeid v1.0.3
+#11 89.51   Downloaded twox-hash v1.6.3
+#11 89.51   Downloaded try-lock v0.2.5
+#11 89.51   Downloaded tracing-log v0.2.0
+#11 89.51   Downloaded tracing-core v0.1.33
+#11 89.51   Downloaded tracing-attributes v0.1.28
+#11 89.51   Downloaded tower-service v0.3.3
+#11 89.51   Downloaded tower-layer v0.3.3
+#11 89.51   Downloaded tower v0.5.2
+#11 89.52   Downloaded toml_write v0.1.1
+#11 89.52   Downloaded toml_edit v0.22.26
+#11 89.63   Downloaded syn v1.0.109
+#11 89.65   Downloaded tap v1.0.1
+#11 89.66   Downloaded sync_wrapper v1.0.2
+#11 89.66   Downloaded strsim v0.11.1
+#11 89.66   Downloaded stable_deref_trait v1.2.0
+#11 89.67   Downloaded stability v0.2.1
+#11 89.68   Downloaded sppark v0.1.12
+#11 89.69   Downloaded static_assertions v1.1.0
+#11 89.70   Downloaded spki v0.7.3
+#11 89.70   Downloaded safe_arch v0.7.4
+#11 89.72   Downloaded socket2 v0.5.9
+#11 89.72   Downloaded slab v0.4.9
+#11 89.72   Downloaded simd-adler32 v0.3.7
+#11 89.73   Downloaded serde_json v1.0.143
+#11 89.75   Downloaded rustls-webpki v0.103.1
+#11 89.84   Downloaded rustix v1.0.8
+#11 89.91   Downloaded rustix v0.38.44
+#11 89.98   Downloaded rsa v0.9.8
+#11 90.00   Downloaded signal-hook-registry v1.4.5
+#11 90.00   Downloaded shlex v1.3.0
+#11 90.00   Downloaded sharded-slab v0.1.7
+#11 90.01   Downloaded sha2 v0.10.8
+#11 90.02   Downloaded serde_with_macros v3.12.0
+#11 90.02   Downloaded serde_derive v1.0.219
+#11 90.03   Downloaded rustls v0.23.26
+#11 90.05   Downloaded serde_urlencoded v0.7.1
+#11 90.06   Downloaded serde_spanned v0.6.8
+#11 90.06   Downloaded serde_path_to_error v0.1.17
+#11 90.06   Downloaded semver-parser v0.10.3
+#11 90.07   Downloaded semver v1.0.26
+#11 90.07   Downloaded semver v0.11.0
+#11 90.08   Downloaded scopeguard v1.2.0
+#11 90.08   Downloaded ryu v1.0.20
+#11 90.09   Downloaded rustversion v1.0.20
+#11 90.10   Downloaded rustls-pki-types v1.11.0
+#11 90.11   Downloaded rustls-pemfile v2.2.0
+#11 90.11   Downloaded rustc_version v0.4.1
+#11 90.12   Downloaded rustc_version v0.3.3
+#11 90.12   Downloaded rustc-hex v2.1.0
+#11 90.12   Downloaded rustc-hash v2.1.1
+#11 90.13   Downloaded rustc-demangle v0.1.24
+#11 90.13   Downloaded ruint-macro v1.2.1
+#11 90.13   Downloaded ruint v1.15.0
+#11 90.14   Downloaded regex-automata v0.4.9
+#11 90.17   Downloaded regex-syntax v0.8.5
+#11 90.18   Downloaded regex-syntax v0.6.29
+#11 90.19   Downloaded rlp v0.5.2
+#11 90.20   Downloaded ringbuffer v0.15.0
+#11 90.20   Downloaded rand_core v0.6.4
+#11 90.20   Downloaded rand_chacha v0.9.0
+#11 90.20   Downloaded rand_xorshift v0.4.0
+#11 90.21   Downloaded quinn-udp v0.5.11
+#11 90.21   Downloaded quinn-proto v0.11.11
+#11 90.22   Downloaded quinn v0.11.7
+#11 90.23   Downloaded proptest v1.7.0
+#11 90.25   Downloaded prettyplease v0.2.32
+#11 90.25   Downloaded portable-atomic v1.11.0
+#11 90.27   Downloaded quote v1.0.40
+#11 90.27   Downloaded puffin v0.19.1
+#11 90.28   Downloaded prost-types v0.13.5
+#11 90.28   Downloaded prost-derive v0.13.5
+#11 90.28   Downloaded prost-build v0.13.5
+#11 90.29   Downloaded prost v0.13.5
+#11 90.29   Downloaded proc-macro2 v1.0.95
+#11 90.30   Downloaded proc-macro-error-attr2 v2.0.0
+#11 90.30   Downloaded proc-macro-crate v3.3.0
+#11 90.30   Downloaded primitive-types v0.12.2
+#11 90.30   Downloaded postcard v1.1.1
+#11 90.31   Downloaded pkg-config v0.3.32
+#11 90.31   Downloaded pkcs8 v0.10.2
+#11 90.31   Downloaded pkcs1 v0.7.5
+#11 90.32   Downloaded pin-project-lite v0.2.16
+#11 90.33   Downloaded pin-project-internal v1.1.10
+#11 90.33   Downloaded proc-macro-error2 v2.0.1
+#11 90.34   Downloaded ppv-lite86 v0.2.21
+#11 90.34   Downloaded powerfmt v0.2.0
+#11 90.34   Downloaded pin-utils v0.1.0
+#11 90.35   Downloaded pin-project v1.1.10
+#11 90.38   Downloaded petgraph v0.6.5
+#11 90.40   Downloaded linux-raw-sys v0.9.4
+#11 90.46   Downloaded ark-std v0.4.0
+#11 90.46   Downloaded ark-crypto-primitives-macros v0.5.0
+#11 90.46   Downloaded anyhow v1.0.98
+#11 90.47   Downloaded addr2line v0.24.2
+#11 90.47   Downloaded ark-ff-asm v0.3.0
+#11 90.47   Downloaded alloy-rlp v0.3.12
+#11 90.47   Downloaded adler2 v2.0.0
+#11 90.60    Compiling proc-macro2 v1.0.95
+#11 90.60    Compiling unicode-ident v1.0.18
+#11 90.60    Compiling libc v0.2.172
+#11 90.60    Compiling autocfg v1.4.0
+#11 90.65    Compiling cfg-if v1.0.0
+#11 90.69    Compiling shlex v1.3.0
+#11 90.84    Compiling version_check v0.9.5
+#11 91.01    Compiling quote v1.0.40
+#11 91.13    Compiling once_cell v1.21.3
+#11 91.21    Compiling syn v2.0.100
+#11 91.22    Compiling jobserver v0.1.33
+#11 91.26    Compiling typenum v1.18.0
+#11 91.37    Compiling cc v1.2.19
+#11 91.38    Compiling generic-array v0.14.7
+#11 91.41    Compiling serde v1.0.219
+#11 91.46    Compiling libm v0.2.13
+#11 91.52    Compiling either v1.15.0
+#11 91.63    Compiling memchr v2.7.4
+#11 92.48    Compiling num-traits v0.2.19
+#11 92.52    Compiling zerocopy v0.8.24
+#11 92.60    Compiling crossbeam-utils v0.8.21
+#11 92.74    Compiling pin-project-lite v0.2.16
+#11 92.78    Compiling smallvec v1.15.0
+#11 92.93    Compiling bitflags v2.9.0
+#11 92.95    Compiling getrandom v0.2.16
+#11 93.07    Compiling stable_deref_trait v1.2.0
+#11 93.11    Compiling rustix v1.0.8
+#11 93.15    Compiling getrandom v0.3.2
+#11 93.26    Compiling slab v0.4.9
+#11 93.27    Compiling glob v0.3.2
+#11 93.33    Compiling log v0.4.27
+#11 93.46    Compiling rayon-core v1.12.1
+#11 93.49    Compiling foldhash v0.1.5
+#11 93.52    Compiling allocator-api2 v0.2.21
+#11 93.61    Compiling linux-raw-sys v0.9.4
+#11 93.75    Compiling synstructure v0.13.1
+#11 94.15    Compiling hashbrown v0.15.2
+#11 94.21    Compiling tracing-core v0.1.33
+#11 94.65    Compiling subtle v2.6.1
+#11 94.74    Compiling fastrand v2.3.0
+#11 94.99    Compiling serde_derive v1.0.219
+#11 95.18    Compiling zeroize_derive v1.4.2
+#11 95.18    Compiling zerofrom-derive v0.1.6
+#11 95.44    Compiling zeroize v1.8.1
+#11 95.52    Compiling yoke-derive v0.7.5
+#11 95.88    Compiling zerovec-derive v0.10.3
+#11 95.93    Compiling tempfile v3.20.0
+#11 96.06    Compiling displaydoc v0.2.5
+#11 96.22    Compiling crypto-common v0.1.6
+#11 96.27    Compiling block-buffer v0.10.4
+#11 96.35    Compiling num-integer v0.1.46
+#11 96.47    Compiling digest v0.10.7
+#11 96.52    Compiling ppv-lite86 v0.2.21
+#11 96.58    Compiling crossbeam-epoch v0.9.18
+#11 96.71    Compiling tracing-attributes v0.1.28
+#11 96.78    Compiling futures-macro v0.3.31
+#11 96.82    Compiling crossbeam-deque v0.8.6
+#11 96.93    Compiling option-ext v0.2.0
+#11 96.96    Compiling cpufeatures v0.2.17
+#11 97.01    Compiling sha2 v0.10.8
+#11 97.24    Compiling dirs-sys v0.5.0
+#11 97.39    Compiling rand_core v0.6.4
+#11 97.58    Compiling hex v0.4.3
+#11 97.62    Compiling tracing v0.1.41
+#11 97.72    Compiling const-oid v0.9.6
+#11 97.78    Compiling rayon v1.10.0
+#11 97.90    Compiling directories v6.0.0
+#11 98.24    Compiling icu_locid_transform_data v1.5.1
+#11 98.28    Compiling rustix v0.38.44
+#11 98.44    Compiling lock_api v0.4.12
+#11 98.57    Compiling linux-raw-sys v0.4.15
+#11 98.75    Compiling fnv v1.0.7
+#11 98.86    Compiling icu_provider_macros v1.5.0
+#11 99.05    Compiling ring v0.17.14
+#11 99.28    Compiling bytes v1.10.1
+#11 99.30    Compiling risc0-build-kernel v2.0.1 (/tmp/risc0/risc0/build_kernel)
+#11 99.35    Compiling scopeguard v1.2.0
+#11 99.38    Compiling equivalent v1.0.2
+#11 99.54    Compiling futures-core v0.3.31
+#11 99.55    Compiling home v0.5.11
+#11 99.58    Compiling byteorder v1.5.0
+#11 99.60    Compiling icu_properties_data v1.5.1
+#11 99.66    Compiling indexmap v2.11.0
+#11 99.93    Compiling which v4.4.2
+#11 100.1    Compiling syn v1.0.109
+#11 100.1    Compiling paste v1.0.15
+#11 100.2    Compiling semver v1.0.26
+#11 100.2    Compiling itoa v1.0.15
+#11 100.3    Compiling sppark v0.1.12
+#11 100.4    Compiling blst v0.3.15
+#11 100.4    Compiling crc32fast v1.4.2
+#11 100.4    Compiling adler2 v2.0.0
+#11 100.5    Compiling httparse v1.10.1
+#11 100.5    Compiling static_assertions v1.1.0
+#11 100.6    Compiling icu_normalizer_data v1.5.1
+#11 100.6    Compiling miniz_oxide v0.8.8
+#11 101.7    Compiling rand_chacha v0.3.1
+#11 101.8    Compiling rustc_version v0.4.1
+#11 101.9    Compiling rand v0.8.5
+#11 102.1    Compiling flate2 v1.1.1
+#11 102.4    Compiling twox-hash v1.6.3
+#11 102.5    Compiling cpp_demangle v0.4.4
+#11 102.6    Compiling ryu v1.0.20
+#11 102.7    Compiling object v0.36.7
+#11 102.7    Compiling ruzstd v0.7.3
+#11 102.8    Compiling futures-sink v0.3.31
+#11 102.8    Compiling fallible-iterator v0.3.0
+#11 103.0    Compiling gimli v0.31.1
+#11 104.4    Compiling rand_core v0.9.3
+#11 104.5    Compiling risc0-sys v1.5.0 (/tmp/risc0/risc0/sys)
+#11 104.6    Compiling zerofrom v0.1.6
+#11 104.7    Compiling memmap2 v0.9.5
+#11 105.2    Compiling rustc-demangle v0.1.24
+#11 106.0    Compiling rustls v0.23.26
+#11 106.1    Compiling rustversion v1.0.20
+#11 106.2    Compiling typed-arena v2.0.2
+#11 106.4    Compiling yoke v0.7.5
+#11 106.8    Compiling find_cuda_helper v0.2.0
+#11 106.9    Compiling anyhow v1.0.98
+#11 107.1    Compiling addr2line v0.24.2
+#11 107.2    Compiling zerovec v0.10.4
+#11 107.9    Compiling backtrace v0.3.74
+#11 108.2    Compiling bytemuck_derive v1.9.3
+#11 108.9    Compiling tokio-macros v2.5.0
+#11 109.3    Compiling socket2 v0.5.9
+#11 109.6    Compiling signal-hook-registry v1.4.5
+#11 109.9    Compiling mio v1.0.3
+#11 110.3    Compiling ahash v0.8.11
+#11 110.4    Compiling tokio v1.44.2
+#11 111.9    Compiling bytemuck v1.22.0
+#11 112.6    Compiling futures-channel v0.3.31
+#11 112.8    Compiling vek v0.15.10
+#11 112.9    Compiling futures-io v0.3.31
+#11 112.9    Compiling zerocopy v0.7.35
+#11 113.1    Compiling pin-utils v0.1.0
+#11 113.1    Compiling parking_lot_core v0.9.10
+#11 113.2    Compiling futures-task v0.3.31
+#11 113.3    Compiling heck v0.5.0
+#11 113.4    Compiling futures-util v0.3.31
+#11 114.8    Compiling tinystr v0.7.6
+#11 114.8    Compiling cust_raw v0.11.3
+#11 114.9    Compiling spin v0.9.8
+#11 115.1    Compiling approx v0.5.1
+#11 115.2    Compiling num_cpus v1.16.0
+#11 115.6    Compiling litemap v0.7.5
+#11 115.7    Compiling thiserror v2.0.12
+#11 115.8    Compiling serde_json v1.0.143
+#11 115.9    Compiling writeable v0.5.5
+#11 116.0    Compiling icu_locid v1.5.0
+#11 116.0    Compiling http v1.3.1
+#11 116.7    Compiling threadpool v1.8.1
+#11 117.4    Compiling cust v0.3.2
+#11 117.4    Compiling rand_chacha v0.9.0
+#11 117.8    Compiling cust_derive v0.2.0
+#11 118.0    Compiling thiserror-impl v2.0.12
+#11 118.0    Compiling glam v0.20.5
+#11 118.6    Compiling nvtx v1.3.0
+#11 118.8    Compiling toml_datetime v0.6.9
+#11 118.8    Compiling mint v0.5.9
+#11 119.1    Compiling strsim v0.11.1
+#11 119.1    Compiling ident_case v1.0.1
+#11 119.2    Compiling winnow v0.7.12
+#11 119.3    Compiling cust_core v0.1.1
+#11 119.4    Compiling darling_core v0.20.11
+#11 120.4    Compiling toml_edit v0.22.26
+#11 121.2    Compiling rand v0.9.1
+#11 121.4    Compiling parking_lot v0.12.3
+#11 121.9    Compiling http-body v1.0.1
+#11 122.1    Compiling icu_provider v1.5.0
+#11 123.0    Compiling aho-corasick v1.1.3
+#11 124.0    Compiling enum-ordinalize-derive v4.3.1
+#11 124.2    Compiling itertools v0.10.5
+#11 124.3    Compiling itertools v0.14.0
+#11 125.3    Compiling num-bigint v0.3.3
+#11 125.5    Compiling rustls-pki-types v1.11.0
+#11 125.5    Compiling bitflags v1.3.2
+#11 125.6    Compiling regex-syntax v0.8.5
+#11 125.7    Compiling cfg_aliases v0.2.1
+#11 125.7    Compiling borsh v1.5.7
+#11 126.5    Compiling prost-derive v0.13.5
+#11 127.1    Compiling regex-automata v0.4.9
+#11 127.4    Compiling puffin v0.19.1
+#11 128.0    Compiling enum-ordinalize v4.3.0
+#11 128.1    Compiling icu_locid_transform v1.5.0
+#11 128.7    Compiling proc-macro-crate v3.3.0
+#11 128.8    Compiling darling_macro v0.20.11
+#11 129.1    Compiling lazy_static v1.5.0
+#11 129.1    Compiling icu_collections v1.5.0
+#11 129.2    Compiling ark-std v0.5.0
+#11 129.3    Compiling num-bigint v0.4.6
+#11 129.5    Compiling ark-serialize-derive v0.5.0
+#11 129.6    Compiling arrayvec v0.7.6
+#11 129.7    Compiling radium v0.7.0
+#11 129.7    Compiling percent-encoding v2.3.1
+#11 129.8    Compiling tower-service v0.3.3
+#11 129.8    Compiling untrusted v0.9.0
+#11 130.1    Compiling ark-ff-macros v0.5.0
+#11 130.5    Compiling ark-serialize v0.5.0
+#11 131.2    Compiling icu_properties v1.5.1
+#11 131.3    Compiling borsh-derive v1.5.7
+#11 131.3    Compiling darling v0.20.11
+#11 131.3    Compiling risc0-core v3.0.0 (/tmp/risc0/risc0/core)
+#11 131.6    Compiling regex v1.11.1
+#11 131.9    Compiling educe v0.6.0
+#11 132.4    Compiling ark-ff-asm v0.5.0
+#11 132.5    Compiling num_enum_derive v0.7.4
+#11 132.6    Compiling itertools v0.13.0
+#11 132.8    Compiling matrixmultiply v0.3.9
+#11 132.9    Compiling utf8_iter v1.0.4
+#11 133.0    Compiling write16 v1.0.0
+#11 133.0    Compiling pkg-config v0.3.32
+#11 133.0    Compiling tap v1.0.1
+#11 133.3    Compiling thiserror v1.0.69
+#11 133.3    Compiling try-lock v0.2.5
+#11 133.3    Compiling utf16_iter v1.0.5
+#11 133.4    Compiling icu_normalizer v1.5.0
+#11 133.4    Compiling want v0.3.1
+#11 133.5    Compiling liblzma-sys v0.4.4
+#11 133.5    Compiling wyz v0.5.1
+#11 133.6    Compiling ark-ff v0.5.0
+#11 133.7    Compiling num_enum v0.7.4
+#11 133.7    Compiling addchain v0.2.0
+#11 134.0    Compiling rustls-webpki v0.103.1
+#11 134.4    Compiling blake2 v0.10.6
+#11 134.6    Compiling stability v0.2.1
+#11 134.8    Compiling base64ct v1.8.0
+#11 135.0    Compiling unicode-xid v0.2.6
+#11 135.1    Compiling prettyplease v0.2.32
+#11 135.3    Compiling tower-layer v0.3.3
+#11 135.6    Compiling funty v2.0.0
+#11 135.6    Compiling rawpointer v0.2.1
+#11 136.0    Compiling bitvec v1.0.1
+#11 137.1    Compiling form_urlencoded v1.2.1
+#11 137.5    Compiling derive_more-impl v2.0.1
+#11 137.7    Compiling pem-rfc7468 v0.7.0
+#11 138.4    Compiling risc0-zkvm-platform v2.2.0 (/tmp/risc0/risc0/zkvm/platform)
+#11 139.7    Compiling hyper v1.6.0
+#11 140.4    Compiling ff_derive v0.13.1
+#11 140.6    Compiling idna_adapter v1.2.0
+#11 140.7    Compiling http-body-util v0.1.3
+#11 140.8    Compiling heapless v0.7.17
+#11 141.0    Compiling thiserror-impl v1.0.69
+#11 141.0    Compiling clang-sys v1.8.1
+#11 141.0    Compiling num-complex v0.4.6
+#11 141.1    Compiling risc0-zkp v3.0.2 (/tmp/risc0/risc0/zkp)
+#11 141.2    Compiling httpdate v1.0.3
+#11 141.3    Compiling ndarray v0.16.1
+#11 143.1    Compiling ff v0.13.1
+#11 143.1    Compiling idna v1.0.3
+#11 143.2    Compiling hyper-util v0.1.11
+#11 143.3    Compiling tokio-rustls v0.26.2
+#11 143.5    Compiling derive_more v2.0.1
+#11 143.6    Compiling der v0.7.10
+#11 144.2    Compiling webpki-roots v0.26.8
+#11 144.4    Compiling sync_wrapper v1.0.2
+#11 144.4    Compiling hash32 v0.2.1
+#11 144.5    Compiling hex-literal v0.4.1
+#11 144.6    Compiling ruint-macro v1.2.1
+#11 144.9    Compiling minimal-lexical v0.2.1
+#11 145.1    Compiling tower v0.5.2
+#11 145.3    Compiling serde_urlencoded v0.7.1
+#11 145.3    Compiling nom v7.1.3
+#11 146.3    Compiling ruint v1.15.0
+#11 147.4    Compiling spki v0.7.3
+#11 147.5    Compiling hyper-rustls v0.27.5
+#11 147.5    Compiling url v2.5.4
+#11 148.5    Compiling ark-poly v0.5.0
+#11 149.6    Compiling prost v0.13.5
+#11 149.6    Compiling rustls-pemfile v2.2.0
+#11 149.7    Compiling futures-executor v0.3.31
+#11 149.8    Compiling hashbrown v0.14.5
+#11 149.8    Compiling itertools v0.11.0
+#11 150.0    Compiling libloading v0.8.8
+#11 150.1    Compiling fixedbitset v0.4.2
+#11 150.2    Compiling bindgen v0.72.0
+#11 150.3    Compiling num-bigint-dig v0.8.4
+#11 150.4    Compiling mime v0.3.17
+#11 150.5    Compiling malachite-nz v0.4.22
+#11 150.5    Compiling base64 v0.22.1
+#11 150.7    Compiling ipnet v2.11.0
+#11 150.7    Compiling cobs v0.2.3
+#11 150.8    Compiling postcard v1.1.1
+#11 150.9    Compiling reqwest v0.12.15
+#11 151.0    Compiling malachite-base v0.4.22
+#11 151.7    Compiling petgraph v0.6.5
+#11 152.4    Compiling prost-types v0.13.5
+#11 152.9    Compiling futures v0.3.31
+#11 152.9    Compiling ark-ec v0.5.0
+#11 154.6    Compiling pkcs8 v0.10.2
+#11 154.8    Compiling cexpr v0.6.0
+#11 155.4    Compiling risc0-circuit-recursion-sys v4.0.1 (/tmp/risc0/risc0/circuit/recursion-sys)
+#11 155.5    Compiling serde_spanned v0.6.8
+#11 155.7    Compiling num-iter v0.1.45
+#11 155.7    Compiling tracing-subscriber v0.2.25
+#11 156.3    Compiling elf v0.7.4
+#11 156.4    Compiling multimap v0.10.0
+#11 156.4    Compiling portable-atomic v1.11.0
+#11 156.7    Compiling toml_write v0.1.1
+#11 156.8    Compiling rustc-hash v2.1.1
+#11 156.9    Compiling keccak v0.1.5
+#11 159.2    Compiling risc0-binfmt v3.0.2 (/tmp/risc0/risc0/binfmt)
+#11 160.3    Compiling prost-build v0.13.5
+#11 161.1    Compiling ark-relations v0.5.1
+#11 162.5    Compiling downloader v0.2.8
+#11 162.8    Compiling pkcs1 v0.7.5
+#11 163.4    Compiling serde_with_macros v3.12.0
+#11 163.5    Compiling opentelemetry v0.30.0
+#11 164.2    Compiling strum_macros v0.27.1
+#11 165.0    Compiling signature v2.2.0
+#11 165.0    Compiling risc0-circuit-keccak-sys v4.0.1 (/tmp/risc0/risc0/circuit/keccak-sys)
+#11 165.2    Compiling hashlink v0.10.0
+#11 165.4    Compiling encoding_rs v0.8.35
+#11 165.6    Compiling unicode-width v0.2.0
+#11 165.7    Compiling camino v1.1.9
+#11 165.8    Compiling zip v2.6.1
+#11 165.9    Compiling bumpalo v3.17.0
+#11 166.0    Compiling arraydeque v0.5.1
+#11 166.2    Compiling typeid v1.0.3
+#11 166.2    Compiling simd-adler32 v0.3.7
+#11 166.4    Compiling zopfli v0.8.2
+#11 167.1    Compiling yaml-rust2 v0.10.1
+#11 167.2    Compiling console v0.15.11
+#11 168.2    Compiling strum v0.27.1
+#11 168.7    Compiling malachite-q v0.4.22
+#11 170.3    Compiling rsa v0.9.8
+#11 171.4    Compiling serde_with v3.12.0
+#11 172.5    Compiling liblzma v0.4.2
+#11 172.7    Compiling risc0-circuit-recursion v4.0.2 (/tmp/risc0/risc0/circuit/recursion)
+#11 173.0    Compiling ark-snark v0.5.1
+#11 173.1    Compiling circom-witnesscalc v0.2.1
+#11 173.8    Compiling toml v0.8.22
+#11 173.8    Compiling merlin v3.0.0
+#11 174.8    Compiling lazy-regex-proc_macros v3.4.1
+#11 175.1    Compiling derive_builder_core v0.20.2
+#11 175.7    Compiling tokio-util v0.7.15
+#11 176.1    Compiling derivative v2.2.0
+#11 177.1    Compiling risc0-groth16-sys v0.1.0 (/tmp/risc0/risc0/groth16-sys)
+#11 177.2    Compiling risc0-circuit-rv32im-sys v4.0.1 (/tmp/risc0/risc0/circuit/rv32im-sys)
+#11 177.3    Compiling async-trait v0.1.88
+#11 177.7    Compiling ark-crypto-primitives-macros v0.5.0
+#11 177.9    Compiling pin-project-internal v1.1.10
+#11 178.4    Compiling proc-macro2-diagnostics v0.10.1
+#11 178.5    Compiling managed v0.8.0
+#11 179.1    Compiling utf8parse v0.2.2
+#11 179.1    Compiling regex-syntax v0.6.29
+#11 181.8    Compiling number_prefix v0.4.0
+#11 181.8    Compiling indicatif v0.17.11
+#11 183.8    Compiling regex-automata v0.1.10
+#11 184.1    Compiling anstyle-parse v0.2.6
+#11 185.0    Compiling gdbstub v0.7.5
+#11 186.5    Compiling pin-project v1.1.10
+#11 186.5    Compiling ark-crypto-primitives v0.5.0
+#11 213.1    Compiling derive_builder_macro v0.20.2
+#11 213.3    Compiling lazy-regex v3.4.1
+#11 213.3    Compiling rzup v0.5.1 (/tmp/risc0/rzup)
+#11 215.4    Compiling risc0-circuit-keccak v4.0.2 (/tmp/risc0/risc0/circuit/keccak)
+#11 215.5    Compiling malachite-float v0.4.22
+#11 218.7    Compiling ark-bn254 v0.5.0
+#11 219.3    Compiling tokio-stream v0.1.17
+#11 219.6    Compiling safe_arch v0.7.4
+#11 219.9    Compiling wtns-file v0.1.5
+#11 219.9    Compiling cargo-platform v0.1.9
+#11 220.2    Compiling enum-map-derive v0.17.0
+#11 220.4    Compiling proc-macro-error-attr2 v2.0.0
+#11 220.6    Compiling include_bytes_aligned v0.1.4
+#11 220.6    Compiling is_terminal_polyfill v1.70.1
+#11 220.6    Compiling unicode-segmentation v1.12.0
+#11 220.9    Compiling overload v0.1.1
+#11 220.9    Compiling no_std_strings v0.1.3
+#11 221.0    Compiling anstyle-query v1.1.2
+#11 221.0    Compiling colorchoice v1.0.3
+#11 221.1    Compiling yansi v1.0.1
+#11 221.2    Compiling anstyle v1.0.10
+#11 221.5    Compiling anstream v0.6.18
+#11 221.9    Compiling risc0-zkos-v1compat v2.2.0 (/tmp/risc0/risc0/zkos/v1compat)
+#11 221.9    Compiling nu-ansi-term v0.46.0
+#11 222.1    Compiling convert_case v0.8.0
+#11 222.3    Compiling proc-macro-error2 v2.0.1
+#11 222.5    Compiling enum-map v2.7.3
+#11 222.6    Compiling cargo_metadata v0.19.2
+#11 231.5    Compiling wide v0.7.32
+#11 232.9    Compiling tonic v0.13.1
+#11 234.1    Compiling erased-serde v0.4.6
+#11 234.4    Compiling malachite v0.4.22
+#11 234.4    Compiling derive_builder v0.20.2
+#11 234.6    Compiling ark-groth16 v0.5.0
+#11 234.9    Compiling dirs v6.0.0
+#11 234.9    Compiling gdbstub_arch v0.3.1
+#11 235.3    Compiling matchers v0.1.0
+#11 235.5    Compiling opentelemetry_sdk v0.30.0
+#11 242.0    Compiling axum-core v0.5.2
+#11 243.2    Compiling sharded-slab v0.1.7
+#11 243.6    Compiling serde_path_to_error v0.1.17
+#11 243.9    Compiling typetag-impl v0.2.20
+#11 244.2    Compiling num-derive v0.4.2
+#11 244.6    Compiling tracing-log v0.2.0
+#11 244.7    Compiling uuid v1.16.0
+#11 244.9    Compiling thread_local v1.1.8
+#11 245.3    Compiling bit-vec v0.8.0
+#11 245.4    Compiling matchit v0.8.4
+#11 245.7    Compiling downcast-rs v1.2.1
+#11 246.1    Compiling inventory v0.3.20
+#11 246.1    Compiling docker-generate v0.1.3
+#11 246.3    Compiling clap_lex v0.7.4
+#11 246.4    Compiling ringbuffer v0.15.0
+#11 246.6    Compiling clap_builder v4.5.37
+#11 250.6    Compiling risc0-build v3.0.3 (/tmp/risc0/risc0/build)
+#11 252.7    Compiling typetag v0.2.20
+#11 253.1    Compiling rrs-lib v0.1.0
+#11 253.3    Compiling axum v0.8.4
+#11 257.1    Compiling nvml-wrapper-sys v0.9.0
+#11 258.0    Compiling tracing-subscriber v0.3.19
+#11 260.3    Compiling kameo_macros v0.16.0
+#11 260.8    Compiling opentelemetry-proto v0.30.0
+#11 262.4    Compiling risc0-groth16 v3.0.2 (/tmp/risc0/risc0/groth16)
+#11 264.9    Compiling multi_index_map_derive v0.15.0
+#11 265.5    Compiling duplicate v2.0.0
+#11 265.9    Compiling opentelemetry-http v0.30.0
+#11 266.6    Compiling wrapcenum-derive v0.4.1
+#11 266.8    Compiling clap_derive v4.5.32
+#11 268.0    Compiling bincode v1.3.3
+#11 268.3    Compiling maybe-async v0.2.10
+#11 268.6    Compiling dyn-clone v1.0.19
+#11 268.7    Compiling downcast-rs v2.0.1
+#11 268.8    Compiling kameo v0.16.0
+#11 269.4    Compiling multi_index_map v0.15.0
+#11 269.5    Compiling bonsai-sdk v1.4.1 (/tmp/risc0/bonsai/sdk)
+#11 270.7    Compiling clap v4.5.37
+#11 270.7    Compiling nvml-wrapper v0.11.0
+#11 273.4    Compiling opentelemetry-otlp v0.30.0
+#11 274.6    Compiling opentelemetry-appender-tracing v0.30.0
+#11 274.7    Compiling axum-extra v0.10.1
+#11 655.0    Compiling risc0-circuit-rv32im v4.0.2 (/tmp/risc0/risc0/circuit/rv32im)
+#11 879.5    Compiling risc0-zkvm v3.0.3 (/tmp/risc0/risc0/zkvm)
+#11 880.1 error: unnecessary parentheses around type
+#11 880.1    --> risc0/zkvm/src/host/server/exec/syscall/mod.rs:197:72
+#11 880.1     |
+#11 880.1 197 |     pub(crate) fn get_syscall(&self, name: &str) -> Option<&Rc<RefCell<(dyn Syscall + 'a)>>> {
+#11 880.1     |                                                                        ^                ^
+#11 880.1     |
+#11 880.1     = note: `-D unused-parens` implied by `-D warnings`
+#11 880.1     = help: to override `-D warnings` add `#[allow(unused_parens)]`
+#11 880.1 help: remove these parentheses
+#11 880.1     |
+#11 880.1 197 -     pub(crate) fn get_syscall(&self, name: &str) -> Option<&Rc<RefCell<(dyn Syscall + 'a)>>> {
+#11 880.1 197 +     pub(crate) fn get_syscall(&self, name: &str) -> Option<&Rc<RefCell<dyn Syscall + 'a>>> {
+#11 880.1     |
+#11 880.1 
+#11 882.8 error: struct `PageFaults` is never constructed
+#11 882.8   --> risc0/zkvm/src/host/server/session.rs:41:12
+#11 882.8    |
+#11 882.8 41 | pub struct PageFaults {
+#11 882.8    |            ^^^^^^^^^^
+#11 882.8    |
+#11 882.8    = note: `-D dead-code` implied by `-D warnings`
+#11 882.8    = help: to override `-D warnings` add `#[allow(dead_code)]`
+#11 882.8 
+#11 882.9 error: could not compile `risc0-zkvm` (lib) due to 2 previous errors
+#11 ERROR: process "/bin/sh -c bash /opt/build/build_cuda.sh" did not complete successfully: exit code: 101
+------
+ > [builder 4/4] RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh:
+882.8 error: struct `PageFaults` is never constructed
+882.8   --> risc0/zkvm/src/host/server/session.rs:41:12
+882.8    |
+882.8 41 | pub struct PageFaults {
+882.8    |            ^^^^^^^^^^
+882.8    |
+882.8    = note: `-D dead-code` implied by `-D warnings`
+882.8    = help: to override `-D warnings` add `#[allow(dead_code)]`
+882.8 
+882.9 error: could not compile `risc0-zkvm` (lib) due to 2 previous errors
+------
+Dockerfile:7
+--------------------
+   5 |     COPY recursion_zkr.zip /opt/build/recursion_zkr.zip
+   6 |     COPY build_cuda.sh /opt/build/build_cuda.sh
+   7 | >>> RUN --mount=type=secret,id=system_ca,mode=0444 bash /opt/build/build_cuda.sh
+   8 |     
+   9 |     FROM nvidia/cuda:12.8.1-base-ubuntu24.04@sha256:e711c99333fdfe8ae1e677b4972be6c5021f0128a1d31f775c7e58d88921b6a9
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c bash /opt/build/build_cuda.sh" did not complete successfully: exit code: 101

@@ -38,9 +38,12 @@ def check(image):
     docker('run', '--rm', '--entrypoint', 'python3', image, '-m', 'py_compile',
            '/opt/kpi/app/service.py', '/opt/kpi/app/worker.py', '/opt/kpi/app/common.py')
     linked = docker('run', '--rm', '--entrypoint', 'ldd', image, '/opt/kpi/bin/r0vm-cuda')
-    assert 'not found' not in linked, linked
-    version = docker('run', '--rm', '--entrypoint', '/opt/kpi/bin/r0vm-cuda', image, '--version').strip()
-    assert '3.0.3' in version
+    missing = [line.strip() for line in linked.splitlines() if 'not found' in line]
+    assert all(line == 'libcuda.so.1 => not found' for line in missing), linked
+    version = None
+    if not missing:
+        version = docker('run', '--rm', '--entrypoint', '/opt/kpi/bin/r0vm-cuda', image, '--version').strip()
+        assert '3.0.3' in version
     name = 'kpi-cuda-cpu-smoke-'+uuid.uuid4().hex[:10]
     token = 'unit-test-only-not-a-real-credential-00000000'
     try:
@@ -82,7 +85,9 @@ def check(image):
             'imageId': docker('image', 'inspect', image, '--format', '{{.Id}}').strip(),
             'imageBytes': int(docker('image', 'inspect', image, '--format', '{{.Size}}')),
             'proverVersion': version, 'cudaBuild': metadata, 'runtimeFilesSha256': files,
-            'linkedLibrariesResolved': True, 'pythonCompilation': True,
+            'nonDriverLibrariesResolved': True, 'driverLibraryResolved': not missing,
+            'driverNote': 'libcuda.so.1 must be injected by the NVIDIA GPU container runtime; no driver stub is bundled.',
+            'pythonCompilation': True,
             'authenticatedStartupAndLeaseBinding': True, 'unguardedStartRejected': True,
             'proofJobStarted': False, 'providerCalled': False, 'gpuExecutionQualified': False}
 
