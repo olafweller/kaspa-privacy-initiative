@@ -305,3 +305,13 @@ rejection in a separate process. Workload association uses the trusted pinned
 SDK export and asset hashes. These partial transition proofs do not establish
 a cryptographically composed path from the initial image to the full journal;
 they cannot replace the full-receipt identity/journal checks or native settlement.
+
+The [remote CUDA preparation](poc/remote-cuda/README.md) sends only these existing
+public research fixtures to a candidate rental. An independent CPU comparison
+pins all five PR #40 claims; a remote report or transport hash is not enough.
+The provider can deny service or falsify telemetry and billing, but cannot make
+a different sealed claim pass those checks. The independent watchdog's host,
+credentials and provider stop API are availability/cost assumptions, not protocol
+authorities. Live CUDA, stop and persistence behavior remain unqualified. Never
+send private wallet witnesses through this public-fixture interface without a
+separate privacy design. This changes no protocol, circuit or settlement rule.

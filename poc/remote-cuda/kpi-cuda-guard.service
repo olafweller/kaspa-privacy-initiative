@@ -1,0 +1,23 @@
+[Unit]
+Description=Bounded KPI GPU rental watchdog independent of Codex and GPU Pod
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kpi-cuda-guard
+Group=kpi-cuda-guard
+EnvironmentFile=/etc/kpi-cuda-guard.env
+StateDirectory=kpi-cuda-guard
+WorkingDirectory=/opt/kpi-remote-cuda
+ExecStart=/usr/bin/python3 /opt/kpi-remote-cuda/watchdog.py /var/lib/kpi-cuda-guard/lease.json /var/lib/kpi-cuda-guard/artifacts
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/kpi-cuda-guard
+
+[Install]
+WantedBy=multi-user.target
