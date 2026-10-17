@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {parse, stringify, sompi} from './exact-json.mjs';
+const raw = '{"nonce":3037550573469842379,"amount":18446744073709551615,"index":0,"text":"3037550573469842379","fraction":0.125}';
+assert.equal(stringify(parse(raw)), raw);
+assert.equal(parse(raw).nonce, 3037550573469842379n);
+assert.equal(sompi(parse(raw).amount), (1n<<64n)-1n);
+assert.equal(sompi('9007199254740993') + sompi(1), 9007199254740994n);
+assert.throws(()=>sompi(9007199254740992));
+assert.throws(()=>sompi(-1));
+assert.throws(()=>sompi('18446744073709551616'));
+assert.throws(()=>stringify({amount:9007199254740992}));
+assert.throws(()=>parse('1e999'));
+console.log('PASS: lossless nonce/u64 roundtrip, exact sompi arithmetic, unsafe/negative/overflow rejection');

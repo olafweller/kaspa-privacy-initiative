@@ -1,3 +1,4 @@
+import * as exactJSON from './exact-json.mjs';
 // Read-only native JSON wRPC capture. Run ON the VPS; no public RPC needed.
 // Raw response strings preserve every u64 (notably nonce and input sequence).
 import fs from 'node:fs';
@@ -14,13 +15,13 @@ const pending = new Map();
 let id = 0;
 socket.onmessage = event => {
   const raw = String(event.data);
-  const response = JSON.parse(raw);
+  const response = exactJSON.parse(raw);
   const p = pending.get(response.id);
   if (!p) return;
   pending.delete(response.id);
   clearTimeout(p.timer);
   records.push({label: p.label, method: p.method, request: p.request, raw});
-  if (response.error) p.reject(new Error(JSON.stringify(response.error)));
+  if (response.error) p.reject(new Error(exactJSON.stringify(response.error)));
   else p.resolve(response.params);
 };
 function call(label, method, request = {}) {
@@ -28,7 +29,7 @@ function call(label, method, request = {}) {
     const n = ++id;
     const timer = setTimeout(() => {pending.delete(n); reject(new Error(`RPC timeout: ${label}`));}, 60000);
     pending.set(n, {resolve, reject, timer, label, method, request});
-    socket.send(JSON.stringify({id: n, method, params: request}));
+    socket.send(exactJSON.stringify({id: n, method, params: request}));
   });
 }
 await new Promise((resolve, reject) => {socket.onopen = resolve; socket.onerror = reject;});
@@ -79,12 +80,12 @@ try {
   const lanes = {};
   for (const b of blocks) for (const t of b.acceptedTransactions)
     lanes[t.subnetworkId] = (lanes[t.subnetworkId] ?? 0) + 1;
-  console.log(JSON.stringify({scope: 'TN10_LOCAL_RPC_READ_ONLY', start: start.header.hash,
+  console.log(exactJSON.stringify({scope: 'TN10_LOCAL_RPC_READ_ONLY', start: start.header.hash,
     end: end.hash, blocks: blocks.length, laneKey, lanes}));
 } catch (error) {failure = error.message;}
 finally {
   socket.close();
-  fs.writeFileSync(out, JSON.stringify({kind: 'TN10_NATIVE_JSON_RPC_CAPTURE_V1',
+  fs.writeFileSync(out, exactJSON.stringify({kind: 'TN10_NATIVE_JSON_RPC_CAPTURE_V1',
     observedAt: new Date().toISOString(), endpoint: 'ws://127.0.0.1:18210',
     laneKey, intervalBlocks, failure: failure ?? null, records}, null, 2) + '\n', {flag: 'wx'});
 }

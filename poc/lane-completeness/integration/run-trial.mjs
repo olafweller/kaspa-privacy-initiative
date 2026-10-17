@@ -1,3 +1,4 @@
+import * as exactJSON from './exact-json.mjs';
 // One fresh TN10 trial: seed a lane, bootstrap, publish three KPI operations,
 // capture exact accepted input. Proving/settlement are separate explicit stages.
 // Run under systemd-run on the VPS to survive terminal or laptop disappearance.
@@ -10,11 +11,11 @@ import assert from 'node:assert/strict';
 const root = '/opt/kpi-pr31-cloud-20261017';
 const binary = root + '/kpi-tn10-integration-lift19-v2';
 const program = root + '/guest.program.bin';
-const wallet = JSON.parse(fs.readFileSync(root + '/test-wallet.public.json'));
+const wallet = exactJSON.parse(fs.readFileSync(root + '/test-wallet.public.json'));
 assert.equal(wallet.network, 'testnet-10');
 const trial = path.join(root, 'trial-' + new Date().toISOString().replaceAll(/[:.]/g, '-') + '-' + crypto.randomBytes(4).toString('hex'));
 fs.mkdirSync(trial, {mode: 0o700});
-const save = (name, value) => fs.writeFileSync(path.join(trial, name), JSON.stringify(value, null, 2) + '\n', {flag: 'wx', mode: 0o600});
+const save = (name, value) => fs.writeFileSync(path.join(trial, name), exactJSON.stringify(value, null, 2) + '\n', {flag: 'wx', mode: 0o600});
 const random = crypto.randomBytes(3); random[0] |= 1;
 const lane = '4b' + random.toString('hex') + '00'.repeat(16);
 function execute(args) {
@@ -25,20 +26,20 @@ function execute(args) {
 const laneKey = execute(['key', lane]).trim();
 const identity = {trial, lane, laneKey, address: wallet.address, network: 'testnet-10'};
 save('identity.json', identity);
-console.log(JSON.stringify(identity));
+console.log(exactJSON.stringify(identity));
 const ws = new WebSocket('ws://127.0.0.1:18210');
 let id = 0; const pending = new Map(); const records = [];
 ws.onmessage = e => {
-  const raw = String(e.data); const r = JSON.parse(raw); const p = pending.get(r.id);
+  const raw = String(e.data); const r = exactJSON.parse(raw); const p = pending.get(r.id);
   if (!p) return; pending.delete(r.id); clearTimeout(p.timer);
   records.push({method: p.method, request: p.request, raw});
-  r.error ? p.reject(new Error(JSON.stringify(r.error))) : p.resolve(r.params);
+  r.error ? p.reject(new Error(exactJSON.stringify(r.error))) : p.resolve(r.params);
 };
 await new Promise((resolve, reject) => {ws.onopen = resolve; ws.onerror = reject;});
 const call = (method, request = {}) => new Promise((resolve, reject) => {
   const n = ++id; const timer = setTimeout(() => reject(Error('RPC timeout; inspect before retry: ' + method)), 60000);
   pending.set(n, {resolve, reject, timer, method, request});
-  ws.send(JSON.stringify({id: n, method, params: request}));
+  ws.send(exactJSON.stringify({id: n, method, params: request}));
 });
 async function server() {
   const result = await call('getServerInfo');
@@ -51,7 +52,7 @@ async function prepare(label, fields) {
     feeEstimate: await call('getFeeEstimate')};
   save(label + '-request.json', request);
   execute(['build', lane, root + '/test-wallet.key', path.join(trial, label + '-request.json'), path.join(trial, label + '-transaction.json'), program]);
-  return JSON.parse(fs.readFileSync(path.join(trial, label + '-transaction.json')));
+  return exactJSON.parse(fs.readFileSync(path.join(trial, label + '-transaction.json')));
 }
 async function waitAccepted(from, txid, confirmations = 3) {
   const deadline = Date.now() + 900000;
@@ -80,7 +81,7 @@ async function submit(label, built) {
   save(label + '-mempool.json', result);
   const header = await waitAccepted(before, built.transactionId);
   save(label + '-accepted.json', header);
-  console.log(JSON.stringify({stage: label, transactionId: built.transactionId, acceptingBlock: header.hash, feeSompi: built.feeSompi}));
+  console.log(exactJSON.stringify({stage: label, transactionId: built.transactionId, acceptingBlock: header.hash, feeSompi: built.feeSompi}));
   return header;
 }
 try {
@@ -94,7 +95,7 @@ try {
     end = await submit('operation-' + number, await prepare('operation-' + number, {kind: 'activity', number}));
     assert(end.blueScore - proof.lane.blueScore <= 100, 'original guest interval exceeded; preserve this trial');
   }
-  await waitAccepted(seed.hash, JSON.parse(fs.readFileSync(path.join(trial, 'operation-3-transaction.json'))).transactionId, 10);
+  await waitAccepted(seed.hash, exactJSON.parse(fs.readFileSync(path.join(trial, 'operation-3-transaction.json'))).transactionId, 10);
   const capture = spawnSync('/opt/kpi-cloud-https/bin/node', [root + '/capture-v2.mjs', path.join(trial, 'capture.json'), laneKey, '50', seed.hash, end.hash], {encoding: 'utf8', maxBuffer: 32 * 1024 * 1024});
   save('capture-process.json', {status: capture.status, stdout: capture.stdout, stderr: capture.stderr});
   assert.equal(capture.status, 0);

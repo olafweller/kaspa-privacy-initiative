@@ -1,0 +1,15 @@
+{
+  "source": "settlement-rpc-records.json.gz",
+  "source_sha256": "61491776618d2f0e389774f2518281122f8951a4e47d101b31902058bad68d31",
+  "record_index": 39,
+  "method": "getVirtualChainFromBlockV2",
+  "selector": {
+    "acceptingHeaderHash": "dfe2081a9b66903a85dc599287facd2199a972b65e7e3bc1d8044626db3b24b1",
+    "transactionId": "ad65b24e74d8e4f2d225089265bac635357d88b51a84a34e20f7a6f66c551d67"
+  },
+  "previous_file_sha256": "f9579c6f52be7baa2701d9cf813c7876177e005d4ed0b1bc17f6558c4e97522c",
+  "previous_commit": "68100588133175442dab2b0a56ed6d784dc015ea",
+  "correction": "Re-extracted entire derived observation with Python arbitrary-precision JSON integers. Raw RPC and historical public archives remain byte-identical. Archives contain the historical rounded derivatives; consult raw records or this corrected derivative. No transaction or proof was rerun.",
+  "old_nonce": 3037550573469842400,
+  "exact_nonce": 3037550573469842379
+}

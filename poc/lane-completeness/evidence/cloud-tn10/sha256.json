@@ -56,7 +56,7 @@
   "preservation.json": "c8aa5167cd578c02a9ae98daf0230c488d3b85debc547dc2398bdbf0a94ee1f2",
   "proof-report.json": "24500be8b7fb5be6bd9b85a3319b34573348ca38b1bd55a34aa9cac90375c84a",
   "runtime.json": "cfbb9cdfb0aba9afd142a55be36d1c418f2be84ccca82c4eee60db485d0e6761",
-  "settlement-accepted.json": "f9579c6f52be7baa2701d9cf813c7876177e005d4ed0b1bc17f6558c4e97522c",
+  "settlement-accepted.json": "d8c8cbc5d1e79a097f1372e99a1835cabed6289d11300b9c8b904d43766617d3",
   "settlement-builder-process.json": "918bfac15b21aa85aa04874e1f4c53ca83b150c1a0f65bc8dcb2059c461582b4",
   "settlement-mempool.json": "cb7a8e44361de45eab8a00d21cabef3dd8fa23ea2a9eab0e931b2ee08328b181",
   "settlement-result.json": "cb9071b5e97460217e4b7ca0c8cd3e1f761dce1891072ace7efd088100a0f113",
@@ -67,5 +67,6 @@
   "validation.json": "3a62d5bb724ad6b3c5ceb12f511b135d7b0f883ea9c8c12d8b24dcfe92d651e4",
   "vps-deployed-hashes.txt": "b3e506c693ad218fdc921dcdd7e0393a75750ea2880ecf0f3d927d7dd81c74bc",
   "vps-runtime.txt": "da1f31c8e85c06baf26fa1fb1e75ea5df4987f3ad36634e3967b9fbb61359685",
-  "wallet-tests.log.gz": "978ec4719d284ba145f7cea614460dc712b8a66916419b21cf20e72e435ea4ff"
+  "wallet-tests.log.gz": "978ec4719d284ba145f7cea614460dc712b8a66916419b21cf20e72e435ea4ff",
+  "integer-correction.json": "906e6692c53523a72a288ca2e739917e96cc078e294f36d27c91f087abb1a856"
 }
