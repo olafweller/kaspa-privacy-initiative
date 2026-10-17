@@ -45,7 +45,7 @@ def main():
         assert a == b
     files = {}
     dirs = ['fixture-complete', 'profile-4b-result', 'baseline-result',
-            'malformed-fixtures', 'check-final', 'check-review', 'invalid-unspent-result', 'source-files', 'source-final-files', 'source-review-files',
+            'malformed-fixtures', 'check-final', 'check-review', 'invalid-unspent-result', 'final-replay-result', 'source-files', 'source-final-files', 'source-review-files',
             'programs-06', 'fixture-01', 'programs-02']
     dirs += [p.name for p in local.glob('result-*') if p.is_dir()]
     for dirname in dirs:
@@ -97,6 +97,7 @@ def main():
         'fixture': fixture, 'profile': profile, 'baseline': baseline,
         'profileResources': read(local / 'profile-4b.resources.json'),
         'unspentInvalidThenValidControl': read(local / 'invalid-unspent-result/report.json'),
+        'finalSourceReplay': read(local / 'final-replay-result/report.json'),
         'initialProfileLimitFailure': read(local / 'profile-main.resources.json'),
         'executionCeilingCycles': 4_294_967_296, 'maxReceiptBytes': 240_000,
         'maxOperationBytes': 250_000, 'negativeExecutionControls': negatives,
