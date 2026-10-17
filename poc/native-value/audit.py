@@ -166,6 +166,20 @@ def audit(root):
               dict(stage='withdrawal_settled_unpaid', spendable=600_000_000, unpaidClaims=400_000_000, reserved=1_000_000_000),
               dict(stage='payout_confirmed', spendable=600_000_000, unpaidClaims=0, reserved=600_000_000)]
     assert all(s['spendable'] + s['unpaidClaims'] <= s['reserved'] for s in stages)
+    # The final-claim script also owes the recipient the sponsored permission rent.
+    # Include that entitlement AND its already-locked native permission output;
+    # never count uncommitted sponsor/treasury funds as backing.
+    all_entitlements = []
+    for stage in stages:
+        rent = 50_000_000 if stage['stage'] == 'withdrawal_settled_unpaid' else 0
+        liability = stage['spendable'] + stage['unpaidClaims'] + rent
+        reserved = stage['reserved'] + rent
+        assert liability <= reserved
+        all_entitlements.append({'stage': stage['stage'], 'principalLiability': liability-rent,
+                                 'rentClaim': rent, 'totalLiability': liability,
+                                 'reservedPrincipal': stage['reserved'],
+                                 'reservedPermissionRent': rent, 'totalReserved': reserved})
+
     post = e.json('postcheck.json')
     initial_sponsor = sum(v['utxoEntry']['amount'] for v in e.json('fund-user-request.json')['utxos']['entries'])
     ending_domains = {'sponsor': post['balancesSompi']['sponsor'],
@@ -178,7 +192,8 @@ def audit(root):
             'initialSponsorSompi': initial_sponsor, 'endingDomainsSompi': ending_domains,
             'originalMembersVerified': len(manifest), 'confirmedTransactions': len(confirmed),
             'feesSompi': fees, 'totalFeesSompi': sum(fees.values()),
-            'backingStagesSompi': stages, 'stateRentSompi': 100_000_000,
+            'backingStagesSompi': stages, 'allEntitlementsIncludingRentSompi': all_entitlements,
+            'stateRentSompi': 100_000_000,
             'permissionRentRefundSompi': 50_000_000, 'nativePrincipalPaidSompi': 400_000_000,
             'journals': journals, 'remainingIndependentRecoveryProven': False}
 
