@@ -1,0 +1,248 @@
+{
+  "heads.json": {
+    "kaspanet/docs": {
+      "sha": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+      "error": null
+    },
+    "kaspanet/vprogs": {
+      "sha": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "error": null
+    },
+    "kaspanet/research": {
+      "sha": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+      "error": null
+    },
+    "kaspanet/rusty-kaspa": {
+      "sha": "f7d7877363fb97c2ec6871be0e8cbc351d44df10",
+      "error": null
+    },
+    "zcash/orchard": {
+      "sha": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+      "error": null
+    },
+    "AztecProtocol/aztec-packages": {
+      "sha": "cfdcaf175030a7e22503e62b5d18080e6501ae73",
+      "error": null
+    },
+    "Railgun-Privacy/contract": {
+      "sha": "36bcf5ed7cf94bfafb6e1a303e1832c769c16780",
+      "error": null
+    },
+    "Railgun-Privacy/circuits": {
+      "sha": null,
+      "error": "remote: Repository not found.\nfatal: repository 'https://github.com/Railgun-Privacy/circuits.git/' not found"
+    },
+    "monero-project/monero": {
+      "sha": "f8aba51d2d50ebe7c96a0f4d1f2d6e88add61710",
+      "error": null
+    },
+    "litecoin-project/litecoin": {
+      "sha": "ec1b6489a900d09cf5991e220dce089c77a232a2",
+      "error": null
+    },
+    "risc0/risc0": {
+      "sha": "3bbcd44d6459b9ef6ac0df3846dc9215514934e8",
+      "error": null
+    }
+  },
+  "files.json": [
+    {
+      "repo": "kaspanet/docs",
+      "ref": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+      "path": "content/docs/toccata/based-apps.mdx",
+      "url": "https://raw.githubusercontent.com/kaspanet/docs/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx",
+      "bytes": 9470,
+      "sha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
+      "local": "kaspanet_docs__content_docs_toccata_based-apps.mdx"
+    },
+    {
+      "repo": "kaspanet/research",
+      "ref": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/kaspanet/research/c923faca11a49148fa7d912d27ce00197a5c5a4a/README.md",
+      "bytes": 447,
+      "sha256": "fa73396af352e5f4b591bbe31ec643939a61d7ff8322f3d765c0d3aa05a5ae8b",
+      "local": "kaspanet_research__README.md"
+    },
+    {
+      "repo": "kaspanet/vprogs",
+      "ref": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/abi/src/batch_processor/verifier.rs",
+      "url": "https://raw.githubusercontent.com/kaspanet/vprogs/f9b84a863a7c7c20586a9cf947550475e894f72e/zk/abi/src/batch_processor/verifier.rs",
+      "bytes": 13278,
+      "sha256": "b24b8d0776afa6a3f39753d06041a51376dfd84f2613fa2a56220c727eba6e19",
+      "local": "kaspanet_vprogs__zk_abi_src_batch_processor_verifier.rs"
+    },
+    {
+      "repo": "kaspanet/vprogs",
+      "ref": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/backend/risc0/api/src/host.rs",
+      "url": "https://raw.githubusercontent.com/kaspanet/vprogs/f9b84a863a7c7c20586a9cf947550475e894f72e/zk/backend/risc0/api/src/host.rs",
+      "bytes": 854,
+      "sha256": "ab3001e9d4680708e7a4ea492b73e23c881558159b3606f9aba4231b2627c0c1",
+      "local": "kaspanet_vprogs__zk_backend_risc0_api_src_host.rs"
+    },
+    {
+      "repo": "zcash/orchard",
+      "ref": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+      "path": "src/note/nullifier.rs",
+      "url": "https://raw.githubusercontent.com/zcash/orchard/616a669df8c9a59c33d47064d3ce04b25d026b2e/src/note/nullifier.rs",
+      "bytes": 4037,
+      "sha256": "860747577a477fa387af512262c7f391593d74f4ac619a86b5c6c897bf18c659",
+      "local": "zcash_orchard__src_note_nullifier.rs"
+    },
+    {
+      "repo": "zcash/orchard",
+      "ref": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+      "path": "src/note_encryption.rs",
+      "url": "https://raw.githubusercontent.com/zcash/orchard/616a669df8c9a59c33d47064d3ce04b25d026b2e/src/note_encryption.rs",
+      "bytes": 39339,
+      "sha256": "0e1785ecb66dfbb343674afa8e8e037710f1b26d340804ce03aa502a33e464f3",
+      "local": "zcash_orchard__src_note_encryption.rs"
+    },
+    {
+      "repo": "AztecProtocol/aztec-packages",
+      "ref": "49a592109ec4f18d79212b43d621891aaf36f7b6",
+      "path": "noir-projects/aztec-nr/aztec/src/note/note_interface.nr",
+      "url": "https://raw.githubusercontent.com/AztecProtocol/aztec-packages/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/aztec-nr/aztec/src/note/note_interface.nr",
+      "bytes": 3416,
+      "sha256": "4950679a772bde4b9031db11710e79c187bc816d2a0aace4f560a2aa8b443765",
+      "local": "AztecProtocol_aztec-packages__noir-projects_aztec-nr_aztec_src_note_note_interface.nr"
+    },
+    {
+      "repo": "Railgun-Privacy/contract",
+      "ref": "36bcf5ed7cf94bfafb6e1a303e1832c769c16780",
+      "path": "contracts/logic/Commitments.sol",
+      "url": "https://raw.githubusercontent.com/Railgun-Privacy/contract/36bcf5ed7cf94bfafb6e1a303e1832c769c16780/contracts/logic/Commitments.sol",
+      "bytes": 8985,
+      "sha256": "fe56adcc9aa04fcbe2bb7346207f8eed58dd1e13ba6eb2aa7661329c2c4b5d1b",
+      "local": "Railgun-Privacy_contract__contracts_logic_Commitments.sol"
+    },
+    {
+      "repo": "Railgun-Privacy/circuits-v2",
+      "ref": "0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb",
+      "path": "License.md",
+      "url": "https://raw.githubusercontent.com/Railgun-Privacy/circuits-v2/0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb/License.md",
+      "bytes": 61,
+      "sha256": "4dc3e0bc42609cc1d3ba8303776040cfdd8b0b002b6e42106450720d98af06c4",
+      "local": "Railgun-Privacy_circuits-v2__License.md"
+    },
+    {
+      "repo": "monero-project/monero",
+      "ref": "f8aba51d2d50ebe7c96a0f4d1f2d6e88add61710",
+      "path": "src/ringct/rctSigs.cpp",
+      "url": "https://raw.githubusercontent.com/monero-project/monero/f8aba51d2d50ebe7c96a0f4d1f2d6e88add61710/src/ringct/rctSigs.cpp",
+      "bytes": 67379,
+      "sha256": "cee913efc2e4f5bfabfb1df58c1574b1fc4213a22a205722f4d43f3f7fb0f0f0",
+      "local": "monero-project_monero__src_ringct_rctSigs.cpp"
+    },
+    {
+      "repo": "litecoin-project/litecoin",
+      "ref": "ec1b6489a900d09cf5991e220dce089c77a232a2",
+      "path": "src/libmw/include/mw/models/tx/Output.h",
+      "url": "https://raw.githubusercontent.com/litecoin-project/litecoin/ec1b6489a900d09cf5991e220dce089c77a232a2/src/libmw/include/mw/models/tx/Output.h",
+      "bytes": 7408,
+      "sha256": "b535684386719155907388abd75b887bb0a60accc1872a0ce89edf2528d3a692",
+      "local": "litecoin-project_litecoin__src_libmw_include_mw_models_tx_Output.h"
+    },
+    {
+      "repo": "risc0/risc0",
+      "ref": "v3.0.3",
+      "path": "risc0/zkvm/src/guest/env/verify.rs",
+      "url": "https://raw.githubusercontent.com/risc0/risc0/v3.0.3/risc0/zkvm/src/guest/env/verify.rs",
+      "bytes": 7803,
+      "sha256": "29417f6f65e9419671dace8113644f1621ad8834d41c7bacdb7fed157f88f0c4",
+      "local": "risc0_risc0__risc0_zkvm_src_guest_env_verify.rs"
+    }
+  ],
+  "privacy-refresh.json": [
+    {
+      "repo": "Railgun-Privacy/circuits-v2",
+      "ref": "0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb",
+      "path": "License.md",
+      "url": "https://raw.githubusercontent.com/Railgun-Privacy/circuits-v2/0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb/License.md",
+      "sha256": "4dc3e0bc42609cc1d3ba8303776040cfdd8b0b002b6e42106450720d98af06c4",
+      "bytes": 61,
+      "local": "Railgun-Privacy_circuits-v2__License.md"
+    },
+    {
+      "repo": "Railgun-Community/engine",
+      "ref": "6e2614d53a106dd62abad91e7ce03ee4a3956138",
+      "path": "src/note/transact-note.ts",
+      "url": "https://raw.githubusercontent.com/Railgun-Community/engine/6e2614d53a106dd62abad91e7ce03ee4a3956138/src/note/transact-note.ts",
+      "sha256": "06945b37f35f0ebc0ebffaa57ec3ed0ec6cfdfe28eb573f3061ec0668c2c7cdf",
+      "bytes": 26013,
+      "local": "Railgun-Community_engine__src_note_transact-note.ts"
+    },
+    {
+      "repo": "mrzeku2000XTTT/kaspa-xmss-covenants",
+      "ref": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+      "path": "covenants/privacy_pool/withdraw.circom",
+      "url": "https://raw.githubusercontent.com/mrzeku2000XTTT/kaspa-xmss-covenants/6713eb0115722d5193718dfe4dbe716bdc9b3d09/covenants/privacy_pool/withdraw.circom",
+      "sha256": "fba1cab61630e85f4c0549e054c20e5ad6107a750763728e78d54967ca6f5174",
+      "bytes": 2097,
+      "local": "mrzeku2000XTTT_kaspa-xmss-covenants__covenants_privacy_pool_withdraw.circom"
+    },
+    {
+      "repo": "kasperience/argent",
+      "ref": "8751cc2ef559732cc66539eb354360dddc84bfb5",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/kasperience/argent/8751cc2ef559732cc66539eb354360dddc84bfb5/README.md",
+      "sha256": "058180e3f4fc6b71f0da320c6c4ca8c55bb7a992ca71414c6155396ba64cd8e2",
+      "bytes": 11771,
+      "local": "kasperience_argent__README.md"
+    },
+    {
+      "repo": "KASRANKS/KASSWORD",
+      "ref": "8af2e17b26bf9b2af8d974768fd65fccb10663a7",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/KASRANKS/KASSWORD/8af2e17b26bf9b2af8d974768fd65fccb10663a7/README.md",
+      "sha256": "c464b5c71b2177fc077961a7cbc64e927e995b260af2a8c21384e0ebc7c8b261",
+      "bytes": 6000,
+      "local": "KASRANKS_KASSWORD__README.md"
+    }
+  ],
+  "additional-files.json": [
+    {
+      "repo": "kaspanet/research",
+      "ref": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+      "path": "vProgs/main.tex",
+      "sha256": "dd8e426439fe26f03c7b31d6cb9ee4616b1638cc04ca80f91f6130b22b095c37",
+      "bytes": 49161,
+      "url": "https://raw.githubusercontent.com/kaspanet/research/c923faca11a49148fa7d912d27ce00197a5c5a4a/vProgs/main.tex",
+      "local": "kaspanet_research__current_vProgs_main.tex"
+    },
+    {
+      "repo": "AztecProtocol/aztec-packages",
+      "ref": "cfdcaf175030a7e22503e62b5d18080e6501ae73",
+      "path": "noir-projects/aztec-nr/aztec/src/note/note_interface.nr",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "mrzeku2000XTTT/kaspa-xmss-covenants",
+      "ref": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+      "path": "covenants/privacy_pool/deploy_pool_demo.mjs",
+      "sha256": "1a8e0dd880f2d8db92c1b8e36c16f729e7481fee584d1088e90c066eb929233d",
+      "bytes": 6657,
+      "url": "https://raw.githubusercontent.com/mrzeku2000XTTT/kaspa-xmss-covenants/6713eb0115722d5193718dfe4dbe716bdc9b3d09/covenants/privacy_pool/deploy_pool_demo.mjs",
+      "local": "mrzeku2000XTTT_kaspa-xmss-covenants__current_covenants_privacy_pool_deploy_pool_demo.mjs"
+    }
+  ],
+  "scope": "DATED_SELECTED_PRIMARY_SOURCE_REVIEW_NOT_AUDIT_OR_THIRD_PARTY_REPRODUCTION",
+  "date": "2026-10-17",
+  "localNotesSha256": {
+    "research/README.md": "0b02a596a2389e98a29794eafb96e128a14a11f2193171c8309dd81c0f71f4d2",
+    "research/aztec.md": "b57e09be3b7332b7d69dc3ffc0ed040d86fefe26645efef02a3177bb006d7ecc",
+    "research/existing-kaspa-privacy.md": "7e6158c8459f92b672eb3f24f0d7681b69b6f08fbe57fc7c7307a67333e2aeeb",
+    "research/kaspa-post-quantum-experiments.md": "675d286606f30cbd533d74a7455ab9f0964cb11475c4767c8170a6fee5005313",
+    "research/kaspa-toccata-vprogs.md": "0844b94f63d353aedfd8b26ff6048bcf916ae054bb0048e34432329ecb30a686",
+    "research/legal-operational-questions.md": "c68fae614eb30a13de8c9ec4ca74931858dabf2230e2f61e24a4007b2c404cd3",
+    "research/litecoin-mweb.md": "e0c56eaa0be721b95322f5cc181894fb029743b1d767d73ab18b114f4490b7ef",
+    "research/monero.md": "a903e247298c0ac186339fbe64a93c2dbec02d81309aa0ab66c0f1f3c7a9b696",
+    "research/phase1-source-review-2026-10-08.md": "19f69e5b60f75f5dedbc4c96a6c7f49d9a4504a4e3fb7a5bff49915a36f867c0",
+    "research/railgun.md": "ec0da590568c0bbf99432d4cb6399e5b365d32ce2a65b813d030040090186df1",
+    "research/technical-discussion-michael-sutton-based-apps-2026-10.md": "8613b09fec916a3a6609d20363aa1a2262c96a682b3b71af8e0312667d81b071",
+    "research/zcash-orchard.md": "5ab4cb1114b212bd1ca5751c8e07fe1385314a6430d034e1f4ec532ba119e2f6"
+  },
+  "licenseBoundary": "No restricted source is imported or redistributed in the artifact archive; only references and hashes are retained."
+}

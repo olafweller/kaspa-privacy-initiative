@@ -11,13 +11,10 @@ starts a node, creates a wallet, runs independent G5, or invokes G6.
 | Code checks / fast | Docs, Python AST + `test_*.py` unittest discovery, all Node syntax + `*.test.mjs`, diff whitespace | Offline unit/SDK serialization tests; no RPC or acceptance observations |
 | Code checks / rust (per available component) | Rust 1.91.0 rustfmt and `cargo test --locked --release`, two test threads | Real circuit/unit/native-synthetic tests present in that component; not all retained experiment receipts |
 
-`main` currently contains A0 and the A1 specification. A1 implementation lives
-in draft PR #22. Maintenance CI tests A0; it also tests A1 whenever the selected
-ref contains A1. After this workflow is available on the default branch,
-`workflow_dispatch` can select `refs/pull/22/head`. It resolves that ref once and
-uses the same commit in every job. The selected ref must also include these CI
-scripts; bring the maintenance changes onto that branch before dispatching.
-Do not claim an A1 run from the maintenance PR's A0-only matrix.
+The current main baseline contains A0, A1 and the public native-value/recursive
+adapters. Component detection reports exactly what exists in the checked ref.
+`workflow_dispatch` may select another ref; all jobs use its resolved commit.
+Historical/manual evidence remains separate from unit/CI results.
 
 Native builds use a pinned Rusty Kaspa commit, locked dependencies, Ubuntu 24.04
 build prerequisites and caches for Cargo/RocksDB outputs. Node uses version 22
@@ -64,3 +61,12 @@ CI does not generate recursive proofs or submit transactions. Python syntax
 checks include the offline retained-capture harness. Program rebuild, historical
 capture preparation and real recursive proof generation are separate local
 checks described in the [adapter README](../poc/takeover/README.md).
+
+The shielded-design local package adds a PyNaCl-backed **model** suite to fast
+checks and its Python files to syntax checks. CI installs the declared model
+requirements before the offline suite. Rust checks build the compatibility host,
+not the isolated guest programs or real recursive proofs. Those are manual,
+hash-recorded measurements in [the package](../poc/shielded-design/README.md).
+Cache fallback is per component/toolchain/native pin; locked dependency resolution
+and normal Cargo source checks still apply after restoration. No model/proof test
+is native funding, an independent recovery run or proof of financial privacy.

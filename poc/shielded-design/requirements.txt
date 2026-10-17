@@ -1,0 +1,2 @@
+# Local model only; no production cryptography is selected.
+PyNaCl==1.5.0

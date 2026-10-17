@@ -367,3 +367,17 @@ A user should not be forced to make a transparent withdrawal and fresh deposit m
 A user who never upgrades must not be silently stranded by project policy or a discontinued website. Specify how valid legacy claims remain independently spendable or recoverable when executors, provers and maintainers disappear, which old verifier/programs and public histories must remain accessible, and what user-held notes/witnesses/backups are required. Unchangeable contracts alone cannot guarantee availability if data, consensus support, fee access, or cryptographic security are lost.
 
 Any proposed migration mechanism must be tested for unauthorized movement, reserve conservation, double claims across versions, replay/downgrades, partially completed migration and unpaid exits. Compare privacy leakage under low activity and long dormant periods, and include old-version users in the multi-user recovery/shutdown test. Do not implement or approve a migration path solely on these requirements; select it only after a separate reviewed RFC/ADR and scoped test evidence.
+
+## Proposed private-payment statement and local compatibility
+
+[RFC-0002](rfc/0002-shielded-payment.md) proposes the hidden ownership/value,
+current nullifier, delivery, deposit recovery and unpaid-exit interfaces. The
+[local work package](../poc/shielded-design/README.md) exercises an ideal economic
+model and real representative wallet -> transaction -> reference batch/aggregate
+composition with local native script verification. It selects no production
+note/encryption construction or funded deployment. Missing/wrong recursive
+assumptions abort; a cryptographically enforced invalid-operation no-op remains
+unimplemented. Intent must exclude proof bytes to avoid a circular native-ID
+binding. PR34's shared economic single-consumption and voluntary migration/legacy
+requirements remain open. [ADR-0006](adr/0006-shielded-design-local-work-package.md)
+records the bounded local research decision only.

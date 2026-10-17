@@ -7,6 +7,17 @@ model, followed by a minimal TN10 privacy experiment. No production architecture
 or proof system is selected here; [RFC-0001](rfc/0001-state-architecture.md) remains
 Open. Native KAS is the sole backing asset; there is no new privacy token.
 
+## Local work-package checkpoint, 2026-10-17
+
+The first [local package](../poc/shielded-design/README.md) now supplies
+[RFC-0002](rfc/0002-shielded-payment.md), a visibility contract, executable model,
+adversarial tests, source/reuse review and real bounded wallet-to-batch proof
+composition. No funded privacy trial was run. The current recursive syscall does
+not prove an invalid-operation no-op; that classifier, complete private relation,
+noncircular proof-carrying payload and authenticated deposit recovery require
+review before the [conditional TN10 proposal](../poc/shielded-design/TN10-PROPOSAL.md).
+The model/proxy proof do not establish financial privacy or close the issues below.
+
 ## First work package: define the private payment statement
 
 Work through existing issues rather than inventing a second backlog:

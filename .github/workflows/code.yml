@@ -62,6 +62,11 @@ jobs:
           key: sdk-v2.1.0-ba674e109ff5dd8bedc4dc2ee8a5ecdf4b600b1178a541d77888ec58310b6124
       - name: Install hash-verified SDK (no node, RPC or wallet)
         run: bash scripts/ci_setup_sdk.sh
+      - name: Install local model dependencies where present
+        run: |
+          if [[ -f poc/shielded-design/requirements.txt ]]; then
+            python3 -m pip install --target .local/shielded-design/python -r poc/shielded-design/requirements.txt
+          fi
       - name: Docs, Python, Node and syntax checks
         run: bash scripts/ci_fast.sh
   rust:
@@ -100,6 +105,8 @@ jobs:
             ~/.cargo/git
             kpi/.local/ci-target
           key: rust-ubuntu24-x64-1.91.0-01b532e-${{ matrix.component }}-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+          restore-keys: |
+            rust-ubuntu24-x64-1.91.0-01b532e-${{ matrix.component }}-
       - name: Check formatting and run locked release tests
         working-directory: kpi
         env:

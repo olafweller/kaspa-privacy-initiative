@@ -7,7 +7,7 @@ python3 scripts/check_docs.py
 python3 - <<'PY'
 import ast
 from pathlib import Path
-for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')):
+for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')) + list(Path('poc/takeover').rglob('*.py')) + list(Path('poc/shielded-design').rglob('*.py')):
     ast.parse(file.read_text(), filename=str(file))
 print('Python syntax: OK')
 PY
@@ -24,3 +24,7 @@ if [[ -f poc/lane-completeness/integration/test-exact-json.mjs ]]; then
     for kpi_ci_js in poc/lane-completeness/integration/*.mjs poc/native-value/remote/*.mjs poc/takeover/remote/*.mjs; do node --check "$kpi_ci_js"; done
 fi
 git diff --check
+if [[ -f poc/shielded-design/test_model.py ]]; then
+    PYTHONPATH="$PWD/.local/shielded-design/python${PYTHONPATH:+:$PYTHONPATH}" \
+        python3 -m unittest discover -s poc/shielded-design -p 'test_*.py' -v
+fi

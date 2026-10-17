@@ -273,3 +273,14 @@ The research and eventual scoped test plan should demonstrate or explicitly iden
 5. Independent reconstruction, note discovery, proving and exit or completion for non-migrating and migrating users after all default executors, indexers and provers disappear, including defined pruning/retention and fee constraints.
 
 Distinguish privacy preservation for a shielded transfer from migration that is *unlinkable* to outside observers; neither follows automatically from using a ZK proof. Compare existing systems and documented lessons (including [Orchard](../../research/zcash-orchard.md) and [RAILGUN](../../research/railgun.md)) without assuming their mechanisms transfer to Kaspa. Coordinate with [issue #19](https://github.com/olafweller/kaspa-privacy-initiative/issues/19) for post-quantum cryptographic agility, but treat ordinary security/functionality upgrades as a broader problem. Future selection needs its own reviewed ADR and evidence; this addition does not decide RFC-0001, modify invariants, authorize new TN10 tests, or block the finite Based App feasibility conclusion.
+
+## First shielded design package
+
+[RFC-0002](0002-shielded-payment.md) and [ADR-0006](../adr/0006-shielded-design-local-work-package.md)
+make the initial private lifecycle and layer/data boundaries concrete. The
+[local result](../../poc/shielded-design/RESULTS.md) combines an ideal proof-oracle
+model with a real, deliberately smaller compatibility relation. A successful
+assumption chain does not supply a proven invalidity classifier, complete
+shielded economics or noncircular proof-carrying payload. Those remain explicit
+review blockers before the conditional first funded privacy cycle. Candidate
+comparison, migration and the N-user shutdown gate remain unresolved.

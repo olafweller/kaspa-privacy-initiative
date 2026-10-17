@@ -1,0 +1,56 @@
+{
+  "scope": "LOCAL_IDEAL_PROOF_ORACLE_ECONOMIC_MODEL_NOT_ZK_OR_TN10",
+  "stagesSompi": [
+    {
+      "stage": "funded_uncredited",
+      "reserve": 1000000000,
+      "private": 0,
+      "pendingDeposits": 1000000000,
+      "unpaidExits": 0,
+      "unpaidFees": 0,
+      "rentReserve": 0
+    },
+    {
+      "stage": "credited",
+      "reserve": 1000000000,
+      "private": 1000000000,
+      "pendingDeposits": 0,
+      "unpaidExits": 0,
+      "unpaidFees": 0,
+      "rentReserve": 0
+    },
+    {
+      "stage": "private_transfer",
+      "reserve": 1000000000,
+      "private": 1000000000,
+      "pendingDeposits": 0,
+      "unpaidExits": 0,
+      "unpaidFees": 0,
+      "rentReserve": 0
+    },
+    {
+      "stage": "unpaid_exit",
+      "reserve": 1000000000,
+      "private": 600000000,
+      "pendingDeposits": 0,
+      "unpaidExits": 400000000,
+      "unpaidFees": 0,
+      "rentReserve": 50000000
+    },
+    {
+      "stage": "native_payout_modelled",
+      "reserve": 600000000,
+      "private": 600000000,
+      "pendingDeposits": 0,
+      "unpaidExits": 0,
+      "unpaidFees": 0,
+      "rentReserve": 0
+    }
+  ],
+  "bobIndependentDiscoveryInModel": true,
+  "modelledPaidSompi": 450000000,
+  "externalPermissionRentFundedSompi": 50000000,
+  "permissionRentPaidSompi": 50000000,
+  "realFinancialPrivacyEstablished": false,
+  "actualNativePayout": false
+}

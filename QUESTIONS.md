@@ -202,3 +202,14 @@ close P01-P03 in full or private note/nullifier, financial-privacy, discovery,
 exit-fee and recovery questions. The [next work package](docs/shielded-kas-next.md)
 prioritizes these private-protocol requirements against the existing issues;
 new public runtime/operator infrastructure needs a demonstrated purpose.
+
+## Questions exposed by the first shielded local package
+
+The [proposed private statement](docs/rfc/0002-shielded-payment.md) asks how to
+prove invalid-proof rejection without an executor skip flag or whole-batch-only
+halt; how to bind a wallet intent without circularly including its own proof's
+native transaction ID; how to retain proof/ciphertext availability within native
+mass limits; and how every supported funded deposit gets an authenticated credit
+or recovery path. The ideal model and real small composition test are different
+evidence layers. Complete note/ownership/nullifier/encryption constraints,
+permissionless fees, migration and independent recovery remain open.

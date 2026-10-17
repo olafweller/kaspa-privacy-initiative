@@ -7,6 +7,8 @@ use serde_json::{json, Value};
 use std::{error::Error, fs, path::Path, time::Instant};
 use vprogs_core_codec::Writer;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
+#[path = "../../../shielded-design/compat/host.rs"]
+mod wallet_compat;
 
 fn save(dir: &Path, name: &str, bytes: &[u8]) -> Result<()> {
     use std::io::Write;
@@ -106,6 +108,11 @@ fn main() -> Result<()> {
         "development mode forbidden"
     );
     let args: Vec<_> = std::env::args().collect();
+    if args.get(1).is_some_and(|s| s == "wallet-image") {
+        let id = compute_image_id(&fs::read(args.get(2).ok_or("wallet program")?)?)?;
+        println!("pub const WALLET_IMAGE: [u32; 8] = {:?};", id.as_words());
+        return Ok(());
+    }
     if args.get(1).is_some_and(|s| s == "wrap") {
         if args.len() != 4 {
             return Err("wrap RAW_ELF NEW_PROGRAM".into());
@@ -134,6 +141,12 @@ fn main() -> Result<()> {
         Ok("ipc"),
         "real IPC prover required"
     );
+    if args.get(1).is_some_and(|s| s == "wallet-compat") {
+        return wallet_compat::run(&args);
+    }
+    if args.get(1).is_some_and(|s| s == "wallet-metrics") {
+        return wallet_compat::metrics(&args);
+    }
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);
     }

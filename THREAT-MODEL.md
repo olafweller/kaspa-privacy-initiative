@@ -252,3 +252,16 @@ trust dependency; lane payloads, resource access, fee funding, ciphertext retrie
 and timing can leak relationships despite a ZK execution proof. No privacy
 requirement is satisfied by the public-account result. Existing fund-safety,
 recovery and independent-review requirements remain unchanged.
+
+## Local private-payment model boundary
+
+The [first package](poc/shielded-design/README.md) uses an explicitly ideal proof
+registry and reproducible test keys. Its SHA/HMAC IDs and sealed-box demonstration
+are not selected production cryptography. A server validity flag cannot replace
+a proved predicate. Two valid wallet proofs using one old anchor still need a
+current shared nullifier check. Failed operations must change no economic state,
+and a funded rejected deposit must retain a proved credit/owner-recovery path.
+Uncommitted rent sponsor funds are not backing; the model requires an explicit
+funding step before creating an exit rent entitlement. Missing recursive evidence
+currently aborts, so deterministic invalidity/no-op handling remains a real
+liveness/completeness design blocker. See the [adversarial review](poc/shielded-design/ADVERSARIAL-REVIEW.md).
