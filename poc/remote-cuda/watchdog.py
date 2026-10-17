@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import sys
+import threading
 import time
 
 from common import atomic, json_request, lease_check, request, sha
@@ -94,14 +95,42 @@ class Guard:
         return False
 
 
+def serve(guard, poll_seconds=10):
+    stopped = threading.Event()
+    def remember(error):
+        try:
+            atomic(guard.directory/'last-error.json', {'unixSeconds': time.time(),
+                'errorType': type(error).__name__, 'stopUnix': guard.lease['stopUnix']})
+        except OSError:
+            pass  # A full backup disk must not disable provider-stop retries.
+    def deadline_stop():
+        # Independent of an in-flight GPU status request or artifact download.
+        while not stopped.is_set():
+            try:
+                if guard.stop():
+                    stopped.set()
+                    return
+            except Exception as error:
+                remember(error)
+            stopped.wait(poll_seconds)
+    timer = threading.Timer(max(0, guard.lease['stopUnix']-60-time.time()), deadline_stop)
+    timer.daemon = True
+    timer.start()
+    try:
+        while not stopped.is_set():
+            try:
+                if guard.step():
+                    stopped.set()
+                    break
+            except Exception as error:
+                remember(error)
+            stopped.wait(poll_seconds)
+    finally:
+        stopped.set()
+        timer.cancel()
+
+
 if __name__ == '__main__':
     lease = json.loads(Path(sys.argv[1]).read_text())
     guard = Guard(lease, Path(sys.argv[2]), os.environ['RUNPOD_API_KEY'], os.environ['KPI_GPU_TOKEN'])
-    while True:
-        try:
-            if guard.step():
-                break
-        except Exception as error:
-            atomic(guard.directory/'last-error.json', {'unixSeconds': time.time(),
-                    'errorType': type(error).__name__, 'stopUnix': lease['stopUnix']})
-        time.sleep(10)  # A failed stop/read-back is retried, never reported as success.
+    serve(guard)

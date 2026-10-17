@@ -15,7 +15,7 @@ from unittest.mock import patch
 from common import lease_check
 from package import checked_archive
 from service import App, Job, handler, ThreadingHTTPServer
-from watchdog import Guard
+from watchdog import Guard, serve
 from common import sha, json_request
 import worker
 
@@ -206,6 +206,29 @@ class Remote(unittest.TestCase):
             clock[0] += 61
             self.assertTrue(guard.step())
             self.assertTrue(stopped[0])
+
+    def test_rental_deadline_does_not_wait_for_a_stalled_gpu_request(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rental = lease()
+            rental['stopUnix'] = time.time()+60.2
+            released, stopped = threading.Event(), threading.Event()
+            def provider(url, token, method='GET', value=None):
+                if method == 'POST':
+                    stopped.set()
+                    return {}
+                return {'id': rental['podId'], 'createdAt': rental['createdUnix'],
+                        'desiredStatus': 'EXITED' if stopped.is_set() else 'RUNNING'}
+            guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider)
+            guard.step = lambda: released.wait(5) and False  # Simulated stalled download.
+            thread = threading.Thread(target=serve, args=(guard, 0.02))
+            thread.start()
+            try:
+                self.assertTrue(stopped.wait(2), 'provider stop waited for the stalled GPU request')
+                self.assertFalse(released.is_set())
+            finally:
+                released.set()
+                thread.join(2)
+            self.assertFalse(thread.is_alive())
 
     def test_timeout_kills_real_descendant_and_strips_credentials(self):
         with tempfile.TemporaryDirectory() as directory:

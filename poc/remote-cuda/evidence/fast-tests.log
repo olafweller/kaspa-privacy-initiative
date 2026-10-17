@@ -5,7 +5,7 @@ test_aggregate_timeout_kills_ipc_descendant (test_resources.Resources.test_aggre
 test_nonzero_exit_not_a_success (test_resources.Resources.test_nonzero_exit_not_a_success) ... ok
 
 ----------------------------------------------------------------------
-Ran 2 tests in 1.427s
+Ran 2 tests in 1.429s
 
 OK
 test_archive_traversal_and_duplicate_names_rejected (test_remote.Remote.test_archive_traversal_and_duplicate_names_rejected) ... ok
@@ -14,13 +14,14 @@ test_cost_duration_and_host_are_checked (test_remote.Remote.test_cost_duration_a
 test_empty_stop_response_and_already_exited_are_handled (test_remote.Remote.test_empty_stop_response_and_already_exited_are_handled) ... ok
 test_external_watchdog_stops_after_controller_is_gone (test_remote.Remote.test_external_watchdog_stops_after_controller_is_gone) ... ok
 test_http_auth_guard_single_start_and_disconnection (test_remote.Remote.test_http_auth_guard_single_start_and_disconnection) ... ok
+test_rental_deadline_does_not_wait_for_a_stalled_gpu_request (test_remote.Remote.test_rental_deadline_does_not_wait_for_a_stalled_gpu_request) ... ok
 test_restart_marks_interrupted_without_retry (test_remote.Remote.test_restart_marks_interrupted_without_retry) ... ok
 test_stop_ack_without_exited_readback_is_not_success (test_remote.Remote.test_stop_ack_without_exited_readback_is_not_success) ... ok
 test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.test_terminal_backup_survives_controller_loss_before_stop) ... ok
 test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 1.531s
+Ran 11 tests in 1.733s
 
 OK
 test_accounting_exact_rebate (test_a1_check.IndependentCodecTests.test_accounting_exact_rebate) ... ok
@@ -76,11 +77,11 @@ test_cli_error_names_private_diagnostic (test_a1_trial.TrialTests.test_cli_error
 test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail (test_a1_trial.TrialTests.test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail) ... ok
 test_exact_payout_is_checked_again_at_120_seconds (test_a1_trial.TrialTests.test_exact_payout_is_checked_again_at_120_seconds) ... ok
 test_exclusive_private_evidence_writes (test_a1_trial.TrialTests.test_exclusive_private_evidence_writes) ... ok
-test_exit_reconciles_only_actual_race_submission_and_never_retries (test_a1_trial.TrialTests.test_exit_reconciles_only_actual_race_submission_and_never_retries) ... Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpfhh9e2pa/error-python-c5840b51c28e4bcc8bb4597e58486fea.private.json
-Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp0r3lw4hi/error-python-98604b8ac19d41d6bcafcc13a211e68c.private.json
+test_exit_reconciles_only_actual_race_submission_and_never_retries (test_a1_trial.TrialTests.test_exit_reconciles_only_actual_race_submission_and_never_retries) ... Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3t_rl4n9/error-python-929f7a8a84444e33960e2bc9b80bdc28.private.json
+Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp_59mh590/error-python-f776fe20dd224d7588bf4355c2a9e0cf.private.json
 ok
-test_fund_and_discover_wait_limits (test_a1_trial.TrialTests.test_fund_and_discover_wait_limits) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpus756_b5/error-python-7a9a0798222b4756a9a9cff2deec3069.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpus756_b5/error-python-d96dd0a8842c47228182b2d9d5753d94.private.json
+test_fund_and_discover_wait_limits (test_a1_trial.TrialTests.test_fund_and_discover_wait_limits) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmprxmcvrnc/error-python-533f4f70bfc947bda61dfebe1f67d3ed.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmprxmcvrnc/error-python-739792dc9eaf45e9b623d39d1249fe40.private.json
 ok
 test_intent_survives_unknown_response_and_is_never_retried (test_a1_trial.TrialTests.test_intent_survives_unknown_response_and_is_never_retried) ... ok
 test_js_diagnostic_type_stack_and_secret_redaction (test_a1_trial.TrialTests.test_js_diagnostic_type_stack_and_secret_redaction) ... ok
@@ -89,17 +90,17 @@ test_loser_with_own_accepted_body_stops (test_a1_trial.TrialTests.test_loser_wit
 test_missing_corrupt_reordered_history_stops_before_submission (test_a1_trial.TrialTests.test_missing_corrupt_reordered_history_stops_before_submission) ... ok
 test_moving_tip_export_is_trimmed_to_fixed_horizon (test_a1_trial.TrialTests.test_moving_tip_export_is_trimmed_to_fixed_horizon) ... ok
 test_network_default_denies_before_process_spawn (test_a1_trial.TrialTests.test_network_default_denies_before_process_spawn) ... ok
-test_observe_and_nested_discover_share_configured_deadline (test_a1_trial.TrialTests.test_observe_and_nested_discover_share_configured_deadline) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpdoxyk_ib/error-python-612555dffb20456dac406adcca3a3942.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpdoxyk_ib/error-python-ccbd46c3cfb14b1189a37eaca1d32b42.private.json
+test_observe_and_nested_discover_share_configured_deadline (test_a1_trial.TrialTests.test_observe_and_nested_discover_share_configured_deadline) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3xjsczpm/error-python-beb2e70f87214939a56e2336a3cc037e.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3xjsczpm/error-python-439e393a2e904a37bb1772d96d9ac3cb.private.json
 ok
 test_only_unrelated_native_id_results_are_cached_by_exact_full_body (test_a1_trial.TrialTests.test_only_unrelated_native_id_results_are_cached_by_exact_full_body) ... ok
 test_public_rpc_error_is_retained_without_claiming_rejection (test_a1_trial.TrialTests.test_public_rpc_error_is_retained_without_claiming_rejection) ... ok
 test_python_diagnostic_full_chain_and_secret_redaction (test_a1_trial.TrialTests.test_python_diagnostic_full_chain_and_secret_redaction) ... ok
-test_read_only_snapshot_alignment_retry_keeps_corruption_strict (test_a1_trial.TrialTests.test_read_only_snapshot_alignment_retry_keeps_corruption_strict) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3g7heuu1/error-python-69fefe4a66af4fe58ac842ec9bd3db82.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3g7heuu1/error-python-b029c6aadc804c20a30f23cdd84c7ac8.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3g7heuu1/error-python-8d33a6b85f8943b4b14ae59c898d7aad.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3g7heuu1/error-python-2bc5a77a9f5c40769fc76ca9d750e7b8.private.json
-History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3g7heuu1/error-python-3c8dceb553694d66ba8034ada574cf20.private.json
+test_read_only_snapshot_alignment_retry_keeps_corruption_strict (test_a1_trial.TrialTests.test_read_only_snapshot_alignment_retry_keeps_corruption_strict) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpuxjp0ifv/error-python-0b7045111b8b49aaa89232820f326bd4.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpuxjp0ifv/error-python-644c982ba4d34a4cbc1c8b1ffdacce7a.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpuxjp0ifv/error-python-3acae3dc9560431c9f27956a5b54d95e.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpuxjp0ifv/error-python-df02700481d047929761b67ee1c4a30a.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpuxjp0ifv/error-python-ab41e27607c9427bb23c3a499a357feb.private.json
 ok
 test_reorg_still_halts_and_retains_the_exact_offending_response (test_a1_trial.TrialTests.test_reorg_still_halts_and_retains_the_exact_offending_response) ... ok
 test_retained_prefix_is_below_tip_with_checked_selected_parent_headers (test_a1_trial.TrialTests.test_retained_prefix_is_below_tip_with_checked_selected_parent_headers) ... ok
@@ -117,86 +118,86 @@ test_unchanged_templates_hash_to_deployed_bytes (test_a1_trial_source.TrialSourc
 test_wrong_values_are_reported_and_rejected (test_a1_trial_source.TrialSourceTemplates.test_wrong_values_are_reported_and_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 81 tests in 0.490s
+Ran 81 tests in 0.447s
 
 OK (skipped=2)
 TAP version 13
 # Subtest: native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
 ok 1 - native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
   ---
-  duration_ms: 4.852305
+  duration_ms: 7.023048
   type: 'test'
   ...
 # Subtest: missing metadata or a covenant substitution cannot silently become None
 ok 2 - missing metadata or a covenant substitution cannot silently become None
   ---
-  duration_ms: 2.234859
+  duration_ms: 3.069117
   type: 'test'
   ...
 # Subtest: overflow and noninteger budgets do not survive roundtrip
 ok 3 - overflow and noninteger budgets do not survive roundtrip
   ---
-  duration_ms: 1.995218
+  duration_ms: 1.918131
   type: 'test'
   ...
 # Subtest: archived decimal-string genesis header reloads and hashes independently
 ok 4 - archived decimal-string genesis header reloads and hashes independently
   ---
-  duration_ms: 1.300861
+  duration_ms: 1.307481
   type: 'test'
   ...
 # Subtest: cached header hash cannot conceal a changed nonce or overflowing u64
 ok 5 - cached header hash cannot conceal a changed nonce or overflowing u64
   ---
-  duration_ms: 0.379512
+  duration_ms: 0.340674
   type: 'test'
   ...
 # Subtest: generic v0 mass is the storage component, not overall compute mass
 ok 6 - generic v0 mass is the storage component, not overall compute mass
   ---
-  duration_ms: 0.588327
+  duration_ms: 0.646074
   type: 'test'
   ...
 # Subtest: f64-only mass helper refuses values that could lose integer precision
 ok 7 - f64-only mass helper refuses values that could lose integer precision
   ---
-  duration_ms: 4.675848
+  duration_ms: 5.489917
   type: 'test'
   ...
 # Subtest: fixed A0 fee can use a slower bounded bucket without changing accounting
 ok 8 - fixed A0 fee can use a slower bounded bucket without changing accounting
   ---
-  duration_ms: 0.197949
+  duration_ms: 0.209826
   type: 'test'
   ...
 # Subtest: unaffordable, stale-duration or malformed fee estimates fail closed
 ok 9 - unaffordable, stale-duration or malformed fee estimates fail closed
   ---
-  duration_ms: 0.495337
+  duration_ms: 0.625353
   type: 'test'
   ...
 # Subtest: an advertised complete schema never authorizes funding
 ok 10 - an advertised complete schema never authorizes funding
   ---
-  duration_ms: 0.846196
+  duration_ms: 1.175121
   type: 'test'
   ...
 # Subtest: mainnet, an unsynced node and absent UTXO indexing fail closed
 ok 11 - mainnet, an unsynced node and absent UTXO indexing fail closed
   ---
-  duration_ms: 0.278469
+  duration_ms: 0.409858
   type: 'test'
   ...
 # Subtest: missing compute budget, mass or covenant metadata blocks the REST route
 ok 12 - missing compute budget, mass or covenant metadata blocks the REST route
   ---
-  duration_ms: 0.184308
+  duration_ms: 0.342256
   type: 'test'
   ...
 # Subtest: HTTP errors and unavailable observations cannot establish compatibility
 ok 13 - HTTP errors and unavailable observations cannot establish compatibility
   ---
-  duration_ms: 1.17448
+  duration_ms: 1.880295
   type: 'test'
   ...
 1..13
@@ -207,7 +208,7 @@ ok 13 - HTTP errors and unavailable observations cannot establish compatibility
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 157.358154
+# duration_ms 171.912072
 PASS: lossless nonce/u64 roundtrip, exact sompi arithmetic, unsafe/negative/overflow rejection
 PASS: both derived acceptances equal original RPC records, including exact u64 nonce
 test_complete_alice_bob_cycle_and_change (test_model.PaymentModelTests.test_complete_alice_bob_cycle_and_change) ... ok
@@ -236,6 +237,6 @@ test_wrong_anchor_and_membership (test_model.PaymentModelTests.test_wrong_anchor
 test_wrong_deposit_commitment_or_amount (test_model.PaymentModelTests.test_wrong_deposit_commitment_or_amount) ... ok
 
 ----------------------------------------------------------------------
-Ran 24 tests in 0.056s
+Ran 24 tests in 0.053s
 
 OK

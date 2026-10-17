@@ -63,7 +63,8 @@ automatically increased and a resource failure is not a successful proof result.
 Prefer one RunPod on-demand L40S with 48 GB VRAM, at least four vCPUs and 32 GB
 host RAM, 90 GB container disk and a 10 GB persistent volume. The absolute lease
 ends at most two hours after **provider creation**, not service startup. The guard
-requests stop one minute early, or after a terminal checkpoint has been backed up
+requests stop one minute early using a timer independent of GPU status/download
+requests, or after a terminal checkpoint has been backed up
 and a 60-second retrieval grace has elapsed. Pod-local process deadlines remain
 effective if the controller disconnects. The external guard survives Codex loss
 and GPU-container loss, provided its own host and provider API remain available.
