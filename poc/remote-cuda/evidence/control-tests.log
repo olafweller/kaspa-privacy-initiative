@@ -11,6 +11,6 @@ test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.te
 test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 1.733s
+Ran 11 tests in 1.765s
 
 OK

@@ -61,7 +61,9 @@ limits; unsupported cgroup fields are reported as null, not invented. No budget 
 automatically increased and a resource failure is not a successful proof result.
 
 Prefer one RunPod on-demand L40S with 48 GB VRAM, at least four vCPUs and 32 GB
-host RAM, 90 GB container disk and a 10 GB persistent volume. The absolute lease
+host RAM, 90 GB container disk and a 10 GB persistent volume mounted at
+`/workspace`. The provider mount path and an observed Linux mount must match
+before proof work; live persistence still needs qualification. The absolute lease
 ends at most two hours after **provider creation**, not service startup. The guard
 requests stop one minute early using a timer independent of GPU status/download
 requests, or after a terminal checkpoint has been backed up

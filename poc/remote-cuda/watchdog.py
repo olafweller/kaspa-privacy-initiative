@@ -57,6 +57,7 @@ class Guard:
         if (abs(created-self.lease['createdUnix']) > 1 or pod['gpuCount'] != 1 or
                 float(pod['costPerHr']) > float(self.lease['actualGpuHourlyUsd']) or
                 pod.get('gpuTypeId') != 'NVIDIA L40S' or pod.get('volumeInGb', 0) < 10 or
+                pod.get('volumeMountPath') != '/workspace' or
                 pod.get('memoryInGb', 0) < 32 or pod.get('vcpuCount', 0) < 4):
             return self.stop()  # Declared quote/resources no longer fit; do not arm work.
         url = self.lease['serviceUrl']

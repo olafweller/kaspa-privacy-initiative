@@ -144,7 +144,7 @@ class Remote(unittest.TestCase):
                     return {'state': 'running', 'leaseDigest': lease_check(rental)}
                 return {'id': rental['podId'], 'createdAt': rental['createdUnix'],
                     'gpuCount': 1, 'gpuTypeId': 'NVIDIA L40S', 'costPerHr': 1.09,
-                    'volumeInGb': 10, 'memoryInGb': 32, 'vcpuCount': 4,
+                    'volumeInGb': 10, 'volumeMountPath': '/workspace', 'memoryInGb': 32, 'vcpuCount': 4,
                     'desiredStatus': 'EXITED' if stopped[0] else 'RUNNING'}
             guard = Guard(rental, Path(directory), 'provider-test-only', TOKEN,
                           json_call=provider, now=lambda: now[0])
@@ -195,7 +195,7 @@ class Remote(unittest.TestCase):
                             'artifact': {'sha256': sha(archive), 'bytes': len(archive)}}
                 return {'id': rental['podId'], 'createdAt': rental['createdUnix'],
                     'gpuCount': 1, 'gpuTypeId': 'NVIDIA L40S', 'costPerHr': 1.09,
-                    'volumeInGb': 10, 'memoryInGb': 32, 'vcpuCount': 4,
+                    'volumeInGb': 10, 'volumeMountPath': '/workspace', 'memoryInGb': 32, 'vcpuCount': 4,
                     'desiredStatus': 'EXITED' if stopped[0] else 'RUNNING'}
             guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider,
                           bytes_call=lambda *args: archive, now=lambda: clock[0])

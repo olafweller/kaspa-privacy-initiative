@@ -189,6 +189,7 @@ def execute(package, output, lease, update):
     deadline = started+min(3600, remaining)
     policy = json.loads((package/'workload.json').read_text())
     check_inputs(package, policy)
+    assert Path('/workspace').is_mount(), 'persistent /workspace mount not observed'
     output.mkdir()
     shutil.copytree(package/'inputs', output/'assets')
     before = time.monotonic()

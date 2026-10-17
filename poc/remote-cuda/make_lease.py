@@ -16,6 +16,7 @@ def create(pod_id, storage_hourly, stopped_hourly, target):
     pod = json_request('https://rest.runpod.io/v1/pods/'+pod_id, os.environ['RUNPOD_API_KEY'])
     assert pod['id'] == pod_id and pod['gpuCount'] == 1 and pod['gpuTypeId'] == 'NVIDIA L40S'
     assert pod['volumeInGb'] >= 10 and pod['memoryInGb'] >= 32 and pod['vcpuCount'] >= 4
+    assert pod.get('volumeMountPath') == '/workspace', 'persistent volume mount must match the worker output path'
     created = pod['createdAt']
     created = (datetime.datetime.fromisoformat(created.replace('Z', '+00:00')).timestamp()
                if isinstance(created, str) else float(created))
