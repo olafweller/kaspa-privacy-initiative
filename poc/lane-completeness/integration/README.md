@@ -170,3 +170,28 @@ PYTHONPATH=.local/pr31/python python3 poc/lane-completeness/integration/check_ca
 This checks the retained node observation; it does not independently synchronize
 consensus or attest that a single node's report is honest. The original raw
 responses and final receipt/journal remain separate evidence artifacts.
+
+## Lossless JSON follow-up
+
+The native-value follow-up preserves integer tokens with Node 22's JSON source
+context and `JSON.rawJSON`. Current `capture.mjs`, `run-trial.mjs`,
+`bootstrap-trial.mjs` and `settle-trial.mjs` import `exact-json.mjs`; deploy that
+helper **in the same remote directory** when reproducing these corrected scripts:
+
+```bash
+python3 poc/lane-completeness/integration/remote.py put \
+  poc/lane-completeness/integration/exact-json.mjs exact-json.mjs
+node poc/lane-completeness/integration/test-exact-json.mjs
+python3 poc/lane-completeness/integration/check_rpc_derivatives.py
+```
+
+Do not overwrite recorded VPS artifact versions while preserving the original
+trial. The original RPC strings and proof bytes are unchanged. Derived nonce
+corrections and archive-member provenance are recorded in
+[integer-correction.json](../evidence/cloud-tn10/integer-correction.json).
+The original published rounded derivatives remain available at commit `6810058`;
+current derivatives/manifest and public archive contain the exact values. No
+historical funding, publication, proving or settlement was repeated for this fix.
+
+The distinct [native-value follow-up](../../native-value/README.md) uses an
+isolated VPS subdirectory and separate draft PR32; PR31 remains its milestone.

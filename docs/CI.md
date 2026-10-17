@@ -47,3 +47,11 @@ are not CI secrets or repository inputs. See the [reviewer guide](REVIEWER-GUIDE
 and PR #22. Retained evidence does not become freshly reproduced because CI is
 green. No automated job closes independent-machine/archive G5, live G6,
 fixed-fee liveness, setup trust, anonymity or independent human security review.
+
+The PR31 native-value follow-up adds `poc/native-value` to component detection.
+Its three Rust tests cover the reused account cycle/rejections, native permission
+payout mutations and owner-signature payload binding. Native-value formatting
+checks only its two packages, preserving historical vendored code. Fast checks
+also exercise lossless JSON/sompi handling and exact reconstruction of corrected
+PR31 derivatives from unchanged raw RPC records. These jobs remain offline;
+real CPU proving, TN10 settlements and payout evidence are separate runs.

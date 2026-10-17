@@ -62,11 +62,11 @@
   "settlement-result.json": "cb9071b5e97460217e4b7ca0c8cd3e1f761dce1891072ace7efd088100a0f113",
   "settlement-rpc-records.json.gz": "61491776618d2f0e389774f2518281122f8951a4e47d101b31902058bad68d31",
   "settlement-transaction.json": "7bf8d69645d3938f77256e526cc606d5ad3e71403540b1fe45de9839d63511ee",
-  "successful-trial-public.tar.gz": "ad97e6af0b55e7d789b546bbbf35dd0a5c4472f136ac8dab20c542e12d4360e5",
+  "successful-trial-public.tar.gz": "53c89e2360059e28987b1e05edff0e5bc2495f82bf9278b56b4f90036b1703cd",
   "test-wallet-accounting.json": "2a5446732b3efd58ac9190d55f3dfaf32c359fe4e6fa28dccb3cca90e4393f48",
   "validation.json": "3a62d5bb724ad6b3c5ceb12f511b135d7b0f883ea9c8c12d8b24dcfe92d651e4",
   "vps-deployed-hashes.txt": "b3e506c693ad218fdc921dcdd7e0393a75750ea2880ecf0f3d927d7dd81c74bc",
   "vps-runtime.txt": "da1f31c8e85c06baf26fa1fb1e75ea5df4987f3ad36634e3967b9fbb61359685",
   "wallet-tests.log.gz": "978ec4719d284ba145f7cea614460dc712b8a66916419b21cf20e72e435ea4ff",
-  "integer-correction.json": "abdf4e282313b8545db33ca08ab231cbfda748f0e3ca95d632b9e19e1f9f8662"
+  "integer-correction.json": "0bf216d9c87e0a8f6d4beba565c06a0ed337277cca0c5ddc4dfe4b4d3909931c"
 }

@@ -30,3 +30,7 @@ hex = "=0.4.3"
 secp256k1 = "0.29.1"
 vprogs-zk-backend-risc0-runtime-processor.workspace = true
 rand = "0.8"
+
+[[bin]]
+name = "kpi-native-verify"
+path = "src/bin/verify.rs"

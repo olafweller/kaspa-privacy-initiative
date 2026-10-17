@@ -92,3 +92,11 @@ private-state design is added. See [ADR-0004](../../docs/adr/0004-public-based-a
 [PT]: https://github.com/kaspanet/vprogs/blob/f9b84a863a7c7c20586a9cf947550475e894f72e/zk/backend/risc0/api/src/permission_tree.rs
 [PS]: https://github.com/kaspanet/vprogs/blob/f9b84a863a7c7c20586a9cf947550475e894f72e/zk/backend/risc0/api/src/permission_script.rs
 [DS]: https://github.com/kaspanet/vprogs/blob/f9b84a863a7c7c20586a9cf947550475e894f72e/zk/abi/src/delegate_script.rs
+
+**Additional bounded-guest limit:** the retained relation's `MAX_SPAN=100` is
+relative to old lane last touch, not a general upstream limit. This cycle
+captures both intervals before proving. Processing new commands after a long
+idle gap, or independently withdrawing the remaining balance then, is not
+established with this fixed guest. See the [adversarial review](ADVERSARIAL-REVIEW.md)
+for the exact start-anchor and recovery boundary. Generalization needs the
+upstream long-span/expiry proof trajectory, not a scheduler promise or admin key.

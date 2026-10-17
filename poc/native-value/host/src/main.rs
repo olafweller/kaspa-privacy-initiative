@@ -763,6 +763,19 @@ mod tests {
         let mut bad = deposit.clone();
         bad.outputs[0].script_public_key = ScriptPublicKey::new(0, vec![0x51].into());
         assert!(app::apply_transaction(&empty, &cov, &as_lane(&bad)).is_err());
+        let mut wrong_user = deposit.clone();
+        let payload =
+            vprogs_zk_abi::transaction_processor::Payload::decode(&wrong_user.payload).unwrap();
+        let ix = runtime::ix::decode_ix(payload.ix_data, payload.access_metadata.len()).unwrap();
+        let offset = match &ix.actions[0].body {
+            runtime::ix::ActionBody::Deposit {
+                initial_lock: runtime::lock::LockEnum::Schnorr(lock),
+                ..
+            } => lock.pubkey.as_ptr() as usize - wrong_user.payload.as_ptr() as usize,
+            _ => unreachable!(),
+        };
+        wrong_user.payload[offset..offset + 32].copy_from_slice(&[0x55; 32]);
+        assert!(app::apply_transaction(&empty, &cov, &as_lane(&wrong_user)).is_err());
         let mut foreign = deposit.clone();
         foreign.outputs[0].covenant = Some(CovenantBinding::new(0, Hash::from_bytes([8; 32])));
         assert!(app::apply_transaction(&empty, &cov, &as_lane(&foreign)).is_err());

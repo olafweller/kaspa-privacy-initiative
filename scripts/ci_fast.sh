@@ -7,7 +7,7 @@ python3 scripts/check_docs.py
 python3 - <<'PY'
 import ast
 from pathlib import Path
-for file in Path('scripts').glob('*.py'):
+for file in list(Path('scripts').glob('*.py')) + list(Path('poc/native-value').rglob('*.py')):
     ast.parse(file.read_text(), filename=str(file))
 print('Python syntax: OK')
 PY

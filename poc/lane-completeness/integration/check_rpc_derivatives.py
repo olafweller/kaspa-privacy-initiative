@@ -42,4 +42,11 @@ def exact_observations():
 if __name__ == '__main__':
     for name, exact, _source in exact_observations():
         assert json.loads((ROOT / name).read_text()) == exact, name
+    note = json.loads((ROOT / 'integer-correction.json').read_text())
+    with tarfile.open(ROOT / 'successful-trial-public.tar.gz') as archive:
+        for change in note.get('archive_correction', {}).get('changes', []):
+            value = json.load(archive.extractfile(change['member']))
+            for component in change['pointer'].strip('/').split('/'):
+                value = value[int(component)] if isinstance(value, list) else value[component]
+            assert value == change['exact'], change['member']
     print('PASS: both derived acceptances equal original RPC records, including exact u64 nonce')
