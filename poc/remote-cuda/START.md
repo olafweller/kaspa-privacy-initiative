@@ -16,6 +16,10 @@ creating or reviewing this PR.
    digest, not just a mutable tag. Make it publicly pullable or configure a
    read-only registry pull credential in RunPod. Do not assume package visibility.
    This preparation has not published a registry image.
+   Alternatively, push an explicit `cuda-qualification-*` tag on the reviewed
+   revision to run the same build/publication. Publication pulls the immutable
+   digest back from GHCR and repeats the CPU-only container checks. An
+   authenticated CI pull does not establish anonymous/public package access.
 3. Inspect the owner's existing Linux VPS that held A1 recovery role B. It needs
    Python 3.10+, systemd, synchronized time, durable free space for checkpoints
    and outbound HTTPS to `rest.runpod.io` and the eventual exact Pod proxy host.

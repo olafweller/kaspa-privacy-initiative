@@ -15,7 +15,7 @@ from unittest.mock import patch
 from common import lease_check
 from package import checked_archive
 from service import App, Job, handler, ThreadingHTTPServer
-from watchdog import Guard, serve
+from watchdog import Guard, serve, save_archive
 from common import sha, json_request
 import worker
 
@@ -199,13 +199,83 @@ class Remote(unittest.TestCase):
                     'desiredStatus': 'EXITED' if stopped[0] else 'RUNNING'}
             guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider,
                           bytes_call=lambda *args: archive, now=lambda: clock[0])
+            path = Path(directory)/(sha(archive)+'.tar.gz')
+            # Reproduce the review finding, including a stale completion marker.
+            path.write_bytes(b'cut')
+            (Path(directory)/'terminal-backup.json').write_text(json.dumps(
+                {'sha256': sha(archive), 'savedUnix': clock[0]-100}))
             self.assertFalse(guard.step())
-            self.assertEqual((Path(directory)/(sha(archive)+'.tar.gz')).read_bytes(), archive)
+            self.assertEqual(path.read_bytes(), archive)
+            self.assertEqual(path.stat().st_size, len(archive))
+            self.assertEqual(sha(path.read_bytes()), sha(archive))
+            self.assertEqual(json.loads((Path(directory)/'terminal-backup.json').read_text())['savedUnix'], clock[0])
             self.assertFalse(json.loads((Path(directory)/'latest-artifact.json').read_text())['cpuVerified'])
             self.assertFalse(stopped[0])
+            # A restarted guard must validate/reuse the actual saved copy and
+            # retain the same grace deadline rather than extending it forever.
+            guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider,
+                          bytes_call=lambda *args: archive, now=lambda: clock[0])
+            modified = path.stat().st_mtime_ns
             clock[0] += 61
             self.assertTrue(guard.step())
+            self.assertEqual(path.stat().st_mtime_ns, modified)
             self.assertTrue(stopped[0])
+
+    def test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            archive = b'complete simulated archive, not a proof'
+            path = root/(sha(archive)+'.tar.gz')
+            path.write_bytes(b'x'*len(archive))
+            # Fail specifically the archive rename, after writing its temp file.
+            with patch('watchdog.os.replace', side_effect=OSError('simulated disk failure')):
+                with self.assertRaises(OSError):
+                    save_archive(root, archive)
+            self.assertEqual(path.read_bytes(), b'x'*len(archive))
+            self.assertEqual(list(root.glob('.archive-*')), [])
+            self.assertFalse((root/'terminal-backup.json').exists())
+            self.assertTrue(save_archive(root, archive))
+            self.assertEqual(path.read_bytes(), archive)
+            self.assertFalse(save_archive(root, archive))
+
+    def test_failed_backup_does_not_delay_rental_deadline(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rental = lease()
+            rental['stopUnix'] = time.time()+60.2
+            stopped, attempted = threading.Event(), threading.Event()
+            archive = b'failed backup simulation'
+            def provider(url, token, method='GET', value=None):
+                if url.endswith('/stop'):
+                    stopped.set()
+                    return {}
+                if url.endswith('/v1/configure'):
+                    return {'configured': True, 'leaseDigest': lease_check(rental)}
+                if url.endswith('/v1/guard'):
+                    return {'armed': True, 'leaseDigest': lease_check(rental), 'stopUnix': rental['stopUnix']}
+                if url.endswith('/v1/status'):
+                    return {'state': 'completed', 'leaseDigest': lease_check(rental),
+                            'artifact': {'sha256': sha(archive), 'bytes': len(archive)}}
+                return {'id': rental['podId'], 'createdAt': rental['createdUnix'],
+                    'gpuCount': 1, 'gpuTypeId': 'NVIDIA L40S', 'costPerHr': 1.09,
+                    'volumeInGb': 10, 'volumeMountPath': '/workspace', 'memoryInGb': 32, 'vcpuCount': 4,
+                    'desiredStatus': 'EXITED' if stopped.is_set() else 'RUNNING'}
+            guard = Guard(rental, Path(directory), 'test-only', TOKEN, json_call=provider,
+                          bytes_call=lambda *args: archive)
+            def fail_backup(*args):
+                attempted.set()
+                raise OSError('simulated full backup disk')
+            with patch('watchdog.save_archive', side_effect=fail_backup):
+                thread = threading.Thread(target=serve, args=(guard, 0.02))
+                thread.start()
+                try:
+                    self.assertTrue(attempted.wait(1))
+                    self.assertTrue(stopped.wait(2), 'backup failure delayed provider stop')
+                finally:
+                    thread.join(2)
+            self.assertFalse(thread.is_alive())
+            self.assertFalse((Path(directory)/'terminal-backup.json').exists())
+            self.assertFalse((Path(directory)/'latest-artifact.json').exists())
+            self.assertTrue(json.loads((Path(directory)/'stop.json').read_text())['providerDesiredExitedConfirmed'])
 
     def test_rental_deadline_does_not_wait_for_a_stalled_gpu_request(self):
         with tempfile.TemporaryDirectory() as directory:

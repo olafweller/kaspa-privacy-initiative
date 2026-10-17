@@ -2,6 +2,9 @@ name: Prepare CUDA qualification image
 
 # Explicit manual preparation only. Never allocates a Pod or runs a GPU proof.
 on:
+  push:
+    tags:
+      - 'cuda-qualification-*'
   workflow_dispatch:
     inputs:
       publish:
@@ -56,7 +59,7 @@ jobs:
           bash poc/remote-cuda/build_image.sh .local/cuda-build-context kpi-cuda-qualification:prepare
           python3 poc/remote-cuda/check_image.py kpi-cuda-qualification:prepare
       - name: Publish reviewed build
-        if: inputs.publish
+        if: inputs.publish || startsWith(github.ref, 'refs/tags/cuda-qualification-')
         working-directory: kpi
         env:
           KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,5 +69,8 @@ jobs:
           printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
           docker tag kpi-cuda-qualification:prepare "$task_tag"
           docker push "$task_tag"
-          docker image inspect "$task_tag" --format '{{json .RepoDigests}}' >> "$GITHUB_STEP_SUMMARY"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee -a "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/remote-cuda/check_image.py "$task_digest"
           docker logout ghcr.io

@@ -15,8 +15,8 @@
       "sha256": "f3783b1081a27469067913b089b121e0e30a39a1a61c8d528763dc20160643f0"
     },
     "control-tests.log": {
-      "bytes": 1563,
-      "sha256": "2df18a51adcb3e1461bf36049bf9ab076e2118285b623d521abc431fd04cae31"
+      "bytes": 1877,
+      "sha256": "8fbc3590c171bd27e6cab0098db5491e9d555b4408d3ae023de3d94eb306debe"
     },
     "cpu-comparison-tests.log": {
       "bytes": 128,
@@ -31,8 +31,8 @@
       "sha256": "9ed1d3a30bf341da2f072b1c7ebf66c9eb8b57e2c7f1af027507a57155702570"
     },
     "fast-tests.log": {
-      "bytes": 22064,
-      "sha256": "5a181c2bce34c547e3be5295d19074a5a22b1227a769b1845e399dbbb6c4b1fe"
+      "bytes": 22378,
+      "sha256": "fedf5802d3473d38a3121c99cd28cacd9a0350708b04c740a404a7e273ed873a"
     },
     "gcc-build-abandoned.log": {
       "bytes": 137124,

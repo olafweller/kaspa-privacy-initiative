@@ -13,7 +13,7 @@ This records preparation, not a GPU experiment. PR #40 is merged at
   reports one receipt, not five; the strict command rejects that incomplete
   set, and mutating the single seal is rejected. Signal/timeout failures cannot
   count as rejection evidence.
-- Eleven Python tests cover lease cost/duration/host constraints, archive traversal
+- Thirteen Python tests cover lease cost/duration/host constraints, archive traversal
   and duplicate entries, Pod-bound one-time configuration, HTTP authentication,
   guard requirement, duplicate starts, disconnect/restart behavior, independent
   mocked stop/read-back, false stop acknowledgment and real process-group timeout
@@ -21,11 +21,19 @@ This records preparation, not a GPU experiment. PR #40 is merged at
   controller loss. Empty provider stop responses and already-exited Pods are
   covered as well. The rental-stop timer is separately tested while the simulated
   GPU request remains blocked. HTTP/provider simulation is not rental evidence.
+- The review's pre-existing truncated-archive case is reproduced and repaired.
+  Existing copies require both size and SHA-256 checks. New copies use a
+  same-filesystem temporary file, file fsync, atomic replacement, saved-byte
+  verification and directory fsync before completion metadata. A stale completion
+  marker is discarded before repair; restart rechecks the copy and preserves the
+  retrieval grace. Same-size corruption and failed rename are covered, as is an
+  absolute rental stop despite repeated backup failures. These tests simulate
+  provider responses; no actual VPS restart or provider stop is claimed.
 - The public source archive is checked against SHA-256
   `01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc` and
   all 107 original manifest entries before preparing the small fixed workload.
 - Repository fast checks pass: Markdown paths, Python syntax, the two existing
-  phase-control tests, eleven new remote-control tests, 81 script tests (two
+  phase-control tests, thirteen new remote-control tests, 81 script tests (two
   optional cases skipped), 13 Node tests and 24 private-payment model tests.
   Locked release takeover tests pass (13 tests), as does Rust formatting.
 

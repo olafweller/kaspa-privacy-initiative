@@ -5,10 +5,61 @@ import json
 import os
 from pathlib import Path
 import sys
+import tempfile
 import threading
 import time
 
 from common import atomic, json_request, lease_check, request, sha
+
+
+def archive_matches(path, digest, size):
+    try:
+        with path.open('rb') as source:
+            return os.fstat(source.fileno()).st_size == size and sha(source.read()) == digest
+    except FileNotFoundError:
+        return False
+
+
+def save_archive(directory, data):
+    """Publish a checked durable copy; a hash-shaped filename is not evidence."""
+    digest, size = sha(data), len(data)
+    path = directory/(digest+'.tar.gz')
+    repaired = not archive_matches(path, digest, size)
+    if repaired:
+        # Discard completion records left by an interrupted older guard before
+        # attempting repair. A failed repair must not leave a false completion.
+        for name in ('latest-artifact.json', 'terminal-backup.json'):
+            record = directory/name
+            try:
+                previous = json.loads(record.read_text())
+            except FileNotFoundError:
+                continue
+            except (ValueError, TypeError):
+                previous = {'sha256': digest}
+            if not isinstance(previous, dict) or previous.get('sha256') == digest:
+                record.unlink()
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(dir=directory, prefix='.archive-', delete=False) as target:
+                temporary = Path(target.name)
+                target.write(data)
+                target.flush()
+                os.fsync(target.fileno())
+            os.replace(temporary, path)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
+    # Also sync a reused copy: a previous process may have died after rename
+    # but before syncing the directory. Confirm the actual saved bytes first.
+    with path.open('rb') as source:
+        assert os.fstat(source.fileno()).st_size == size and sha(source.read()) == digest, 'saved archive mismatch'
+        os.fsync(source.fileno())
+    directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
+    return repaired
 
 
 class Guard:
@@ -76,19 +127,19 @@ class Guard:
         if status.get('artifact'):
             data = self.bytes_call(url+'/v1/artifacts', self.service_key)
             if sha(data) == status['artifact']['sha256'] and len(data) == status['artifact']['bytes']:
-                # Immutable hash-named checkpoints survive either host restarting.
-                path = self.directory/(sha(data)+'.tar.gz')
-                if not path.exists():
-                    with path.open('xb') as target:
-                        target.write(data)
-                        target.flush()
-                        os.fsync(target.fileno())
+                repaired = save_archive(self.directory, data)
                 atomic(self.directory/'latest-artifact.json', {'sha256': sha(data), 'bytes': len(data),
                        'cpuVerified': False, 'note': 'Transport hash checked; independent CPU comparison still required.'})
                 if status['state'] in ('completed', 'failed', 'interrupted'):
                     terminal = self.directory/'terminal-backup.json'
-                    if not terminal.exists():
-                        atomic(terminal, {'sha256': sha(data), 'savedUnix': self.now()})
+                    try:
+                        previous = json.loads(terminal.read_text())
+                    except (FileNotFoundError, ValueError):
+                        previous = {}
+                    if (repaired or not isinstance(previous, dict) or previous.get('sha256') != sha(data) or
+                            previous.get('bytes') != len(data) or previous.get('leaseDigest') != self.digest):
+                        atomic(terminal, {'sha256': sha(data), 'bytes': len(data),
+                            'leaseDigest': self.digest, 'savedUnix': self.now()})
                     # A short bounded grace lets Codex fetch through the Pod
                     # proxy; the external copy also survives a lost controller.
                     if self.now()-json.loads(terminal.read_text())['savedUnix'] >= 60:
