@@ -1,0 +1,564 @@
+{
+  "scope": "REAL_SPECIALIZED_WALLET_PROOFS_AND_BOUNDED_GUEST_TESTS_NOT_COMPLETE_OUTER_CLASSIFICATION",
+  "sourceCommit": "b0244318dc6becb0add2366d9cf0221193f5b8eb",
+  "baseMain": "eb9cdd99046faa53ae3c530e4cb064b050316459",
+  "nativePin": "01b532e8b553523216471682649693af92f0fd16",
+  "vprogsPin": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+  "arkworks": "0.5",
+  "risc0Sdk": "3.0.3",
+  "specializedCircuitNotReceiptWrapper": true,
+  "setup": {
+    "circuitId": "dd28a7fdd8aeb28cf884d41159b48b318e254902feb5babd10cb4cf9b724193b",
+    "constraints": 491548,
+    "outerCycleBudget": 32000000,
+    "outerProofSecondsBudget": 3600,
+    "preparedVkBytes": 34202,
+    "publicFieldInputs": 4,
+    "publicProvingParametersBytes": 94702320,
+    "randomness": "fresh OS entropy; no seed or scalar trapdoor serialized",
+    "risc0ReceiptWrapping": false,
+    "scope": "LOCAL_SINGLE_PARTY_CIRCUIT_SPECIFIC_SETUP_NOT_PRODUCTION_CEREMONY",
+    "seconds": 7.996740577,
+    "vkBytes": 392
+  },
+  "publicProvingParameters": {
+    "bytes": 94702320,
+    "sha256": "ba8789eec4b5d2f136fb4d239d6f36adacf4cdef12b007e0ea2a35e92c964248",
+    "archived": false,
+    "neededForVerification": false
+  },
+  "walletProofs": {
+    "a": {
+      "circuitId": "dd28a7fdd8aeb28cf884d41159b48b318e254902feb5babd10cb4cf9b724193b",
+      "operationBytes": 702,
+      "proofBytes": 128,
+      "publicFieldInputs": 4,
+      "scope": "REAL_SPECIALIZED_BN254_GROTH16_WALLET_PROOF_SAME_PROXY_STATEMENT",
+      "sdkVerified": true,
+      "seconds": 4.295300799,
+      "statementJournal": "e27e1b76692912d1599d9d4d2fe970009943b50b323ab9cc64ceee244a7febd672cd6e8422c407fb6d098690f1130b7ded7ec2f7f5e1d30bd9d521f01536379319b430066711e05acd472b056a77149bdc532a4b49bf2ee9759c9fb30f5699f3"
+    },
+    "c": {
+      "circuitId": "dd28a7fdd8aeb28cf884d41159b48b318e254902feb5babd10cb4cf9b724193b",
+      "operationBytes": 702,
+      "proofBytes": 128,
+      "publicFieldInputs": 4,
+      "scope": "REAL_SPECIALIZED_BN254_GROTH16_WALLET_PROOF_SAME_PROXY_STATEMENT",
+      "sdkVerified": true,
+      "seconds": 4.101877056,
+      "statementJournal": "8bd44eb57ce99e238c4342d9b3bf8ea1716159514e4d379015c1d43db5759968648aa5c579fb30f38af744d97d6ec840c7a91277a499a0d780f3e7314eca090b55daf17f438e28980db1b4c3ce85f9a7fb56d017a6edca354a4dd10f024a1360"
+    }
+  },
+  "setupResources": {
+    "command": [
+      ".local/ci-target/release/kpi-takeover-host",
+      "groth16",
+      "setup",
+      ".local/groth16-comparison/setup-01"
+    ],
+    "secondsBudget": 1800,
+    "budgetExceeded": false,
+    "seconds": 9.508457287000056,
+    "exitCode": 0,
+    "userSeconds": 26.164292,
+    "systemSeconds": 0.414979,
+    "maxIndividualProcessRssKiB": 1081952
+  },
+  "twoWalletJobResources": {
+    "command": [
+      ".local/ci-target/release/kpi-takeover-host",
+      "groth16",
+      "wallet",
+      ".local/groth16-comparison/setup-01",
+      ".local/groth16-comparison/wallet-01"
+    ],
+    "secondsBudget": 1800,
+    "budgetExceeded": false,
+    "seconds": 39.53876945999946,
+    "exitCode": 0,
+    "userSeconds": 77.422826,
+    "systemSeconds": 0.7931819999999999,
+    "maxIndividualProcessRssKiB": 1559556
+  },
+  "walletReverification": {
+    "changedIntentRejected": true,
+    "circuitId": "dd28a7fdd8aeb28cf884d41159b48b318e254902feb5babd10cb4cf9b724193b",
+    "preparedParametersRecomputed": true,
+    "scope": "SEPARATE_PROCESS_WALLET_PROOF_REVERIFICATION_NO_PROVING_KEY_READ",
+    "walletProofs": [
+      "a",
+      "c"
+    ]
+  },
+  "nativeFixture": {
+    "balances": [
+      600000000,
+      600000000,
+      500000000
+    ],
+    "malformedCases": [
+      {
+        "case": "empty",
+        "expectedOutcome": 2
+      },
+      {
+        "case": "truncated",
+        "expectedOutcome": 2
+      },
+      {
+        "case": "oversized",
+        "expectedOutcome": 2
+      },
+      {
+        "case": "unreduced",
+        "expectedOutcome": 2
+      },
+      {
+        "case": "identity",
+        "expectedOutcome": 2
+      }
+    ],
+    "nativeBlockLimits": {
+      "compute": 500000,
+      "transient": 1000000
+    },
+    "operations": [
+      {
+        "computeMass": 11327,
+        "nativeEstimatedBytes": 967,
+        "nativeId": "3137ba0a9e860bd851bb2c1ce6c9fa4132b6031bb7b4722dc9bd72aef3401b3f",
+        "operationBytes": 702,
+        "transientMass": 3868
+      },
+      {
+        "computeMass": 11327,
+        "nativeEstimatedBytes": 967,
+        "nativeId": "8c48a69d814bc988e7cd3e14655874e1aebf1e4faaea7c5ea4e3d52b4016afbd",
+        "operationBytes": 702,
+        "transientMass": 3868
+      },
+      {
+        "computeMass": 11327,
+        "nativeEstimatedBytes": 967,
+        "nativeId": "b6f40cd33823b53281d0b470609e92d101bc77251e17bc9d0dc69818a7ead733",
+        "operationBytes": 702,
+        "transientMass": 3868
+      }
+    ],
+    "orderedRoot": "ba3987f8b58cf47dc711923064710e42aa52258039c4d52a645937519f9cc2f0",
+    "outcomes": [
+      0,
+      3,
+      0
+    ],
+    "publicInputMutations": [
+      {
+        "offset": 8,
+        "outcome": 1
+      },
+      {
+        "offset": 10,
+        "outcome": 1
+      },
+      {
+        "offset": 42,
+        "outcome": 1
+      },
+      {
+        "offset": 74,
+        "outcome": 3
+      },
+      {
+        "offset": 106,
+        "outcome": 1
+      },
+      {
+        "offset": 138,
+        "outcome": 3
+      },
+      {
+        "offset": 170,
+        "outcome": 3
+      },
+      {
+        "offset": 202,
+        "outcome": 3
+      },
+      {
+        "offset": 210,
+        "outcome": 3
+      },
+      {
+        "offset": 218,
+        "outcome": 3
+      },
+      {
+        "offset": 250,
+        "outcome": 3
+      },
+      {
+        "offset": 282,
+        "outcome": 3
+      },
+      {
+        "offset": 314,
+        "outcome": 3
+      },
+      {
+        "offset": 442,
+        "outcome": 3
+      }
+    ],
+    "scope": "LOCAL_FIXED_ORDER_NOT_ACTUAL_TN10_ACCEPTANCE"
+  },
+  "outerExecutionBudgetCycles": 32000000,
+  "outerProofBudgetSeconds": 3600,
+  "fullSequenceCompleted": false,
+  "outerProofAttempted": false,
+  "outerProofProduced": false,
+  "outerProvingSeconds": null,
+  "outerProvingMemory": null,
+  "completeClassifierCycles": null,
+  "classifierCycleLowerBound": 32000000,
+  "completeClassifierSegments": null,
+  "budgetFailure": {
+    "case": "valid-invalid-valid",
+    "cycleBudget": 32000000,
+    "scope": "EXECUTION_ONLY_NOT_PROOF",
+    "seconds": 0.730179773,
+    "unexpectedError": "Session limit exceeded: 32000000 >= 32000000"
+  },
+  "finalProfileResources": {
+    "command": [
+      ".local/ci-target/release/kpi-takeover-host",
+      "groth16",
+      "profile",
+      ".local/groth16-comparison/programs-final",
+      ".local/groth16-comparison/fixtures-reviewed",
+      ".local/groth16-comparison/profile-reviewed-result",
+      "valid-invalid-valid"
+    ],
+    "secondsBudget": 120,
+    "budgetExceeded": false,
+    "seconds": 0.7342115479987115,
+    "exitCode": 1,
+    "userSeconds": 0.760076,
+    "systemSeconds": 0.043088,
+    "maxIndividualProcessRssKiB": 57752
+  },
+  "initialKeyLoadDiagnosticStages": [
+    [
+      "authenticated_input",
+      "87394"
+    ],
+    [
+      "loaded_prepared_key",
+      "30479988"
+    ]
+  ],
+  "optimizedDiagnosticStages": [
+    [
+      "authenticated_input",
+      "87394"
+    ],
+    [
+      "loaded_prepared_key",
+      "1933537"
+    ],
+    [
+      "after_checked_proof_decode",
+      "11478936"
+    ]
+  ],
+  "diagnosticCyclesAreNotCryptographicallyProven": true,
+  "negativeGuestExecutions": {
+    "withheld": {
+      "authenticationAbort": "Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [213, 168, 109, 249, 217, 2, 239, 203, 39, 90, 176, 206, 126, 205, 130, 76, 173, 182, 227, 130, 218, 53, 66, 209, 136, 109, 84, 104, 90, 216, 198, 105]\n right: [186, 57, 135, 248, 181, 140, 244, 125, 199, 17, 146, 48, 100, 113, 14, 66, 170, 82, 37, 128, 57, 196, 213, 42, 100, 89, 55, 81, 159, 156, 194, 240]",
+      "case": "withheld",
+      "cycleBudget": 32000000,
+      "expectedAuthenticationFailureConfirmed": true,
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.155135825
+    },
+    "substituted": {
+      "authenticationAbort": "Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [26, 170, 19, 234, 5, 13, 4, 6, 27, 155, 76, 91, 254, 5, 197, 57, 217, 79, 23, 183, 104, 42, 221, 38, 128, 67, 128, 195, 63, 117, 225, 36]\n right: [186, 57, 135, 248, 181, 140, 244, 125, 199, 17, 146, 48, 100, 113, 14, 66, 170, 82, 37, 128, 57, 196, 213, 42, 100, 89, 55, 81, 159, 156, 194, 240]",
+      "case": "substituted",
+      "cycleBudget": 32000000,
+      "expectedAuthenticationFailureConfirmed": true,
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.137452614
+    },
+    "omitted": {
+      "authenticationAbort": "Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [166, 150, 56, 223, 175, 128, 27, 130, 59, 202, 134, 69, 172, 96, 137, 125, 69, 254, 56, 105, 44, 194, 133, 63, 15, 113, 3, 21, 176, 69, 69, 113]\n right: [186, 57, 135, 248, 181, 140, 244, 125, 199, 17, 146, 48, 100, 113, 14, 66, 170, 82, 37, 128, 57, 196, 213, 42, 100, 89, 55, 81, 159, 156, 194, 240]",
+      "case": "omitted",
+      "cycleBudget": 32000000,
+      "expectedAuthenticationFailureConfirmed": true,
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.1305848
+    },
+    "reordered": {
+      "authenticationAbort": "Guest panicked: assertion `left == right` failed: withheld/substituted/reordered published operation\n  left: [160, 113, 165, 211, 52, 138, 42, 90, 194, 213, 69, 209, 158, 86, 243, 19, 20, 19, 159, 21, 176, 40, 20, 180, 222, 4, 78, 142, 137, 207, 161, 179]\n right: [186, 57, 135, 248, 181, 140, 244, 125, 199, 17, 146, 48, 100, 113, 14, 66, 170, 82, 37, 128, 57, 196, 213, 42, 100, 89, 55, 81, 159, 156, 194, 240]",
+      "case": "reordered",
+      "cycleBudget": 32000000,
+      "expectedAuthenticationFailureConfirmed": true,
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.127824288
+    },
+    "host-verdict": {
+      "authenticationAbort": "Guest panicked: assertion failed: r.0.is_empty()",
+      "case": "host-verdict",
+      "cycleBudget": 32000000,
+      "expectedAuthenticationFailureConfirmed": true,
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.124695962
+    },
+    "malformed-only-empty": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-empty",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.161168666,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1880726
+    },
+    "malformed-only-truncated": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-truncated",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.158287077,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1884048
+    },
+    "malformed-only-oversized": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-oversized",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.156144587,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1884096
+    },
+    "malformed-only-unreduced": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-unreduced",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.167330702,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1884337
+    },
+    "malformed-only-identity": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-identity",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.161013848,
+      "segments": [
+        20,
+        20,
+        19
+      ],
+      "userCycles": 2325679
+    },
+    "malformed-only-wrong-subgroup": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-wrong-subgroup",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.327289563,
+      "segments": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        18
+      ],
+      "userCycles": 10937176
+    },
+    "malformed-only-trailing": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-trailing",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.156847596,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1884101
+    },
+    "malformed-only-huge-length": {
+      "balances": [
+        1000000000
+      ],
+      "case": "malformed-only-huge-length",
+      "cycleBudget": 32000000,
+      "outcomes": [
+        2
+      ],
+      "scope": "EXECUTION_ONLY_NOT_PROOF",
+      "seconds": 0.17111085,
+      "segments": [
+        20,
+        20
+      ],
+      "userCycles": 1884086
+    }
+  },
+  "validInvalidValidAndReplayGuestQualification": "BLOCKED_BY_VALID_PROOF_EXECUTION_BUDGET",
+  "watchdogTest": {
+    "command": [
+      "python3",
+      "-c",
+      "import time; time.sleep(60)"
+    ],
+    "secondsBudget": 1,
+    "budgetExceeded": true,
+    "seconds": 1.001943608000147,
+    "exitCode": -15,
+    "userSeconds": 0.004332,
+    "systemSeconds": 0.004332,
+    "maxIndividualProcessRssKiB": 9344
+  },
+  "baseline": {
+    "scope": "LOCAL_GUEST_EXECUTION_AND_REAL_WALLET_PROOFS_NOT_OUTER_PROOF_OR_TN10",
+    "walletArtifactBytes": 223418,
+    "operationBytes": 223992,
+    "nativeEstimatedBytes": 224257,
+    "transientMass": 897028,
+    "userCycles": 870829938,
+    "segments": 880,
+    "outerProofProduced": false
+  },
+  "newTN10Broadcasts": 0,
+  "fundedTrialReady": false,
+  "actualPrivacyPayment": false,
+  "sourceSnapshots": {
+    "diagnostic-source": {
+      "baseCommit": "fcbf3114a8fac22f3d8a682e209fa6e11920e2d5",
+      "workingTreeSha256": {
+        "poc/groth16-comparison/build.sh": "37a30163f66e2d46a60efa8834af19f55d1c1e89e2860d822fbc4b6af56fd08e",
+        "poc/groth16-comparison/host.rs": "d2b2733a9718502f5d3ec2accd73aa4d1cb9d693297e9ae73b6f143966026b05",
+        "poc/groth16-comparison/run_bounded.py": "18f31e200275e43ef27b5b33848d2954ecfdc7730b4ad65880f7c0d50449d6f9",
+        "poc/groth16-comparison/README.md": "e8517deb0685fa577f4d06b4972f69ea8518e437ecc82bc83c144db1919d6c90",
+        "poc/groth16-comparison/classifier-guest/Cargo.lock": "a226568cca5fc5d0f935b5821f0d129e9a24b11fee9090caae0988c34e5e7089",
+        "poc/groth16-comparison/classifier-guest/Cargo.toml": "513b012b14f2eae49e8525a6cfdb5cfd8b7b3a127210e5d837dff01c2f0454f8",
+        "poc/groth16-comparison/pins/vk.bin": "541966ef8e7d4627ce0e4f60900d284acdb1e1ea02d672a6ee905ff14a73b545",
+        "poc/groth16-comparison/pins/pvk.bin": "6a10f9c4bca793db1fee20cbee6f7b81d3a1933a24dc1780c3551ceb56425353",
+        "poc/groth16-comparison/common/Cargo.toml": "e3e95c0a50361d2b6379e3f76cfd37996a3db05512e42231815c7363017c8e40",
+        "poc/groth16-comparison/classifier-guest/src/main.rs": "d2d4ce1fdc62b0b4b3fed5cbd43d3aec6d946f68bf6de791fc2e274a97e4c230",
+        "poc/groth16-comparison/common/src/circuit.rs": "fa0341ef937f3c6f395d13e6ce1efcad7694969ac518c55f41701965a7bc563f",
+        "poc/groth16-comparison/common/src/lib.rs": "d41e58eb2a2ec9efcd0e750055689beea07e45162843f47a8b2c341d02f97ce3",
+        "poc/takeover/host/src/main.rs": "bf0a9da1099aa463747bdc61e461f4ce845b1be38c80ad8bbd7c8b807ae71b23",
+        "poc/takeover/host/Cargo.toml": "ac19ed4f732a42bf46df45e9c4940d993e196258d786705aaf6857eedc828897",
+        "poc/takeover/Cargo.lock": "04e7c4e3b2284a26af3744377ad4965ae2cd8c988cde70e039bb41363621212c",
+        "poc/proof-classification/protocol.rs": "2e6ccf9442315a342dff72cf63bff0f3c4d8ce7de85af6ff57a8327d6d303d81",
+        "poc/proof-classification/host.rs": "1f97990260f5bf52ef369f4076e9a7b06d48052dc64a7e240d0db1c7f39dbf80"
+      }
+    },
+    "final-source": {
+      "commit": "b0244318dc6becb0add2366d9cf0221193f5b8eb",
+      "workingTreeSha256": {
+        "poc/groth16-comparison/build.sh": "8d81c053baeca24fb36c78040febde9629878a04cd2ee355be63271ee1d489bd",
+        "poc/groth16-comparison/host.rs": "db72b7cfa3a085e98cebc63e7b39ecb71efd9e4bfc00419c165f9113a5313d7f",
+        "poc/groth16-comparison/collect_evidence.py": "dcb059ecdc85ee34b4d3470c4144f0595dd61a0df0e7dec222123e4a0333fd3d",
+        "poc/groth16-comparison/run_bounded.py": "18f31e200275e43ef27b5b33848d2954ecfdc7730b4ad65880f7c0d50449d6f9",
+        "poc/groth16-comparison/RESULTS.md": "5b9903e98fe52a1699612171db66b4c8c7b02e383e04d197bd240ccabee0df8c",
+        "poc/groth16-comparison/ADVERSARIAL-REVIEW.md": "37784d38f1b35abb5b86a4b5bea24ec1a32a686f7cd29ee6fc22e90088c59f71",
+        "poc/groth16-comparison/README.md": "da7ffffa35ab4f49ee434e5966a82c96fdba7aa0a48a4d045a595dfc692bb384",
+        "poc/groth16-comparison/SOURCES.md": "923ebb1362388cb4e034fbcad8bbd2c0ac5b93f6df0149e8349f7edb26ab3993",
+        "poc/groth16-comparison/classifier-guest/Cargo.lock": "a226568cca5fc5d0f935b5821f0d129e9a24b11fee9090caae0988c34e5e7089",
+        "poc/groth16-comparison/classifier-guest/Cargo.toml": "513b012b14f2eae49e8525a6cfdb5cfd8b7b3a127210e5d837dff01c2f0454f8",
+        "poc/groth16-comparison/pins/pvk-uncompressed.bin": "687a3d156a5b511f870711d90c82619e392ec75a162263689ecd990f9ee13109",
+        "poc/groth16-comparison/pins/vk.bin": "541966ef8e7d4627ce0e4f60900d284acdb1e1ea02d672a6ee905ff14a73b545",
+        "poc/groth16-comparison/pins/pvk.bin": "6a10f9c4bca793db1fee20cbee6f7b81d3a1933a24dc1780c3551ceb56425353",
+        "poc/groth16-comparison/common/Cargo.toml": "e3e95c0a50361d2b6379e3f76cfd37996a3db05512e42231815c7363017c8e40",
+        "poc/groth16-comparison/classifier-guest/src/main.rs": "27c0769bc612c7b0033eff51a014816f007cfb736395a60ee7aba89fb6d0f27a",
+        "poc/groth16-comparison/common/src/circuit.rs": "fa0341ef937f3c6f395d13e6ce1efcad7694969ac518c55f41701965a7bc563f",
+        "poc/groth16-comparison/common/src/lib.rs": "d41e58eb2a2ec9efcd0e750055689beea07e45162843f47a8b2c341d02f97ce3",
+        "poc/takeover/host/src/main.rs": "bf0a9da1099aa463747bdc61e461f4ce845b1be38c80ad8bbd7c8b807ae71b23",
+        "poc/takeover/host/Cargo.toml": "ac19ed4f732a42bf46df45e9c4940d993e196258d786705aaf6857eedc828897",
+        "poc/takeover/Cargo.lock": "04e7c4e3b2284a26af3744377ad4965ae2cd8c988cde70e039bb41363621212c",
+        "poc/proof-classification/protocol.rs": "2e6ccf9442315a342dff72cf63bff0f3c4d8ce7de85af6ff57a8327d6d303d81",
+        "poc/proof-classification/host.rs": "1f97990260f5bf52ef369f4076e9a7b06d48052dc64a7e240d0db1c7f39dbf80"
+      }
+    }
+  },
+  "programSha256": {
+    "classifier.program.bin": "3c6f182035ca293a3ec2a4c76d1c84859b6a59a142432de8db0d4e3438251b68",
+    "classifier.raw.elf": "b3170cfec6f4518ea8b9a78daba6beff13ce5e7c16e81d2187360d0255d42c6f"
+  },
+  "parameterSha256": {
+    "pvk-uncompressed.bin": "687a3d156a5b511f870711d90c82619e392ec75a162263689ecd990f9ee13109",
+    "vk.bin": "541966ef8e7d4627ce0e4f60900d284acdb1e1ea02d672a6ee905ff14a73b545",
+    "pvk.bin": "6a10f9c4bca793db1fee20cbee6f7b81d3a1933a24dc1780c3551ceb56425353"
+  },
+  "hardware": {
+    "cpuQuota": "400000 100000",
+    "memoryLimitBytes": 17179869184,
+    "walletProvingThreads": 4,
+    "r0vmVersion": "3.0.3",
+    "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6"
+  },
+  "artifactArchive": {
+    "path": "local-groth16-artifacts.tar.gz",
+    "bytes": 3838948,
+    "sha256": "ac54f51482a4efd69789a869c5be5165aee204fdd8cdf691d971aaac1b91e1a4",
+    "manifestEntries": 178
+  }
+}
