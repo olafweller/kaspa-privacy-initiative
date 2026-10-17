@@ -9,6 +9,8 @@ use vprogs_core_codec::Writer;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 #[path = "../../../shielded-design/compat/host.rs"]
 mod wallet_compat;
+#[path = "../../../proof-classification/host.rs"]
+mod proof_classification;
 
 fn save(dir: &Path, name: &str, bytes: &[u8]) -> Result<()> {
     use std::io::Write;
@@ -146,6 +148,9 @@ fn main() -> Result<()> {
     }
     if args.get(1).is_some_and(|s| s == "wallet-metrics") {
         return wallet_compat::metrics(&args);
+    }
+    if args.get(1).is_some_and(|s| s == "classifier") {
+        return proof_classification::run(&args);
     }
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);
