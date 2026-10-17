@@ -17,9 +17,12 @@ def check(host):
         baseline = Path(directory)/'baseline'
         for name in INPUTS+[phase+'.bin' for phase in CLAIMS]:
             write(baseline/name, contents['assets/'+name])
-        def invoke(path):
-            return subprocess.run([str(host.resolve()), 'phase-diagnostics', 'compare', str(path)],
-                env=os.environ | {'RISC0_PROVER': 'ipc'}, capture_output=True, timeout=30).returncode
+        def invoke(path, partial=False):
+            result = subprocess.run([str(host.resolve()), 'phase-diagnostics',
+                'compare-partial' if partial else 'compare', str(path)],
+                env=os.environ | {'RISC0_PROVER': 'ipc'}, capture_output=True, timeout=30)
+            assert result.returncode >= 0, 'signal/resource failure cannot count as rejection'
+            return result.returncode
         assert invoke(baseline) == 0
         wrong = Path(directory)/'valid-seals-wrong-cpu-claim'
         shutil.copytree(baseline, wrong)
@@ -39,7 +42,22 @@ def check(host):
         data[8] ^= 1
         (malformed/'join.bin').write_bytes(data)
         assert invoke(malformed) != 0
-    print('Actual CPU seals pass; valid substituted claims and altered seals are rejected.')
+        partial = Path(directory)/'one-returned-receipt'
+        shutil.copytree(baseline, partial)
+        (partial/'cpu-comparison.json').unlink()
+        for phase in CLAIMS:
+            if phase != 'segment-24':
+                (partial/(phase+'.bin')).unlink()
+        assert invoke(partial) != 0, 'strict five-receipt comparison accepted an incomplete run'
+        assert invoke(partial, True) == 0
+        report = __import__('json').loads((partial/'cpu-comparison.json').read_text())
+        assert report['receiptsVerified'] == 1 and not report['allFiveSealsVerified']
+        (partial/'cpu-comparison.json').unlink()
+        data = bytearray((partial/'segment-24.bin').read_bytes())
+        data[8] ^= 1
+        (partial/'segment-24.bin').write_bytes(data)
+        assert invoke(partial, True) != 0
+    print('Actual CPU seals pass; valid foreign claims and altered seals rejected; incomplete verification reports only returned receipts.')
 
 
 if __name__ == '__main__':

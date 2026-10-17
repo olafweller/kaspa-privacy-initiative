@@ -30,7 +30,7 @@ def fetch(lease, output, token):
     return {'downloaded': True, 'sha256': sha(data), 'cpuVerified': False}
 
 
-def verify(package, downloaded):
+def verify(package, downloaded, partial=False):
     policy = json.loads((package/'workload.json').read_text())
     host = package/'bin/kpi-takeover-host'
     assert sha(host.read_bytes()) == policy['cpuVerifierSha256']
@@ -44,7 +44,8 @@ def verify(package, downloaded):
     def restrict():
         resource.setrlimit(resource.RLIMIT_AS, (12*1024**3, 12*1024**3))
         resource.setrlimit(resource.RLIMIT_CPU, (30, 30))
-    result = subprocess.run([str(host.resolve()), 'phase-diagnostics', 'compare', str(assets.resolve())],
+    result = subprocess.run([str(host.resolve()), 'phase-diagnostics',
+        'compare-partial' if partial else 'compare', str(assets.resolve())],
         env={key: os.environ[key] for key in ('PATH', 'HOME', 'LD_LIBRARY_PATH') if key in os.environ}
             | {'RISC0_PROVER': 'ipc'},
         stdin=subprocess.DEVNULL, capture_output=True, timeout=60, preexec_fn=restrict)
@@ -54,8 +55,8 @@ def verify(package, downloaded):
 
 if __name__ == '__main__':
     command = sys.argv[1]
-    if command == 'verify':
-        print(json.dumps(verify(Path(sys.argv[2]), Path(sys.argv[3])), indent=2))
+    if command in ('verify', 'verify-partial'):
+        print(json.dumps(verify(Path(sys.argv[2]), Path(sys.argv[3]), command == 'verify-partial'), indent=2))
     elif command == 'unpack':
         unpack(Path(sys.argv[2]).read_bytes(), sys.argv[3], Path(sys.argv[4]))
         print('Checked and unpacked archive; independent CPU verification still required.')

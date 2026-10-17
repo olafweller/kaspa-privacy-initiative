@@ -258,7 +258,7 @@ fn verify(out: &Path) -> Result<()> {
         "segmentIndices":SELECTED,"exactJournalCheckedDuringExecutionOnly":true}),
     )
 }
-fn compare(out: &Path) -> Result<()> {
+fn compare(out: &Path, partial: bool) -> Result<()> {
     // Independent PR40 expectations, never identities or claims supplied by
     // the remote prover. Receipt bytes themselves need not match CPU bytes.
     let m = manifest(out)?;
@@ -282,6 +282,7 @@ fn compare(out: &Path) -> Result<()> {
         "328f16f86bb6835a1f322380b26557c3038fbba07ff93dbcbf55ccde81a720cc",
         "b0af71e4c202f3775452bbf8ee1091feb62f4463a00515c7878fe3de199ca2c9",
     ];
+    let mut verified = 0;
     for (position, (i, trace)) in [
         (
             24,
@@ -299,32 +300,43 @@ fn compare(out: &Path) -> Result<()> {
             sha(&fs::read(out.join(format!("segments/{i}.bincode")))?),
             trace
         );
-        let segment = read_segment(out, i)?;
-        let lifted = read_lift(out, i)?;
-        assert_eq!(
-            segment.claim.digest().to_string(),
-            expected_claims[position]
-        );
-        assert_eq!(lifted.claim.digest().to_string(), expected_claims[position]);
+        if !partial || out.join(format!("segment-{i}.bin")).exists() {
+            let segment = read_segment(out, i)?;
+            assert_eq!(
+                segment.claim.digest().to_string(),
+                expected_claims[position]
+            );
+            verified += 1;
+        }
+        if !partial || out.join(format!("lift-{i}.bin")).exists() {
+            let lifted = read_lift(out, i)?;
+            assert_eq!(lifted.claim.digest().to_string(), expected_claims[position]);
+            verified += 1;
+        }
     }
-    let left = read_segment(out, 24)?.claim;
-    let right = read_segment(out, 25)?.claim;
-    assert_eq!(left.post.digest(), right.pre.digest());
-    let joined: SuccinctReceipt<ReceiptClaim> =
-        bincode::deserialize(&fs::read(out.join("join.bin"))?)?;
-    succinct_check(&joined, &left.join(&right))?;
-    assert_eq!(
-        joined.claim.digest().to_string(),
-        "7917795912b2877505c126d8a996d19089603eb8044dee3cd76fff08caf4cc31"
-    );
+    if !partial || out.join("join.bin").exists() {
+        let left = read_lift(out, 24)?.claim.as_value()?.clone();
+        let right = read_lift(out, 25)?.claim.as_value()?.clone();
+        assert_eq!(left.post.digest(), right.pre.digest());
+        let joined: SuccinctReceipt<ReceiptClaim> =
+            bincode::deserialize(&fs::read(out.join("join.bin"))?)?;
+        succinct_check(&joined, &left.join(&right))?;
+        assert_eq!(
+            joined.claim.digest().to_string(),
+            "7917795912b2877505c126d8a996d19089603eb8044dee3cd76fff08caf4cc31"
+        );
+        verified += 1;
+    }
+    assert!(verified > 0, "no returned receipts to verify");
     json_save(
         out,
         "cpu-comparison.json",
         json!({
-        "scope":"FIVE_PARTIAL_CLAIMS_MATCH_PINNED_PR40_CPU_BASELINE_NOT_FULL_CLASSIFIER",
+        "scope":"RETURNED_PARTIAL_CLAIMS_MATCH_PINNED_PR40_CPU_BASELINE_NOT_FULL_CLASSIFIER",
         "verified":true,"developmentMode":false,"expectedProgramImage":IMAGE,
         "referenceArchiveSha256":"01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc",
-        "allFiveSealsVerified":true,"sealAndClaimMutationsRejected":true,
+        "allFiveSealsVerified":verified==5,"receiptsVerified":verified,
+        "allowIncompleteDiagnostic":partial,"sealAndClaimMutationsRejected":true,
         "independentCpuClaimsMatched":true}),
     )
 }
@@ -346,7 +358,10 @@ pub(super) fn run(a: &[String]) -> Result<()> {
         }
         "join" if a.len() == 4 => join(out),
         "verify" if a.len() == 4 => verify(out),
-        "compare" if a.len() == 4 => compare(out),
-        _ => Err("phase-diagnostics export|segment|lift|join|verify|compare ...".into()),
+        "compare" if a.len() == 4 => compare(out, false),
+        "compare-partial" if a.len() == 4 => compare(out, true),
+        _ => Err(
+            "phase-diagnostics export|segment|lift|join|verify|compare|compare-partial ...".into(),
+        ),
     }
 }

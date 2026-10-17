@@ -25,6 +25,8 @@ The different prover binary has its own recorded hash. Proof bytes need not matc
 3. Save every receipt immediately; retain partial results on failure.
 4. Verify all five receipts cryptographically, mutation controls, fixed CPU claims
    and join continuity with the existing CPU verifier in a separate process.
+   An explicit incomplete-run command verifies available receipts while reporting
+   their count; it cannot satisfy the strict five-receipt comparison.
 5. Retrieve the results and repeat that comparison independently on the CPU host.
 6. Record initialization, per-phase wall time, CPU time, sampled host RSS/virtual
    memory and VRAM, actual rental duration, stop confirmation and provider charges.

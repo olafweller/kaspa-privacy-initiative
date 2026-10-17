@@ -101,8 +101,11 @@ not fetch wallet data or setup material.
 
    A checkpoint may advance between status/download. Retry a size/hash mismatch;
    never accept it. Final `verify` requires all five receipts. For an interrupted
-   run, retain all partial receipts and stage logs; report which comparison was
-   incomplete. The guard's durable hash-named archive survives Pod stop and can
+   run, retain all partial receipts and stage logs. Use `verify-partial` in place
+   of `verify` to cryptographically check every available receipt against its
+   pinned CPU claim; it reports the verified count and `allFiveSealsVerified=false`
+   unless all five exist. No receipts is an error. This does not make an incomplete
+   qualification successful. The guard's durable hash-named archive survives Pod stop and can
    be copied back if the proxy is already unavailable. With the archive and
    expected hash from the guard's durable `latest-artifact.json`, use:
 
