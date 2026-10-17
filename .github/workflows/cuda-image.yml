@@ -31,6 +31,15 @@ jobs:
           ref: 01b532e8b553523216471682649693af92f0fd16
           path: upstream/rusty-kaspa
           persist-credentials: false
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            kpi/.local/ci-target
+          key: rust-ubuntu24-x64-1.91.0-01b532e-takeover-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+          restore-keys: |
+            rust-ubuntu24-x64-1.91.0-01b532e-takeover-
       - name: Build and check the independent CPU verifier and fixed package
         working-directory: kpi
         run: |

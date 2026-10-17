@@ -63,4 +63,5 @@ def request(url, token, method='GET', value=None, timeout=10):
 
 
 def json_request(url, token, method='GET', value=None):
-    return json.loads(request(url, token, method, value))
+    data = request(url, token, method, value)
+    return json.loads(data) if data.strip() else {}  # Provider stop may return 204.

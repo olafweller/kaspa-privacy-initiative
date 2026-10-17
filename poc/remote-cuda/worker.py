@@ -30,8 +30,15 @@ def hardware():
     assert len(rows) == 1 and rows[0][0] == 'NVIDIA L40S', 'one L40S required'
     assert float(rows[0][2]) >= 45000 and rows[0][4] == '8.9'
     assert not gpu_query(['--query-compute-apps=pid,gpu_uuid,used_gpu_memory'])
+    limits = {}
+    for name in ('cpu.max', 'memory.max', 'cpuset.cpus.effective'):
+        try:
+            limits[name] = (Path('/sys/fs/cgroup')/name).read_text().strip()
+        except OSError:
+            limits[name] = None  # Do not invent a cgroup limit on unsupported hosts.
     return {'name': rows[0][0], 'uuid': rows[0][1], 'vramMiB': float(rows[0][2]),
-            'driverVersion': rows[0][3], 'computeCapability': rows[0][4]}
+            'driverVersion': rows[0][3], 'computeCapability': rows[0][4],
+            'cgroupV2Limits': limits, 'availableCpuAffinity': sorted(os.sched_getaffinity(0))}
 
 
 def process_sample(group, counters):

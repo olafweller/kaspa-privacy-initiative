@@ -55,7 +55,9 @@ hardware preflight 120 seconds, segment 900 each, lift 450 each, join 600, CPU
 comparison 120. The aggregate deadline wins. Four logical CPUs and four compute
 threads; sampled summed process RSS stops above 12 GiB. Unlike the old CPU run,
 there is no virtual-address-space limit: CUDA reserves large virtual ranges.
-Record this explicit policy difference when comparing measurements. No budget is
+Record this explicit policy difference when comparing measurements. Hardware
+metadata also captures available CPU affinity and visible cgroup-v2 CPU/memory
+limits; unsupported cgroup fields are reported as null, not invented. No budget is
 automatically increased and a resource failure is not a successful proof result.
 
 Prefer one RunPod on-demand L40S with 48 GB VRAM, at least four vCPUs and 32 GB

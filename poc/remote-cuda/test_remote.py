@@ -16,7 +16,7 @@ from common import lease_check
 from package import checked_archive
 from service import App, Job, handler, ThreadingHTTPServer
 from watchdog import Guard
-from common import sha
+from common import sha, json_request
 import worker
 
 TOKEN = 'unit-test-token-not-a-credential-000000000'
@@ -162,6 +162,19 @@ class Remote(unittest.TestCase):
             guard = Guard(rental, Path(directory), 'test-only', TOKEN,
                           json_call=provider, now=lambda: rental['stopUnix'])
             self.assertFalse(guard.step())
+
+    def test_empty_stop_response_and_already_exited_are_handled(self):
+        with patch('common.request', return_value=b''):
+            self.assertEqual(json_request('https://rest.runpod.io/v1/pods/unittest123/stop',
+                                          'test-only', 'POST'), {})
+        with tempfile.TemporaryDirectory() as directory:
+            rental = lease()
+            def provider(url, token, method='GET', value=None):
+                self.assertEqual(method, 'GET', 'already stopped Pod must not be stopped again')
+                return {'id': rental['podId'], 'createdAt': rental['createdUnix'], 'desiredStatus': 'EXITED'}
+            guard = Guard(rental, Path(directory), 'test-only', TOKEN,
+                          json_call=provider, now=lambda: rental['stopUnix'])
+            self.assertTrue(guard.step())
 
     def test_terminal_backup_survives_controller_loss_before_stop(self):
         with tempfile.TemporaryDirectory() as directory:

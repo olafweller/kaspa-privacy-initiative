@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """CPU-only container startup check. Never starts the proof workload or a Pod."""
 from http.client import HTTPConnection
+import hashlib
 import json
 import os
+from pathlib import Path
 import subprocess
 import sys
 import time
@@ -20,6 +22,18 @@ def check(image):
     assert metadata['features'] == ['cuda', 'disable-dev-mode']
     assert metadata['sourceCommit'] == '14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6'
     assert metadata['nvccFlags'] == '-arch=sm_89'
+    files = json.loads(docker('run', '--rm', '--entrypoint', 'python3', image, '-c',
+        'import hashlib,json; from pathlib import Path; '
+        'paths=["/opt/kpi/app/"+n+".py" for n in ("common","worker","service")]+ '
+        '["/opt/kpi/bin/r0vm-cuda","/opt/kpi/package/bin/kpi-takeover-host"]; '
+        'print(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in paths}))'))
+    for name in ('common', 'worker', 'service'):
+        expected = hashlib.sha256((Path(__file__).parent/(name+'.py')).read_bytes()).hexdigest()
+        assert files['/opt/kpi/app/'+name+'.py'] == expected, 'stale application source in image'
+    assert files['/opt/kpi/bin/r0vm-cuda'] == metadata['binarySha256']
+    policy = json.loads(docker('run', '--rm', '--entrypoint', 'cat', image,
+                              '/opt/kpi/package/workload.json'))
+    assert files['/opt/kpi/package/bin/kpi-takeover-host'] == policy['cpuVerifierSha256']
     docker('run', '--rm', '--entrypoint', 'python3', image, '-m', 'py_compile',
            '/opt/kpi/app/service.py', '/opt/kpi/app/worker.py', '/opt/kpi/app/common.py')
     linked = docker('run', '--rm', '--entrypoint', 'ldd', image, '/opt/kpi/bin/r0vm-cuda')
@@ -66,7 +80,7 @@ def check(image):
     return {'scope': 'CPU_ONLY_CONTAINER_SMOKE_NOT_CUDA_EXECUTION',
             'imageId': docker('image', 'inspect', image, '--format', '{{.Id}}').strip(),
             'imageBytes': int(docker('image', 'inspect', image, '--format', '{{.Size}}')),
-            'proverVersion': version, 'cudaBuild': metadata,
+            'proverVersion': version, 'cudaBuild': metadata, 'runtimeFilesSha256': files,
             'linkedLibrariesResolved': True, 'pythonCompilation': True,
             'authenticatedStartupAndLeaseBinding': True, 'unguardedStartRejected': True,
             'proofJobStarted': False, 'providerCalled': False, 'gpuExecutionQualified': False}

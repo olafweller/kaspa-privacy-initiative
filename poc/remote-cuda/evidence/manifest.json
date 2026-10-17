@@ -7,16 +7,16 @@
       "sha256": "7098a0ab4aaa451589ad2a4e1c2a3fcddc745e0744b575a1e375155143329488"
     },
     "control-tests.log": {
-      "bytes": 1272,
-      "sha256": "09e25e566dbf6db9b7bc97759ccb56571448cadc723e5875fbf3cf2f9bb03b0d"
+      "bytes": 1413,
+      "sha256": "41a505a53790b5aa6c3422a2110a1cb3a12dd755c05d7cfc1b7a1035d41cc93a"
     },
     "cpu-comparison-tests.log": {
       "bytes": 128,
       "sha256": "e3aa85e3e0653e69ef349791e79b3e23f849b1f7c21565c44fb6defbc580feec"
     },
     "fast-tests.log": {
-      "bytes": 21770,
-      "sha256": "c5cb9841c7e81dcd63636681d89b1d34a524d3079b18497fa2b20c17001bcb2d"
+      "bytes": 21914,
+      "sha256": "0175afc324455a65a30dadc908d7236cbe27502319bec7b2f39fc558af69e799"
     },
     "public-package.tar.gz": {
       "bytes": 9288223,

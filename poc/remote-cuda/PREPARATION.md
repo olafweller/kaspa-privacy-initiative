@@ -13,17 +13,18 @@ This records preparation, not a GPU experiment. PR #40 is merged at
   reports one receipt, not five; the strict command rejects that incomplete
   set, and mutating the single seal is rejected. Signal/timeout failures cannot
   count as rejection evidence.
-- Nine Python tests cover lease cost/duration/host constraints, archive traversal
+- Ten Python tests cover lease cost/duration/host constraints, archive traversal
   and duplicate entries, Pod-bound one-time configuration, HTTP authentication,
   guard requirement, duplicate starts, disconnect/restart behavior, independent
   mocked stop/read-back, false stop acknowledgment and real process-group timeout
   with credential stripping, and durable terminal backup before stop after
-  controller loss. HTTP/provider simulation is not rental evidence.
+  controller loss. Empty provider stop responses and already-exited Pods are
+  covered as well. HTTP/provider simulation is not rental evidence.
 - The public source archive is checked against SHA-256
   `01107d542cb0c333ec509362de59bbb6c402a4d243c13f13954f485e3c256cfc` and
   all 107 original manifest entries before preparing the small fixed workload.
 - Repository fast checks pass: Markdown paths, Python syntax, the two existing
-  phase-control tests, nine new remote-control tests, 81 script tests (two
+  phase-control tests, ten new remote-control tests, 81 script tests (two
   optional cases skipped), 13 Node tests and 24 private-payment model tests.
   Locked release takeover tests pass (13 tests), as does Rust formatting.
 

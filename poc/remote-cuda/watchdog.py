@@ -28,8 +28,11 @@ class Guard:
         created = (datetime.datetime.fromisoformat(raw.replace('Z', '+00:00')).timestamp()
                    if isinstance(raw, str) else float(raw))
         assert abs(created-self.lease['createdUnix']) <= 1, 'refuse to stop a different lease'
-        self.json_call(self.base+'/stop', self.provider_key, 'POST')
-        pod = self.json_call(self.base, self.provider_key)
+        if before.get('desiredStatus') == 'EXITED':
+            pod = before  # A previous request/operator may already have stopped it.
+        else:
+            self.json_call(self.base+'/stop', self.provider_key, 'POST')
+            pod = self.json_call(self.base, self.provider_key)
         confirmed = pod.get('id') == self.lease['podId'] and pod.get('desiredStatus') == 'EXITED'
         atomic(self.directory/'stop.json', {'requestedUnix': self.now(),
             'providerDesiredExitedConfirmed': confirmed, 'podId': self.lease['podId'],
