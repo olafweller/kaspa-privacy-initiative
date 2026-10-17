@@ -231,3 +231,13 @@ these components does not select Candidate C for production. Completeness of a
 chosen interval is separate from mandatory progress; the inspected accessor
 permits eligible recent selected-chain anchors rather than prescribing one
 latest endpoint. No private-state or operator-loss recovery claim follows.
+
+## 2026-10-17 recursive adapter local review
+
+The isolated [ADR-0005](../adr/0005-long-gap-recursive-takeover.md) follow-up
+reuses reference recursive transaction/batch/aggregate interfaces with one coarse
+public-account resource. Its [review scope](../../poc/takeover/README.md) separates
+local historical-input checks from the planned fresh TN10 long-gap rehearsal.
+Native lane expiry, unavailable archives, independent recovery, privacy and
+mandatory progress remain open; this does not select Candidate C or close the
+N-user shutdown gate.

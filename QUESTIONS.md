@@ -184,3 +184,9 @@ Outstanding questions remain: scalable proof composition beyond the fixed
 monolithic circuit, data availability and takeover after pruning/reorg, a stated
 progress policy (no mandatory latest checkpoint was found), private authorization
 and confidential execution. Passing the public cycle would not resolve them.
+
+The [recursive adapter review](poc/takeover/README.md) now isolates composition
+from those open questions. A coarse public state resource can exercise the
+reference recursive interface locally; it does not establish scalable private
+state, true native expiry, missing-history recovery or guaranteed exits. A fresh
+long-gap TN10 rehearsal remains a separate empirical question.

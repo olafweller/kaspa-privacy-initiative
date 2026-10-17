@@ -1,4 +1,4 @@
-//! Adapter of the PR32 native builder. See ../../ORIGIN.md.
+//! Adapter of the PR32 native builder. See ../../../native-value/host/ORIGIN.md.
 use app::runtime;
 use kaspa_addresses::{Address, Prefix, Version};
 use kaspa_consensus_core::{
@@ -185,6 +185,7 @@ fn build(a: &[String]) -> Result<()> {
     let address = Address::new(Prefix::Testnet, Version::PubKey, &owner);
     let es: Vec<RpcUtxosByAddressesEntry> =
         serde_json::from_value(req["utxos"]["entries"].clone())?;
+    let current_daa = num(&req["server"]["virtualDaaScore"])?;
     let mut candidates = vec![];
     for e in es {
         require(e.address.as_ref() == Some(&address), "foreign fee address")?;
@@ -194,8 +195,10 @@ fn build(a: &[String]) -> Result<()> {
             "protocol covenant cannot fund fees",
         )?;
         if !entry.is_coinbase
-            || entry.block_daa_score + TESTNET_PARAMS.blockrate.coinbase_maturity
-                <= num(&req["server"]["virtualDaaScore"])?
+            || entry
+                .block_daa_score
+                .checked_add(TESTNET_PARAMS.blockrate.coinbase_maturity)
+                .is_some_and(|mature_at| mature_at <= current_daa)
         {
             candidates.push((e.outpoint.into(), entry));
         }
@@ -294,7 +297,8 @@ fn build(a: &[String]) -> Result<()> {
             let prev_rpc: RpcTransaction =
                 serde_json::from_value(req["previousTransaction"].clone())?;
             let prev: Transaction = prev_rpc.try_into()?;
-            let required = TransactionOutpoint::new(prev.id(), num(&req["previousIndex"])? as u32);
+            let required =
+                TransactionOutpoint::new(prev.id(), u32::try_from(num(&req["previousIndex"])?)?);
             let (point, entry) = candidates
                 .iter()
                 .find(|(p, _)| *p == required)
@@ -335,7 +339,9 @@ fn build(a: &[String]) -> Result<()> {
                     key,
                 )
                 .tx;
-                let required = min_fee(&TESTNET_PARAMS, &t) * 2;
+                let required = min_fee(&TESTNET_PARAMS, &t)
+                    .checked_mul(2)
+                    .ok_or("fee overflow")?;
                 if required > fee {
                     fee = required;
                     continue;
@@ -613,7 +619,9 @@ fn payout(
         t = sign(MutableTransaction::with_entries(t, entries.clone()), key).tx;
         t.inputs[0].signature_script = perm_sig.clone();
         t.inputs[1].signature_script = delegate_sig.clone();
-        let required = min_fee(&TESTNET_PARAMS, &t) * 2;
+        let required = min_fee(&TESTNET_PARAMS, &t)
+            .checked_mul(2)
+            .ok_or("fee overflow")?;
         if required > fee {
             fee = required;
             continue;
@@ -624,4 +632,144 @@ fn payout(
     };
     extra.extend([(pp, pe), (dp, de)]);
     Ok(tx)
+}
+
+#[cfg(test)]
+mod bridge_tests {
+    use super::*;
+    use kaspa_consensus_core::hashing::sighash::SigHashReusedValuesUnsync;
+    use kaspa_txscript::{
+        caches::Cache, covenants::CovenantsContext, engine_context::EngineContext,
+        standard::pay_to_script_hash_script, EngineFlags, TxScriptEngine,
+    };
+    fn rpc_entry(point: TransactionOutpoint, entry: UtxoEntry) -> Value {
+        serde_json::to_value(RpcUtxosByAddressesEntry {
+            address: None,
+            outpoint: point.into(),
+            utxo_entry: entry.into(),
+        })
+        .unwrap()
+    }
+    #[test]
+    fn permission_payout_and_balanced_mutations() {
+        let secret = secp256k1::SecretKey::from_slice(&[3u8; 32]).unwrap();
+        let key = secp256k1::Keypair::from_secret_key(secp256k1::SECP256K1, &secret);
+        let address = Address::new(
+            Prefix::Testnet,
+            Version::PubKey,
+            &key.x_only_public_key().0.serialize(),
+        );
+        let recipient = [0x55; 32];
+        let cov = Hash::from_bytes([9; 32]);
+        let amount = 400_000_000;
+        let leaf = PermissionTreeAccumulator::hash_leaf(StandardSpk::PubKey(&recipient), amount);
+        let root =
+            PermissionTreeAccumulator::hash_branch(&leaf, &PermissionTreeAccumulator::hash_empty());
+        let permission = UtxoEntry::new(
+            app::PERMISSION_RENT,
+            pay_to_script_hash_script(&build_permission_redeem_script(&root, 1, 1)),
+            0,
+            false,
+            Some(cov),
+        );
+        let delegate = UtxoEntry::new(
+            1_000_000_000,
+            pay_to_script_hash_script(&build_delegate_entry_script(&cov.into())),
+            0,
+            false,
+            None,
+        );
+        let fee = UtxoEntry::new(
+            200_000_000,
+            kaspa_txscript::pay_to_address_script(&address),
+            0,
+            false,
+            None,
+        );
+        let pp = TransactionOutpoint::new(Hash::from_bytes([1; 32]), 0);
+        let dp = TransactionOutpoint::new(Hash::from_bytes([2; 32]), 0);
+        let fp = TransactionOutpoint::new(Hash::from_bytes([3; 32]), 0);
+        let entries = vec![permission.clone(), delegate.clone(), fee.clone()];
+        for attack in ["", "underpay", "reserve", "recipient"] {
+            let req = json!({"permissionUtxo":rpc_entry(pp,permission.clone()),"delegateUtxo":rpc_entry(dp,delegate.clone()),"covenantId":cov.to_string(),"recipient":hex::encode(recipient),"amount":amount,"attack":attack});
+            let t = payout(&req, &[(fp, fee.clone())], key, &address, &mut vec![]).unwrap();
+            let pop = PopulatedTransaction::new(&t, entries.clone());
+            let ctx = CovenantsContext::from_tx(&pop).unwrap();
+            let cache = Cache::new(100);
+            let reused = SigHashReusedValuesUnsync::new();
+            let anchor = Anchor(Hash::from_bytes([0; 32]), Hash::from_bytes([0; 32]));
+            let ec = EngineContext::new(&cache)
+                .with_reused(&reused)
+                .with_seq_commit_accessor(&anchor)
+                .with_covenants_ctx(&ctx);
+            let mut vm = TxScriptEngine::from_transaction_input(
+                &pop,
+                &t.inputs[0],
+                0,
+                &entries[0],
+                ec,
+                EngineFlags::default(),
+            );
+            let result = vm.execute();
+            assert_eq!(result.is_ok(), attack.is_empty(), "{attack}: {result:?}");
+            eprintln!("permission attack={attack:?} result={result:?}");
+            if attack.is_empty() {
+                assert_eq!(t.outputs[0].value, 450_000_000);
+                assert_eq!(t.outputs[1].value, 600_000_000);
+            }
+        }
+    }
+    #[test]
+    fn native_owner_signature_binds_payload_recipient() {
+        let secret = secp256k1::SecretKey::from_slice(&[3u8; 32]).unwrap();
+        let key = secp256k1::Keypair::from_secret_key(secp256k1::SECP256K1, &secret);
+        let pk = key.x_only_public_key().0.serialize();
+        let address = Address::new(Prefix::Testnet, Version::PubKey, &pk);
+        let entry = UtxoEntry::new(
+            200_000_000,
+            kaspa_txscript::pay_to_address_script(&address),
+            0,
+            false,
+            None,
+        );
+        let p = TransactionOutpoint::new(Hash::from_bytes([1; 32]), 0);
+        let payload = actions::withdraw_presig(&pk, 100_000_000, &StandardSpk::PubKey(&pk));
+        let valid = ordinary(
+            p,
+            entry.clone(),
+            key,
+            &address,
+            SubnetworkId::from_bytes([4; 20]),
+            payload,
+            vec![],
+        )
+        .unwrap();
+        for altered in [false, true] {
+            let mut t = valid.clone();
+            if altered {
+                *t.payload.last_mut().unwrap() ^= 1;
+                t.finalize();
+            }
+            let pop = PopulatedTransaction::new(&t, vec![entry.clone()]);
+            let ctx = CovenantsContext::from_tx(&pop).unwrap();
+            let cache = Cache::new(100);
+            let reused = SigHashReusedValuesUnsync::new();
+            let anchor = Anchor(Hash::from_bytes([0; 32]), Hash::from_bytes([0; 32]));
+            let ec = EngineContext::new(&cache)
+                .with_reused(&reused)
+                .with_seq_commit_accessor(&anchor)
+                .with_covenants_ctx(&ctx);
+            let mut vm = TxScriptEngine::from_transaction_input(
+                &pop,
+                &t.inputs[0],
+                0,
+                &entry,
+                ec,
+                EngineFlags::default(),
+            );
+            let result = vm.execute();
+            assert_eq!(result.is_ok(), !altered, "{result:?}");
+            eprintln!("native payload altered={altered}: {result:?}");
+        }
+    }
 }

@@ -1,7 +1,7 @@
 //! Public capture -> reference batch/aggregate wires, no signing or proof generation.
 use kaspa_consensus_core::{hashing::tx::transaction_v1_rest_preimage, tx::Transaction};
 use kaspa_hashes::Hash;
-use kaspa_rpc_core::RpcOptionalTransaction;
+use kaspa_rpc_core::{GetSeqCommitLaneProofResponse, RpcOptionalTransaction};
 use kaspa_seq_commit::{
     hashing::{lane_key, mergeset_context_hash},
     types::MergesetContext,
@@ -212,7 +212,9 @@ fn main() -> Result<()> {
     agg.write(h(&ep["payloadAndCtxDigest"])?.as_slice());
     agg.write(h(&ep["parentSeqCommit"])?.as_slice());
     agg.write(h(&ep["inactivityShortcut"])?.as_slice());
-    agg.write_blob(&hex::decode(ep["smtProof"].as_str().ok_or("SMT wire")?)?);
+    // Native JSON RPC serializes this Vec<u8> as a byte array, not hex text.
+    let end_proof: GetSeqCommitLaneProofResponse = serde_json::from_value(ep.clone())?;
+    agg.write_blob(&end_proof.smt_proof);
     for j in &journals {
         agg.write_blob(j)
     }
@@ -240,7 +242,7 @@ fn main() -> Result<()> {
         root,
         "bundle.json",
         &serde_json::to_vec_pretty(
-            &json!({"scope":"PUBLIC_INPUT_PREPARATION_NO_PROOF", "batches":batches,"omittedTransactions":removed,"orderedIds":ids,"stateRoot":hex::encode(common::root(&state)),"spendableSompi":state.spendable(),"startHeaderBlueScore":start_header_score,"endHeaderBlueScore":n(&record(&capture,"end-block")?["block"]["header"]["blueScore"])?}),
+            &json!({"scope":"PUBLIC_INPUT_PREPARATION_NO_PROOF", "batches":batches,"omittedTransactions":removed,"orderedIds":ids,"stateRoot":hex::encode(common::root(&state)),"spendableSompi":state.spendable(),"anchorSeqCommit":parent_seq.to_string(),"startHeaderBlueScore":start_header_score,"endHeaderBlueScore":n(&record(&capture,"end-block")?["block"]["header"]["blueScore"])?}),
         )?,
     )?;
     Ok(())

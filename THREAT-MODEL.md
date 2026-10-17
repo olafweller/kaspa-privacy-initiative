@@ -222,3 +222,18 @@ permission scripts enforce different parts of that boundary; see the
 [enforcement map](poc/native-value/MAPPING.md). Host checks alone are not proof
 of theft prevention. Missing public witnesses can halt progress; there is no
 admin bypass or new reserve key. Independent recovery remains untested.
+
+## Recursive public-account adapter boundary
+
+The [recursive follow-up](poc/takeover/README.md) adds a transaction journal and
+one coarse SMT resource around the existing public account rules. Its review
+must bind the full prior account state, native v1 transaction ID, global merge
+index, block context, batch/aggregate images, lane and covenant continuity.
+Wrong/missing inner receipts must fail at execution; a changed journal must fail
+SDK/native cryptographic verification. Host preparation alone does not establish
+these properties. The local script accessor must also be checked against the
+fixed captured commitment, since accepting a prover-derived anchor alone cannot
+show omission resistance. Lane expiry/reset remains unsupported and rejected in
+the batch guest. The experiment retains one owner's historical node/archive
+trust and public balances; no independent-operator, pruning-recovery or privacy
+claim is added. Rehearsal, funding and actual native payout remain separate.

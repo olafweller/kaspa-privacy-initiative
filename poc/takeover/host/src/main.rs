@@ -78,6 +78,25 @@ fn prove(
     )?;
     Ok(info.receipt)
 }
+fn reject_execution(
+    dir: &Path,
+    label: &str,
+    input: &[u8],
+    program: &[u8],
+    assumptions: &[Receipt],
+) -> Result<()> {
+    let result = default_executor().execute(env(input, assumptions, true)?, program);
+    let error = result
+        .err()
+        .ok_or("negative execution unexpectedly succeeded")?;
+    save(
+        dir,
+        &format!("{label}-rejected.json"),
+        &serde_json::to_vec_pretty(
+            &json!({"scope":"EXECUTION_LAYER_REJECTION_NOT_TN10", "error":format!("{error:#}")}),
+        )?,
+    )
+}
 fn a32(v: &Value) -> [u8; 32] {
     serde_json::from_value(v.clone()).unwrap()
 }
@@ -86,12 +105,35 @@ fn main() -> Result<()> {
         std::env::var("RISC0_DEV_MODE").is_err(),
         "development mode forbidden"
     );
+    let args: Vec<_> = std::env::args().collect();
+    if args.get(1).is_some_and(|s| s == "wrap") {
+        if args.len() != 4 {
+            return Err("wrap RAW_ELF NEW_PROGRAM".into());
+        }
+        let raw = fs::read(&args[2])?;
+        let program =
+            risc0_binfmt::ProgramBinary::new(&raw, risc0_zkos_v1compat::V1COMPAT_ELF).encode();
+        let output = Path::new(&args[3]);
+        save(
+            output.parent().ok_or("output directory")?,
+            output
+                .file_name()
+                .ok_or("output name")?
+                .to_str()
+                .ok_or("output UTF-8")?,
+            &program,
+        )?;
+        println!("{}", compute_image_id(&program)?);
+        return Ok(());
+    }
+    if args.get(1).is_some_and(|s| s == "verify-retained") {
+        return verify_retained(&args);
+    }
     assert_eq!(
         std::env::var("RISC0_PROVER").as_deref(),
         Ok("ipc"),
         "real IPC prover required"
     );
-    let args: Vec<_> = std::env::args().collect();
     if args.get(1).is_some_and(|s| s == "bundle") {
         return bundle(&args);
     }
@@ -162,7 +204,7 @@ fn main() -> Result<()> {
         expected,
         "reference resolve identity"
     );
-    native_check(&receipt, &bp, &ap)?;
+    native_check(&receipt, &bp, &ap, None)?;
     save(
         dir,
         "complete.json",
@@ -170,6 +212,48 @@ fn main() -> Result<()> {
             &json!({"scope":"REAL_RECURSIVE_COMPATIBILITY_ONLY", "syntheticEmptyBatch":true,"nativeScriptEngineVerified":true,"actualTN10Settlement":false,"missingAssumptionRejected":true,"developmentMode":false}),
         )?,
     )?;
+    Ok(())
+}
+
+/// Reverify existing cryptographic artifacts without invoking an executor/prover.
+fn verify_retained(args: &[String]) -> Result<()> {
+    if args.len() != 4 {
+        return Err("verify-retained GATE_DIR PROGRAM_DIR".into());
+    }
+    let source = Path::new(&args[2]);
+    let programs = Path::new(&args[3]);
+    let bp = fs::read(programs.join("batch.program.bin"))?;
+    let ap = fs::read(programs.join("aggregate.program.bin"))?;
+    let batch: Receipt = bincode::deserialize(&fs::read(source.join("batch-receipt.bin"))?)?;
+    let aggregate: Receipt =
+        bincode::deserialize(&fs::read(source.join("aggregate-receipt.bin"))?)?;
+    batch.verify(compute_image_id(&bp)?)?;
+    aggregate.verify(compute_image_id(&ap)?)?;
+    for (name, receipt) in [("batch", &batch), ("aggregate", &aggregate)] {
+        assert_eq!(
+            receipt.journal.bytes,
+            fs::read(source.join(format!("{name}-journal.bin")))?
+        );
+    }
+    assert_eq!(
+        <[u8; 32]>::from(aggregate.inner.succinct()?.control_id),
+        vprogs_zk_backend_risc0_covenant::script::succinct_consts::SUCCINCT_CONTROL_ID
+    );
+    native_check(&aggregate, &bp, &ap, None)?;
+    let mut changed = aggregate.clone();
+    changed.journal.bytes[0] ^= 1;
+    assert!(
+        changed.verify(compute_image_id(&ap)?).is_err(),
+        "changed journal rejected by SDK"
+    );
+    assert!(
+        native_check(&changed, &bp, &ap, None).is_err(),
+        "changed journal rejected by native script"
+    );
+    println!(
+        "{}",
+        json!({"scope":"REVERIFY_RETAINED_SYNTHETIC_GATE", "batchReceiptVerified":true,"aggregateReceiptVerified":true,"nativeScriptEngineVerified":true,"actualTN10Settlement":false})
+    );
     Ok(())
 }
 
@@ -206,28 +290,61 @@ fn bundle(args: &[String]) -> Result<()> {
         let stem = batch["stem"].as_str().ok_or("stem")?;
         let input = fs::read(source.join(format!("{stem}.bin")))?;
         if !transactions.is_empty() {
-            assert!(
-                default_executor()
-                    .execute(env(&input, &[], true)?, &bp)
-                    .is_err(),
-                "missing transaction receipt must reject"
-            );
+            reject_execution(
+                target,
+                &format!("{stem}-missing-transaction"),
+                &input,
+                &bp,
+                &[],
+            )?;
         }
         let receipt = prove(target, stem, &input, &bp, &transactions, true, false)?;
         assert_eq!(
             receipt.journal.bytes,
             fs::read(source.join(format!("{stem}.journal.bin")))?
         );
+        let proof_len = u32::from_le_bytes(input[128..132].try_into()?) as usize;
+        let mut expired = input.clone();
+        expired[228 + proof_len] = 1;
+        assert!(
+            vprogs_zk_abi::batch_processor::Inputs::decode(&expired)?
+                .batch
+                .lane_expired
+        );
+        reject_execution(
+            target,
+            &format!("{stem}-expired-lane"),
+            &expired,
+            &bp,
+            &transactions,
+        )?;
         batches.push(receipt);
     }
     let input = fs::read(source.join("aggregate.bin"))?;
-    assert!(
-        default_executor()
-            .execute(env(&input, &[], true)?, &ap)
-            .is_err(),
-        "missing batch receipts must reject"
-    );
+    reject_execution(target, "aggregate-missing-batches", &input, &ap, &[])?;
     let receipt = prove(target, "aggregate", &input, &ap, &batches, true, false)?;
+    // A genuine aggregate receipt cannot satisfy a batch-image assumption.
+    reject_execution(
+        target,
+        "aggregate-wrong-image",
+        &input,
+        &ap,
+        std::slice::from_ref(&receipt),
+    )?;
+    let first = m["batches"]
+        .as_array()
+        .ok_or("batches")?
+        .first()
+        .ok_or("empty bundle")?;
+    let stem = first["stem"].as_str().ok_or("stem")?;
+    let first_batch = fs::read(source.join(format!("{stem}.bin")))?;
+    reject_execution(
+        target,
+        "batch-wrong-transaction-image",
+        &first_batch,
+        &bp,
+        std::slice::from_ref(&receipt),
+    )?;
     assert_eq!(
         receipt.journal.bytes,
         fs::read(source.join("aggregate.journal.bin"))?
@@ -236,19 +353,49 @@ fn bundle(args: &[String]) -> Result<()> {
         <[u8; 32]>::from(receipt.inner.succinct()?.control_id),
         vprogs_zk_backend_risc0_covenant::script::succinct_consts::SUCCINCT_CONTROL_ID
     );
-    native_check(&receipt, &bp, &ap)?;
+    assert_eq!(
+        receipt.journal.bytes[192..224],
+        <[u8; 32]>::from(compute_image_id(&tp)?)
+    );
+    native_check(&receipt, &bp, &ap, None)?;
+    let expected: Hash = m["anchorSeqCommit"]
+        .as_str()
+        .ok_or("fixed captured anchor missing")?
+        .parse()?;
+    let fixed = native_check(&receipt, &bp, &ap, Some(expected));
+    let omitted = m["omittedTransactions"].as_u64().ok_or("omitted count")?;
+    assert_eq!(
+        fixed.is_ok(),
+        omitted == 0,
+        "fixed captured anchor acceptance"
+    );
+    let mut wrong: [u8; 32] = expected.into();
+    wrong[0] ^= 1;
+    assert!(
+        native_check(&receipt, &bp, &ap, Some(Hash::from_bytes(wrong))).is_err(),
+        "wrong anchor rejected"
+    );
     save(
         target,
         "complete.json",
         &serde_json::to_vec_pretty(
-            &json!({"scope":"REAL_RECURSIVE_PUBLIC_BUNDLE", "developmentMode":false,"nativeScriptEngineVerifiedWithDerivedAnchor":true,"actualTN10Settlement":false,"stateRoot":m["stateRoot"],"spendableSompi":m["spendableSompi"],"omittedTransactions":m["omittedTransactions"]}),
+            &json!({"scope":"REAL_RECURSIVE_PUBLIC_BUNDLE", "developmentMode":false,"nativeScriptEngineVerifiedWithDerivedAnchor":true,"fixedCapturedAnchorAccepted":fixed.is_ok(),"wrongAnchorRejected":true,"actualTN10Settlement":false,"stateRoot":m["stateRoot"],"spendableSompi":m["spendableSompi"],"omittedTransactions":m["omittedTransactions"]}),
         )?,
     )?;
     Ok(())
 }
 
-fn native_check(receipt: &Receipt, batch: &[u8], aggregate: &[u8]) -> Result<()> {
-    use kaspa_consensus_core::tx::TransactionOutpoint;
+fn native_check(
+    receipt: &Receipt,
+    batch: &[u8],
+    aggregate: &[u8],
+    expected: Option<Hash>,
+) -> Result<()> {
+    use kaspa_consensus_core::{hashing::sighash::SigHashReusedValuesUnsync, tx::*};
+    use kaspa_txscript::{
+        caches::Cache, covenants::CovenantsContext, engine_context::EngineContext,
+        standard::pay_to_script_hash_script, EngineFlags, TxScriptEngine,
+    };
     use risc0_zkvm::sha::Digestible;
     use vprogs_zk_backend_risc0_covenant::{
         script::{CommonPins, RedeemPins, SuccinctPins},
@@ -256,11 +403,11 @@ fn native_check(receipt: &Receipt, batch: &[u8], aggregate: &[u8]) -> Result<()>
     };
     struct Anchor(Hash);
     impl kaspa_txscript::seq_commit_accessor::SeqCommitAccessor for Anchor {
-        fn is_chain_ancestor_from_pov(&self, _: Hash) -> Option<bool> {
-            Some(true)
+        fn is_chain_ancestor_from_pov(&self, block: Hash) -> Option<bool> {
+            Some(block == Hash::from_bytes([3; 32]))
         }
-        fn seq_commitment_within_depth(&self, _: Hash) -> Option<Hash> {
-            Some(self.0)
+        fn seq_commitment_within_depth(&self, block: Hash) -> Option<Hash> {
+            (block == Hash::from_bytes([3; 32])).then_some(self.0)
         }
     }
     let j = &receipt.journal.bytes;
@@ -306,7 +453,34 @@ fn native_check(receipt: &Receipt, batch: &[u8], aggregate: &[u8]) -> Result<()>
         }),
         permission_spk_hash: j[256..288].try_into()?,
     });
-    let units = settlement.covenant_input_script_units(cov, &Anchor(h(128)));
+    // Return the actual script error for negative controls; do not classify any
+    // unrelated panic/build failure as a cryptographic rejection.
+    let utxo = UtxoEntry::new(
+        100_000_000,
+        pay_to_script_hash_script(&settlement.prev_redeem),
+        0,
+        false,
+        Some(cov),
+    );
+    let pop = PopulatedTransaction::new(&settlement.transaction, vec![utxo.clone()]);
+    let ctx = CovenantsContext::from_tx(&pop)?;
+    let cache = Cache::new(1);
+    let reused = SigHashReusedValuesUnsync::new();
+    let anchor = Anchor(expected.unwrap_or(h(128)));
+    let ec = EngineContext::new(&cache)
+        .with_reused(&reused)
+        .with_seq_commit_accessor(&anchor)
+        .with_covenants_ctx(&ctx);
+    let mut vm = TxScriptEngine::from_transaction_input(
+        &pop,
+        &settlement.transaction.inputs[0],
+        0,
+        &utxo,
+        ec,
+        EngineFlags::default(),
+    );
+    vm.execute()?;
+    let units = vm.used_script_units();
     println!(
         "{}",
         json!({"syntheticNativeScriptEngineCheck":true,"scriptUnits":format!("{units:?}"),"actualTN10Settlement":false})

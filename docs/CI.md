@@ -55,3 +55,12 @@ checks only its two packages, preserving historical vendored code. Fast checks
 also exercise lossless JSON/sompi handling and exact reconstruction of corrected
 PR31 derivatives from unchanged raw RPC records. These jobs remain offline;
 real CPU proving, TN10 settlements and payout evidence are separate runs.
+
+The recursive follow-up adds `poc/takeover` to the Rust matrix. Its package-only
+formatting and seven native Rust tests exercise journal/state/context/order,
+authorization, replay, image/receipt callback contracts, aggregate continuity
+and the reused bridge script cases. Callback tests use explicit test doubles;
+CI does not generate recursive proofs or submit transactions. Python syntax
+checks include the offline retained-capture harness. Program rebuild, historical
+capture preparation and real recursive proof generation are separate local
+checks described in the [adapter README](../poc/takeover/README.md).

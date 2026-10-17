@@ -1,5 +1,11 @@
 # Paused handoff: PR merges and recursive takeover preparation
 
+> Historical checkpoint from the previous task. The owner resumed local
+> development/review in this task on 2026-10-17, stopping before new TN10
+> transactions. See the [current README](README.md) and
+> [local review](LOCAL-REVIEW.md). The original archive remains unchanged;
+> pause-time facts below are not statements of the current branch/test status.
+
 **Paused by the owner, 2026-10-17 06:56 UTC. Do not resume execution without a
 new instruction.** The pause permits repository/log inspection and preservation
 only. No new experiment, proof generation, funding or transaction was performed

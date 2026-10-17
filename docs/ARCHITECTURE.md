@@ -329,3 +329,15 @@ state, not private notes or a new asset. User backing excludes state-covenant
 rent and sponsor fees; an unpaid permission claim remains a liability until L1
 consumes it into a payout. Full runtime composition, privacy, mandatory processing
 progress and independent recovery remain open. RFC-0001 remains Open.
+
+## Recursive public-account research follow-up
+
+[ADR-0005](adr/0005-long-gap-recursive-takeover.md) and the
+[recursive adapter](../poc/takeover/README.md) replace the monolithic proof route
+for an isolated experiment: the complete public account state is one SMT
+resource, transaction journals feed reference batch verification and batch
+receipts feed reference aggregation. This deliberately serial state model is not
+a production scheduler or privacy design. The source-pinned local review checks
+historical public inputs; a new long-gap TN10 rehearsal and actual payout remain
+separate. Native expiry is rejected inside the batch guest; unavailable public
+history can halt recovery. No privileged withdrawal path is introduced.
