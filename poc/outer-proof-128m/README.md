@@ -7,6 +7,8 @@ directly by one actual outer-proof attempt with a 3,600-second whole-job limit.
 Historical 32M results and the old 128M calibration are preserved unchanged.
 The [results](RESULTS.md) record all 24 passing executions and the single proof
 attempt's wall-limit stop without a receipt.
+The [evidence manifest and public archive](evidence/README.md) retain exact
+inputs, expectations, resources and the failed attempt.
 
 ## Retained statement and authentication
 
