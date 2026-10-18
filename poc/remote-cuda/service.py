@@ -13,7 +13,8 @@ import worker
 
 
 class Job:
-    def __init__(self, package, volume, lease, token, execute=worker.execute):
+    def __init__(self, package, volume, lease, token, execute=worker.execute,
+                 scope="FIXED_FIVE_PARTIAL_PROOFS_ONLY"):
         assert len(token) >= 32
         self.package, self.volume, self.lease, self.token = package, volume, lease, token
         self.execute = execute
@@ -31,7 +32,7 @@ class Job:
                     self.state['artifact'] = worker.snapshot(self.output)
                 atomic(state, self.state)
         else:
-            self.state = {'state': 'idle', 'scope': 'FIXED_FIVE_PARTIAL_PROOFS_ONLY'}
+            self.state = {'state': 'idle', 'scope': scope}
 
     def update(self, value):
         with self.lock:
@@ -81,12 +82,14 @@ class Job:
 
 class App:
     """Boot without a quote; accept exactly one authenticated, Pod-bound lease."""
-    def __init__(self, package, volume, pod_id, token):
+    def __init__(self, package, volume, pod_id, token, execute=worker.execute,
+                 scope="FIXED_FIVE_PARTIAL_PROOFS_ONLY"):
         assert token.isascii() and len(token) >= 32
         self.package, self.volume, self.pod_id, self.token = package, volume, pod_id, token
         self.output = volume/'gpu-attempt'
         self.lock = threading.RLock()
         self.job = None
+        self.execute, self.scope = execute, scope
         volume.mkdir(parents=True, exist_ok=True)
         if (volume/'lease.json').exists():
             self.configure(json.loads((volume/'lease.json').read_text()))
@@ -104,7 +107,7 @@ class App:
                     assert json.loads(file.read_text()) == value
                 else:
                     atomic(file, value)
-                self.job = Job(self.package, self.volume, value, self.token)
+                self.job = Job(self.package, self.volume, value, self.token, self.execute, self.scope)
         return {'configured': True, 'leaseDigest': self.job.digest}
 
     def status(self):

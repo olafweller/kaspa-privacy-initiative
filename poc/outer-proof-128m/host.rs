@@ -323,18 +323,31 @@ fn verify(a: &[String]) -> Result<()> {
         tampered.journal.bytes[offset] ^= 1;
         assert!(tampered.verify_with_context(&ctx, image()?).is_err());
     }
+    let mut corrupted = r.clone();
+    if let risc0_zkvm::InnerReceipt::Succinct(ref mut succinct) = corrupted.inner {
+        succinct.seal[0] ^= 1;
+    } else {
+        return Err("expected succinct receipt".into());
+    }
+    assert!(corrupted.verify_with_context(&ctx, image()?).is_err());
     fs::create_dir(out)?;
     save(
         out,
         "verification.json",
         &serde_json::to_vec_pretty(
-            &json!({"scope":"SEPARATE_PROCESS_CRYPTOGRAPHIC_RECEIPT_VERIFICATION_NOT_TN10_SETTLEMENT","expectedProgramImage":IMAGE,"receiptSha256":sha(&bytes),"exactExpectedJournalVerified":true,"wrongExpectedImageCryptographicallyRejected":true,"tamperedJournalOffsetsCryptographicallyRejected":[0,32,44,76,166],"noUnresolvedAssumptions":true,"developmentMode":false}),
+            &json!({"scope":"SEPARATE_PROCESS_CRYPTOGRAPHIC_RECEIPT_VERIFICATION_NOT_TN10_SETTLEMENT","expectedProgramImage":IMAGE,"receiptSha256":sha(&bytes),"exactExpectedJournalVerified":true,"wrongExpectedImageCryptographicallyRejected":true,"corruptedSealCryptographicallyRejected":true,"tamperedJournalOffsetsCryptographicallyRejected":[0,32,44,76,166],"noUnresolvedAssumptions":true,"developmentMode":false}),
         )?,
     )
 }
 pub(super) fn run(a: &[String]) -> Result<()> {
     match a.get(2).map(String::as_str) {
         Some("prepare") => prepare(a),
+        Some("check") if a.len() == 7 => {
+            let journal = gate(Path::new(&a[3]), Path::new(&a[4]), Path::new(&a[5]), Path::new(&a[6]))?;
+            println!("{}", json!({"qualificationBindingsVerified":true,"cases":24,
+                "expectedProgramImage":IMAGE,"expectedJournalSha256":sha(&journal)}));
+            Ok(())
+        },
         Some("prove") => produce(a),
         Some("verify") => verify(a),
         _ => Err("outer-proof-128m prepare|prove|verify ...".into()),
