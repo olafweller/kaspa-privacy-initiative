@@ -1,0 +1,4 @@
+2026-10-18T21:13:52.0173909Z [36;1mpython3 poc/remote-cuda/check_lifecycle_image.py "$task_digest" > .local/lifecycle-image-published-smoke.json[0m
+2026-10-18T21:13:57.4815545Z lifecycle-80605a38c06c837afc2c0a9a432032a13b2b069d: digest: sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0 size: 4919
+2026-10-18T21:13:57.8892824Z Digest: sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0
+2026-10-18T21:14:02.7984993Z Artifact private-native-lifecycle-image-preparation.zip successfully finalized. Artifact ID 12151061997

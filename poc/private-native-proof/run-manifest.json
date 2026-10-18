@@ -11,7 +11,7 @@
   "expectedJoinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
   "packageArchiveSha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
   "workloadSha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
-  "immutableImage": null,
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
   "batches": [
     {
       "case": "deposit",
@@ -163,6 +163,6 @@
     "lifecycle_package.py": "201dd8a9d56b974af836fa998ff2d720c374b18496bf3aeaad510681086cd12c",
     "lifecycle_control.py": "b0a3ba357ca9812deedc283a22fb606621704add18673cc1aeaf8b2756624e50"
   },
-  "imageSourceCommit": null,
+  "imageSourceCommit": "80605a38c06c837afc2c0a9a432032a13b2b069d",
   "runtimeCorrection": "Create proofs and cpu parent directories before fixed children; reviewed guest/public inputs/proof binaries unchanged."
 }

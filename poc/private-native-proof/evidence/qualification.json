@@ -7,9 +7,13 @@
   "externalWatchdogSurvivedControllerLoss": true,
   "reviewedPr49ProgramUnchanged": true,
   "walletAndProofBinariesUnchanged": true,
-  "newImageCPUStartupPassed": false,
+  "newImageCPUStartupPassed": true,
   "gpuExecutionQualified": false,
   "priorPreparationArchivedAt": "poc/private-native-proof/preparation-pr50",
   "firstAttemptResult": "FAILED_BEFORE_FIRST_PROOF; Pod deleted; diagnostic evidence retained",
-  "newOuterProofsProduced": 0
+  "newOuterProofsProduced": 0,
+  "publicationWorkflowPassed": true,
+  "independentCloudPulledDigestCPUStartupPassed": true,
+  "publishedImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "publishedImageId": "sha256:d5e4374907c15e217488ccdedd061b91ecfeadec502f0496ce2b9f5ee5fd0dff"
 }

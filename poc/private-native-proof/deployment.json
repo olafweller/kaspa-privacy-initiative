@@ -1,7 +1,7 @@
 {
   "status": "SOFTWARE_PREPARATION_ONLY_NO_RENTAL_OR_PROOF_RELEASE",
-  "immutableImage": null,
-  "sourceCommit": null,
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "sourceCommit": "80605a38c06c837afc2c0a9a432032a13b2b069d",
   "expectedProgramImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
   "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
   "workloadSha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
@@ -15,7 +15,7 @@
     ],
     "gpuCount": 1,
     "cloudType": "SECURE",
-    "imageName": "PENDING_CORRECTED_IMMUTABLE_DIGEST",
+    "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
     "containerDiskInGb": 90,
     "volumeInGb": 10,
     "volumeMountPath": "/workspace",

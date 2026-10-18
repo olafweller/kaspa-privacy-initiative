@@ -1,0 +1,20 @@
+{
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "imageSourceCommit": "80605a38c06c837afc2c0a9a432032a13b2b069d",
+  "publicationTag": "cuda-private-native-20261018-02",
+  "workflowRunId": 39166856601,
+  "workflowJobId": 117791492708,
+  "artifactId": 12151061997,
+  "workflowUrl": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39166856601",
+  "workflowConclusion": "success",
+  "publicationAndIndependentCloudCPUChecksPassed": true,
+  "runtimeChange": "Create proofs and cpu parent directories before fixed children",
+  "unchangedProgramImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "unchangedPublicPackageSha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+  "configurationFiles": {
+    "deployment.json": "3019148d5d4d7f65ded69de84c33957414b0d6892afe0ea0c2ec0acb3f108478",
+    "run-manifest.json": "e65ad38e8e3f1111a6f5bf4e531270f793bfcbe8cc6615991632759fb63926e9"
+  },
+  "noProofInQualification": true,
+  "noProviderActionInQualification": true
+}

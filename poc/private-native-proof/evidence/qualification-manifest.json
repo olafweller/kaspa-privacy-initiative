@@ -13,9 +13,21 @@
       "sha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
       "bytes": 12799540
     },
+    "publication-excerpt.log": {
+      "sha256": "80af1b55ca8be852d2ff3aad0c98fe0f8138ae5ff2e0c75f61c67a19b33bedc0",
+      "bytes": 564
+    },
+    "publication.json": {
+      "sha256": "7bde634a41fc2a84d869ba0afee895f128032ef14640f86e1b623b74fdc427a6",
+      "bytes": 1133
+    },
+    "published-container-smoke.json": {
+      "sha256": "f60aad062548549026021b4e407ceea8fd130bed8fccb39658cff1188ceeaef7",
+      "bytes": 3326
+    },
     "qualification.json": {
-      "sha256": "a7ea0417ed01a1b5cefa6fb2f859d9707be22c10b4688c30144398cf7aadd672",
-      "bytes": 728
+      "sha256": "3e6532f44edfc9f5683b9904f181f8f89aa39d3ad5c93b38c51fb42fb004795c",
+      "bytes": 1075
     }
   }
 }
