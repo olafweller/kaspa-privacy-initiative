@@ -65,11 +65,15 @@ The prior CPU image checks validated target loading and service startup, which
 did not exercise producer output-directory creation. This is a preparation defect
 in our runner; passing review and CI did not establish that contract.
 
-The next repair must create **both parent directories** before launching children
-and retain a regression matching the real producer/verifier contract. Before
-another rental, qualify and publish the corrected runtime image, record its new
-digest/source bindings, and obtain a new attempt release. This results PR changes
-no production runner, guest, image, wallet circuit or evidence from PR48/PR49/PR50.
+The repair must create **both parent directories** before launching children
+and retain a regression matching the real producer/verifier contract. The owner
+subsequently authorized that narrow correction and one fresh attempt after new
+image qualification. The current PR includes the directory fix and a new
+real-subprocess regression, while retaining the original runner here for the
+historical reproduction. PR50's original preparation records are archived in
+`preparation-pr50`; the first failed Pod/lease is never restarted or reset.
+The guest, wallet circuit, proof binary, public inputs and PR48/PR49 evidence
+remain unchanged. The fresh attempt requires a newly qualified runtime digest.
 
 ## Separate outcomes
 

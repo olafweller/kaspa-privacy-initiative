@@ -1,0 +1,43 @@
+{
+  "status": "SOFTWARE_PREPARATION_ONLY_NO_RENTAL_OR_PROOF_RELEASE",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "sourceCommit": "612e9f9a69aec67805e70b0fbca4ea3c757058da",
+  "expectedProgramImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "workloadSha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
+  "packageArchiveSha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+  "serviceScope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+  "serviceVolume": "/workspace/kpi-private-native",
+  "configurationExample": {
+    "computeType": "GPU",
+    "gpuTypeIds": [
+      "NVIDIA L40S"
+    ],
+    "gpuCount": 1,
+    "cloudType": "SECURE",
+    "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+    "containerDiskInGb": 90,
+    "volumeInGb": 10,
+    "volumeMountPath": "/workspace",
+    "minCudaVersion": "12.8",
+    "ports": [
+      "8080/http"
+    ],
+    "env": {
+      "NVIDIA_DRIVER_CAPABILITIES": "compute,utility",
+      "KPI_GPU_TOKEN": "INJECT_EXISTING_B_SERVICE_TOKEN_NEVER_PRINT_VALUE"
+    }
+  },
+  "minHostVcpus": 4,
+  "minHostRamGiB": 32,
+  "proposedAttempts": 1,
+  "wholeProofGroupMaxSeconds": 3600,
+  "maxRentalSecondsFromActualCreation": 7200,
+  "spendPlanningLimitUsd": 5,
+  "actualGpuAndStorageQuoteRequired": true,
+  "accountCredentialLocation": "B only; existing root-only /etc/kpi-cuda-guard.env",
+  "managementRoute": "Cloud -> TN10 -> B -> Pod HTTPS",
+  "cloudNetworkOrSecretChangesRequired": false,
+  "rentalAuthorized": false,
+  "noTN10Broadcast": true
+}

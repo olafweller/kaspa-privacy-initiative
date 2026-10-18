@@ -1,5 +1,14 @@
 # Fixed four-batch local lifecycle proof package
 
+PR50's original preparation records are retained in
+[preparation-pr50](preparation-pr50/evidence/qualification.json). Its first
+[released rehearsal](gpu-2026-10-18/README.md) failed before proof generation.
+The current runner creates the `proofs` and `cpu` parent directories required
+by the unchanged Rust executable. A new real-subprocess regression exercises
+all nine stages with synthetic filesystem-only stand-ins. The corrected runtime
+requires a new image digest; the guest, wallet proofs, public package and compiled
+producer/verifier bytes remain unchanged.
+
 Software preparation after merged PR49 (`08bd96d`). No GPU rental, proof execution,
 funding, native broadcast or provider action is included. The guest, wallet VK,
 actual wallet proof bytes, expected journals and native policy remain those

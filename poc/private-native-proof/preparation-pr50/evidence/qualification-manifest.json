@@ -1,0 +1,41 @@
+{
+  "scope": "SOFTWARE_QUALIFICATION_EVIDENCE_NOT_GPU_PROOF_RESULT",
+  "files": {
+    "container-smoke.json": {
+      "sha256": "409f2dda1fb0a4a59dd73292cf8025a00c57672aca751363b4834e4512f62b5d",
+      "bytes": 3326
+    },
+    "docker-build.log": {
+      "sha256": "2da70aaecb14057af2494e58751f73b23b8a842675810cf4e11d986f57cf6782",
+      "bytes": 1733
+    },
+    "package-identity.json": {
+      "sha256": "d6170d0ca66e8ce8cc2032707e67355e8180cd8d4db9f4c2ff848e457a572c42",
+      "bytes": 7120
+    },
+    "preparation-tests.log": {
+      "sha256": "c56af1b03ac6c912ba7bf3aa0120e5d652b137cef6272b9e0f9783761acb7bc6",
+      "bytes": 4229
+    },
+    "public-package.tar.gz": {
+      "sha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+      "bytes": 12799540
+    },
+    "publication-excerpt.log": {
+      "sha256": "9c4c19c9d9d7f34c345f3c4ddfab7a58b43f31f6cae31071483ed8d822523622",
+      "bytes": 1159
+    },
+    "publication.json": {
+      "sha256": "52b723cca0a7b65e5b5b4a7551bee464e75b29237728472170407063a43a43ff",
+      "bytes": 1408
+    },
+    "published-container-smoke.json": {
+      "sha256": "304b8d9420ee21155e32de83e255be7e47379f255ead24f48b4c00883b1caf0d",
+      "bytes": 3326
+    },
+    "qualification.json": {
+      "sha256": "bdc5c9427ef60296a2df41472a44e7d526aefd54d0064f7ca0b7ed77c1d03981",
+      "bytes": 1300
+    }
+  }
+}

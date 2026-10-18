@@ -1,4 +1,4 @@
-# Four-batch proof-package preparation
+# PR50 preparation and subsequent correction
 
 PR49 was reviewed at `b44956e26d99b1f3bf74f7d9b3523788bb563c4f`, with all
 eight required checks green, and squash-merged as
@@ -23,10 +23,10 @@ pulled that same digest and repeated the CPU checks. The final metadata commit
 adds publication records and configuration; it changes no image runtime source.
 The local Docker build ID is distinct from the registry digest.
 
-See [publication provenance](evidence/publication.json),
-[published-image CPU checks](evidence/published-container-smoke.json),
-[package identity](evidence/package-identity.json) and the concrete
-[run manifest](run-manifest.json). The manifest retains exact complete journals
+See [publication provenance](preparation-pr50/evidence/publication.json),
+[published-image CPU checks](preparation-pr50/evidence/published-container-smoke.json),
+[package identity](preparation-pr50/evidence/package-identity.json) and the concrete
+[run manifest](preparation-pr50/run-manifest.json). The manifest retains exact complete journals
 and public-input hashes for `deposit`, `credit-transfer`, `exit`, `reconcile`.
 The former PR47 image runs a different fixed workload and cannot substitute.
 
@@ -71,3 +71,17 @@ its first receipt because the runner omitted output parent directories. Its
 [retained results and confirmed cleanup](gpu-2026-10-18/README.md) supersede any
 inference of execution readiness from the preparation checks above. The frozen
 preparation records and image remain unchanged; no automatic retry took place.
+
+## Corrected runner preparation
+
+After the first failed attempt, the owner released a narrow output-directory
+correction and one fresh GPU attempt after qualification. The runner now creates
+both `proofs` and `cpu` parents. All 29 credential-free controls pass, including
+a new test using actual child processes with the unchanged Rust nonrecursive
+directory contract. The original program, public inputs, wallet fixtures, proof
+binary, archive and workload hashes are unchanged.
+
+The current [deployment](deployment.json), [package identity](evidence/package-identity.json)
+and [run manifest](run-manifest.json) bind the corrected runtime. Newly published
+image qualification must complete before the fresh attempt. The first image and
+its retained records above remain historical evidence, not the corrected runtime.

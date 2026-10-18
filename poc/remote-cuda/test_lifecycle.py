@@ -79,6 +79,30 @@ class Lifecycle(unittest.TestCase):
         stages=list(runner.stages(Path('/trusted'),Path('/results')))
         self.assertEqual([(c,k) for c,k,_ in stages],[(c,k) for c in pkg.CASES for k in (('prove','cpu-verify','native-exit') if c=='exit' else ('prove','cpu-verify'))])
 
+    def test_real_children_obey_nonrecursive_rust_output_directory_contract(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);p=self.package(root);out=root/'output';out.mkdir()
+            standin=root/'filesystem_contract_only.py'
+            standin.write_text('import sys;from pathlib import Path;'
+                'target=Path(sys.argv[-1]);target.mkdir();'
+                '\nif sys.argv[1]=="prove":(target/"receipt.bin").write_bytes(b"SYNTHETIC-NOT-A-PROOF")\n')
+            real_popen=subprocess.Popen
+            commands=[]
+            def child(arguments,**kwargs):
+                commands.append(arguments)
+                # Real subprocesses enforce the pinned Rust create_dir contract;
+                # no crypto/prover command or package executable is invoked.
+                return real_popen([sys.executable,str(standin),*arguments[1:]],**kwargs)
+            with patch.object(runner.subprocess,'Popen',side_effect=child):
+                records=runner.run(p,out)
+            self.assertEqual(len(records),9)
+            self.assertTrue(all(x['exitCode']==0 for x in records))
+            self.assertEqual(len(commands),9)
+            for case in pkg.CASES:
+                self.assertTrue((out/'proofs'/case/'receipt.bin').is_file())
+                self.assertTrue((out/'cpu'/case).is_dir())
+            self.assertTrue((out/'native-exit').is_dir())
+
     def test_single_start_and_missing_guard_remain_enforced(self):
         with tempfile.TemporaryDirectory() as d:
             app=App(Path('/unused'),Path(d),'unittest123',TOKEN,execute=lifecycle.execute,scope=pkg.SCOPE)

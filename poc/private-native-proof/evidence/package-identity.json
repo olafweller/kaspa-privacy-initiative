@@ -44,7 +44,7 @@
     "poc/remote-cuda/common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
     "poc/remote-cuda/lifecycle_control.py": "b0a3ba357ca9812deedc283a22fb606621704add18673cc1aeaf8b2756624e50",
     "poc/remote-cuda/lifecycle_package.py": "201dd8a9d56b974af836fa998ff2d720c374b18496bf3aeaad510681086cd12c",
-    "poc/remote-cuda/lifecycle_runner.py": "46b115f457217b677018451e0380e910d339a2931d37f1c1946dfda83994c73c",
+    "poc/remote-cuda/lifecycle_runner.py": "5baa1ca75a08fc7cbef785d5f8dc324266844179ba0f37762c33f6a1979e3f25",
     "poc/remote-cuda/lifecycle_service.py": "b6ba2d66be64cd0c2a27cf0cd5df09f35639cd1fa2d876386bcee2216e20e4c6",
     "poc/remote-cuda/lifecycle_worker.py": "307b618ce212f6b30732295822be3973bfd937709afa358565a724e631e10150",
     "poc/remote-cuda/package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
@@ -54,7 +54,7 @@
     "poc/remote-cuda/private_worker.py": "aa1809ce9f0264d8b4e6af2b32c1cd993c24f3fb1e3c66e04cf00ebeae7da222",
     "poc/remote-cuda/provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f",
     "poc/remote-cuda/service.py": "def96a6abcfc7bfbd2a2397dc2e0b0ab4d290fe2930668b2565e846c68a9ca40",
-    "poc/remote-cuda/test_lifecycle.py": "c0c3f15dd091a263a59d2859e4e6b270e71ed3e5b65e13591924d1a90dc84955",
+    "poc/remote-cuda/test_lifecycle.py": "f8e76a4b7cd793e558b689a6b8d68ce2f86620e08a83670c743d9af1ffc0d061",
     "poc/remote-cuda/watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
     "poc/remote-cuda/worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
     "poc/takeover/vendor/covenant/src/script.rs": "94955037b54200fb5894574ec3cee3fdb64b1360f3d2a7c730b954df5d90cf0c",
@@ -82,5 +82,6 @@
     "reconcile"
   ],
   "newProofsProduced": false,
-  "providerActions": false
+  "providerActions": false,
+  "runtimeCorrection": "Precreate proofs and cpu parents required by unchanged Rust create_dir; no guest, proof binary, public input or policy change."
 }

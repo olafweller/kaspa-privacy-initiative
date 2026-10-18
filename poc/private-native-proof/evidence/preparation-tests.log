@@ -5,6 +5,7 @@ test_fixed_package_and_all_compiled_targets_without_execution (test_lifecycle.Li
 test_journal_continuity_cannot_be_replaced (test_lifecycle.Lifecycle.test_journal_continuity_cannot_be_replaced) ... ok
 test_partial_results_survive_later_stage_failure_and_verification_is_trusted (test_lifecycle.Lifecycle.test_partial_results_survive_later_stage_failure_and_verification_is_trusted) ... ok
 test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant (test_lifecycle.Lifecycle.test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant) ... ok
+test_real_children_obey_nonrecursive_rust_output_directory_contract (test_lifecycle.Lifecycle.test_real_children_obey_nonrecursive_rust_output_directory_contract) ... ok
 test_single_start_and_missing_guard_remain_enforced (test_lifecycle.Lifecycle.test_single_start_and_missing_guard_remain_enforced) ... ok
 test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit (test_lifecycle.Lifecycle.test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit) ... ok
 test_compiled_producer_checks_target_without_execution (test_private.Private.test_compiled_producer_checks_target_without_execution) ... ok
@@ -28,7 +29,7 @@ test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.te
 test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
 
 ----------------------------------------------------------------------
-Ran 28 tests in 6.230s
+Ran 29 tests in 6.592s
 
 OK
-{"output": "/tmp/tmpc052ju9x/package", "inputFiles": 116, "workloadSha256": "3a3d6196d7451e596f81d7c72aa900343f54b3ff8460512ed5e2e07eddf55f11"}
+{"output": "/tmp/tmp3h5exw7g/package", "inputFiles": 116, "workloadSha256": "3a3d6196d7451e596f81d7c72aa900343f54b3ff8460512ed5e2e07eddf55f11"}

@@ -27,6 +27,10 @@ def stages(package, output):
 def run(package, output, executor=None):
     assert 'RISC0_DEV_MODE' not in os.environ
     check(package)
+    # The fixed Rust producer and verifier use create_dir, not create_dir_all.
+    # Create their common parents once; children still require fresh leaf paths.
+    (output/'proofs').mkdir()
+    (output/'cpu').mkdir()
     (output/'stages').mkdir()
     started=time.monotonic()
     records=[]

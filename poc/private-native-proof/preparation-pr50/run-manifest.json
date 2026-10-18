@@ -1,0 +1,167 @@
+{
+  "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+  "softwarePreparationOnly": true,
+  "rentalAuthorized": false,
+  "proofExecutionAuthorized": false,
+  "fundingAuthorized": false,
+  "TN10BroadcastAuthorized": false,
+  "reviewedPr49Head": "b44956e26d99b1f3bf74f7d9b3523788bb563c4f",
+  "pr49Merge": "08bd96d6a7ef647b09df7fb241ed164ff6e66b35",
+  "expectedProgramImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "expectedJoinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "packageArchiveSha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+  "workloadSha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "batches": [
+    {
+      "case": "deposit",
+      "inputSha256": "e2ee157504526738db3ba870f79590bbe655172fae72f850280b12df32f44f44",
+      "expectedJournalHex": "0ff17bdca9389182ffe46b407c6a0b56e1fcefbf316bbaf556098963e2c38ca40000000000000000000000000000000000000000000000000000000000000000e3b4fc0eba02aaf2a7b89fa47b0caab806588b3bcd16722ff0f1c05929f07a34e9633a4f99ef9d03449689c629c0fcf6257761041089d069e340a82d78741ed03e5c1578de8aa47d227ea39de03b1d9cc200b9e8d2845c64fa193200637a3d1d5987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a9186000000000000000000000000000000000000000000000000000000000000000074f3a8beef73ba98698fe5284f2ed707df5aa10e53b3d4db9c38d8dadcd3607ae94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "82378ad35727f015951455e1dce5fb092b6180db0e2897d005ad768d09a789e7",
+      "segmentPo2": 16,
+      "measuredUserCycles": 551028,
+      "measuredSegments": 34,
+      "controlRouteRequirement": "join; at least two segments; no assumptions",
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/deposit/receipt.bin",
+      "candidateOutput": "proofs/deposit/candidate-receipt.bin",
+      "producerCommand": [
+        "kpi-private-native-producer",
+        "prove",
+        "deposit",
+        "FIXED_INPUTS",
+        "NEW_PROOF_DIRECTORY"
+      ],
+      "independentCpuCommand": [
+        "kpi-private-native-verifier",
+        "verify-receipt",
+        "deposit",
+        "RECEIPT",
+        "NEW_VERIFICATION_DIRECTORY"
+      ]
+    },
+    {
+      "case": "credit-transfer",
+      "inputSha256": "c21a12cfdf2e462f2c7b7532756c13f21974807d8a71e015f2411e61681bc0b3",
+      "expectedJournalHex": "e3b4fc0eba02aaf2a7b89fa47b0caab806588b3bcd16722ff0f1c05929f07a34e9633a4f99ef9d03449689c629c0fcf6257761041089d069e340a82d78741ed04462c3d51eaef4cfd32e26d4ff943a3c7f6c2365ebdf114f543154fafffef1d4e6e03aacdafc61aeaa66b4e3da8da5a36b1049869fcf8b97a95fe4b5c65ca4f2a5da0d8a9f2bc9492dd32fb52f69aca4cb41dc28eec19d80f7d1eb2e02c11c025987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "5bbc9e5f57b4e88d4a7840f3e6a8b1625f1a184fce88db28bb56652860279253",
+      "segmentPo2": 20,
+      "measuredUserCycles": 93105559,
+      "measuredSegments": 95,
+      "controlRouteRequirement": "join; at least two segments; no assumptions",
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/credit-transfer/receipt.bin",
+      "candidateOutput": "proofs/credit-transfer/candidate-receipt.bin",
+      "producerCommand": [
+        "kpi-private-native-producer",
+        "prove",
+        "credit-transfer",
+        "FIXED_INPUTS",
+        "NEW_PROOF_DIRECTORY"
+      ],
+      "independentCpuCommand": [
+        "kpi-private-native-verifier",
+        "verify-receipt",
+        "credit-transfer",
+        "RECEIPT",
+        "NEW_VERIFICATION_DIRECTORY"
+      ]
+    },
+    {
+      "case": "exit",
+      "inputSha256": "d3d4510e69efb00f09aaef779ecd7470bc00d5679ec1c99d377df43bfc222af4",
+      "expectedJournalHex": "4462c3d51eaef4cfd32e26d4ff943a3c7f6c2365ebdf114f543154fafffef1d4e6e03aacdafc61aeaa66b4e3da8da5a36b1049869fcf8b97a95fe4b5c65ca4f24269f22ed8fcba85d3054cdee3d123dec9cb70f93b10331b68c26c1127f1fe8b22e0752f4875dda22561a7a92998941ef86dd038a7bd6aaacfeebea6cbd135682eacf11824da131647918c2cb915e2f14793cc1d61e8f496ddb9d4898a6519765987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918668439394c742a6f6c105f6f2c25297cc51ec77cdc354593d99ab1404bc73f9e10000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "57d751f4744d56e908b9673995e9df262dd01dd05913e0c21b1b02ff417dc964",
+      "segmentPo2": 20,
+      "measuredUserCycles": 43964526,
+      "measuredSegments": 45,
+      "controlRouteRequirement": "join; at least two segments; no assumptions",
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/exit/receipt.bin",
+      "candidateOutput": "proofs/exit/candidate-receipt.bin",
+      "producerCommand": [
+        "kpi-private-native-producer",
+        "prove",
+        "exit",
+        "FIXED_INPUTS",
+        "NEW_PROOF_DIRECTORY"
+      ],
+      "independentCpuCommand": [
+        "kpi-private-native-verifier",
+        "verify-receipt",
+        "exit",
+        "RECEIPT",
+        "NEW_VERIFICATION_DIRECTORY"
+      ]
+    },
+    {
+      "case": "reconcile",
+      "inputSha256": "6329dcd51d26f94d26433f914c5c858bf004b9f6c2564e8c23bbeceaebbd87c6",
+      "expectedJournalHex": "4269f22ed8fcba85d3054cdee3d123dec9cb70f93b10331b68c26c1127f1fe8b22e0752f4875dda22561a7a92998941ef86dd038a7bd6aaacfeebea6cbd135680ed7a1e688ef237da17fc28aa94719ed9f52e84d3d6c0d90c7c03db197471f447fdfd42033bcc2086abe1c620343bffb63ea68bd44b68a8451de6c5bce2dc5482a09fc4576b5ebd907510a517783421aa9bd3cb8a3c553cfc0924d68bf3dc9c25987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "cc22d5a160148b6bad2cb105456257ba9093b7cb224b8c138c860c9efdbf99f6",
+      "segmentPo2": 16,
+      "measuredUserCycles": 1486804,
+      "measuredSegments": 79,
+      "controlRouteRequirement": "join; at least two segments; no assumptions",
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/reconcile/receipt.bin",
+      "candidateOutput": "proofs/reconcile/candidate-receipt.bin",
+      "producerCommand": [
+        "kpi-private-native-producer",
+        "prove",
+        "reconcile",
+        "FIXED_INPUTS",
+        "NEW_PROOF_DIRECTORY"
+      ],
+      "independentCpuCommand": [
+        "kpi-private-native-verifier",
+        "verify-receipt",
+        "reconcile",
+        "RECEIPT",
+        "NEW_VERIFICATION_DIRECTORY"
+      ]
+    }
+  ],
+  "externalWatchdog": "GNU timeout --signal=KILL in one shared process group; independent service-side timer also retained",
+  "aggregateProofProcessGroupSeconds": 3600,
+  "maxRentalSecondsFromActualCreation": 7200,
+  "attempts": 1,
+  "automaticRetry": false,
+  "planningLimitUsd": 5,
+  "actualQuoteIncludingStorageRequired": true,
+  "freshGuardHeartbeatRequired": true,
+  "minimumRemainingLeaseSecondsAtStart": 3660,
+  "serviceScope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+  "stateVolume": "/workspace/kpi-private-native",
+  "guardSources": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
+    "provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f"
+  },
+  "providerAccountCredentials": "B only; /etc/kpi-cuda-guard.env; root0600; never read/print in Cloud",
+  "managementRoute": "Cloud -> TN10 -> B -> Pod HTTPS",
+  "newCloudDomainsOrSecretsRequired": false,
+  "runtimeDependenciesOnCloudGatewayLaptop": false,
+  "requiredEvidence": [
+    "four real independently CPU-verified Succinct receipts",
+    "genuine exit receipt native issuance and restricted payout",
+    "per-batch matching-process CUDA activity",
+    "durable external preservation on B",
+    "confirmed provider EXITED on every outcome",
+    "deletion after verified external preservation",
+    "actual runtime/storage quote and resulting charges"
+  ],
+  "nativeExitCommand": [
+    "kpi-private-native-verifier",
+    "verify-native-exit",
+    "EXIT_RECEIPT",
+    "NEW_NATIVE_CHECK_DIRECTORY"
+  ],
+  "trustedCpuClientFiles": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "lifecycle_package.py": "201dd8a9d56b974af836fa998ff2d720c374b18496bf3aeaad510681086cd12c",
+    "lifecycle_control.py": "b0a3ba357ca9812deedc283a22fb606621704add18673cc1aeaf8b2756624e50"
+  },
+  "imageSourceCommit": "612e9f9a69aec67805e70b0fbca4ea3c757058da"
+}

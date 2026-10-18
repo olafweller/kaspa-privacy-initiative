@@ -6,6 +6,7 @@ Rust producer/verifier. Any saved placeholder is explicitly synthetic and stays
 inside a temporary directory. This is not a proof or a GPU retry.
 """
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import sys
@@ -14,13 +15,16 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'poc/remote-cuda'))
 import lifecycle_package as package
-import lifecycle_runner as runner
+frozen_runner = Path(__file__).resolve().parent/'evidence/reviewed-lifecycle-runner.py'
+spec = importlib.util.spec_from_file_location('reviewed_pr50_runner', frozen_runner)
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
 
 
 def reproduce():
     expected_runner = '46b115f457217b677018451e0380e910d339a2931d37f1c1946dfda83994c73c'
     expected_host = '7a08233a896daedf5a437577d2be5ec5a23384d395c576f7b4e7b95866f937bb'
-    assert hashlib.sha256((ROOT/'poc/remote-cuda/lifecycle_runner.py').read_bytes()).hexdigest() == expected_runner
+    assert hashlib.sha256(frozen_runner.read_bytes()).hexdigest() == expected_runner
     host = ROOT/'poc/private-native/host/src/bin/proof.rs'
     assert hashlib.sha256(host.read_bytes()).hexdigest() == expected_host
     assert 'fs::create_dir(out)?' in host.read_text()
