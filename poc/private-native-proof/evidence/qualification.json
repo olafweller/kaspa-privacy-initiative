@@ -17,5 +17,9 @@
   "CPUStartupPassed": true,
   "gpuExecutionQualified": false,
   "nativeNewExitReceiptPositivePathStillPending": true,
-  "localDiskNote": "Initial CPU Docker startup ran out of Cloud disk space; only rebuildable Docker/build caches were cleaned, then startup passed. Research/evidence files preserved."
+  "localDiskNote": "Initial CPU Docker startup ran out of Cloud disk space; only rebuildable Docker/build caches were cleaned, then startup passed. Research/evidence files preserved.",
+  "publishedImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "publicationWorkflowPassed": true,
+  "independentCloudPulledDigestCPUStartupPassed": true,
+  "publishedImageId": "sha256:168dfb709da5cec08bdd69d314ab34a928eb5834127c6da56681ed181b4714c8"
 }

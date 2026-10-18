@@ -21,9 +21,21 @@
       "sha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
       "bytes": 12799540
     },
+    "publication-excerpt.log": {
+      "sha256": "9c4c19c9d9d7f34c345f3c4ddfab7a58b43f31f6cae31071483ed8d822523622",
+      "bytes": 1159
+    },
+    "publication.json": {
+      "sha256": "52b723cca0a7b65e5b5b4a7551bee464e75b29237728472170407063a43a43ff",
+      "bytes": 1408
+    },
+    "published-container-smoke.json": {
+      "sha256": "304b8d9420ee21155e32de83e255be7e47379f255ead24f48b4c00883b1caf0d",
+      "bytes": 3326
+    },
     "qualification.json": {
-      "sha256": "8241a9b696d2190f7410dce9ec3990e54b94b5817152cc579212e406050f0e07",
-      "bytes": 952
+      "sha256": "bdc5c9427ef60296a2df41472a44e7d526aefd54d0064f7ca0b7ed77c1d03981",
+      "bytes": 1300
     }
   }
 }

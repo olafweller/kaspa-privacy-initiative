@@ -1,0 +1,7 @@
+2026-10-18T20:39:24.6031638Z [36;1mpython3 poc/remote-cuda/check_lifecycle_image.py "$task_digest" > .local/lifecycle-image-published-smoke.json[0m
+2026-10-18T20:39:29.0044987Z lifecycle-612e9f9a69aec67805e70b0fbca4ea3c757058da: digest: sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7 size: 4919
+2026-10-18T20:39:29.2337182Z ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7: Pulling from olafweller/kaspa-privacy-initiative/cuda-qualification
+2026-10-18T20:39:29.2462155Z Digest: sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7
+2026-10-18T20:39:29.2463324Z Status: Image is up to date for ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7
+2026-10-18T20:39:33.8943121Z Artifact private-native-lifecycle-image-preparation.zip successfully finalized. Artifact ID 12150017737
+2026-10-18T20:39:33.8944392Z Artifact private-native-lifecycle-image-preparation has been successfully uploaded! Final size is 3861 bytes. Artifact ID is 12150017737

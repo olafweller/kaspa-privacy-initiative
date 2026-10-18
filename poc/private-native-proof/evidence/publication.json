@@ -1,0 +1,22 @@
+{
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "imageSourceCommit": "612e9f9a69aec67805e70b0fbca4ea3c757058da",
+  "publicationTag": "cuda-private-native-20261018-01",
+  "registryTag": "lifecycle-612e9f9a69aec67805e70b0fbca4ea3c757058da",
+  "workflowRunId": 39164252483,
+  "workflowJobId": 117783771828,
+  "workflowUrl": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39164252483",
+  "workflowConclusion": "success",
+  "workflowBuiltAndCpuCheckedThenPulledDigestAndCpuChecked": true,
+  "artifactId": 12150017737,
+  "artifactSha256": "9ae56768deaa46d9b35e861adb03a2abda281dbe8cc49acdd78251cda93f87fa",
+  "artifactDownloadNote": "Connector returned artifact reference; workspace download was HTTP403. Publication digest obtained from job logs and independently pulled and CPU-checked in Cloud; no assertion of locally validated artifact ZIP bytes.",
+  "metadataOnlyFollowup": "Publication metadata and evidence follow source commit; runtime files and package source bindings unchanged.",
+  "GPUExecution": false,
+  "proofExecution": false,
+  "providerActions": false,
+  "configurationFiles": {
+    "deployment.json": "bb945b3882bdbdfde9f60640f473cacf71065718db53d328518fff2b3e645d8f",
+    "run-manifest.json": "c8f21f49d30f310c99de7d89ba82cc52b4636d21937cd58f972668a665351312"
+  }
+}
