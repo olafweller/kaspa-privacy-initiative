@@ -269,7 +269,9 @@ fn reconcile_native_payout(state: &State, body: &NativeTx, id: H, eid: H) -> Res
     {
         return Err("payout amount/destination/reserve change".into());
     }
-    if body.outputs[2].covenant.is_some() || body.outputs[2].script == delegate(&state.covenant) {
+    if body.outputs[2].covenant.is_some()
+        || (body.outputs[2].version == 0 && body.outputs[2].script == delegate(&state.covenant))
+    {
         return Err("sponsor output must be separate".into());
     }
     next.ledger.confirm_authenticated_fixture_payout(

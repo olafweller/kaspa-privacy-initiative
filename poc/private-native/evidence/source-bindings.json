@@ -6,16 +6,16 @@
     "poc/native-value/host/src/main.rs": "4f54cf5cc6c399fd01a2d085d1f36df9925dbb177c8a579ae04a5b62d2e14a78",
     "poc/private-native/Cargo.lock": "cddbc103a501d39dead8de8a42c91b01b92252496ae24045c987442e66ede402",
     "poc/private-native/Cargo.toml": "eab372693c582578b15d59124824477f2759189355f911df853d546800aacf06",
-    "poc/private-native/check_evidence.py": "d9bab9cda27c4a1897ed5722c5031dd959dfd4625f1b4a04f6de09dff0bd585d",
+    "poc/private-native/check_evidence.py": "84da43eeb6f959fa0481409e133cc4dba9d58c036536060d73d83a624a9ecb56",
     "poc/private-native/common/Cargo.toml": "60a3c042fe85105016d5b7f0926aabfc4dcc32c6f263af721c073e3c8a9e41bd",
-    "poc/private-native/common/src/lib.rs": "5b0e7f29ec70536229feac64a4c737a58b45241279005b47a4bcde750163ec12",
+    "poc/private-native/common/src/lib.rs": "f6ee116bc17a3fa61949123ee84e2b8aea87f057e0ef06bd9629e3a5fd559f51",
     "poc/private-native/guest/Cargo.lock": "8ca7f8c4260505b1b447f5845ae9e5f478dda66307c15ec7ff38c9aacf51752f",
     "poc/private-native/guest/Cargo.toml": "5adf1de05d061f2c8098e7f9a38cc39b33838ac77867b5d2aab1bc30e3281fef",
     "poc/private-native/guest/src/main.rs": "980be95bc200564c5a9f7a7d29b5be90d3becd4f5ca3e3f350586b4ccd6ef656",
     "poc/private-native/host/Cargo.toml": "e31932e09d0d77ade16acdf26c3ae5c0a2562848fafd26e057b656997128671f",
     "poc/private-native/host/src/bin/proof.rs": "7a08233a896daedf5a437577d2be5ec5a23384d395c576f7b4e7b95866f937bb",
-    "poc/private-native/host/src/main.rs": "a1de66aee03ae0004a1f9115e11a287e382dcf6e1ba8faabd1aa35ee46734492",
-    "poc/private-native/host/src/native.rs": "81b0213fc0d594963181c32a66ac950ea3d92fee6acf3d13d14f41be62c128b6",
+    "poc/private-native/host/src/main.rs": "2d97313d18199938e38899cb427a5720c31148df09afe938d13aaba07121f637",
+    "poc/private-native/host/src/native.rs": "e952a20fcb4506b52ea6414017b96fa22967dbe9b51113b38348409d61511918",
     "poc/private-native/run_qualification.py": "e9684f156714d03b029b193da0b98be6fe2824e37421c21bfe207a6a2d758aac",
     "poc/private-note-chain/common/src/lib.rs": "f640acf4771227ea33812108b95ff0a1355cd996ec600f9b7ad833f53ef1158c",
     "poc/private-note-proof/Cargo.lock": "68edea9e240fa921d0ae04d544370a9f3c2cbaa1d6f654dace350129fdc197aa",
@@ -49,15 +49,15 @@
   "rustyKaspa": "01b532e8b553523216471682649693af92f0fd16",
   "binaries": {
     "kpi-private-native-host": {
-      "sha256": "d1f28c76ad5652237974f730d537ca8751102f96041c05d712c2d39a16a68138",
-      "bytes": 11678896
+      "bytes": 11680184,
+      "sha256": "144458617271f9ab1339efe699b657e2df1dbb43827e8f76c4b094071a9afb91"
     },
     "kpi-private-native-proof": {
-      "sha256": "043b483168f267f578d976d2e8b91f037e6aec625736ea1aa9b02e0e5515564d",
-      "bytes": 16224216
+      "bytes": 16224728,
+      "sha256": "d9ee19513d2ba2b4296e0e9c4199c175ba2d0948b0f130d3df53a5e875415109"
     }
   },
-  "guestImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "guestImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
   "executionHostMatchesPreparedHost": true,
   "newOuterReceiptsProduced": 0,
   "providerActions": 0,

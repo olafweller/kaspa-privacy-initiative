@@ -17,6 +17,7 @@
     "reject-payout-replay",
     "accept-top-up",
     "accept-second-deposit",
+    "accept-versioned-sponsor",
     "accept-tagless",
     "auth-prior-state",
     "auth-prior-tip",
@@ -174,7 +175,7 @@
         "state_covenant_rent_excluded": 100000000,
         "unpaid_exits": 400000000
       },
-      "nativeId": "4a1020632c646b49aa8a0a20cfdb3ffaa5be24fe33a1e337b6a39915fca8c97c",
+      "nativeId": "ef9bfd4093e15da8e831d6bd7dcb874d85930e60e4ca311f438d30fda272c9a1",
       "stage": "reconcile"
     },
     {
@@ -186,7 +187,7 @@
         "state_covenant_rent_excluded": 100000000,
         "unpaid_exits": 0
       },
-      "nativeId": "bb602fec933112e0a2808be6e52f2afa10017112257a7b7e3576b0570d76f5c6",
+      "nativeId": "712eaba144c039d4111fd5ad6081e61041b6586d293aa0f08d537358c53d4910",
       "stage": "reconcile"
     }
   ],

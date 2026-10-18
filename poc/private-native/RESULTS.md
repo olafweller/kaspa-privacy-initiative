@@ -34,7 +34,7 @@ are not a network quote. See [lifecycle.json](evidence/lifecycle.json) and
 ## New identity and measured execution
 
 The program was built and identified before guest execution:
-`9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde`.
+`794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9`.
 The wallet VK remains
 `d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec`.
 Independent journals and complete inputs are fixed in
@@ -43,18 +43,18 @@ slots are monolithic relation-domain constants, not recursive guest identities.
 
 | Batch | User cycles | Segments | Segment po2 | SDK execution seconds |
 |---|---:|---:|---:|---:|
-| Deposit | 551,028 | 34 | 16 | 0.223 |
-| Credit/payment | 93,105,559 | 95 | 20 | 2.203 |
-| Bob exit | 43,964,526 | 45 | 20 | 1.122 |
-| Permission/payout reconciliation | 1,486,669 | 79 | 16 | 0.282 |
+| Deposit | 551,028 | 34 | 16 | 0.198 |
+| Credit/payment | 93,105,559 | 95 | 20 | 2.089 |
+| Bob exit | 43,964,526 | 45 | 20 | 1.129 |
+| Permission/payout reconciliation | 1,486,804 | 79 | 16 | 0.286 |
 
 All four matched their complete independent expected journals, under the
-declared 160M/900s per-case limits. Together with three additional positive
+declared 160M/900s per-case limits. Together with four additional positive
 regressions, six economic rejections, three mandatory native-consumption aborts
-and four authentication aborts, **20/20 zkVM executions passed** in
-12.316 seconds whole campaign wall time. No timeout/resource failure was counted
+and four authentication aborts, **21/21 zkVM executions passed** in
+12.460 seconds whole campaign wall time. No timeout/resource failure was counted
 as rejection. Four CPU threads were used; peak sampled group RSS was
-77.30 MiB and wait4-reported max RSS was
+77.05 MiB and wait4-reported max RSS was
 114.62 MiB. See the raw
 [campaign](evidence/execution/campaign.json) and per-case reports/logs.
 
@@ -96,8 +96,8 @@ deposit, old-root competing spend, transfer replay, wrong exit recipient and
 repeated payout reconciliation. Three injected unreconciled native spends
 (underpayment, reserve diversion, wrong recipient) now require an exact fatal
 abort, with no successful stale journal. They are also rejected by the actual
-native scripts before funds could move. Three added positive guest folds cover
-top-up, second-deposit/payout and tagless payout.
+native scripts before funds could move. Four added positive guest folds cover top-up, second-deposit/payout,
+a versioned sponsor output and tagless payout.
 Four actual guest aborts require exact expected predecessor-state/tip,
 start-inclusion or last-touch assertion failures. Host- and guest-resource errors
 cannot stand in for these expected failures.

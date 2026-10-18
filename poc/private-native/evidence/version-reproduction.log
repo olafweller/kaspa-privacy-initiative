@@ -1,0 +1,28 @@
+   Compiling kpi-private-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/host)
+warning: function `restrict_settlement` is never used
+  --> host/src/native.rs:57:8
+   |
+57 | pub fn restrict_settlement(
+   |        ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `kpi-private-native-host` (bin "kpi-private-native-host" test) generated 1 warning
+    Finished `release` profile [optimized] target(s) in 6.02s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_private_native_host-19c101c5f1c193c8)
+
+running 1 test
+
+thread 'tests::native_permitted_forms_are_reconciled_or_rejected_before_spending' (33261) panicked at host/src/main.rs:579:67:
+called `Result::unwrap()` on an `Err` value: "sponsor output must be separate"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::native_permitted_forms_are_reconciled_or_rejected_before_spending ... FAILED
+
+failures:
+
+failures:
+    tests::native_permitted_forms_are_reconciled_or_rejected_before_spending
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p kpi-private-native-host --bin kpi-private-native-host`

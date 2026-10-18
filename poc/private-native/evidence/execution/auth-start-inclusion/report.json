@@ -3,7 +3,7 @@
   "error": "Guest panicked: assertion `left == right` failed: start active inclusion\n  left: [173, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]\n right: [172, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]",
   "expectedAbortConfirmed": true,
   "expectedAbortReason": "start active inclusion",
-  "expectedImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "expectedImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
   "scope": "ACTUAL_GUEST_REQUIRED_ABORT_NOT_RESOURCE_FAILURE",
-  "seconds": 0.150279465
+  "seconds": 0.154845843
 }

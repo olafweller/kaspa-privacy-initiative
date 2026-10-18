@@ -1,5 +1,5 @@
    Compiling kpi-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/native-value/host)
-    Finished `release` profile [optimized] target(s) in 4.64s
+    Finished `release` profile [optimized] target(s) in 4.56s
      Running unittests src/main.rs (.local/ci-target/release/deps/kpi_native_host-f8eb5f5f369688ae)
 
 running 4 tests

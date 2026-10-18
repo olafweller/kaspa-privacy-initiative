@@ -87,7 +87,7 @@ For execution-only reproduction:
 python3 poc/private-native/run_qualification.py --r0vm /path/to/pinned/r0vm --host .local/ci-target/release/kpi-private-native-host --program poc/private-native/evidence/guest.program.bin --fixtures poc/private-native/evidence --out /path/to/new-directory
 ```
 
-The campaign runs four lifecycle batches and sixteen additional cases: three
+The campaign runs four lifecycle batches and seventeen additional cases: four
 positive regressions, six economic rejections and seven exact required aborts. Limits
 are 160M cycles / 900 seconds per case, 3,600 seconds for the campaign, four CPU
 threads. Resource failures never qualify as rejection. Recent unchanged-active
@@ -156,7 +156,7 @@ Do not describe this local package as live-trial readiness.
 
 [Native/accounting alignment](REVIEW-FIX.md) records the reproduced blockers,
 actual native enforcement restrictions, multiple-deposit bookkeeping and the
-20-case requalification. The issued permission binds the private lane and exact
+21-case requalification. The issued permission binds the private lane and exact
 reserve chosen at exit admission. The state covenant also preserves that lane
 restriction through continuation. A top-up is allowed; partial consumption and
 extra sponsor inputs/outputs are natively rejected. A lane flag alone is

@@ -13,6 +13,7 @@ These are synthetic UTXO/ordering fixtures, not node or TN10 acceptance.
 | A second unique 1,000M deposit before payout | App admits it but then rejects the first payout | Exit pins one sufficient reserve; payout replaces only that outpoint, preserving the other deposit and its 1,000M pending liability |
 | Partial permission consumption, with three or four outputs | Upstream scripts allow continuation | Issued permission requires every output unbound; partial/continuation is rejected natively |
 | Additional sponsor input or output | Upstream scripts allow the tested forms | Issued permission requires exactly three inputs/outputs; rejected natively |
+| Sponsor output has the delegate’s raw bytes but script version1 | Native allows this unrelated sponsor output; the app compared only raw bytes | Compare the complete versioned SPK; native acceptance now produces correct authenticated accounting |
 | Substitute an untracked delegate outpoint | Upstream permission accepts equivalent funding | Issued permission pins the admitted reserve's txid/index; rejected natively |
 
 See [native/application regression results](evidence/review-regressions.json).
@@ -74,8 +75,9 @@ separately from the guest aborts. Resource failures never count as rejection.
 The corrected state uses a v2 hash domain and a new fixed guest identity, exact
 inputs and 352-byte journals. [Execution declaration](evidence/execution-declaration.json)
 records the unchanged 160M-cycle/900s-per-case, four-thread, 3,600s campaign
-limits before execution. The 20-case campaign includes the four lifecycle batches,
-three native-accepted positive regressions (top-up, second deposit, tagless payout),
+limits before execution. The 21-case campaign includes the four lifecycle batches,
+four native-accepted positive regressions (top-up, second deposit,
+versioned sponsor output and tagless payout),
 six ordinary economic rejections, three mandatory native-consumption aborts and
 four authentication aborts. It is execution only; no new outer proving was run.
 
@@ -91,3 +93,10 @@ measure/sign the real inputs, produce genuine new receipts, and complete the
 terminal TN10 rehearsal. No image publication, GPU rental, provider action,
 funding or TN10 broadcast is part of this correction. PR49 remains open for the
 owner's renewed review.
+
+An additional final-review regression reproduced the versioned-sponsor mismatch
+on the initial correction: [failure log](evidence/version-reproduction.log).
+A script is identified by version and bytes together. A v1 output is not the
+tracked v0 delegate; it spends sponsor money only and must not strand a completed
+exit. The corrected predicate and actual native/guest positive regression cover
+this case. The new native policy itself is unchanged by that accounting fix.

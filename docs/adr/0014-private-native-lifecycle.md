@@ -99,7 +99,7 @@ Pinned vendor files/PR48 bindings are preserved. The new state hash domain is v2
 A fatal guard prevents committing an unreconciled native spend as an ordinary
 economic rejection. Actual native exclusion of unsupported forms, not that fatal
 guard alone, supplies the bounded liveness argument. Real-engine regression
-comparisons and 20 actual guest executions qualify the revised local relation.
+comparisons and 21 actual guest executions qualify the revised local relation.
 The real sponsor builder also accepts the matching public restricted redeem
 bytes, with an actual-script integration test. New receipts, actual funded
 construction and a terminal rehearsal remain unperformed.

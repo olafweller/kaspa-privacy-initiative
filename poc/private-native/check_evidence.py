@@ -36,7 +36,7 @@ def check():
     assert native['recipientNativeOutputSompi'] == native['principalPaidSompi'] + native['permissionRentRefundSompi'] == 450000000
     assert native['sponsorInputSompi'] - native['sponsorChangeSompi'] == native['nativeFeeSompi']
     campaign = json.loads((evidence / 'execution/campaign.json').read_text())
-    assert campaign['completed'] and len(campaign['cases']) == 20
+    assert campaign['completed'] and len(campaign['cases']) == 21
     assert all(c['exitCode'] == 0 and not c['timeout'] for c in campaign['cases'])
     declared = json.loads((evidence / 'execution-declaration.json').read_text())
     assert declared['cycleLimitPerCase'] == campaign['cycleLimitPerCase'] == 160000000
@@ -59,6 +59,9 @@ def check():
     assert cases['top-up']['restrictedNativeAccepted'] and cases['top-up']['outpointAdvanced']
     assert cases['top-up']['recipientSompi'] == 450000001
     assert cases['top-up']['accounting']['unpaid_exits'] == 0
+    assert cases['versioned-sponsor-output']['restrictedNativeAccepted']
+    assert cases['versioned-sponsor-output']['outpointAdvanced']
+    assert cases['versioned-sponsor-output']['accounting']['unpaid_exits'] == 0
     for name in ['default-lane', 'partial', 'partial-three-outputs', 'extra-sponsor-input', 'extra-sponsor-output', 'foreign-reserve']:
         assert cases[name]['upstreamAccepted'] and not cases[name]['restrictedNativeAccepted']
         assert cases[name]['rejectedBeforeFundsMove']
@@ -90,7 +93,7 @@ def check():
     policy = json.loads((evidence / 'native-policy.json').read_text())
     redeem = bytes.fromhex(policy['permissionRedeem'])
     assert hashlib.blake2b(redeem, digest_size=32).digest() == bytes.fromhex(target['batches']['exit']['expectedJournalHex'])[256:288]
-    print(f'OK: {len(manifest["files"])} evidence files; exact sompi accounting; 20 retained executions; native/accounting regressions. No live proof or chain test run.')
+    print(f'OK: {len(manifest["files"])} evidence files; exact sompi accounting; 21 retained executions; native/accounting regressions. No live proof or chain test run.')
 
 
 if __name__ == '__main__':

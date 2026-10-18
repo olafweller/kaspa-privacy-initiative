@@ -73,6 +73,27 @@
     {
       "accounting": {
         "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "case": "versioned-sponsor-output",
+      "outpointAdvanced": true,
+      "recipientSompi": 450000000,
+      "restrictedNativeAccepted": true,
+      "scriptUnits": [
+        3323,
+        181,
+        100001
+      ],
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
         "pending_deposits": 1000000000,
         "private_liability": 600000000,
         "reserve_principal": 1600000000,

@@ -3,10 +3,10 @@
   "cycleLimit": 160000000,
   "developmentMode": false,
   "exactExpectedJournalMatched": true,
-  "expectedImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "expectedImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
   "journalSha256": "c297a49a2c4e7190b97151ed91c36ab5873e3d09010a4a9a9893964c3d767dce",
   "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
-  "seconds": 0.168433171,
+  "seconds": 0.163262268,
   "segmentPo2": 20,
   "segments": 1,
   "userCycles": 561312

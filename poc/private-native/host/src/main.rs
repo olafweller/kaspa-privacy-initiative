@@ -284,6 +284,15 @@ fn prepare(out: &Path, exit_override: Option<&Path>) -> Result<()> {
         save(out, &format!("{name}.expected.bin"), &o)?;
         negative_names.push(name.to_owned());
     }
+    let (t, entries) = native::payout(&registered, eid, "versioned-sponsor-output")?;
+    assert!(native::scripts(&t, &entries)?.is_ok());
+    let i = linked(registered.clone(), vec![native::lane_tx(&t)], 21_500);
+    let o = app::execute(&i, &v);
+    assert!(o.events[0].accepted);
+    assert_eq!(o.state.accounting()?.unpaid_exits, 0);
+    save(out, "accept-versioned-sponsor.input.bin", &i)?;
+    save(out, "accept-versioned-sponsor.expected.bin", &o)?;
+    negative_names.push("accept-versioned-sponsor".into());
     let i = linked(
         no_tag.clone(),
         vec![native::lane_tx(&paid_without_tag)],
@@ -577,7 +586,7 @@ mod tests {
             .unwrap()
             .0;
         let result = native::scope_campaign(&registered, eid, &v).unwrap();
-        assert_eq!(result["cases"].as_array().unwrap().len(), 8);
+        assert_eq!(result["cases"].as_array().unwrap().len(), 9);
         // A newly registered reserve does not reselect the reserve already
         // committed by the admitted exit, even before permission issuance.
         let (d, entries) = native::second_deposit(&cases[2].2.state).unwrap();

@@ -1,16 +1,16 @@
    Compiling kpi-private-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/host)
 warning: function `second_deposit` is never used
-   --> host/src/bin/../native.rs:378:8
+   --> host/src/bin/../native.rs:385:8
     |
-378 | pub fn second_deposit(state: &State) -> Result<(Transaction, Vec<UtxoEntry>)> {
+385 | pub fn second_deposit(state: &State) -> Result<(Transaction, Vec<UtxoEntry>)> {
     |        ^^^^^^^^^^^^^^
     |
     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
 
 warning: function `scope_campaign` is never used
-   --> host/src/bin/../native.rs:407:8
+   --> host/src/bin/../native.rs:414:8
     |
-407 | pub fn scope_campaign(
+414 | pub fn scope_campaign(
     |        ^^^^^^^^^^^^^^
 
 warning: function `restrict_settlement` is never used
@@ -24,7 +24,7 @@ warning: function `restrict_settlement` is never used
 warning: `kpi-private-native-host` (bin "kpi-private-native-proof" test) generated 2 warnings
    Compiling kpi-private-native v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/common)
 warning: `kpi-private-native-host` (bin "kpi-private-native-host" test) generated 1 warning
-    Finished `release` profile [optimized] target(s) in 6.67s
+    Finished `release` profile [optimized] target(s) in 6.55s
      Running unittests src/lib.rs (.local/ci-target/release/deps/kpi_private_native-5483e2e441a41b99)
 
 running 0 tests
@@ -50,7 +50,7 @@ test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 1 test
 test tests::frozen_local_targets_and_fake_rejection ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
 
    Doc-tests kpi_private_native
 

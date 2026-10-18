@@ -190,7 +190,8 @@ pub fn payout_backend(
         | "extra-sponsor-output"
         | "partial"
         | "partial-three-outputs"
-        | "foreign-reserve" => (),
+        | "foreign-reserve"
+        | "versioned-sponsor-output" => (),
         "underpay" => {
             outputs[0].value -= 1;
             outputs[2].value += 1;
@@ -251,6 +252,12 @@ pub fn payout_backend(
     }
     if attack == "foreign-reserve" {
         t.inputs[1].previous_outpoint.transaction_id = Hash::from_bytes([0x98; 32]);
+    }
+    if attack == "versioned-sponsor-output" {
+        // A different script version is not the actual v0 delegate, even
+        // when its raw bytes match. It is a sponsor-funded output only.
+        t.outputs[2].script_public_key =
+            ScriptPublicKey::new(1, app::delegate(&state.covenant).into());
     }
     if attack == "extra-sponsor-input" {
         t.inputs.push(TransactionInput::new(
@@ -329,8 +336,8 @@ pub fn sign_sponsor(t: &mut Transaction, entries: &mut [UtxoEntry]) -> Result<()
     for i in 2..entries.len() {
         entries[i].script_public_key = spk.clone();
     }
-    if !matches!(t.outputs.last().unwrap().covenant, Some(_))
-        && t.outputs.last().unwrap().script_public_key != entries[1].script_public_key
+    if t.outputs.last().unwrap().covenant.is_none()
+        && t.outputs.last().unwrap().script_public_key == ScriptPublicKey::new(0, vec![0x51].into())
     {
         t.outputs.last_mut().unwrap().script_public_key = spk;
     }
@@ -418,6 +425,7 @@ pub fn scope_campaign(
         "extra-sponsor-input",
         "extra-sponsor-output",
         "foreign-reserve",
+        "versioned-sponsor-output",
     ] {
         let (old, old_entries) = payout_backend(state, eid, name, true)?;
         let old_result = scripts(&old, &old_entries)?;
@@ -426,7 +434,7 @@ pub fn scope_campaign(
         }
         let (new, entries) = payout(state, eid, name)?;
         let result = scripts(&new, &entries)?;
-        if name == "top-up" {
+        if ["top-up", "versioned-sponsor-output"].contains(&name) {
             let units = result.map_err(|e| format!("top-up native: {e}"))?;
             let after = app::apply(state, &lane_tx(&new), v)?.0;
             assert_eq!(after.ledger.reserve, 600_000_000);

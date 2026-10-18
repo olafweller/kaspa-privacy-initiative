@@ -1,0 +1,13 @@
+{
+  "case": "accept-versioned-sponsor",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "journalSha256": "f01b268a5f0fab1ed46095f58ee1340921dcbe84867ad5c3526c99ae6d44ab79",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.173247156,
+  "segmentPo2": 20,
+  "segments": 2,
+  "userCycles": 1016568
+}

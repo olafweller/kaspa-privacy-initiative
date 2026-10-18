@@ -499,7 +499,7 @@ discharge. The remaining delegate principal/private liability is 600M.
 
 The separate guest carries full state, reserve/permission outpoints and active
 lane continuity beyond the old short fixture's 100-score cap. Four connected
-batches and 16 additional cases ran in the zkVM; actual local native payout scripts
+batches and 17 additional cases ran in the zkVM; actual local native payout scripts
 accepted/rejected their targeted variants. The sponsor builder supports the
 private lane before signing. These are synthetic accepted-lane/UTXO fixtures,
 not native chain acceptance. Genuine new lifecycle receipts, native permission
