@@ -1,9 +1,12 @@
 # Later deployment checklist and commands
 
-Preparation only. Do not rent until the image is pullable and the independent
+Historical preparation checklist; live activation on 2026-10-18 is recorded in
+[B-GUARD.md](B-GUARD.md#live-lease-activation--2026-10-18). No proof job has started.
+Do not rent until the image is pullable and the independent
 guard host and credential/network paths are ready. B host installation and the
-credential-free checks are complete; see [B-GUARD.md](B-GUARD.md). No real lease,
-provider action, service activation or paid qualification below has been run.
+credential-free checks are complete; see [B-GUARD.md](B-GUARD.md). The owner has since created Pod `qaxhwjd6e1b4bg`; its lease and B guard are now
+active. References below to pending activation describe the earlier preparation
+state. CUDA qualification remains pending.
 
 ## Before the rental clock starts
 
@@ -39,7 +42,7 @@ provider action, service activation or paid qualification below has been run.
    and outbound HTTPS to `rest.runpod.io` and the eventual exact Pod proxy host.
    It needs no GPU or CUDA. Keep old trial data, keys and services unchanged.
 4. The following installation is already complete on B; do not overwrite it
-   or create a second executor. `common.py`, `watchdog.py`, `make_lease.py` are
+   or create a second executor. `common.py`, `provider.py`, `watchdog.py`, `make_lease.py` are
    in `/opt/kpi-remote-cuda` on B. The dedicated `kpi-cuda-guard` service user,
    `/var/lib/kpi-cuda-guard` and disabled `kpi-cuda-guard.service` are prepared.
    A root-owned mode-0600 `/etc/kpi-cuda-guard.env` is reserved for later

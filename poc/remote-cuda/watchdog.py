@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Run on an independent durable CPU host, never in the controlling Codex task."""
-import datetime
 import json
 import os
 from pathlib import Path
@@ -10,6 +9,7 @@ import threading
 import time
 
 from common import atomic, json_request, lease_check, request, sha
+from provider import provider_request, created_unix
 
 
 def archive_matches(path, digest, size):
@@ -64,7 +64,7 @@ def save_archive(directory, data):
 
 class Guard:
     def __init__(self, lease, directory, provider_key, service_key,
-                 json_call=json_request, bytes_call=request, now=time.time):
+                 json_call=provider_request, bytes_call=request, now=time.time):
         self.lease, self.directory = lease, directory
         self.digest = lease_check(lease)
         self.provider_key, self.service_key = provider_key, service_key
@@ -76,9 +76,7 @@ class Guard:
     def stop(self):
         before = self.json_call(self.base, self.provider_key)
         assert before['id'] == self.lease['podId']
-        raw = before['createdAt']
-        created = (datetime.datetime.fromisoformat(raw.replace('Z', '+00:00')).timestamp()
-                   if isinstance(raw, str) else float(raw))
+        created = created_unix(before['createdAt'])
         assert abs(created-self.lease['createdUnix']) <= 1, 'refuse to stop a different lease'
         if before.get('desiredStatus') == 'EXITED':
             pod = before  # A previous request/operator may already have stopped it.
@@ -102,9 +100,7 @@ class Guard:
                 'providerDesiredExitedConfirmed': True, 'podId': self.lease['podId'],
                 'note': 'Already stopped; volume cleanup and billing remain separate.'})
             return True
-        raw_created = pod['createdAt']
-        created = (datetime.datetime.fromisoformat(raw_created.replace('Z', '+00:00')).timestamp()
-                   if isinstance(raw_created, str) else float(raw_created))
+        created = created_unix(pod['createdAt'])
         if (abs(created-self.lease['createdUnix']) > 1 or pod['gpuCount'] != 1 or
                 float(pod['costPerHr']) > float(self.lease['actualGpuHourlyUsd']) or
                 pod.get('gpuTypeId') != 'NVIDIA L40S' or pod.get('volumeInGb', 0) < 10 or

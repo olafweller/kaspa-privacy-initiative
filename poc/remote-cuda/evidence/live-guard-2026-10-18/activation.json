@@ -1,0 +1,77 @@
+{
+  "observedUnix": 1792322274.5616853,
+  "lease": {
+    "podId": "qaxhwjd6e1b4bg",
+    "gpuCount": 1,
+    "gpuType": "NVIDIA L40S",
+    "createdUnix": 1792322028.199,
+    "stopUnix": 1792329228.199,
+    "serviceUrl": "https://qaxhwjd6e1b4bg-8080.proxy.runpod.net",
+    "actualGpuHourlyUsd": "1.09",
+    "actualStorageHourlyUsd": "0.014",
+    "stoppedStorageHourlyUsd": "0.0028",
+    "retentionHours": 24
+  },
+  "leaseDigest": "185786214ef1f14a07a4e23310f7f01105a988e7ce1464ac73685c9ebd84ac0b",
+  "guard.json": {
+    "heartbeatUnix": 1792322265.9962819,
+    "leaseDigest": "185786214ef1f14a07a4e23310f7f01105a988e7ce1464ac73685c9ebd84ac0b",
+    "stopUnix": 1792329228.199,
+    "workerState": "idle"
+  },
+  "last-error.json": null,
+  "stop.json": null,
+  "service": "MainPID=498115\nNRestarts=0\nActiveState=active\nSubState=running\nUnitFileState=enabled\n",
+  "podService": {
+    "state": "idle",
+    "podId": "qaxhwjd6e1b4bg",
+    "leaseDigest": "185786214ef1f14a07a4e23310f7f01105a988e7ce1464ac73685c9ebd84ac0b",
+    "stopUnix": 1792329228.199,
+    "guardHeartbeatFresh": true,
+    "phase": null,
+    "jobId": null,
+    "artifact": null
+  },
+  "provider": {
+    "id": "qaxhwjd6e1b4bg",
+    "createdAt": "2026-10-18 11:13:48.199 +0000 UTC",
+    "desiredStatus": "RUNNING",
+    "gpuTypeId": "NVIDIA L40S",
+    "gpuCount": 1,
+    "costPerHr": 1.09,
+    "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+    "memoryInGb": 188,
+    "vcpuCount": 16,
+    "containerDiskInGb": 90,
+    "volumeInGb": 10,
+    "volumeMountPath": "/workspace"
+  },
+  "ntp": "yes",
+  "scope": "LIVE_LEASE_AND_GUARD_ACTIVATION_ONLY_NO_PROOF_JOB",
+  "host": "vmi3641034.contaboserver.net",
+  "controlTests": {
+    "localPassed": 15,
+    "bServiceUserPassed": 15,
+    "bTestDirectory": "/var/lib/kpi-cuda-guard/live-schema-tests-1792322245167440663"
+  },
+  "storagePricing": {
+    "activeUsdPerHour": "0.014",
+    "stoppedUsdPerHour": "0.0028",
+    "basis": "Rounded upwards from owner reference $0.10/GB-month for 100GB active and $0.20/GB-month for 10GB stopped, 720-hour month; actual storage quote/billing not independently established",
+    "planningTotalIncluding24hRetentionUsd": "2.2752"
+  },
+  "remaining": [
+    "No proof-start authorization in this task",
+    "Cloud exact Pod allowlist and scoped KPI_GPU_TOKEN binding not configured",
+    "Live provider stop/write permission not yet exercised",
+    "CUDA runtime/process evidence and independent receipt verification remain pending",
+    "Actual storage/billing reconciliation and eventual volume cleanup remain pending"
+  ],
+  "guardSources": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f",
+    "watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
+    "make_lease.py": "91cbe8d5560fce58086a2da0e7d14bae4ddfd37e822bc219b37aae4c826fa79c",
+    "test_remote.py": "ddf5ccb715a43d932cef839623b6dac1ca7bcb19a458d4aa41979b7454165f1e"
+  }
+}

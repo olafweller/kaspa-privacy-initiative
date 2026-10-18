@@ -179,3 +179,35 @@ bounded unpack/independent CPU verification commands in [START.md](START.md).
 A saved archive or simulated stop is not receipt verification or a billing
 confirmation. Real volume cleanup/deletion is a later separately authorized
 step after results have been retrieved and verified.
+
+## Live lease activation — 2026-10-18
+
+The owner created Pod `qaxhwjd6e1b4bg`; Cloud then verified it through B and
+activated the existing unit (enabled, active/running, PID 498115). The provider
+reports creation at `2026-10-18T11:13:48.199Z`, giving an immutable lease deadline
+of `2026-10-18T13:13:48.199Z` (15:13:48.199 Europe/Amsterdam). The independent
+guard begins stop/retry at 13:12:48.199Z, one minute earlier. This is a scheduled
+stop mechanism, not evidence that the provider has already accepted a stop.
+
+The authenticated Pod status was `idle`, with fresh guard heartbeat and the exact
+lease digest. No start endpoint or proof job was invoked. Provider fields confirm
+one NVIDIA L40S, 188 GiB RAM, 16 vCPUs, 90 GB container disk, 10 GB `/workspace`,
+USD 1.09/hour and the previously published immutable image digest. NTP is synced.
+
+The actual REST schema required a focused B-only `provider.py` adapter: request
+`includeMachine=true` and read `machine.gpuTypeId`; parse the provider's UTC
+creation timestamp as well as the previous ISO/numeric fixtures. GPU identity
+is obtained from the provider, never inferred from the template. Redirect refusal,
+TLS checks, ten-second timeouts, bounded reads and application headers remain.
+All 15 control tests passed locally and as the B service user on the state
+partition. Existing source versions were backed up before atomic installation.
+The CUDA image was not changed or rebuilt; this adapter is guard-host code only.
+
+Storage lease rates are conservative rounded planning inputs from the owner's
+reference pricing, not independently returned provider quotes: USD 0.014/hour
+active and USD 0.0028/hour stopped, with 24-hour retention. The planned total is
+USD 2.2752; actual billing/cleanup remains separate. Live stop/write permissions
+are still untested. Cloud still lacks the exact Pod network/credential binding;
+no proof start is authorized by this activation task. Actual CUDA qualification
+and CPU receipt verification remain subsequent work. Filtered observations and
+source hashes are in `evidence/live-guard-2026-10-18/activation.json`.

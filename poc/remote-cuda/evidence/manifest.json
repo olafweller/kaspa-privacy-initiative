@@ -141,6 +141,10 @@
     "b-header-maintenance-2026-10-18/summary.json": {
       "bytes": 1739,
       "sha256": "aff744a3f3ef89008fdab0b6e07d01b05b959f7de969ec1d95926da6a6e45467"
+    },
+    "live-guard-2026-10-18/activation.json": {
+      "bytes": 3124,
+      "sha256": "3add623da3d99a708ab1fe03cf3d61da59d806b94c857f1917fb922bfbfdce5f"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",
