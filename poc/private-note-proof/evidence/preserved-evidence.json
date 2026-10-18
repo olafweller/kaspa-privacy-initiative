@@ -1,0 +1,11 @@
+{
+  "scope": "NO_NEW_GUEST_EXECUTION_OR_SETUP",
+  "originalEvidenceManifestsVerified": {
+    "evidence/manifest.json": 174,
+    "calibration-160m/evidence/manifest.json": 10
+  },
+  "guestImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "gpuJobStarted": false,
+  "providerCalled": false,
+  "bServicesModified": false
+}

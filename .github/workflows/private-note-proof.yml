@@ -1,0 +1,39 @@
+name: Private note proof package checks
+on:
+  pull_request:
+    paths:
+      - 'poc/private-note-proof/**'
+      - 'poc/remote-cuda/**'
+      - 'poc/takeover/vendor/covenant/**'
+      - '.github/workflows/private-note-proof.yml'
+permissions:
+  contents: read
+jobs:
+  proof-package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.local/private-proof-ci
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Prerequisites and pinned Rust
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libssl-dev
+          rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            .local/private-proof-ci
+          key: private-proof-rust191-${{ hashFiles('poc/private-note-proof/Cargo.lock') }}
+      - name: Fixed pins, Fake rejection, native-control identity and resource failures
+        run: |
+          cargo +1.91.0 fmt --manifest-path poc/private-note-proof/Cargo.toml --check
+          cargo +1.91.0 test --locked --release --manifest-path poc/private-note-proof/Cargo.toml --features native
+          python3 -m unittest discover -s poc/remote-cuda -p 'test_private.py' -v

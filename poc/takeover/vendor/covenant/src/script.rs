@@ -82,6 +82,12 @@ mod groth16_consts {
 /// against the live `risc0_circuit_recursion::POSEIDON2_CONTROL_IDS` so any upstream rotation
 /// trips at test time rather than silently breaking the on-chain Succinct precompile.
 pub mod succinct_consts {
+    /// RISC Zero 3.0.3 `join.zkr` Poseidon2 identity. Used only by the explicit
+    /// assumption-free, multi-segment monolithic private-note fixture.
+    pub const JOIN_CONTROL_ID: [u8; 32] = [
+        0x7a, 0x8f, 0x24, 0x09, 0x2c, 0x34, 0xed, 0x3e, 0xb8, 0x1b, 0x3d, 0x0a, 0x0b, 0x79, 0x6c, 0x58,
+        0x8c, 0x61, 0x5d, 0x34, 0x88, 0xef, 0x9e, 0x61, 0xc2, 0x1d, 0xbd, 0x1e, 0x4b, 0x83, 0xea, 0x6e,
+    ];
     /// `resolve.zkr` poseidon2 control id.
     ///
     /// Every `ProverOpts::succinct()` proof with at least one assumption (every real batch
@@ -161,6 +167,8 @@ pub struct Groth16Pins<'a> {
 #[derive(Copy, Clone)]
 pub enum RedeemPins<'a> {
     Succinct(SuccinctPins<'a>),
+    /// Explicit join pin; the existing resolve-based Succinct variant is unchanged.
+    SuccinctJoin(SuccinctPins<'a>),
     Groth16(Groth16Pins<'a>),
 }
 
@@ -169,7 +177,7 @@ impl<'a> RedeemPins<'a> {
     /// helpers need fields that don't depend on the proof system.
     pub fn common(&self) -> &CommonPins<'a> {
         match self {
-            RedeemPins::Succinct(p) => &p.common,
+            RedeemPins::Succinct(p) | RedeemPins::SuccinctJoin(p) => &p.common,
             RedeemPins::Groth16(p) => &p.common,
         }
     }
@@ -178,7 +186,7 @@ impl<'a> RedeemPins<'a> {
     /// the matching witness shape and prover opts).
     pub fn zk_tag(&self) -> ZkTag {
         match self {
-            RedeemPins::Succinct(_) => ZkTag::R0Succinct,
+            RedeemPins::Succinct(_) | RedeemPins::SuccinctJoin(_) => ZkTag::R0Succinct,
             RedeemPins::Groth16(_) => ZkTag::Groth16,
         }
     }
@@ -218,7 +226,8 @@ pub fn build_redeem_script(
     build_and_hash_journal(&mut b, pins);
 
     match pins {
-        RedeemPins::Succinct(p) => verify_risc0_succinct(&mut b, p.common.program_id),
+        RedeemPins::Succinct(p) => verify_risc0_succinct(&mut b, p.common.program_id, &succinct_consts::SUCCINCT_CONTROL_ID),
+        RedeemPins::SuccinctJoin(p) => verify_risc0_succinct(&mut b, p.common.program_id, &succinct_consts::JOIN_CONTROL_ID),
         RedeemPins::Groth16(p) => verify_risc0_groth16(&mut b, p.common.program_id),
     }
 
@@ -935,9 +944,9 @@ fn verify_input_index_zero(b: &mut ScriptBuilder) {
 /// [`succinct_consts`] in the natural pop order of R0Succinct (top→bottom:
 /// `hashfn, control_id, image_id, journal, seal, control_digests, control_index, claim`),
 /// then the `ZkTag` byte and `OpZkPrecompile`.
-fn verify_risc0_succinct(b: &mut ScriptBuilder, image_id: &[u8; 32]) {
+fn verify_risc0_succinct(b: &mut ScriptBuilder, image_id: &[u8; 32], control_id: &[u8; 32]) {
     b.add_data(image_id).unwrap();
-    b.add_data(&succinct_consts::SUCCINCT_CONTROL_ID).unwrap();
+    b.add_data(control_id).unwrap();
     b.add_data(&[succinct_consts::SUCCINCT_HASHFN]).unwrap();
     b.add_data(&[ZkTag::R0Succinct as u8]).unwrap();
     b.add_op(OpZkPrecompile).unwrap();

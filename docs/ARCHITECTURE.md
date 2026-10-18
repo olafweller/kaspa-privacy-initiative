@@ -469,3 +469,14 @@ registration and contains no exit/payout. The
 [next proof manifest](../poc/private-note-chain/calibration-160m/next-proof-target.json)
 records exact program, state, lane and journal identities, explicitly distinguishing
 relation-domain slots from absent recursive transaction/batch image identities.
+
+The [fixed proof package](../poc/private-note-proof/README.md), recorded in
+[ADR-0013](adr/0013-private-note-proof-package.md), now prepares that unchanged
+claim for a genuine Succinct receipt. Its native variant explicitly pins
+`join.zkr`; earlier assumption-composing fixtures retain `resolve.zkr`. Producer,
+independent CPU verification and actual native fixture checks share independently
+compiled image/control/journal expectations. Archived PR43 verification qualifies
+only join/precompile compatibility. The new private receipt/native positive is
+still pending; the owner reviews the package with Astra in Chat before any
+separately authorized rental. No runtime, privacy relation or backing rule is
+expanded by this preparation.

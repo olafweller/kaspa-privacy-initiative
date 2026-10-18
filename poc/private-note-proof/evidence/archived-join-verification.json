@@ -1,0 +1,55 @@
+{
+  "actualTN10Broadcast": false,
+  "archivedCpuNegativeControls": {
+    "corruptedSealRejected": true,
+    "malformedControlInclusionRejected": true,
+    "tamperedJournalOffsetsRejected": [
+      0,
+      32,
+      64,
+      96,
+      128,
+      160
+    ],
+    "wrongExpectedControlRejectedBySealVerifier": true,
+    "wrongImageRejected": true
+  },
+  "developmentMode": false,
+  "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "fixturePrincipalSompi": null,
+  "negativeControls": {
+    "bad-inclusion": {
+      "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "rejected": true
+    },
+    "bad-seal": {
+      "error": "ZK Integrity: R0: verification indicates proof is invalid",
+      "rejected": true
+    },
+    "truncated-inclusion": {
+      "error": "ZK Integrity: Invalid digest list length: 255",
+      "rejected": true
+    },
+    "wrong-control": {
+      "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "rejected": true
+    },
+    "wrong-control-index": {
+      "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "rejected": true
+    },
+    "wrong-image": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-journal": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    }
+  },
+  "newPrivateReceiptVerified": false,
+  "positiveNativeScriptAccepted": true,
+  "principalExcludesRentAndSponsorFees": true,
+  "receiptSha256": "9e68cda38325f673d00734433a1bd7b127fab20ac88f16aad948f2bec1492186",
+  "scope": "ARCHIVED_PR43_JOIN_PRECOMPILE_COMPATIBILITY_ONLY"
+}

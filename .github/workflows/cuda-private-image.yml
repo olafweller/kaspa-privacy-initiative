@@ -1,0 +1,46 @@
+name: Prepare fixed private-note CUDA image
+on:
+  push:
+    tags:
+      - 'cuda-private-note-*'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Restore fixed public binaries and inputs; check reviewed source bindings
+        run: |
+          python3 poc/remote-cuda/private_package.py restore .local/private-image/private-dist
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_*.py' -q
+          cp poc/remote-cuda/{Dockerfile.private,common.py,worker.py,service.py,package.py,private_package.py,private_worker.py,private_service.py} .local/private-image/
+      - name: Build without rebuilding the qualified CUDA prover; CPU-only smoke
+        run: |
+          docker build -f .local/private-image/Dockerfile.private -t kpi-cuda-private:checked .local/private-image
+          python3 poc/remote-cuda/check_private_image.py kpi-cuda-private:checked > .local/private-image-smoke.json
+      - name: Publish and recheck immutable image
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:private-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-cuda-private:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee .local/private-image-digest.txt >> "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/remote-cuda/check_private_image.py "$task_digest" > .local/private-image-published-smoke.json
+          docker logout ghcr.io
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: private-note-image-preparation
+          path: |
+            .local/private-image-smoke.json
+            .local/private-image-published-smoke.json
+            .local/private-image-digest.txt

@@ -1,0 +1,7 @@
+# Reuse the qualified official CUDA prover, with its own immutable base digest.
+FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+COPY private-dist /opt/kpi/private-note
+COPY common.py worker.py service.py package.py private_package.py private_worker.py private_service.py /opt/kpi/app/
+RUN python3 -c "import json;from pathlib import Path;from private_worker import check_inputs;p=Path('/opt/kpi/private-note');check_inputs(p,json.loads((p/'private-workload.json').read_text()))"
+RUN /opt/kpi/private-note/bin/kpi-private-note-producer check-target /opt/kpi/private-note/inputs
+CMD ["python3", "private_service.py"]

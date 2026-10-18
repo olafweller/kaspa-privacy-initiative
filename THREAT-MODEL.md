@@ -363,3 +363,14 @@ canonical native deposit acceptance or payout. In the restore path, only the
 independently expected VK is enforced; the full parameter-file SHA256 is recorded
 but not compared to an independently expected value. Future parameter distribution
 must supply/enforce that trusted whole-file hash before use.
+
+The [fixed private-note proof package](poc/private-note-proof/README.md) adds an
+explicit join-control binding for the monolithic route while retaining the old
+resolve fixtures. A valid allowed control alone is insufficient: the decoded
+seal control must equal the independently expected join and the receipt metadata.
+The verifier uses the official STARK callback and allowed root in addition to
+successful image/journal verification. Native fixture checks cannot establish
+canonical initial funding or payouts. Public frozen inputs only reach the GPU;
+the owner-local wallet secrets/setup are not packaged. Image/binary hashes bind
+the reviewed artifacts, not compiler correctness. Owner Chat review and any paid
+rental release remain separate from this software preparation.
