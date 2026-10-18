@@ -211,3 +211,21 @@ are still untested. Cloud still lacks the exact Pod network/credential binding;
 no proof start is authorized by this activation task. Actual CUDA qualification
 and CPU receipt verification remain subsequent work. Filtered observations and
 source hashes are in `evidence/live-guard-2026-10-18/activation.json`.
+
+## Completed CUDA qualification — 2026-10-18
+
+Following separate owner authorization, B started the fixed single attempt with
+6,665 seconds remaining. Two segment proofs, two lifts and one join completed in
+8.40 seconds (worker total). All five phases recorded process-matched GPU activity.
+The independent Cloud CPU verifier checked all five seals against the pinned
+PR40 claims and rejected seal/claim mutations, with development mode disabled.
+Results and the original hash-checked archive are preserved on B.
+
+The guard stopped the Pod after its terminal-backup grace period. Independent
+provider GET read-back confirmed `desiredStatus=EXITED` at 11:24:13Z (13:24:13
+Europe/Amsterdam), well before the lease deadline. The unit exited normally.
+No lease extension, extra attempt, Cloud secret/domain change, full-classifier
+proof, TN10 transaction or volume deletion occurred. The remaining milestone is
+the full classifier receipt; this five-partial-proof qualification does not
+establish its end-to-end proving cost. Retained volume storage and actual billing
+reconciliation remain separate. See `evidence/gpu-qualification-2026-10-18`.

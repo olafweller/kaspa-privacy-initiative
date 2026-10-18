@@ -145,9 +145,35 @@
     "live-guard-2026-10-18/activation.json": {
       "bytes": 3124,
       "sha256": "3add623da3d99a708ab1fe03cf3d61da59d806b94c857f1917fb922bfbfdce5f"
+    },
+    "gpu-qualification-2026-10-18/independent-cpu-verification.json": {
+      "bytes": 844,
+      "sha256": "95de12339b6bc02b9be5b0c4c746a24cf55fc6db0c9c3bb34cc224465456453f"
+    },
+    "gpu-qualification-2026-10-18/provider-stop-observation.json": {
+      "bytes": 467,
+      "sha256": "1ed874723173fed2d56ab6edb1b3036b0eb0250e32f2a558316a981fdc6a8fff"
+    },
+    "gpu-qualification-2026-10-18/measurements.json": {
+      "bytes": 7460,
+      "sha256": "9adf3aad29658310f20553deb43d54cf557784638e51bf95138251c859e06e98"
+    },
+    "gpu-qualification-2026-10-18/gpu-artifacts.tar.gz": {
+      "bytes": 1753447,
+      "sha256": "08d21b6ce94a3a3aa47d7127e62aafea1e9f802ad0962d83e7daf3faeaef418c"
+    },
+    "gpu-qualification-2026-10-18/README.md": {
+      "bytes": 2393,
+      "sha256": "e17699542529583b675ebe649ddcbb3b1c2e9967e84aa5a6eddde5e27b0874c2"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",
   "successfulImageBuild": true,
-  "gpuExecutionQualified": false
+  "gpuExecutionQualified": false,
+  "liveQualificationEvidence": {
+    "directory": "gpu-qualification-2026-10-18",
+    "scope": "OWNER_AUTHORIZED_SINGLE_RENTED_GPU_ATTEMPT_FIVE_PARTIAL_PROOFS",
+    "providerStopConfirmed": true,
+    "historicalPreparationScopePreserved": true
+  }
 }

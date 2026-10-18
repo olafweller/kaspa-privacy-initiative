@@ -1,0 +1,13 @@
+{
+  "observedUnix": 1792322653.253551,
+  "podId": "qaxhwjd6e1b4bg",
+  "providerDesiredStatus": "EXITED",
+  "providerCreatedAt": "2026-10-18 11:13:48.199 +0000 UTC",
+  "unit": "ExecMainStatus=0\nActiveState=inactive\nSubState=dead\n",
+  "guardStop": {
+    "requestedUnix": 1792322651.0320423,
+    "providerDesiredExitedConfirmed": true,
+    "podId": "qaxhwjd6e1b4bg",
+    "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+  }
+}

@@ -1,12 +1,13 @@
 # Later deployment checklist and commands
 
 Historical preparation checklist; live activation on 2026-10-18 is recorded in
-[B-GUARD.md](B-GUARD.md#live-lease-activation--2026-10-18). No proof job has started.
+[B-GUARD.md](B-GUARD.md#live-lease-activation--2026-10-18). The separately authorized five-partial-proof GPU qualification has now completed;
+see `evidence/gpu-qualification-2026-10-18`.
 Do not rent until the image is pullable and the independent
 guard host and credential/network paths are ready. B host installation and the
 credential-free checks are complete; see [B-GUARD.md](B-GUARD.md). The owner has since created Pod `qaxhwjd6e1b4bg`; its lease and B guard are now
-active. References below to pending activation describe the earlier preparation
-state. CUDA qualification remains pending.
+complete, and the provider now reports EXITED after successful qualification.
+References below to pending activation describe the earlier preparation state.
 
 ## Before the rental clock starts
 
