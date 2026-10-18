@@ -1,0 +1,50 @@
+{
+  "scope": "FIXED_PUBLIC_PACKAGE_NO_GPU_JOB",
+  "baseCommit": "6dd9bbea6e4db4aaea16d322250941319912563d",
+  "rust": "1.91.0",
+  "sdk": "3.0.3",
+  "sourceFiles": {
+    "poc/private-note-proof/Cargo.lock": "68edea9e240fa921d0ae04d544370a9f3c2cbaa1d6f654dace350129fdc197aa",
+    "poc/private-note-proof/Cargo.toml": "31e2716bf85aa5a1f501f3415d2113ff0b54dd3f84ed44b0fda1a140e20f0eaa",
+    "poc/private-note-proof/src/bin/native.rs": "329bff9a2d1c1312bd0d63be4141cd62268d80db98d0781ac9abaef607f82b60",
+    "poc/private-note-proof/src/bin/producer.rs": "2088f8e2e63f9cef427d48c48fb81ccd75b609346e8caff838ec5b8f1f6652db",
+    "poc/private-note-proof/src/bin/verifier.rs": "082c6d1ddcccf0af8fcf8a549fe9ea9dbf181eebc077f688e48729bd42d183b9",
+    "poc/private-note-proof/src/lib.rs": "6e4bebf05dd641b6e786a5fac4e9c1febdc864be6384ec91cca1f34e5d59cf27",
+    "poc/private-note-proof/target.json": "40bacf1e660730207ffb69d890aa178c8310f2542bcd86a4ca3ba474de78660a",
+    "poc/remote-cuda/Dockerfile.private": "5da50991b52c21e873bfe320b6ff75c288d82fed2170cef0c4d32565ba81c745",
+    "poc/remote-cuda/common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "poc/remote-cuda/package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "poc/remote-cuda/private_control.py": "8db8a8719c746405caa71f18454dd98bcabc50e598b7b4382f7b917b774013d6",
+    "poc/remote-cuda/private_package.py": "4ad99cf0b6f52f0fa41d0f455f8ae35b94a3d9383e3d8d8665fa21666ed74269",
+    "poc/remote-cuda/private_service.py": "a025b926d0e75dcb74db2d20741b97d7d715e0536e23c17e838be91a878c9614",
+    "poc/remote-cuda/private_worker.py": "aa1809ce9f0264d8b4e6af2b32c1cd993c24f3fb1e3c66e04cf00ebeae7da222",
+    "poc/remote-cuda/service.py": "def96a6abcfc7bfbd2a2397dc2e0b0ab4d290fe2930668b2565e846c68a9ca40",
+    "poc/remote-cuda/worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "poc/takeover/vendor/covenant/src/script.rs": "94955037b54200fb5894574ec3cee3fdb64b1360f3d2a7c730b954df5d90cf0c",
+    "poc/takeover/vendor/covenant/src/settlement.rs": "9aa6974c27c2ef4ba2709ee0dcb6c894fea2a73851b7babbcc020b1ff4a35229"
+  },
+  "binaries": {
+    "kpi-private-note-producer": {
+      "sha256": "8f890c3671b183d93c90070946b6cb510d562371aea29f47211cd48776211da0",
+      "bytes": 11703720
+    },
+    "kpi-private-note-verifier": {
+      "sha256": "5c20e03f3630420c3c91ac4118d0849af7c007d0c8e6ddbdf530a2e5ba5a9c83",
+      "bytes": 3548856
+    },
+    "kpi-private-note-native": {
+      "sha256": "bce8e9866c1b0d4c99868bede571206e4ed442d2674a8bab1d6f7474e132fd07",
+      "bytes": 7083928
+    }
+  },
+  "policySha256": "34b4228feb0daf2d660b086b427ccdaafd1a68c425094a2e1580db7bdb9d0bf1",
+  "archive": {
+    "bytes": 8426154,
+    "sha256": "eee8e803c93f9c87c94bddf368c4f9c577063ab78285a1e9c7cf527b03034a5e"
+  },
+  "proverUnchanged": true,
+  "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+  "qualifiedBaseImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6",
+  "newPrivateReceiptProduced": false,
+  "rentalAuthorized": false
+}

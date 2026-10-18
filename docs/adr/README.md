@@ -48,3 +48,4 @@ The open state architecture comparison is [RFC-0001](../rfc/0001-state-architect
 - [ADR-0011: local private-note wallet and economic transitions](0011-local-private-note-wallet.md)
 
 - [ADR-0012: bounded private-note state/native integration](0012-private-note-state-integration.md)
+- [ADR-0013: fixed private-note proof and join-native preparation](0013-private-note-proof-package.md)

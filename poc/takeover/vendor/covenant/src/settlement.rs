@@ -84,7 +84,7 @@ impl Settlement {
             build_redeem_script(input.new_state, input.new_lane_tip, redeem_len, &input.pins);
 
         let sig_script_bytes = match (&input.pins, &input.witness) {
-            (RedeemPins::Succinct(_), SettlementWitness::Succinct(w)) => sig_script_succinct(
+            (RedeemPins::Succinct(_) | RedeemPins::SuccinctJoin(_), SettlementWitness::Succinct(w)) => sig_script_succinct(
                 &prev_redeem,
                 input.block_prove_to,
                 input.new_state,
