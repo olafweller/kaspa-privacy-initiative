@@ -434,8 +434,8 @@
       "sha256": "bfd585b965babbf31f362f5f57c687d75c8dbc9353fb5d63d9b56307c1360792"
     },
     "focused-tests.log": {
-      "bytes": 1425,
-      "sha256": "6eac0669244b3ca6e4a49d13f267dce70642edfa1cce81f0c962ea0f3c78faac"
+      "bytes": 1424,
+      "sha256": "d1bd808a534d99450d4a46efd8dbf1050d7cdde4ee53bfb5da93b7b60d826e4c"
     },
     "generation-binary.json": {
       "bytes": 131,
@@ -454,8 +454,8 @@
       "sha256": "57ded4f899598ee74393e8bd332ba6c4052d663f9eed73e2d547135a56dc490f"
     },
     "pr44-regression-tests.log": {
-      "bytes": 1928,
-      "sha256": "ca2fcda8bbc06325f136d563c7e140e756a1d16655ebea580278d3ca39f203d5"
+      "bytes": 1927,
+      "sha256": "4e2815a8834ee2090723d9a90a68bb23f7aae1bacf71aed6f6cea4c40ec46509"
     },
     "preflight.json": {
       "bytes": 265,
