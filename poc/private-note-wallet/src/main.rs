@@ -433,6 +433,25 @@ fn replay(out: &Path, expected: H) -> Result<()> {
             "mutated persisted operation",
         )?;
     }
+    // These pass framing/shape/digest checks and must fail the Groth16 equation.
+    let mut changed_exit = exit.clone();
+    changed_exit.statement.exit_destination = hash(b"different nonzero Bob payout script");
+    ensure(
+        changed_exit.statement.exit_destination != exit.statement.exit_destination
+            && changed_exit.statement.exit_destination != [0; 32],
+        "different nonzero exit destination",
+    )?;
+    ensure(
+        verifier.verify(&changed_exit) == Err("invalid proof".into()),
+        "real exit destination proof binding",
+    )?;
+    let mut changed_delivery = pay.clone();
+    changed_delivery.deliveries[0].ciphertext[50] ^= 1;
+    changed_delivery.statement.delivery[0] = hash(&changed_delivery.deliveries[0].ciphertext);
+    ensure(
+        verifier.verify(&changed_delivery) == Err("invalid proof".into()),
+        "rehashed ciphertext proof binding",
+    )?;
     {
         use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
         let original =
@@ -465,7 +484,7 @@ fn replay(out: &Path, expected: H) -> Result<()> {
         bad.serialize_compressed(&mut operation.proof).unwrap();
         ensure(verifier.verify(&operation).is_err(), "identity proof")?;
     }
-    let report = json!({"separateProcess":true,"verificationSeconds":verification_started.elapsed().as_secs_f64(),"actualProofsVerified":5,"expectedVkId":hex::encode(expected),"stateVerifierPinEnforced":true,"wrongExpectedVkRejected":true,"economicNullifiersAcrossBatches":true,"atomicRejections":true,"depositCreditRecoveryRaceRejected":true,"mutationsRejected":8,"canonicalFalsePairingRejected":true,"wrongSubgroupRejected":true,"identityPointRejected":true,"invalidThenValidPreservesState":true,"canonicalWireRoundTrips":5,"unknownFieldsAndTrailingBytesRejected":true,"exactFixturePayoutAndBacking":true,"scope":"REAL_WALLET_PROOFS_LOCAL_KERNEL_NOT_NATIVE_SETTLEMENT"});
+    let report = json!({"separateProcess":true,"verificationSeconds":verification_started.elapsed().as_secs_f64(),"actualProofsVerified":5,"expectedVkId":hex::encode(expected),"stateVerifierPinEnforced":true,"wrongExpectedVkRejected":true,"economicNullifiersAcrossBatches":true,"atomicRejections":true,"depositCreditRecoveryRaceRejected":true,"mutationsRejected":8,"exitDestinationCryptographicBinding":true,"rehashedCiphertextCryptographicBinding":true,"canonicalFalsePairingRejected":true,"wrongSubgroupRejected":true,"identityPointRejected":true,"invalidThenValidPreservesState":true,"canonicalWireRoundTrips":5,"unknownFieldsAndTrailingBytesRejected":true,"exactFixturePayoutAndBacking":true,"scope":"REAL_WALLET_PROOFS_LOCAL_KERNEL_NOT_NATIVE_SETTLEMENT"});
     fs::write(
         out.join("separate-verification.json"),
         serde_json::to_vec_pretty(&report).unwrap(),

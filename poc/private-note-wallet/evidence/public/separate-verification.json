@@ -6,15 +6,17 @@
   "depositCreditRecoveryRaceRejected": true,
   "economicNullifiersAcrossBatches": true,
   "exactFixturePayoutAndBacking": true,
+  "exitDestinationCryptographicBinding": true,
   "expectedVkId": "d45e8248eda25a6f6ec85b5074d0f7d217d29741c820c4d8ddfb2667675a5bf2",
   "identityPointRejected": true,
   "invalidThenValidPreservesState": true,
   "mutationsRejected": 8,
+  "rehashedCiphertextCryptographicBinding": true,
   "scope": "REAL_WALLET_PROOFS_LOCAL_KERNEL_NOT_NATIVE_SETTLEMENT",
   "separateProcess": true,
   "stateVerifierPinEnforced": true,
   "unknownFieldsAndTrailingBytesRejected": true,
-  "verificationSeconds": 0.054608942,
+  "verificationSeconds": 0.062483224,
   "wrongExpectedVkRejected": true,
   "wrongSubgroupRejected": true
 }

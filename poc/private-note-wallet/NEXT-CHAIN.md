@@ -10,8 +10,8 @@ funding script as if it implemented private credit/recovery.
    Port the real-proof state kernel into the new transaction/classifier guest,
    with the qualified ordinary BN254 verifier and strict encoding/curve/subgroup
    checks. Qualify the new VK and all 14 full-width packed field inputs against
-   the native Arkworks reference and existing adversarial proofs; the old bit-
-   input backend measurement does not qualify this new configuration by itself.
+   the native Arkworks reference and existing adversarial proofs; the old four-packed-field-input
+   backend measurement does not qualify this new configuration by itself.
    Independently pin the new classifier image before execution. Keep the
    24-case/PR43 receipts as historical baselines, not this new guest's identity.
 2. Replace authenticated native-fact fixtures with actual accepted native input,

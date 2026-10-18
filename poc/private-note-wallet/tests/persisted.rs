@@ -43,6 +43,8 @@ fn published_wallet_proofs_and_real_state_rejection_controls() {
         "economicNullifiersAcrossBatches",
         "atomicRejections",
         "canonicalFalsePairingRejected",
+        "exitDestinationCryptographicBinding",
+        "rehashedCiphertextCryptographicBinding",
         "wrongSubgroupRejected",
         "identityPointRejected",
         "invalidThenValidPreservesState",

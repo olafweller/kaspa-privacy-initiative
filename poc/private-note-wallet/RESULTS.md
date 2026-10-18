@@ -35,8 +35,8 @@ of effective anonymity. Fixture acceptance is not native consensus acceptance.
 | Compressed proving parameters (not committed) | 156,435,376 bytes |
 | Verification key | 712 bytes |
 | Experimental setup | 13.175 seconds |
-| Credit / transfer proof plus native check | 7.343 / 7.500 seconds |
-| Competing spend / Bob exit / recovery proof plus check | 7.953 / 7.347 / 7.171 seconds |
+| Credit / transfer proof plus local CPU verification | 7.343 / 7.500 seconds |
+| Competing spend / Bob exit / recovery proof plus local CPU verification | 7.953 / 7.347 / 7.171 seconds |
 | Whole job wall time | 53.073 seconds |
 | Peak kernel-reported process RSS | 2,619,203,584 bytes (2.44 GiB) |
 | Compute threads / CPU affinity | 4 / CPUs 0–3 |
@@ -58,7 +58,8 @@ completed after the timed proof-generation run without changing the circuit or
 proof statement. The archived proofs were reverified using that final verifier;
 its binary hash is not claimed as the timed generation binary's identity. The
 final separate process took 0.055 seconds for all five proofs and its full set of
-verification/state rejection controls; this is not a zkVM verification timing.
+verification/state rejection controls before the two additional review controls;
+this is not a zkVM verification timing.
 
 ## Validation
 
@@ -67,6 +68,10 @@ boundary tests and one separate-process replay of all five actual archived
 proofs. The latter also uses a canonical subgroup-valid false pairing, an
 on-curve wrong-subgroup G2 point, identity proof point, wrong expected VK,
 unknown/trailing encoding and eight proof/statement/payload mutations.
+Two further review controls change Bob’s actual exit destination to a different
+nonzero destination and change a ciphertext while recomputing its public digest.
+Both reach actual Groth16 verification and fail there, rather than failing a
+payload consistency check. No setup or new proof generation is needed.
 Unsatisfied real constraint systems test authority, membership, nullifier,
 domain, conservation, output binding and overflow; valid boundary assignments
 include values 2 and u64::MAX. Rejection checks compare unchanged state, then

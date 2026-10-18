@@ -11,7 +11,7 @@
     },
     "implementation-pins.json": {
       "bytes": 1917,
-      "sha256": "5c8c2f17fe28dad6d0c088637e7aa8bfb932737a6385aafdd492838501971098"
+      "sha256": "e8920b0bdf2b6d87d6134f1f59fe325a26a8a0c071287d60747444ece599c583"
     },
     "monero-refresh.json": {
       "bytes": 321,
@@ -58,8 +58,8 @@
       "sha256": "8fc0cbec8cdf9ac709c2fc8eca8930594b0de6a101745bc7a790a343833c5b27"
     },
     "public/separate-verification.json": {
-      "bytes": 733,
-      "sha256": "70d15560e13ae59783fd6613c38cdeda798aa58487c96a9f94962493ac86dbd2"
+      "bytes": 830,
+      "sha256": "391fcf09610591095e2698c4547f73ecc09b786c8e21677da21c0902cf2a014f"
     },
     "public/transfer.bin": {
       "bytes": 908,
@@ -75,7 +75,7 @@
     },
     "tests.log": {
       "bytes": 1895,
-      "sha256": "fe64a1af23f341ff7a5b4cb3b5e3d09733b072d40fb657b52b6357ef68a338e1"
+      "sha256": "5f9cb8f0759af1b9d60f8b1418fded3611a1ce897c07da8170313ec75904cb51"
     },
     "wallet-job-resources.json": {
       "bytes": 314,
