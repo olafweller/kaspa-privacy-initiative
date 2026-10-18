@@ -103,3 +103,14 @@ comparisons and 21 actual guest executions qualify the revised local relation.
 The real sponsor builder also accepts the matching public restricted redeem
 bytes, with an actual-script integration test. New receipts, actual funded
 construction and a terminal rehearsal remain unperformed.
+
+## Fixed four-batch GPU preparation
+
+After merge of PR49, package the unchanged reviewed guest/targets and executable
+for four sequential proof jobs, with separate CPU verifications and genuine exit
+receipt native checks. Use one externally supervised process group for the entire
+3,600-second proving/compression/check allowance, not one hour per batch. Retain
+partial candidates and the existing independent B lease/back-up/stop mechanism.
+See [fixed package](../../poc/private-native-proof/README.md) and its adversarial
+review. Image publication and CPU startup qualification are software preparation;
+rental/proof execution and actual chain acceptance require separate release.

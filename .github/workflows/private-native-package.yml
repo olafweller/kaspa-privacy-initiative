@@ -1,0 +1,23 @@
+name: Private native proof package checks
+on:
+  pull_request:
+    paths:
+      - 'poc/private-native-proof/**'
+      - 'poc/private-native/**'
+      - 'poc/remote-cuda/**'
+      - '.github/workflows/cuda-lifecycle-image.yml'
+      - '.github/workflows/private-native-package.yml'
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Fixed targets, continuity and aggregate watchdog; no proving or network
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_*.py' -q
+          python3 poc/private-native-proof/check_package.py

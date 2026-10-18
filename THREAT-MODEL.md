@@ -413,3 +413,9 @@ as an ordinary rejected wallet request. The old generic lane-selecting builder
 is not evidence of these restrictions: the actual permission UTXO binds the
 restricted redeem bytes, which the updated builder must supply and hash-check.
 New live receipts and the complete terminal rehearsal remain required.
+
+The [four-batch proof package](poc/private-native-proof/ADVERSARIAL-REVIEW.md)
+retains independent expected identities and excludes GPU-supplied executables from
+CPU/B verification. Its aggregate external process watchdog survives service loss;
+partial outputs cannot become full qualification. Existing B-root trust, lease,
+backup, confirmed-stop and storage-preservation boundaries remain unchanged.

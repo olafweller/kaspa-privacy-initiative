@@ -1,0 +1,7 @@
+# Qualified official RISC Zero 3.0.3 CUDA prover, never rebuilt for this workload.
+FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+COPY lifecycle-dist /opt/kpi/private-native
+COPY common.py worker.py service.py package.py lifecycle_package.py lifecycle_runner.py lifecycle_worker.py lifecycle_service.py /opt/kpi/app/
+RUN python3 -c "from pathlib import Path;from lifecycle_package import check;check(Path('/opt/kpi/private-native'),cuda=True)"
+RUN for case in deposit credit-transfer exit reconcile; do /opt/kpi/private-native/bin/kpi-private-native-producer check-target "$case" /opt/kpi/private-native/inputs; done
+CMD ["python3", "lifecycle_service.py"]

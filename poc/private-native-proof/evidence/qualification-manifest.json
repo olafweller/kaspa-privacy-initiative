@@ -1,0 +1,29 @@
+{
+  "scope": "SOFTWARE_QUALIFICATION_EVIDENCE_NOT_GPU_PROOF_RESULT",
+  "files": {
+    "container-smoke.json": {
+      "sha256": "409f2dda1fb0a4a59dd73292cf8025a00c57672aca751363b4834e4512f62b5d",
+      "bytes": 3326
+    },
+    "docker-build.log": {
+      "sha256": "2da70aaecb14057af2494e58751f73b23b8a842675810cf4e11d986f57cf6782",
+      "bytes": 1733
+    },
+    "package-identity.json": {
+      "sha256": "d6170d0ca66e8ce8cc2032707e67355e8180cd8d4db9f4c2ff848e457a572c42",
+      "bytes": 7120
+    },
+    "preparation-tests.log": {
+      "sha256": "c56af1b03ac6c912ba7bf3aa0120e5d652b137cef6272b9e0f9783761acb7bc6",
+      "bytes": 4229
+    },
+    "public-package.tar.gz": {
+      "sha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+      "bytes": 12799540
+    },
+    "qualification.json": {
+      "sha256": "8241a9b696d2190f7410dce9ec3990e54b94b5817152cc579212e406050f0e07",
+      "bytes": 952
+    }
+  }
+}

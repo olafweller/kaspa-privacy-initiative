@@ -81,3 +81,10 @@ hash-recorded measurements in [the package](../poc/shielded-design/README.md).
 Cache fallback is per component/toolchain/native pin; locked dependency resolution
 and normal Cargo source checks still apply after restoration. No model/proof test
 is native funding, an independent recovery run or proof of financial privacy.
+
+The private-native proof-package job checks allowlisted public package/source
+bindings, all four compiled targets, root/tip continuity, partial-result handling
+and real aggregate-watchdog descendant/controller-loss tests without proving or
+provider calls. Its separate tag workflow builds and publishes the immutable
+CUDA image, then re-pulls and CPU-smoke-checks the digest. Neither workflow rents
+a GPU or starts a proof job. See [package scope](../poc/private-native-proof/README.md).

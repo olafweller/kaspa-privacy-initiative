@@ -1,0 +1,46 @@
+name: Prepare fixed private-native lifecycle CUDA image
+on:
+  push:
+    tags:
+      - 'cuda-private-native-*'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Restore fixed public package and qualify orchestration without proving
+        run: |
+          python3 poc/remote-cuda/lifecycle_package.py restore .local/lifecycle-image/lifecycle-dist
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_*.py' -q
+          cp poc/remote-cuda/{Dockerfile.lifecycle,common.py,worker.py,service.py,package.py,lifecycle_package.py,lifecycle_runner.py,lifecycle_worker.py,lifecycle_service.py} .local/lifecycle-image/
+      - name: Build with previously qualified CUDA prover and check CPU startup
+        run: |
+          docker build -f .local/lifecycle-image/Dockerfile.lifecycle -t kpi-cuda-lifecycle:checked .local/lifecycle-image
+          python3 poc/remote-cuda/check_lifecycle_image.py kpi-cuda-lifecycle:checked > .local/lifecycle-image-smoke.json
+      - name: Publish immutable image and recheck pulled digest
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:lifecycle-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-cuda-lifecycle:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee .local/lifecycle-image-digest.txt >> "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/remote-cuda/check_lifecycle_image.py "$task_digest" > .local/lifecycle-image-published-smoke.json
+          docker logout ghcr.io
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: private-native-lifecycle-image-preparation
+          path: |
+            .local/lifecycle-image-smoke.json
+            .local/lifecycle-image-published-smoke.json
+            .local/lifecycle-image-digest.txt

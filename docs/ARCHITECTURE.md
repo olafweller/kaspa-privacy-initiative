@@ -514,3 +514,10 @@ Other registered deposits remain tracked. Partial consumption and additional
 sponsor inputs/outputs are excluded by native rules; recipient top-ups are
 accounted correctly. The builder checks the supplied restricted permission bytes against the actual
 UTXO hash; live construction still must use the restricted state adapter.
+
+The [fixed four-batch GPU package](../poc/private-native-proof/README.md) reuses
+these reviewed identities without changing the guest or native relation. A single
+externally watched process group covers all four proofs, compression and local
+CPU/native checks. B independently re-verifies returned data using trusted local
+executables. A new immutable image identifies this workload separately from PR47.
+Software preparation does not establish new receipt or TN10 acceptance evidence.

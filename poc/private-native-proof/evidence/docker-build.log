@@ -1,0 +1,42 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.lifecycle
+#1 transferring dockerfile: 799B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 34.09MB 0.1s done
+#5 DONE 0.1s
+
+#6 [2/5] COPY lifecycle-dist /opt/kpi/private-native
+#6 DONE 0.9s
+
+#7 [3/5] COPY common.py worker.py service.py package.py lifecycle_package.py lifecycle_runner.py lifecycle_worker.py lifecycle_service.py /opt/kpi/app/
+#7 DONE 0.4s
+
+#8 [4/5] RUN python3 -c "from pathlib import Path;from lifecycle_package import check;check(Path('/opt/kpi/private-native'),cuda=True)"
+#8 DONE 1.2s
+
+#9 [5/5] RUN for case in deposit credit-transfer exit reconcile; do /opt/kpi/private-native/bin/kpi-private-native-producer check-target "$case" /opt/kpi/private-native/inputs; done
+#9 0.854 fixed public target verified; no proof started
+#9 1.010 fixed public target verified; no proof started
+#9 1.164 fixed public target verified; no proof started
+#9 1.299 fixed public target verified; no proof started
+#9 DONE 1.3s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.2s done
+#10 writing image sha256:2813acd587e8af6d356e31867fc6f0c713ccf2549adbf6502f0812b5cd609cd9 done
+#10 naming to docker.io/library/kpi-cuda-lifecycle:checked done
+#10 DONE 0.2s
