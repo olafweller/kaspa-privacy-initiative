@@ -1,0 +1,19 @@
+{
+  "case": "reconcile",
+  "kind": "cpu-verify",
+  "startedUnix": 1792358585.7847917,
+  "startedMonotonic": 3384818.543749109,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+    "verify-receipt",
+    "reconcile",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile/receipt.bin",
+    "/workspace/kpi-private-native/gpu-attempt/cpu/reconcile"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 5652,
+  "exitCode": 0,
+  "finishedUnix": 1792358586.079179,
+  "finishedMonotonic": 3384818.838137397
+}

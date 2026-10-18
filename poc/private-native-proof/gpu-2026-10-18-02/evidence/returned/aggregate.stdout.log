@@ -1,0 +1,13 @@
+[2m2026-10-18T21:16:48.320595Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 110.723135ms
+PROFILE after_checked_proof_decode 10139643
+PROFILE after_conversion_and_public_inputs 21722408
+PROFILE after_pairing 46126544
+PROFILE after_checked_proof_decode 56097118
+PROFILE after_conversion_and_public_inputs 68214025
+PROFILE after_pairing 92618161
+[2m2026-10-18T21:17:18.807333Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 2.484412802s
+PROFILE after_checked_proof_decode 10314783
+PROFILE after_conversion_and_public_inputs 18856657
+PROFILE after_pairing 43260793
+[2m2026-10-18T21:20:32.595658Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 1.156699415s
+[2m2026-10-18T21:22:03.678432Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 144.371203ms

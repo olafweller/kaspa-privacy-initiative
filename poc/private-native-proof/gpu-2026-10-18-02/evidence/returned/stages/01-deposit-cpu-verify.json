@@ -1,0 +1,19 @@
+{
+  "case": "deposit",
+  "kind": "cpu-verify",
+  "startedUnix": 1792358235.6547346,
+  "startedMonotonic": 3384468.413691955,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+    "verify-receipt",
+    "deposit",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/deposit/receipt.bin",
+    "/workspace/kpi-private-native/gpu-attempt/cpu/deposit"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 489,
+  "exitCode": 0,
+  "finishedUnix": 1792358235.9487534,
+  "finishedMonotonic": 3384468.707711793
+}

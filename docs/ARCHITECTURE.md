@@ -521,3 +521,13 @@ externally watched process group covers all four proofs, compression and local
 CPU/native checks. B independently re-verifies returned data using trusted local
 executables. A new immutable image identifies this workload separately from PR47.
 Software preparation does not establish new receipt or TN10 acceptance evidence.
+
+The subsequently owner-released [four-receipt rehearsal](../poc/private-native-proof/gpu-2026-10-18-02/README.md)
+now closes the local receipt and new exit-receipt native-issuance gates above.
+After a narrow output-directory correction, all four fixed batches completed in
+379.676 seconds with genuine receipts, independent B/Cloud CPU checks and CUDA
+evidence for every proof batch. The new exit receipt passes the lane-restricted
+state adapter and permission/payout script checks. This remains a synthetic
+UTXO/anchor context: canonical TN10 lineage, full consensus/size/mass/fee checks,
+funded issuance and actual chain payout are still unperformed. Guest, wallet
+relation, native policy and experimental privacy limitations remain unchanged.

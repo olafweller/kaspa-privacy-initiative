@@ -114,3 +114,17 @@ partial candidates and the existing independent B lease/back-up/stop mechanism.
 See [fixed package](../../poc/private-native-proof/README.md) and its adversarial
 review. Image publication and CPU startup qualification are software preparation;
 rental/proof execution and actual chain acceptance require separate release.
+
+## Released local four-receipt result — 2026-10-18
+
+The [corrected runtime rehearsal](../../poc/private-native-proof/gpu-2026-10-18-02/README.md)
+completed all four genuine receipts, independent trusted B/Cloud CPU verification,
+the new exit receipt's actual local native permission issuance/restricted payout,
+and per-batch CUDA observation in 379.676 seconds. The first released attempt's
+missing-parent-directory failure remains preserved; the owner separately released
+the small runner fix and one fresh attempt after a real-subprocess regression and
+new immutable-image qualification. Neither the guest nor native relation changed.
+Both Pods were independently stop-confirmed and deleted after external preservation.
+The earlier pending-receipt statements are superseded for local fixtures only.
+Funded construction, canonical TN10 acceptance/anchors, actual payout confirmation
+and full transaction budgets remain separately released work.

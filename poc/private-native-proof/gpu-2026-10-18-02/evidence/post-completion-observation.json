@@ -1,0 +1,633 @@
+{
+  "observedUnix": 1792358701.2426972,
+  "guardUnit": [
+    "MainPID=31555",
+    "ActiveState=active",
+    "SubState=running"
+  ],
+  "lease": {
+    "podId": "2kh9nm61nffwwf",
+    "gpuCount": 1,
+    "gpuType": "NVIDIA L40S",
+    "createdUnix": 1792358150.779,
+    "stopUnix": 1792365350.779,
+    "serviceUrl": "https://2kh9nm61nffwwf-8080.proxy.runpod.net",
+    "actualGpuHourlyUsd": "1.09",
+    "actualStorageHourlyUsd": "0.014",
+    "stoppedStorageHourlyUsd": "0.0028",
+    "retentionHours": 24
+  },
+  "status": {
+    "state": "completed",
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "phase": "done",
+    "artifact": {
+      "sha256": "056058ffdbc808ca8a77b4442495f3db6bb266dea3f710736a4bc9f693a97b6e",
+      "bytes": 2465830
+    },
+    "podId": "2kh9nm61nffwwf",
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "stopUnix": 1792365350.779,
+    "guardHeartbeatFresh": true
+  },
+  "guard.json": {
+    "heartbeatUnix": 1792358697.076524,
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "stopUnix": 1792365350.779,
+    "workerState": "completed"
+  },
+  "last-error.json": {
+    "unixSeconds": 1792358603.9719155,
+    "errorType": "TimeoutError",
+    "stopUnix": 1792365350.779
+  },
+  "latest-artifact.json": {
+    "sha256": "056058ffdbc808ca8a77b4442495f3db6bb266dea3f710736a4bc9f693a97b6e",
+    "bytes": 2465830,
+    "cpuVerified": false,
+    "note": "Transport hash checked; independent CPU comparison still required."
+  },
+  "terminal-backup.json": {
+    "sha256": "056058ffdbc808ca8a77b4442495f3db6bb266dea3f710736a4bc9f693a97b6e",
+    "bytes": 2465830,
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "savedUnix": 1792358647.1583498
+  },
+  "aggregate.resources.json": {
+    "exitCode": 0,
+    "failure": null,
+    "wallSeconds": 378.5363557031378,
+    "phaseSecondsLimit": 3600,
+    "peakSampledSummedRssBytes": 759599104,
+    "peakSampledSummedVirtualBytes": 116541186048,
+    "peakMatchingGpuProcessVramMiB": 13706.0,
+    "gpuProcessActivityObserved": true,
+    "kernelWaitUserSeconds": 293.864099,
+    "kernelWaitSystemSeconds": 81.115817,
+    "sampledOwnCpuSeconds": 373.02,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "computeThreads": 4,
+    "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+  },
+  "complete.json": {
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "seconds": 379.6755465287715,
+    "fourReceiptsAndNativeExitChecked": true,
+    "independentBVerificationStillRequired": true,
+    "CUDAProcessActivityObservedForAllBatches": true,
+    "actualTN10Broadcast": false
+  },
+  "cuda-by-batch.json": {
+    "deposit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 96,
+      "peakSampledGroupRssBytes": 455811072,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 27.795372366905212
+    },
+    "credit-transfer": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 695,
+      "peakSampledGroupRssBytes": 759599104,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 194.73212835518643
+    },
+    "exit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 328,
+      "peakSampledGroupRssBytes": 732659712,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 91.67904307879508
+    },
+    "reconcile": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 225,
+      "peakSampledGroupRssBytes": 477966336,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 62.59979949705303
+    }
+  },
+  "hardware.json": {
+    "name": "NVIDIA L40S",
+    "uuid": "GPU-bef99d44-84c8-3315-23d9-028e25956639",
+    "vramMiB": 46068.0,
+    "driverVersion": "595.91.07",
+    "computeCapability": "8.9",
+    "cgroupV2Limits": {
+      "cpu.max": null,
+      "memory.max": null,
+      "cpuset.cpus.effective": null
+    },
+    "availableCpuAffinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "startupSeconds": 0.4168198211118579,
+    "aggregateExternalWatchdog": "GNU timeout --signal=KILL; same process group; survives service death"
+  },
+  "pipeline-complete.json": {
+    "scope": "FOUR_LOCAL_LIFECYCLE_RECEIPTS_AND_NATIVE_EXIT_NOT_TN10",
+    "cases": [
+      "deposit",
+      "credit-transfer",
+      "exit",
+      "reconcile"
+    ],
+    "receipts": {
+      "deposit": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "credit-transfer": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "exit": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "reconcile": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5"
+    },
+    "seconds": 378.24945147009566,
+    "separateCpuVerificationProcesses": true,
+    "genuineNativeExitChecked": true
+  },
+  "progress.json": {
+    "stages": [
+      {
+        "case": "deposit",
+        "kind": "prove",
+        "startedUnix": 1792358207.848791,
+        "startedMonotonic": 3384440.60774756,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-producer",
+          "prove",
+          "deposit",
+          "/opt/kpi/private-native/inputs",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/deposit"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 83,
+        "exitCode": 0,
+        "finishedUnix": 1792358235.64416,
+        "finishedMonotonic": 3384468.403119927
+      },
+      {
+        "case": "deposit",
+        "kind": "cpu-verify",
+        "startedUnix": 1792358235.6547346,
+        "startedMonotonic": 3384468.413691955,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+          "verify-receipt",
+          "deposit",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/deposit/receipt.bin",
+          "/workspace/kpi-private-native/gpu-attempt/cpu/deposit"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 489,
+        "exitCode": 0,
+        "finishedUnix": 1792358235.9487534,
+        "finishedMonotonic": 3384468.707711793
+      },
+      {
+        "case": "credit-transfer",
+        "kind": "prove",
+        "startedUnix": 1792358235.9587388,
+        "startedMonotonic": 3384468.717695652,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-producer",
+          "prove",
+          "credit-transfer",
+          "/opt/kpi/private-native/inputs",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 495,
+        "exitCode": 0,
+        "finishedUnix": 1792358430.690866,
+        "finishedMonotonic": 3384663.449824007
+      },
+      {
+        "case": "credit-transfer",
+        "kind": "cpu-verify",
+        "startedUnix": 1792358430.7084322,
+        "startedMonotonic": 3384663.467389514,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+          "verify-receipt",
+          "credit-transfer",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer/receipt.bin",
+          "/workspace/kpi-private-native/gpu-attempt/cpu/credit-transfer"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 3351,
+        "exitCode": 0,
+        "finishedUnix": 1792358431.0528705,
+        "finishedMonotonic": 3384663.811828463
+      },
+      {
+        "case": "exit",
+        "kind": "prove",
+        "startedUnix": 1792358431.078624,
+        "startedMonotonic": 3384663.837581172,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-producer",
+          "prove",
+          "exit",
+          "/opt/kpi/private-native/inputs",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/exit"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 3356,
+        "exitCode": 0,
+        "finishedUnix": 1792358522.7576659,
+        "finishedMonotonic": 3384755.516624251
+      },
+      {
+        "case": "exit",
+        "kind": "cpu-verify",
+        "startedUnix": 1792358522.7716632,
+        "startedMonotonic": 3384755.5306206,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+          "verify-receipt",
+          "exit",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/exit/receipt.bin",
+          "/workspace/kpi-private-native/gpu-attempt/cpu/exit"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 4709,
+        "exitCode": 0,
+        "finishedUnix": 1792358523.0672588,
+        "finishedMonotonic": 3384755.826217324
+      },
+      {
+        "case": "exit",
+        "kind": "native-exit",
+        "startedUnix": 1792358523.0827782,
+        "startedMonotonic": 3384755.841735349,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+          "verify-native-exit",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/exit/receipt.bin",
+          "/workspace/kpi-private-native/gpu-attempt/native-exit"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 4714,
+        "exitCode": 0,
+        "finishedUnix": 1792358523.163361,
+        "finishedMonotonic": 3384755.922318387
+      },
+      {
+        "case": "reconcile",
+        "kind": "prove",
+        "startedUnix": 1792358523.174401,
+        "startedMonotonic": 3384755.933358215,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-producer",
+          "prove",
+          "reconcile",
+          "/opt/kpi/private-native/inputs",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 4719,
+        "exitCode": 0,
+        "finishedUnix": 1792358585.7741995,
+        "finishedMonotonic": 3384818.533157712
+      },
+      {
+        "case": "reconcile",
+        "kind": "cpu-verify",
+        "startedUnix": 1792358585.7847917,
+        "startedMonotonic": 3384818.543749109,
+        "command": [
+          "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+          "verify-receipt",
+          "reconcile",
+          "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile/receipt.bin",
+          "/workspace/kpi-private-native/gpu-attempt/cpu/reconcile"
+        ],
+        "sameProcessGroup": 76,
+        "finished": true,
+        "pid": 5652,
+        "exitCode": 0,
+        "finishedUnix": 1792358586.079179,
+        "finishedMonotonic": 3384818.838137397
+      }
+    ],
+    "lastCompleted": "reconcile-cpu-verify"
+  },
+  "stages/00-deposit-prove.json": {
+    "case": "deposit",
+    "kind": "prove",
+    "startedUnix": 1792358207.848791,
+    "startedMonotonic": 3384440.60774756,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-producer",
+      "prove",
+      "deposit",
+      "/opt/kpi/private-native/inputs",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/deposit"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 83,
+    "exitCode": 0,
+    "finishedUnix": 1792358235.64416,
+    "finishedMonotonic": 3384468.403119927
+  },
+  "stages/01-deposit-cpu-verify.json": {
+    "case": "deposit",
+    "kind": "cpu-verify",
+    "startedUnix": 1792358235.6547346,
+    "startedMonotonic": 3384468.413691955,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+      "verify-receipt",
+      "deposit",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/deposit/receipt.bin",
+      "/workspace/kpi-private-native/gpu-attempt/cpu/deposit"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 489,
+    "exitCode": 0,
+    "finishedUnix": 1792358235.9487534,
+    "finishedMonotonic": 3384468.707711793
+  },
+  "stages/02-credit-transfer-prove.json": {
+    "case": "credit-transfer",
+    "kind": "prove",
+    "startedUnix": 1792358235.9587388,
+    "startedMonotonic": 3384468.717695652,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-producer",
+      "prove",
+      "credit-transfer",
+      "/opt/kpi/private-native/inputs",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 495,
+    "exitCode": 0,
+    "finishedUnix": 1792358430.690866,
+    "finishedMonotonic": 3384663.449824007
+  },
+  "stages/03-credit-transfer-cpu-verify.json": {
+    "case": "credit-transfer",
+    "kind": "cpu-verify",
+    "startedUnix": 1792358430.7084322,
+    "startedMonotonic": 3384663.467389514,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+      "verify-receipt",
+      "credit-transfer",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer/receipt.bin",
+      "/workspace/kpi-private-native/gpu-attempt/cpu/credit-transfer"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 3351,
+    "exitCode": 0,
+    "finishedUnix": 1792358431.0528705,
+    "finishedMonotonic": 3384663.811828463
+  },
+  "stages/04-exit-prove.json": {
+    "case": "exit",
+    "kind": "prove",
+    "startedUnix": 1792358431.078624,
+    "startedMonotonic": 3384663.837581172,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-producer",
+      "prove",
+      "exit",
+      "/opt/kpi/private-native/inputs",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/exit"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 3356,
+    "exitCode": 0,
+    "finishedUnix": 1792358522.7576659,
+    "finishedMonotonic": 3384755.516624251
+  },
+  "stages/05-exit-cpu-verify.json": {
+    "case": "exit",
+    "kind": "cpu-verify",
+    "startedUnix": 1792358522.7716632,
+    "startedMonotonic": 3384755.5306206,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+      "verify-receipt",
+      "exit",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/exit/receipt.bin",
+      "/workspace/kpi-private-native/gpu-attempt/cpu/exit"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 4709,
+    "exitCode": 0,
+    "finishedUnix": 1792358523.0672588,
+    "finishedMonotonic": 3384755.826217324
+  },
+  "stages/06-exit-native-exit.json": {
+    "case": "exit",
+    "kind": "native-exit",
+    "startedUnix": 1792358523.0827782,
+    "startedMonotonic": 3384755.841735349,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+      "verify-native-exit",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/exit/receipt.bin",
+      "/workspace/kpi-private-native/gpu-attempt/native-exit"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 4714,
+    "exitCode": 0,
+    "finishedUnix": 1792358523.163361,
+    "finishedMonotonic": 3384755.922318387
+  },
+  "stages/07-reconcile-prove.json": {
+    "case": "reconcile",
+    "kind": "prove",
+    "startedUnix": 1792358523.174401,
+    "startedMonotonic": 3384755.933358215,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-producer",
+      "prove",
+      "reconcile",
+      "/opt/kpi/private-native/inputs",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 4719,
+    "exitCode": 0,
+    "finishedUnix": 1792358585.7741995,
+    "finishedMonotonic": 3384818.533157712
+  },
+  "stages/08-reconcile-cpu-verify.json": {
+    "case": "reconcile",
+    "kind": "cpu-verify",
+    "startedUnix": 1792358585.7847917,
+    "startedMonotonic": 3384818.543749109,
+    "command": [
+      "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+      "verify-receipt",
+      "reconcile",
+      "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile/receipt.bin",
+      "/workspace/kpi-private-native/gpu-attempt/cpu/reconcile"
+    ],
+    "sameProcessGroup": 76,
+    "finished": true,
+    "pid": 5652,
+    "exitCode": 0,
+    "finishedUnix": 1792358586.079179,
+    "finishedMonotonic": 3384818.838137397
+  },
+  "proofStderrTail": [],
+  "telemetry": {
+    "lastSampleSeconds": 378.4328001542017,
+    "samples": 1350,
+    "peakGroupRssBytes": 759599104,
+    "peakVramMiB": 13706.0,
+    "activeGpuSamples": 1110
+  }
+}
+

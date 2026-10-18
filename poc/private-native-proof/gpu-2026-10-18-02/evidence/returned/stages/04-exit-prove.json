@@ -1,0 +1,19 @@
+{
+  "case": "exit",
+  "kind": "prove",
+  "startedUnix": 1792358431.078624,
+  "startedMonotonic": 3384663.837581172,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-producer",
+    "prove",
+    "exit",
+    "/opt/kpi/private-native/inputs",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/exit"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 3356,
+  "exitCode": 0,
+  "finishedUnix": 1792358522.7576659,
+  "finishedMonotonic": 3384755.516624251
+}

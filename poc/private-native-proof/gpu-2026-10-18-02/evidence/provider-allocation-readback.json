@@ -1,0 +1,15 @@
+{
+  "id": "2kh9nm61nffwwf",
+  "name": "kpi-private-native-20261018-02",
+  "createdAt": "2026-10-18 21:15:50.779 +0000 UTC",
+  "desiredStatus": "RUNNING",
+  "gpuCount": 1,
+  "gpuTypeId": "NVIDIA L40S",
+  "costPerHr": 1.09,
+  "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "memoryInGb": 188,
+  "vcpuCount": 16,
+  "volumeInGb": 10,
+  "containerDiskInGb": 90,
+  "volumeMountPath": "/workspace"
+}

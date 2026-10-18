@@ -1,0 +1,16 @@
+{
+  "observedUnix": 1792358701.528326,
+  "status": {
+    "state": "completed",
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "phase": "done",
+    "artifact": {
+      "sha256": "056058ffdbc808ca8a77b4442495f3db6bb266dea3f710736a4bc9f693a97b6e",
+      "bytes": 2465830
+    },
+    "podId": "2kh9nm61nffwwf",
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "stopUnix": 1792365350.779,
+    "guardHeartbeatFresh": true
+  }
+}

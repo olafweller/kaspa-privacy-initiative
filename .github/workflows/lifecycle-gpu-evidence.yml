@@ -1,0 +1,22 @@
+name: Stored lifecycle receipt verification
+on:
+  pull_request:
+    paths:
+      - 'poc/private-native-proof/**'
+      - 'poc/remote-cuda/lifecycle_control.py'
+      - 'poc/remote-cuda/lifecycle_package.py'
+      - '.github/workflows/lifecycle-gpu-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  stored-receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify stored real receipts and native exit on CPU; no proving or provider
+        run: |
+          python3 poc/private-native-proof/gpu-2026-10-18/check_evidence.py
+          python3 poc/private-native-proof/gpu-2026-10-18-02/check_evidence.py

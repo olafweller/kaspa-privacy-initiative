@@ -1,0 +1,328 @@
+{
+  "scope": "INDEPENDENT_B_CPU_NATIVE_AND_CUDA_AUDIT_LOCAL_NOT_TN10",
+  "unixSeconds": 1792358720.0835297,
+  "seconds": 1.7043984679985442,
+  "archiveSha256": "056058ffdbc808ca8a77b4442495f3db6bb266dea3f710736a4bc9f693a97b6e",
+  "archiveBytes": 2465830,
+  "archiveAndPublicInputsVerified": true,
+  "result": {
+    "scope": "INDEPENDENT_CPU_FOUR_LIFECYCLE_RECEIPTS_NOT_TN10",
+    "verifiedReceipts": {
+      "deposit": {
+        "sha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+        "candidateOnly": false
+      },
+      "credit-transfer": {
+        "sha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+        "candidateOnly": false
+      },
+      "exit": {
+        "sha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+        "candidateOnly": false
+      },
+      "reconcile": {
+        "sha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+        "candidateOnly": false
+      }
+    },
+    "failures": {},
+    "verifiedCount": 4,
+    "nativePermissionAndRestrictedPayoutVerified": true,
+    "allFourCryptographicallyVerified": true,
+    "CUDAQualificationRequiresSeparateTelemetry": true,
+    "actualTN10Broadcast": false
+  },
+  "receiptReports": {
+    "deposit": {
+      "case": "deposit",
+      "developmentMode": false,
+      "exactJournalVerified": true,
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "programImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "receiptSha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "scope": "INDEPENDENT_FROZEN_LIFECYCLE_RECEIPT_NOT_CANONICAL_TN10"
+    },
+    "credit-transfer": {
+      "case": "credit-transfer",
+      "developmentMode": false,
+      "exactJournalVerified": true,
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "programImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "receiptSha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "scope": "INDEPENDENT_FROZEN_LIFECYCLE_RECEIPT_NOT_CANONICAL_TN10"
+    },
+    "exit": {
+      "case": "exit",
+      "developmentMode": false,
+      "exactJournalVerified": true,
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "programImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "receiptSha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "scope": "INDEPENDENT_FROZEN_LIFECYCLE_RECEIPT_NOT_CANONICAL_TN10"
+    },
+    "reconcile": {
+      "case": "reconcile",
+      "developmentMode": false,
+      "exactJournalVerified": true,
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "programImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "receiptSha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+      "scope": "INDEPENDENT_FROZEN_LIFECYCLE_RECEIPT_NOT_CANONICAL_TN10"
+    }
+  },
+  "proofStats": {
+    "deposit": {
+      "segments": 34,
+      "total_cycles": 2195456,
+      "user_cycles": 551028,
+      "paging_cycles": 674948,
+      "reserved_cycles": 969480
+    },
+    "credit-transfer": {
+      "segments": 95,
+      "total_cycles": 99614720,
+      "user_cycles": 93105559,
+      "paging_cycles": 3721203,
+      "reserved_cycles": 2787958
+    },
+    "exit": {
+      "segments": 45,
+      "total_cycles": 47185920,
+      "user_cycles": 43964526,
+      "paging_cycles": 1909968,
+      "reserved_cycles": 1311426
+    },
+    "reconcile": {
+      "segments": 79,
+      "total_cycles": 5177344,
+      "user_cycles": 1486804,
+      "paging_cycles": 1390339,
+      "reserved_cycles": 2300201
+    }
+  },
+  "perBatchCompletion": {
+    "deposit": {
+      "actualTN10Settlement": false,
+      "independentVerificationStillRequired": true,
+      "receiptSha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "seconds": 27.611655665
+    },
+    "credit-transfer": {
+      "actualTN10Settlement": false,
+      "independentVerificationStillRequired": true,
+      "receiptSha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "seconds": 194.518202722
+    },
+    "exit": {
+      "actualTN10Settlement": false,
+      "independentVerificationStillRequired": true,
+      "receiptSha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "seconds": 91.492900045
+    },
+    "reconcile": {
+      "actualTN10Settlement": false,
+      "independentVerificationStillRequired": true,
+      "receiptSha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+      "seconds": 62.415460169
+    }
+  },
+  "nativeExit": {
+    "actualTN10Broadcast": false,
+    "issuanceInputScriptUnits": [
+      25006820,
+      0
+    ],
+    "issuanceSponsorFeeSompi": 100000,
+    "matchesFrozenReconciliationInput": true,
+    "payout": {
+      "actualTN10Broadcast": false,
+      "delegateChangeSompi": 600000000,
+      "nativeFeeSompi": 100000,
+      "negativeControls": [
+        {
+          "case": "underpay",
+          "error": "script ran, but verification failed",
+          "layer": "actual native TxScriptEngine",
+          "rejected": true
+        },
+        {
+          "case": "reserve-diversion",
+          "error": "script ran, but verification failed",
+          "layer": "actual native TxScriptEngine",
+          "rejected": true
+        },
+        {
+          "case": "wrong-recipient",
+          "error": "script ran, but verification failed",
+          "layer": "actual native TxScriptEngine",
+          "rejected": true
+        },
+        {
+          "case": "distinct-payout-replay",
+          "differentNativeId": true,
+          "layer": "local UTXO spentness fixture, not script re-verification or live consensus",
+          "missingSpentPermissionAndReserve": true,
+          "rejected": true
+        }
+      ],
+      "permissionIssuanceReceiptVerified": false,
+      "permissionRentRefundSompi": 50000000,
+      "positiveNativeScriptsAccepted": true,
+      "principalPaidSompi": 400000000,
+      "recipientNativeOutputSompi": 450000000,
+      "scope": "ACTUAL_PAYOUT_SCRIPTS_WITH_SYNTHETIC_PERMISSION_ISSUANCE_AND_LOCAL_UTXO_SET",
+      "scriptUnits": [
+        3322,
+        181,
+        100001
+      ],
+      "sponsorChangeSompi": 199900000,
+      "sponsorInputSompi": 200000000,
+      "stateRentExcludedSompi": 100000000
+    },
+    "permissionIssuanceReceiptVerified": true,
+    "permissionRentSompi": 50000000,
+    "permissionTransactionId": "ef9bfd4093e15da8e831d6bd7dcb874d85930e60e4ca311f438d30fda272c9a1",
+    "scope": "GENUINE_EXIT_RECEIPT_LOCAL_NATIVE_ISSUANCE_AND_PAYOUT_NOT_TN10",
+    "stateCovenantContinuationSompi": 100000000
+  },
+  "aggregateResources": {
+    "exitCode": 0,
+    "failure": null,
+    "wallSeconds": 378.5363557031378,
+    "phaseSecondsLimit": 3600,
+    "peakSampledSummedRssBytes": 759599104,
+    "peakSampledSummedVirtualBytes": 116541186048,
+    "peakMatchingGpuProcessVramMiB": 13706.0,
+    "gpuProcessActivityObserved": true,
+    "kernelWaitUserSeconds": 293.864099,
+    "kernelWaitSystemSeconds": 81.115817,
+    "sampledOwnCpuSeconds": 373.02,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "computeThreads": 4,
+    "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+  },
+  "cudaByBatch": {
+    "deposit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 96,
+      "peakSampledGroupRssBytes": 455811072,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 27.795372366905212
+    },
+    "credit-transfer": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 695,
+      "peakSampledGroupRssBytes": 759599104,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 194.73212835518643
+    },
+    "exit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 328,
+      "peakSampledGroupRssBytes": 732659712,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 91.67904307879508
+    },
+    "reconcile": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 225,
+      "peakSampledGroupRssBytes": 477966336,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 62.59979949705303
+    }
+  },
+  "workerCompletion": {
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "seconds": 379.6755465287715,
+    "fourReceiptsAndNativeExitChecked": true,
+    "independentBVerificationStillRequired": true,
+    "CUDAProcessActivityObservedForAllBatches": true,
+    "actualTN10Broadcast": false
+  },
+  "cryptographicSuccess": true,
+  "CUDAQualification": true,
+  "fullLocalExperimentCompleted": true,
+  "actualTN10Broadcast": false
+}

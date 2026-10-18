@@ -56,6 +56,17 @@ Review [ADR-0014](adr/0014-private-native-lifecycle.md) and the
 [concrete transaction/proof plan](../poc/private-native/TN10-PLAN.md) before
 releasing new proof packaging/rental or the terminal native rehearsal.
 
+The [four-batch GPU rehearsal](../poc/private-native-proof/gpu-2026-10-18-02/README.md)
+has now produced and independently verified the four new local lifecycle receipts,
+including genuine exit-receipt native permission issuance and restricted payout.
+All four proofs have CUDA evidence; the aggregate run took 379.676 seconds.
+The source-pinned output-directory fix/regression and the earlier failed attempt
+are retained. Independent B preservation/stop and external-copy verification
+preceded confirmed Pod/storage deletion. The next substantive gate is the
+canonical TN10 rehearsal, with actual deposit/permission lineage, native
+transaction resource/fee acceptance and terminal payout confirmation. No live
+funding, broadcast or additional rental is authorized by this result.
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

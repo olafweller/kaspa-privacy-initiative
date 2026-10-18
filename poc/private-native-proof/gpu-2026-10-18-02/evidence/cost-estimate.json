@@ -1,0 +1,16 @@
+{
+  "actualGpuHourlyUsd": "1.09",
+  "providerCreationUnix": 1792358150.779,
+  "providerReportedExitUnixSecondPrecision": 1792358711.0,
+  "providerExitObservedUnix": 1792358722.388848,
+  "providerDeletionConfirmedUnix": 1792358770.220761,
+  "providerReportedComputeSecondsApprox": 560.220999956131,
+  "creationToObservedExitSeconds": 571.6098480224609,
+  "creationToDeletionSeconds": 619.4417610168457,
+  "computeEstimateUsd": 0.16962246943116188,
+  "conservativeComputeAndStorageEstimateUsd": 0.17547969972186622,
+  "storageHourlyUsdUpperBound": 0.014,
+  "actualInvoiceAvailable": false,
+  "note": "Rate/timestamp estimates, not invoiced charges; conservative estimate uses later EXITED observation and active-storage allowance until deletion.",
+  "bothAuthorizedAttemptsConservativeEstimateUsd": 0.2205945908178224
+}

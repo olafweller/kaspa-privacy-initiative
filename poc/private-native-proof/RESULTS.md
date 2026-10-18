@@ -85,3 +85,10 @@ The current [deployment](deployment.json), [package identity](evidence/package-i
 and [run manifest](run-manifest.json) bind the corrected runtime. Newly published
 image qualification must complete before the fresh attempt. The first image and
 its retained records above remain historical evidence, not the corrected runtime.
+
+The corrected image was subsequently qualified and the separately authorized
+fresh attempt [completed all four real receipts](gpu-2026-10-18-02/README.md).
+Independent B and Cloud verification, genuine new exit-receipt native checks,
+per-batch CUDA evidence and confirmed provider stop/deletion passed. The full
+worker elapsed time was 379.676 seconds. These are local fixture/script results;
+no TN10 transaction or native funding was performed.

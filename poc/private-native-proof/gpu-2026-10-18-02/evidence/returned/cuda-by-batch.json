@@ -1,0 +1,30 @@
+{
+  "deposit": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 96,
+    "peakSampledGroupRssBytes": 455811072,
+    "peakMatchingGpuVramMiB": 5992.0,
+    "seconds": 27.795372366905212
+  },
+  "credit-transfer": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 695,
+    "peakSampledGroupRssBytes": 759599104,
+    "peakMatchingGpuVramMiB": 13706.0,
+    "seconds": 194.73212835518643
+  },
+  "exit": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 328,
+    "peakSampledGroupRssBytes": 732659712,
+    "peakMatchingGpuVramMiB": 13706.0,
+    "seconds": 91.67904307879508
+  },
+  "reconcile": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 225,
+    "peakSampledGroupRssBytes": 477966336,
+    "peakMatchingGpuVramMiB": 5992.0,
+    "seconds": 62.59979949705303
+  }
+}

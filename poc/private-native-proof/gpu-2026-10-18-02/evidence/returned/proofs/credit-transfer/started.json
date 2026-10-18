@@ -1,0 +1,9 @@
+{
+  "automaticRetries": false,
+  "case": "credit-transfer",
+  "cycleLimit": 160000000,
+  "externalProcessGroupDeadlineRequired": true,
+  "scope": "ONE_FIXED_FUTURE_LIFECYCLE_BATCH",
+  "segmentPo2": 20,
+  "wholeJobProcessGroupLimitSeconds": 3600
+}

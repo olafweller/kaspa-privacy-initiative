@@ -88,3 +88,11 @@ and real aggregate-watchdog descendant/controller-loss tests without proving or
 provider calls. Its separate tag workflow builds and publishes the immutable
 CUDA image, then re-pulls and CPU-smoke-checks the digest. Neither workflow rents
 a GPU or starts a proof job. See [package scope](../poc/private-native-proof/README.md).
+
+The stored-lifecycle-receipts workflow rechecks the retained failed-attempt audit
+and the [four genuine completed receipts](../poc/private-native-proof/gpu-2026-10-18-02/README.md).
+It restores the hash-bound trusted CPU package, verifies actual receipt seals,
+exact journals and cryptographic negative controls, and executes the genuine exit
+receipt's local native permission/payout checks. It does not run a prover, rent
+a GPU, contact a provider or broadcast transactions. Historical synthetic process
+tests remain clearly separate from this real-receipt verification.

@@ -1,0 +1,8 @@
+{
+  "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+  "seconds": 379.6755465287715,
+  "fourReceiptsAndNativeExitChecked": true,
+  "independentBVerificationStillRequired": true,
+  "CUDAProcessActivityObservedForAllBatches": true,
+  "actualTN10Broadcast": false
+}

@@ -1,0 +1,16 @@
+{
+  "authorization": "Explicit user reply: Ja, fix en \u00e9\u00e9n nieuwe proef",
+  "unixSeconds": 1792358085.5534728,
+  "firstAttemptDeleted": true,
+  "firstPodId": "zx39ajm30jc52a",
+  "attemptsUnderThisNewRelease": 1,
+  "aggregateProofSeconds": 3600,
+  "rentalSecondsFromActualCreation": 7200,
+  "planningUsd": 5,
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "imageSourceCommit": "80605a38c06c837afc2c0a9a432032a13b2b069d",
+  "statementAndProofBinariesUnchanged": true,
+  "automaticRetry": false,
+  "TN10BroadcastAuthorized": false,
+  "nativeFundingAuthorized": false
+}

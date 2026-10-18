@@ -1,0 +1,19 @@
+{
+  "case": "exit",
+  "kind": "cpu-verify",
+  "startedUnix": 1792358522.7716632,
+  "startedMonotonic": 3384755.5306206,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+    "verify-receipt",
+    "exit",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/exit/receipt.bin",
+    "/workspace/kpi-private-native/gpu-attempt/cpu/exit"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 4709,
+  "exitCode": 0,
+  "finishedUnix": 1792358523.0672588,
+  "finishedMonotonic": 3384755.826217324
+}

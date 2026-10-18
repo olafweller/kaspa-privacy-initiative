@@ -1,0 +1,27 @@
+{
+  "scope": "INDEPENDENT_CPU_FOUR_LIFECYCLE_RECEIPTS_NOT_TN10",
+  "verifiedReceipts": {
+    "deposit": {
+      "sha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "candidateOnly": false
+    },
+    "credit-transfer": {
+      "sha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "candidateOnly": false
+    },
+    "exit": {
+      "sha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "candidateOnly": false
+    },
+    "reconcile": {
+      "sha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+      "candidateOnly": false
+    }
+  },
+  "failures": {},
+  "verifiedCount": 4,
+  "nativePermissionAndRestrictedPayoutVerified": true,
+  "allFourCryptographicallyVerified": true,
+  "CUDAQualificationRequiresSeparateTelemetry": true,
+  "actualTN10Broadcast": false
+}

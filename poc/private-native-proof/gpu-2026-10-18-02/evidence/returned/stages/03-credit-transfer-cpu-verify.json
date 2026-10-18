@@ -1,0 +1,19 @@
+{
+  "case": "credit-transfer",
+  "kind": "cpu-verify",
+  "startedUnix": 1792358430.7084322,
+  "startedMonotonic": 3384663.467389514,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-verifier",
+    "verify-receipt",
+    "credit-transfer",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer/receipt.bin",
+    "/workspace/kpi-private-native/gpu-attempt/cpu/credit-transfer"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 3351,
+  "exitCode": 0,
+  "finishedUnix": 1792358431.0528705,
+  "finishedMonotonic": 3384663.811828463
+}

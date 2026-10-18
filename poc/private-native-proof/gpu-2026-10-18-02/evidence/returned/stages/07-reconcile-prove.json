@@ -1,0 +1,19 @@
+{
+  "case": "reconcile",
+  "kind": "prove",
+  "startedUnix": 1792358523.174401,
+  "startedMonotonic": 3384755.933358215,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-producer",
+    "prove",
+    "reconcile",
+    "/opt/kpi/private-native/inputs",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/reconcile"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 4719,
+  "exitCode": 0,
+  "finishedUnix": 1792358585.7741995,
+  "finishedMonotonic": 3384818.533157712
+}

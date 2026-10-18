@@ -1,0 +1,33 @@
+{
+  "unixSeconds": 1792358206.8149314,
+  "providerImageReference": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:7f32b3692d174b55c5feb1b7355b087076df4c1107e228c9cd08d621ef4530f0",
+  "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+  "provider": {
+    "id": "2kh9nm61nffwwf",
+    "createdAt": "2026-10-18 21:15:50.779 +0000 UTC",
+    "desiredStatus": "RUNNING",
+    "costPerHr": 1.09,
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA L40S",
+    "memoryInGb": 188,
+    "vcpuCount": 16,
+    "containerDiskInGb": 90,
+    "volumeInGb": 10,
+    "volumeMountPath": "/workspace"
+  },
+  "guard": {
+    "heartbeatUnix": 1792358199.6209996,
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "stopUnix": 1792365350.779,
+    "workerState": "idle"
+  },
+  "service": {
+    "state": "idle",
+    "scope": "FIXED_PRIVATE_NATIVE_FOUR_SUCCINCT_RECEIPTS",
+    "podId": "2kh9nm61nffwwf",
+    "leaseDigest": "2936c2d9c863aad764a09201b65736f7528cd69852761f7def1260005b18e884",
+    "stopUnix": 1792365350.779,
+    "guardHeartbeatFresh": true
+  },
+  "remainingSeconds": 7143.964061498642
+}

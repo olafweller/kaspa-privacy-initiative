@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/usr/bin/timeout",
+    "--signal=KILL",
+    "3599.353610s",
+    "/usr/bin/python3",
+    "/opt/kpi/app/lifecycle_runner.py",
+    "/opt/kpi/private-native",
+    "/workspace/kpi-private-native/gpu-attempt"
+  ],
+  "phaseSecondsLimit": 3600,
+  "unixSeconds": 1792358207.7240155,
+  "cpuAffinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "addressSpaceLimit": null,
+  "rssStopBytes": 12884901888,
+  "cudaRequired": true
+}

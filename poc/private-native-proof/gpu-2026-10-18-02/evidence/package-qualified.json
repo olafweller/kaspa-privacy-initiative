@@ -1,0 +1,21 @@
+{
+  "unix": 1792358022.8664284,
+  "ntp": "yes",
+  "freeBytes": 85671870464,
+  "trustedPackage": "/opt/kpi-remote-cuda/private-native-proof-20261018-01",
+  "publicArchiveReusedUnchanged": true,
+  "policySha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
+  "compiledTargetsChecked": [
+    "deposit",
+    "credit-transfer",
+    "exit",
+    "reconcile"
+  ],
+  "guardUnit": "kpi-cuda-lifecycle2-guard.service",
+  "active": [
+    "ActiveState=inactive",
+    "UnitFileState=disabled"
+  ],
+  "firstAttemptPreservedAndNotRestarted": true,
+  "noProviderMutation": true
+}

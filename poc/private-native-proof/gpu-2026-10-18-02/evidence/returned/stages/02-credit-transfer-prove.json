@@ -1,0 +1,19 @@
+{
+  "case": "credit-transfer",
+  "kind": "prove",
+  "startedUnix": 1792358235.9587388,
+  "startedMonotonic": 3384468.717695652,
+  "command": [
+    "/opt/kpi/private-native/bin/kpi-private-native-producer",
+    "prove",
+    "credit-transfer",
+    "/opt/kpi/private-native/inputs",
+    "/workspace/kpi-private-native/gpu-attempt/proofs/credit-transfer"
+  ],
+  "sameProcessGroup": 76,
+  "finished": true,
+  "pid": 495,
+  "exitCode": 0,
+  "finishedUnix": 1792358430.690866,
+  "finishedMonotonic": 3384663.449824007
+}

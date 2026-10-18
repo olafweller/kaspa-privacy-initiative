@@ -1,0 +1,60 @@
+{
+  "actualTN10Broadcast": false,
+  "issuanceInputScriptUnits": [
+    25006820,
+    0
+  ],
+  "issuanceSponsorFeeSompi": 100000,
+  "matchesFrozenReconciliationInput": true,
+  "payout": {
+    "actualTN10Broadcast": false,
+    "delegateChangeSompi": 600000000,
+    "nativeFeeSompi": 100000,
+    "negativeControls": [
+      {
+        "case": "underpay",
+        "error": "script ran, but verification failed",
+        "layer": "actual native TxScriptEngine",
+        "rejected": true
+      },
+      {
+        "case": "reserve-diversion",
+        "error": "script ran, but verification failed",
+        "layer": "actual native TxScriptEngine",
+        "rejected": true
+      },
+      {
+        "case": "wrong-recipient",
+        "error": "script ran, but verification failed",
+        "layer": "actual native TxScriptEngine",
+        "rejected": true
+      },
+      {
+        "case": "distinct-payout-replay",
+        "differentNativeId": true,
+        "layer": "local UTXO spentness fixture, not script re-verification or live consensus",
+        "missingSpentPermissionAndReserve": true,
+        "rejected": true
+      }
+    ],
+    "permissionIssuanceReceiptVerified": false,
+    "permissionRentRefundSompi": 50000000,
+    "positiveNativeScriptsAccepted": true,
+    "principalPaidSompi": 400000000,
+    "recipientNativeOutputSompi": 450000000,
+    "scope": "ACTUAL_PAYOUT_SCRIPTS_WITH_SYNTHETIC_PERMISSION_ISSUANCE_AND_LOCAL_UTXO_SET",
+    "scriptUnits": [
+      3322,
+      181,
+      100001
+    ],
+    "sponsorChangeSompi": 199900000,
+    "sponsorInputSompi": 200000000,
+    "stateRentExcludedSompi": 100000000
+  },
+  "permissionIssuanceReceiptVerified": true,
+  "permissionRentSompi": 50000000,
+  "permissionTransactionId": "ef9bfd4093e15da8e831d6bd7dcb874d85930e60e4ca311f438d30fda272c9a1",
+  "scope": "GENUINE_EXIT_RECEIPT_LOCAL_NATIVE_ISSUANCE_AND_PAYOUT_NOT_TN10",
+  "stateCovenantContinuationSompi": 100000000
+}

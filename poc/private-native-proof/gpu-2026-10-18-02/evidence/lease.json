@@ -1,0 +1,12 @@
+{
+  "podId": "2kh9nm61nffwwf",
+  "gpuCount": 1,
+  "gpuType": "NVIDIA L40S",
+  "createdUnix": 1792358150.779,
+  "stopUnix": 1792365350.779,
+  "serviceUrl": "https://2kh9nm61nffwwf-8080.proxy.runpod.net",
+  "actualGpuHourlyUsd": "1.09",
+  "actualStorageHourlyUsd": "0.014",
+  "stoppedStorageHourlyUsd": "0.0028",
+  "retentionHours": 24
+}

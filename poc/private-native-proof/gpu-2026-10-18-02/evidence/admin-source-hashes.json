@@ -1,0 +1,14 @@
+{
+  "scope": "B_ONLY_ADMIN_SOURCE_HASHES_NOT_CREDENTIALS",
+  "sha256": {
+    "allocate.py": "721ae83733d7546c6ee905c4d7176b75c17b7fbd0444d6bd966a304209400afc",
+    "confirm_stop.py": "f5d1adf8a673d198e86ccd5d850428b0f477ddb560595f23b1533e4c95c0d8c5",
+    "connection.py": "1f20c93da399cbd73949bb24fc7ba37d4ddb435fa4724a6b402d91e454e06591",
+    "delete.py": "17ae37b90c74c697a36c5c5f4e7050837dc93ea4f3ade58f81517dac115f2cf6",
+    "prepare.py": "c42982cdd9ea9f19353574f40eea085f892aab53b8fe539289ba271f15f53867",
+    "quote.py": "b6042b0ad7642bc4aaafc4c1cc3955953df65d3a9c19944a8a024d99c5c594c1",
+    "start.py": "c8712a20b57acba20d1edf07388cc0ab1e589331856e5ddbac2a73166975caf7",
+    "status.py": "561d87c5c53e3604c535238790d91d62f52a3c5ddb36bd7a02403811cdca10b1",
+    "verify.py": "44bf02db89aeda5566bc3f711244276863a2a1c4dbdb3b199d178529d1f5ee41"
+  }
+}
