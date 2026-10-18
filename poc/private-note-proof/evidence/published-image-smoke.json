@@ -1,0 +1,66 @@
+{
+  "scope": "PRIVATE_NOTE_CPU_ONLY_CONTAINER_CHECK_NO_PROOF",
+  "imageId": "sha256:7b55e302aa0e1fdf54ec2339074df2a26fdf1da95ebeb1fa248d73c3d51400dd",
+  "imageBytes": 551013355,
+  "proverVersion": null,
+  "cudaBuild": {
+    "sourceCommit": "14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6",
+    "sdkVersion": "3.0.3",
+    "features": [
+      "cuda",
+      "disable-dev-mode"
+    ],
+    "nvccFlags": "-arch=sm_89",
+    "binarySha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "upstreamCargoLockSha256": "15995a3395e61847c403182721c13c56f8735c8d22ed989dc350c5621d812024",
+    "rustVersion": "rustc 1.89.0 (29483883e 2025-08-04)",
+    "nvccVersion": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "cxxVersion": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+    "buildJobs": 4,
+    "gpuExecutionQualified": false
+  },
+  "runtimeFilesSha256": {
+    "/opt/kpi/app/common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "/opt/kpi/app/worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "/opt/kpi/app/service.py": "def96a6abcfc7bfbd2a2397dc2e0b0ab4d290fe2930668b2565e846c68a9ca40",
+    "/opt/kpi/bin/r0vm-cuda": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "/opt/kpi/package/bin/kpi-takeover-host": "3794fd416c903b1034801adcae647681c9442c67f963d3e2b2db915e50bde6d6"
+  },
+  "nonDriverLibrariesResolved": true,
+  "driverLibraryResolved": false,
+  "driverNote": "libcuda.so.1 must be injected by the NVIDIA GPU container runtime; no driver stub is bundled.",
+  "pythonCompilation": true,
+  "authenticatedStartupAndLeaseBinding": true,
+  "unguardedStartRejected": true,
+  "proofJobStarted": false,
+  "providerCalled": false,
+  "gpuExecutionQualified": false,
+  "workloadSha256": "34b4228feb0daf2d660b086b427ccdaafd1a68c425094a2e1580db7bdb9d0bf1",
+  "application": {
+    "private_package.py": "4ad99cf0b6f52f0fa41d0f455f8ae35b94a3d9383e3d8d8665fa21666ed74269",
+    "private_worker.py": "aa1809ce9f0264d8b4e6af2b32c1cd993c24f3fb1e3c66e04cf00ebeae7da222",
+    "private_service.py": "a025b926d0e75dcb74db2d20741b97d7d715e0536e23c17e838be91a878c9614",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c"
+  },
+  "binaries": {
+    "kpi-private-note-native": {
+      "bytes": 7083928,
+      "sha256": "bce8e9866c1b0d4c99868bede571206e4ed442d2674a8bab1d6f7474e132fd07"
+    },
+    "kpi-private-note-producer": {
+      "bytes": 11703720,
+      "sha256": "8f890c3671b183d93c90070946b6cb510d562371aea29f47211cd48776211da0"
+    },
+    "kpi-private-note-verifier": {
+      "bytes": 3548856,
+      "sha256": "5c20e03f3630420c3c91ac4118d0849af7c007d0c8e6ddbdf530a2e5ba5a9c83"
+    }
+  },
+  "fixedTarget": {
+    "control": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+    "fixedTargetVerified": true,
+    "image": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+    "journalSha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e",
+    "proofStarted": false
+  }
+}

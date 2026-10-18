@@ -108,6 +108,8 @@ the control tests, builds, checks authentication/lease binding without a proof,
 publishes and rechecks the immutable digest. See [RESULTS.md](RESULTS.md) for the
 actual published identity and tests. Docker platform proxy/CA settings remain
 required where applicable; no TLS weakening or new Cloud secrets/domains.
+The immutable image and exact proposed disk/port/start settings are also recorded
+in [deployment.json](deployment.json); it explicitly authorizes no rental.
 
 ## Owner/Astra review and a later one-attempt GPU release
 

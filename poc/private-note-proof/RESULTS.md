@@ -37,8 +37,20 @@ Cargo lock, exact public inputs, three separately built binaries and the
 
 Local image ID:
 `sha256:37f6282885dbfce1bd97271203e809d2790a6981ceb79a27d29e2e315a4d75fc`.
-The registry digest will be recorded here after publication; a local image ID is
-not an immutable registry reference. No rental can use this placeholder.
+Published immutable registry reference:
+`ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09`.
+Publication [workflow](https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39142070653)
+succeeded. Anonymous manifest retrieval returned HTTP200 without account
+credentials. The exact digest was pulled and CPU-smoke-checked both in CI and
+locally; fixed source/binaries/target, libraries, authentication and lease
+bindings pass. See [publication evidence](evidence/publication.json),
+[published-image checks](evidence/published-image-smoke.json) and the
+[deployment configuration](deployment.json). This does not qualify GPU execution.
+
+The extra local pull initially exhausted this Cloud task's disk. Reclaiming only
+unused Docker build cache resolved it; the repeated pull and smoke passed.
+Repository data and retained experiments were preserved. No proof was attempted
+or retried.
 
 The inherited official CUDA prover remains byte-identical to PR43. Local CPU
 container checks cannot execute its missing NVIDIA driver or qualify GPU usage.

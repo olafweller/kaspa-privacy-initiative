@@ -1,0 +1,135 @@
+{
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+  "sourceCommit": "15a3e2a158e2ba8aca0d30d74dbc99440cbb66bf",
+  "tag": "private-15a3e2a158e2ba8aca0d30d74dbc99440cbb66bf",
+  "anonymousManifestHttpStatus": 200,
+  "accountCredentialsUsed": false,
+  "manifest": {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "size": 16089,
+      "digest": "sha256:7b55e302aa0e1fdf54ec2339074df2a26fdf1da95ebeb1fa248d73c3d51400dd"
+    },
+    "layers": [
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 30623733,
+        "digest": "sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 6947129,
+        "digest": "sha256:a102f36d092c0e9e0bef8c97854f606af9156aa36ab408e6fa4b88e27124a7e6"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 64290636,
+        "digest": "sha256:05ec76e31584ec109785cc7045bd88df0240411233c2fcdad66b621c662034c0"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 183,
+        "digest": "sha256:398182656c471d6ecca3c2d6d30e97193b40ffc8028a94515093960322f3d64e"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 6885,
+        "digest": "sha256:73389fbd088f5ed5d9fd258baced59de092978b4f483920ea6d074522a105119"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 13935091,
+        "digest": "sha256:89052a520b9a455eafe1d7629c67feea127c565e3c7603fc5d2865f21d1cbd1c"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 96210257,
+        "digest": "sha256:3ec7e176adc77a86d314cc8357dee1e1aade0cbee865fc894ea5224cd3d0d699"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 729,
+        "digest": "sha256:6c7b13abe5ccf0af158eee669dd4ada85f0d1e34e80a8aeee24741937cc8252e"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 2427,
+        "digest": "sha256:217919f855171946f818c164055cde5534b05cff251e4cddd5f5ae32d5efa3c7"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 7127265,
+        "digest": "sha256:8bef60765fbe47b4aee085dab8c183fb0bd1e7eff8212105f09eb75f2de3c55d"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 593808,
+        "digest": "sha256:0ea9b82acf593327ffe186e74b097af28390857ebb0dec5d7cd3e8420bcddc63"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 1014,
+        "digest": "sha256:5c92167c331d257abd2bcfafc6665870c6a8cf38d71d06afbc23d20d70ec972f"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 7350,
+        "digest": "sha256:9189dc42c86f54ee5fddb1bd96af5fef23e3568a4185d2934175f3eda462f0ef"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 32,
+        "digest": "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 32,
+        "digest": "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 454284,
+        "digest": "sha256:192c04c5980fa016408cef425bd9ce4a56153c90b3bff1bb475c92265e63094b"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 8357,
+        "digest": "sha256:16bb3c50fb3f0b76d4ac8186c20a0fcfcea2b52adf0870f0104b5d30375fb173"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 15125,
+        "digest": "sha256:8bd1f7d42e90b3283ebbcf1b180dfd9aadd53d34840ac84d0265e62cffee1e73"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 8640215,
+        "digest": "sha256:7105021881b8733579ee8a1e7370b807f4a6ee9ab19281990deeb6bf62d6cfe1"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 11258,
+        "digest": "sha256:1a62e25720f5a46eb59b731d1c2cb02a827d3ee0b8bf59d6fae57a747f4aefad"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 22894,
+        "digest": "sha256:8645e0669d2e73a60fa1e0629f834b72233f171301f004bb97b1d72a8793e936"
+      },
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 32,
+        "digest": "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1"
+      }
+    ]
+  },
+  "workflowRun": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39142070653",
+  "workflowConclusion": "success",
+  "publishedDigestLocallyPulledAndCpuChecked": true,
+  "observedAtUtc": "2026-10-18T15:50:20.388414+00:00",
+  "localPullFirstAttempt": "disk space exhausted; unused Docker build cache reclaimed; retry and CPU checks passed",
+  "gpuRented": false,
+  "gpuJobStarted": false
+}
