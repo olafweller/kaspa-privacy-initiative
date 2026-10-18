@@ -1,0 +1,12 @@
+{
+  "scope": "ORIGINAL_EVIDENCE_AND_18_FROZEN_SOURCE_BINDINGS_UNCHANGED",
+  "sourceBindingsVerified": 18,
+  "evidenceFilesVerified": {
+    "poc/private-note-chain/evidence": 174,
+    "poc/private-note-chain/calibration-160m/evidence": 10,
+    "poc/private-note-proof/gpu-2026-10-18/evidence": 19
+  },
+  "pr48Head": "051eaa54e49c344c2a5b5ddd36f56a5f829203cf",
+  "pr48Merge": "22f2bdc50436e9d1b491162b4759c7004198f95a",
+  "finalPr48ChecksPassed": 9
+}

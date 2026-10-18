@@ -1,0 +1,8 @@
+{
+  "case": "auth-prior-tip",
+  "error": "Guest panicked: assertion `left == right` failed: prior tip\n  left: [232, 99, 58, 79, 153, 239, 157, 3, 68, 150, 137, 198, 41, 192, 252, 246, 37, 119, 97, 4, 16, 137, 208, 105, 227, 64, 168, 45, 120, 116, 30, 208]\n right: [233, 99, 58, 79, 153, 239, 157, 3, 68, 150, 137, 198, 41, 192, 252, 246, 37, 119, 97, 4, 16, 137, 208, 105, 227, 64, 168, 45, 120, 116, 30, 208]",
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "scope": "ACTUAL_GUEST_AUTHENTICATION_REJECTION_NOT_RESOURCE_FAILURE",
+  "seconds": 0.142475267
+}

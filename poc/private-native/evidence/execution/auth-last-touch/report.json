@@ -1,0 +1,8 @@
+{
+  "case": "auth-last-touch",
+  "error": "Guest panicked: assertion `left == right` failed: prior last touch\n  left: 12\n right: 11",
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "scope": "ACTUAL_GUEST_AUTHENTICATION_REJECTION_NOT_RESOURCE_FAILURE",
+  "seconds": 0.151343212
+}

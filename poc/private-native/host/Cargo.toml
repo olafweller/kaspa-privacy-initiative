@@ -1,0 +1,31 @@
+[package]
+name = "kpi-private-native-host"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[features]
+proof = ["dep:kpi-private-note-proof"]
+[dependencies]
+kpi-private-note-proof = { path = "../../private-note-proof", optional = true }
+kpi-private-native = { path = "../common" }
+kpi-private-note-wallet = { path = "../../private-note-wallet", features = ["tn10-rehearsal"] }
+serde_json = "=1.0.145"
+bincode = "=1.3.3"
+hex = "=0.4.3"
+risc0-zkvm = "=3.0.3"
+kaspa-hashes = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-consensus-core = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-txscript = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+vprogs-zk-abi = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e", default-features = false }
+vprogs-zk-backend-risc0-api = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e", default-features = false }
+vprogs-l1-utils = { git = "https://github.com/kaspanet/vprogs", rev = "f9b84a863a7c7c20586a9cf947550475e894f72e" }
+serde = { version = "=1.0.228", features = ["derive"] }
+secp256k1 = "=0.29.1"
+kaspa-seq-commit = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+kaspa-txscript-errors = { git = "https://github.com/kaspanet/rusty-kaspa", branch = "master" }
+vprogs-zk-backend-risc0-covenant = { path = "../../takeover/vendor/covenant" }
+
+[[bin]]
+name = "kpi-private-native-proof"
+path = "src/bin/proof.rs"
+required-features = ["proof"]

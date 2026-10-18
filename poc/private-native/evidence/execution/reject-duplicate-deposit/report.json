@@ -1,0 +1,13 @@
+{
+  "case": "reject-duplicate-deposit",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "77c82ffe0e52e9f427496669af43771b6c0a38d883cd36292e4be733f6507f9c",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.161238273,
+  "segmentPo2": 20,
+  "segments": 1,
+  "userCycles": 559677
+}

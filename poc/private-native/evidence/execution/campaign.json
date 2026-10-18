@@ -1,0 +1,189 @@
+{
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_PROOF_RENTAL_OR_BROADCAST",
+  "cycleLimitPerCase": 160000000,
+  "wallLimitPerCaseSeconds": 900,
+  "wallLimitCampaignSeconds": 3600,
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "hostSha256": "fd0b6c0bc1c02e370b9166aa67fe64d539c0a5cff284e906be0021e5516ebe3c",
+  "programSha256": "72168fe40537954a3dd317605f893f9df836dee2864f46aa89122875a1f4be71",
+  "cases": [
+    {
+      "case": "deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.43797559299855493,
+      "peakSampledProcessGroupRssBytes": 37793792,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.424238,
+      "systemSeconds": 0.034545
+    },
+    {
+      "case": "credit-transfer",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 2.4154968930015457,
+      "peakSampledProcessGroupRssBytes": 79069184,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 2.522265,
+      "systemSeconds": 0.034488
+    },
+    {
+      "case": "exit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.3690837000031024,
+      "peakSampledProcessGroupRssBytes": 80515072,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.3825699999999999,
+      "systemSeconds": 0.026411999999999998
+    },
+    {
+      "case": "reconcile",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.4223887080006534,
+      "peakSampledProcessGroupRssBytes": 79405056,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.43613599999999997,
+      "systemSeconds": 0.041456
+    },
+    {
+      "case": "reject-duplicate-deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.3192081259985571,
+      "peakSampledProcessGroupRssBytes": 37474304,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.299266,
+      "systemSeconds": 0.01626
+    },
+    {
+      "case": "reject-fabricated-deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.3190542700031074,
+      "peakSampledProcessGroupRssBytes": 38248448,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.273992,
+      "systemSeconds": 0.015709
+    },
+    {
+      "case": "reject-stale-double-spend",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.3731354370029294,
+      "peakSampledProcessGroupRssBytes": 80814080,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.358433,
+      "systemSeconds": 0.027347999999999997
+    },
+    {
+      "case": "reject-transfer-replay",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.3732334860033006,
+      "peakSampledProcessGroupRssBytes": 80265216,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.41551,
+      "systemSeconds": 0.050068999999999995
+    },
+    {
+      "case": "reject-wrong-exit-recipient",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.4472729170011007,
+      "peakSampledProcessGroupRssBytes": 37998592,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.340485,
+      "systemSeconds": 0.031414
+    },
+    {
+      "case": "reject-underpay",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.32173744299507234,
+      "peakSampledProcessGroupRssBytes": 37605376,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.30025999999999997,
+      "systemSeconds": 0.022871
+    },
+    {
+      "case": "reject-reserve-diversion",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.43659936600306537,
+      "peakSampledProcessGroupRssBytes": 44425216,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.30596799999999996,
+      "systemSeconds": 0.024803
+    },
+    {
+      "case": "reject-wrong-recipient",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.4324259360000724,
+      "peakSampledProcessGroupRssBytes": 38813696,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.349669,
+      "systemSeconds": 0.0156
+    },
+    {
+      "case": "reject-payout-replay",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.318347749998793,
+      "peakSampledProcessGroupRssBytes": 37920768,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.301605,
+      "systemSeconds": 0.012532
+    },
+    {
+      "case": "auth-prior-state",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.31762577300105477,
+      "peakSampledProcessGroupRssBytes": 37670912,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.298153,
+      "systemSeconds": 0.011748
+    },
+    {
+      "case": "auth-prior-tip",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.32126032700034557,
+      "peakSampledProcessGroupRssBytes": 37543936,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.267992,
+      "systemSeconds": 0.019575
+    },
+    {
+      "case": "auth-start-inclusion",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.3203732689944445,
+      "peakSampledProcessGroupRssBytes": 37093376,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.276536,
+      "systemSeconds": 0.011817
+    },
+    {
+      "case": "auth-last-touch",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.31883160800498445,
+      "peakSampledProcessGroupRssBytes": 37662720,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.264611,
+      "systemSeconds": 0.02524
+    }
+  ],
+  "completed": true,
+  "wallSeconds": 11.269103279002593
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "ACTUAL_CRYPTOGRAPHIC_OLD_RECEIPT_SUBSTITUTION_REJECTION",
+  "oldReceiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+  "expectedNewImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "exitCode": 1,
+  "error": "Error: claim digest does not match the expected digest 74ed4c1fe9fcb75b4af136a9a28d94199165fee32be9dc9b38aa65fa8370730e; expected 2cabe99c0d457dda228ecf69b5865be32c25dca8c2ad4d593f562edd917443ae",
+  "noSuccessOutputCreated": true
+}

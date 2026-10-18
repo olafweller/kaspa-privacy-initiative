@@ -1,0 +1,13 @@
+{
+  "case": "exit",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "226b90481e71fdabd94145460cb32b6ead0c10029d2b43a85b1d9eefe0705564",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 1.156291559,
+  "segmentPo2": 20,
+  "segments": 45,
+  "userCycles": 43877348
+}

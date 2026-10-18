@@ -1,0 +1,11 @@
+{
+  "discoveredAndValidatedOwnNote": true,
+  "exitPrincipalSompi": 400000000,
+  "newActualExitProofVerifiedAgainstCurrentState": true,
+  "publicParameterHashChecked": true,
+  "publicParameterSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "scope": "SEPARATE_LOCAL_BOB_PROCESS_OWN_SECRET_AND_PUBLIC_STATE_ONLY",
+  "seconds": 11.976303944,
+  "secretMaterialPublished": false,
+  "walletVk": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec"
+}

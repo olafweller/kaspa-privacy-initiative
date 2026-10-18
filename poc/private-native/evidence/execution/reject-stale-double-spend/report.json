@@ -1,0 +1,13 @@
+{
+  "case": "reject-stale-double-spend",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "1ea9cc36b069e611ecd0b89064991f71b6a2a3cb3fb2e32765ced3fbe8929e9a",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 1.121937404,
+  "segmentPo2": 20,
+  "segments": 49,
+  "userCycles": 47118612
+}

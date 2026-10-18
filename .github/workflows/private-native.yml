@@ -1,0 +1,43 @@
+name: Private native lifecycle checks
+on:
+  pull_request:
+    paths:
+      - 'poc/private-native/**'
+      - 'poc/private-note-chain/common/**'
+      - 'poc/private-note-wallet/**'
+      - 'poc/private-note-proof/**'
+      - 'poc/native-value/host/**'
+      - 'poc/takeover/vendor/covenant/**'
+      - '.github/workflows/private-native.yml'
+permissions:
+  contents: read
+jobs:
+  lifecycle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.local/private-native-ci
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Prerequisites and pinned Rust
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libssl-dev
+          rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            .local/private-native-ci
+          key: private-native-rust191-${{ hashFiles('poc/private-native/Cargo.lock') }}
+      - name: Actual wallet-proof, native-script and frozen-target checks
+        run: |
+          cargo +1.91.0 fmt --manifest-path poc/private-native/Cargo.toml -p kpi-private-native -p kpi-private-native-host --check
+          cargo +1.91.0 fmt --manifest-path poc/private-native/guest/Cargo.toml --check
+          cargo +1.91.0 test --locked --release --manifest-path poc/private-native/Cargo.toml --features proof -- --test-threads=1
+          python3 poc/private-native/check_evidence.py

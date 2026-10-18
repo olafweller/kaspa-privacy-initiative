@@ -1,0 +1,46 @@
+{
+  "actualTN10Broadcast": false,
+  "delegateChangeSompi": 600000000,
+  "nativeFeeSompi": 100000,
+  "negativeControls": [
+    {
+      "case": "underpay",
+      "error": "script ran, but verification failed",
+      "layer": "actual native TxScriptEngine",
+      "rejected": true
+    },
+    {
+      "case": "reserve-diversion",
+      "error": "script ran, but verification failed",
+      "layer": "actual native TxScriptEngine",
+      "rejected": true
+    },
+    {
+      "case": "wrong-recipient",
+      "error": "script ran, but verification failed",
+      "layer": "actual native TxScriptEngine",
+      "rejected": true
+    },
+    {
+      "case": "distinct-payout-replay",
+      "differentNativeId": true,
+      "layer": "local UTXO spentness fixture, not script re-verification or live consensus",
+      "missingSpentPermissionAndReserve": true,
+      "rejected": true
+    }
+  ],
+  "permissionIssuanceReceiptVerified": false,
+  "permissionRentRefundSompi": 50000000,
+  "positiveNativeScriptsAccepted": true,
+  "principalPaidSompi": 400000000,
+  "recipientNativeOutputSompi": 450000000,
+  "scope": "ACTUAL_PAYOUT_SCRIPTS_WITH_SYNTHETIC_PERMISSION_ISSUANCE_AND_LOCAL_UTXO_SET",
+  "scriptUnits": [
+    2575,
+    181,
+    0
+  ],
+  "sponsorChangeSompi": 199900000,
+  "sponsorInputSompi": 200000000,
+  "stateRentExcludedSompi": 100000000
+}

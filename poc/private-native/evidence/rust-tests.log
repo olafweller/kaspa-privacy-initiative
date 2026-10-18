@@ -1,0 +1,33 @@
+   Compiling kpi-private-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/host)
+    Finished `release` profile [optimized] target(s) in 5.83s
+     Running unittests src/lib.rs (.local/ci-target/release/deps/kpi_private_native-5483e2e441a41b99)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_private_native_host-660ccf268e5eba1f)
+
+running 7 tests
+test tests::canonical_v1_parser_matches_consensus_bytes_and_rejects_all_truncations ... ok
+test tests::captured_lane_adapter_preserves_prior_state_and_exact_journal ... ok
+test tests::checkpoint_state_and_last_touch_cannot_be_relabelled_for_a_gap ... ok
+test tests::immutable_permission_outpoint_and_covenant_rent_are_enforced ... ok
+test tests::native_payout_underpayment_diversion_recipient_and_distinct_replay ... ok
+test tests::payout_cannot_be_disguised_as_new_deposit_or_hidden_by_missing_tags ... ok
+test tests::real_wallet_proofs_preserve_liability_until_native_payout ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+     Running unittests src/bin/proof.rs (.local/ci-target/release/deps/kpi_private_native_proof-7cb936d4d2b4eb32)
+
+running 1 test
+test tests::frozen_local_targets_and_fake_rejection ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+   Doc-tests kpi_private_native
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

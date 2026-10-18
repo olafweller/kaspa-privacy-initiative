@@ -1,0 +1,13 @@
+{
+  "case": "reject-payout-replay",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "8b9077e918d5c431804a7ca27ad53dbffb0dc054d961ee0f3931141348b2b34c",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.172360915,
+  "segmentPo2": 20,
+  "segments": 2,
+  "userCycles": 946092
+}

@@ -1,0 +1,193 @@
+{
+  "activeLaneGapScores": [
+    4989,
+    5000,
+    5000
+  ],
+  "actualTN10Broadcast": false,
+  "additionalExecutionCases": [
+    "reject-duplicate-deposit",
+    "reject-fabricated-deposit",
+    "reject-stale-double-spend",
+    "reject-transfer-replay",
+    "reject-wrong-exit-recipient",
+    "reject-underpay",
+    "reject-reserve-diversion",
+    "reject-wrong-recipient",
+    "reject-payout-replay",
+    "auth-prior-state",
+    "auth-prior-tip",
+    "auth-start-inclusion",
+    "auth-last-touch"
+  ],
+  "campaignWallLimitSeconds": 3600,
+  "controls": [
+    {
+      "case": "duplicate-deposit-outpoint",
+      "layer": "guest native-output registration",
+      "rejected": true
+    },
+    {
+      "case": "fabricated-deposit-output",
+      "layer": "guest ID-bound native output",
+      "rejected": true
+    },
+    {
+      "case": "old-root-double-spend",
+      "layer": "guest current nullifier/actual wallet proof/destination",
+      "rejected": true
+    },
+    {
+      "case": "transfer-replay",
+      "layer": "guest current nullifier/actual wallet proof/destination",
+      "rejected": true
+    },
+    {
+      "case": "wrong-exit-recipient",
+      "layer": "guest current nullifier/actual wallet proof/destination",
+      "rejected": true
+    },
+    {
+      "case": "underpay",
+      "layer": "guest authenticated payout accounting",
+      "rejected": true
+    },
+    {
+      "case": "reserve-diversion",
+      "layer": "guest authenticated payout accounting",
+      "rejected": true
+    },
+    {
+      "case": "wrong-recipient",
+      "layer": "guest authenticated payout accounting",
+      "rejected": true
+    },
+    {
+      "case": "reconcile-payout-replay",
+      "layer": "guest consumed permission and paid exit",
+      "rejected": true
+    },
+    {
+      "case": "omitted-payout-changes-native-endpoint",
+      "layer": "endpoint comparison only; not a newly proved omission",
+      "rejected": true
+    },
+    {
+      "acceptedByActualNativeScriptsAndReconciled": true,
+      "case": "permission-and-payout-without-executor-tags",
+      "layer": "native outpoint and covenant-output detection"
+    },
+    {
+      "case": "prior-state",
+      "layer": "native host invocation of guest authentication relation",
+      "rejected": true
+    },
+    {
+      "case": "prior-tip",
+      "layer": "native host invocation of guest authentication relation",
+      "rejected": true
+    },
+    {
+      "case": "start-inclusion",
+      "layer": "native host invocation of guest authentication relation",
+      "rejected": true
+    },
+    {
+      "case": "last-touch",
+      "layer": "native host invocation of guest authentication relation",
+      "rejected": true
+    }
+  ],
+  "guestCycleLimitPerBatch": 160000000,
+  "newOuterReceiptProduced": false,
+  "parameterSetupPerformed": false,
+  "permissionIssuanceReceiptVerified": false,
+  "rows": [
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 0,
+        "reserve_principal": 0,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "stage": "zero"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 1000000000,
+        "private_liability": 0,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "nativeId": "db8e41278858cec3c724743f566a3002e187f6eca6ec7dc1f93cbe2bda9c1fbc",
+      "stage": "deposit"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 1000000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "nativeId": "3999a722126a074d40a489f2c0a7122ae35887a517a1026e41ade0b426bcb858",
+      "stage": "credit-transfer"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 1000000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "nativeId": "331230ed4c46aff445483c0fba555623a5f54e034021a5b6f486560b490ed206",
+      "stage": "credit-transfer"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 400000000
+      },
+      "nativeId": "8d90ad897660b1957fb3e892c06d56a7612a9c7faaf4f73a53263adf07b525a7",
+      "stage": "exit"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 50000000,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 400000000
+      },
+      "nativeId": "29dfddfd225b905c33f454fa6730156f9c0a677fbca04f6fb088486dc660fe75",
+      "stage": "reconcile"
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "nativeId": "22ab6acb0eb0fb8f9b883f2356044f0169a5e5a772c375da83d6be0a96904e70",
+      "stage": "reconcile"
+    }
+  ],
+  "scope": "LOCAL_REAL_WALLET_PROOFS_NATIVE_PAYOUT_SCRIPTS_SYNTHETIC_ACCEPTED_LANE_AND_PERMISSION_ISSUANCE",
+  "stateCovenantContinuationValueSompi": 100000000,
+  "wallLimitPerBatchSeconds": 900
+}

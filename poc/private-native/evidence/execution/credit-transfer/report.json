@@ -1,0 +1,13 @@
+{
+  "case": "credit-transfer",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "1d93135a6b3cf1dd96537bb2b379396ffd3d756926aebb0e0575eda003f26b67",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 2.171278554,
+  "segmentPo2": 20,
+  "segments": 95,
+  "userCycles": 93104947
+}

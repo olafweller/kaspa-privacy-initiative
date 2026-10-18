@@ -47,6 +47,15 @@ external preservation. The next substantive gap is actual native deposit lineage
 and Bob's authorized exit/payout with complete reserve accounting, before a
 separately released full TN10 rehearsal. No additional rental follows automatically.
 
+The subsequent [local native/private lifecycle package](../poc/private-native/RESULTS.md)
+now implements and execution-tests that accounting path with actual wallet
+proofs, Bob's separate recovery/proof process and native payout scripts. Four
+positive batches and thirteen guest rejection controls pass. Accepted native
+events remain fixtures; no new outer receipt or TN10 transaction was made.
+Review [ADR-0014](adr/0014-private-native-lifecycle.md) and the
+[concrete transaction/proof plan](../poc/private-native/TN10-PLAN.md) before
+releasing new proof packaging/rental or the terminal native rehearsal.
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

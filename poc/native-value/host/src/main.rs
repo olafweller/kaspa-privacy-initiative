@@ -598,6 +598,18 @@ fn payout(
         TransactionOutput::new(de.amount - amount, delegate_spk),
     ];
     require(de.amount > amount, "this trial retains nonzero backing")?;
+    // Select the private lifecycle lane/payload before fee measurement/signing.
+    // Editing either after sponsor signing invalidates the native signature.
+    let (payout_lane, payout_payload) = if req["privateExitId"].is_null() {
+        (SUBNETWORK_ID_NATIVE, vec![])
+    } else {
+        let exit_id = hash(&req["privateExitId"])?;
+        let mut lane = [0u8; 20];
+        lane[1..4].copy_from_slice(&[0x44, 0x45, 0x46]);
+        let mut payload = b"KPI-native-payout-v1\0".to_vec();
+        payload.extend_from_slice(&exit_id.as_bytes());
+        (lane.into(), payload)
+    };
     let mut fee = 100_000u64;
     let tx = loop {
         let mut outs = outputs.clone();
@@ -628,9 +640,9 @@ fn payout(
             ],
             outs,
             0,
-            SUBNETWORK_ID_NATIVE,
+            payout_lane,
             0,
-            vec![],
+            payout_payload.clone(),
         );
         let entries = vec![pe.clone(), de.clone(), fe.clone()];
         // Measure both bridge inputs on the valid shape, then retain those budgets on negatives.
@@ -896,32 +908,86 @@ mod bridge_tests {
         let dp = TransactionOutpoint::new(Hash::from_bytes([2; 32]), 0);
         let fp = TransactionOutpoint::new(Hash::from_bytes([3; 32]), 0);
         let entries = vec![permission.clone(), delegate.clone(), fee.clone()];
-        for attack in ["", "underpay", "reserve", "recipient"] {
-            let req = json!({"permissionUtxo":rpc_entry(pp,permission.clone()),"delegateUtxo":rpc_entry(dp,delegate.clone()),"covenantId":cov.to_string(),"recipient":hex::encode(recipient),"amount":amount,"attack":attack});
-            let t = payout(&req, &[(fp, fee.clone())], key, &address, &mut vec![]).unwrap();
-            let pop = PopulatedTransaction::new(&t, entries.clone());
-            let ctx = CovenantsContext::from_tx(&pop).unwrap();
-            let cache = Cache::new(100);
-            let reused = SigHashReusedValuesUnsync::new();
-            let anchor = Anchor(Hash::from_bytes([0; 32]), Hash::from_bytes([0; 32]));
-            let ec = EngineContext::new(&cache)
-                .with_reused(&reused)
-                .with_seq_commit_accessor(&anchor)
-                .with_covenants_ctx(&ctx);
-            let mut vm = TxScriptEngine::from_transaction_input(
-                &pop,
-                &t.inputs[0],
-                0,
-                &entries[0],
-                ec,
-                EngineFlags::default(),
-            );
-            let result = vm.execute();
-            assert_eq!(result.is_ok(), attack.is_empty(), "{attack}: {result:?}");
-            eprintln!("permission attack={attack:?} result={result:?}");
-            if attack.is_empty() {
-                assert_eq!(t.outputs[0].value, 450_000_000);
-                assert_eq!(t.outputs[1].value, 600_000_000);
+        for private_lane in [false, true] {
+            for attack in ["", "underpay", "reserve", "recipient"] {
+                let mut req = json!({"permissionUtxo":rpc_entry(pp,permission.clone()),"delegateUtxo":rpc_entry(dp,delegate.clone()),"covenantId":cov.to_string(),"recipient":hex::encode(recipient),"amount":amount,"attack":attack});
+                if private_lane {
+                    req["privateExitId"] = json!("42".repeat(32));
+                }
+                let t = payout(&req, &[(fp, fee.clone())], key, &address, &mut vec![]).unwrap();
+                let pop = PopulatedTransaction::new(&t, entries.clone());
+                let ctx = CovenantsContext::from_tx(&pop).unwrap();
+                let cache = Cache::new(100);
+                let reused = SigHashReusedValuesUnsync::new();
+                let anchor = Anchor(Hash::from_bytes([0; 32]), Hash::from_bytes([0; 32]));
+                let ec = EngineContext::new(&cache)
+                    .with_reused(&reused)
+                    .with_seq_commit_accessor(&anchor)
+                    .with_covenants_ctx(&ctx);
+                let mut vm = TxScriptEngine::from_transaction_input(
+                    &pop,
+                    &t.inputs[0],
+                    0,
+                    &entries[0],
+                    ec,
+                    EngineFlags::default(),
+                );
+                let result = vm.execute();
+                assert_eq!(result.is_ok(), attack.is_empty(), "{attack}: {result:?}");
+                eprintln!("permission attack={attack:?} result={result:?}");
+                if attack.is_empty() {
+                    assert_eq!(t.outputs[0].value, 450_000_000);
+                    assert_eq!(t.outputs[1].value, 600_000_000);
+                    if private_lane {
+                        assert_eq!(
+                            t.payload,
+                            [b"KPI-native-payout-v1\0".as_slice(), &[0x42; 32]].concat()
+                        );
+                        assert_eq!(
+                            <&kaspa_consensus_core::subnets::SubnetworkId as std::convert::AsRef<
+                                [u8],
+                            >>::as_ref(&&t.subnetwork_id),
+                            &[0, 0x44, 0x45, 0x46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        );
+                        let ec = EngineContext::new(&cache)
+                            .with_reused(&reused)
+                            .with_covenants_ctx(&ctx)
+                            .with_seq_commit_accessor(&anchor);
+                        let mut vm = TxScriptEngine::from_transaction_input(
+                            &pop,
+                            &t.inputs[2],
+                            2,
+                            &entries[2],
+                            ec,
+                            EngineFlags::default(),
+                        );
+                        vm.execute().expect(
+                            "native sponsor signature binds private lane and payout payload",
+                        );
+                        let mut changed = t.clone();
+                        changed.payload.push(1);
+                        changed.finalize();
+                        let changed_pop = PopulatedTransaction::new(&changed, entries.clone());
+                        let changed_ctx = CovenantsContext::from_tx(&changed_pop).unwrap();
+                        let changed_reused = SigHashReusedValuesUnsync::new();
+                        let ec = EngineContext::new(&cache)
+                            .with_reused(&changed_reused)
+                            .with_covenants_ctx(&changed_ctx)
+                            .with_seq_commit_accessor(&anchor);
+                        let mut vm = TxScriptEngine::from_transaction_input(
+                            &changed_pop,
+                            &changed.inputs[2],
+                            2,
+                            &entries[2],
+                            ec,
+                            EngineFlags::default(),
+                        );
+                        assert!(
+                            vm.execute().is_err(),
+                            "post-signing payout payload mutation must reject"
+                        );
+                    }
+                }
             }
         }
     }

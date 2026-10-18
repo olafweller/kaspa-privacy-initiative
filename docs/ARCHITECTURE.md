@@ -485,3 +485,24 @@ verification and local native positive/fifteen-negative checks. The correct
 stop and deletion were confirmed after external preservation. No runtime,
 privacy relation or backing rule changed; canonical deposit lineage, Bob's exit
 and actual native payout remain open.
+
+## Local private/native lifecycle preparation — 2026-10-18
+
+[ADR-0014](adr/0014-private-native-lifecycle.md) and the
+[local package](../poc/private-native/README.md) connect zero-liability deposit
+registration, real private credit/payment, Bob's independent exit proof and
+native permission/delegate payout reconciliation. State-covenant rent 100M is
+separate from the user delegate reserve 1,000M and sponsored permission rent 50M;
+Bob's 400M exit remains an unpaid liability until the accepted native permission/
+reserve spend and exact 450M recipient output (including 50M rent refund) justify
+discharge. The remaining delegate principal/private liability is 600M.
+
+The separate guest carries full state, reserve/permission outpoints and active
+lane continuity beyond the old short fixture's 100-score cap. Four connected
+batches and 13 controls ran in the zkVM; actual local native payout scripts
+accepted/rejected their targeted variants. The sponsor builder supports the
+private lane before signing. These are synthetic accepted-lane/UTXO fixtures,
+not native chain acceptance. Genuine new lifecycle receipts, native permission
+issuance and terminal TN10 confirmation remain future gates under the
+[proposed rehearsal plan](../poc/private-native/TN10-PLAN.md). No new GPU rental,
+funding, broadcast or general architecture selection follows from preparation.

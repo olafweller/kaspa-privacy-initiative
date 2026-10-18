@@ -1,0 +1,8 @@
+{
+  "case": "auth-start-inclusion",
+  "error": "Guest panicked: assertion `left == right` failed: start active inclusion\n  left: [173, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]\n right: [172, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]",
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "scope": "ACTUAL_GUEST_AUTHENTICATION_REJECTION_NOT_RESOURCE_FAILURE",
+  "seconds": 0.157085246
+}

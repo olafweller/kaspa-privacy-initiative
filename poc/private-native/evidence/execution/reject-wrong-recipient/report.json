@@ -1,0 +1,13 @@
+{
+  "case": "reject-wrong-recipient",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "ff99486e2cd5447eeb741431f3d101e996aa3f1d43db1277402d696a0d553e59",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.204651588,
+  "segmentPo2": 20,
+  "segments": 2,
+  "userCycles": 971433
+}

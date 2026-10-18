@@ -1,0 +1,52 @@
+{
+  "kaspanet/docs": {
+    "head": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "previouslyReviewedHead": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "unchanged": true
+  },
+  "kaspanet/vprogs": {
+    "head": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "previouslyReviewedHead": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "unchanged": true
+  },
+  "kaspanet/research": {
+    "head": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+    "previouslyReviewedHead": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+    "unchanged": true
+  },
+  "zcash/orchard": {
+    "head": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+    "previouslyReviewedHead": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+    "unchanged": true
+  },
+  "AztecProtocol/aztec-packages": {
+    "head": "cfdcaf175030a7e22503e62b5d18080e6501ae73",
+    "previouslyReviewedHead": "cfdcaf175030a7e22503e62b5d18080e6501ae73",
+    "unchanged": true
+  },
+  "Railgun-Privacy/contract": {
+    "head": "36bcf5ed7cf94bfafb6e1a303e1832c769c16780",
+    "previouslyReviewedHead": "36bcf5ed7cf94bfafb6e1a303e1832c769c16780",
+    "unchanged": true
+  },
+  "Railgun-Community/engine": {
+    "head": "6e2614d53a106dd62abad91e7ce03ee4a3956138",
+    "previouslyReviewedHead": "6e2614d53a106dd62abad91e7ce03ee4a3956138",
+    "unchanged": true
+  },
+  "monero-project/monero": {
+    "head": "183b5e962401092ba6e1ea1a2e4774800851f693",
+    "previouslyReviewedHead": "183b5e962401092ba6e1ea1a2e4774800851f693",
+    "unchanged": true
+  },
+  "litecoin-project/litecoin": {
+    "head": "ec1b6489a900d09cf5991e220dce089c77a232a2",
+    "previouslyReviewedHead": "ec1b6489a900d09cf5991e220dce089c77a232a2",
+    "unchanged": true
+  },
+  "mrzeku2000XTTT/kaspa-xmss-covenants": {
+    "head": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+    "previouslyReviewedHead": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+    "unchanged": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "case": "reject-reserve-diversion",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
+  "journalSha256": "3c2fe9ce98263e3bdf52ea6b448453baefd98f804fee7932f77fac62b9e7b62f",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.177449878,
+  "segmentPo2": 20,
+  "segments": 2,
+  "userCycles": 984712
+}

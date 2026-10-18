@@ -384,3 +384,22 @@ gate without establishing canonical funding, exit/payout or a proved omitted
 sequence. Remote GPU input remains public-only. B root, trusted local verifiers
 and compiler provenance remain trust assumptions; the run adds no new authority
 over protocol funds and does not establish practical anonymity.
+
+## Private/native lifecycle preparation boundary
+
+The [local lifecycle package](poc/private-native/README.md) tracks individual
+native reserve/permission outpoints and retains unpaid-exit liabilities until
+ID-bound accepted payout bytes consume the expected permission/reserve and bind
+principal, destination, refund and change. Tracked native spending is recognized
+before interpreting deposit payloads, including third-party payouts without
+honest tags. State-covenant rent is separate from user backing and never drawn
+down. The real sponsor builder signs only after choosing the private lane/payload.
+
+Native endpoint acceptance remains load-bearing: arbitrary preimages or caller-
+asserted covenant metadata cannot establish L1 funding/payment. Local native
+payout scripts and a fixture UTXO set are tested; genuine new receipt/native
+permission issuance and canonical chain spentness are not claimed. Current
+nullifiers, exact prior root/tip/last-touch and native final seqcommit binding
+remain required. Long active gaps are supported; true expiry, general reserve
+aggregation and permission concurrency are outside this narrow package.
+See the [second-pass review](poc/private-native/ADVERSARIAL-REVIEW.md).
