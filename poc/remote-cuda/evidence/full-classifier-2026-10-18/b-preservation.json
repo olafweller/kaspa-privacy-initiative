@@ -1,0 +1,34 @@
+{
+  "unitSha256": "4b0bb562846b2408946e713d689ef97d05db48964a15fa0b20f8c308926e9c8f",
+  "results": {
+    "verification-provenance.json": {
+      "bytes": 476,
+      "sha256": "4e0069394fedba0f5f53c1e03b9147acb3654485ac9c40d7cd8eeaac79ee9c30"
+    },
+    "job-complete.json": {
+      "bytes": 278,
+      "sha256": "d18e94715cbc0052d376eae4647b65392e3848341a8ad9f29b9672eab3dacbef"
+    },
+    "provider-stop-observation.json": {
+      "bytes": 585,
+      "sha256": "cf95e1a837410b699b53f8a11ffec700c26c54b4d550525bb30eedfd07162166"
+    },
+    "independent-expected-statement.json": {
+      "bytes": 623,
+      "sha256": "ac29fdbbc1e6d958eaffbd58be8bb54864e0b32254a2968e6356fd3974288282"
+    },
+    "proof-resources.json": {
+      "bytes": 617,
+      "sha256": "fefe708cf61b6efb557ada3d4859fd30b6ffc858c5ea24a99d5e54292b231e8a"
+    },
+    "independent-cpu-verification.json": {
+      "bytes": 577,
+      "sha256": "2fa0e3055f90580d4b03695cf90a4031573c76631980c49ae0d9e00c6b4f947f"
+    },
+    "proof-complete.json": {
+      "bytes": 538,
+      "sha256": "f0578b918dee6768ac39298a37a0c3030aad354235a5ef025d74da2e637bd8a8"
+    }
+  },
+  "resultsDirectorySynced": true
+}

@@ -9,8 +9,9 @@ Reuse the original PR39 `outer-proof-128m prove` route, succinct receipt options
 `397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716`, wallet
 proofs, operations and exact expected journal. Reuse the hash-checked 24-case
 execution qualification; do not re-prove 24 cases or regenerate wallet setup.
-The only Rust change is an additional corrupted-seal negative check in the
-independent verifier, not the guest or proof-generation implementation.
+The Rust receipt-check change adds a corrupted-seal negative check in the
+independent verifier. A read-only check entry point reuses the existing
+qualification gate; the guest and proof-generation implementation are unchanged.
 
 Prepare and CPU-check a derived image before paid compute. Its base is the
 previously GPU-qualified immutable CUDA image; retain the exact r0vm binary,

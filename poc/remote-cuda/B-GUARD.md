@@ -229,3 +229,16 @@ proof, TN10 transaction or volume deletion occurred. The remaining milestone is
 the full classifier receipt; this five-partial-proof qualification does not
 establish its end-to-end proving cost. Retained volume storage and actual billing
 reconciliation remain separate. See `evidence/gpu-qualification-2026-10-18`.
+
+## Complete classifier receipt and independent stop — 2026-10-18
+
+A separately authorized attempt used new Pod `wzozsg2nej95tb`, a separate
+`kpi-cuda-full-guard.service` and `/var/lib/kpi-cuda-guard/full-20261018-01`.
+The previous qualification lease/Pod/evidence were not reset. The complete
+classifier receipt was produced within a 256-second worker job and independently
+verified on Cloud CPU, including wrong-image/journal/seal rejection. B retains
+that report in `results` and the durable original archive in `artifacts`.
+Provider GET confirmed EXITED at 11:49:24Z; the guard exited normally after its
+terminal grace. No Cloud secret/domain was added and no proof retry occurred.
+Both stopped Pods' 10GB volumes remain; billing/cleanup are separate. See
+[FULL-RESULTS.md](FULL-RESULTS.md) for the exact statement, measurements and scope.
