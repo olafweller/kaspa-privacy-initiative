@@ -1,0 +1,334 @@
+{
+  "scope": "READ_ONLY_B_HOST_INSPECTION",
+  "host": "vmi3641034.contaboserver.net",
+  "uid": 0,
+  "python": "3.12.3",
+  "systemd": "systemd 255 (255.4-1ubuntu8.18)",
+  "ntpSynchronized": "yes",
+  "availableVarLibBytes": 85807165440,
+  "filesystem": {
+    "filesystems": [
+      {
+        "target": "/",
+        "source": "/dev/sda1",
+        "fstype": "ext4"
+      }
+    ]
+  },
+  "paths": {
+    "/opt/kpi-remote-cuda": {
+      "exists": false
+    },
+    "/var/lib/kpi-cuda-guard": {
+      "exists": false
+    },
+    "/etc/systemd/system/kpi-cuda-guard.service": {
+      "exists": false
+    },
+    "/etc/kpi-cuda-guard.env": {
+      "exists": false
+    }
+  },
+  "account": {
+    "exists": false
+  },
+  "existingKpiServices": {
+    "kpi-bcold-qual-a3-bcold-fb92b4d2a85347828b08f167efec2709-r1.service": {
+      "MainPID": "0",
+      "Id": "kpi-bcold-qual-a3-bcold-fb92b4d2a85347828b08f167efec2709-r1.service",
+      "LoadState": "loaded",
+      "ActiveState": "failed",
+      "SubState": "failed",
+      "UnitFileState": "static"
+    },
+    "kpi-bcold-qual-a3-bcold-fb92b4d2a85347828b08f167efec2709-r2.service": {
+      "MainPID": "0",
+      "Id": "kpi-bcold-qual-a3-bcold-fb92b4d2a85347828b08f167efec2709-r2.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-capacity-20261007-fd79dad85065.service": {
+      "MainPID": "40218",
+      "Id": "kpi-finite-b-finite-capacity-20261007-fd79dad85065.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-23ec0276cb764ec4845aab53270b1e35.service": {
+      "MainPID": "68135",
+      "Id": "kpi-finite-b-finite-cold-23ec0276cb764ec4845aab53270b1e35.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-4bd81044290e4feab8e5e4591196c1f5.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-finite-cold-4bd81044290e4feab8e5e4591196c1f5.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-65b7dee37b3c4308a9f60e4f2a037353.service": {
+      "MainPID": "100000",
+      "Id": "kpi-finite-b-finite-cold-65b7dee37b3c4308a9f60e4f2a037353.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-7fb946d115f146b1a425c9df353cddfb.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-finite-cold-7fb946d115f146b1a425c9df353cddfb.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-af44612835a64cb2ad65c099b3676fff.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-finite-cold-af44612835a64cb2ad65c099b3676fff.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-cold-b9865a0bc335496abe2576d5808c1e13.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-finite-cold-b9865a0bc335496abe2576d5808c1e13.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-live-credit-20261007-9a4646b690c74239-p2.service": {
+      "MainPID": "34383",
+      "Id": "kpi-finite-b-finite-live-credit-20261007-9a4646b690c74239-p2.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-qualified-20261007-30ff267e0082.service": {
+      "MainPID": "45923",
+      "Id": "kpi-finite-b-finite-qualified-20261007-30ff267e0082.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-finite-qualified-20261007-6d2bc872c411.service": {
+      "MainPID": "52462",
+      "Id": "kpi-finite-b-finite-qualified-20261007-6d2bc872c411.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-qual-loop-baseline-89769ee36745.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-qual-loop-baseline-89769ee36745.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-qual-loop-patched-89769ee36745.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-qual-loop-patched-89769ee36745.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-capacity-20261007-fd79dad85065.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-capacity-20261007-fd79dad85065.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-845aab53270b1e35.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-845aab53270b1e35.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-8fbce476213c0fb9.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-8fbce476213c0fb9.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-a425c9df353cddfb.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-a425c9df353cddfb.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-a9f60e4f2a037353.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-a9f60e4f2a037353.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-ad65c099b3676fff.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-ad65c099b3676fff.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-b8e5e4591196c1f5.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-b8e5e4591196c1f5.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-ba9a1d1c3132c4ac.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-ba9a1d1c3132c4ac.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-cold-be2576d5808c1e13.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-cold-be2576d5808c1e13.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-finite-20261007-ae3f93540ddf47d1.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-finite-20261007-ae3f93540ddf47d1.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-finite-credit-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-finite-credit-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-finite-cwd-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-finite-cwd-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-live-step3-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-live-step3-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-live-step3p2-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-live-step3p2-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-live-step3p2q-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-live-step3p2q-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-qualified-20261007-30ff267e0082.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-qualified-20261007-30ff267e0082.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-qualified-20261007-6d2bc872c411-r1.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-qualified-20261007-6d2bc872c411-r1.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-qualified-20261007-6d2bc872c411-r2.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-qualified-20261007-6d2bc872c411-r2.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-qualified-20261007-6d2bc872c411.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-qualified-20261007-6d2bc872c411.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-smoke-9cbfc7a048629ef1.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-smoke-9cbfc7a048629ef1.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-finite-b-standby-startup-step2-20261007-9a4646b690c74239.service": {
+      "MainPID": "0",
+      "Id": "kpi-finite-b-standby-startup-step2-20261007-9a4646b690c74239.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    },
+    "kpi-g5-autonomous-B@.service": {},
+    "kpi-s0-B-C-395f95c9.service": {
+      "MainPID": "344607",
+      "Id": "kpi-s0-B-C-395f95c9.service",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "disabled"
+    },
+    "kpi-s0-B-recovery-395f95c9.service": {
+      "MainPID": "0",
+      "Id": "kpi-s0-B-recovery-395f95c9.service",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "UnitFileState": "static"
+    }
+  }
+}

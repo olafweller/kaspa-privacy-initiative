@@ -1,0 +1,101 @@
+{
+  "scope": "B_GUARD_INSTALLATION_NO_PROVIDER_ACTIONS",
+  "host": "vmi3641034.contaboserver.net",
+  "sourceRevision": "0ed4cb0b465f863f03b06ab3ef102234528996bc",
+  "account": {
+    "name": "kpi-cuda-guard",
+    "uid": 995,
+    "gid": 986,
+    "shell": "/usr/sbin/nologin"
+  },
+  "filesSha256": {
+    "common.py": "841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83",
+    "watchdog.py": "2c8258d16b3c2f4ff73992be0097993cb476c85584f53e27f5590f3172f35475",
+    "make_lease.py": "493da54856260840dfe88f579129e991d4bdf4f48440632bbfd49231d80d3330",
+    "qualify_guard.py": "0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc",
+    "test_remote.py": "c991e5b348170f71720a7b387e571fa79860954bbd2a5cb676f32eb5ef752d0e",
+    "service.py": "bcf4b66150e7f3cef4c034de8eb676a68bf411bef201705eb62c5a1e3496a252",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "kpi-cuda-guard.service": "edea9156852bcdfc487f98410fc9e2ed85f17e925b232d9d1690a264a750f167"
+  },
+  "paths": {
+    "/opt/kpi-remote-cuda": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "/var/lib/kpi-cuda-guard": {
+      "uid": 995,
+      "gid": 986,
+      "mode": "0750"
+    },
+    "/etc/systemd/system/kpi-cuda-guard.service": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/etc/kpi-cuda-guard.env": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0600"
+    },
+    "/opt/kpi-remote-cuda/common.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/watchdog.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/make_lease.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/qualify_guard.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/test_remote.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/service.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/worker.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "/opt/kpi-remote-cuda/package.py": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    }
+  },
+  "unit": {
+    "MainPID": "0",
+    "User": "kpi-cuda-guard",
+    "Group": "kpi-cuda-guard",
+    "StateDirectoryMode": "0750",
+    "LoadState": "loaded",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "disabled"
+  },
+  "unitVerifyExitCode": 0,
+  "unitVerifyWarnings": "",
+  "credentialsProvisioned": false,
+  "realLeaseInstalled": false,
+  "serviceStarted": false,
+  "serviceEnabled": false,
+  "providerCalled": false
+}

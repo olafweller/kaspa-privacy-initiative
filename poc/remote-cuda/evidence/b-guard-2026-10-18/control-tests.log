@@ -1,0 +1,18 @@
+test_archive_traversal_and_duplicate_names_rejected (test_remote.Remote.test_archive_traversal_and_duplicate_names_rejected) ... ok
+test_bootstrap_binds_one_lease_to_the_actual_pod (test_remote.Remote.test_bootstrap_binds_one_lease_to_the_actual_pod) ... ok
+test_cost_duration_and_host_are_checked (test_remote.Remote.test_cost_duration_and_host_are_checked) ... ok
+test_empty_stop_response_and_already_exited_are_handled (test_remote.Remote.test_empty_stop_response_and_already_exited_are_handled) ... ok
+test_external_watchdog_stops_after_controller_is_gone (test_remote.Remote.test_external_watchdog_stops_after_controller_is_gone) ... ok
+test_failed_backup_does_not_delay_rental_deadline (test_remote.Remote.test_failed_backup_does_not_delay_rental_deadline) ... ok
+test_http_auth_guard_single_start_and_disconnection (test_remote.Remote.test_http_auth_guard_single_start_and_disconnection) ... ok
+test_rental_deadline_does_not_wait_for_a_stalled_gpu_request (test_remote.Remote.test_rental_deadline_does_not_wait_for_a_stalled_gpu_request) ... ok
+test_restart_marks_interrupted_without_retry (test_remote.Remote.test_restart_marks_interrupted_without_retry) ... ok
+test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup (test_remote.Remote.test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup) ... ok
+test_stop_ack_without_exited_readback_is_not_success (test_remote.Remote.test_stop_ack_without_exited_readback_is_not_success) ... ok
+test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.test_terminal_backup_survives_controller_loss_before_stop) ... ok
+test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.109s
+
+OK

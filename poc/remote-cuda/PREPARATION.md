@@ -96,9 +96,9 @@ provider account identity or GPU device. None was added for this preparation.
 The official environment skill documents proxy credential injection; use the
 configured scoped variable normally even if its value is a proxy placeholder.
 
-The owner identified the former A1 role-B Linux VPS as the proposed independent
-guard host. Its availability was reported by the owner, not established through
-a new login or installation. This preparation leaves it unchanged.
+On 2026-10-17 the former role-B VPS was only an owner-proposed candidate.
+On 2026-10-18 its separate identity, Cloud management route, installation and
+focused host qualifications were established as recorded below.
 
 After PR #41 merged at `c2037893936508d6d61dcb9ee78aea6ba4515aab`, the
 explicit `cuda-qualification-20261017-pr41` tag started
@@ -149,20 +149,38 @@ A new read-only check reached the already configured Contabo host: Python
 3.12.3, systemd 255, synchronized time, approximately 826.7 GB available under
 `/var/lib`, and the existing `kpi-tn10` service active. No guard was installed,
 no existing service was restarted and no trial credentials were inspected.
-Whether this is the owner's intended B-VPS is awaiting confirmation; reachability
-of the TN10 host alone does not establish that identity.
+This was the TN10/gateway, not B. The owner subsequently confirmed the separate
+B identity and supplied its existing pinned SSH management wrapper on TN10.
 
 `qualify_guard.py` provides a credential-free, simulated-provider recovery test
 across three separate Python processes on the selected filesystem. Its Cloud
 run passed, as recorded in `evidence/cloud-process-restart.json`; this is not a
-B-VPS run, a host reboot, a live provider stop or a CUDA result. The intended host
-must repeat this qualification and the existing backup-failure deadline tests.
+B-VPS run, a host reboot, a live provider stop or a CUDA result.
+
+On 2026-10-18 the Cloud -> TN10 HTTPS/WSS -> `kpi-b-ssh` route returned exit 0
+and `vmi3641034.contaboserver.net`. B was inspected before installation: Python
+3.12.3, systemd 255, synchronized time and 85,807,165,440 free bytes on local
+ext4. The eight Python files and separate systemd unit were installed from
+`0ed4cb0b465f863f03b06ab3ef102234528996bc`; unit validation passed. No private-key
+contents or old wallet/credential files were inspected or copied.
+
+The recovery rehearsal and thirteen control tests then passed on B as
+`kpi-cuda-guard` (UID 995/GID 986), with new temporary/test directories on the
+actual `/var/lib` device. The repaired archive has the correct 51-byte size and
+SHA-256; restart/grace reuse, same-size corruption, rename failure, backup-failure
+deadlines and stalled-request deadlines passed. All provider/job responses were
+simulated. The unit is loaded but **disabled/inactive**, PID 0; no production
+lease exists and the root-only environment file contains no credentials supplied
+by this task. All 38 prior B KPI unit states/PIDs and the gateway's active TN10
+PID 43275 are unchanged. See [B-GUARD.md](B-GUARD.md) and
+`evidence/b-guard-2026-10-18/` for the installation, hashes, permissions, test logs
+and before/after snapshots. The published CUDA image is unchanged.
 
 ## Not established
 
 No paid resource, provider key, live RunPod API/proxy request, GPU driver test,
 CUDA kernel execution, GPU speedup, actual VRAM peak, provider stop/persistence
 test or bill exists for this package. No full classifier receipt was attempted.
-Connection/credential checks, independent guard installation and live provider
+RunPod connection/credential checks, real-lease activation and live provider
 schema/read-back remain deployment gates. Research receipts alone do not
 establish a financial privacy protocol or production readiness.

@@ -20,10 +20,13 @@ No reserve, spend, nullifier, circuit, guest or settlement rule changes.
 
 Local HTTP/provider tests use explicit mocks and cannot establish live HTTPS,
 provider schema, persistence, CUDA use, shutdown reliability or production security.
-The existing B recovery VPS is the owner's candidate guard host, not a new
-independent operator network. Inspect it without touching old recovery secrets or
-restarting its services. Actual deployment requires an image digest, live network
-and credential configuration, quote, guard connectivity and provider read-back.
+The former B recovery VPS now hosts the disabled guard; see [B-GUARD.md](B-GUARD.md).
+This is not a new independent operator network. The management gateway is not a
+runtime dependency: lease, code, timer, backups and later credentials reside on B.
+B-root administrators remain trusted and can read files or change the service;
+SSH restrictions do not provide privacy from them. Old recovery secrets were not
+inspected and old services were not restarted. Live rental deployment still
+requires credentials, quote, real lease, direct HTTPS and provider read-back.
 
 The later `qualify_guard.py` host rehearsal supplies explicit fake provider and
 artifact callbacks to every guard instance. It uses a fresh output directory and

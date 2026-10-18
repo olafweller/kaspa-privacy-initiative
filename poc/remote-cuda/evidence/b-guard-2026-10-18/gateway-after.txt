@@ -1,0 +1,5 @@
+MainPID=43275
+Id=kpi-tn10.service
+LoadState=loaded
+ActiveState=active
+SubState=running

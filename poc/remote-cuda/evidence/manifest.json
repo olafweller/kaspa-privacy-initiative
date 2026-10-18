@@ -77,6 +77,42 @@
     "published-policy-comparison.json": {
       "bytes": 1013,
       "sha256": "02b5839bfbf27ee21b0e88fb806c36bc57a1c3b12ce90aad6b29c20641dbf324"
+    },
+    "b-guard-2026-10-18/control-tests.log": {
+      "bytes": 1877,
+      "sha256": "f7c3bceeb5c02ee419ff1f5cf28596cb60f660094a250eac3c80a06899963373"
+    },
+    "b-guard-2026-10-18/gateway-after.txt": {
+      "bytes": 87,
+      "sha256": "216d5cf4289fa2594dab89f5efa38676e3c645f7e0e540cb61360fda2bf5b8dc"
+    },
+    "b-guard-2026-10-18/gateway-before.txt": {
+      "bytes": 87,
+      "sha256": "216d5cf4289fa2594dab89f5efa38676e3c645f7e0e540cb61360fda2bf5b8dc"
+    },
+    "b-guard-2026-10-18/installation.json": {
+      "bytes": 2777,
+      "sha256": "61488a67eacfca3dd3156906848efebc2649387ac1323206433c9c0ee2e67bdc"
+    },
+    "b-guard-2026-10-18/postflight.json": {
+      "bytes": 12356,
+      "sha256": "893a8dc0bab9ffb43acba48cc2293bf14f64261b1196b03f074be51514320231"
+    },
+    "b-guard-2026-10-18/preflight.json": {
+      "bytes": 11587,
+      "sha256": "d01afce8edbad36c8a9526e8045cdb0f51bfa310ebf7cd1edcb258ced9b1d443"
+    },
+    "b-guard-2026-10-18/qualification.json": {
+      "bytes": 3537,
+      "sha256": "fda70959c83e7bee994a91ed3647e8c43dd24facaff3d6758569be7f2ee46b5a"
+    },
+    "b-guard-2026-10-18/recovery.json": {
+      "bytes": 724,
+      "sha256": "6c77f6e759a602c1612e145a1e095b5071bdb263b4d6dace3200d3dd3f8faa6c"
+    },
+    "b-guard-2026-10-18/summary.json": {
+      "bytes": 3681,
+      "sha256": "9b1a63823ccb85e62e78482972082d4ca00cb48d6c85b71e1fe25a2626f673d8"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",

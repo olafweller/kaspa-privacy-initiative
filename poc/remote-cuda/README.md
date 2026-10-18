@@ -6,10 +6,12 @@ merged as `e7ea15e8009b8f6ef3aaa34b3cec17fbfc3eb5cd`. No GPU has been rented,
 no provider account has been accessed and no CUDA execution is claimed by this
 preparation. Follow [START.md](START.md) before a later paid deployment.
 
-The owner identified the Linux VPS previously used for A1 role B (S0/S1 recovery)
-as the candidate independent watchdog host. Its current access, available storage,
-HTTPS connectivity and systemd installation still require inspection. Preparation
-does not alter that VPS or its old recovery data/services.
+The independent guard is installed on the former A1 role-B VPS,
+`vmi3641034.contaboserver.net`, separately from the TN10/gateway host. Its unit is
+disabled/inactive, with no real lease or credentials. The separate-process
+recovery rehearsal and all thirteen control tests pass as the dedicated service
+user on B's actual state filesystem. Existing trial data/services are preserved.
+See [B host preparation](B-GUARD.md) for evidence, permissions and remaining gates.
 
 ## Fixed question and acceptance conditions
 

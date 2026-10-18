@@ -315,3 +315,11 @@ credentials and provider stop API are availability/cost assumptions, not protoco
 authorities. Live CUDA, stop and persistence behavior remain unqualified. Never
 send private wallet witnesses through this public-fixture interface without a
 separate privacy design. This changes no protocol, circuit or settlement rule.
+
+The disabled [B-host guard](poc/remote-cuda/B-GUARD.md) is installed separately
+from the TN10 management gateway. After later activation it keeps its lease,
+timer, backups and provider credential on B; Cloud/gateway/laptop availability
+is not required by that loop. B-root administrators remain trusted and can read
+files or alter the service. The management SSH restrictions and file permissions
+do not protect against a malicious administrator. Only credential-free simulated
+provider checks have run; no live rental/stop qualification is implied.
