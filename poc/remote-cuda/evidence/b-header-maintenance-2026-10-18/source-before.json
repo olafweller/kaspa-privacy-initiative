@@ -1,0 +1,17 @@
+{
+  "scope": "SOURCE_AND_METADATA_CHECK_NO_PROVIDER_REQUEST",
+  "commonSha256": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+  "backupSha256": "841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83",
+  "environmentFileMetadata": {
+    "mode": "0600",
+    "uid": 0,
+    "gid": 0
+  },
+  "unit": {
+    "MainPID": "0",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "disabled"
+  },
+  "realLeaseInstalled": false
+}

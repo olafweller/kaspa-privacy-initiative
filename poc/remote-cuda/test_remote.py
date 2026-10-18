@@ -16,7 +16,7 @@ from common import lease_check
 from package import checked_archive
 from service import App, Job, handler, ThreadingHTTPServer
 from watchdog import Guard, serve, save_archive
-from common import sha, json_request
+from common import sha, json_request, request, NoRedirect
 import worker
 
 TOKEN = 'unit-test-token-not-a-credential-000000000'
@@ -32,6 +32,26 @@ def lease():
 
 
 class Remote(unittest.TestCase):
+    def test_application_headers_keep_auth_timeout_and_redirect_refusal(self):
+        opener = unittest.mock.Mock()
+        opener.open.return_value = io.BytesIO(b'{}')
+        with patch('common.urllib.request.build_opener', return_value=opener) as build:
+            self.assertEqual(request('https://rest.runpod.io/v1/pods', 'test-only'), b'{}')
+            sent = opener.open.call_args.args[0]
+            headers = {k.lower(): v for k, v in sent.header_items()}
+            self.assertEqual(headers['user-agent'], 'kpi-remote-cuda/1.0')
+            self.assertEqual(headers['accept'], 'application/json')
+            self.assertEqual(headers['authorization'], 'Bearer test-only')
+            self.assertEqual(headers['content-type'], 'application/json')
+            self.assertEqual(opener.open.call_args.kwargs, {'timeout': 10})
+            redirect = build.call_args.args[0]
+            self.assertIsInstance(redirect, NoRedirect)
+            self.assertIsNone(redirect.redirect_request(sent, None, 302, 'redirect', {},
+                                                       'https://other.example/'))
+            with self.assertRaises(AssertionError):
+                request('http://rest.runpod.io/v1/pods', 'test-only')
+            self.assertEqual(opener.open.call_count, 1)
+
     def test_bootstrap_binds_one_lease_to_the_actual_pod(self):
         with tempfile.TemporaryDirectory() as directory:
             rental = lease()

@@ -143,6 +143,45 @@ and confirms the independently expected program and claims are unchanged.
 These are build/transport/CPU results;
 `gpuExecutionQualified` remains false and no proof job was started.
 
+## Guard source versus published image
+
+The operator's B-side application-header fix is now preserved in Git:
+`common.py` has SHA-256
+`5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3`.
+Only `User-Agent: kpi-remote-cuda/1.0` and `Accept: application/json` were added
+to requests. TLS-only URLs, Authorization, Content-Type, redirect refusal,
+timeouts and response limits are unchanged. B's runtime was already patched;
+Codex checked its bytes/hash and did not overwrite it or open the credential
+file. The original B backup remains available.
+
+The published image is an **unchanged, separately established artefact** from
+`81f2b90c7bc3aaddd44fecda222bb5d6de731616`. Its `common.py` correctly retains
+`841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83`.
+Its service imports only `atomic`/`lease_check`, and its worker imports only
+`atomic`/`sha`; neither uses `request`/`json_request` to access RunPod. The actual
+provider client is on B. Service/worker sources, classifier/fixture/claim
+bindings, prover identity and all prior image manifests/evidence remain intact.
+No image rebuild, tag movement or republication was performed for this fix.
+
+`check_image.py` remains strict: by default it compares against source files
+beside the checker. Running the current checker/source bundle on the earlier
+image will therefore reject its old `common.py`. That is an expected source
+version mismatch, not permission to waive checks or relabel the old manifest.
+If another CPU-only check of the published image is needed, use the matching
+historical source bundle, for example:
+
+```bash
+task_image_sources=$(mktemp -d .local/published-image-source.XXXXXX)
+git archive 81f2b90c7bc3aaddd44fecda222bb5d6de731616 poc/remote-cuda/check_image.py poc/remote-cuda/common.py poc/remote-cuda/service.py poc/remote-cuda/worker.py | tar -x -C "$task_image_sources"
+python3 "$task_image_sources/poc/remote-cuda/check_image.py" ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743
+```
+
+This recipe uses reviewed Git source, not an untrusted result archive. A future
+new image built from current source needs its own new identities/evidence;
+it must not silently replace the existing digest. The maintenance's
+[binding audit](evidence/b-header-maintenance-2026-10-18/artifact-bindings.json)
+checks these distinctions without running/rebuilding an image.
+
 ## Independent host preparation
 
 A new read-only check reached the already configured Contabo host: Python
@@ -176,11 +215,22 @@ PID 43275 are unchanged. See [B-GUARD.md](B-GUARD.md) and
 `evidence/b-guard-2026-10-18/` for the installation, hashes, permissions, test logs
 and before/after snapshots. The published CUDA image is unchanged.
 
+The later operator header fix and reported real read-only GET are documented in
+[B-GUARD.md](B-GUARD.md#application-header-maintenance). Codex then confirmed B's
+patched source, retained the original backup, added a targeted transport regression
+and repeated **14/14 tests plus recovery** as the service user on B's state
+filesystem. The account-key file was not opened; the test environment contained
+no account key. The HTTP 200/zero-Pods result is owner-reported and was not
+repeated by Codex. Current maintenance evidence is separate from the initial
+installation snapshots; the unit remains disabled/inactive with no real lease.
+
 ## Not established
 
-No paid resource, provider key, live RunPod API/proxy request, GPU driver test,
-CUDA kernel execution, GPU speedup, actual VRAM peak, provider stop/persistence
-test or bill exists for this package. No full classifier receipt was attempted.
-RunPod connection/credential checks, real-lease activation and live provider
-schema/read-back remain deployment gates. Research receipts alone do not
+No paid resource, real lease, provider mutation, GPU driver test, CUDA kernel
+execution, GPU speedup, actual VRAM peak, provider stop/persistence test or bill
+exists for this package. The owner reports an account key stored only on B and a
+successful read-only Pods-list request, which does not establish stop/write
+rights. No full classifier receipt was attempted. Actual Pod-specific REST/proxy
+checks, scoped-token configuration, real-lease activation and live provider
+stop/read-back remain deployment gates. Research receipts alone do not
 establish a financial privacy protocol or production readiness.

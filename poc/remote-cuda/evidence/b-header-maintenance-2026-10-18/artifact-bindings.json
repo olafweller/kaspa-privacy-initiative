@@ -1,0 +1,29 @@
+{
+  "scope": "SOURCE_AND_IMMUTABLE_ARTIFACT_BINDING_AUDIT_NOT_A_NEW_IMAGE_TEST",
+  "imageDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+  "publishedSourceRevision": "81f2b90c7bc3aaddd44fecda222bb5d6de731616",
+  "publishedApplicationSha256": {
+    "common.py": "841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83",
+    "service.py": "bcf4b66150e7f3cef4c034de8eb676a68bf411bef201705eb62c5a1e3496a252",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b"
+  },
+  "currentGuardCommonSha256": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+  "guardAndImageCommonVersionsDiffer": true,
+  "onlyGuardCommonChangeIsTwoRequestHeaders": true,
+  "publishedCommonRequestFunctionImportedByPodServiceOrWorker": false,
+  "podCommonImports": {
+    "service.py": [
+      "atomic",
+      "lease_check"
+    ],
+    "worker.py": [
+      "atomic",
+      "sha"
+    ]
+  },
+  "historicalImageEvidenceUnchanged": true,
+  "imageSourceValidationWeakened": false,
+  "defaultCurrentSourceImageCheckWouldRejectOldCommon": true,
+  "recheckMethod": "Use the matching check_image.py/common.py/service.py/worker.py source bundle from publishedSourceRevision; keep strict source checks",
+  "imageRebuiltOrRepublished": false
+}

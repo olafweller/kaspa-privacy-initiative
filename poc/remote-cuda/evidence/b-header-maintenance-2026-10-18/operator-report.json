@@ -1,0 +1,17 @@
+{
+  "scope": "OWNER_REPORTED_PROVIDER_READ_ONLY_OBSERVATIONS_NOT_REPEATED_BY_CODEX",
+  "source": "Owner message 2026-10-18",
+  "accountCredentialLocation": "B only: /etc/kpi-cuda-guard.env (root 0600)",
+  "request": "GET https://rest.runpod.io/v1/pods",
+  "before": {
+    "httpStatus": 403,
+    "errorDetail": "The site owner has blocked access based on your browser's signature."
+  },
+  "afterHonestApplicationHeaders": {
+    "httpStatus": 200,
+    "podCount": 0
+  },
+  "operatorReportedOriginalControlTestsPassed": 13,
+  "stopOrWritePermissionsLiveTested": false,
+  "credentialValueReadOrPrintedByCodex": false
+}

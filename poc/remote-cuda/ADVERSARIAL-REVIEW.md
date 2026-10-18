@@ -35,3 +35,12 @@ and provider stop. A subprocess failure prevents the final success report. It
 does not read credentials, reboot the host or establish live rental protection.
 The clean-runner packaging fix creates missing parents only; it retains refusal
 to reuse an existing output directory and all fixture/hash/CPU-receipt checks.
+
+The application User-Agent maintenance adds only honest client identification
+and a JSON Accept header; it preserves authentication, TLS-only URLs, redirect
+refusal and time/size bounds. The focused regression checks the request object
+with a mocked opener, never the real account credential. Current B source is
+bound to its new hash; the prior published image remains bound to its original
+source and digest. Its unused outbound-request helper is not a reason to rebuild
+or weaken image/source checks. The owner's real read-only GET result is recorded
+as owner-reported evidence and does not qualify provider stop/write privileges.

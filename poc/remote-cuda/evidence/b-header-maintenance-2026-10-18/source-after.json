@@ -1,0 +1,30 @@
+{
+  "scope": "HEADER_MAINTENANCE_POSTFLIGHT_NO_PROVIDER_ACTIONS",
+  "host": "vmi3641034.contaboserver.net",
+  "filesSha256": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "watchdog.py": "2c8258d16b3c2f4ff73992be0097993cb476c85584f53e27f5590f3172f35475",
+    "make_lease.py": "493da54856260840dfe88f579129e991d4bdf4f48440632bbfd49231d80d3330",
+    "qualify_guard.py": "0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc",
+    "test_remote.py": "c1a40197dde9771ade9aedc0ac5f9bf84973f0b00907ed3032dd118c39899011",
+    "service.py": "bcf4b66150e7f3cef4c034de8eb676a68bf411bef201705eb62c5a1e3496a252",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "kpi-cuda-guard.service": "edea9156852bcdfc487f98410fc9e2ed85f17e925b232d9d1690a264a750f167"
+  },
+  "beforeUserAgentBackupSha256": "841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83",
+  "unit": {
+    "MainPID": "0",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "disabled"
+  },
+  "environmentFileMetadata": {
+    "uid": 0,
+    "gid": 0,
+    "mode": "0600"
+  },
+  "environmentFileContentsInspected": false,
+  "realLeaseInstalled": false,
+  "providerCalledByThisCheck": false
+}

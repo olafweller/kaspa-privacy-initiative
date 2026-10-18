@@ -3,13 +3,15 @@
 This package prepares one local-equivalent GPU comparison of the five proof
 phases retained in [PR #40](https://github.com/olafweller/kaspa-privacy-initiative/pull/40),
 merged as `e7ea15e8009b8f6ef3aaa34b3cec17fbfc3eb5cd`. No GPU has been rented,
-no provider account has been accessed and no CUDA execution is claimed by this
-preparation. Follow [START.md](START.md) before a later paid deployment.
+no provider mutation or CUDA execution is claimed by this preparation. The
+operator's later read-only provider GET is recorded in [B-GUARD.md](B-GUARD.md).
+Follow [START.md](START.md) before a later paid deployment.
 
 The independent guard is installed on the former A1 role-B VPS,
 `vmi3641034.contaboserver.net`, separately from the TN10/gateway host. Its unit is
-disabled/inactive, with no real lease or credentials. The separate-process
-recovery rehearsal and all thirteen control tests pass as the dedicated service
+disabled/inactive, with no real lease. The operator has provisioned the account
+credential on B only; its value was not inspected. The separate-process
+recovery rehearsal and all fourteen control tests pass as the dedicated service
 user on B's actual state filesystem. Existing trial data/services are preserved.
 See [B host preparation](B-GUARD.md) for evidence, permissions and remaining gates.
 

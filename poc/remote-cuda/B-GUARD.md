@@ -2,7 +2,9 @@
 
 The independent guard is installed and its credential-free host checks pass.
 The real guard loop is **disabled/inactive**. No GPU, real RunPod lease, provider
-request, proof job, TN10 transaction or host reboot was performed.
+mutation, proof job, TN10 transaction or host reboot was performed. The operator's
+later read-only provider check and the header maintenance are recorded below;
+Codex did not repeat that provider request or read the account credential.
 
 ## Identity and management route
 
@@ -24,8 +26,9 @@ and activated, B's local Python/systemd guard reads its local lease and credenti
 writes backups on its local disk and contacts RunPod REST/the exact Pod HTTPS
 service itself. It contains no dependency on the Cloud task, TN10 gateway, SSH
 wrapper or laptop. B availability, clock, disk and direct HTTPS access to those
-services remain operational dependencies; live provider connectivity was not
-tested in this preparation.
+services remain operational dependencies. The operator subsequently reported a
+successful read-only provider GET; stop/write permissions and the actual Pod
+proxy remain unqualified.
 
 B root and administrators able to obtain B root remain trusted operators. They
 can technically read credentials and archives or change/stop the guard. SSH
@@ -33,7 +36,9 @@ restrictions and file modes do not protect against a malicious administrator.
 
 ## Installed state
 
-Installed source: `0ed4cb0b465f863f03b06ab3ef102234528996bc` on PR #42.
+Initial installed source: `0ed4cb0b465f863f03b06ab3ef102234528996bc` on PR #42.
+The later header maintenance changes `common.py` and the focused control test;
+use its new source/hash record below for the current runtime.
 The sole unit change adds `StateDirectoryMode=0750`, preserving the prepared
 state permissions at later activation. No guard algorithm or CUDA image changed.
 
@@ -44,7 +49,7 @@ state permissions at later activation. No guard algorithm or CUDA image changed.
 | Qualification/support files | `qualify_guard.py`, `test_remote.py`, `service.py`, `worker.py`, `package.py` |
 | `/var/lib/kpi-cuda-guard` | `kpi-cuda-guard:kpi-cuda-guard`, `0750`, local ext4 |
 | `/etc/systemd/system/kpi-cuda-guard.service` | Root-owned `0644`; verified, loaded, **disabled/inactive**, PID 0 |
-| `/etc/kpi-cuda-guard.env` | Root-owned `0600`; comments only, no credentials provisioned |
+| `/etc/kpi-cuda-guard.env` | Root-owned `0600`; initially comments only; account credential later provisioned by the operator on B only |
 
 The dedicated system account is UID 995/GID 986 with `/usr/sbin/nologin`.
 As that user, state is writable; code/unit files are not writable and the
@@ -53,7 +58,8 @@ when the service is activated later. No production `lease.json` exists.
 
 The host reported Python 3.12.3, systemd 255, synchronized time and
 85,807,165,440 available bytes (about 79.9 GiB) under `/var/lib` before setup.
-All installed source hashes match the installation manifest. There was no
+At initial installation all source hashes matched its manifest. The later
+header-maintenance record tracks the current hashes separately. There was no
 pre-existing guard path, account, environment file or unit to overwrite.
 All 38 pre-existing B KPI unit states/PIDs are unchanged; TN10 remained active
 with PID 43275. No old trial data, wallet or credential contents were inspected.
@@ -96,14 +102,55 @@ Retained evidence: [summary](evidence/b-guard-2026-10-18/summary.json),
 [after](evidence/b-guard-2026-10-18/postflight.json) snapshots. The parent
 [manifest](evidence/manifest.json) records their sizes and hashes.
 
+## Application-header maintenance
+
+The operator reported that a real `GET https://rest.runpod.io/v1/pods` initially
+returned 403 with "The site owner has blocked access based on your browser's
+signature." The same credential/permissions returned HTTP 200 and zero Pods
+after adding the honest application headers `User-Agent: kpi-remote-cuda/1.0`
+and `Accept: application/json`. These live observations and the operator's
+13-test result are owner-reported, not re-run by Codex. They establish reported
+read access only; real stop/write permissions remain untested.
+
+Git now contains the exact patched B `common.py`, SHA-256
+`5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3`.
+Codex confirmed the B bytes/hash without overwriting that runtime file. The B
+reinstallation source must be this patched Git version, not the original
+installation snapshot or `common.py` extracted from the earlier CUDA image.
+The B
+recovery source `/opt/kpi-remote-cuda/common.py.before-user-agent-20261018`
+remains at original SHA-256
+`841a0670ec027616cab4d6c0c9cd2a7ce842322489319dfde5062b6638da0a83`.
+The diff consists only of the two headers: Authorization, Content-Type, TLS-only
+URLs, redirect refusal, ten-second default timeout and body limit are unchanged.
+
+One regression was added to the original thirteen tests. It checks the actual
+constructed headers, fake bearer authentication, content type, default timeout,
+redirect handler and refusal of plain HTTP, using a mocked opener. All **14
+tests and the separate-process recovery rehearsal pass on B** as the dedicated
+service user in a fresh state-partition directory. Only `test_remote.py` needed
+deployment by Codex. The real environment file was never opened; tests used a
+cleared environment without the account credential. The guard remains
+disabled/inactive, PID 0, with no real lease.
+
+The current [maintenance evidence](evidence/b-header-maintenance-2026-10-18/summary.json)
+retains the [new host hashes](evidence/b-header-maintenance-2026-10-18/source-after.json),
+[test results](evidence/b-header-maintenance-2026-10-18/control-tests.log),
+[operator report](evidence/b-header-maintenance-2026-10-18/operator-report.json)
+and [artifact-binding audit](evidence/b-header-maintenance-2026-10-18/artifact-bindings.json).
+Initial installation/qualification records remain unchanged historical evidence.
+See [PREPARATION.md](PREPARATION.md#guard-source-versus-published-image) for the
+deliberately separate published-image source binding.
+
 ## Before a later rental and activation
 
 1. Obtain the separately agreed rental release and actual one-L40S quote,
    availability and storage charges. Preserve one attempt, at most 7,200 seconds
    from provider creation and 3,600 diagnostic seconds. USD 5 remains a planning
    envelope including retention, not a guaranteed provider bill.
-2. Provision the RunPod account credential **only on B**, through the owner's
-   secure mechanism into the root-owned `0600` environment file. A fresh scoped
+2. The operator reports the RunPod account credential is now provisioned **only
+   on B** in the root-owned `0600` environment file; Codex checks metadata only.
+   Configure/confirm a fresh scoped
    `KPI_GPU_TOKEN` is shared with the later Pod and destination-scoped Cloud
    configuration; the account credential never goes to Cloud, the GPU container,
    Git, command arguments or logs. No credentials are requested in this PR.

@@ -113,6 +113,34 @@
     "b-guard-2026-10-18/summary.json": {
       "bytes": 3681,
       "sha256": "9b1a63823ccb85e62e78482972082d4ca00cb48d6c85b71e1fe25a2626f673d8"
+    },
+    "b-header-maintenance-2026-10-18/artifact-bindings.json": {
+      "bytes": 1356,
+      "sha256": "18a5290346ea1744a398ef779ce6348c9a6921fd46816e32b8efade24d4d1883"
+    },
+    "b-header-maintenance-2026-10-18/control-tests.log": {
+      "bytes": 2033,
+      "sha256": "2cb08423887d97027703c91deadc89d8a6956ff1e40940f8b0ad481cc0d2170a"
+    },
+    "b-header-maintenance-2026-10-18/operator-report.json": {
+      "bytes": 615,
+      "sha256": "97838ff19aae2c1dd071361792f0eb4d7b212afb73ec7615dd9954db526bb38c"
+    },
+    "b-header-maintenance-2026-10-18/qualification.json": {
+      "bytes": 3708,
+      "sha256": "0bc71fd76fa46d35eaec9c16887d313813b8d956ad168b44014416a790ca1b8d"
+    },
+    "b-header-maintenance-2026-10-18/source-after.json": {
+      "bytes": 1352,
+      "sha256": "12b3d7017d7c70cf55cab6721456c65d1772a4a60bf3469f23f3a65e978a99ef"
+    },
+    "b-header-maintenance-2026-10-18/source-before.json": {
+      "bytes": 473,
+      "sha256": "d33785d32057fbb9039bc7b3df05aec9a90f2ccb120dca5ba742c26d997f0707"
+    },
+    "b-header-maintenance-2026-10-18/summary.json": {
+      "bytes": 1739,
+      "sha256": "aff744a3f3ef89008fdab0b6e07d01b05b959f7de969ec1d95926da6a6e45467"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",

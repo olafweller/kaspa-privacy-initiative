@@ -321,5 +321,6 @@ from the TN10 management gateway. After later activation it keeps its lease,
 timer, backups and provider credential on B; Cloud/gateway/laptop availability
 is not required by that loop. B-root administrators remain trusted and can read
 files or alter the service. The management SSH restrictions and file permissions
-do not protect against a malicious administrator. Only credential-free simulated
-provider checks have run; no live rental/stop qualification is implied.
+do not protect against a malicious administrator. Guard qualification tests use
+simulated provider responses. The operator's later successful read-only provider
+GET does not establish stop/write permission or live rental/stop qualification.

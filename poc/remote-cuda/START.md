@@ -44,15 +44,16 @@ provider action, service activation or paid qualification below has been run.
    `/var/lib/kpi-cuda-guard` and disabled `kpi-cuda-guard.service` are prepared.
    A root-owned mode-0600 `/etc/kpi-cuda-guard.env` is reserved for later
    `RUNPOD_API_KEY` and `KPI_GPU_TOKEN` provisioning through the operator's
-   credential mechanism. It currently
-   contains comments only. Code/unit files are root-owned `0644`, the code
+   credential mechanism. The operator now reports the account credential is
+   provisioned there; do not read/print it. Confirm the scoped service token
+   separately before later activation. Code/unit files are root-owned `0644`, the code
    directory is `0755`, and service-owned state is `0750`; the unit preserves
    `StateDirectoryMode=0750` on later activation. Never paste credential
    values into a chat, Git, a unit file, command arguments or uploaded artifacts.
    Enable service startup/restart after the real lease is written. A missing
    lease must not be replaced by a guessed Pod identity.
-   The installed `qualify_guard.py` has passed on B before adding credentials or
-   a real lease. To repeat it later, run as the dedicated service user with a
+   The installed `qualify_guard.py` has passed on B using a credential-free test
+   environment and no real lease. To repeat it later, run as the dedicated service user with a
    **new** output directory on the intended state filesystem:
 
    ```bash
@@ -73,7 +74,8 @@ provider action, service activation or paid qualification below has been run.
    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s /opt/kpi-remote-cuda -p test_remote.py -v
    ```
 
-   These thirteen tests use simulated jobs/provider responses and a short local
+   These fourteen tests include the application-header regression and use
+   simulated jobs/provider responses and a short local
    process timeout; they do not start a proof, use a GPU or call RunPod.
 5. Generate a fresh scoped service token through a secret manager (32+ ASCII
    characters). Inject the same `KPI_GPU_TOKEN` into the Pod and guard; configure

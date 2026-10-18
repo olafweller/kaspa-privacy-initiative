@@ -55,6 +55,8 @@ def request(url, token, method='GET', value=None, timeout=10):
     data = None if value is None else json.dumps(value).encode()
     req = urllib.request.Request(url, data=data, method=method,
                                  headers={'Authorization': 'Bearer '+token,
+                                          'User-Agent': 'kpi-remote-cuda/1.0',
+                                          'Accept': 'application/json',
                                           'Content-Type': 'application/json'})
     with urllib.request.build_opener(NoRedirect()).open(req, timeout=timeout) as reply:
         data = reply.read(64*1024**2+1)
