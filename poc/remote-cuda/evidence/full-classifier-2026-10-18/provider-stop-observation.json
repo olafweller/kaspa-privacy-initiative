@@ -1,0 +1,18 @@
+{
+  "observedUnix": 1792324164.6556072,
+  "podId": "wzozsg2nej95tb",
+  "providerDesiredStatus": "EXITED",
+  "providerCreatedAt": "2026-10-18 11:43:01.41 +0000 UTC",
+  "costPerHourUsd": 1.09,
+  "retainedVolumeGb": 10,
+  "containerDiskGb": 90,
+  "guardStop": {
+    "requestedUnix": 1792324160.814065,
+    "providerDesiredExitedConfirmed": true,
+    "podId": "wzozsg2nej95tb",
+    "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+  },
+  "unit": "ExecMainStatus=0\nActiveState=inactive\nSubState=dead\n",
+  "actualInvoiceChargesAvailable": false
+}
+

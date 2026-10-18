@@ -1,0 +1,17 @@
+{
+  "corruptedSealCryptographicallyRejected": true,
+  "developmentMode": false,
+  "exactExpectedJournalVerified": true,
+  "expectedProgramImage": "397bcdca688462b9573a4b55e3516e1a2511140512c53337eb54da0849a93716",
+  "noUnresolvedAssumptions": true,
+  "receiptSha256": "9e68cda38325f673d00734433a1bd7b127fab20ac88f16aad948f2bec1492186",
+  "scope": "SEPARATE_PROCESS_CRYPTOGRAPHIC_RECEIPT_VERIFICATION_NOT_TN10_SETTLEMENT",
+  "tamperedJournalOffsetsCryptographicallyRejected": [
+    0,
+    32,
+    44,
+    76,
+    166
+  ],
+  "wrongExpectedImageCryptographicallyRejected": true
+}

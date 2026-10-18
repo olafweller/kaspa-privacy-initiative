@@ -1,0 +1,22 @@
+{
+  "orderedRoot": "ba3987f8b58cf47dc711923064710e42aa52258039c4d52a645937519f9cc2f0",
+  "initialBalanceSompi": 1000000000,
+  "operationCount": 3,
+  "operations": [
+    {
+      "nativeId": "3137ba0a9e860bd851bb2c1ce6c9fa4132b6031bb7b4722dc9bd72aef3401b3f",
+      "outcome": 0,
+      "balanceSompi": 600000000
+    },
+    {
+      "nativeId": "8c48a69d814bc988e7cd3e14655874e1aebf1e4faaea7c5ea4e3d52b4016afbd",
+      "outcome": 3,
+      "balanceSompi": 600000000
+    },
+    {
+      "nativeId": "b6f40cd33823b53281d0b470609e92d101bc77251e17bc9d0dc69818a7ead733",
+      "outcome": 0,
+      "balanceSompi": 500000000
+    }
+  ]
+}

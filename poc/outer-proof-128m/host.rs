@@ -343,11 +343,19 @@ pub(super) fn run(a: &[String]) -> Result<()> {
     match a.get(2).map(String::as_str) {
         Some("prepare") => prepare(a),
         Some("check") if a.len() == 7 => {
-            let journal = gate(Path::new(&a[3]), Path::new(&a[4]), Path::new(&a[5]), Path::new(&a[6]))?;
-            println!("{}", json!({"qualificationBindingsVerified":true,"cases":24,
-                "expectedProgramImage":IMAGE,"expectedJournalSha256":sha(&journal)}));
+            let journal = gate(
+                Path::new(&a[3]),
+                Path::new(&a[4]),
+                Path::new(&a[5]),
+                Path::new(&a[6]),
+            )?;
+            println!(
+                "{}",
+                json!({"qualificationBindingsVerified":true,"cases":24,
+                "expectedProgramImage":IMAGE,"expectedJournalSha256":sha(&journal)})
+            );
             Ok(())
-        },
+        }
         Some("prove") => produce(a),
         Some("verify") => verify(a),
         _ => Err("outer-proof-128m prepare|prove|verify ...".into()),

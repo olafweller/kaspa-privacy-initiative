@@ -189,6 +189,42 @@
     "full-classifier-preparation-2026-10-18/image-smoke.json": {
       "bytes": 2301,
       "sha256": "c7ea64133661c39cdb22db0b5af003006c4b9300614394b815a308f396012b06"
+    },
+    "full-classifier-2026-10-18/classifier-receipt.bin": {
+      "bytes": 223560,
+      "sha256": "9e68cda38325f673d00734433a1bd7b127fab20ac88f16aad948f2bec1492186"
+    },
+    "full-classifier-2026-10-18/provider-stop-observation.json": {
+      "bytes": 586,
+      "sha256": "75872034d6af0a7342d8d74933324380d70368d59c2ef129d2c49c1a2641a66d"
+    },
+    "full-classifier-2026-10-18/measurements.json": {
+      "bytes": 8638,
+      "sha256": "30eeda7dbf3a7391f65fe081a25070623c9392456e3c2ebcd8e77cc19f225a96"
+    },
+    "full-classifier-2026-10-18/expected-statement.json": {
+      "bytes": 623,
+      "sha256": "ac29fdbbc1e6d958eaffbd58be8bb54864e0b32254a2968e6356fd3974288282"
+    },
+    "full-classifier-2026-10-18/b-preservation.json": {
+      "bytes": 1162,
+      "sha256": "e7cfe9cd333cf2c0c778ff123ab4cc0b258d7c3c4bcd6946b704dc3bc6af4806"
+    },
+    "full-classifier-2026-10-18/artifact-manifest.json": {
+      "bytes": 1209,
+      "sha256": "e7372082eb11e43d7bff0ffa21b4cb352d9648d10952b1e49194655b926efe8f"
+    },
+    "full-classifier-2026-10-18/full-gpu-artifacts.tar.gz": {
+      "bytes": 899488,
+      "sha256": "6bfb8b8851d6188ac7822ebc08fa309886c13da73f175bb70c8a27f275677969"
+    },
+    "full-classifier-2026-10-18/independent-verification.json": {
+      "bytes": 577,
+      "sha256": "2fa0e3055f90580d4b03695cf90a4031573c76631980c49ae0d9e00c6b4f947f"
+    },
+    "full-classifier-2026-10-18/README.md": {
+      "bytes": 2329,
+      "sha256": "3f9081ac275ab1e27b6fe266a80fbcd28bef154dcaec6bab224bba176c0951e3"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",
@@ -199,5 +235,12 @@
     "scope": "OWNER_AUTHORIZED_SINGLE_RENTED_GPU_ATTEMPT_FIVE_PARTIAL_PROOFS",
     "providerStopConfirmed": true,
     "historicalPreparationScopePreserved": true
+  },
+  "fullClassifierEvidence": {
+    "directory": "full-classifier-2026-10-18",
+    "scope": "SINGLE_COMPLETE_SUCCINCT_CLASSIFIER_RECEIPT",
+    "independentCpuVerified": true,
+    "providerStopConfirmed": true,
+    "priorQualificationPreserved": true
   }
 }

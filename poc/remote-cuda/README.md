@@ -12,7 +12,10 @@ fixed image/job, fresh Pod/lease/attempt namespace and independent guard on B.
 See [the declared plan](FULL-PLAN.md), [runbook](FULL-START.md),
 [adversarial review](FULL-REVIEW.md) and
 [preparation evidence](evidence/full-classifier-preparation-2026-10-18/preparation.json).
-The full receipt outcome will be recorded separately from the five partial proofs.
+The complete receipt has now been independently verified on CPU after a
+256-second GPU job, and provider stop is confirmed. See
+[the complete results](FULL-RESULTS.md). This is separate evidence from the five
+partial proofs.
 
 The independent guard is installed on B `vmi3641034.contaboserver.net`, distinct
 from TN10/gateway. Account credentials stay only on B. Management uses the
