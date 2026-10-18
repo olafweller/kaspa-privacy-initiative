@@ -1,0 +1,28 @@
+{
+  "scope": "PREPARATION_BEFORE_NEW_PAID_COMPUTE",
+  "predecessorPod": "qaxhwjd6e1b4bg",
+  "predecessorConfirmedExited": true,
+  "baseImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743",
+  "cpuVerifierSha256": "90be6101639335feee8ccb1c75d2188750e0293d37c8c8d9e2471c71d2996eaa",
+  "fixedWorkloadSha256": "3a3d6196d7451e596f81d7c72aa900343f54b3ff8460512ed5e2e07eddf55f11",
+  "limits": {
+    "proofSeconds": 3600,
+    "rentalSecondsFromCreation": 7200,
+    "executionCycles": 128000000,
+    "cpuThreads": 4,
+    "rssStopBytes": 12884901888,
+    "virtualAddressSpaceLimit": null,
+    "attempts": 1,
+    "planningUsd": 5
+  },
+  "runtimeSources": {
+    "full_worker.py": "653288f89673041a94b116db779391536d83fdcd812b343ee16c0e7f09b68004",
+    "full_service.py": "0b8fd01d9ad03f0512f4315f669a7901114b3bde75a146c067c8a1f9047ce2eb",
+    "service.py": "def96a6abcfc7bfbd2a2397dc2e0b0ab4d290fe2930668b2565e846c68a9ca40",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "full_package.py": "fd326233916d512227f57c21962adc4f4df74714b61cd9d8ef0ed254fb873258"
+  },
+  "qualificationReused": 24,
+  "additionalFullProofsForQualification": 0
+}

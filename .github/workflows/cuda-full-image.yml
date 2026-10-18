@@ -1,0 +1,39 @@
+name: Prepare fixed full-classifier CUDA image
+on:
+  push:
+    tags:
+      - 'cuda-full-classifier-*'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Check fixed inputs and runtime controls
+        run: |
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_*.py' -q
+          python3 poc/remote-cuda/full_package.py .local/full-image/full-dist
+          cp poc/remote-cuda/{Dockerfile.full,common.py,worker.py,service.py,full_worker.py,full_service.py} .local/full-image/
+      - name: Build derived image without rebuilding the qualified CUDA prover
+        run: |
+          docker build -f .local/full-image/Dockerfile.full -t kpi-cuda-full:checked .local/full-image
+          python3 poc/remote-cuda/check_full_image.py kpi-cuda-full:checked > .local/full-image-check.json
+      - name: Publish immutable image
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:full-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-cuda-full:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee -a "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          docker run --rm --entrypoint python3 "$task_digest" -c 'import json;from pathlib import Path;from full_worker import check_inputs;p=Path("/opt/kpi/full");check_inputs(p,json.loads((p/"full-workload.json").read_text()));print("fixed inputs and qualified binaries match")'
+          docker logout ghcr.io

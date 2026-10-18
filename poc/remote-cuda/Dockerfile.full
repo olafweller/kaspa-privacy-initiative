@@ -1,0 +1,6 @@
+# The already qualified immutable image supplies the exact CUDA prover and host.
+FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:df8e68263f85a8d89a8fb2365d78c795b0010d35cb35d6ddc1f740d3020b7743
+COPY full-dist /opt/kpi/full
+COPY common.py worker.py service.py full_worker.py full_service.py /opt/kpi/app/
+RUN python3 -c "import sys,json;sys.path.insert(0,'/opt/kpi/app');from full_worker import check_inputs;from pathlib import Path;p=Path('/opt/kpi/full');check_inputs(p,json.loads((p/'full-workload.json').read_text()))"
+CMD ["python3", "full_service.py"]
