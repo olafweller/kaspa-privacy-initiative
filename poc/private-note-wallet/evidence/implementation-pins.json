@@ -1,0 +1,24 @@
+{
+  "scope": "LOCAL_EXPERIMENT_NEW_WALLET_VK_NOT_A_RISC0_GUEST_IMAGE",
+  "expectedWalletVkId": "d45e8248eda25a6f6ec85b5074d0f7d217d29741c820c4d8ddfb2667675a5bf2",
+  "circuitConstraints": 774582,
+  "publicInputFieldElements": 14,
+  "outerGuestProgramId": null,
+  "outerGuestStatus": "not built; integration pending",
+  "pr43BaselineUnchanged": true,
+  "sources": {
+    "poc/private-note-wallet/Cargo.lock": "8f355f7eef081300e373c04514848adbe6b47eefc0b305d2dea9fb70cee61f86",
+    "poc/private-note-wallet/Cargo.toml": "ba5ce34530ec46a891e65774f745e483c9538c8856828a5028b873dae8ffd419",
+    "poc/private-note-wallet/src/circuit.rs": "2522a17d8a4251472bf06947860f028ec1658733f6db11b62e22385857fd5cdf",
+    "poc/private-note-wallet/src/ledger.rs": "6d044182ab745ea47992dc4857434be8a37305caeff90d7915cbf06a1e75bb74",
+    "poc/private-note-wallet/src/lib.rs": "fa04b8871eb2bac9549b3db325b8a16912dfd0effae1588eb00eea12e16e08f3",
+    "poc/private-note-wallet/src/main.rs": "ba06d38c01b32ad5e618f238059ca816359afb4121d2304c7cfb04c6c950bf3b",
+    "poc/private-note-wallet/src/protocol.rs": "b5c0d1258baa344dd2350fa8d53c79323728ffc8c2a619f3b872a0b44a3c0dc4",
+    "poc/private-note-wallet/src/wallet.rs": "585b413433c54eeb2a2080f58d644ffcddf8a0b5b91c7d2318b14ca2cdcbfe2d",
+    "poc/private-note-wallet/tests/accounting.rs": "d602bb083757948d1a6f8687ef8aae28978da673a4814396949ec90d319b303a",
+    "poc/private-note-wallet/tests/circuit.rs": "ac1d57a52791a74cd958a841d2f9cdba566b765c02a6bd673b255b990970261c",
+    "poc/private-note-wallet/tests/persisted.rs": "ba0ecf6d0a87c69e467939a1f9288ed0fd431658058c4db3cd01cc1c316410b2"
+  },
+  "independentVerificationBinarySha256": "0def5263123f0168e0dc32bdb9d3015a36dce50c1b096684fe1caec593ffc82e",
+  "timingProvenance": "Timed proof generation precedes final verifier/decoder hardening; circuit unchanged. Binary hash identifies final independent verifier, not timed generation binary."
+}

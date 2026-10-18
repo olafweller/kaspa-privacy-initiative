@@ -1,0 +1,50 @@
+{
+  "appFeesSompi": 0,
+  "bobIndependentDiscoveryAndExitProof": true,
+  "capacity": 4,
+  "ciphertextBytesPerOutput": 185,
+  "constraints": 774582,
+  "depositCreditRecoverySingleConsumption": true,
+  "economicNullifierAcrossBatchesVerified": true,
+  "finalPrivateLiabilitySompi": 600000000,
+  "finalReservedSompi": 600000000,
+  "nativeFacts": "explicit authenticated test fixtures; no real native payout",
+  "negativeProofPayloadMutationsRejected": 8,
+  "pendingExitBackedUntilFixturePayout": true,
+  "proofBytes": 128,
+  "provedOuterStateTransition": false,
+  "provingKeyCompressedBytes": 156435376,
+  "publicFieldElements": 14,
+  "publicStatementBytes": 410,
+  "scope": "REAL_LOCAL_PRIVATE_WALLET_PROOFS_AND_UNPROVED_APPLICATION_KERNEL_NOT_TN10",
+  "setupSeconds": 13.174984886,
+  "totalSeconds": 52.558608508,
+  "transferWireBytes": 908,
+  "treeDepth": 2,
+  "twoDistinctValidOldRootProofsSameNullifierRejectedAtomically": true,
+  "verifyingKeyBytes": 712,
+  "vkId": "d45e8248eda25a6f6ec85b5074d0f7d217d29741c820c4d8ddfb2667675a5bf2",
+  "walletProofs": [
+    {
+      "operation": "credit",
+      "seconds": 7.342856492
+    },
+    {
+      "operation": "transfer",
+      "seconds": 7.5001994419999996
+    },
+    {
+      "operation": "competing-old-root-transfer",
+      "seconds": 7.953398346
+    },
+    {
+      "operation": "bob-exit",
+      "seconds": 7.346510211
+    },
+    {
+      "operation": "pending-deposit-recovery",
+      "seconds": 7.170906542
+    }
+  ],
+  "witnessesSerializedOrUploaded": false
+}

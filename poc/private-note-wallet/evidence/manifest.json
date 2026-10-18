@@ -1,0 +1,85 @@
+{
+  "scope": "LOCAL_REAL_WALLET_PROOFS_UNPROVED_NATIVE_STATE_KERNEL",
+  "files": {
+    "dependency-licenses.json": {
+      "bytes": 569,
+      "sha256": "517fe88ad327af63827ae43cb1dd2a5471c98e5446361a61c1f4a68892442472"
+    },
+    "heads-20261018.json": {
+      "bytes": 1168,
+      "sha256": "e092ad8b62936c343b6087aa8475cf9cd61f7a86b6ff6b6a4d4b0069c591b3c6"
+    },
+    "implementation-pins.json": {
+      "bytes": 1917,
+      "sha256": "5c8c2f17fe28dad6d0c088637e7aa8bfb932737a6385aafdd492838501971098"
+    },
+    "monero-refresh.json": {
+      "bytes": 321,
+      "sha256": "156994f440f99f26fe5be3eec30558c93407a2a9df3ce011c14a36e849898695"
+    },
+    "pinned-files.json": {
+      "bytes": 6614,
+      "sha256": "1c485dfffe067858b5dc45ea1d9145019b1e2cc1e5d1beee5ca65380f5ae93f1"
+    },
+    "public/bob-exit.bin": {
+      "bytes": 538,
+      "sha256": "3ac3de245458b61d702bc97e671cd032c1e96b973e2323635e542dcac8fd8680"
+    },
+    "public/bob-exit.json": {
+      "bytes": 6357,
+      "sha256": "e7a16cfa9d071caaa4c00e426bb20e4c75f11b54927ce63874e77b1ec21e0286"
+    },
+    "public/competing.bin": {
+      "bytes": 908,
+      "sha256": "fa7a7078b3a168cc8ae2aca5407a23547528568ae7cd119b784236a26415bf5d"
+    },
+    "public/competing.json": {
+      "bytes": 11322,
+      "sha256": "50fbe7e500c200b3f93b12f8f1575e872637e63285765aaa79881cd50b7d465f"
+    },
+    "public/credit.bin": {
+      "bytes": 723,
+      "sha256": "d90db232362ee699c81f6b466841b65947d1f98e5b2ad032a8bb2c9a7e28a70f"
+    },
+    "public/credit.json": {
+      "bytes": 8862,
+      "sha256": "c6cd4d8bb9a511eca173f2eaae3284c701e083b2a44a2cc4528bce78827836ae"
+    },
+    "public/recovery.bin": {
+      "bytes": 538,
+      "sha256": "48323d6a18570ae406bd36747e6cfd28bb0ffcc55333724ff1e6abf4f8aa6a75"
+    },
+    "public/recovery.json": {
+      "bytes": 6435,
+      "sha256": "1f70d0070a47f004e7b4032b442eb51a7c5df7cf30539fd047878338718156c9"
+    },
+    "public/report.json": {
+      "bytes": 1507,
+      "sha256": "8fc0cbec8cdf9ac709c2fc8eca8930594b0de6a101745bc7a790a343833c5b27"
+    },
+    "public/separate-verification.json": {
+      "bytes": 733,
+      "sha256": "70d15560e13ae59783fd6613c38cdeda798aa58487c96a9f94962493ac86dbd2"
+    },
+    "public/transfer.bin": {
+      "bytes": 908,
+      "sha256": "90c9d5991fe0c68106c03485847a0403044e76f7ce414e481f9de5e461089f91"
+    },
+    "public/transfer.json": {
+      "bytes": 11275,
+      "sha256": "556653a06b9e66049e4575d4713b256324a0ade3b9d6545dcef707c029ec230f"
+    },
+    "public/verifying-key.bin": {
+      "bytes": 712,
+      "sha256": "d45e8248eda25a6f6ec85b5074d0f7d217d29741c820c4d8ddfb2667675a5bf2"
+    },
+    "tests.log": {
+      "bytes": 1895,
+      "sha256": "fe64a1af23f341ff7a5b4cb3b5e3d09733b072d40fb657b52b6357ef68a338e1"
+    },
+    "wallet-job-resources.json": {
+      "bytes": 314,
+      "sha256": "5dff97af0f3216526b2aa5852da5771988c090ae87b54426c9e079967eeb9d08"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "repo": "kaspanet/docs",
+    "ref": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
+    "path": "content/docs/toccata/based-apps.mdx",
+    "sha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
+    "bytes": 9470,
+    "sourceLocation": ".local/shielded-design/sources/kaspanet_docs__content_docs_toccata_based-apps.mdx"
+  },
+  {
+    "repo": "kaspanet/research",
+    "ref": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+    "path": "README.md",
+    "sha256": "fa73396af352e5f4b591bbe31ec643939a61d7ff8322f3d765c0d3aa05a5ae8b",
+    "bytes": 447,
+    "sourceLocation": ".local/shielded-design/sources/kaspanet_research__README.md"
+  },
+  {
+    "repo": "kaspanet/vprogs",
+    "ref": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "path": "zk/abi/src/batch_processor/verifier.rs",
+    "sha256": "b24b8d0776afa6a3f39753d06041a51376dfd84f2613fa2a56220c727eba6e19",
+    "bytes": 13278,
+    "sourceLocation": ".local/shielded-design/sources/kaspanet_vprogs__zk_abi_src_batch_processor_verifier.rs"
+  },
+  {
+    "repo": "kaspanet/vprogs",
+    "ref": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "path": "zk/backend/risc0/api/src/host.rs",
+    "sha256": "ab3001e9d4680708e7a4ea492b73e23c881558159b3606f9aba4231b2627c0c1",
+    "bytes": 854,
+    "sourceLocation": ".local/shielded-design/sources/kaspanet_vprogs__zk_backend_risc0_api_src_host.rs"
+  },
+  {
+    "repo": "zcash/orchard",
+    "ref": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+    "path": "src/note/nullifier.rs",
+    "sha256": "860747577a477fa387af512262c7f391593d74f4ac619a86b5c6c897bf18c659",
+    "bytes": 4037,
+    "sourceLocation": ".local/shielded-design/sources/zcash_orchard__src_note_nullifier.rs"
+  },
+  {
+    "repo": "zcash/orchard",
+    "ref": "616a669df8c9a59c33d47064d3ce04b25d026b2e",
+    "path": "src/note_encryption.rs",
+    "sha256": "0e1785ecb66dfbb343674afa8e8e037710f1b26d340804ce03aa502a33e464f3",
+    "bytes": 39339,
+    "sourceLocation": ".local/shielded-design/sources/zcash_orchard__src_note_encryption.rs"
+  },
+  {
+    "repo": "AztecProtocol/aztec-packages",
+    "ref": "49a592109ec4f18d79212b43d621891aaf36f7b6",
+    "path": "noir-projects/aztec-nr/aztec/src/note/note_interface.nr",
+    "sha256": "4950679a772bde4b9031db11710e79c187bc816d2a0aace4f560a2aa8b443765",
+    "bytes": 3416,
+    "sourceLocation": ".local/shielded-design/sources/AztecProtocol_aztec-packages__noir-projects_aztec-nr_aztec_src_note_note_interface.nr"
+  },
+  {
+    "repo": "Railgun-Privacy/contract",
+    "ref": "36bcf5ed7cf94bfafb6e1a303e1832c769c16780",
+    "path": "contracts/logic/Commitments.sol",
+    "sha256": "fe56adcc9aa04fcbe2bb7346207f8eed58dd1e13ba6eb2aa7661329c2c4b5d1b",
+    "bytes": 8985,
+    "sourceLocation": ".local/shielded-design/sources/Railgun-Privacy_contract__contracts_logic_Commitments.sol"
+  },
+  {
+    "repo": "Railgun-Privacy/circuits-v2",
+    "ref": "0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb",
+    "path": "License.md",
+    "sha256": "4dc3e0bc42609cc1d3ba8303776040cfdd8b0b002b6e42106450720d98af06c4",
+    "bytes": 61,
+    "sourceLocation": ".local/shielded-design/sources/Railgun-Privacy_circuits-v2__License.md"
+  },
+  {
+    "repo": "monero-project/monero",
+    "ref": "f8aba51d2d50ebe7c96a0f4d1f2d6e88add61710",
+    "path": "src/ringct/rctSigs.cpp",
+    "sha256": "cee913efc2e4f5bfabfb1df58c1574b1fc4213a22a205722f4d43f3f7fb0f0f0",
+    "bytes": 67379,
+    "sourceLocation": ".local/shielded-design/sources/monero-project_monero__src_ringct_rctSigs.cpp"
+  },
+  {
+    "repo": "litecoin-project/litecoin",
+    "ref": "ec1b6489a900d09cf5991e220dce089c77a232a2",
+    "path": "src/libmw/include/mw/models/tx/Output.h",
+    "sha256": "b535684386719155907388abd75b887bb0a60accc1872a0ce89edf2528d3a692",
+    "bytes": 7408,
+    "sourceLocation": ".local/shielded-design/sources/litecoin-project_litecoin__src_libmw_include_mw_models_tx_Output.h"
+  },
+  {
+    "repo": "risc0/risc0",
+    "ref": "v3.0.3",
+    "path": "risc0/zkvm/src/guest/env/verify.rs",
+    "sha256": "29417f6f65e9419671dace8113644f1621ad8834d41c7bacdb7fed157f88f0c4",
+    "bytes": 7803,
+    "sourceLocation": ".local/shielded-design/sources/risc0_risc0__risc0_zkvm_src_guest_env_verify.rs"
+  },
+  {
+    "repo": "Railgun-Privacy/circuits-v2",
+    "ref": "0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb",
+    "path": "License.md",
+    "sha256": "4dc3e0bc42609cc1d3ba8303776040cfdd8b0b002b6e42106450720d98af06c4",
+    "bytes": 61,
+    "sourceLocation": ".local/shielded-design/sources/Railgun-Privacy_circuits-v2__License.md"
+  },
+  {
+    "repo": "Railgun-Community/engine",
+    "ref": "6e2614d53a106dd62abad91e7ce03ee4a3956138",
+    "path": "src/note/transact-note.ts",
+    "sha256": "06945b37f35f0ebc0ebffaa57ec3ed0ec6cfdfe28eb573f3061ec0668c2c7cdf",
+    "bytes": 26013,
+    "sourceLocation": ".local/shielded-design/sources/Railgun-Community_engine__src_note_transact-note.ts"
+  },
+  {
+    "repo": "mrzeku2000XTTT/kaspa-xmss-covenants",
+    "ref": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+    "path": "covenants/privacy_pool/withdraw.circom",
+    "sha256": "fba1cab61630e85f4c0549e054c20e5ad6107a750763728e78d54967ca6f5174",
+    "bytes": 2097,
+    "sourceLocation": ".local/shielded-design/sources/mrzeku2000XTTT_kaspa-xmss-covenants__covenants_privacy_pool_withdraw.circom"
+  },
+  {
+    "repo": "kasperience/argent",
+    "ref": "8751cc2ef559732cc66539eb354360dddc84bfb5",
+    "path": "README.md",
+    "sha256": "058180e3f4fc6b71f0da320c6c4ca8c55bb7a992ca71414c6155396ba64cd8e2",
+    "bytes": 11771,
+    "sourceLocation": ".local/shielded-design/sources/kasperience_argent__README.md"
+  },
+  {
+    "repo": "KASRANKS/KASSWORD",
+    "ref": "8af2e17b26bf9b2af8d974768fd65fccb10663a7",
+    "path": "README.md",
+    "sha256": "c464b5c71b2177fc077961a7cbc64e927e995b260af2a8c21384e0ebc7c8b261",
+    "bytes": 6000,
+    "sourceLocation": ".local/shielded-design/sources/KASRANKS_KASSWORD__README.md"
+  },
+  {
+    "repo": "kaspanet/research",
+    "ref": "c923faca11a49148fa7d912d27ce00197a5c5a4a",
+    "path": "vProgs/main.tex",
+    "sha256": "dd8e426439fe26f03c7b31d6cb9ee4616b1638cc04ca80f91f6130b22b095c37",
+    "bytes": 49161,
+    "sourceLocation": ".local/shielded-design/sources/kaspanet_research__current_vProgs_main.tex"
+  },
+  {
+    "repo": "mrzeku2000XTTT/kaspa-xmss-covenants",
+    "ref": "6713eb0115722d5193718dfe4dbe716bdc9b3d09",
+    "path": "covenants/privacy_pool/deploy_pool_demo.mjs",
+    "sha256": "1a8e0dd880f2d8db92c1b8e36c16f729e7481fee584d1088e90c066eb929233d",
+    "bytes": 6657,
+    "sourceLocation": ".local/shielded-design/sources/mrzeku2000XTTT_kaspa-xmss-covenants__current_covenants_privacy_pool_deploy_pool_demo.mjs"
+  }
+]

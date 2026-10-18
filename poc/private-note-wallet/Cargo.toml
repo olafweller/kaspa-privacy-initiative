@@ -1,0 +1,22 @@
+[package]
+name = "kpi-private-note-wallet"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+ark-bn254 = { version = "=0.5.0", features = ["curve"] }
+ark-ff = "=0.5.0"
+ark-ec = "=0.5.0"
+ark-groth16 = { version = "=0.5.0", features = ["parallel"] }
+ark-serialize = "=0.5.0"
+ark-relations = "=0.5.1"
+ark-r1cs-std = "=0.5.0"
+ark-crypto-primitives = { version = "=0.5.0", features = ["r1cs", "crh"] }
+crypto_box = { version = "=0.9.1", features = ["seal", "std"] }
+sha2 = "=0.10.9"
+hmac = "=0.12.1"
+rand = "=0.8.5"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.145"
+hex = "=0.4.3"

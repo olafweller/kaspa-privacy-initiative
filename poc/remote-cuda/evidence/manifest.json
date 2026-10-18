@@ -225,6 +225,18 @@
     "full-classifier-2026-10-18/README.md": {
       "bytes": 2329,
       "sha256": "3f9081ac275ab1e27b6fe266a80fbcd28bef154dcaec6bab224bba176c0951e3"
+    },
+    "cleanup-2026-10-18/full-recovery-verification.json": {
+      "bytes": 577,
+      "sha256": "2fa0e3055f90580d4b03695cf90a4031573c76631980c49ae0d9e00c6b4f947f"
+    },
+    "cleanup-2026-10-18/partial-recovery-verification.json": {
+      "bytes": 505,
+      "sha256": "f8fae3c7e5af5af6088b22c8419f7110dcca4f79405137267c702dfbf13df54d"
+    },
+    "cleanup-2026-10-18/provider-cleanup.json": {
+      "bytes": 925,
+      "sha256": "b3aa710133a3f5e1e05b75fbe463fc6efd5c4b0436e10a01bd03916494b565d9"
     }
   },
   "preparationBuildSourceRevision": "40198bcc556bca3761499ed35c766885a611c355",
@@ -242,5 +254,12 @@
     "independentCpuVerified": true,
     "providerStopConfirmed": true,
     "priorQualificationPreserved": true
+  },
+  "postMergeCleanupEvidence": {
+    "directory": "cleanup-2026-10-18",
+    "bothArchivesRestoredAndCpuVerified": true,
+    "bothPodDeletionsConfirmed404": true,
+    "bArchivesRetained": true,
+    "noOtherResourcesDeleted": true
   }
 }

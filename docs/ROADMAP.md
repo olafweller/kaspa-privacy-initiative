@@ -2,7 +2,15 @@
 
 This roadmap is intentionally research-first. Phases are research gates, not delivery promises. No state architecture or scaling path has been accepted.
 
-## Current focus, 2026-10-17
+## Current focus, 2026-10-18
+
+The [complete compact-wallet classifier receipt](../poc/remote-cuda/FULL-RESULTS.md)
+is independently verified; merged PR42/43 close that test-model proving gate.
+The [local wallet result](../poc/private-note-wallet/RESULTS.md) under
+[ADR-0011](adr/0011-local-private-note-wallet.md) provides real note
+membership/authority/conservation proofs, recipient discovery and current
+spentness/accounting across batches. Full private-state proofs, native integration,
+funded privacy trials and independent recovery remain separate open gates.
 
 The five-criterion [Based App feasibility assessment](based-app-feasibility-2026-10-17.md)
 is complete for the public-account TN10 experiment in PRs #31–#33: accepted L1

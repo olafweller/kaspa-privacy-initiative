@@ -423,3 +423,21 @@ reverified. Segment proving dominates the measured costs; the original guest,
 wallet relation and proving architecture are unchanged. These middle-segment
 receipts are not a complete classifier proof. The next proposed qualification
 is the official pinned CUDA proving path on the same retained assets.
+
+## Local private-note experiment checkpoint — 2026-10-18
+
+The [complete classifier receipt](../poc/remote-cuda/FULL-RESULTS.md) closes the
+older test-model outer-proof blocker. [ADR-0011](adr/0011-local-private-note-wallet.md)
+records a new experimental wallet circuit and local application kernel: hidden
+SHA256 Merkle membership, rightful HMAC economic nullifiers, bounded conservation,
+version/domain/verifier and output/delivery binding, independent recipient
+validation, current spentness and deposit/exit liabilities. The first tree has
+four slots and zero app fees, chosen only for the Alice/Bob research lifecycle.
+This is not selection of a production commitment/encryption construction.
+
+The new kernel's native inputs/payout confirmations are explicitly test fixtures;
+its transitions are not yet proved in an outer guest. The next chain must bind
+new transaction/batch/aggregate program identities to the existing native
+Succinct verification ABI. A wallet receipt or the old 167-byte classifier
+journal cannot substitute for that native aggregate statement. User witnesses
+remain local; external executors/provers receive only public operations/state.

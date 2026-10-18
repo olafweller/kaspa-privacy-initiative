@@ -113,6 +113,18 @@ remain; no volume/Pod was deleted. Retention/storage cleanup and invoice
 reconciliation remain separate. No proof retry, budget increase, new wallet
 setup, private witness upload or new TN10 transaction occurred.
 
+## Subsequent cleanup — 2026-10-18
+
+After owner authorization, both original archives were restored again from B,
+size/hash checked and independently cryptographically verified. Only stopped
+Pods `qaxhwjd6e1b4bg` and `wzozsg2nej95tb` and their associated local volumes were
+then deleted. Provider GET returned HTTP404 for each. They had no shared network
+volume. Both completed guard units were disabled; B archives/keys and the
+published evidence were preserved. Earlier retention statements above describe
+the stop-time observation, not current rented storage. See
+[cleanup evidence](evidence/cleanup-2026-10-18/provider-cleanup.json).
+Actual settled invoice charges remain unavailable.
+
 ## Research conclusion and remaining work
 
 The existing compact wallet proofs can now be processed as a complete, ordered

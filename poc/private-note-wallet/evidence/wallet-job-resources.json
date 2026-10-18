@@ -1,0 +1,17 @@
+{
+  "exitCode": 0,
+  "wallSeconds": 53.07288824200077,
+  "userSeconds": 131.203161,
+  "systemSeconds": 1.843763,
+  "peakKernelRssBytes": 2619203584,
+  "peakSampledRssBytes": 2619531264,
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "developmentMode": false,
+  "witnessesLogged": false
+}

@@ -1,13 +1,24 @@
 # Next focus: shielded native KAS and financial privacy
 
-**Resumed by the owner, 2026-10-17:** the
-[bounded phase diagnostics](../poc/proof-phase-diagnostics/PLAN.md) follow merged
-PR #39 and its preserved [pause handoff](../poc/outer-proof-128m/STATUS-HANDOFF.md).
-Only that local unfunded diagnostic package is resumed; broader private-note
-implementation and TN10 integration remain deferred.
-The [diagnostic result](../poc/proof-phase-diagnostics/RESULTS.md) now retains five
-verified partial receipts. Before another full job, qualify the same assets on
-the official CUDA proving path; that environment experiment has not been run.
+## Current checkpoint — 2026-10-18
+
+PR42 and PR43 are merged. The [complete classifier receipt](../poc/remote-cuda/FULL-RESULTS.md)
+closes the outer-receipt blocker for the existing compact-wallet test model:
+117,473,222 user cycles, one real succinct receipt, independent CPU verification
+and actual wrong-image/journal/seal rejection. The complete GPU worker took
+256 seconds; the provider stop was confirmed. Both GPU archives were subsequently
+restored from B and verified again before the two stopped Pods/local volumes
+were deleted. Evidence and source pins remain preserved.
+
+The owner has resumed the local private-payment work. Concrete experimental
+choices are recorded in [ADR-0011](adr/0011-local-private-note-wallet.md): hidden
+note membership/authority/conservation, economic nullifiers across batches,
+recipient validation and an atomic application kernel. The small new wallet
+circuit is separate from the completed PR43 classifier. The
+[local result](../poc/private-note-wallet/RESULTS.md) contains five real wallet
+proofs, nine passing tests and separate pinned-key verification; full outer/native
+integration remains a subsequent gate. No new GPU rental, native funding or
+TN10 transaction is part of this local implementation.
 
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
@@ -16,7 +27,10 @@ model, followed by a minimal TN10 privacy experiment. No production architecture
 or proof system is selected here; [RFC-0001](rfc/0001-state-architecture.md) remains
 Open. Native KAS is the sole backing asset; there is no new privacy token.
 
-## Local work-package checkpoint, 2026-10-17
+## Historical local work-package checkpoints, 2026-10-17
+
+The following sequence is preserved as dated research. Pending outer-receipt
+statements below are superseded by the completed GPU result above.
 
 The first [local package](../poc/shielded-design/README.md) now supplies
 [RFC-0002](rfc/0002-shielded-payment.md), a visibility contract, executable model,

@@ -44,3 +44,5 @@ Use [0000-template.md](0000-template.md).
 - [ADR-0010: approved 128M outer classification proof](0010-approved-128m-outer-proof.md)
 
 The open state architecture comparison is [RFC-0001](../rfc/0001-state-architecture.md).
+
+- [ADR-0011: local private-note wallet and economic transitions](0011-local-private-note-wallet.md)

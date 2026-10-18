@@ -7,6 +7,16 @@ privacy trial. [RFC-0001](0001-state-architecture.md), all security invariants a
 the common N-user shutdown/exit gate stay open. PR34's migration requirements
 apply. Native KAS is the backing asset; private notes are claims, not a new token.
 
+## Current experimental checkpoint — 2026-10-18
+
+The [completed classifier receipt](../../poc/remote-cuda/FULL-RESULTS.md) resolves
+the bounded outer-proof blocker for the previous small test relation. The new
+[ADR-0011](../adr/0011-local-private-note-wallet.md) chooses a bounded local
+private-note circuit/kernel experiment, not production cryptography. Earlier
+implementation-status paragraphs below describe the original model package;
+the new package keeps actual wallet proofs separate from its unproved native-
+fact fixture/kernel and the pending outer/native integration.
+
 ## Scope and economic state
 
 Target lifecycle: authenticated native deposit -> one private claim -> private

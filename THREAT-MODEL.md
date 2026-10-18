@@ -324,3 +324,22 @@ files or alter the service. The management SSH restrictions and file permissions
 do not protect against a malicious administrator. Guard qualification tests use
 simulated provider responses. The operator's later successful read-only provider
 GET does not establish stop/write permission or live rental/stop qualification.
+
+## Local private-note research boundary (2026-10-18)
+
+The ADR-0011 experiment keeps spend/view keys, note plaintexts and selected
+Merkle paths inside the local wallet/proof process. Public payloads contain
+commitments, nullifiers, historical anchors, ciphertexts and proofs, not input
+notes or paths. The Groth16 setup is one-party experimental; no production
+ceremony or toxic-waste guarantee is claimed. SHA/HMAC note composition is a
+new experimental protocol adaptation, not a new primitive or inherited Orchard
+security result. Native facts are test fixtures, not a trusted rescue authority.
+
+The proof binds ciphertext bytes; it does not prove encryption correctness.
+Recipients must decrypt, reconstruct the commitment, verify the expected
+owner/incoming key and find the note in accepted data before counting a payment.
+Malformed delivery can burn a malicious sender's own output and is never counted
+as recipient receipt. Public deposit/exit amounts, timing, tiny tree/low activity,
+fixed operation shapes and service/network observation remain linkability risks.
+The full state guest, native accepted data/payout verification and independent
+service-disappearance recovery are still required before a funded privacy trial.

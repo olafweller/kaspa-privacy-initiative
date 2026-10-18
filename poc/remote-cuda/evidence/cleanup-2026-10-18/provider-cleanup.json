@@ -1,0 +1,30 @@
+{
+  "declaredScope": "DELETE_ONLY_TWO_RESTORED_AND_CPU_VERIFIED_STOPPED_TEST_PODS_WITH_LOCAL_VOLUMES",
+  "startedUnix": 1792326135.2601311,
+  "pods": [
+    {
+      "podId": "qaxhwjd6e1b4bg",
+      "createdAt": "2026-10-18 11:13:48.199 +0000 UTC",
+      "beforeStatus": "EXITED",
+      "localVolumeGb": 10,
+      "sharedNetworkVolume": false,
+      "absentAfterDelete": true,
+      "verificationHttpStatus": 404,
+      "deletedUnix": 1792326153.548179
+    },
+    {
+      "podId": "wzozsg2nej95tb",
+      "createdAt": "2026-10-18 11:43:01.41 +0000 UTC",
+      "beforeStatus": "EXITED",
+      "localVolumeGb": 10,
+      "sharedNetworkVolume": false,
+      "absentAfterDelete": true,
+      "verificationHttpStatus": 404,
+      "deletedUnix": 1792326154.8061173
+    }
+  ],
+  "guardUnitsDisabled": true,
+  "actualInvoiceChargesAvailable": false,
+  "evidenceAndCredentialsPreservedOnB": true,
+  "completedUnix": 1792326155.449845
+}

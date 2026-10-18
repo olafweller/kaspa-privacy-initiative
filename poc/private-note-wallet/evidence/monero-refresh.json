@@ -1,0 +1,7 @@
+{
+  "repo": "monero-project/monero",
+  "ref": "183b5e962401092ba6e1ea1a2e4774800851f693",
+  "url": "https://raw.githubusercontent.com/monero-project/monero/183b5e962401092ba6e1ea1a2e4774800851f693/src/ringct/rctSigs.cpp",
+  "bytes": 67379,
+  "sha256": "cee913efc2e4f5bfabfb1df58c1574b1fc4213a22a205722f4d43f3f7fb0f0f0"
+}

@@ -1,0 +1,37 @@
+name: Private note wallet research checks
+on:
+  pull_request:
+    paths:
+      - 'poc/private-note-wallet/**'
+      - '.github/workflows/private-note-wallet.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'poc/private-note-wallet/**'
+      - '.github/workflows/private-note-wallet.yml'
+permissions:
+  contents: read
+jobs:
+  wallet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.local/private-wallet-ci
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Pinned Rust and formatting
+        run: |
+          rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+          cargo +1.91.0 fmt --manifest-path poc/private-note-wallet/Cargo.toml --check
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            .local/private-wallet-ci
+          key: private-note-rust191-${{ hashFiles('poc/private-note-wallet/Cargo.lock') }}
+      - name: Actual circuit, accounting and independent persisted-proof tests
+        run: cargo +1.91.0 test --locked --release --manifest-path poc/private-note-wallet/Cargo.toml -- --test-threads=1

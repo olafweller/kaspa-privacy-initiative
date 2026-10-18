@@ -242,3 +242,12 @@ Provider GET confirmed EXITED at 11:49:24Z; the guard exited normally after its
 terminal grace. No Cloud secret/domain was added and no proof retry occurred.
 Both stopped Pods' 10GB volumes remain; billing/cleanup are separate. See
 [FULL-RESULTS.md](FULL-RESULTS.md) for the exact statement, measurements and scope.
+
+## Authorized post-recovery cleanup — 2026-10-18
+
+Both archives were restored from B again and cryptographically verified. Only the
+two stopped test Pods/local volumes were removed (both provider GET404; neither
+had a shared network volume). The completed guard units were disabled. Evidence,
+credentials, old trial services/data and B's original archives remain preserved.
+See `evidence/cleanup-2026-10-18/provider-cleanup.json` and the two fresh recovery
+verification reports. No other account resource was deleted.
