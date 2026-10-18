@@ -1,5 +1,12 @@
 # Concrete next task: one complete private-state receipt and local native checks
 
+Completed follow-up, 2026-10-18: the separately owner-released
+[single GPU attempt](../private-note-proof/gpu-2026-10-18/RESULTS.md) produced the
+exact genuine receipt. Independent CPU verification and local native positive
+plus fifteen negative controls passed. The Pod was stopped and deleted after
+external preservation. The proposal below remains historical; native deposit
+lineage and Bob's actual exit/payout are still open.
+
 Status: proposed software/proof work after the completed 160M CPU calibration.
 No GPU rental or proof job is started/authorized by that CPU-only instruction.
 No new cryptography, wallet setup, opcode, infrastructure design or TN10 broadcast.

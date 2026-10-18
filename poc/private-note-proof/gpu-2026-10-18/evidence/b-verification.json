@@ -1,0 +1,40 @@
+{
+  "scope": "INDEPENDENT_B_CPU_AND_NATIVE_VERIFICATION_NOT_TN10_BROADCAST",
+  "unixSeconds": 1792345784.7262373,
+  "seconds": 0.6995178510005644,
+  "archiveSha256": "492869d6eafca82634786d8ae32203d60724699827f756f964e06cfd8bd03128",
+  "archiveBytes": 1070537,
+  "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+  "independentCpuAndNativeVerified": true,
+  "positiveNativeFixtureAccepted": true,
+  "negativeNativeCasesVerified": 15,
+  "actualMatchingProcessCudaObserved": true,
+  "proofResources": {
+    "exitCode": 0,
+    "failure": null,
+    "wallSeconds": 243.08798238402233,
+    "phaseSecondsLimit": 3600,
+    "peakSampledSummedRssBytes": 746266624,
+    "peakSampledSummedVirtualBytes": 116522586112,
+    "peakMatchingGpuProcessVramMiB": 13706.0,
+    "gpuProcessActivityObserved": true,
+    "kernelWaitUserSeconds": 193.749469,
+    "kernelWaitSystemSeconds": 47.667951,
+    "sampledOwnCpuSeconds": 241.13,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "computeThreads": 4,
+    "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+  },
+  "actualTN10Settlement": false,
+  "result": {
+    "independentCpuAndNativeVerified": true,
+    "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+    "actualTN10Settlement": false
+  }
+}
+

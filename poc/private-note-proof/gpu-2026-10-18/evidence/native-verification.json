@@ -1,0 +1,74 @@
+{
+  "actualTN10Broadcast": false,
+  "archivedCpuNegativeControls": null,
+  "developmentMode": false,
+  "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "fixturePrincipalSompi": 1000000000,
+  "negativeControls": {
+    "bad-inclusion": {
+      "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "rejected": true
+    },
+    "bad-seal": {
+      "error": "ZK Integrity: R0: verification indicates proof is invalid",
+      "rejected": true
+    },
+    "divert-reserve": {
+      "error": "script ran, but verification failed",
+      "rejected": true
+    },
+    "wrong-anchor": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-batch-relation": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-control": {
+      "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "rejected": true
+    },
+    "wrong-covenant": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-endpoint": {
+      "error": "block 0909090909090909090909090909090909090909090909090909090909090909 not selected",
+      "rejected": true
+    },
+    "wrong-image": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-lane": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-new-root": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-new-tip": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-prior-root": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-prior-tip": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    },
+    "wrong-tx-relation": {
+      "error": "ZK Integrity: Verification failed",
+      "rejected": true
+    }
+  },
+  "newPrivateReceiptVerified": true,
+  "positiveNativeScriptAccepted": true,
+  "principalExcludesRentAndSponsorFees": true,
+  "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+  "scope": "LOCAL_PRIVATE_NOTE_NATIVE_FIXTURE_NOT_CANONICAL_TN10_OR_PAYOUT"
+}

@@ -1,0 +1,36 @@
+{
+  "scope": "PUBLIC_SOFTWARE_STAGING_ONLY_NO_RENTAL_LEASE_OR_GUARD_START",
+  "utc": "2026-10-18T17:23:39.889888+00:00",
+  "statePath": "/var/lib/kpi-cuda-guard/private-note-20261018-01",
+  "leaseExists": false,
+  "guardUnit": "kpi-cuda-private-guard.service",
+  "guardStatus": [
+    "ActiveState=inactive",
+    "SubState=dead",
+    "UnitFileState=disabled"
+  ],
+  "trustedPackage": "/opt/kpi-remote-cuda/private-note-proof-20261018-01",
+  "archiveSha256": "eee8e803c93f9c87c94bddf368c4f9c577063ab78285a1e9c7cf527b03034a5e",
+  "workloadSha256": "34b4228feb0daf2d660b086b427ccdaafd1a68c425094a2e1580db7bdb9d0bf1",
+  "binaries": {
+    "kpi-private-note-native": {
+      "bytes": 7083928,
+      "sha256": "bce8e9866c1b0d4c99868bede571206e4ed442d2674a8bab1d6f7474e132fd07"
+    },
+    "kpi-private-note-producer": {
+      "bytes": 11703720,
+      "sha256": "8f890c3671b183d93c90070946b6cb510d562371aea29f47211cd48776211da0"
+    },
+    "kpi-private-note-verifier": {
+      "bytes": 3548856,
+      "sha256": "5c20e03f3630420c3c91ac4118d0849af7c007d0c8e6ddbdf530a2e5ba5a9c83"
+    }
+  },
+  "installedPublicClientsSha256": {
+    "control.py": "50ccd0d02882497dcd136b9d714aa4b3213b901c0968282f4d82de87aed8405e",
+    "private_control.py": "8db8a8719c746405caa71f18454dd98bcabc50e598b7b4382f7b917b774013d6",
+    "private_package.py": "4ad99cf0b6f52f0fa41d0f455f8ae35b94a3d9383e3d8d8665fa21666ed74269"
+  },
+  "credentialsReadOrPrinted": false
+}
+

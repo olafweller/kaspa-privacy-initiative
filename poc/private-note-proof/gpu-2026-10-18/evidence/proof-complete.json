@@ -1,0 +1,18 @@
+{
+  "developmentMode": false,
+  "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "expectedProgramImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "independentVerificationStillRequired": true,
+  "noUnresolvedAssumptions": true,
+  "proofSeconds": 242.955059033,
+  "receiptBytes": 223930,
+  "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+  "scope": "REAL_PRIVATE_NOTE_SUCCINCT_RECEIPT",
+  "stats": {
+    "paging_cycles": 5541687,
+    "reserved_cycles": 4641397,
+    "segments": 143,
+    "total_cycles": 149946368,
+    "user_cycles": 139763284
+  }
+}

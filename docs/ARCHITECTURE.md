@@ -477,6 +477,11 @@ claim for a genuine Succinct receipt. Its native variant explicitly pins
 independent CPU verification and actual native fixture checks share independently
 compiled image/control/journal expectations. Archived PR43 verification qualifies
 only join/precompile compatibility. The new private receipt/native positive is
-still pending; the owner reviews the package with Astra in Chat before any
-separately authorized rental. No runtime, privacy relation or backing rule is
-expanded by this preparation.
+subsequently completed by the owner-reviewed and released
+[single L40S run](../poc/private-note-proof/gpu-2026-10-18/RESULTS.md): a genuine
+139,763,284-user-cycle Succinct receipt in 243.088 seconds, independent CPU
+verification and local native positive/fifteen-negative checks. The correct
+352-byte journal and 1,000,000,000-sompi fixture backing are enforced. Provider
+stop and deletion were confirmed after external preservation. No runtime,
+privacy relation or backing rule changed; canonical deposit lineage, Bob's exit
+and actual native payout remain open.

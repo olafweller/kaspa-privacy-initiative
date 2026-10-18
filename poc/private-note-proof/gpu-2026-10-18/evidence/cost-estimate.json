@@ -1,0 +1,19 @@
+{
+  "scope": "CALCULATED_FROM_OBSERVED_TIMES_AND_QUOTED_RATES_NOT_SETTLED_INVOICE",
+  "createdUnix": 1792345407.331,
+  "providerReportedExitedUnix": 1792345801.0,
+  "stopReadbackObservedUnix": 1792345818.1118073,
+  "deletionConfirmedUnix": 1792345861.0833352,
+  "createdToProviderReportedStopSeconds": 393.6689999103546,
+  "createdToStopReadbackSeconds": 410.7808072566986,
+  "stoppedToDeletionConfirmedSeconds": 60.083335161209106,
+  "gpuUsdPerHour": 1.09,
+  "planningActiveStorageUsdPerHour": 0.014,
+  "planningStoppedStorageUsdPerHour": 0.0028,
+  "estimatedComputeUsd": 0.11919422497285738,
+  "estimatedStorageUsd": 0.0015776664825545418,
+  "estimatedTotalUsd": 0.12077189145541192,
+  "conservativeUsingStopReadbackTotalUsd": 0.1260062031914658,
+  "actualInvoiceChargesAvailable": false,
+  "note": "Provider EXITED change label is second-resolution. Storage rates are planning rates, not itemized invoice data. No network volume was created; authenticated GET404 and list absence confirm Pod deletion."
+}

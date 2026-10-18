@@ -39,6 +39,14 @@ Succinct receipt plus independent CPU/native fixture verification after local
 producer/package preparation and separate GPU release. This measured scenario
 has no Bob exit, actual native deposit acceptance or payout.
 
+That task is now completed by the separately owner-released
+[single private-note GPU result](../poc/private-note-proof/gpu-2026-10-18/RESULTS.md):
+243.088 seconds, exact genuine receipt, independent CPU verification and local
+native positive/fifteen-negative checks. Provider stop/deletion followed verified
+external preservation. The next substantive gap is actual native deposit lineage
+and Bob's authorized exit/payout with complete reserve accounting, before a
+separately released full TN10 rehearsal. No additional rental follows automatically.
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

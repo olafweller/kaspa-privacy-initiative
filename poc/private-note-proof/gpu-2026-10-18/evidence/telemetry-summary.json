@@ -1,0 +1,7 @@
+{
+  "samples": 946,
+  "sampledRssBytesMax": 746266624,
+  "note": "Raw matching process identifiers, GPU activity and samples are retained in gpu-artifacts.tar.gz; sampled memory can miss peaks or double-count shared pages.",
+  "matchingGpuProcessPresentSamples": 931,
+  "matchingGpuProcessAndDeviceUtilizationPositiveSamples": 853
+}

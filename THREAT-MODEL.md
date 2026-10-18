@@ -374,3 +374,13 @@ canonical initial funding or payouts. Public frozen inputs only reach the GPU;
 the owner-local wallet secrets/setup are not packaged. Image/binary hashes bind
 the reviewed artifacts, not compiler correctness. Owner Chat review and any paid
 rental release remain separate from this software preparation.
+
+The subsequently reviewed/released [single private-note GPU run](poc/private-note-proof/gpu-2026-10-18/RESULTS.md)
+produced the genuine receipt with independently verified image/control/exact
+journal. Actual local native execution accepted the backed fixture and rejected
+all fifteen mutations; B and Cloud preserved and verified the receipt before
+confirmed provider stop/deletion. This closes this fixed proof/ABI integration
+gate without establishing canonical funding, exit/payout or a proved omitted
+sequence. Remote GPU input remains public-only. B root, trusted local verifiers
+and compiler provenance remain trust assumptions; the run adds no new authority
+over protocol funds and does not establish practical anonymity.

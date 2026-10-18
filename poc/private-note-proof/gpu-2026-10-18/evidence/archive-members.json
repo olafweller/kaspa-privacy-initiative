@@ -1,0 +1,66 @@
+{
+  "assets/expected-journal.bin": {
+    "bytes": 352,
+    "sha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e"
+  },
+  "assets/guest.program.bin": {
+    "bytes": 1415472,
+    "sha256": "531e2c5415844446af254634c43e02bd64644cd669625b3edefb554f1e7ab191"
+  },
+  "assets/input.bin": {
+    "bytes": 3911,
+    "sha256": "d43a228f371f30f7bcd80eb7d035f79a9d128245a6d88135b39de2b4c57cfa2f"
+  },
+  "complete.json": {
+    "bytes": 272,
+    "sha256": "ab0528c193849627962ec605b23046acefbdd46dedf170358fc63e7ded762358"
+  },
+  "full-proof.resources.json": {
+    "bytes": 617,
+    "sha256": "9bc57271709dc15df923acb34247b9ea42d6045952d2f7d21ce5fc1342cdfbd2"
+  },
+  "full-proof.samples.jsonl": {
+    "bytes": 267296,
+    "sha256": "44b85e90036b042593f81312c7ead2a14da3f9ddd33dfd96e5bf50142bf315d4"
+  },
+  "full-proof.started.json": {
+    "bytes": 400,
+    "sha256": "9324b411fc30e183d8a7c36ffd4b8a8fc8da26a630abd63571035efc7295cbff"
+  },
+  "full-proof.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "full-proof.stdout.log": {
+    "bytes": 583,
+    "sha256": "debd2572083d6ca23a2fc1050d3809910d7269bdb995f660d293adc725fa9bf2"
+  },
+  "hardware.json": {
+    "bytes": 1621,
+    "sha256": "b307be4db1c3f7659eab8b2baee1c8f163254acc3c5af97e9caabfed53c19535"
+  },
+  "proof/candidate-receipt.bin": {
+    "bytes": 223930,
+    "sha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46"
+  },
+  "proof/classifier-journal.bin": {
+    "bytes": 352,
+    "sha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e"
+  },
+  "proof/classifier-receipt.bin": {
+    "bytes": 223930,
+    "sha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46"
+  },
+  "proof/job-started.json": {
+    "bytes": 348,
+    "sha256": "18a261af0edc9962a0161eecaeac0b2b7ff776938eb5a7e57b3fbb0fb50e95f1"
+  },
+  "proof/proof-complete.json": {
+    "bytes": 654,
+    "sha256": "ed22f2b48c17cbe3831837fbf1529a8deba41ea792516459586865e1bec732dd"
+  },
+  "proof/proof-stats.json": {
+    "bytes": 136,
+    "sha256": "8b2afaea99e01a86e074e3f03cade3d156280d2d7372762d2bdcc4bd526c16a4"
+  }
+}

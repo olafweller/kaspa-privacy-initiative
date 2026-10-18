@@ -1,0 +1,23 @@
+{
+  "status": "OWNER_EXPLICITLY_AUTHORIZED_ONE_BOUNDED_ATTEMPT",
+  "pr46Merged": "9db923bb7d0e53ac199a362f85f6b1f63716af50",
+  "pr47Merged": "d11e38d65f8c5d8309f332c0b7622acc12463020",
+  "reviewedTreePreserved": "9fe787cd0291f5de66ca7ea9ca4584184ae9065a",
+  "gpuHourlyUsd": "1.09",
+  "planningStorageActiveHourlyUsd": "0.014",
+  "planningStorageStoppedHourlyUsd": "0.0028",
+  "maxRentalHours": 2,
+  "maxProofSeconds": 3600,
+  "retentionBudgetHours": 24,
+  "conservativePlanningCostUsd": "2.2752",
+  "spendPlanningLimitUsd": "5",
+  "attempts": 1,
+  "statePath": "/var/lib/kpi-cuda-guard/private-note-20261018-01",
+  "guardUnit": "kpi-cuda-private-guard.service",
+  "trustedPackage": "/opt/kpi-remote-cuda/private-note-proof-20261018-01",
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+  "podAllocated": false,
+  "proofStarted": false,
+  "nextStepAfterRelease": "Recheck quote/time, allocate one fresh L40S, lease from actual creation, activate independent B guard, read back image/scope/fresh state, run once; verify/back up/stop/delete.",
+  "authorization": "ik ben akkoord, kan jij zelf de huur starten?"
+}

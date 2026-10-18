@@ -1,5 +1,11 @@
 # Fixed private-note proof package
 
+Completed follow-up: the owner reviewed and released one bounded GPU attempt.
+The [actual result](gpu-2026-10-18/RESULTS.md) records the genuine receipt,
+independent CPU/native verification and confirmed provider stop/deletion.
+The software-preparation authorization and future-run instructions below are
+retained as the original scope; they do not authorize additional attempts.
+
 Owner-authorized software preparation, 2026-10-18. The owner performs the Astra
 review in Chat. No internal Astra reviewer is part of this package. No rental,
 proof job, wallet setup, extra calibration or TN10 broadcast is authorized here.

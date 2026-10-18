@@ -1,5 +1,11 @@
 # Private-note proof software preparation — 2026-10-18
 
+Follow-up: owner Chat review and paid-run release were subsequently given. The
+[single GPU result](gpu-2026-10-18/RESULTS.md) produced and independently verified
+the genuine private receipt, passed the native positive/fifteen-negative checks,
+and confirmed provider stop/deletion. The preparation record below is historical;
+its pending-release and pending-receipt statements describe that earlier stage.
+
 Software preparation is complete locally. Owner review with Astra in Chat is
 pending. **No new private-state receipt, GPU rental, provider action, wallet
 setup, guest calibration or TN10 transaction was performed.**

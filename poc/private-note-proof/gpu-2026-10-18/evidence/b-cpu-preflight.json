@@ -1,0 +1,19 @@
+{
+  "scope": "B_CPU_BINARY_AND_FIXED_TARGET_PREFLIGHT_NO_GUEST_EXECUTION",
+  "utc": "2026-10-18T17:24:11.479005+00:00",
+  "libraries": {
+    "kpi-private-note-producer": "all shared libraries resolved",
+    "kpi-private-note-verifier": "all shared libraries resolved",
+    "kpi-private-note-native": "all shared libraries resolved"
+  },
+  "target": {
+    "control": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+    "fixedTargetVerified": true,
+    "image": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+    "journalSha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e",
+    "proofStarted": false
+  },
+  "gpuRented": false,
+  "proofStarted": false
+}
+

@@ -1,0 +1,13 @@
+{
+  "scope": "OFFLINE_RECORDED_EVIDENCE_INTEGRITY_NOT_NEW_PROVING",
+  "frozenSourceBindingsVerified": 18,
+  "originalEvidenceManifestsVerified": {
+    "evidence/manifest.json": 174,
+    "calibration-160m/evidence/manifest.json": 10
+  },
+  "returnedGuestInputJournalMatchFrozenTarget": true,
+  "leaseMaxSeconds": 7200,
+  "oneStartResponseAlreadyStarted": false,
+  "stopAndDeletionEvidenceConsistent": true,
+  "cpuNativeChecks": "Reports are from actual B verification and Cloud CPU recovery; no expensive proof job was rerun."
+}

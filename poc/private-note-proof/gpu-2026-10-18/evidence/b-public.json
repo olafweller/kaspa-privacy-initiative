@@ -1,0 +1,400 @@
+{
+  "metadata": {
+    "sha256": "492869d6eafca82634786d8ae32203d60724699827f756f964e06cfd8bd03128",
+    "bytes": 1070537,
+    "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+    "savedUnix": 1792345732.071156
+  },
+  "public": {
+    "allocation-intent.json": {
+      "unixSeconds": 1792345406.5705724,
+      "name": "kpi-private-note-20261018-01",
+      "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+      "ownerAuthorization": "Explicit consent in Chat, 2026-10-18; one bounded attempt",
+      "gpuQuote": {
+        "id": "NVIDIA L40S",
+        "securePrice": 1.09,
+        "lowestPrice": {
+          "gpuTypeId": "NVIDIA L40S",
+          "uninterruptablePrice": 1.09,
+          "minMemory": 94,
+          "minVcpu": 16
+        }
+      },
+      "gpuCount": 1,
+      "gpuType": "NVIDIA L40S",
+      "activeStorageHourlyUsd": 0.014,
+      "stoppedStorageHourlyUsd": 0.0028,
+      "planningTotalWith24hRetentionUsd": 2.2752000000000003,
+      "wholeProofSecondsLimit": 3600,
+      "rentalSecondsLimit": 7200,
+      "existingPodCount": 0
+    },
+    "allocated-pod.json": {
+      "id": "cqmyyr1ho2jhur",
+      "name": "kpi-private-note-20261018-01",
+      "createdAt": "2026-10-18 17:43:27.331 +0000 UTC",
+      "desiredStatus": "RUNNING",
+      "costPerHr": 1.09,
+      "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+      "gpuCount": 1,
+      "volumeInGb": 10,
+      "containerDiskInGb": 90
+    },
+    "provider-allocation-readback.json": {
+      "id": "cqmyyr1ho2jhur",
+      "name": "kpi-private-note-20261018-01",
+      "createdAt": "2026-10-18 17:43:27.331 +0000 UTC",
+      "desiredStatus": "RUNNING",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA L40S",
+      "costPerHr": 1.09,
+      "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+      "memoryInGb": 94,
+      "vcpuCount": 16,
+      "volumeInGb": 10,
+      "containerDiskInGb": 90,
+      "volumeMountPath": "/workspace"
+    },
+    "allocation-complete.json": {
+      "provider": {
+        "id": "cqmyyr1ho2jhur",
+        "name": "kpi-private-note-20261018-01",
+        "createdAt": "2026-10-18 17:43:27.331 +0000 UTC",
+        "desiredStatus": "RUNNING",
+        "gpuCount": 1,
+        "gpuTypeId": "NVIDIA L40S",
+        "costPerHr": 1.09,
+        "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+        "memoryInGb": 94,
+        "vcpuCount": 16,
+        "volumeInGb": 10,
+        "containerDiskInGb": 90,
+        "volumeMountPath": "/workspace"
+      },
+      "lease": {
+        "podId": "cqmyyr1ho2jhur",
+        "gpuCount": 1,
+        "gpuType": "NVIDIA L40S",
+        "createdUnix": 1792345407.331,
+        "stopUnix": 1792352607.331,
+        "serviceUrl": "https://cqmyyr1ho2jhur-8080.proxy.runpod.net",
+        "actualGpuHourlyUsd": "1.09",
+        "actualStorageHourlyUsd": "0.014",
+        "stoppedStorageHourlyUsd": "0.0028",
+        "retentionHours": 24
+      },
+      "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+      "guardUnit": "kpi-cuda-private-guard.service",
+      "guardService": [
+        "MainPID=14477",
+        "ActiveState=active",
+        "SubState=running"
+      ],
+      "proofStarted": false,
+      "plannedMaxCostWith24hRetentionUsd": 2.2752000000000003
+    },
+    "lease.json": {
+      "podId": "cqmyyr1ho2jhur",
+      "gpuCount": 1,
+      "gpuType": "NVIDIA L40S",
+      "createdUnix": 1792345407.331,
+      "stopUnix": 1792352607.331,
+      "serviceUrl": "https://cqmyyr1ho2jhur-8080.proxy.runpod.net",
+      "actualGpuHourlyUsd": "1.09",
+      "actualStorageHourlyUsd": "0.014",
+      "stoppedStorageHourlyUsd": "0.0028",
+      "retentionHours": 24
+    },
+    "pre-start-readback.json": {
+      "unixSeconds": 1792345474.5569935,
+      "providerImageReference": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:4bd54b3278b827e721f6633b8643020284820a2c4899a0269c5909a74cde5d09",
+      "scope": "FIXED_PRIVATE_NOTE_ONE_SUCCINCT_RECEIPT",
+      "provider": {
+        "id": "cqmyyr1ho2jhur",
+        "createdAt": "2026-10-18 17:43:27.331 +0000 UTC",
+        "desiredStatus": "RUNNING",
+        "costPerHr": 1.09,
+        "gpuCount": 1,
+        "gpuTypeId": "NVIDIA L40S",
+        "memoryInGb": 94,
+        "vcpuCount": 16,
+        "containerDiskInGb": 90,
+        "volumeInGb": 10,
+        "volumeMountPath": "/workspace"
+      },
+      "guard": {
+        "heartbeatUnix": 1792345466.5241115,
+        "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+        "stopUnix": 1792352607.331,
+        "workerState": "idle"
+      },
+      "service": {
+        "state": "idle",
+        "scope": "FIXED_PRIVATE_NOTE_ONE_SUCCINCT_RECEIPT",
+        "podId": "cqmyyr1ho2jhur",
+        "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+        "stopUnix": 1792352607.331,
+        "guardHeartbeatFresh": true
+      },
+      "remainingSeconds": 7132.773994445801
+    },
+    "start-intent.json": {
+      "unixSeconds": 1792345474.5665388,
+      "podId": "cqmyyr1ho2jhur",
+      "attempt": 1,
+      "proofSecondsLimit": 3600,
+      "cycleLimit": 160000000,
+      "scope": "FIXED_PRIVATE_NOTE_ONE_SUCCINCT_RECEIPT"
+    },
+    "start-response.json": {
+      "jobId": "gpu-attempt",
+      "alreadyStarted": false
+    },
+    "observed-status.json": {
+      "observedUnix": 1792345755.478431,
+      "status": {
+        "state": "completed",
+        "scope": "FIXED_PRIVATE_NOTE_ONE_SUCCINCT_RECEIPT",
+        "phase": "done",
+        "artifact": {
+          "sha256": "492869d6eafca82634786d8ae32203d60724699827f756f964e06cfd8bd03128",
+          "bytes": 1070537
+        },
+        "podId": "cqmyyr1ho2jhur",
+        "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+        "stopUnix": 1792352607.331,
+        "guardHeartbeatFresh": true
+      }
+    },
+    "artifacts/terminal-backup.json": {
+      "sha256": "492869d6eafca82634786d8ae32203d60724699827f756f964e06cfd8bd03128",
+      "bytes": 1070537,
+      "leaseDigest": "8e99a10cc8850f14e353454c3907c5649fde8a5c6107d93875a8f48a1929a144",
+      "savedUnix": 1792345732.071156
+    },
+    "artifacts/stop.json": {
+      "requestedUnix": 1792345804.0187323,
+      "providerDesiredExitedConfirmed": true,
+      "podId": "cqmyyr1ho2jhur",
+      "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+    },
+    "results/provider-stop-observation.json": {
+      "observedUnix": 1792345818.1118073,
+      "provider": {
+        "id": "cqmyyr1ho2jhur",
+        "desiredStatus": "EXITED",
+        "createdAt": "2026-10-18 17:43:27.331 +0000 UTC",
+        "lastStatusChange": "Exited by user: Sun Oct 18 2026 17:50:01 GMT+0000 (Coordinated Universal Time)",
+        "costPerHr": 1.09,
+        "gpuCount": 1,
+        "volumeInGb": 10,
+        "containerDiskInGb": 90,
+        "networkVolumeId": null
+      },
+      "providerDesiredExitedConfirmed": true,
+      "guardStop": {
+        "requestedUnix": 1792345804.0187323,
+        "providerDesiredExitedConfirmed": true,
+        "podId": "cqmyyr1ho2jhur",
+        "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+      },
+      "actualInvoiceChargesAvailable": false
+    },
+    "results/provider-deletion.json": {
+      "scope": "THIS_ATTEMPT_POD_AND_LOCAL_STORAGE_DELETED_AFTER_EXTERNAL_VERIFICATION",
+      "deletedUnix": 1792345861.0833352,
+      "podId": "cqmyyr1ho2jhur",
+      "providerGetStatus": 404,
+      "providerListStatus": 200,
+      "podAbsentFromList": true,
+      "remainingPodCount": 0,
+      "deletedPodVolumeGb": 10,
+      "deletedContainerDiskGb": 90,
+      "networkVolumeCreated": false,
+      "bArchiveRevalidatedBeforeDelete": true,
+      "cloudRecoveryVerified": true,
+      "bCpuAndNativeVerified": true,
+      "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+      "guardUnitState": [
+        "ActiveState=inactive",
+        "SubState=dead",
+        "UnitFileState=disabled"
+      ],
+      "actualInvoiceChargesAvailable": false
+    },
+    "results/cloud-recovery-verification.json": {
+      "developmentMode": false,
+      "exactExpectedJournalVerified": true,
+      "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "expectedProgramImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+      "journalBytes": 352,
+      "journalSha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+      "scope": "INDEPENDENT_CPU_PRIVATE_NOTE_RECEIPT_NOT_TN10_SETTLEMENT"
+    },
+    "results/b-verification.json": {
+      "scope": "INDEPENDENT_B_CPU_AND_NATIVE_VERIFICATION_NOT_TN10_BROADCAST",
+      "unixSeconds": 1792345784.7262373,
+      "seconds": 0.6995178510005644,
+      "archiveSha256": "492869d6eafca82634786d8ae32203d60724699827f756f964e06cfd8bd03128",
+      "archiveBytes": 1070537,
+      "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+      "independentCpuAndNativeVerified": true,
+      "positiveNativeFixtureAccepted": true,
+      "negativeNativeCasesVerified": 15,
+      "actualMatchingProcessCudaObserved": true,
+      "proofResources": {
+        "exitCode": 0,
+        "failure": null,
+        "wallSeconds": 243.08798238402233,
+        "phaseSecondsLimit": 3600,
+        "peakSampledSummedRssBytes": 746266624,
+        "peakSampledSummedVirtualBytes": 116522586112,
+        "peakMatchingGpuProcessVramMiB": 13706.0,
+        "gpuProcessActivityObserved": true,
+        "kernelWaitUserSeconds": 193.749469,
+        "kernelWaitSystemSeconds": 47.667951,
+        "sampledOwnCpuSeconds": 241.13,
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+      },
+      "actualTN10Settlement": false,
+      "result": {
+        "independentCpuAndNativeVerified": true,
+        "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+        "actualTN10Settlement": false
+      }
+    },
+    "results/independent-verification/cpu/verification.json": {
+      "developmentMode": false,
+      "exactExpectedJournalVerified": true,
+      "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "expectedProgramImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+      "journalBytes": 352,
+      "journalSha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+      "scope": "INDEPENDENT_CPU_PRIVATE_NOTE_RECEIPT_NOT_TN10_SETTLEMENT"
+    },
+    "results/independent-verification/native/native-verification.json": {
+      "actualTN10Broadcast": false,
+      "archivedCpuNegativeControls": null,
+      "developmentMode": false,
+      "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "fixturePrincipalSompi": 1000000000,
+      "negativeControls": {
+        "bad-inclusion": {
+          "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+          "rejected": true
+        },
+        "bad-seal": {
+          "error": "ZK Integrity: R0: verification indicates proof is invalid",
+          "rejected": true
+        },
+        "divert-reserve": {
+          "error": "script ran, but verification failed",
+          "rejected": true
+        },
+        "wrong-anchor": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-batch-relation": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-control": {
+          "error": "ZK Integrity: R0: control_id mismatch: 7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+          "rejected": true
+        },
+        "wrong-covenant": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-endpoint": {
+          "error": "block 0909090909090909090909090909090909090909090909090909090909090909 not selected",
+          "rejected": true
+        },
+        "wrong-image": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-lane": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-new-root": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-new-tip": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-prior-root": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-prior-tip": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        },
+        "wrong-tx-relation": {
+          "error": "ZK Integrity: Verification failed",
+          "rejected": true
+        }
+      },
+      "newPrivateReceiptVerified": true,
+      "positiveNativeScriptAccepted": true,
+      "principalExcludesRentAndSponsorFees": true,
+      "receiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+      "scope": "LOCAL_PRIVATE_NOTE_NATIVE_FIXTURE_NOT_CANONICAL_TN10_OR_PAYOUT"
+    }
+  }
+}

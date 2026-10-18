@@ -1,7 +1,18 @@
 # ADR-0013: fixed monolithic private-note proof and join-native preparation
 
-Status: Owner-authorized software preparation, 2026-10-18. GPU rental and proving
-are not authorized; the owner performs the Astra review in Chat.
+Status: Software preparation completed and subsequently owner-reviewed/released,
+2026-10-18. One bounded GPU attempt completed; the owner performed the Astra
+review in Chat. The original preparation did not itself authorize rental.
+
+## Observed follow-up
+
+The [single released GPU result](../../poc/private-note-proof/gpu-2026-10-18/RESULTS.md)
+produced the genuine frozen private-note Succinct receipt in 243.088 seconds.
+Independent CPU and local native positive/fifteen-negative checks passed. B
+preserved the archive; Cloud recovered and independently verified it. Provider
+EXITED and subsequent deletion were confirmed. No guest, proof statement,
+backing rule or TN10 transaction changed. The original decision and release
+conditions below remain the historical basis; no additional attempt is implied.
 
 ## Decision
 
