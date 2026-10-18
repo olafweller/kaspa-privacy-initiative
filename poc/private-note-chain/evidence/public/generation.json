@@ -1,0 +1,124 @@
+{
+  "all14FieldInputMutationDifferentialChecks": true,
+  "cases": [
+    {
+      "case": "deposit",
+      "exits": [],
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 0,
+      "reserve": 1000000000
+    },
+    {
+      "case": "credit",
+      "exits": [],
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "transfer",
+      "exits": [],
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "exit",
+      "exits": [
+        400000000
+      ],
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 600000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "valid-invalid-valid",
+      "exits": [],
+      "outcomes": [
+        0,
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "invalid-then-valid",
+      "exits": [],
+      "outcomes": [
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "malformed-then-valid",
+      "exits": [],
+      "outcomes": [
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "old-root-competing-next-batch",
+      "exits": [],
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "cross-batch-replay",
+      "exits": [],
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "credit-then-recovery",
+      "exits": [],
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "case": "recovery-then-credit",
+      "exits": [
+        1000000000
+      ],
+      "outcomes": [
+        0,
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 1000000000
+    }
+  ],
+  "constraints": 774608,
+  "domain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "publicFields": 14,
+  "publicParameterBytes": 156439536,
+  "publicParameterReloadSeconds": 48.590891795,
+  "restoredBobDiscoveryAndExitProof": true,
+  "scope": "LOCAL_NATIVE_PREIMAGE_FIXTURES_NO_TN10",
+  "seconds": 111.442461914,
+  "secretBackupLocalOnly": true,
+  "setupSeconds": 14.278706556,
+  "walletVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec"
+}

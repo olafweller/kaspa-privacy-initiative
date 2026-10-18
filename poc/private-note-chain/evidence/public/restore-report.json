@@ -1,0 +1,12 @@
+{
+  "acceptedPublicDataOnly": true,
+  "expectedVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+  "newActualExitProof": true,
+  "newProofAcceptedByCurrentState": true,
+  "publicParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "restoredOwnKeysOnly": true,
+  "sameEconomicNullifier": true,
+  "scope": "SEPARATE_LOCAL_WALLET_PROCESS_NOT_REMOTE_PROVING_OR_NATIVE_PAYOUT",
+  "seconds": 53.198414931,
+  "secretMaterialPublished": false
+}

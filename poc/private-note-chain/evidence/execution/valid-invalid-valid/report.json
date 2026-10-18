@@ -1,0 +1,11 @@
+{
+  "case": "valid-invalid-valid",
+  "completed": false,
+  "cycleBudget": 128000000,
+  "developmentMode": false,
+  "error": "Session limit exceeded: 128000000 >= 128000000",
+  "expectedImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "scope": "EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT",
+  "seconds": 3.006650212,
+  "wallLimitSeconds": 900
+}

@@ -46,3 +46,5 @@ Use [0000-template.md](0000-template.md).
 The open state architecture comparison is [RFC-0001](../rfc/0001-state-architecture.md).
 
 - [ADR-0011: local private-note wallet and economic transitions](0011-local-private-note-wallet.md)
+
+- [ADR-0012: bounded private-note state/native integration](0012-private-note-state-integration.md)

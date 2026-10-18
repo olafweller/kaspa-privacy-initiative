@@ -20,6 +20,17 @@ proofs, nine passing tests and separate pinned-key verification; full outer/nati
 integration remains a subsequent gate. No new GPU rental, native funding or
 TN10 transaction is part of this local implementation.
 
+PR44 is now merged with the equation-level intent-binding review controls.
+The [private-state integration calibration](../poc/private-note-chain/RESULTS.md)
+uses a new explicitly selected unfunded TN10 domain, real wallet VK and guest.
+Twenty-one selected guest cases pass, including linked previous-state/current-NF
+and native deposit-output controls; the full valid-invalid-valid sequence hits
+128M before its third pairing completes. No budget is raised, receipt produced
+or GPU rented. Separate-process Bob recovery/public-parameter reload now work
+locally; native acceptance/payout and durable independent availability remain
+open. See the [binding map](../poc/private-note-chain/BINDINGS.md) and
+[CPU-before-GPU proposal](../poc/private-note-chain/GPU-PROPOSAL.md).
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

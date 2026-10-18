@@ -1,0 +1,10 @@
+{
+  "case": "old-root-competing-next-batch",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 1.521815094001795,
+  "peakSampledProcessGroupRssBytes": 78127104,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 1.366838,
+  "systemSeconds": 0.047373
+}

@@ -1,0 +1,10 @@
+{
+  "case": "auth-lane",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5083021969985566,
+  "peakSampledProcessGroupRssBytes": 36405248,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.25465,
+  "systemSeconds": 0.020308
+}

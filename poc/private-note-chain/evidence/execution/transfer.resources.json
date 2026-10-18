@@ -1,0 +1,10 @@
+{
+  "case": "transfer",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 1.2699907409987645,
+  "peakSampledProcessGroupRssBytes": 77008896,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 1.292357,
+  "systemSeconds": 0.034617999999999996
+}

@@ -1,0 +1,42 @@
+name: Private note state integration checks
+on:
+  pull_request:
+    paths:
+      - 'poc/private-note-chain/**'
+      - 'poc/private-note-wallet/**'
+      - 'poc/accelerated-bn254/common/**'
+      - '.github/workflows/private-note-chain.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'poc/private-note-chain/**'
+      - 'poc/private-note-wallet/**'
+      - 'poc/accelerated-bn254/common/**'
+      - '.github/workflows/private-note-chain.yml'
+permissions:
+  contents: read
+jobs:
+  state:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/.local/private-state-ci
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Pinned Rust
+        run: rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            .local/private-state-ci
+          key: private-state-rust191-${{ hashFiles('poc/private-note-chain/Cargo.lock') }}
+      - name: Formatting and actual archived-proof/native-preimage tests
+        run: |
+          cargo +1.91.0 fmt --manifest-path poc/private-note-chain/Cargo.toml -p kpi-private-note-chain -p kpi-private-note-chain-host --check
+          cargo +1.91.0 test --locked --release --manifest-path poc/private-note-chain/Cargo.toml -- --test-threads=1

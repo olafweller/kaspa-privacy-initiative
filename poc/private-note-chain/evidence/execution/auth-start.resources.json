@@ -1,0 +1,10 @@
+{
+  "case": "auth-start",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5085551570009557,
+  "peakSampledProcessGroupRssBytes": 36487168,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.259937,
+  "systemSeconds": 0.014888
+}

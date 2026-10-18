@@ -1,6 +1,6 @@
 //! Local real-proof transition kernel. Native facts are test interfaces, not a
 //! chain oracle; no native key, signing, RPC or payout command exists here.
-use crate::{protocol::*, wallet::Verifier, Result};
+use crate::{protocol::*, ProofVerifier, Result};
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 #[derive(Clone, Serialize, Deserialize)]
@@ -131,7 +131,7 @@ impl Ledger {
         }
         Ok(())
     }
-    pub fn apply(&mut self, engine: &Verifier, op: &Operation) -> Result<H> {
+    pub fn apply<V: ProofVerifier + ?Sized>(&mut self, engine: &V, op: &Operation) -> Result<H> {
         self.invariant()?;
         if engine.id() != self.verifier {
             return Err("unconfigured verifier".into());

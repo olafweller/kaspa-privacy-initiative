@@ -1,0 +1,11 @@
+{
+  "authenticationAbort": "Guest panicked: assertion `left == right` failed: start inclusion\n  left: [231, 180, 4, 71, 142, 137, 60, 143, 58, 230, 91, 138, 155, 22, 176, 128, 33, 39, 200, 132, 192, 5, 110, 101, 69, 176, 24, 144, 148, 125, 210, 192]\n right: [230, 180, 4, 71, 142, 137, 60, 143, 58, 230, 91, 138, 155, 22, 176, 128, 33, 39, 200, 132, 192, 5, 110, 101, 69, 176, 24, 144, 148, 125, 210, 192]",
+  "case": "auth-start",
+  "cycleBudget": 128000000,
+  "developmentMode": false,
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "scope": "EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT",
+  "seconds": 0.145416953,
+  "wallLimitSeconds": 900
+}

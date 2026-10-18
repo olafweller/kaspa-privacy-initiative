@@ -12,6 +12,12 @@ membership/authority/conservation proofs, recipient discovery and current
 spentness/accounting across batches. Full private-state proofs, native integration,
 funded privacy trials and independent recovery remain separate open gates.
 
+The next [state/native-preimage calibration](../poc/private-note-chain/RESULTS.md)
+now executes real private-note processing with new domain/key/image pins.
+21/22 selected cases pass; the complete three-proof sequence exceeds 128M, so
+there is no new complete outer proof or native settlement result. The next
+proposed decision is a separate CPU-only complete measurement before GPU rental.
+
 The five-criterion [Based App feasibility assessment](based-app-feasibility-2026-10-17.md)
 is complete for the public-account TN10 experiment in PRs #31–#33: accepted L1
 ordering, correct execution, real proofs, confirmed settlement/payout and native

@@ -1,0 +1,10 @@
+{
+  "case": "auth-prior-state",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5080133260016737,
+  "peakSampledProcessGroupRssBytes": 37761024,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.254741,
+  "systemSeconds": 0.010922
+}

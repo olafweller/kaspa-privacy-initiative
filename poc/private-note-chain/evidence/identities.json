@@ -1,0 +1,33 @@
+{
+  "scope": "PRE_EXECUTION_PINNED_MONOLITHIC_CALIBRATION_NOT_RECURSIVE_CHAIN",
+  "expectedGuestImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "expectedWalletVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+  "economicDomain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "guestRebuildByteIdentical": true,
+  "sdk": "3.0.3",
+  "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "succinctReceiptProduced": false,
+  "recursiveTransactionImage": null,
+  "recursiveBatchImage": null,
+  "sources": {
+    "poc/private-note-chain/common/Cargo.toml": "4d9141278943f5ebf2928ae557fe96a0e6588f827414f1276ddb2852a60b25d9",
+    "poc/private-note-chain/common/src/lib.rs": "f640acf4771227ea33812108b95ff0a1355cd996ec600f9b7ad833f53ef1158c",
+    "poc/private-note-chain/common/tests/public_evidence.rs": "933e79c9eb799fc1046119ab98672b3b87b9fd2be4ca8b45873cf6a6c89099ee",
+    "poc/private-note-chain/guest/Cargo.lock": "2912da8ef75ba67c490dbc773e9c37401cc6016cf59cbc23b019745a5a5f2f16",
+    "poc/private-note-chain/guest/Cargo.toml": "524463c7f0f15ad53fee4b706a8cb294e5f47fab0b497827a0066d4f1e662171",
+    "poc/private-note-chain/guest/src/main.rs": "89b0f4e22319b3af55785ac04503512a5a6a5d7b3b512141c773baffc6440bee",
+    "poc/private-note-wallet/src/circuit.rs": "2522a17d8a4251472bf06947860f028ec1658733f6db11b62e22385857fd5cdf",
+    "poc/private-note-wallet/src/ledger.rs": "11ac3222d0aceada2502c368646f96f2becd3fe7ca635b13e783d2ad1fb9f5d5",
+    "poc/private-note-wallet/src/lib.rs": "704d0b0a4575bcf517e91b454c4572e4347dea99544253dbe8cc193fecf7f0d7",
+    "poc/private-note-wallet/src/main.rs": "b5d079d4f82e392bbb1b07fd70cd36c6ae9cd1f1e018341b2b0e2dceee8d07c5",
+    "poc/private-note-wallet/src/protocol.rs": "2593052d61b4997e5f3d66e768edcaab51b6a4c862afe1368aa19c6d36a5708b",
+    "poc/private-note-wallet/src/wallet.rs": "48d30134e54aca4dbd3e64607722eee61fc74f6d5bb858fbdf936014b5167aa2",
+    "poc/accelerated-bn254/common/Cargo.toml": "fe44804b55e4432784f60507b079986eb2f9c71f7bdfd99744b953340cef8833",
+    "poc/accelerated-bn254/common/src/lib.rs": "ff8ef9d2ea1ef93440cadcfaac086ebafad33b2ae505ba3880b596b34660041e"
+  },
+  "guestRawElfSha256": "20b289fbfdbd25f58cd848a0ea4fc7331ff5ec0450d1dabfc4aa2f8e1750575a",
+  "guestProgramSha256": "531e2c5415844446af254634c43e02bd64644cd669625b3edefb554f1e7ab191",
+  "qualificationHostSha256": "742c004e7559c5beb2d9fd04fd38ba0b90b2b725f9f4c54ed53382533bdedf96",
+  "actualCompletedUserCycleCount": null,
+  "originalFullSequenceCycleLimit": 128000000
+}

@@ -17,6 +17,14 @@ implementation-status paragraphs below describe the original model package;
 the new package keeps actual wallet proofs separate from its unproved native-
 fact fixture/kernel and the pending outer/native integration.
 
+The later [ADR-0012](../adr/0012-private-note-state-integration.md) calibration
+integrates real private state and native preimage checks in a new guest, with
+21 passed cases and a 128M incomplete full-sequence result. This is execution
+only, not a new receipt or native acceptance. The
+[binding map](../../poc/private-note-chain/BINDINGS.md) lists actual remaining
+settlement/recovery obligations. Earlier historical status rows are not claims
+that these new native obligations are closed.
+
 ## Scope and economic state
 
 Target lifecycle: authenticated native deposit -> one private claim -> private

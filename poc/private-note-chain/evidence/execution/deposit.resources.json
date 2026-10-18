@@ -1,0 +1,10 @@
+{
+  "case": "deposit",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5124654949977412,
+  "peakSampledProcessGroupRssBytes": 36122624,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.26012799999999997,
+  "systemSeconds": 0.027812999999999997
+}

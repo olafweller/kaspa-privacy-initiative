@@ -1,0 +1,7 @@
+{
+  "scope": "PRE_GUEST_EXECUTION_SETUP_FAILURE_NOT_A_REJECTION_CONTROL",
+  "firstAttemptError": "No such file or directory: missing RISC0_SERVER_PATH",
+  "guestStarted": false,
+  "correctedBySelectingExistingPinnedR0vm": true,
+  "cycleOrWallBudgetRaised": false
+}

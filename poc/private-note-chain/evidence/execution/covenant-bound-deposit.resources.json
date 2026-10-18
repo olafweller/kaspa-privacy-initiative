@@ -1,0 +1,10 @@
+{
+  "case": "covenant-bound-deposit",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5107813590002479,
+  "peakSampledProcessGroupRssBytes": 35426304,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.3332,
+  "systemSeconds": 0.023204
+}

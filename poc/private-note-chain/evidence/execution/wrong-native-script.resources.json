@@ -1,0 +1,10 @@
+{
+  "case": "wrong-native-script",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.509101206997002,
+  "peakSampledProcessGroupRssBytes": 36790272,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.257193,
+  "systemSeconds": 0.019336
+}

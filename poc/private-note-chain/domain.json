@@ -1,0 +1,10 @@
+{
+  "network": "kaspa-testnet-10",
+  "genesis": "f896a3034873be1739fc4359236899fd3d65d2bc94f9780df0d0da3eb1cc4370",
+  "lane": "0044454600000000000000000000000000000000",
+  "poolNonce": "8334504873b78b2d692dfe48d6b2ee074cfa06e8f6a27c3b339988bd52f70a13",
+  "economicDomain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "preimage": "ASCII(KPI/TN10/private-note-rehearsal-v1) || NUL || genesis32 || lane20 || nonce32",
+  "nativeFundingEnabled": false,
+  "baselineDomainUnchanged": true
+}

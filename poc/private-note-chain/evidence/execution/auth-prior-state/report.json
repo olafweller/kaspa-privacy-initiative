@@ -1,0 +1,11 @@
+{
+  "authenticationAbort": "Guest panicked: assertion `left == right` failed: authenticated prior private state\n  left: [67, 161, 13, 38, 128, 161, 64, 55, 222, 148, 39, 200, 14, 33, 2, 102, 229, 47, 165, 197, 29, 5, 218, 142, 87, 231, 64, 182, 228, 48, 226, 78]\n right: [186, 106, 187, 122, 254, 175, 32, 21, 50, 193, 235, 132, 204, 255, 48, 146, 49, 32, 167, 62, 85, 165, 158, 14, 25, 42, 42, 139, 168, 23, 157, 176]",
+  "case": "auth-prior-state",
+  "cycleBudget": 128000000,
+  "developmentMode": false,
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "scope": "EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT",
+  "seconds": 0.142088787,
+  "wallLimitSeconds": 900
+}

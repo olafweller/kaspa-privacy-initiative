@@ -4,19 +4,27 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 [workspace]
+[features]
+default = ["wallet"]
+wallet = ["dep:ark-relations", "dep:ark-r1cs-std", "dep:ark-crypto-primitives", "dep:crypto_box", "dep:rand", "ark-groth16/parallel"]
+tn10-rehearsal = []
+[[bin]]
+name = "kpi-private-note-wallet"
+path = "src/main.rs"
+required-features = ["wallet"]
 [dependencies]
 ark-bn254 = { version = "=0.5.0", features = ["curve"] }
 ark-ff = "=0.5.0"
 ark-ec = "=0.5.0"
-ark-groth16 = { version = "=0.5.0", features = ["parallel"] }
+ark-groth16 = { version = "=0.5.0", default-features = false, features = ["std"] }
 ark-serialize = "=0.5.0"
-ark-relations = "=0.5.1"
-ark-r1cs-std = "=0.5.0"
-ark-crypto-primitives = { version = "=0.5.0", features = ["r1cs", "crh"] }
-crypto_box = { version = "=0.9.1", features = ["seal", "std"] }
+ark-relations = { version = "=0.5.1", optional = true }
+ark-r1cs-std = { version = "=0.5.0", optional = true }
+ark-crypto-primitives = { version = "=0.5.0", features = ["r1cs", "crh"], optional = true }
+crypto_box = { version = "=0.9.1", features = ["seal", "std"], optional = true }
 sha2 = "=0.10.9"
 hmac = "=0.12.1"
-rand = "=0.8.5"
+rand = { version = "=0.8.5", optional = true }
 serde = { version = "=1.0.228", features = ["derive"] }
 serde_json = "=1.0.145"
 hex = "=0.4.3"

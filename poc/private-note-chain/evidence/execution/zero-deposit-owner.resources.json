@@ -1,0 +1,10 @@
+{
+  "case": "zero-deposit-owner",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5077653139996983,
+  "peakSampledProcessGroupRssBytes": 35667968,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.278999,
+  "systemSeconds": 0.018692999999999998
+}

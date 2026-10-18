@@ -343,3 +343,15 @@ as recipient receipt. Public deposit/exit amounts, timing, tiny tree/low activit
 fixed operation shapes and service/network observation remain linkability risks.
 The full state guest, native accepted data/payout verification and independent
 service-disappearance recovery are still required before a funded privacy trial.
+
+
+The subsequent ADR-0012 calibration commits the covenant/config together with
+private state and checks deposit fields from native preimages. Its lane anchors
+are synthetic until matched by actual canonical native settlement. Untrusted
+host balances, locally invented outputs and the mere existence of a proof over
+a fixture cannot establish backing. Pending exit permissions remain liabilities;
+actual native consumption and exact payout confirmation are still unimplemented.
+The 128M full-sequence limit failed; no full receipt or GPU job follows from the
+successful single-operation and rejection executions. New test-domain wallet
+backups are local-only 0600 files; public parameter retention/loading and local
+separate-process recovery do not establish durable independent availability.

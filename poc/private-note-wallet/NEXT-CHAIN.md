@@ -47,3 +47,10 @@ funding script as if it implemented private credit/recovery.
 
 New tree capacity, nonzero private fees, migration and a production setup need
 separate decisions. One local four-leaf demonstration cannot close those gates.
+
+
+Checkpoint 2026-10-18: the [next calibration](../private-note-chain/RESULTS.md)
+fixes the target TN10 domain and new identities, integrates native preimage and
+current-state checks, and passes 21 selected executions. The complete three-proof
+sequence reaches 128M incomplete. No budget increase, native acceptance or rental
+is implied. Actual recursive/native bindings are tracked separately.

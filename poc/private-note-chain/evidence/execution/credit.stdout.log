@@ -1,0 +1,5 @@
+PROFILE authenticated_input 74785
+PROFILE loaded_key 303225
+PROFILE after_checked_proof_decode 10151880
+PROFILE after_conversion_and_public_inputs 21734510
+PROFILE after_pairing 46138625

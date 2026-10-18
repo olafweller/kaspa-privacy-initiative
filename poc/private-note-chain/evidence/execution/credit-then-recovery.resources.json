@@ -1,0 +1,10 @@
+{
+  "case": "credit-then-recovery",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 1.5197192329978861,
+  "peakSampledProcessGroupRssBytes": 78192640,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 1.389912,
+  "systemSeconds": 0.031258
+}

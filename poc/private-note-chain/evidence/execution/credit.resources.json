@@ -1,0 +1,10 @@
+{
+  "case": "credit",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 4.560279803001322,
+  "peakSampledProcessGroupRssBytes": 76873728,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 4.356898,
+  "systemSeconds": 0.058394999999999996
+}

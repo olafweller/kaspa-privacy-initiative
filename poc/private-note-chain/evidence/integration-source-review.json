@@ -1,0 +1,48 @@
+{
+  "existing19SourceHashesRechecked": true,
+  "upstreamHeadsUnchangedFromPR44": true,
+  "newPrimaryFilesInspected": [
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/backend/risc0/runtime-processor/src/deposit_policy.rs",
+      "sha256": "deeeb8196fd87d68897ce088b405fc93f6564b2f08041d94310592712e56bc4f"
+    },
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/abi/src/batch_aggregator/journal/state_transition.rs",
+      "sha256": "c969280f70f2c1f79345473a54335da171f1e56fed41be5d32500c4f59307904"
+    },
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/abi/src/withdrawal/standard_spk.rs",
+      "sha256": "193e2c13ae9a5bee18a22bfcfd023f41e02847fce5a4df9a27b41b213f05c9ac"
+    },
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/backend/risc0/api/src/permission_tree.rs",
+      "sha256": "b91f7c0b1fc3300887497772d6d8a5f8c4674dbfb3ed4cc7e8af3fa1875db616"
+    },
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/backend/risc0/api/src/permission_script.rs",
+      "sha256": "f23c746cc15203e3f52c64dc66c2b651b688ddc49e62722a067b6178f5c13d5e"
+    },
+    {
+      "repository": "kaspanet/vprogs",
+      "commit": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+      "path": "zk/abi/src/batch_processor/verifier.rs",
+      "sha256": "b24b8d0776afa6a3f39753d06041a51376dfd84f2613fa2a56220c727eba6e19"
+    },
+    {
+      "repository": "kaspanet/rusty-kaspa",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "path": "consensus/core/src/config/genesis.rs",
+      "sha256": "5247c7e3a05eedbdca59c4ba4871536325f431962c57d4a6269409db8993c287"
+    }
+  ]
+}

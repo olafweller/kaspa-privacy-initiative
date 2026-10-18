@@ -1,0 +1,10 @@
+{
+  "case": "missing-native-output",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5138016740020248,
+  "peakSampledProcessGroupRssBytes": 35823616,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.275937,
+  "systemSeconds": 0.010837999999999999
+}

@@ -1,0 +1,239 @@
+{
+  "scope": "EXECUTION_ONLY_NO_RECEIPT_OR_RENTAL",
+  "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "cycleLimitPerCase": 128000000,
+  "wallLimitPerCaseSeconds": 900,
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "environmentMemoryLimit": "17179869184",
+  "cases": [
+    {
+      "case": "deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5124654949977412,
+      "peakSampledProcessGroupRssBytes": 36122624,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.26012799999999997,
+      "systemSeconds": 0.027812999999999997
+    },
+    {
+      "case": "credit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 4.560279803001322,
+      "peakSampledProcessGroupRssBytes": 76873728,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 4.356898,
+      "systemSeconds": 0.058394999999999996
+    },
+    {
+      "case": "transfer",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.2699907409987645,
+      "peakSampledProcessGroupRssBytes": 77008896,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.292357,
+      "systemSeconds": 0.034617999999999996
+    },
+    {
+      "case": "exit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.2712301699975797,
+      "peakSampledProcessGroupRssBytes": 77250560,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.237083,
+      "systemSeconds": 0.034175
+    },
+    {
+      "case": "auth-prior-state",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5080133260016737,
+      "peakSampledProcessGroupRssBytes": 37761024,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.254741,
+      "systemSeconds": 0.010922
+    },
+    {
+      "case": "auth-covenant",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5095604439993622,
+      "peakSampledProcessGroupRssBytes": 35934208,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.26498499999999997,
+      "systemSeconds": 0.012495
+    },
+    {
+      "case": "auth-lane",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5083021969985566,
+      "peakSampledProcessGroupRssBytes": 36405248,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.25465,
+      "systemSeconds": 0.020308
+    },
+    {
+      "case": "auth-start",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5085551570009557,
+      "peakSampledProcessGroupRssBytes": 36487168,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.259937,
+      "systemSeconds": 0.014888
+    },
+    {
+      "case": "zero-native-deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5093424430015148,
+      "peakSampledProcessGroupRssBytes": 39358464,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.261177,
+      "systemSeconds": 0.013573
+    },
+    {
+      "case": "wrong-native-script",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.509101206997002,
+      "peakSampledProcessGroupRssBytes": 36790272,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.257193,
+      "systemSeconds": 0.019336
+    },
+    {
+      "case": "missing-native-output",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5138016740020248,
+      "peakSampledProcessGroupRssBytes": 35823616,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.275937,
+      "systemSeconds": 0.010837999999999999
+    },
+    {
+      "case": "zero-deposit-owner",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5077653139996983,
+      "peakSampledProcessGroupRssBytes": 35667968,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.278999,
+      "systemSeconds": 0.018692999999999998
+    },
+    {
+      "case": "covenant-bound-deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5107813590002479,
+      "peakSampledProcessGroupRssBytes": 35426304,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.3332,
+      "systemSeconds": 0.023204
+    },
+    {
+      "case": "duplicate-deposit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.5090868420011248,
+      "peakSampledProcessGroupRssBytes": 35905536,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.269106,
+      "systemSeconds": 0.024957999999999998
+    },
+    {
+      "case": "wrong-native-destination",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 0.508650060997752,
+      "peakSampledProcessGroupRssBytes": 43294720,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 0.2524,
+      "systemSeconds": 0.027666999999999997
+    },
+    {
+      "case": "old-root-competing-next-batch",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.521815094001795,
+      "peakSampledProcessGroupRssBytes": 78127104,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.366838,
+      "systemSeconds": 0.047373
+    },
+    {
+      "case": "cross-batch-replay",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.2692020250033238,
+      "peakSampledProcessGroupRssBytes": 76750848,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.286852,
+      "systemSeconds": 0.039806999999999995
+    },
+    {
+      "case": "credit-then-recovery",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.5197192329978861,
+      "peakSampledProcessGroupRssBytes": 78192640,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.389912,
+      "systemSeconds": 0.031258
+    },
+    {
+      "case": "recovery-then-credit",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 2.2776471420002053,
+      "peakSampledProcessGroupRssBytes": 76640256,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 2.392948,
+      "systemSeconds": 0.043205
+    },
+    {
+      "case": "malformed-then-valid",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 1.2684676259996195,
+      "peakSampledProcessGroupRssBytes": 78209024,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 1.3488229999999999,
+      "systemSeconds": 0.026428999999999998
+    },
+    {
+      "case": "invalid-then-valid",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 2.287024317000032,
+      "peakSampledProcessGroupRssBytes": 77037568,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 2.455312,
+      "systemSeconds": 0.050334
+    },
+    {
+      "case": "valid-invalid-valid",
+      "exitCode": 1,
+      "timeout": false,
+      "wallSeconds": 3.288691509002092,
+      "peakSampledProcessGroupRssBytes": 78536704,
+      "wait4MaxRssBytes": 120193024,
+      "userSeconds": 3.385882,
+      "systemSeconds": 0.032132
+    }
+  ],
+  "remaining": [],
+  "completed": false,
+  "stoppedAfterFailure": "valid-invalid-valid"
+}

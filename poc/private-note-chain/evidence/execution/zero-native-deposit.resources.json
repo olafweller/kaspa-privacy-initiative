@@ -1,0 +1,10 @@
+{
+  "case": "zero-native-deposit",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.5093424430015148,
+  "peakSampledProcessGroupRssBytes": 39358464,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.261177,
+  "systemSeconds": 0.013573
+}

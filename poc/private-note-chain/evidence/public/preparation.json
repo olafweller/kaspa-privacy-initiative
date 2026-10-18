@@ -1,0 +1,184 @@
+{
+  "actualNativePayout": false,
+  "cases": [
+    {
+      "aggregateBytes": 352,
+      "case": "deposit",
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 0,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "credit",
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "transfer",
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "exit",
+      "outcomes": [
+        0
+      ],
+      "privateLiability": 600000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "valid-invalid-valid",
+      "outcomes": [
+        0,
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "invalid-then-valid",
+      "outcomes": [
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "malformed-then-valid",
+      "outcomes": [
+        1,
+        0
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "old-root-competing-next-batch",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "cross-batch-replay",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "credit-then-recovery",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "recovery-then-credit",
+      "outcomes": [
+        0,
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "duplicate-deposit",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "wrong-native-destination",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 1000000000,
+      "reserve": 1000000000
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "zero-native-deposit",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 0
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "wrong-native-script",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 0
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "missing-native-output",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 0
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "zero-deposit-owner",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 0
+    },
+    {
+      "aggregateBytes": 352,
+      "case": "covenant-bound-deposit",
+      "outcomes": [
+        1
+      ],
+      "privateLiability": 0,
+      "reserve": 0
+    }
+  ],
+  "domain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "guestAuthenticationCases": [
+    "auth-prior-state",
+    "auth-covenant",
+    "auth-lane",
+    "auth-start"
+  ],
+  "nativeEndpointContinuityAcrossFourBatches": true,
+  "nativeScriptReceiptVerification": false,
+  "omissionReorderSubstitutionChangeEndpoint": true,
+  "scope": "NATIVE_PREIMAGE_FIXTURE_EXECUTION_NOT_CANONICAL_TN10_OR_RECEIPT",
+  "walletVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec"
+}

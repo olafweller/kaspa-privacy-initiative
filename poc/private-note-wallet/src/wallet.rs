@@ -35,6 +35,26 @@ impl Wallet {
             },
         }
     }
+    /// Secret local wallet backup. Never serialize into proof jobs or public evidence.
+    pub fn local_backup(&self) -> [u8; 64] {
+        let mut b = [0; 64];
+        b[..32].copy_from_slice(&self.secret);
+        b[32..].copy_from_slice(&self.view.to_bytes());
+        b
+    }
+    pub fn restore_local(b: &[u8; 64]) -> Self {
+        let secret = b[..32].try_into().unwrap();
+        let view = SecretKey::from(<[u8; 32]>::try_from(&b[32..]).unwrap());
+        let incoming = *view.public_key().as_bytes();
+        Self {
+            secret,
+            view,
+            address: Address {
+                owner: owner(&secret, &incoming),
+                incoming,
+            },
+        }
+    }
     pub fn note(&self, value: u64) -> Note {
         Note::for_address(&self.address, value)
     }
@@ -180,6 +200,34 @@ impl Engine {
     pub fn verify(&self, op: &Operation) -> Result<()> {
         self.verifier().verify(op)
     }
+    pub fn public_parameters(&self) -> Result<Vec<u8>> {
+        let mut b = vec![];
+        self.pk
+            .serialize_compressed(&mut b)
+            .map_err(|e| e.to_string())?;
+        Ok(b)
+    }
+    pub fn from_public_parameters(raw: &[u8], expected: H) -> Result<Self> {
+        let mut rest = raw;
+        let pk =
+            ProvingKey::<Bn254>::deserialize_compressed(&mut rest).map_err(|e| e.to_string())?;
+        if !rest.is_empty() {
+            return Err("trailing public parameters".into());
+        }
+        let mut vk = vec![];
+        pk.vk
+            .serialize_compressed(&mut vk)
+            .map_err(|e| e.to_string())?;
+        if hash(&vk) != expected {
+            return Err("unexpected public parameter VK".into());
+        }
+        let pvk = prepare_verifying_key(&pk.vk);
+        Ok(Self {
+            pk,
+            pvk,
+            id: expected,
+        })
+    }
     pub fn proving_key_bytes(&self) -> usize {
         self.pk.compressed_size()
     }
@@ -217,31 +265,8 @@ impl Verifier {
         self.id
     }
     pub fn verify(&self, op: &Operation) -> Result<()> {
+        op.check_public(self.id)?;
         let s = &op.statement;
-        if s.version != 1
-            || s.domain != domain()
-            || s.verifier != self.id
-            || ![CREDIT, TRANSFER, EXIT, RECOVER].contains(&s.kind)
-        {
-            return Err("domain/version/verifier/kind".into());
-        }
-        for (i, d) in op.deliveries.iter().enumerate() {
-            let active = i < s.output_count();
-            if !active {
-                if d.commitment != [0; 32]
-                    || !d.ciphertext.is_empty()
-                    || s.outputs[i] != [0; 32]
-                    || s.delivery[i] != [0; 32]
-                {
-                    return Err("noncanonical inactive output".into());
-                }
-            } else if d.ciphertext.len() != 185
-                || d.commitment != s.outputs[i]
-                || hash(&d.ciphertext) != s.delivery[i]
-            {
-                return Err("output/delivery binding".into());
-            }
-        }
         if op.proof.len() != 128 {
             return Err("proof size".into());
         }
@@ -263,5 +288,14 @@ impl Verifier {
             return Err("invalid proof".into());
         }
         Ok(())
+    }
+}
+
+impl crate::ProofVerifier for Verifier {
+    fn id(&self) -> H {
+        self.id()
+    }
+    fn verify(&self, op: &Operation) -> Result<()> {
+        self.verify(op)
     }
 }

@@ -1,0 +1,10 @@
+{
+  "case": "wrong-native-destination",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 0.508650060997752,
+  "peakSampledProcessGroupRssBytes": 43294720,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 0.2524,
+  "systemSeconds": 0.027666999999999997
+}

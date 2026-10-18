@@ -1,0 +1,11 @@
+{
+  "authenticationAbort": "Guest panicked: assertion `left == right` failed: config covenant\n  left: [88, 135, 254, 80, 82, 253, 23, 157, 60, 25, 215, 63, 94, 14, 58, 138, 84, 86, 12, 92, 112, 133, 143, 246, 77, 32, 66, 195, 59, 26, 200, 183]\n right: [89, 135, 254, 80, 82, 253, 23, 157, 60, 25, 215, 63, 94, 14, 58, 138, 84, 86, 12, 92, 112, 133, 143, 246, 77, 32, 66, 195, 59, 26, 200, 183]",
+  "case": "auth-covenant",
+  "cycleBudget": 128000000,
+  "developmentMode": false,
+  "expectedAuthenticationFailureConfirmed": true,
+  "expectedImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "scope": "EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT",
+  "seconds": 0.143227679,
+  "wallLimitSeconds": 900
+}

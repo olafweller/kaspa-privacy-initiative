@@ -20,7 +20,18 @@ pub fn hash(b: &[u8]) -> H {
     Sha256::digest(b).into()
 }
 pub fn domain() -> H {
-    hash(b"KPI/LOCAL-NO-FUNDING/native-KAS/private-note-experiment-1")
+    #[cfg(not(feature = "tn10-rehearsal"))]
+    {
+        hash(b"KPI/LOCAL-NO-FUNDING/native-KAS/private-note-experiment-1")
+    }
+    #[cfg(feature = "tn10-rehearsal")]
+    {
+        [
+            0x0a, 0x71, 0x27, 0x63, 0xb5, 0x3b, 0x58, 0x72, 0xe2, 0x1f, 0x25, 0xea, 0x10, 0x94,
+            0x87, 0xaa, 0x8d, 0x79, 0x33, 0x93, 0x2c, 0xc7, 0x61, 0xc5, 0x55, 0x83, 0xda, 0x41,
+            0xe9, 0xe0, 0xcf, 0x54,
+        ]
+    }
 }
 pub fn tagged(tag: &[u8], fields: &[&[u8]]) -> H {
     let mut b = tag.to_vec();
@@ -305,5 +316,37 @@ impl Operation {
             deliveries,
             proof: bytes[PUBLIC_LEN..PUBLIC_LEN + 128].to_vec(),
         })
+    }
+}
+
+impl Operation {
+    pub fn check_public(&self, expected_verifier: H) -> Result<()> {
+        let op = self;
+        let s = &op.statement;
+        if s.version != 1
+            || s.domain != domain()
+            || s.verifier != expected_verifier
+            || ![CREDIT, TRANSFER, EXIT, RECOVER].contains(&s.kind)
+        {
+            return Err("domain/version/verifier/kind".into());
+        }
+        for (i, d) in op.deliveries.iter().enumerate() {
+            let active = i < s.output_count();
+            if !active {
+                if d.commitment != [0; 32]
+                    || !d.ciphertext.is_empty()
+                    || s.outputs[i] != [0; 32]
+                    || s.delivery[i] != [0; 32]
+                {
+                    return Err("noncanonical inactive output".into());
+                }
+            } else if d.ciphertext.len() != 185
+                || d.commitment != s.outputs[i]
+                || hash(&d.ciphertext) != s.delivery[i]
+            {
+                return Err("output/delivery binding".into());
+            }
+        }
+        Ok(())
     }
 }

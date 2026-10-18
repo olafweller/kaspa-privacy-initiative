@@ -1,0 +1,10 @@
+{
+  "case": "exit",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 1.2712301699975797,
+  "peakSampledProcessGroupRssBytes": 77250560,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 1.237083,
+  "systemSeconds": 0.034175
+}

@@ -1,0 +1,10 @@
+[package]
+name = "kpi-private-note-chain-guest"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+kpi-private-note-chain = { path = "../common" }
+risc0-zkvm = { version = "=3.0.3", default-features = false, features = ["std", "disable-dev-mode"] }
+bincode = "=1.3.3"

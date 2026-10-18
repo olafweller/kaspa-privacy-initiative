@@ -4,7 +4,7 @@
 use ark_bn254::{Bn254, Fq, Fr, G1Affine, G2Affine};
 use ark_ff::{BigInteger, PrimeField};
 use ark_groth16::{PreparedVerifyingKey, Proof};
-use ark_serialize::CanonicalDeserialize;
+use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
 use kpi_groth16_comparison::{self as reference, proxy};
 use substrate_bn::{pairing_batch, Group, Gt, G1, G2};
 
@@ -82,6 +82,61 @@ impl Verifier {
             delta: g2(&vk.delta_g2),
             ic: vk.gamma_abc_g1.iter().map(g1).collect(),
             id: reference::key_id(&encoded),
+        }
+    }
+    /// Program-pinned key only: caller must validate and freeze the key before
+    /// building the guest. Submitted proof points always use checked decoding.
+    pub fn from_validated_program_key(vk: &ark_groth16::VerifyingKey<Bn254>, id: [u8; 32]) -> Self {
+        Self {
+            alpha: g1(&vk.alpha_g1),
+            beta: g2(&vk.beta_g2),
+            gamma: g2(&vk.gamma_g2),
+            delta: g2(&vk.delta_g2),
+            ic: vk.gamma_abc_g1.iter().map(g1).collect(),
+            id,
+        }
+    }
+    /// Same standard Groth16 equation, for an independently bound input vector.
+    pub fn verify_inputs(&self, raw: &[u8], inputs: &[Fr]) -> Result<(), &'static str> {
+        use ark_ec::AffineRepr;
+        if raw.len() != 128 || self.ic.len() != inputs.len() + 1 {
+            return Err("encoding/arity");
+        }
+        let mut rest = raw;
+        let proof =
+            Proof::<Bn254>::deserialize_compressed(&mut rest).map_err(|_| "malformed proof")?;
+        let mut canonical = vec![];
+        proof
+            .serialize_compressed(&mut canonical)
+            .map_err(|_| "proof encoding")?;
+        if !rest.is_empty()
+            || canonical != raw
+            || proof.a.is_zero()
+            || proof.b.is_zero()
+            || proof.c.is_zero()
+        {
+            return Err("proof encoding/identity");
+        }
+        stage("after_checked_proof_decode");
+        let mut acc = self.ic[0];
+        for (base, value) in self.ic[1..].iter().zip(inputs) {
+            acc = acc + *base * fr(*value);
+        }
+        let a = g1(&proof.a);
+        let b = g2(&proof.b);
+        let c = g1(&proof.c);
+        stage("after_conversion_and_public_inputs");
+        let ok = pairing_batch(&[
+            (a, b),
+            (-self.alpha, self.beta),
+            (-acc, self.gamma),
+            (-c, self.delta),
+        ]) == Gt::one();
+        stage("after_pairing");
+        if ok {
+            Ok(())
+        } else {
+            Err("invalid proof")
         }
     }
     pub fn classify(&self, op: &[u8]) -> u8 {

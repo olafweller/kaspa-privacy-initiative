@@ -1,0 +1,10 @@
+{
+  "case": "malformed-then-valid",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 1.2684676259996195,
+  "peakSampledProcessGroupRssBytes": 78209024,
+  "wait4MaxRssBytes": 120193024,
+  "userSeconds": 1.3488229999999999,
+  "systemSeconds": 0.026428999999999998
+}

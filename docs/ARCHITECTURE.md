@@ -441,3 +441,21 @@ new transaction/batch/aggregate program identities to the existing native
 Succinct verification ABI. A wallet receipt or the old 167-byte classifier
 journal cannot substitute for that native aggregate statement. User witnesses
 remain local; external executors/provers receive only public operations/state.
+
+
+## Private-state integration calibration — 2026-10-18
+
+[ADR-0012](adr/0012-private-note-state-integration.md) fixes a distinct unfunded
+TN10 economic domain before a new wallet setup/image. The monolithic
+[calibration guest](../poc/private-note-chain/README.md) binds a previous private
+resource/config, actual v1 preimage IDs and computed native lane endpoints,
+checks deposit value/script/owner references, verifies ordinary wallet proofs
+and emits the existing 352-byte aggregate ABI plus permission commitments.
+Reference per-transaction journals are decoded but no separate recursive
+transaction/batch/aggregate proof is produced. Completed journals match the
+independent native reference; the full three-proof execution hits 128M.
+
+The new [binding map](../poc/private-note-chain/BINDINGS.md) distinguishes these
+checks from canonical native acceptance, actual permission consumption/payout,
+fee/rent handling and independent recovery. A permission commitment does not
+confirm a payout or release reserve. No host fixture may bypass these gates.

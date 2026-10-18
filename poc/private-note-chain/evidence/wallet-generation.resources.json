@@ -1,0 +1,19 @@
+{
+  "exitCode": 0,
+  "wallSeconds": 111.64029612300146,
+  "userSeconds": 228.673767,
+  "systemSeconds": 2.226248,
+  "peakHostRssBytes": 2976600064,
+  "sampledHostRssBytes": 2976944128,
+  "timeout": false,
+  "wallLimitSeconds": 900,
+  "cpuAffinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "developmentMode": false,
+  "scope": "LOCAL_ONLY_NO_PROVIDER_OR_BROADCAST"
+}

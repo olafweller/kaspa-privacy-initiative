@@ -1,0 +1,14 @@
+{
+  "case": "zero-native-deposit",
+  "completed": true,
+  "cycleBudget": 128000000,
+  "developmentMode": false,
+  "expectedImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "scope": "EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT",
+  "seconds": 0.146320393,
+  "segments": [
+    20
+  ],
+  "userCycles": 539788,
+  "wallLimitSeconds": 900
+}

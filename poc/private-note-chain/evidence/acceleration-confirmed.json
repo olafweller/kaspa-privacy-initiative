@@ -1,0 +1,27 @@
+{
+  "scope": "EXECUTOR_PPROF_OBSERVED_SAMPLED_STACKS_NOT_PROVEN_GAS",
+  "acceleratedPathObserved": true,
+  "functions": [
+    {
+      "name": "risc0_bigint2[fd08131c727261d3]::field",
+      "samples": 258,
+      "inclusiveDiagnosticCycles": 16165295
+    },
+    {
+      "name": "sys_bigint2_3",
+      "samples": 2,
+      "inclusiveDiagnosticCycles": 237
+    },
+    {
+      "name": "sys_bigint2_4",
+      "samples": 105,
+      "inclusiveDiagnosticCycles": 10457443
+    },
+    {
+      "name": "sys_bigint2_5",
+      "samples": 27,
+      "inclusiveDiagnosticCycles": 1698866
+    }
+  ],
+  "note": "Overlapping inclusive stacks; counts are not syscall invocation counts."
+}
