@@ -1,0 +1,10 @@
+{
+  "sourceRevision": "ed77988bf91d1a72f1ae2451ac3f58147a5e5465",
+  "workflowRun": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39124248918",
+  "workflowJob": 117665928457,
+  "workflowSucceeded": true,
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6",
+  "independentPublishedPullAndCpuSmoke": true,
+  "gpuProverUnchanged": true,
+  "baseProofHostUnchanged": true
+}
