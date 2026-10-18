@@ -1,0 +1,16 @@
+{
+  "authorization": "Owner forwarded release following Astra review of PR50 at 39656e3; one fixed local four-batch GPU rehearsal",
+  "reviewedHead": "39656e33db268cd6c0599e050854397b6d99c850",
+  "pr50Merge": "cde2b88de3a16af401a2046bd90a124aa105418a",
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "gpu": "one L40S",
+  "attempts": 1,
+  "aggregateProofSeconds": 3600,
+  "rentalSeconds": 7200,
+  "planningUsd": 5,
+  "noRetryOrExtension": true,
+  "minimumStartBeforeEffectiveStopSeconds": 3900,
+  "fundingAuthorized": false,
+  "TN10BroadcastAuthorized": false,
+  "unixSeconds": 1792357263.3184848
+}

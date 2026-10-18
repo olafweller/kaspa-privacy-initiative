@@ -1,0 +1,12 @@
+{
+  "podId": "zx39ajm30jc52a",
+  "gpuCount": 1,
+  "gpuType": "NVIDIA L40S",
+  "createdUnix": 1792357266.648,
+  "stopUnix": 1792364466.648,
+  "serviceUrl": "https://zx39ajm30jc52a-8080.proxy.runpod.net",
+  "actualGpuHourlyUsd": "1.09",
+  "actualStorageHourlyUsd": "0.014",
+  "stoppedStorageHourlyUsd": "0.0028",
+  "retentionHours": 24
+}

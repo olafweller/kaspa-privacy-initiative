@@ -1,0 +1,18 @@
+{
+  "trustedPackage": "/opt/kpi-remote-cuda/private-native-proof-20261018-01",
+  "archiveSha256": "f28dfcea27c8c357cece022b7036f013895d907a48b151c4e45d9700f3c2e5a0",
+  "policySha256": "f723def3f8da9fc63bb2bc08afadbb40745f2a7a3685885793b50b584ecf66fa",
+  "compiledTargetsChecked": [
+    "deposit",
+    "credit-transfer",
+    "exit",
+    "reconcile"
+  ],
+  "guardUnit": "kpi-cuda-lifecycle-guard.service",
+  "active": [
+    "ActiveState=inactive",
+    "UnitFileState=disabled"
+  ],
+  "noProofStarted": true,
+  "noProviderActions": true
+}

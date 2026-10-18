@@ -1,0 +1,11 @@
+{
+  "scope": "CLOUD_RECOVERY_AUDIT_OF_FAILED_ATTEMPT_NOT_PROOF_SUCCESS",
+  "unixSeconds": 1792357450.0821033,
+  "archiveSha256": "b699a45ef52a5537d871941d6468443a889e09641ccf33ae47aa79e44fd02ffe",
+  "archiveBytes": 661894,
+  "verifiedArchiveAndPublicInputs": true,
+  "verifiedCount": 0,
+  "allFourCryptographicallyVerified": false,
+  "nativePermissionAndRestrictedPayoutVerified": false,
+  "savedOnCloud": true
+}

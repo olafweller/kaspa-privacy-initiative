@@ -1,0 +1,25 @@
+{
+  "unixSeconds": 1792357249.7288792,
+  "quote": {
+    "id": "NVIDIA L40S",
+    "securePrice": 1.09,
+    "lowestPrice": {
+      "gpuTypeId": "NVIDIA L40S",
+      "uninterruptablePrice": 1.09,
+      "minMemory": 94,
+      "minVcpu": 16
+    }
+  },
+  "activeStorageHourlyUsdUpperBound": 0.014,
+  "stoppedStorageHourlyUsdUpperBound": 0.0028,
+  "storagePricingBasis": "90GB container + 10GB local volume; USD0.10/GB/month active, USD0.20/GB/month stopped volume, 720h/month; rounded upward",
+  "storagePricingSource": "https://docs.runpod.io/pods/pricing",
+  "maxRentalHours": 2,
+  "retentionHoursBudgeted": 24,
+  "planningCostUsd": 2.2752000000000003,
+  "limitUsd": 5,
+  "existingPodCount": 0,
+  "matchingExistingPods": [],
+  "credentialValuesPrinted": false,
+  "providerMutation": false
+}

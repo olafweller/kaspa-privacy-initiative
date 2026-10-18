@@ -1,0 +1,10 @@
+{
+  "scope": "INDEPENDENT_CPU_FOUR_LIFECYCLE_RECEIPTS_NOT_TN10",
+  "verifiedReceipts": {},
+  "failures": {},
+  "verifiedCount": 0,
+  "nativePermissionAndRestrictedPayoutVerified": false,
+  "allFourCryptographicallyVerified": false,
+  "CUDAQualificationRequiresSeparateTelemetry": true,
+  "actualTN10Broadcast": false
+}

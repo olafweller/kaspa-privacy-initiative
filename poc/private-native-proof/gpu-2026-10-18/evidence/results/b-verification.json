@@ -1,0 +1,65 @@
+{
+  "scope": "INDEPENDENT_B_RETURNED_ARTIFACT_AUDIT_NOT_SUCCESSFUL_FOUR_PROOF_EXPERIMENT",
+  "unixSeconds": 1792357410.4904435,
+  "seconds": 0.11726136799916276,
+  "archiveSha256": "b699a45ef52a5537d871941d6468443a889e09641ccf33ae47aa79e44fd02ffe",
+  "archiveBytes": 661894,
+  "archiveAndPublicInputsVerified": true,
+  "result": {
+    "scope": "INDEPENDENT_CPU_FOUR_LIFECYCLE_RECEIPTS_NOT_TN10",
+    "verifiedReceipts": {},
+    "failures": {},
+    "verifiedCount": 0,
+    "nativePermissionAndRestrictedPayoutVerified": false,
+    "allFourCryptographicallyVerified": false,
+    "CUDAQualificationRequiresSeparateTelemetry": true,
+    "actualTN10Broadcast": false
+  },
+  "aggregateResources": {
+    "exitCode": 1,
+    "failure": "cuda-process-activity-not-established",
+    "wallSeconds": 0.29710136353969574,
+    "phaseSecondsLimit": 3600,
+    "peakSampledSummedRssBytes": 1048576,
+    "peakSampledSummedVirtualBytes": 2756608,
+    "peakMatchingGpuProcessVramMiB": 0,
+    "gpuProcessActivityObserved": false,
+    "kernelWaitUserSeconds": 0.155718,
+    "kernelWaitSystemSeconds": 0.041822,
+    "sampledOwnCpuSeconds": 0.0,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "computeThreads": 4,
+    "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+  },
+  "stages": [
+    {
+      "case": "deposit",
+      "kind": "prove",
+      "startedUnix": 1792357326.1383755,
+      "startedMonotonic": 17826308.29182316,
+      "command": [
+        "/opt/kpi/private-native/bin/kpi-private-native-producer",
+        "prove",
+        "deposit",
+        "/opt/kpi/private-native/inputs",
+        "/workspace/kpi-private-native/gpu-attempt/proofs/deposit"
+      ],
+      "sameProcessGroup": 70,
+      "finished": true,
+      "pid": 77,
+      "exitCode": 1,
+      "finishedUnix": 1792357326.2532725,
+      "finishedMonotonic": 17826308.406721704
+    }
+  ],
+  "cryptographicSuccess": false,
+  "CUDAQualification": false,
+  "nativeNewExitVerified": false,
+  "actualTN10Broadcast": false,
+  "failureDetail": "First producer returned ENOENT before started.json; nested output parent proofs was absent. No receipt/candidate available to verify."
+}

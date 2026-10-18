@@ -1,0 +1,22 @@
+{
+  "scope": "FAILED_ATTEMPT_POD_AND_LOCAL_STORAGE_DELETED_AFTER_EXTERNAL_DIAGNOSTIC_PRESERVATION",
+  "deletedUnix": 1792357476.911412,
+  "podId": "zx39ajm30jc52a",
+  "providerGetStatus": 404,
+  "providerListStatus": 200,
+  "podAbsentFromList": true,
+  "remainingPodCount": 0,
+  "deletedPodVolumeGb": 10,
+  "deletedContainerDiskGb": 90,
+  "networkVolumeCreated": false,
+  "bArchiveRevalidatedBeforeDelete": true,
+  "cloudRecoveryVerified": true,
+  "receiptCount": 0,
+  "cryptographicSuccess": false,
+  "guardUnitState": [
+    "ActiveState=inactive",
+    "SubState=dead",
+    "UnitFileState=disabled"
+  ],
+  "actualInvoiceChargesAvailable": false
+}

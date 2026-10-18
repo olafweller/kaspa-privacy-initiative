@@ -1,0 +1,16 @@
+{
+  "actualQuoteGpuHourlyUsd": "1.09",
+  "activeStorageHourlyUsdPlanningUpperBound": "0.014",
+  "stoppedStorageHourlyUsdPlanningUpperBound": "0.0028",
+  "providerCreationUnix": 1792357266.648,
+  "providerReportedExitUnixSecondPrecision": 1792357400.0,
+  "providerExitObservedUnix": 1792357412.950679,
+  "providerDeletionConfirmedUnix": 1792357476.911412,
+  "providerReportedRunningSecondsApprox": 133.35199999809265,
+  "creationToObservedExitSeconds": 146.30267906188965,
+  "creationToDeletionSeconds": 210.26341199874878,
+  "gpuCostFromProviderReportedExitApproxUsd": 0.04037602222164472,
+  "gpuPlusConservativeStorageToObservedExitEstimateUsd": 0.04511489109595617,
+  "actualInvoiceAvailable": false,
+  "note": "Estimates from provider rate/timestamps; not an invoice. Exit text is whole-second precision; storage bound conservatively treats all time until deletion as active storage."
+}

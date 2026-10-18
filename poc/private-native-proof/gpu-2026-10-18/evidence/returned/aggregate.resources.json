@@ -1,0 +1,21 @@
+{
+  "exitCode": 1,
+  "failure": "cuda-process-activity-not-established",
+  "wallSeconds": 0.29710136353969574,
+  "phaseSecondsLimit": 3600,
+  "peakSampledSummedRssBytes": 1048576,
+  "peakSampledSummedVirtualBytes": 2756608,
+  "peakMatchingGpuProcessVramMiB": 0,
+  "gpuProcessActivityObserved": false,
+  "kernelWaitUserSeconds": 0.155718,
+  "kernelWaitSystemSeconds": 0.041822,
+  "sampledOwnCpuSeconds": 0.0,
+  "cpuAffinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+}

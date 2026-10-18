@@ -1,0 +1,37 @@
+{
+  "scope": "FILESYSTEM_CONTRACT_REPRODUCTION_ONLY_NOT_A_PROOF_OR_GPU_ATTEMPT",
+  "reviewedRunnerSha256": "46b115f457217b677018451e0380e910d339a2931d37f1c1946dfda83994c73c",
+  "reviewedRustHostSha256": "7a08233a896daedf5a437577d2be5ec5a23384d395c576f7b4e7b95866f937bb",
+  "cases": [
+    {
+      "precreatedParents": [],
+      "missingParent": "proofs",
+      "lastCase": "deposit",
+      "lastKind": "prove",
+      "syntheticPipelineCompleted": false
+    },
+    {
+      "precreatedParents": [
+        "proofs"
+      ],
+      "missingParent": "cpu",
+      "lastCase": "deposit",
+      "lastKind": "cpu-verify",
+      "syntheticPipelineCompleted": false
+    },
+    {
+      "precreatedParents": [
+        "proofs",
+        "cpu"
+      ],
+      "missingParent": null,
+      "lastCase": "reconcile",
+      "lastKind": "cpu-verify",
+      "syntheticPipelineCompleted": true
+    }
+  ],
+  "realReceiptsProduced": 0,
+  "proverCommandsExecuted": 0,
+  "productionCodeChanged": false,
+  "providerActions": 0
+}

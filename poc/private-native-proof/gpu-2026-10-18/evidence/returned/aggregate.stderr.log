@@ -1,0 +1,7 @@
+Error: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+Traceback (most recent call last):
+  File "/opt/kpi/app/lifecycle_runner.py", line 59, in <module>
+    run(Path(sys.argv[1]),Path(sys.argv[2]))
+  File "/opt/kpi/app/lifecycle_runner.py", line 49, in run
+    raise RuntimeError('fixed lifecycle stage failed: '+case+'-'+kind)
+RuntimeError: fixed lifecycle stage failed: deposit-prove

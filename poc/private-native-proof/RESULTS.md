@@ -65,3 +65,9 @@ anchor fixtures. Canonical TN10 acceptance, actual native payout, broader exit
 shapes, multiple simultaneous exits, production privacy and security remain
 outside this preparation result. Rental and proof execution require separate
 owner release.
+
+The separately released first GPU rehearsal subsequently failed before producing
+its first receipt because the runner omitted output parent directories. Its
+[retained results and confirmed cleanup](gpu-2026-10-18/README.md) supersede any
+inference of execution readiness from the preparation checks above. The frozen
+preparation records and image remain unchanged; no automatic retry took place.

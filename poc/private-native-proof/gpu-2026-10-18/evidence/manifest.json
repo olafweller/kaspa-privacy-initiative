@@ -1,0 +1,137 @@
+{
+  "scope": "RETAINED_FAILED_GPU_REHEARSAL_EVIDENCE",
+  "files": {
+    "admin-source-hashes.json": {
+      "sha256": "998f43605cc94a39d5b505df40867a97162b40ce1c834825ca5e03aaaebd4cf5",
+      "bytes": 857
+    },
+    "allocated-pod.json": {
+      "sha256": "f67ea86619acdc098527310163afab1a366b73c9d6d692ab943fb33ca8cac10d",
+      "bytes": 393
+    },
+    "allocation-complete.json": {
+      "sha256": "d6a4f95271c9afac3d9c14475bae2dcd6eae96bf9a27039c6b6956432145c83a",
+      "bytes": 1229
+    },
+    "allocation-intent.json": {
+      "sha256": "3931ea178b75e3551ebd6955548f3dcde2a3a0ac1562f43b9b3de90d786c69f3",
+      "bytes": 797
+    },
+    "artifacts/stop.json": {
+      "sha256": "edfdbe69f339bd64f0076d8e0db20c6ecfcb6e6069485aa42112702e1a9c62fd",
+      "bytes": 204
+    },
+    "artifacts/terminal-backup.json": {
+      "sha256": "0fda1a92182b9f8ab848b19423988e4c2edf536d63ed0f1a2ad19fc133083bcc",
+      "bytes": 222
+    },
+    "cloud-recovery-verification.json": {
+      "sha256": "176543c127b7f6151c98c41648bc533ccf867baae6067a586cc4886ddcca821c",
+      "bytes": 413
+    },
+    "cloud-zero-receipt-audit.json": {
+      "sha256": "02003ba7a0cf6ab7313f3ae6d56b78e6e3abcc825b33416376a303ba986fc7e3",
+      "bytes": 319
+    },
+    "cost-estimate.json": {
+      "sha256": "199d93c8eb4dd9664c83fe9b4e06c7f10d08046686ffa86d10a584465f0f46b5",
+      "bytes": 890
+    },
+    "lease.json": {
+      "sha256": "b2c3e1372a06ab8274cf844936ebaefcf007c2483482b0acda44763c58c0eb9d",
+      "bytes": 336
+    },
+    "observed-status.json": {
+      "sha256": "af58a97bae39e72fa7398619da6bfae76ce1056bc203ea775258400acdf7fe59",
+      "bytes": 584
+    },
+    "output-contract-reproduction.json": {
+      "sha256": "fcbe5aa536384dd72a52a033a1c328c3c9582922659bd806f56bfd1226e09787",
+      "bytes": 999
+    },
+    "owner-release.json": {
+      "sha256": "9996dedd1f6ea31cdc58d61c850b1be9ae12138058dc4eafeb7ec710c89d7fa2",
+      "bytes": 702
+    },
+    "package-qualified.json": {
+      "sha256": "f30884474640407adfc74da195c8c1ab29656c7aa7e165f200c2d9bb2a99e2ba",
+      "bytes": 536
+    },
+    "pre-start-readback.json": {
+      "sha256": "fb30e53b987c67cf6a0872f944d8f438e82f67eeed81cc34df4a387236ec3dbb",
+      "bytes": 1129
+    },
+    "provider-allocation-readback.json": {
+      "sha256": "48ef5d9c5440a8f31987507bb25bec1b0f96145ae3e0bfe9f60894cf0c09b88a",
+      "bytes": 498
+    },
+    "quote.json": {
+      "sha256": "1103b78bb8e2d0de106f8565168dbea32c5ba8109e00e3f6817cdc37b310e839",
+      "bytes": 787
+    },
+    "result.json": {
+      "sha256": "06b50505d3f7bf8b82d156dbea4b2e0649a6836681424bd1c810904e5e5d61fe",
+      "bytes": 1675
+    },
+    "results/b-verification.json": {
+      "sha256": "71e177e71ac957c265e73b81dd01b9a7b8890ea4f60325d8d7687663d2647efa",
+      "bytes": 2238
+    },
+    "results/cloud-recovery-verification.json": {
+      "sha256": "176543c127b7f6151c98c41648bc533ccf867baae6067a586cc4886ddcca821c",
+      "bytes": 413
+    },
+    "results/independent-verification/verification.json": {
+      "sha256": "02003ba7a0cf6ab7313f3ae6d56b78e6e3abcc825b33416376a303ba986fc7e3",
+      "bytes": 319
+    },
+    "results/provider-deletion.json": {
+      "sha256": "f68a02b0ca2063c05ed8f1d0ff7984e34418cc5a5104e1e56043b5fd681f4d87",
+      "bytes": 648
+    },
+    "results/provider-stop-observation.json": {
+      "sha256": "12935bda75c06f8052a44002b44c282f6f09872459014ce2c1e890983a9e5bdd",
+      "bytes": 715
+    },
+    "returned/aggregate.resources.json": {
+      "sha256": "e958c4b37b143dca1238d66617b51939ec306eb76dd9078da283ee437d5b8ea7",
+      "bytes": 635
+    },
+    "returned/aggregate.started.json": {
+      "sha256": "05f2a2ff7521e73877f224f4f46489dc614faa6c108e861d623f5fb3b19d47e0",
+      "bytes": 432
+    },
+    "returned/aggregate.stderr.log": {
+      "sha256": "7bc48edaded789d57894d918961e2a9fb537fce345349af8f53cad0961b3db57",
+      "bytes": 408
+    },
+    "returned/aggregate.stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "returned/hardware.json": {
+      "sha256": "dd6badcc014e6fa49674cac7bb7e977327adc865ec7d940969423dc61140cf49",
+      "bytes": 1664
+    },
+    "returned/progress.json": {
+      "sha256": "a78c56a32e14633a588c30a169708ec241875ed1a6dd1fb1f12fa1fc4767eae7",
+      "bytes": 613
+    },
+    "returned/stages/00-deposit-prove.json": {
+      "sha256": "c5e63e7fae388c3c75140fbf2ec85921db8654ea609c2b7759f57ba2676f0d03",
+      "bytes": 490
+    },
+    "start-intent.json": {
+      "sha256": "4d75c5da0282d2562475370add13940ab4d224fcad7a933d0f8f8a09a6583dab",
+      "bytes": 344
+    },
+    "start-response.json": {
+      "sha256": "93f425aec100c8d96707592458fcfd63007d9cc67ab4ea57c0d00829f18fd072",
+      "bytes": 56
+    },
+    "terminal-artifacts.tar.gz": {
+      "sha256": "b699a45ef52a5537d871941d6468443a889e09641ccf33ae47aa79e44fd02ffe",
+      "bytes": 661894
+    }
+  }
+}

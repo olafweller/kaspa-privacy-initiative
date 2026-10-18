@@ -1,0 +1,11 @@
+{
+  "id": "zx39ajm30jc52a",
+  "name": "kpi-private-native-20261018-01",
+  "createdAt": "2026-10-18 21:01:06.648 +0000 UTC",
+  "desiredStatus": "RUNNING",
+  "costPerHr": 1.09,
+  "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:aefe98f7e463ba3bbc4cc6b692cc739c04d083718983deb79b2543debb150db7",
+  "gpuCount": 1,
+  "volumeInGb": 10,
+  "containerDiskInGb": 90
+}

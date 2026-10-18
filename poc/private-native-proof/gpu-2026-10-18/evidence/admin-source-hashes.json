@@ -1,0 +1,14 @@
+{
+  "scope": "B_ONLY_ONE_SHOT_ADMIN_SOURCES_NOT_CREDENTIALS",
+  "sha256": {
+    "allocate.py": "d81be0954b4b95b98155b89a66ee38c48d436a18f44c832d22d07b3ba033a8b3",
+    "confirm_stop.py": "6af144be202f42915ecd4d3ca4fc98aca15979d9f17c66c703e5edae18489320",
+    "connection.py": "9aa1078474c27fcaebbded3edccf302808517c6f5044cdff6d4d8bb5b2099c01",
+    "delete.py": "d7415edc356b288a49d86780dd93dd5f6e55674002b0263b58c359c713eb0de4",
+    "prepare.py": "bee2eb6f35ca504485c40270572ef21573f173a829b8eae3cf5e73f4c77be21b",
+    "quote.py": "72487c0fac6ed108a741d2b65c2d08a992dcb81afdb448fc380392a93f980c22",
+    "start.py": "2c966933396150767b60a65cd35268efdf1d2bec1ffec5617e23496e5e82e506",
+    "status.py": "01b6076ab0effd9f0c076f4be11a591cf9a1c7477fc90c4cbabfb6d15c9fec7c",
+    "verify.py": "bb363548e9c8c32a8eac6c938aebd3e31dfcc0c0ee394129adfc48bd29303ce6"
+  }
+}

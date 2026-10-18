@@ -1,0 +1,24 @@
+{
+  "stages": [
+    {
+      "case": "deposit",
+      "kind": "prove",
+      "startedUnix": 1792357326.1383755,
+      "startedMonotonic": 17826308.29182316,
+      "command": [
+        "/opt/kpi/private-native/bin/kpi-private-native-producer",
+        "prove",
+        "deposit",
+        "/opt/kpi/private-native/inputs",
+        "/workspace/kpi-private-native/gpu-attempt/proofs/deposit"
+      ],
+      "sameProcessGroup": 70,
+      "finished": true,
+      "pid": 77,
+      "exitCode": 1,
+      "finishedUnix": 1792357326.2532725,
+      "finishedMonotonic": 17826308.406721704
+    }
+  ],
+  "lastCompleted": null
+}
