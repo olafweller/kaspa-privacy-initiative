@@ -9,6 +9,7 @@ User=kpi-cuda-guard
 Group=kpi-cuda-guard
 EnvironmentFile=/etc/kpi-cuda-guard.env
 StateDirectory=kpi-cuda-guard
+StateDirectoryMode=0750
 WorkingDirectory=/opt/kpi-remote-cuda
 ExecStart=/usr/bin/python3 /opt/kpi-remote-cuda/watchdog.py /var/lib/kpi-cuda-guard/lease.json /var/lib/kpi-cuda-guard/artifacts
 Restart=on-failure
