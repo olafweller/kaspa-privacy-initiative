@@ -1,5 +1,30 @@
    Compiling kpi-private-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/host)
-    Finished `release` profile [optimized] target(s) in 5.83s
+warning: function `second_deposit` is never used
+   --> host/src/bin/../native.rs:378:8
+    |
+378 | pub fn second_deposit(state: &State) -> Result<(Transaction, Vec<UtxoEntry>)> {
+    |        ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `scope_campaign` is never used
+   --> host/src/bin/../native.rs:407:8
+    |
+407 | pub fn scope_campaign(
+    |        ^^^^^^^^^^^^^^
+
+warning: function `restrict_settlement` is never used
+  --> host/src/native.rs:57:8
+   |
+57 | pub fn restrict_settlement(
+   |        ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `kpi-private-native-host` (bin "kpi-private-native-proof" test) generated 2 warnings
+   Compiling kpi-private-native v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/common)
+warning: `kpi-private-native-host` (bin "kpi-private-native-host" test) generated 1 warning
+    Finished `release` profile [optimized] target(s) in 6.67s
      Running unittests src/lib.rs (.local/ci-target/release/deps/kpi_private_native-5483e2e441a41b99)
 
 running 0 tests
@@ -8,23 +33,24 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running unittests src/main.rs (.local/ci-target/release/deps/kpi_private_native_host-660ccf268e5eba1f)
 
-running 7 tests
+running 8 tests
 test tests::canonical_v1_parser_matches_consensus_bytes_and_rejects_all_truncations ... ok
 test tests::captured_lane_adapter_preserves_prior_state_and_exact_journal ... ok
 test tests::checkpoint_state_and_last_touch_cannot_be_relabelled_for_a_gap ... ok
 test tests::immutable_permission_outpoint_and_covenant_rent_are_enforced ... ok
 test tests::native_payout_underpayment_diversion_recipient_and_distinct_replay ... ok
+test tests::native_permitted_forms_are_reconciled_or_rejected_before_spending ... ok
 test tests::payout_cannot_be_disguised_as_new_deposit_or_hidden_by_missing_tags ... ok
 test tests::real_wallet_proofs_preserve_liability_until_native_payout ... ok
 
-test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
 
      Running unittests src/bin/proof.rs (.local/ci-target/release/deps/kpi_private_native_proof-7cb936d4d2b4eb32)
 
 running 1 test
 test tests::frozen_local_targets_and_fake_rejection ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
 
    Doc-tests kpi_private_native
 

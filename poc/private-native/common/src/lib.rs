@@ -7,6 +7,7 @@ use vprogs_core_smt::HashedNode;
 use vprogs_zk_abi::withdrawal::StandardSpk;
 use vprogs_zk_backend_risc0_api::{delegate_entry_spk_hash, PermissionTreeAccumulator};
 use wallet::{ledger::Ledger, protocol::*, ProofVerifier, Result};
+pub mod restricted;
 
 pub const RESOURCE: H = [0x75; 32];
 pub const STATE_RENT: u64 = 100_000_000;
@@ -125,6 +126,7 @@ pub struct State {
     pub ledger: Ledger,
     pub reserves: BTreeMap<Outpoint, u64>,
     pub exit_keys: BTreeMap<H, H>,
+    pub exit_reserves: BTreeMap<H, Outpoint>,
     pub permissions: BTreeMap<H, Permission>,
     pub lane_tip: H,
     pub last_touch: u64,
@@ -145,6 +147,7 @@ impl State {
             ledger: Ledger::new(verifier),
             reserves: BTreeMap::new(),
             exit_keys: BTreeMap::new(),
+            exit_reserves: BTreeMap::new(),
             permissions: BTreeMap::new(),
             lane_tip: seed_tip,
             last_touch: seed_touch,
@@ -152,7 +155,7 @@ impl State {
     }
     pub fn hash(&self) -> H {
         tagged(
-            b"KPI-private-native-state-v1\0",
+            b"KPI-private-native-state-v2\0",
             &[&bincode::serialize(self).unwrap()],
         )
     }
@@ -168,6 +171,15 @@ impl State {
         };
         if sum(self.reserves.values().copied().collect())? != self.ledger.reserve {
             return Err("tracked reserve/principal mismatch".into());
+        }
+        for (id, e) in self.ledger.exits.iter().filter(|(_, e)| !e.paid) {
+            let o = self
+                .exit_reserves
+                .get(id)
+                .ok_or("exit has no pinned reserve")?;
+            if self.reserves.get(o).is_none_or(|value| *value <= e.amount) {
+                return Err("exit pinned reserve unavailable/insufficient".into());
+            }
         }
         for (id, p) in &self.permissions {
             let e = self.ledger.exits.get(id).ok_or("permission without exit")?;
@@ -207,11 +219,7 @@ pub fn delegate(covenant: &H) -> Vec<u8> {
         .as_slice()
         .to_vec()
 }
-pub fn permission_hash(key: &H, amount: u64) -> H {
-    let mut p = PermissionTreeAccumulator::new();
-    p.add_exit(StandardSpk::PubKey(key), amount);
-    p.finalize()
-}
+pub use restricted::permission_hash;
 fn matches(o: &NativeOutput, value: u64, script: &[u8], cov: Option<(u16, H)>) -> bool {
     o.value == value && o.version == 0 && o.script == script && o.covenant == cov
 }
@@ -239,7 +247,7 @@ fn reconcile_native_payout(state: &State, body: &NativeTx, id: H, eid: H) -> Res
     if body.inputs.len() != 3
         || body.outputs.len() != 3
         || body.inputs[0] != p.outpoint
-        || state.reserves.len() != 1
+        || state.exit_reserves.get(&eid) != body.inputs.get(1)
     {
         return Err("payout input/permission/scope".into());
     }
@@ -252,10 +260,11 @@ fn reconcile_native_payout(state: &State, body: &NativeTx, id: H, eid: H) -> Res
     if change == 0
         || !matches(
             &body.outputs[0],
-            paid,
+            body.outputs[0].value,
             StandardSpk::PubKey(key).to_script_bytes().as_slice(),
             None,
         )
+        || body.outputs[0].value < paid
         || !matches(&body.outputs[1], change, &delegate(&state.covenant), None)
     {
         return Err("payout amount/destination/reserve change".into());
@@ -284,7 +293,7 @@ fn register_native_permission(state: &State, body: &NativeTx, id: H, eid: H) -> 
         .exits
         .get(&eid)
         .ok_or("unknown permission exit")?;
-    let key = state.exit_keys.get(&eid).ok_or("missing exit key")?;
+    state.exit_keys.get(&eid).ok_or("missing exit key")?;
     if e.paid || state.permissions.contains_key(&eid) || body.outputs.len() < 2 {
         return Err("permission duplicate/paid/shape".into());
     }
@@ -294,7 +303,7 @@ fn register_native_permission(state: &State, body: &NativeTx, id: H, eid: H) -> 
     {
         return Err("state covenant continuation/rent".into());
     }
-    let spk = StandardSpk::ScriptHash(&permission_hash(key, e.amount)).to_script_bytes();
+    let spk = StandardSpk::ScriptHash(&permission_hash(state, eid)).to_script_bytes();
     if !matches(
         &body.outputs[1],
         PERMISSION_RENT,
@@ -347,10 +356,10 @@ pub fn apply<V: ProofVerifier>(
     // not by an executor's tag or success assertion.
     if let Some(o) = body.outputs.get(1) {
         if o.covenant == Some((0, state.covenant)) {
-            for (eid, key) in &state.exit_keys {
+            for eid in state.exit_keys.keys() {
                 if let Some(e) = state.ledger.exits.get(eid) {
                     let spk =
-                        StandardSpk::ScriptHash(&permission_hash(key, e.amount)).to_script_bytes();
+                        StandardSpk::ScriptHash(&permission_hash(state, *eid)).to_script_bytes();
                     if !e.paid && !state.permissions.contains_key(eid) && o.script == spk.as_slice()
                     {
                         return Ok((
@@ -406,6 +415,13 @@ pub fn apply<V: ProofVerifier>(
             if state.ledger.exits.values().any(|e| !e.paid) {
                 return Err("one pending exit scope".into());
             }
+            let reserve = state
+                .reserves
+                .iter()
+                .find(|(_, value)| **value > op.statement.exit_value)
+                .map(|(outpoint, _)| outpoint.clone())
+                .ok_or("exit requires one sufficient tracked reserve with positive change")?;
+            next.exit_reserves.insert(op.statement.id(), reserve);
             next.exit_keys.insert(op.statement.id(), key);
             exit = Some((key, op.statement.exit_value));
         } else if key != [0; 32] {
@@ -467,7 +483,7 @@ pub fn execute<V: ProofVerifier>(input: &Input, v: &V) -> Output {
     let mut tip = lane::h(i.old_tip);
     let mut score = input.state.last_touch;
     let mut last_block_score = score;
-    let mut permissions = PermissionTreeAccumulator::new();
+    let mut permission = [0; 32];
     let mut deposit = [0; 32];
     assert!(!i.blocks.is_empty(), "empty interval");
     for block in &i.blocks {
@@ -497,15 +513,27 @@ pub fn execute<V: ProofVerifier>(input: &Input, v: &V) -> Output {
             let error = match apply(&state, tx, v) {
                 Ok((s, exit, d)) => {
                     state = s;
-                    if let Some((k, a)) = exit {
-                        permissions.add_exit(StandardSpk::PubKey(&k), a);
+                    if exit.is_some() {
+                        assert_eq!(permission, [0; 32], "one permission per batch");
+                        let eid = *state.ledger.exits.iter().find(|(_, e)| !e.paid).unwrap().0;
+                        permission = permission_hash(&state, eid);
                     }
                     if d {
                         deposit = delegate_entry_spk_hash(&state.covenant);
                     }
                     None
                 }
-                Err(e) => Some(e),
+                Err(e) => {
+                    // Accepted native consumption has already moved money. It
+                    // cannot be committed as an ordinary rejected wallet op.
+                    let body = NativeTx::parse(&tx.rest).expect("accepted canonical native body");
+                    assert!(
+                        !body.inputs.iter().any(|o| state.reserves.contains_key(o)
+                            || state.permissions.values().any(|p| &p.outpoint == o)),
+                        "unreconciled accepted native consumption"
+                    );
+                    Some(e)
+                }
             };
             events.push(Event {
                 id,
@@ -536,7 +564,7 @@ pub fn execute<V: ProofVerifier>(input: &Input, v: &V) -> Output {
         i.covenant,
         hash(b"KPI-private-native-tx-domain-v1"),
         hash(b"KPI-private-native-batch-domain-v1"),
-        permissions.finalize(),
+        permission,
         deposit,
         lane::bytes(key),
     ]

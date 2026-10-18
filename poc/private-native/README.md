@@ -15,20 +15,23 @@ ledger, exact reserve outpoints, unpaid exits, permission outpoints, last lane
 tip and last-touch score. Deposits start at zero backing and bind to a unique,
 positive, covenant-specific unbound delegate output. The real wallet verifier
 retains current nullifiers, known note anchors, constrained amounts and recipient
-binding. Invalid operations atomically leave monetary state unchanged.
+binding. Invalid wallet operations atomically leave monetary state unchanged.
+Unreconciled consumption of a tracked native outpoint aborts the guest.
 
 An exit keeps its principal in unpaid liabilities. Accepted covenant-bound
 permission outputs are recognized from their bytes, not a host success flag.
 Payout reconciliation requires consumption of that exact permission and tracked
-delegate, exact destination, principal plus separate permission-rent refund and
-exact remaining delegate principal. Native permission/delegate scripts enforce
+delegate, exact destination, at least principal plus separate permission-rent
+refund and exact remaining delegate principal. The restricted permission and
+existing delegate scripts enforce
 release; native UTXO consensus supplies spentness. The local replay test uses an
 explicit fixture UTXO set; it is not a node's consensus acceptance result.
 
 Recognition of permission/payout events does not depend on honest payload tags.
 A third-party payout with an empty payload is still reconciled. Disguising it as
 a fresh deposit does not mint another credit. All three inputs/outputs and their
-roles are fixed for this one-reserve/one-outstanding-exit experiment.
+roles are natively fixed for this single-reserve-input/one-outstanding-exit
+experiment; additional registered reserves/deposits remain tracked.
 
 The state covenant retains **100,000,000 sompi** throughout. It is separate from
 the initial **1,000,000,000-sompi** delegate reserve, the **50,000,000-sompi**
@@ -84,7 +87,8 @@ For execution-only reproduction:
 python3 poc/private-native/run_qualification.py --r0vm /path/to/pinned/r0vm --host .local/ci-target/release/kpi-private-native-host --program poc/private-native/evidence/guest.program.bin --fixtures poc/private-native/evidence --out /path/to/new-directory
 ```
 
-The campaign runs four positive batches and thirteen rejection controls. Limits
+The campaign runs four lifecycle batches and sixteen additional cases: three
+positive regressions, six economic rejections and seven exact required aborts. Limits
 are 160M cycles / 900 seconds per case, 3,600 seconds for the campaign, four CPU
 threads. Resource failures never qualify as rejection. Recent unchanged-active
 lane anchors permit idle gaps beyond the older `MAX_SPAN=100`; the old guest and
@@ -101,10 +105,12 @@ check-target CASE PUBLIC_PACKAGE
 prove CASE PUBLIC_PACKAGE NEW_OUTPUT
 verify-receipt CASE RECEIPT NEW_OUTPUT
 verify-native-exit EXIT_RECEIPT NEW_OUTPUT
+qualify-state-guard ARCHIVED_PR48_RECEIPT NEW_OUTPUT
 ```
 
 These four targets are **local fixtures**, not captures for broadcasting on TN10.
-Only `check-target` and rejection checks ran during preparation. `prove` is a
+Target/rejection checks and archived-receipt state-guard qualification ran
+during preparation. `prove` is a
 future entrypoint, requiring separate release and the existing 3,600-second
 process-group watchdog; its post-completion time assertion is not a kill timer.
 Returned candidates are saved durably before verification. There is no automatic
@@ -113,7 +119,7 @@ callback and SDK verification, disallows development mode/unresolved assumptions
 and requires the compiled image and byte-exact journal. Fake and old PR48 receipts
 cannot substitute for a new lifecycle receipt.
 
-The prepared native-exit entrypoint builds the unchanged real state-covenant
+The prepared native-exit entrypoint builds the lane-restricted state-covenant
 settlement from a genuine new receipt, separately funds permission rent and
 checks actual issuance scripts before rerunning the payout campaign. It requires
 its native issuance ID to equal the predeclared reconciliation transaction ID.
@@ -132,8 +138,11 @@ The native sponsor payout builder now accepts optional `privateExitId`, selectin
 the fixed private lane and payout payload **before** fee measurement and signing.
 Default public-account behavior is preserved. Tests execute the permission path
 in both modes, verify the real sponsor signature and reject post-signing payload
-mutation. Use the existing builder's actual UTXO/fee/signing path for a future
-trial; the local helper's OP_TRUE sponsor is a fixture, not a deployable fee input.
+mutation. The additional public `permissionRedeem` field carries the restricted
+redeem bytes; the builder checks their upstream verifier body and actual UTXO
+script hash before native fee measurement/signing. A test uses this package’s
+frozen policy and verifies all three input scripts, including the sponsor. The
+local helper uses a public test-only sponsor key; never fund that key.
 
 No immutable CUDA deployment image is published for this new workload yet. The
 qualified prover/guard can be reused, but the new binaries/inputs need their own
@@ -142,3 +151,15 @@ The old PR47 image still runs its old frozen job. A future TN10 trial additional
 requires actual bootstrap/deposit/permission outpoints, canonical captures,
 matching new credit proof, genuine receipts and terminal chain confirmation.
 Do not describe this local package as live-trial readiness.
+
+## Review correction
+
+[Native/accounting alignment](REVIEW-FIX.md) records the reproduced blockers,
+actual native enforcement restrictions, multiple-deposit bookkeeping and the
+20-case requalification. The issued permission binds the private lane and exact
+reserve chosen at exit admission. The state covenant also preserves that lane
+restriction through continuation. A top-up is allowed; partial consumption and
+extra sponsor inputs/outputs are natively rejected. A lane flag alone is
+insufficient: the real sponsor builder also needs the matching `permissionRedeem`
+public bytes. Native state-contract construction must use the restriction adapter.
+PR49 remains open; no live trial, image publication or new proving is authorized.

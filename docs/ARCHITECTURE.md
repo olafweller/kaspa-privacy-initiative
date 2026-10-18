@@ -494,15 +494,23 @@ registration, real private credit/payment, Bob's independent exit proof and
 native permission/delegate payout reconciliation. State-covenant rent 100M is
 separate from the user delegate reserve 1,000M and sponsored permission rent 50M;
 Bob's 400M exit remains an unpaid liability until the accepted native permission/
-reserve spend and exact 450M recipient output (including 50M rent refund) justify
+reserve spend and at least 450M recipient output (including 50M rent refund) justify
 discharge. The remaining delegate principal/private liability is 600M.
 
 The separate guest carries full state, reserve/permission outpoints and active
 lane continuity beyond the old short fixture's 100-score cap. Four connected
-batches and 13 controls ran in the zkVM; actual local native payout scripts
+batches and 16 additional cases ran in the zkVM; actual local native payout scripts
 accepted/rejected their targeted variants. The sponsor builder supports the
 private lane before signing. These are synthetic accepted-lane/UTXO fixtures,
 not native chain acceptance. Genuine new lifecycle receipts, native permission
 issuance and terminal TN10 confirmation remain future gates under the
 [proposed rehearsal plan](../poc/private-native/TN10-PLAN.md). No new GPU rental,
 funding, broadcast or general architecture selection follows from preparation.
+
+The [PR49 review correction](../poc/private-native/REVIEW-FIX.md) enforces the
+private lane in both the state covenant and issued permission, preserves these
+restrictions in continuation, and pins a sufficient reserve per admitted exit.
+Other registered deposits remain tracked. Partial consumption and additional
+sponsor inputs/outputs are excluded by native rules; recipient top-ups are
+accounted correctly. The builder checks the supplied restricted permission bytes against the actual
+UTXO hash; live construction still must use the restricted state adapter.

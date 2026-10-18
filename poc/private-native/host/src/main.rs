@@ -156,6 +156,26 @@ fn prepare(out: &Path, exit_override: Option<&Path>) -> Result<()> {
     let eid = *exit_state.ledger.exits.keys().next().unwrap();
     let grant = cases[3].1.lane.blocks[0].txs[0].clone();
     let registered = app::apply(exit_state, &grant, &v)?.0;
+    let reserve = &registered.exit_reserves[&eid];
+    report(
+        out,
+        "native-policy.json",
+        &json!({
+            "scope":"PUBLIC_UNFUNDED_RESTRICTED_POLICY_FOR_BUILDER_INTEGRATION",
+            "covenantId":hex::encode(registered.covenant),
+            "recipient":hex::encode(registered.exit_keys[&eid]),
+            "amount":registered.ledger.exits[&eid].amount,
+            "reserveTxid":hex::encode(reserve.id),"reserveIndex":reserve.index,
+            "reserveValue":registered.reserves[reserve],
+            "permissionRedeem":hex::encode(app::restricted::permission_redeem(&registered,eid)),
+            "permissionRent":app::PERMISSION_RENT
+        }),
+    )?;
+    report(
+        out,
+        "review-regressions.json",
+        &native::scope_campaign(&registered, eid, &v)?,
+    )?;
     let mut negative_cases: Vec<(&str, State, lane::Tx)> = vec![
         (
             "duplicate-deposit",
@@ -206,6 +226,20 @@ fn prepare(out: &Path, exit_override: Option<&Path>) -> Result<()> {
     let mut negative_names = vec![];
     for (name, s, t) in negative_cases {
         let i = linked(s, vec![t], 20_000);
+        if ["underpay", "reserve-diversion", "wrong-recipient"].contains(&name) {
+            let case = format!("reject-{name}");
+            save(out, &format!("{case}.input.bin"), &i)?;
+            fs::write(
+                out.join(format!("{case}.abort.txt")),
+                "unreconciled accepted native consumption",
+            )?;
+            assert!(
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| app::execute(&i, &v)))
+                    .is_err()
+            );
+            negative_names.push(case);
+            continue;
+        }
         let o = app::execute(&i, &v);
         assert_eq!(o.events.len(), 1);
         assert!(!o.events[0].accepted);
@@ -220,13 +254,47 @@ fn prepare(out: &Path, exit_override: Option<&Path>) -> Result<()> {
     let mut grant_without_tag = grant.clone();
     grant_without_tag.payload = vec![];
     let no_tag = app::apply(exit_state, &grant_without_tag, &v)?.0;
-    let (mut paid_without_tag, entries) = native::payout(&no_tag, eid, "")?;
+    let (mut paid_without_tag, mut entries) = native::payout(&no_tag, eid, "")?;
     paid_without_tag.payload = vec![];
-    paid_without_tag.finalize();
+    native::sign_sponsor(&mut paid_without_tag, &mut entries)?;
     assert!(native::scripts(&paid_without_tag, &entries)?.is_ok());
     let reconciled = app::apply(&no_tag, &native::lane_tx(&paid_without_tag), &v)?.0;
     assert_eq!(reconciled.accounting()?.unpaid_exits, 0);
     controls.push(json!({"case":"permission-and-payout-without-executor-tags","acceptedByActualNativeScriptsAndReconciled":true,"layer":"native outpoint and covenant-output detection"}));
+    // Positive complete guest folds for the native-accepted counterexamples.
+    let (topup, entries) = native::payout(&registered, eid, "top-up")?;
+    assert!(native::scripts(&topup, &entries)?.is_ok());
+    let (second, entries) = native::second_deposit(&registered)?;
+    assert!(native::scripts(&second, &entries)?.is_ok());
+    let second_state = app::apply(&registered, &native::lane_tx(&second), &v)?.0;
+    let (payout, entries) = native::payout(&second_state, eid, "")?;
+    assert!(native::scripts(&payout, &entries)?.is_ok());
+    for (name, txs) in [
+        ("accept-top-up", vec![native::lane_tx(&topup)]),
+        (
+            "accept-second-deposit",
+            vec![native::lane_tx(&second), native::lane_tx(&payout)],
+        ),
+    ] {
+        let i = linked(registered.clone(), txs, 21_000);
+        let o = app::execute(&i, &v);
+        assert!(o.events.iter().all(|e| e.accepted));
+        assert_eq!(o.state.accounting()?.unpaid_exits, 0);
+        save(out, &format!("{name}.input.bin"), &i)?;
+        save(out, &format!("{name}.expected.bin"), &o)?;
+        negative_names.push(name.to_owned());
+    }
+    let i = linked(
+        no_tag.clone(),
+        vec![native::lane_tx(&paid_without_tag)],
+        22_000,
+    );
+    let o = app::execute(&i, &v);
+    assert!(o.events[0].accepted);
+    assert_eq!(o.state.accounting()?.unpaid_exits, 0);
+    save(out, "accept-tagless.input.bin", &i)?;
+    save(out, "accept-tagless.expected.bin", &o)?;
+    negative_names.push("accept-tagless".into());
     for name in ["prior-state", "prior-tip", "start-inclusion", "last-touch"] {
         let mut i = cases[1].1.clone();
         match name {
@@ -281,7 +349,8 @@ fn profile(program: &Path, fixtures: &Path, name: &str, out: &Path) -> Result<()
             "prior state",
             "prior tip",
             "start active inclusion",
-            "prior last touch"
+            "prior last touch",
+            "unreconciled accepted native consumption"
         ]
         .contains(&label.as_str()));
         let mut b = ExecutorEnv::builder();
@@ -293,17 +362,21 @@ fn profile(program: &Path, fixtures: &Path, name: &str, out: &Path) -> Result<()
         let error = default_executor()
             .execute(b.build()?, &bytes)
             .err()
-            .ok_or("auth control unexpectedly completed")?;
+            .ok_or("required guest abort unexpectedly completed")?;
         let message = format!("{error:#}");
-        if !message.starts_with("Guest panicked: assertion `left == right` failed: ")
-            || !message.contains(&format!("failed: {label}\n"))
-        {
+        let matched = if label == "unreconciled accepted native consumption" {
+            message.starts_with("Guest panicked: unreconciled accepted native consumption")
+        } else {
+            message.starts_with("Guest panicked: assertion `left == right` failed: ")
+                && message.contains(&format!("failed: {label}\n"))
+        };
+        if !matched {
             return Err(error.into());
         }
         report(
             out,
             "report.json",
-            &json!({"scope":"ACTUAL_GUEST_AUTHENTICATION_REJECTION_NOT_RESOURCE_FAILURE","case":name,"expectedImage":id.to_string(),"expectedAuthenticationFailureConfirmed":true,"error":message,"seconds":start.elapsed().as_secs_f64()}),
+            &json!({"scope":"ACTUAL_GUEST_REQUIRED_ABORT_NOT_RESOURCE_FAILURE","case":name,"expectedImage":id.to_string(),"expectedAbortReason":label,"expectedAbortConfirmed":true,"error":message,"seconds":start.elapsed().as_secs_f64()}),
         )?;
         return Ok(());
     }
@@ -496,6 +569,42 @@ mod tests {
         fs::remove_dir_all(dir).unwrap();
     }
     #[test]
+    fn native_permitted_forms_are_reconciled_or_rejected_before_spending() {
+        let cases = scenarios(None).unwrap();
+        let v = verifier();
+        let eid = *cases[2].2.state.ledger.exits.keys().next().unwrap();
+        let registered = app::apply(&cases[2].2.state, &cases[3].1.lane.blocks[0].txs[0], &v)
+            .unwrap()
+            .0;
+        let result = native::scope_campaign(&registered, eid, &v).unwrap();
+        assert_eq!(result["cases"].as_array().unwrap().len(), 8);
+        // A newly registered reserve does not reselect the reserve already
+        // committed by the admitted exit, even before permission issuance.
+        let (d, entries) = native::second_deposit(&cases[2].2.state).unwrap();
+        assert!(native::scripts(&d, &entries).unwrap().is_ok());
+        let s = app::apply(&cases[2].2.state, &native::lane_tx(&d), &v)
+            .unwrap()
+            .0;
+        let g = native::issuance(&s, eid);
+        let s = app::apply(&s, &native::lane_tx(&g), &v).unwrap().0;
+        let (p, entries) = native::payout(&s, eid, "").unwrap();
+        assert!(native::scripts(&p, &entries).unwrap().is_ok());
+        assert_eq!(
+            app::apply(&s, &native::lane_tx(&p), &v)
+                .unwrap()
+                .0
+                .ledger
+                .reserve,
+            1_600_000_000
+        );
+        let (bad, _) = native::payout(&registered, eid, "underpay").unwrap();
+        let i = linked(registered, vec![native::lane_tx(&bad)], 21_000);
+        assert!(
+            std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| app::execute(&i, &v)))
+                .is_err()
+        );
+    }
+    #[test]
     fn real_wallet_proofs_preserve_liability_until_native_payout() {
         let cases = scenarios(None).unwrap();
         let rows: Vec<_> = cases
@@ -584,9 +693,9 @@ mod tests {
         grant.payload.clear();
         grant.finalize();
         let s = app::apply(s, &native::lane_tx(&grant), &v).unwrap().0;
-        let (mut p, entries) = native::payout(&s, eid, "").unwrap();
+        let (mut p, mut entries) = native::payout(&s, eid, "").unwrap();
         p.payload = chain::deposit_payload([4; 32], 1);
-        p.finalize();
+        native::sign_sponsor(&mut p, &mut entries).unwrap();
         assert!(native::scripts(&p, &entries).unwrap().is_ok());
         let paid = app::apply(&s, &native::lane_tx(&p), &v).unwrap().0;
         assert_eq!(paid.ledger.reserve, 600_000_000);

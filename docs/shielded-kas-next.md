@@ -50,7 +50,7 @@ separately released full TN10 rehearsal. No additional rental follows automatica
 The subsequent [local native/private lifecycle package](../poc/private-native/RESULTS.md)
 now implements and execution-tests that accounting path with actual wallet
 proofs, Bob's separate recovery/proof process and native payout scripts. Four
-positive batches and thirteen guest rejection controls pass. Accepted native
+positive batches and sixteen additional positive/rejection/abort cases pass. Accepted native
 events remain fixtures; no new outer receipt or TN10 transaction was made.
 Review [ADR-0014](adr/0014-private-native-lifecycle.md) and the
 [concrete transaction/proof plan](../poc/private-native/TN10-PLAN.md) before

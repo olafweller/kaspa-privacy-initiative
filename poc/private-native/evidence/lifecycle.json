@@ -15,6 +15,9 @@
     "reject-reserve-diversion",
     "reject-wrong-recipient",
     "reject-payout-replay",
+    "accept-top-up",
+    "accept-second-deposit",
+    "accept-tagless",
     "auth-prior-state",
     "auth-prior-tip",
     "auth-start-inclusion",
@@ -171,7 +174,7 @@
         "state_covenant_rent_excluded": 100000000,
         "unpaid_exits": 400000000
       },
-      "nativeId": "29dfddfd225b905c33f454fa6730156f9c0a677fbca04f6fb088486dc660fe75",
+      "nativeId": "4a1020632c646b49aa8a0a20cfdb3ffaa5be24fe33a1e337b6a39915fca8c97c",
       "stage": "reconcile"
     },
     {
@@ -183,7 +186,7 @@
         "state_covenant_rent_excluded": 100000000,
         "unpaid_exits": 0
       },
-      "nativeId": "22ab6acb0eb0fb8f9b883f2356044f0169a5e5a772c375da83d6be0a96904e70",
+      "nativeId": "bb602fec933112e0a2808be6e52f2afa10017112257a7b7e3576b0570d76f5c6",
       "stage": "reconcile"
     }
   ],

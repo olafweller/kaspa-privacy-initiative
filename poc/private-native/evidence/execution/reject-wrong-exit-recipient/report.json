@@ -3,11 +3,11 @@
   "cycleLimit": 160000000,
   "developmentMode": false,
   "exactExpectedJournalMatched": true,
-  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
-  "journalSha256": "de447c7363050628f7d415489b80b183b387344cd48972d9b7f995607b4c9d6c",
+  "expectedImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "journalSha256": "89804769c41610e36d26ed299dbc34f6e9b47533665a7598da3629289e81416c",
   "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
-  "seconds": 0.211301271,
+  "seconds": 0.174156952,
   "segmentPo2": 20,
   "segments": 2,
-  "userCycles": 912232
+  "userCycles": 913907
 }

@@ -1,0 +1,91 @@
+{
+  "TN10Broadcast": false,
+  "cases": [
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "case": "top-up",
+      "outpointAdvanced": true,
+      "recipientSompi": 450000001,
+      "restrictedNativeAccepted": true,
+      "scriptUnits": [
+        3322,
+        181,
+        100001
+      ],
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "default-lane",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "partial",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "partial-three-outputs",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "extra-sponsor-input",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "extra-sponsor-output",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "case": "foreign-reserve",
+      "nativeError": "script ran, but verification failed",
+      "rejectedBeforeFundsMove": true,
+      "restrictedNativeAccepted": false,
+      "sponsorSigned": true,
+      "upstreamAccepted": true
+    },
+    {
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 1000000000,
+        "private_liability": 600000000,
+        "reserve_principal": 1600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "case": "second-deposit",
+      "nativeDepositAccepted": true,
+      "nativePayoutAccepted": true,
+      "otherDepositPreserved": true,
+      "reserves": 2
+    }
+  ],
+  "permissionIssuanceReceiptVerified": false,
+  "scope": "ACTUAL_PINNED_SCRIPT_ENGINE_WITH_SYNTHETIC_UTXOS_NOT_NEW_RECEIPT_OR_TN10"
+}

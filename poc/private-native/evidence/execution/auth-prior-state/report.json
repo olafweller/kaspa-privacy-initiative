@@ -1,8 +1,9 @@
 {
   "case": "auth-prior-state",
-  "error": "Guest panicked: assertion `left == right` failed: prior state\n  left: [122, 19, 28, 140, 221, 176, 115, 74, 96, 212, 179, 244, 46, 212, 231, 233, 96, 205, 131, 96, 195, 236, 77, 41, 143, 81, 202, 49, 7, 14, 92, 228]\n right: [123, 19, 28, 140, 221, 176, 115, 74, 96, 212, 179, 244, 46, 212, 231, 233, 96, 205, 131, 96, 195, 236, 77, 41, 143, 81, 202, 49, 7, 14, 92, 228]",
-  "expectedAuthenticationFailureConfirmed": true,
-  "expectedImage": "090b7317005efecd18425f56fbdbd7598da451cb5e29f30c2b7df295edab8adc",
-  "scope": "ACTUAL_GUEST_AUTHENTICATION_REJECTION_NOT_RESOURCE_FAILURE",
-  "seconds": 0.165189988
+  "error": "Guest panicked: assertion `left == right` failed: prior state\n  left: [226, 180, 252, 14, 186, 2, 170, 242, 167, 184, 159, 164, 123, 12, 170, 184, 6, 88, 139, 59, 205, 22, 114, 47, 240, 241, 192, 89, 41, 240, 122, 52]\n right: [227, 180, 252, 14, 186, 2, 170, 242, 167, 184, 159, 164, 123, 12, 170, 184, 6, 88, 139, 59, 205, 22, 114, 47, 240, 241, 192, 89, 41, 240, 122, 52]",
+  "expectedAbortConfirmed": true,
+  "expectedAbortReason": "prior state",
+  "expectedImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "scope": "ACTUAL_GUEST_REQUIRED_ABORT_NOT_RESOURCE_FAILURE",
+  "seconds": 0.153660474
 }

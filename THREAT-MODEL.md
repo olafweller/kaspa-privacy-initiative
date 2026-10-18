@@ -403,3 +403,13 @@ nullifiers, exact prior root/tip/last-touch and native final seqcommit binding
 remain required. Long active gaps are supported; true expiry, general reserve
 aggregation and permission concurrency are outside this narrow package.
 See the [second-pass review](poc/private-native/ADVERSARIAL-REVIEW.md).
+
+PR49 review correction: [native/accounting alignment](poc/private-native/REVIEW-FIX.md)
+adds actual state/permission lane enforcement, pins the selected reserve and
+rejects unsupported partial/expanded native spends before funds move. Sponsor
+top-ups are reconciled without minting liability; additional deposits remain
+tracked. An unreconciled tracked native spend aborts, never commits stale backing
+as an ordinary rejected wallet request. The old generic lane-selecting builder
+is not evidence of these restrictions: the actual permission UTXO binds the
+restricted redeem bytes, which the updated builder must supply and hash-check.
+New live receipts and the complete terminal rehearsal remain required.

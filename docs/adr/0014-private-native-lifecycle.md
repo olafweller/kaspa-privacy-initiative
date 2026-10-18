@@ -8,7 +8,7 @@ Status: Owner-requested local implementation and execution qualification,
 Preserve PR48's completed receipt and all its source/artifact bindings. Add a
 separate lifecycle package reusing its wallet relation/VK, checked accelerated
 verifier, canonical v1 transaction hashing, active-lane fold and native
-delegate/permission scripts. No new setup or cryptographic primitive is added.
+delegate scripts and a deliberately restricted permission policy. No new setup or cryptographic primitive is added.
 
 Start from zero user reserve/liabilities. A deposit is identified by its native
 transaction ID and output index, derived from authenticated transaction bytes.
@@ -78,3 +78,28 @@ public data recovery, fresh accepted lane captures, genuine receipts, permission
 UTXO spentness and native script/fee budgets before broadcast. Local completion
 does not mean readiness for a live trial: complete terminal payout and selected
 chain confirmation must first succeed in the separately released rehearsal.
+
+## Review correction: enforce the observed native policy
+
+The initial PR49 relation rejected native-valid sponsor top-ups and failed to
+observe off-lane payouts. Its second-deposit admission also contradicted its
+single-entry payout check. These were blocking errors, not liveness limitations
+to accept. See [reproductions and correction](../../poc/private-native/REVIEW-FIX.md).
+
+Choose native restrictions over trying to authenticate every arbitrary payout
+lane. Issued permissions bind the private lane, exact selected reserve outpoint,
+terminal full consumption, positive change and the supported three-input/output
+shape. Upstream cryptographic and principal/rent/change checks remain intact.
+Recipient top-ups are correctly accounted as sponsor contributions. Multiple
+registered reserves remain tracked; each exit must fit one selected reserve.
+The state covenant also enforces the private lane, including permission issuance;
+its guard is copied in continuation through the existing suffix construction.
+Pinned vendor files/PR48 bindings are preserved. The new state hash domain is v2.
+
+A fatal guard prevents committing an unreconciled native spend as an ordinary
+economic rejection. Actual native exclusion of unsupported forms, not that fatal
+guard alone, supplies the bounded liveness argument. Real-engine regression
+comparisons and 20 actual guest executions qualify the revised local relation.
+The real sponsor builder also accepts the matching public restricted redeem
+bytes, with an actual-script integration test. New receipts, actual funded
+construction and a terminal rehearsal remain unperformed.

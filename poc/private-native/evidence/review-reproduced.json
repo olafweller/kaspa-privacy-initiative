@@ -1,0 +1,26 @@
+{
+  "TN10Broadcast": false,
+  "cases": [
+    {
+      "applicationError": "payout amount/destination/reserve change",
+      "case": "top-up",
+      "nativeAccepted": true,
+      "sponsorSigned": true
+    },
+    {
+      "applicationError": "native lane",
+      "case": "default-lane",
+      "nativeAccepted": true,
+      "sponsorSigned": true
+    },
+    {
+      "admittedReserves": 2,
+      "applicationError": "payout input/permission/scope",
+      "case": "second-deposit",
+      "nativeAccepted": true
+    }
+  ],
+  "outerProof": false,
+  "relationBeforeCorrection": true,
+  "reviewedCommit": "0d3a8e88d8bb9430ec498c3dd66c38fb32296d76"
+}

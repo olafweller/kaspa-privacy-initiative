@@ -1,0 +1,13 @@
+{
+  "case": "accept-top-up",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "9955a1e090bcc9fcebbf7e5732b02d2ed981bb459865cd4702f229270b914dde",
+  "journalSha256": "103930d5415a07b519598dfe8c329191ad11c219301dcad1013a0d1fb925eef2",
+  "scope": "NEW_LIFECYCLE_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.179929018,
+  "segmentPo2": 20,
+  "segments": 2,
+  "userCycles": 1025027
+}

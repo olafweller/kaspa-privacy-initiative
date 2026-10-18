@@ -1,6 +1,6 @@
 
-thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/private-native/common/src/lib.rs:451:5:
+thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/private-native/common/src/lib.rs:467:5:
 assertion `left == right` failed: prior state
-  left: [122, 19, 28, 140, 221, 176, 115, 74, 96, 212, 179, 244, 46, 212, 231, 233, 96, 205, 131, 96, 195, 236, 77, 41, 143, 81, 202, 49, 7, 14, 92, 228]
- right: [123, 19, 28, 140, 221, 176, 115, 74, 96, 212, 179, 244, 46, 212, 231, 233, 96, 205, 131, 96, 195, 236, 77, 41, 143, 81, 202, 49, 7, 14, 92, 228]
+  left: [226, 180, 252, 14, 186, 2, 170, 242, 167, 184, 159, 164, 123, 12, 170, 184, 6, 88, 139, 59, 205, 22, 114, 47, 240, 241, 192, 89, 41, 240, 122, 52]
+ right: [227, 180, 252, 14, 186, 2, 170, 242, 167, 184, 159, 164, 123, 12, 170, 184, 6, 88, 139, 59, 205, 22, 114, 47, 240, 241, 192, 89, 41, 240, 122, 52]
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

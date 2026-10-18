@@ -1,0 +1,26 @@
+   Compiling kpi-private-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native/host)
+warning: function `second_deposit` is never used
+   --> host/src/bin/../native.rs:378:8
+    |
+378 | pub fn second_deposit(state: &State) -> Result<(Transaction, Vec<UtxoEntry>)> {
+    |        ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `scope_campaign` is never used
+   --> host/src/bin/../native.rs:407:8
+    |
+407 | pub fn scope_campaign(
+    |        ^^^^^^^^^^^^^^
+
+warning: function `restrict_settlement` is never used
+  --> host/src/native.rs:57:8
+   |
+57 | pub fn restrict_settlement(
+   |        ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `kpi-private-native-host` (bin "kpi-private-native-proof") generated 2 warnings
+warning: `kpi-private-native-host` (bin "kpi-private-native-host") generated 1 warning
+    Finished `release` profile [optimized] target(s) in 10.59s

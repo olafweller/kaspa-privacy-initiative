@@ -3,7 +3,7 @@
 The private/native lifecycle workflow adds locked Rust tests for actual retained
 wallet proofs, native permission/delegate scripts, exact outpoint/sompi accounting,
 capture conversion and fixed-target Fake rejection. It verifies the retained
-17-case execution evidence/manifest and declared profile, without rerunning the
+20-case execution evidence/manifest and declared profile, without rerunning the
 guest campaign, reading wallet backups/parameters, producing receipts, renting
 hardware or broadcasting transactions. The native-value test additionally checks
 the private-lane sponsor signature and post-signing payload rejection. See the

@@ -568,7 +568,20 @@ fn payout(
     let leaf = PermissionTreeAccumulator::hash_leaf(dest, amount);
     let empty = PermissionTreeAccumulator::hash_empty();
     let root = PermissionTreeAccumulator::hash_branch(&leaf, &empty);
-    let redeem = build_permission_redeem_script(&root, 1, 1);
+    let standard_redeem = build_permission_redeem_script(&root, 1, 1);
+    // A lifecycle may add native restrictions before the unchanged upstream
+    // verifier. These PUBLIC bytes must still match the actual permission UTXO;
+    // a lane flag alone does not select or authorize a different permission.
+    let redeem = if let Some(encoded) = req["permissionRedeem"].as_str() {
+        let bytes = hex::decode(encoded)?;
+        require(
+            bytes.ends_with(&standard_redeem),
+            "permission verifier body mismatch",
+        )?;
+        bytes
+    } else {
+        standard_redeem
+    };
     require(
         pe.script_public_key == pay_to_script_hash_script(&redeem),
         "claim amount/recipient mismatch",
@@ -990,6 +1003,91 @@ mod bridge_tests {
                 }
             }
         }
+    }
+    #[test]
+    fn restricted_private_permission_builder_uses_the_frozen_public_policy() {
+        let p: Value = serde_json::from_str(include_str!(
+            "../../../private-native/evidence/native-policy.json"
+        ))
+        .unwrap();
+        let cov = hash(&p["covenantId"]).unwrap();
+        let redeem = hex::decode(p["permissionRedeem"].as_str().unwrap()).unwrap();
+        let pp = TransactionOutpoint::new(Hash::from_bytes([1; 32]), 0);
+        let dp = TransactionOutpoint::new(
+            hash(&p["reserveTxid"]).unwrap(),
+            p["reserveIndex"].as_u64().unwrap() as u32,
+        );
+        let fp = TransactionOutpoint::new(Hash::from_bytes([3; 32]), 0);
+        let key = secp256k1::Keypair::from_seckey_slice(secp256k1::SECP256K1, &[3; 32]).unwrap();
+        let address = Address::new(
+            Prefix::Testnet,
+            Version::PubKey,
+            &key.x_only_public_key().0.serialize(),
+        );
+        let permission = UtxoEntry::new(
+            p["permissionRent"].as_u64().unwrap(),
+            pay_to_script_hash_script(&redeem),
+            0,
+            false,
+            Some(cov),
+        );
+        let delegate = UtxoEntry::new(
+            p["reserveValue"].as_u64().unwrap(),
+            pay_to_script_hash_script(&build_delegate_entry_script(&cov.into())),
+            0,
+            false,
+            None,
+        );
+        let fee = UtxoEntry::new(
+            200_000_000,
+            kaspa_txscript::pay_to_address_script(&address),
+            0,
+            false,
+            None,
+        );
+        let req = json!({"permissionUtxo":rpc_entry(pp,permission.clone()),"delegateUtxo":rpc_entry(dp,delegate.clone()),"covenantId":p["covenantId"],"recipient":p["recipient"],"amount":p["amount"],"permissionRedeem":p["permissionRedeem"],"privateExitId":"42".repeat(32)});
+        let tx = payout(&req, &[(fp, fee.clone())], key, &address, &mut vec![]).unwrap();
+        let entries = vec![permission, delegate, fee];
+        let pop = PopulatedTransaction::new(&tx, entries.clone());
+        let ctx = CovenantsContext::from_tx(&pop).unwrap();
+        let cache = Cache::new(100);
+        let reused = SigHashReusedValuesUnsync::new();
+        for i in 0..3 {
+            let ec = EngineContext::new(&cache)
+                .with_reused(&reused)
+                .with_covenants_ctx(&ctx);
+            let mut vm = TxScriptEngine::from_transaction_input(
+                &pop,
+                &tx.inputs[i],
+                i,
+                &entries[i],
+                ec,
+                EngineFlags::default(),
+            );
+            vm.execute().unwrap();
+        }
+        assert_eq!(tx.outputs[0].value, 450_000_000);
+        assert_eq!(tx.outputs[1].value, 600_000_000);
+        let mut missing = req.clone();
+        missing.as_object_mut().unwrap().remove("permissionRedeem");
+        assert!(payout(
+            &missing,
+            &[(fp, entries[2].clone())],
+            key,
+            &address,
+            &mut vec![]
+        )
+        .is_err());
+        let mut changed = req.clone();
+        changed["permissionRedeem"] = json!("51");
+        assert!(payout(
+            &changed,
+            &[(fp, entries[2].clone())],
+            key,
+            &address,
+            &mut vec![]
+        )
+        .is_err());
     }
     #[test]
     fn native_owner_signature_binds_payload_recipient() {

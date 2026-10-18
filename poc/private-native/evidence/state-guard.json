@@ -1,0 +1,27 @@
+{
+  "archivedProgramImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "archivedReceiptSha256": "da7c485545c9bbdf08862e987cd5418aaf4eb7e64a833325951d19909150ce46",
+  "guardCopiedInContinuation": true,
+  "nativeEngineCases": [
+    {
+      "accepted": true,
+      "case": "valid-private-lane",
+      "error": null,
+      "scriptUnits": 25006575
+    },
+    {
+      "accepted": false,
+      "case": "default-lane",
+      "error": "script ran, but verification failed",
+      "scriptUnits": 1221
+    },
+    {
+      "accepted": false,
+      "case": "removed-continuation-guard",
+      "error": "script ran, but verification failed",
+      "scriptUnits": 4003
+    }
+  ],
+  "newLifecycleReceiptProduced": false,
+  "scope": "ADDITIVE_STATE_SCRIPT_QUALIFICATION_WITH_ARCHIVED_PR48_RECEIPT_NOT_NEW_LIFECYCLE_PROOF"
+}

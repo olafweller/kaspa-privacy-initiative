@@ -1,5 +1,5 @@
 
-thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/private-native/common/src/lib.rs:459:5:
+thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/private-native/common/src/lib.rs:475:5:
 assertion `left == right` failed: start active inclusion
   left: [173, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]
  right: [172, 139, 248, 119, 120, 227, 233, 29, 118, 137, 181, 246, 244, 130, 34, 246, 38, 158, 222, 15, 200, 30, 39, 207, 234, 187, 162, 162, 46, 213, 224, 18]

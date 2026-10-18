@@ -36,9 +36,9 @@
   "recipientNativeOutputSompi": 450000000,
   "scope": "ACTUAL_PAYOUT_SCRIPTS_WITH_SYNTHETIC_PERMISSION_ISSUANCE_AND_LOCAL_UTXO_SET",
   "scriptUnits": [
-    2575,
+    3322,
     181,
-    0
+    100001
   ],
   "sponsorChangeSompi": 199900000,
   "sponsorInputSompi": 200000000,

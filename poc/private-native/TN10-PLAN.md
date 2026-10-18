@@ -17,7 +17,9 @@ using the established trial tooling. Bind the actual bootstrap funding outpoint,
 covenant ID, seed lane tip and genesis empty-state root. Record the actual fee
 wallet/public keys and sponsor intent without publishing secrets. Derive the
 state covenant with the new image, relation pins, lane key, official join control
-and 50M-sompi permission rent. Its principal is 100M sompi throughout.
+and 50M-sompi permission rent, using the lane-restricted `native::state_redeem`
+adapter from bootstrap onward. The generic unwrapped contract is incompatible
+with this policy. Its principal is 100M sompi throughout.
 
 Use fresh actual native recipient keys controlled by Bob; the local fixture's
 scalar-one destination is publicly spendable and must never receive a funded
@@ -56,10 +58,12 @@ The owner must separately release the actual quote and native rehearsal.
    Native scripts must accept the genuine new receipt and create the expected
    covenant-bound permission UTXO. Record its actual outpoint and value. State
    is reserve10/private6/unpaid4; no liability is discharged yet.
-6. Use the existing native sponsor builder with `privateExitId` set to Bob's exit
-   identifier. It selects the private lane/payload before fee calculation and
-   sponsor signing. Spend that permission and the actual deposit delegate once.
-   Native outputs must be **450M to Bob (400M principal + 50M rent refund)**,
+6. Supply the real sponsor builder with the restricted public `permissionRedeem`
+   bytes and pinned reserve. Its `privateExitId` flag selects the lane; the redeem
+   bytes must also match the actual restricted permission UTXO script hash.
+   Keep fee measurement and signing after selecting the exact lane/payload.
+   Spend that permission and the selected actual deposit delegate once.
+   Native outputs must be **at least 450M to Bob (400M principal + 50M rent refund)**,
    **600M delegate principal change**, and separate sponsor change. Re-read the
    actual native acceptance/UTXO data; do not take executor/RPC success as an
    application accounting instruction.
@@ -105,7 +109,7 @@ from the last still-accepted checkpoint; a host boolean cannot repair it.
 | Permission rent | 50M sponsored; returned to Bob on terminal consumption, separate from his 400M principal |
 | Native fee planning | Up to 500M test-sompi sponsor allocation, separate from rent/principal; actual fee/mass quotes required for complete final transactions before release |
 
-Local native payout measured 2,575/181/0 script units for the permission/delegate/
+Local restricted payout measured 3,322/181/100,001 script units for the permission/delegate/
 fixture sponsor. A real sponsor signature and a real outer-receipt settlement
 have different costs. Use the existing native engine and checked compute-budget
 conversion, native mass rules and final fee estimation; measure all actual
@@ -133,3 +137,10 @@ permission/reserve spentness, Bob's recipient UTXO and final state/delegate UTXO
 For any future GPU lease preserve verified evidence on B before confirmed stop
 and deletion. No full financial-privacy or production-safety claim follows from
 one small testnet lifecycle.
+
+Before funding, confirm the [restricted policy](REVIEW-FIX.md) is used by every
+bootstrap/continuation/permission path, including real UTXO selection and signed
+payout witnesses. A builder choosing the lane is insufficient native enforcement.
+A second registered deposit must survive the first payout; exits cannot aggregate
+several reserves in this bounded version. No old unrestricted permission or pool
+is silently migrated by these local changes.
