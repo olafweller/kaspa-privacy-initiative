@@ -1,19 +1,25 @@
-# Bounded remote CUDA qualification — preparation
+# Bounded CUDA qualification and full-classifier experiment
 
-This package prepares one local-equivalent GPU comparison of the five proof
-phases retained in [PR #40](https://github.com/olafweller/kaspa-privacy-initiative/pull/40),
-merged as `e7ea15e8009b8f6ef3aaa34b3cec17fbfc3eb5cd`. No GPU has been rented,
-no provider mutation or CUDA execution is claimed by this preparation. The
-operator's later read-only provider GET is recorded in [B-GUARD.md](B-GUARD.md).
-Follow [START.md](START.md) before a later paid deployment.
+The fixed PR40 workload (two segment proofs, two lifts and one join) completed
+on one L40S in 8.40 seconds. All five receipts were independently verified on CPU
+and the provider stop was confirmed. See
+[the qualification evidence](evidence/gpu-qualification-2026-10-18/README.md).
+Historical build/preparation records remain unchanged.
 
-The independent guard is installed on the former A1 role-B VPS,
-`vmi3641034.contaboserver.net`, separately from the TN10/gateway host. Its unit is
-disabled/inactive, with no real lease. The operator has provisioned the account
-credential on B only; its value was not inspected. The separate-process
-recovery rehearsal and all fourteen control tests pass as the dedicated service
-user on B's actual state filesystem. Existing trial data/services are preserved.
-See [B host preparation](B-GUARD.md) for evidence, permissions and remaining gates.
+The next separately owner-authorized experiment uses the existing complete
+`outer-proof-128m` statement and the same qualified CUDA prover. It has its own
+fixed image/job, fresh Pod/lease/attempt namespace and independent guard on B.
+See [the declared plan](FULL-PLAN.md), [runbook](FULL-START.md),
+[adversarial review](FULL-REVIEW.md) and
+[preparation evidence](evidence/full-classifier-preparation-2026-10-18/preparation.json).
+The full receipt outcome will be recorded separately from the five partial proofs.
+
+The independent guard is installed on B `vmi3641034.contaboserver.net`, distinct
+from TN10/gateway. Account credentials stay only on B. Management uses the
+existing Cloud → TN10 → B route; B itself authenticates to the GPU service.
+No additional Cloud domain or token binding is needed. B performs runtime
+heartbeat/backup/provider stop independently of Cloud, gateway or laptop.
+See [B host preparation and live records](B-GUARD.md).
 
 ## Fixed question and acceptance conditions
 
@@ -38,7 +44,8 @@ The different prover binary has its own recorded hash. Proof bytes need not matc
 These remain **partial proofs of two middle segments**, not a complete classifier
 receipt binding the program image to its final journal. The comparison pins the
 trusted PR #40 export and CPU claims. There is no new wallet setup, full private-note
-circuit, private witness upload, full-classifier attempt or TN10 transaction.
+circuit, private witness upload or TN10 transaction in the partial qualification.
+The separate full-classifier job is described above.
 
 ## Implementation and limits
 
