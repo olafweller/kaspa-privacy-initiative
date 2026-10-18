@@ -459,3 +459,13 @@ The new [binding map](../poc/private-note-chain/BINDINGS.md) distinguishes these
 checks from canonical native acceptance, actual permission consumption/payout,
 fee/rent handling and independent recovery. A permission commitment does not
 confirm a payout or release reserve. No host fixture may bypass these gates.
+
+
+The [separately approved 160M calibration](../poc/private-note-chain/calibration-160m/RESULTS.md)
+completes that identical monolithic execution at 139,763,284 user cycles and 143
+segments. Its exact 352-byte journal preserves the same program/VK identities;
+only host/runner selection changed. It still starts after synthetic deposit
+registration and contains no exit/payout. The
+[next proof manifest](../poc/private-note-chain/calibration-160m/next-proof-target.json)
+records exact program, state, lane and journal identities, explicitly distinguishing
+relation-domain slots from absent recursive transaction/batch image identities.

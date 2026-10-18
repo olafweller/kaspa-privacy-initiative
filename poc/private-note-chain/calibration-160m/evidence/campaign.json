@@ -1,0 +1,31 @@
+{
+  "scope": "EXECUTION_ONLY_NO_RECEIPT_OR_RENTAL",
+  "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "cycleLimitPerCase": 160000000,
+  "profile": "APPROVED_SEPARATE_160M_CALIBRATION",
+  "hostSha256": "567837e752a2e25065f10cfa5bbf7a109de294eb5389278a25f0d855e5852bcb",
+  "runnerSha256": "a0d3ad59c6385bface2e3731a5b0d5c2645ed5fbf83d016cf91b15d91e02639b",
+  "wallLimitPerCaseSeconds": 900,
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "environmentMemoryLimit": "17179869184",
+  "cases": [
+    {
+      "case": "valid-invalid-valid",
+      "exitCode": 0,
+      "timeout": false,
+      "wallSeconds": 3.7994394920024206,
+      "peakSampledProcessGroupRssBytes": 78643200,
+      "wait4MaxRssBytes": 120324096,
+      "userSeconds": 3.990904,
+      "systemSeconds": 0.06503199999999999
+    }
+  ],
+  "remaining": [],
+  "completed": true
+}

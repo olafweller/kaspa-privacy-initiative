@@ -1,5 +1,11 @@
 # GPU decision after the 128M calibration
 
+Subsequent checkpoint: the [approved 160M CPU follow-up](calibration-160m/RESULTS.md)
+completed at 139,763,284 cycles. The original proposal below is historical;
+[NEXT-PROOF.md](NEXT-PROOF.md) now defines the precise next software/proof/native
+work and conditional rental limits. No GPU rental or proof job is authorized
+by the completed CPU-only calibration.
+
 **Do not rent a GPU now.** The original full valid-invalid-valid execution did not
 finish within the approved 128M profile. A faster prover does not reduce its
 zkVM instruction count or fix missing native payout bindings.

@@ -45,3 +45,13 @@ Deliver actual measurements, security self-review, remaining native bindings and
 a concrete GPU proposal only where measured suitability supports one. Four-leaf
 capacity, whole-note exits, zero app fees and experimental one-party setup remain;
 source/reuse review and all security invariants from ADR0011 still apply.
+
+
+## Subsequent explicit budget authorization
+
+On 2026-10-18 the owner supplied the reviewed request for one separate 160M/900s
+CPU-only calibration of the original frozen valid-invalid-valid input. This is
+not a redefinition of the original 128M criterion. The
+[follow-up result](../../poc/private-note-chain/calibration-160m/RESULTS.md)
+completes at 139,763,284 user cycles, preserving all original evidence. No setup,
+guest change, automatic retry, paid job or native broadcast is included.

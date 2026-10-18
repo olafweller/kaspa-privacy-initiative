@@ -1,0 +1,9 @@
+   Compiling kpi-private-note-chain-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-note-chain/host)
+    Finished `release` profile [optimized] target(s) in 0.69s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_private_note_chain_host-6251ed7d6149c3aa)
+
+running 2 tests
+test host_tests::larger_budget_requires_the_explicit_single_scenario_command ... ok
+test host_tests::resource_failures_are_not_rejection_evidence ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

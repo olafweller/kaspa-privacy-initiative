@@ -1,0 +1,15 @@
+{
+  "scope": "PRE_EXECUTION_UPDATED_HOST_AND_RUNNER_IDENTITY",
+  "command": "profile-160m",
+  "runnerFlag": "--approved-160m",
+  "cycleLimit": 160000000,
+  "wallLimitSeconds": 900,
+  "r0vmSha256": "2acdf550f9aca4d05b74072463e4ed307c3824309c754a5cb5f93aa84f3390e6",
+  "files": {
+    ".local/ci-target/release/kpi-private-note-chain-host": "567837e752a2e25065f10cfa5bbf7a109de294eb5389278a25f0d855e5852bcb",
+    "poc/private-note-chain/host/src/main.rs": "681ef50eed42b42fd5ddb122d2ef52771b044fc9992266f54e35219640a33714",
+    "poc/private-note-chain/run_qualification.py": "a0d3ad59c6385bface2e3731a5b0d5c2645ed5fbf83d016cf91b15d91e02639b",
+    "poc/private-note-chain/host/Cargo.toml": "46b36f3e24534bc3dd2d46dcb9012206077b89dfa758dfb96b291db20c6170ae",
+    "poc/private-note-chain/Cargo.lock": "47f3ebbecc34c69f5c60031f0cc00ceabf43f585bfb18611e8a4659994ffc274"
+  }
+}

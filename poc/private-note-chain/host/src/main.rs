@@ -480,7 +480,7 @@ fn restore(out: &Path, expected: H) -> Result<()> {
     println!("separate restored wallet discovered its note and produced a valid fresh exit proof");
     Ok(())
 }
-fn profile(program: &Path, fixtures: &Path, case: &str, out: &Path) -> Result<()> {
+fn profile(program: &Path, fixtures: &Path, case: &str, out: &Path, budget: u64) -> Result<()> {
     use risc0_zkvm::{compute_image_id, default_executor, ExecutorEnv};
     fs::create_dir(out)?;
     let program = fs::read(program)?;
@@ -505,18 +505,38 @@ fn profile(program: &Path, fixtures: &Path, case: &str, out: &Path) -> Result<()
     } else {
         None
     };
+    if budget == 160_000_000 {
+        let reference = expected
+            .as_ref()
+            .ok_or("160M calibration requires a complete reference")?;
+        assert_eq!(
+            reference.aggregate_journal.len(),
+            352,
+            "frozen native aggregate journal length"
+        );
+        assert_eq!(
+            reference
+                .events
+                .iter()
+                .map(|e| e.verdict)
+                .collect::<Vec<_>>(),
+            vec![0, 1, 0],
+            "frozen credit-invalid-transfer-valid-transfer scenario"
+        );
+        save(out, "expected-journal.bin", &reference.aggregate_journal)?;
+    }
     let mut b = ExecutorEnv::builder();
     b.write_slice(&[input.len() as u32])
         .write_slice(&input)
         .stdout(std::io::stdout())
         .segment_limit_po2(20)
-        .session_limit(Some(128_000_000));
+        .session_limit(Some(budget));
     if case == "credit" {
         b.enable_profiler(out.join("accelerated-path.pprof"));
     }
     let start = Instant::now();
     let result = default_executor().execute(b.build()?, &program);
-    let mut report = json!({"scope":"EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT","case":case,"expectedImage":id.to_string(),"cycleBudget":128000000,"wallLimitSeconds":900,"seconds":start.elapsed().as_secs_f64(),"developmentMode":false});
+    let mut report = json!({"scope":"EXECUTION_ONLY_NOT_RECEIPT_OR_NATIVE_SETTLEMENT","case":case,"expectedImage":id.to_string(),"cycleBudget":budget,"profile":if budget==160_000_000 {"APPROVED_SEPARATE_160M_CALIBRATION"}else{"ORIGINAL_128M"},"wallLimitSeconds":900,"seconds":start.elapsed().as_secs_f64(),"developmentMode":false});
     match result {
         Ok(s) => {
             assert!(
@@ -531,6 +551,21 @@ fn profile(program: &Path, fixtures: &Path, case: &str, out: &Path) -> Result<()
             report["completed"] = json!(true);
             report["userCycles"] = json!(s.cycles());
             report["segments"] = json!(s.segments.iter().map(|x| x.po2).collect::<Vec<_>>());
+            let padded: Vec<u64> = s.segments.iter().map(|x| 1u64 << x.po2).collect();
+            report["segmentCount"] = json!(padded.len());
+            report["paddedSegmentCycles"] = json!(padded);
+            report["paddedTraceCycles"] = json!(padded.iter().sum::<u64>());
+            report["paddedTraceUnit"] =
+                json!("cycle slots (2^po2 per segment); not serialized trace bytes");
+            report["expectedOutcomes"] = json!(expected
+                .as_ref()
+                .unwrap()
+                .events
+                .iter()
+                .map(|e| e.verdict)
+                .collect::<Vec<_>>());
+            report["exactExpectedJournalMatched"] = json!(true);
+            report["journalBytes"] = json!(s.journal.bytes.len());
             save(out, "journal.bin", &s.journal.bytes)?;
         }
         Err(e) => {
@@ -553,6 +588,15 @@ fn profile(program: &Path, fixtures: &Path, case: &str, out: &Path) -> Result<()
     save(out, "report.json", &serde_json::to_vec_pretty(&report)?)?;
     Ok(())
 }
+fn execution_budget(command: &str, case: &str) -> Result<u64> {
+    match (command, case) {
+        ("profile", _) => Ok(128_000_000),
+        ("profile-160m", "valid-invalid-valid") => Ok(160_000_000),
+        _ => Err(
+            "160M is approved only for the single frozen valid-invalid-valid calibration".into(),
+        ),
+    }
+}
 fn expected_authentication_abort(label: &str, message: &str) -> bool {
     [
         "authenticated prior private state",
@@ -569,11 +613,28 @@ fn expected_authentication_abort(label: &str, message: &str) -> bool {
 mod host_tests {
     use super::*;
     #[test]
+    fn larger_budget_requires_the_explicit_single_scenario_command() {
+        assert_eq!(
+            execution_budget("profile", "valid-invalid-valid").unwrap(),
+            128_000_000
+        );
+        assert_eq!(execution_budget("profile", "credit").unwrap(), 128_000_000);
+        assert_eq!(
+            execution_budget("profile-160m", "valid-invalid-valid").unwrap(),
+            160_000_000
+        );
+        for case in ["credit", "exit", "auth-prior-state", ""] {
+            assert!(execution_budget("profile-160m", case).is_err());
+        }
+        assert!(execution_budget("profile-200m", "valid-invalid-valid").is_err());
+    }
+    #[test]
     fn resource_failures_are_not_rejection_evidence() {
         let label = "authenticated prior private state";
         assert!(expected_authentication_abort(label,"Guest panicked: assertion `left == right` failed: authenticated prior private state\n  left: [1]\n right: [2]"));
         for error in [
             "Session limit exceeded: 128000000 >= 128000000",
+            "Session limit exceeded: 160000000 >= 160000000",
             "out of memory",
             "IPC failed",
             "Guest panicked: another check",
@@ -594,8 +655,15 @@ fn main() -> Result<()> {
                 .try_into()
                 .map_err(|_| "expected key length")?,
         ),
-        Some("profile") if a.len() == 6 => {
-            profile(Path::new(&a[2]), Path::new(&a[3]), &a[4], Path::new(&a[5]))
+        Some(command @ ("profile" | "profile-160m")) if a.len() == 6 => {
+            let budget = execution_budget(command, &a[4])?;
+            profile(
+                Path::new(&a[2]),
+                Path::new(&a[3]),
+                &a[4],
+                Path::new(&a[5]),
+                budget,
+            )
         }
         _ => Err("generate NEW_LOCAL_DIR | profile PROGRAM FIXTURES CASE NEW_OUTPUT".into()),
     }

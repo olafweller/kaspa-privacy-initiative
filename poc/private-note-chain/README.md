@@ -8,6 +8,12 @@ rental.** See [results](RESULTS.md), [declared plan](PLAN.md),
 [bindings](BINDINGS.md), [adversarial review](ADVERSARIAL-REVIEW.md) and
 [GPU decision](GPU-PROPOSAL.md).
 
+The [single owner-approved 160M follow-up](calibration-160m/RESULTS.md) completes
+the frozen full sequence, preserving the original 128M failure. The explicit
+`--approved-160m` runner flag selects only that case; its `profile-160m` host
+command refuses other cases. The original default campaign remains at 128M.
+See [NEXT-PROOF.md](NEXT-PROOF.md) for the exact next proof/native task.
+
 The fixed unfunded TN10 rehearsal domain is in [domain.json](domain.json).
 PR44's default LOCAL-NO-FUNDING circuit/artifacts remain unchanged as a baseline;
 `tn10-rehearsal` selects a different economic domain and requires this new VK.

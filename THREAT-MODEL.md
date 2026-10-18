@@ -355,3 +355,11 @@ The 128M full-sequence limit failed; no full receipt or GPU job follows from the
 successful single-operation and rejection executions. New test-domain wallet
 backups are local-only 0600 files; public parameter retention/loading and local
 separate-process recovery do not establish durable independent availability.
+
+
+A separately owner-approved 160M execution now completes the identical private
+sequence and exact aggregate journal. Completion alone is not a genuine receipt,
+canonical native deposit acceptance or payout. In the restore path, only the
+independently expected VK is enforced; the full parameter-file SHA256 is recorded
+but not compared to an independently expected value. Future parameter distribution
+must supply/enforce that trusted whole-file hash before use.

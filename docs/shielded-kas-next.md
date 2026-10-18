@@ -31,6 +31,14 @@ locally; native acceptance/payout and durable independent availability remain
 open. See the [binding map](../poc/private-note-chain/BINDINGS.md) and
 [CPU-before-GPU proposal](../poc/private-note-chain/GPU-PROPOSAL.md).
 
+The owner-approved [single 160M follow-up](../poc/private-note-chain/calibration-160m/RESULTS.md)
+now completes that same sequence at 139,763,284 cycles / 143 segments, exactly
+matching its 352-byte reference journal. The 128M failure remains unchanged.
+The [next precise task](../poc/private-note-chain/NEXT-PROOF.md) is one genuine
+Succinct receipt plus independent CPU/native fixture verification after local
+producer/package preparation and separate GPU release. This measured scenario
+has no Bob exit, actual native deposit acceptance or payout.
+
 Owner-directed priority, 2026-10-17, after the scoped
 [Based App feasibility milestone](based-app-feasibility-2026-10-17.md).
 The next deliverable is a reviewable private-payment specification and executable

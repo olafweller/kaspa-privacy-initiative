@@ -1,5 +1,12 @@
 # Private-state integration calibration — 2026-10-18
 
+## Subsequent approved measurement
+
+The [separate 160M calibration](calibration-160m/RESULTS.md) now completes the
+same frozen scenario at 139,763,284 user cycles. The original 128M campaign and
+failure below remain unchanged; no other guest cases were repeated. The new
+result is execution only, without a receipt, rental or native broadcast.
+
 ## Outcome
 
 **The new private-note state relation executes correctly in the pinned zkVM for
@@ -73,8 +80,9 @@ found his note using public accepted data and made a fresh actual exit proof wit
 the same economic nullifier. Its full reload/discovery/proof/check took 53.360s
 including process overhead, with 2.43 GiB peak wait4 RSS. The generation job took
 111.640s and 2.77 GiB. These are local CPU observations, not mobile measurements.
-The parameters remain local, hash-pinned; off-machine durable availability is not
-established. No wallet secret/opening/path enters public evidence or guest input.
+The parameters remain local. Restore records their full SHA256 and enforces the
+independently expected VK; it does not compare the full file to an independently
+expected parameter-file hash. Off-machine durable availability is not established. No wallet secret/opening/path enters public evidence or guest input.
 
 Five focused chain tests pass, including all fourteen field-input mutations
 compared with native Groth16, false pairing, wrong subgroup/identity points,

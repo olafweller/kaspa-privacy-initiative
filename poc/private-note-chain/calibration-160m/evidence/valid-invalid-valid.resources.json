@@ -1,0 +1,10 @@
+{
+  "case": "valid-invalid-valid",
+  "exitCode": 0,
+  "timeout": false,
+  "wallSeconds": 3.7994394920024206,
+  "peakSampledProcessGroupRssBytes": 78643200,
+  "wait4MaxRssBytes": 120324096,
+  "userSeconds": 3.990904,
+  "systemSeconds": 0.06503199999999999
+}

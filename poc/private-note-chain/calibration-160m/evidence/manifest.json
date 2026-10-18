@@ -1,0 +1,45 @@
+{
+  "scope": "ONE_OWNER_APPROVED_160M_CPU_CALIBRATION_ORIGINAL_128M_UNCHANGED",
+  "files": {
+    "campaign.json": {
+      "bytes": 895,
+      "sha256": "1565157011061a33341b00cfc53a11a80bbb8cf2813ec795acfd63dab2b7e7d6"
+    },
+    "expected-journal.bin": {
+      "bytes": 352,
+      "sha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e"
+    },
+    "frozen-artifacts.json": {
+      "bytes": 4283,
+      "sha256": "4d093883c2cbb94d22b571139ac9a78c44befaa88e984556bef1f641dad7d1b8"
+    },
+    "host-identity.json": {
+      "bytes": 868,
+      "sha256": "abb078d9d5c59fc93b0aed9a8c27f73fe06a18e10ac7ee74ca5a5b8777d24636"
+    },
+    "host-tests.log": {
+      "bytes": 553,
+      "sha256": "87c6a4af01de82209a4c66f3f9b7cb9de650d3dedec3dbb308165baef02e0845"
+    },
+    "journal.bin": {
+      "bytes": 352,
+      "sha256": "88ba872f3aca413a41b83e91ba40c4eb0b27eb9db31150b7af3d133bb6ccf22e"
+    },
+    "report.json": {
+      "bytes": 3698,
+      "sha256": "db3b73d83e7b4331ce2dee7a9661f3c8c95046390df0ac22dd11b161e6b02e19"
+    },
+    "valid-invalid-valid.resources.json": {
+      "bytes": 257,
+      "sha256": "1d0d7ecf0446c0dc7fd24861fa08a0d6becbec1af9e57612e378fe3060df697a"
+    },
+    "valid-invalid-valid.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "valid-invalid-valid.stdout.log": {
+      "bytes": 445,
+      "sha256": "7ceaedf970a03aca42955b686d080bc58b6e0d2c94dc052b5cd1e011538ba550"
+    }
+  }
+}

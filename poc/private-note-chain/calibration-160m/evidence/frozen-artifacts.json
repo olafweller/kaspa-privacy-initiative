@@ -1,0 +1,106 @@
+{
+  "originalReviewedHead": "695c049d255fa2852a9b30fe6a938ea7040cb8eb",
+  "mergedBaseline": "7b4eb538357d11b1e5b6eec83765aa711774f3c2",
+  "expectedGuestImage": "20d8431e18f42c6e337ab726f166914516e3ebcd70577e67d49e687737901f8b",
+  "expectedVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+  "cycleLimit": 160000000,
+  "wallLimitSeconds": 900,
+  "attemptsAuthorized": 1,
+  "otherGuestCasesRepeated": 0,
+  "rlimitAs": [
+    -1,
+    -1
+  ],
+  "frozen": {
+    "poc/private-note-chain/evidence/guest.program.bin": {
+      "sha256": "531e2c5415844446af254634c43e02bd64644cd669625b3edefb554f1e7ab191",
+      "bytes": 1415472,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/pins/vk.bin": {
+      "sha256": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+      "bytes": 712,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/pins/vk-id.bin": {
+      "sha256": "cd7d187cf92b9285ed3357c327665b34837b365516ca0335f3cd1681e95adcea",
+      "bytes": 32,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/pins/vk-uncompressed.bin": {
+      "sha256": "72df006bdeeed886cd9adca2c9466c1f1623dc230d792a4c24ec8b14717dd23b",
+      "bytes": 1416,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/credit.json": {
+      "sha256": "28340268b00d8399afa0f32b572cc2ab7c6f92cacb95c64f84eb64d21456ddd9",
+      "bytes": 8866,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/transfer.json": {
+      "sha256": "f0b4ab5e611a952bb41d613c0b0d2e958bdc754b1a6967c5b4e37258277f060a",
+      "bytes": 11272,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/competing.json": {
+      "sha256": "42eb6cbdfce3bafedc19e13dc8da39dcce366df584fbb05a0ba0d4dd606fc95c",
+      "bytes": 11295,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/recovery.json": {
+      "sha256": "c0038308f04dcd5c3642b63ba8b837ff54a253cebfe74ff500ba343e4d7fd821",
+      "bytes": 6462,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/exit.json": {
+      "sha256": "ee80d39ddca572977d924a0f96746fe37b8ed22c5e09d036c4d7d580e31d12e5",
+      "bytes": 6391,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/valid-invalid-valid.input.bin": {
+      "sha256": "d43a228f371f30f7bcd80eb7d035f79a9d128245a6d88135b39de2b4c57cfa2f",
+      "bytes": 3911,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/valid-invalid-valid.expected.bin": {
+      "sha256": "54c0e4c5404ea7ff60b17b5ad2f615f5806e3e8357dde3e2618beac50e9452a1",
+      "bytes": 2450,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/public/expected-image.txt": {
+      "sha256": "6d57565d1a537235ab6c93323d4fbc1ce71b5772da582f83c3d2cd935da090e5",
+      "bytes": 65,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/campaign.json": {
+      "sha256": "ba964031fc1140819a315c435099e9580d75d413168d745d62b9b2048a7bf99c",
+      "bytes": 6807,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/evidence/manifest.json": {
+      "sha256": "f522e08246d1c5eb8b99a88c8eac877ff9d4dc70ca587913adfccd7ebcb9dd84",
+      "bytes": 27094,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/guest/src/main.rs": {
+      "sha256": "89b0f4e22319b3af55785ac04503512a5a6a5d7b3b512141c773baffc6440bee",
+      "bytes": 839,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/guest/Cargo.toml": {
+      "sha256": "524463c7f0f15ad53fee4b706a8cb294e5f47fab0b497827a0066d4f1e662171",
+      "bytes": 295,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/guest/Cargo.lock": {
+      "sha256": "2912da8ef75ba67c490dbc773e9c37401cc6016cf59cbc23b019745a5a5f2f16",
+      "bytes": 52834,
+      "identicalToOriginalGitBlob": true
+    },
+    "poc/private-note-chain/common/src/lib.rs": {
+      "sha256": "f640acf4771227ea33812108b95ff0a1355cd996ec600f9b7ad833f53ef1158c",
+      "bytes": 11904,
+      "identicalToOriginalGitBlob": true
+    }
+  }
+}

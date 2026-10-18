@@ -25,6 +25,12 @@ only, not a new receipt or native acceptance. The
 settlement/recovery obligations. Earlier historical status rows are not claims
 that these new native obligations are closed.
 
+The [separate owner-approved 160M measurement](../../poc/private-note-chain/calibration-160m/RESULTS.md)
+now completes that identical frozen sequence at 139,763,284 cycles. It preserves
+the original 128M failure and produces no receipt. The exact next monolithic
+proof/native-fixture target is specified separately; actual deposit lineage and
+exit/payout/native acceptance remain open.
+
 ## Scope and economic state
 
 Target lifecycle: authenticated native deposit -> one private claim -> private
