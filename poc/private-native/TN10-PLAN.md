@@ -110,8 +110,8 @@ from the last still-accepted checkpoint; a host boolean cannot repair it.
 | Native fee planning | Up to 500M test-sompi sponsor allocation, separate from rent/principal; actual fee/mass quotes required for complete final transactions before release |
 
 Local restricted payout measured 3,322/181/100,001 script units for the permission/delegate/
-fixture sponsor. A real sponsor signature and a real outer-receipt settlement
-have different costs. Use the existing native engine and checked compute-budget
+public-key fixture sponsor. Its sponsor signature is genuine; actual funding
+inputs, selected UTXOs and a real outer-receipt settlement need their own sizing. Use the existing native engine and checked compute-budget
 conversion, native mass rules and final fee estimation; measure all actual
 inputs. The fixture's 100k-sompi fee is not a network acceptance quote. Local
 execution times do not predict CUDA proving time or production throughput.

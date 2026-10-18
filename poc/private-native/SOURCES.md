@@ -9,9 +9,12 @@ The detailed [private-note source review](../private-note-chain/SOURCES.md),
 Inspected current pinned vProgs `tx_inputs.rs`, batch verifier/aggregator,
 permission tree/redeem script, delegate constants and the vendored settlement
 builder. Reuse their transaction ID, native v1 encoding, active-lane hashing,
-permission amount/destination/refund and reserve-change enforcement. State
-covenant continuation remains unchanged. Use accepted output covenant binding
-and exact outpoints rather than a separately asserted native-success flag.
+permission amount/destination/refund and reserve-change enforcement. The pinned
+upstream/vendor files stay unchanged. The PR49 correction adds native lane/shape/
+reserve restrictions to issued permissions and a lane guard to state covenant
+continuation through a separate adapter; see [the alignment review](REVIEW-FIX.md).
+Use accepted output covenant binding and exact outpoints rather than a separately
+asserted native-success flag.
 
 The existing Orchard, Aztec, RAILGUN, Monero and MWEB reviews were revisited for
 the private/public boundary: hidden membership does not replace current
