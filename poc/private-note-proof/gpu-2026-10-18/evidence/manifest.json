@@ -6,8 +6,8 @@
       "sha256": "38688db4ee59fd54af834b5a8e3821648099cbd66aa8ebca382cbc6a344a66d2"
     },
     "b-cpu-preflight.json": {
-      "bytes": 717,
-      "sha256": "78a630766770c752bd1130f3571079395078a3cd8159bed0292dc38762d2be4f"
+      "bytes": 716,
+      "sha256": "aec7d8256913a18e1dcea5d3e151ff1a4ebd77d58544c0ae64d043a2c6981460"
     },
     "b-preflight.json": {
       "bytes": 1548,
@@ -18,16 +18,16 @@
       "sha256": "8e2532a8b9c55868e12b803d02586d436a23880446af552fc7416c58e2039350"
     },
     "b-staged-package.json": {
-      "bytes": 1432,
-      "sha256": "e85df91456892fd9232b309f8eddc9f11ec7171892f3bc594c08a39ece065ba0"
+      "bytes": 1431,
+      "sha256": "506b640d018063d1370096948504b3a965ae32d15df76135950f4fd57f1e97cc"
     },
     "b-verification.json": {
-      "bytes": 1414,
-      "sha256": "a7bd82cf1803bceb52655abdda5676bf3a3065a2c9c5d299d0567ea39bad3bb0"
+      "bytes": 1413,
+      "sha256": "805cbbe23a205060487af8629fc32855df83c7e6cbd497183dfd505ff1a68646"
     },
     "cloud-recovery-verification.json": {
-      "bytes": 918,
-      "sha256": "695eab57a07edddffb5711f64e11c7bf1afac550eae29c3205b3e7b808e5a62d"
+      "bytes": 919,
+      "sha256": "e61e8d2dba6848750690d7b1e7d4495a2d0f01477ba091417c7168dcefbdb569"
     },
     "cost-estimate.json": {
       "bytes": 1008,
@@ -54,24 +54,24 @@
       "sha256": "bd3a933b622c7c618862db7eb696a30b4e7abcb9ff21954cd6b5d95fa42e0672"
     },
     "proof-complete.json": {
-      "bytes": 654,
-      "sha256": "ed22f2b48c17cbe3831837fbf1529a8deba41ea792516459586865e1bec732dd"
+      "bytes": 655,
+      "sha256": "bcd3913be3ebf5d532210b0f847bd26b7caab39e6760c99c4e2e5651a8a8fdf5"
     },
     "proof-resources.json": {
       "bytes": 617,
       "sha256": "9bc57271709dc15df923acb34247b9ea42d6045952d2f7d21ce5fc1342cdfbd2"
     },
     "proof-stats.json": {
-      "bytes": 136,
-      "sha256": "8b2afaea99e01a86e074e3f03cade3d156280d2d7372762d2bdcc4bd526c16a4"
+      "bytes": 137,
+      "sha256": "79f3517943d77b81240b25f23708de41fe1f991f7b8b44dd01d020d2ce61b6d6"
     },
     "provider-deletion.json": {
-      "bytes": 703,
-      "sha256": "a772b7ef19886091ee2e3781f2ec59965cea29406d656c87bb805a4cf96b0cf0"
+      "bytes": 702,
+      "sha256": "5acd14da15efd7e263333246f10600e8dfbdb8233824857f59944dcfcdc1e0e2"
     },
     "provider-stop.json": {
-      "bytes": 719,
-      "sha256": "e9570b20e55050e3f1c42ce0e97a2753359d1c767a81972174ece4635f3f76c1"
+      "bytes": 718,
+      "sha256": "dff09de10c958756272250203382a9fbf45a75f9373c1c59c16c8fbaddaae6ad"
     },
     "telemetry-summary.json": {
       "bytes": 333,
