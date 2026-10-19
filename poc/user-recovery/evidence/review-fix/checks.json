@@ -1,0 +1,39 @@
+{
+  "scope": "TARGETED_REVIEW_FIX_OFFLINE_CHECKS",
+  "reviewedHead": "5d09e2fafce85b024dacb7ef372a33d9a7323c4a",
+  "receivingFields": [
+    "domain",
+    "incoming",
+    "owner",
+    "schema"
+  ],
+  "nativeDestinationSource": "Bob public EXIT result; payload, operation ID and prior-root binding checked",
+  "historicalWorkflowExpectedSha256": "3210289fa84d93591cee5b2cb9a01183554edd798b52733cd2c01d1e3efbbaa3",
+  "reviewedWorkflowSha256": "94e9d57b44c946c86ad0734b515e59c78f5e233a4c557228e18493f06fa09c1f",
+  "correctedWorkflowSha256": "3210289fa84d93591cee5b2cb9a01183554edd798b52733cd2c01d1e3efbbaa3",
+  "historicalHashFileAndCheckUnchanged": true,
+  "recoveryWorkflow": ".github/workflows/user-recovery.yml",
+  "originalRustTestsPassed": 12,
+  "recoveryRustTestsPassed": 7,
+  "cliNegativeControlsPassed": 11,
+  "fastJobLocalExitCode": 0,
+  "newOuterProofs": 0,
+  "GPUAndProviderActions": 0,
+  "fundingOrBroadcasts": 0,
+  "mergePerformed": false,
+  "freshRehearsal": {
+    "exitCode": 0,
+    "publicResults": "local/qualification.json",
+    "seconds": 185.20788721899953,
+    "receivingFields": [
+      "domain",
+      "incoming",
+      "owner",
+      "schema"
+    ],
+    "nativeDestinationDisclosedAt": "public EXIT result",
+    "finalReserveSompi": 0,
+    "finalPrivateLiabilitySompi": 0,
+    "pendingExits": 0
+  }
+}

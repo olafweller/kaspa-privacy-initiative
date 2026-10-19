@@ -33,6 +33,20 @@ fn new_user_files_are_private_and_never_overwritten() {
         0o700
     );
     assert!(init(&p).is_err());
+    let receive: serde_json::Value =
+        serde_json::from_slice(&fs::read(p.join("receive.json")).unwrap()).unwrap();
+    assert_eq!(
+        receive
+            .as_object()
+            .unwrap()
+            .keys()
+            .map(String::as_str)
+            .collect::<Vec<_>>(),
+        ["domain", "incoming", "owner", "schema"],
+        "shared receive data must never link a native payout key"
+    );
+    assert_eq!(receive["schema"], "KPI_USER_RECEIVE_V1");
+    assert_eq!(receive["domain"], hex::encode(domain()));
     assert_eq!(
         own(&p).unwrap().address.owner,
         own(&p).unwrap().address.owner

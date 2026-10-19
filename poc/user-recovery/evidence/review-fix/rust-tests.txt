@@ -1,0 +1,32 @@
+   Compiling kpi-private-native-tn10 v0.1.0 (/workspace/kaspa-privacy-initiative/poc/private-native-tn10)
+    Finished `release` profile [optimized] target(s) in 5.59s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_private_native_tn10-160cf061510e7aa8)
+
+running 12 tests
+test tests::deposit_reference_includes_actual_txid_and_index ... ok
+test tests::fresh_trial_roles_are_unfunded_and_private ... ok
+test tests::actual_genesis_id_initializes_exact_reviewed_state ... ok
+test tests::full_signed_size_and_fee_checks_are_not_unsigned_estimates ... ok
+test tests::genesis_depends_on_output_and_outpoint_without_root_cycle ... ok
+test tests::initializer_rejects_wrong_root_lane_rent_auth_and_extra_outputs ... ok
+test tests::offline_signed_bootstrap_initialize_and_deposit_have_actual_lineage ... ok
+test tests::mapped_capture_preserves_long_gap_public_inputs_and_journal ... ok
+test tests::real_fixture_exit_receipt_builds_signed_permission_and_reconciled_payout ... ok
+test tests::retained_relation_still_connects_all_four_states_and_tips ... ok
+test tests::trusted_target_and_old_fixture_receipt_cannot_substitute_real_target ... ok
+test tests::real_retained_receipts_verify_only_their_exact_regression_targets ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.05s
+
+     Running unittests src/bin/user-recovery.rs (.local/ci-target/release/deps/user_recovery-c355d5a9736d0934)
+
+running 7 tests
+test tests::exact_state_root_rejects_modified_spentness_and_missing_deliveries ... ok
+test tests::new_user_files_are_private_and_never_overwritten ... ok
+test tests::native_terminal_policy_rejects_signed_unsupported_forms ... ok
+test tests::old_guest_policy_is_preserved_instead_of_silently_upgraded ... ok
+test tests::sponsor_topup_preserves_only_authorized_liability_deduction ... ok
+test tests::real_proof_binds_destination_and_current_state ... ok
+test tests::terminal_native_acceptance_and_accounting_drain_exact_reserve ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s

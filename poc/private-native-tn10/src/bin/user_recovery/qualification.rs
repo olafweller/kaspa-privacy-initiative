@@ -164,7 +164,6 @@ pub fn run(parameters: &Path, out: &Path) -> Result<()> {
         owner: h(receive["owner"].as_str().unwrap())?,
         incoming: h(receive["incoming"].as_str().unwrap())?,
     };
-    let bob_key = h(receive["nativePubkey"].as_str().unwrap())?;
     let alice = own(&alice_dir)?;
     let engine = engine(parameters)?;
     let v = verifier();
@@ -275,8 +274,22 @@ pub fn run(parameters: &Path, out: &Path) -> Result<()> {
         path(&bob_out),
     ])?;
     let op: Operation = serde_json::from_slice(&fs::read(bob_out.join("exit.json"))?)?;
+    // The sender never needs Bob's native key. It is disclosed only by Bob's
+    // public, proof-bound exit result when he chooses to withdraw.
+    let exit_public: serde_json::Value =
+        serde_json::from_slice(&fs::read(bob_out.join("public.json"))?)?;
+    let bob_key = h(exit_public["nativePubkey"]
+        .as_str()
+        .ok_or("exit recipient")?)?;
+    let payload = hex::decode(exit_public["payloadHex"].as_str().ok_or("exit payload")?)?;
+    require(
+        payload == chain::operation_payload(&op, bob_key)?
+            && exit_public["sourceRoot"] == hex::encode(before_bob.root())
+            && exit_public["operationId"] == hex::encode(op.statement.id()),
+        "public exit result binding",
+    )?;
     let tx = fixture_tx(
-        chain::operation_payload(&op, bob_key)?,
+        payload,
         vec![TransactionOutput::new(
             1,
             ScriptPublicKey::new(0, vec![0x51].into()),

@@ -122,10 +122,6 @@ jobs:
             cargo +1.91.0 fmt --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" --check
           fi
           cargo +1.91.0 test --locked --release --manifest-path "poc/$KPI_CI_COMPONENT/Cargo.toml" -- --test-threads=2
-          if [[ "$KPI_CI_COMPONENT" == private-native-tn10 ]]; then
-            cargo +1.91.0 build --locked --release --manifest-path poc/private-native-tn10/Cargo.toml --bin user-recovery
-            python3 poc/user-recovery/test_cli.py .local/ci-target/release/user-recovery
-          fi
           if [[ "$KPI_CI_COMPONENT" == takeover ]]; then
             cargo +1.91.0 test --locked --release --manifest-path poc/takeover/Cargo.toml -p kpi-accelerated-bn254
             cargo +1.91.0 build --locked --release --manifest-path poc/takeover/Cargo.toml --bin kpi-takeover-host

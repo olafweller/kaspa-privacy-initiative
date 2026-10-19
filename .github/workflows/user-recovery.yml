@@ -1,0 +1,56 @@
+name: User recovery checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: user-recovery-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/kpi/.local/ci-target
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: kpi
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: kaspanet/rusty-kaspa
+          ref: 01b532e8b553523216471682649693af92f0fd16
+          path: upstream/rusty-kaspa
+          persist-credentials: false
+      - name: Native build prerequisites and pinned Rust
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang libclang-dev llvm-dev cmake pkg-config libssl-dev protobuf-compiler
+          rustup toolchain install 1.91.0 --profile minimal
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            kpi/.local/ci-target
+          key: rust-ubuntu24-x64-1.91.0-01b532e-recovery-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+          restore-keys: |
+            rust-ubuntu24-x64-1.91.0-01b532e-recovery-
+            rust-ubuntu24-x64-1.91.0-01b532e-private-native-tn10-
+      - name: Check preserved preparation bindings and offline user CLI
+        working-directory: kpi
+        run: |
+          test "$(git -C ../upstream/rusty-kaspa rev-parse HEAD)" = 01b532e8b553523216471682649693af92f0fd16
+          export BINDGEN_EXTRA_CLANG_ARGS="-isystem $(cc -print-file-name=include)"
+          python3 poc/private-native-tn10/check_preparation.py
+          cargo +1.91.0 build --locked --release --manifest-path poc/private-native-tn10/Cargo.toml --bin user-recovery
+          python3 poc/user-recovery/test_cli.py .local/ci-target/release/user-recovery

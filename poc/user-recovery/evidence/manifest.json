@@ -41,6 +41,66 @@
       "bytes": 173,
       "sha256": "ff7fdd9f2671388bea8bf36b00667847713b2d272ca4ee817fe55c3eb5ce58e3"
     },
+    "review-fix/checks.json": {
+      "bytes": 1322,
+      "sha256": "d8606ee27a720159d3aed97789e1b89b201c2426ad65244d74aed73e596dfa4c"
+    },
+    "review-fix/cli-tests.json": {
+      "bytes": 822,
+      "sha256": "ece29ac1e75374c1c69b45f37132bf8e1b7a63893cb4a2e65ef73b5583db0c3c"
+    },
+    "review-fix/fast-checks.txt": {
+      "bytes": 28384,
+      "sha256": "fc71e8e50b7bbb1add9f981c7e3a693179df3b15bc1d4a0860176a77b6500652"
+    },
+    "review-fix/local/alice-exit.json": {
+      "bytes": 6383,
+      "sha256": "ff73cc391a3f3c68e5b3fd8779a02144eff550b8ad70feed88814693a90c8478"
+    },
+    "review-fix/local/before-bob.state.bin": {
+      "bytes": 1232,
+      "sha256": "a86d73db4abd4bd53531668f5c2a76e0ecaf66c70a01b025762199473b3e0a48"
+    },
+    "review-fix/local/credit-transfer.input.bin": {
+      "bytes": 2904,
+      "sha256": "78fc026d324b036e1000cfcfc35aedfd94d4781dd95bc79a64c720186c292f51"
+    },
+    "review-fix/local/deposit.input.bin": {
+      "bytes": 973,
+      "sha256": "30fa28dc3cd28a476faa283aead680908af5caa13460b77c784d48bc1a870bdd"
+    },
+    "review-fix/local/final.state.bin": {
+      "bytes": 1726,
+      "sha256": "f8b45002ffe195291a154c555af5472e9a4cb123304eeff52edbf5835f4ab632"
+    },
+    "review-fix/local/pre-full-exit.state.bin": {
+      "bytes": 1501,
+      "sha256": "e323d399673cfeb4d16681df153f04e83a3e1805c078fca135de954d45de934b"
+    },
+    "review-fix/local/qualification.json": {
+      "bytes": 1668,
+      "sha256": "9e3ca47d9e4ae7ccef35a66adf4d86f0fd7c8a442ca442e4c825ede97b0fa183"
+    },
+    "review-fix/local/terminal.json": {
+      "bytes": 2603,
+      "sha256": "8e3ce31f36e19d95cd0997eff2158de5a997363e9148224fe917665e8dd28f62"
+    },
+    "review-fix/resources.json": {
+      "bytes": 210,
+      "sha256": "79e804b9516130de9f0072a17807fd4bd659e42ac30da74288d7a753aa8d92c1"
+    },
+    "review-fix/reviewed-5d09e2f-evidence-manifest.json": {
+      "bytes": 1810,
+      "sha256": "d5cc9d7955d8db00783dca6fd19818a2ff5aaa3363d98aec372bfc97c683e8aa"
+    },
+    "review-fix/reviewed-5d09e2f-runmanifest.json": {
+      "bytes": 2089,
+      "sha256": "818778219c78146f6f6c040fd2d5d495af5cf04f253cc2efead562812b7879dd"
+    },
+    "review-fix/rust-tests.txt": {
+      "bytes": 2093,
+      "sha256": "6a30bf0071e4b5168a4b381bb54938ced161d34d52e2969bbe9bced822189d34"
+    },
     "rust-tests.txt": {
       "bytes": 2094,
       "sha256": "21b4aac4ebf654263715fb45161c8b4034f963a40fb688dd0bc6ad05e71b3c3d"

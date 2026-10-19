@@ -1,0 +1,55 @@
+{
+  "alicePaidPrincipalSompi": 600000000,
+  "bobPaidPrincipalSompi": 400000000,
+  "bobScan": {
+    "checkpointFreshnessEstablished": false,
+    "notes": 1,
+    "scope": "LOCAL_PRIVATE_WALLET_OUTPUT_NOT_PUBLIC_EVIDENCE",
+    "spendableSompi": 400000000,
+    "stateRoot": "3bd562b9d96b37ef90738e8bb9035a7aa7b80df89fe35193eda752ecaf022bff"
+  },
+  "bobScriptUnits": [
+    3322,
+    181,
+    100001
+  ],
+  "finalAccounting": {
+    "outstanding_permission_rent_excluded": 0,
+    "pending_deposits": 0,
+    "private_liability": 0,
+    "reserve_principal": 0,
+    "state_covenant_rent_excluded": 100000000,
+    "unpaid_exits": 0
+  },
+  "independentAdministrationEstablished": false,
+  "newOuterProofs": 0,
+  "onChainAccepted": false,
+  "originalServicesContacted": false,
+  "permissionRefundPerUser": 50000000,
+  "publicHistoryReconstructedByteExactly": true,
+  "replay": {
+    "accounting": {
+      "outstanding_permission_rent_excluded": 0,
+      "pending_deposits": 0,
+      "private_liability": 1000000000,
+      "reserve_principal": 1000000000,
+      "state_covenant_rent_excluded": 100000000,
+      "unpaid_exits": 0
+    },
+    "batches": 2,
+    "chainFreshnessEstablished": false,
+    "scope": "OFFLINE_REPLAY_TO_INDEPENDENT_CHECKPOINT_NOT_CHAIN_SELECTION",
+    "stateRoot": "3bd562b9d96b37ef90738e8bb9035a7aa7b80df89fe35193eda752ecaf022bff"
+  },
+  "scope": "LOCAL_REAL_WALLET_PROOFS_AND_NATIVE_SCRIPT_FIXTURES_NOT_NEW_OUTER_PROOFS_OR_TN10",
+  "separateUserProcesses": true,
+  "stateRentRemainsSeparate": 100000000,
+  "terminalOutputs": 2,
+  "terminalScriptUnits": [
+    3386,
+    181,
+    100001
+  ],
+  "userSecretsIncluded": false,
+  "zeroValueReserveOutput": false
+}

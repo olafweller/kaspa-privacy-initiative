@@ -1,0 +1,288 @@
+Checked 184 Markdown files and 944 relative links: OK.
+External URLs and heading fragments require separate review. This check does not validate protocol security.
+Python syntax: OK
+test_aggregate_timeout_kills_ipc_descendant (test_resources.Resources.test_aggregate_timeout_kills_ipc_descendant) ... ok
+test_nonzero_exit_not_a_success (test_resources.Resources.test_nonzero_exit_not_a_success) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.449s
+
+OK
+test_archived_qualification_and_fixtures_are_bound (test_full.Full.test_archived_qualification_and_fixtures_are_bound) ... ok
+test_separate_fixed_job_uses_injected_executor_and_scope (test_full.Full.test_separate_fixed_job_uses_injected_executor_and_scope) ... ok
+test_external_watchdog_survives_controlling_process_death (test_lifecycle.Lifecycle.test_external_watchdog_survives_controlling_process_death) ... ok
+test_fixed_package_and_all_compiled_targets_without_execution (test_lifecycle.Lifecycle.test_fixed_package_and_all_compiled_targets_without_execution) ... ok
+test_journal_continuity_cannot_be_replaced (test_lifecycle.Lifecycle.test_journal_continuity_cannot_be_replaced) ... ok
+test_partial_results_survive_later_stage_failure_and_verification_is_trusted (test_lifecycle.Lifecycle.test_partial_results_survive_later_stage_failure_and_verification_is_trusted) ... ok
+test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant (test_lifecycle.Lifecycle.test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant) ... ok
+test_real_children_obey_nonrecursive_rust_output_directory_contract (test_lifecycle.Lifecycle.test_real_children_obey_nonrecursive_rust_output_directory_contract) ... ok
+test_single_start_and_missing_guard_remain_enforced (test_lifecycle.Lifecycle.test_single_start_and_missing_guard_remain_enforced) ... ok
+test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit (test_lifecycle.Lifecycle.test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit) ... ok
+test_compiled_producer_checks_target_without_execution (test_private.Private.test_compiled_producer_checks_target_without_execution) ... ok
+test_insufficient_time_stops_before_hardware_or_process (test_private.Private.test_insufficient_time_stops_before_hardware_or_process) ... ok
+test_restored_package_fixed_bytes_and_tampering (test_private.Private.test_restored_package_fixed_bytes_and_tampering) ... ok
+test_unconfigured_and_unguarded_job_cannot_start (test_private.Private.test_unconfigured_and_unguarded_job_cannot_start) ... ok
+test_application_headers_keep_auth_timeout_and_redirect_refusal (test_remote.Remote.test_application_headers_keep_auth_timeout_and_redirect_refusal) ... ok
+test_archive_traversal_and_duplicate_names_rejected (test_remote.Remote.test_archive_traversal_and_duplicate_names_rejected) ... ok
+test_bootstrap_binds_one_lease_to_the_actual_pod (test_remote.Remote.test_bootstrap_binds_one_lease_to_the_actual_pod) ... ok
+test_cost_duration_and_host_are_checked (test_remote.Remote.test_cost_duration_and_host_are_checked) ... ok
+test_empty_stop_response_and_already_exited_are_handled (test_remote.Remote.test_empty_stop_response_and_already_exited_are_handled) ... ok
+test_external_watchdog_stops_after_controller_is_gone (test_remote.Remote.test_external_watchdog_stops_after_controller_is_gone) ... ok
+test_failed_backup_does_not_delay_rental_deadline (test_remote.Remote.test_failed_backup_does_not_delay_rental_deadline) ... ok
+test_http_auth_guard_single_start_and_disconnection (test_remote.Remote.test_http_auth_guard_single_start_and_disconnection) ... ok
+test_live_provider_schema_and_strict_transport (test_remote.Remote.test_live_provider_schema_and_strict_transport) ... ok
+test_rental_deadline_does_not_wait_for_a_stalled_gpu_request (test_remote.Remote.test_rental_deadline_does_not_wait_for_a_stalled_gpu_request) ... ok
+test_restart_marks_interrupted_without_retry (test_remote.Remote.test_restart_marks_interrupted_without_retry) ... ok
+test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup (test_remote.Remote.test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup) ... ok
+test_stop_ack_without_exited_readback_is_not_success (test_remote.Remote.test_stop_ack_without_exited_readback_is_not_success) ... ok
+test_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.test_terminal_backup_survives_controller_loss_before_stop) ... ok
+test_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok
+test_changed_asset_or_limits_rejected_before_any_executor (test_staged.Staged.test_changed_asset_or_limits_rejected_before_any_executor) ... ok
+test_duplicate_and_concurrent_requests_start_exactly_once (test_staged.Staged.test_duplicate_and_concurrent_requests_start_exactly_once) ... ok
+test_existing_independent_guard_backs_up_waiting_and_confirms_simulated_stop (test_staged.Staged.test_existing_independent_guard_backs_up_waiting_and_confirms_simulated_stop) ... ok
+test_external_archive_compressed_and_member_limits (test_staged.Staged.test_external_archive_compressed_and_member_limits) ... ok
+test_failure_preserves_candidate_and_forbids_later_stage_or_retry (test_staged.Staged.test_failure_preserves_candidate_and_forbids_later_stage_or_retry) ... ok
+test_four_real_http_arrivals_actual_cpu_verification_and_external_archive (test_staged.Staged.test_four_real_http_arrivals_actual_cpu_verification_and_external_archive) ... ok
+test_guard_order_and_single_mutating_process_are_enforced (test_staged.Staged.test_guard_order_and_single_mutating_process_are_enforced) ... ok
+test_lost_http_response_does_not_cancel_or_repeat_accepted_job (test_staged.Staged.test_lost_http_response_does_not_cancel_or_repeat_accepted_job) ... ok
+test_original_deadline_expires_between_batches_without_request_reset (test_staged.Staged.test_original_deadline_expires_between_batches_without_request_reset) ... ok
+test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) ... ok
+test_real_external_timeout_kills_stalled_process_group_preserving_candidate (test_staged.Staged.test_real_external_timeout_kills_stalled_process_group_preserving_candidate) ... ok
+test_real_service_process_loss_interrupts_job_and_preserves_deadline (test_staged.Staged.test_real_service_process_loss_interrupts_job_and_preserves_deadline) ... ok
+test_reconnect_waiting_restart_keeps_lease_order_and_deadline (test_staged.Staged.test_reconnect_waiting_restart_keeps_lease_order_and_deadline) ... ok
+test_second_recovery_reaps_group_after_crash_between_gate_and_kill (test_staged.Staged.test_second_recovery_reaps_group_after_crash_between_gate_and_kill) ... ok
+test_unauthorized_wrong_target_trial_unknown_or_duplicate_members_rejected (test_staged.Staged.test_unauthorized_wrong_target_trial_unknown_or_duplicate_members_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 31.633s
+
+OK
+{"output": "/tmp/tmpk6acreba/package", "inputFiles": 116, "workloadSha256": "3a3d6196d7451e596f81d7c72aa900343f54b3ff8460512ed5e2e07eddf55f11"}
+test_accounting_exact_rebate (test_a1_check.IndependentCodecTests.test_accounting_exact_rebate) ... ok
+test_all_golden_branches_and_abi (test_a1_check.IndependentCodecTests.test_all_golden_branches_and_abi) ... ok
+test_boundary_rejections (test_a1_check.IndependentCodecTests.test_boundary_rejections) ... ok
+test_duplicate_json_unknown_float_and_escaping_artifact (test_a1_check.IndependentCodecTests.test_duplicate_json_unknown_float_and_escaping_artifact) ... ok
+test_exact_script_independent_construction (test_a1_check.IndependentCodecTests.test_exact_script_independent_construction) ... ok
+test_malformed_contexts (test_a1_check.IndependentCodecTests.test_malformed_contexts) ... ok
+test_negative_tags_literal_oracle (test_a1_check.IndependentCodecTests.test_negative_tags_literal_oracle) ... ok
+test_r1cs_independent_parser_and_evaluator (test_a1_check.IndependentCodecTests.test_r1cs_independent_parser_and_evaluator) ... ok
+test_strict_bundle_mutations_and_owner_intent (test_a1_check.IndependentCodecTests.test_strict_bundle_mutations_and_owner_intent) ... ok
+test_strict_number_and_hex (test_a1_check.IndependentCodecTests.test_strict_number_and_hex) ... ok
+test_exact_field_coverage_and_output_order (test_a1_context_oracle.OracleTests.test_exact_field_coverage_and_output_order) ... ok
+test_original_structure_rejects_truncation_and_bad_metadata (test_a1_context_oracle.OracleTests.test_original_structure_rejects_truncation_and_bad_metadata) ... ok
+test_tag_uses_raw_outpoint_and_little_endian_index (test_a1_context_oracle.OracleTests.test_tag_uses_raw_outpoint_and_little_endian_index) ... ok
+test_acceptance_and_wrong_verifier_failure_are_not_negative_success (test_a1_extra_negatives.RejectionLayers.test_acceptance_and_wrong_verifier_failure_are_not_negative_success) ... ok
+test_expected_script_and_positive_layers (test_a1_extra_negatives.RejectionLayers.test_expected_script_and_positive_layers) ... ok
+test_stale_id_mass_and_process_errors_cannot_count_as_script_rejection (test_a1_extra_negatives.RejectionLayers.test_stale_id_mass_and_process_errors_cannot_count_as_script_rejection) ... ok
+test_branch_identity_duplicates_and_mixed_records_reject (test_a1_fee_check.FeeRules.test_branch_identity_duplicates_and_mixed_records_reject) ... ok
+test_changed_fee_budget_txid_full_hash_reject (test_a1_fee_check.FeeRules.test_changed_fee_budget_txid_full_hash_reject) ... ok
+test_changed_manifest_terms_and_unbound_legacy_receipt_reject (test_a1_fee_check.FeeRules.test_changed_manifest_terms_and_unbound_legacy_receipt_reject) ... ok
+test_exact_bound_fixture_qualifies (test_a1_fee_check.FeeRules.test_exact_bound_fixture_qualifies) ... ok
+test_expired_quote_rejects_before_any_artifact_change (test_a1_fee_check.FeeRules.test_expired_quote_rejects_before_any_artifact_change) ... ok
+test_manifest_artifact_and_measurement_hashes_reject (test_a1_fee_check.FeeRules.test_manifest_artifact_and_measurement_hashes_reject) ... ok
+test_native_relay_zero_fallback_and_max_sompi_cap_are_separate (test_a1_fee_check.FeeRules.test_native_relay_zero_fallback_and_max_sompi_cap_are_separate) ... ok
+test_rational_ceiling_and_no_binary_float (test_a1_fee_check.FeeRules.test_rational_ceiling_and_no_binary_float) ... ok
+test_stale_measurement_and_coordinated_mass_mutations_reject (test_a1_fee_check.FeeRules.test_stale_measurement_and_coordinated_mass_mutations_reject) ... ok
+test_storage_dominant_overall_mass_not_relay_mass_sets_headroom (test_a1_fee_check.FeeRules.test_storage_dominant_overall_mass_not_relay_mass_sets_headroom) ... ok
+test_conflict_stale_locator_missing_or_duplicate_utxo (test_a1_recovery.RecoveryScannerTests.test_conflict_stale_locator_missing_or_duplicate_utxo) ... ok
+test_fresh_terminal_history_and_direct_exit_accounting (test_a1_recovery.RecoveryScannerTests.test_fresh_terminal_history_and_direct_exit_accounting) ... ok
+test_full_archive_can_include_native_v0_coinbase_bodies (test_a1_recovery.RecoveryScannerTests.test_full_archive_can_include_native_v0_coinbase_bodies) ... ok
+test_missing_reordered_duplicate_pruned_pages_fail_atomically (test_a1_recovery.RecoveryScannerTests.test_missing_reordered_duplicate_pruned_pages_fail_atomically) ... ok
+test_old_locator_discovers_successor_over_two_pages (test_a1_recovery.RecoveryScannerTests.test_old_locator_discovers_successor_over_two_pages) ... ok
+test_poisoned_history_wrong_output_wrong_proof_callback_fail (test_a1_recovery.RecoveryScannerTests.test_poisoned_history_wrong_output_wrong_proof_callback_fail) ... ok
+test_private_backup_and_wrong_secret (test_a1_recovery.RecoveryScannerTests.test_private_backup_and_wrong_secret) ... ok
+test_push_encodings_permit_byte_equivalence_reject_nonpush (test_a1_recovery.RecoveryScannerTests.test_push_encodings_permit_byte_equivalence_reject_nonpush) ... ok
+test_reorg_rolls_back_credit_and_pointer_before_replay (test_a1_recovery.RecoveryScannerTests.test_reorg_rolls_back_credit_and_pointer_before_replay) ... ok
+test_benchmark_reader_does_not_weaken_artifact_reader (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_benchmark_reader_does_not_weaken_artifact_reader) ... ok
+test_native_archive_keeps_exact_derived_funding_and_historical_context (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_native_archive_keeps_exact_derived_funding_and_historical_context) ... ok
+test_prefunding_checkpoint_rejects_late_or_wrong_initial_state (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_prefunding_checkpoint_rejects_late_or_wrong_initial_state) ... ok
+test_public_allowlist_excludes_original_private_and_proof_files (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_public_allowlist_excludes_original_private_and_proof_files) ... ok
+test_public_export_refuses_actual_secret_before_any_copy (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_public_export_refuses_actual_secret_before_any_copy) ... ok
+test_retained_initial_locator_rejects_late_changed_outpoint_or_checkpoint (test_a1_recovery_rehearsal.RehearsalIsolationTests.test_retained_initial_locator_rejects_late_changed_outpoint_or_checkpoint) ... ok
+test_duplicate_cannot_replace_missing_body (test_a1_reorg_check.NativeReceiptTests.test_duplicate_cannot_replace_missing_body) ... ok
+test_exact_native_source_index (test_a1_reorg_check.NativeReceiptTests.test_exact_native_source_index) ... ok
+test_missing_body_rejected (test_a1_reorg_check.NativeReceiptTests.test_missing_body_rejected) ... ok
+test_unaccepted_body_index_rejected (test_a1_reorg_check.NativeReceiptTests.test_unaccepted_body_index_rejected) ... ok
+test_wrong_chain_order_rejected (test_a1_reorg_check.NativeReceiptTests.test_wrong_chain_order_rejected) ... ok
+test_fresh_s0_both_roles_sdk_full_and_tampered_archive (test_a1_trial.NativeIntegrationTests.test_fresh_s0_both_roles_sdk_full_and_tampered_archive) ... skipped 'explicit local integration config required'
+test_signed_funding_plan_mock_chain_real_full (test_a1_trial.NativeIntegrationTests.test_signed_funding_plan_mock_chain_real_full) ... skipped 'explicit local integration config required'
+test_checkpoint_refuses_an_already_funded_identity (test_a1_trial.TrialTests.test_checkpoint_refuses_an_already_funded_identity) ... ok
+test_cli_error_names_private_diagnostic (test_a1_trial.TrialTests.test_cli_error_names_private_diagnostic) ... ok
+test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail (test_a1_trial.TrialTests.test_deadline_applies_to_rpc_subprocess_and_invalid_limits_fail) ... ok
+test_exact_payout_is_checked_again_at_120_seconds (test_a1_trial.TrialTests.test_exact_payout_is_checked_again_at_120_seconds) ... ok
+test_exclusive_private_evidence_writes (test_a1_trial.TrialTests.test_exclusive_private_evidence_writes) ... ok
+test_exit_reconciles_only_actual_race_submission_and_never_retries (test_a1_trial.TrialTests.test_exit_reconciles_only_actual_race_submission_and_never_retries) ... Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp8ualytwv/error-python-e49794fc54d94ecb8758305bc5cbe3dc.private.json
+Submission diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmp3p9w3dqn/error-python-85c81f0d3e494ff59cba707e8368d8fb.private.json
+ok
+test_fund_and_discover_wait_limits (test_a1_trial.TrialTests.test_fund_and_discover_wait_limits) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpd3hesjrw/error-python-2c5373fa8eb242809bf8d76269dbc0dd.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpd3hesjrw/error-python-eb270fe7da3049e29045c84a8f7c0338.private.json
+ok
+test_intent_survives_unknown_response_and_is_never_retried (test_a1_trial.TrialTests.test_intent_survives_unknown_response_and_is_never_retried) ... ok
+test_js_diagnostic_type_stack_and_secret_redaction (test_a1_trial.TrialTests.test_js_diagnostic_type_stack_and_secret_redaction) ... ok
+test_loser_is_an_observed_single_spend_result (test_a1_trial.TrialTests.test_loser_is_an_observed_single_spend_result) ... ok
+test_loser_with_own_accepted_body_stops (test_a1_trial.TrialTests.test_loser_with_own_accepted_body_stops) ... ok
+test_missing_corrupt_reordered_history_stops_before_submission (test_a1_trial.TrialTests.test_missing_corrupt_reordered_history_stops_before_submission) ... ok
+test_moving_tip_export_is_trimmed_to_fixed_horizon (test_a1_trial.TrialTests.test_moving_tip_export_is_trimmed_to_fixed_horizon) ... ok
+test_network_default_denies_before_process_spawn (test_a1_trial.TrialTests.test_network_default_denies_before_process_spawn) ... ok
+test_observe_and_nested_discover_share_configured_deadline (test_a1_trial.TrialTests.test_observe_and_nested_discover_share_configured_deadline) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpa2u7vkmr/error-python-abb0d422e4b349b4a0f80ec65d839c39.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpa2u7vkmr/error-python-8a2356bca8894ea0a2c7077b3e1250da.private.json
+ok
+test_only_unrelated_native_id_results_are_cached_by_exact_full_body (test_a1_trial.TrialTests.test_only_unrelated_native_id_results_are_cached_by_exact_full_body) ... ok
+test_public_rpc_error_is_retained_without_claiming_rejection (test_a1_trial.TrialTests.test_public_rpc_error_is_retained_without_claiming_rejection) ... ok
+test_python_diagnostic_full_chain_and_secret_redaction (test_a1_trial.TrialTests.test_python_diagnostic_full_chain_and_secret_redaction) ... ok
+test_read_only_snapshot_alignment_retry_keeps_corruption_strict (test_a1_trial.TrialTests.test_read_only_snapshot_alignment_retry_keeps_corruption_strict) ... History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpkisa9txo/error-python-80e3b588b62b448cafe4c3ae0a2cdbe7.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpkisa9txo/error-python-2a96c53117aa409986faf63bdec89f8e.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpkisa9txo/error-python-552389972e3e47d5bd05c37470ee5a2d.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpkisa9txo/error-python-12a5f533a0854858b15c3cc6cff12170.private.json
+History reconciliation diagnostic: /workspace/kaspa-privacy-initiative/.local/a1-trial-tests/tmpkisa9txo/error-python-6d6759da9c464a39990a54cb9bcc7704.private.json
+ok
+test_reorg_still_halts_and_retains_the_exact_offending_response (test_a1_trial.TrialTests.test_reorg_still_halts_and_retains_the_exact_offending_response) ... ok
+test_retained_prefix_is_below_tip_with_checked_selected_parent_headers (test_a1_trial.TrialTests.test_retained_prefix_is_below_tip_with_checked_selected_parent_headers) ... ok
+test_s0_funding_is_authenticated_not_an_address_guess (test_a1_trial.TrialTests.test_s0_funding_is_authenticated_not_an_address_guess) ... ok
+test_synthetic_s0_exit_and_conflicting_spend (test_a1_trial.TrialTests.test_synthetic_s0_exit_and_conflicting_spend) ... ok
+test_utxo_amount_type_boundary_and_duplicate (test_a1_trial.TrialTests.test_utxo_amount_type_boundary_and_duplicate) ... ok
+test_wasm_none_survives_json_but_missing_full_fields_still_fail (test_a1_trial.TrialTests.test_wasm_none_survives_json_but_missing_full_fields_still_fail) ... ok
+test_wrong_checkpoint_cross_instance_and_reorg_stop (test_a1_trial.TrialTests.test_wrong_checkpoint_cross_instance_and_reorg_stop) ... ok
+test_wrong_network_rejected (test_a1_trial.TrialTests.test_wrong_network_rejected) ... ok
+test_wrong_or_disappearing_payout_never_gets_a_result (test_a1_trial.TrialTests.test_wrong_or_disappearing_payout_never_gets_a_result) ... ok
+test_C_sources_match_the_submit_claim_in_the_public_record (test_a1_trial_source.TrialSourceTemplates.test_C_sources_match_the_submit_claim_in_the_public_record) ... ok
+test_manifest_lists_every_template (test_a1_trial_source.TrialSourceTemplates.test_manifest_lists_every_template) ... ok
+test_templates_contain_no_machine_local_values (test_a1_trial_source.TrialSourceTemplates.test_templates_contain_no_machine_local_values) ... ok
+test_unchanged_templates_hash_to_deployed_bytes (test_a1_trial_source.TrialSourceTemplates.test_unchanged_templates_hash_to_deployed_bytes) ... ok
+test_wrong_values_are_reported_and_rejected (test_a1_trial_source.TrialSourceTemplates.test_wrong_values_are_reported_and_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 81 tests in 0.879s
+
+OK (skipped=2)
+TAP version 13
+# Subtest: native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
+ok 1 - native SDK keeps u64::MAX, compute budget, storage mass and explicit no-covenant meaning
+  ---
+  duration_ms: 7.268289
+  type: 'test'
+  ...
+# Subtest: missing metadata or a covenant substitution cannot silently become None
+ok 2 - missing metadata or a covenant substitution cannot silently become None
+  ---
+  duration_ms: 2.679813
+  type: 'test'
+  ...
+# Subtest: overflow and noninteger budgets do not survive roundtrip
+ok 3 - overflow and noninteger budgets do not survive roundtrip
+  ---
+  duration_ms: 1.84716
+  type: 'test'
+  ...
+# Subtest: archived decimal-string genesis header reloads and hashes independently
+ok 4 - archived decimal-string genesis header reloads and hashes independently
+  ---
+  duration_ms: 1.347919
+  type: 'test'
+  ...
+# Subtest: cached header hash cannot conceal a changed nonce or overflowing u64
+ok 5 - cached header hash cannot conceal a changed nonce or overflowing u64
+  ---
+  duration_ms: 0.390187
+  type: 'test'
+  ...
+# Subtest: generic v0 mass is the storage component, not overall compute mass
+ok 6 - generic v0 mass is the storage component, not overall compute mass
+  ---
+  duration_ms: 0.637359
+  type: 'test'
+  ...
+# Subtest: f64-only mass helper refuses values that could lose integer precision
+ok 7 - f64-only mass helper refuses values that could lose integer precision
+  ---
+  duration_ms: 6.351329
+  type: 'test'
+  ...
+# Subtest: fixed A0 fee can use a slower bounded bucket without changing accounting
+ok 8 - fixed A0 fee can use a slower bounded bucket without changing accounting
+  ---
+  duration_ms: 0.211919
+  type: 'test'
+  ...
+# Subtest: unaffordable, stale-duration or malformed fee estimates fail closed
+ok 9 - unaffordable, stale-duration or malformed fee estimates fail closed
+  ---
+  duration_ms: 0.693524
+  type: 'test'
+  ...
+# Subtest: an advertised complete schema never authorizes funding
+ok 10 - an advertised complete schema never authorizes funding
+  ---
+  duration_ms: 29.205464
+  type: 'test'
+  ...
+# Subtest: mainnet, an unsynced node and absent UTXO indexing fail closed
+ok 11 - mainnet, an unsynced node and absent UTXO indexing fail closed
+  ---
+  duration_ms: 0.534424
+  type: 'test'
+  ...
+# Subtest: missing compute budget, mass or covenant metadata blocks the REST route
+ok 12 - missing compute budget, mass or covenant metadata blocks the REST route
+  ---
+  duration_ms: 0.257507
+  type: 'test'
+  ...
+# Subtest: HTTP errors and unavailable observations cannot establish compatibility
+ok 13 - HTTP errors and unavailable observations cannot establish compatibility
+  ---
+  duration_ms: 1.294529
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 281.023058
+PASS: lossless nonce/u64 roundtrip, exact sompi arithmetic, unsafe/negative/overflow rejection
+PASS: both derived acceptances equal original RPC records, including exact u64 nonce
+test_complete_alice_bob_cycle_and_change (test_model.PaymentModelTests.test_complete_alice_bob_cycle_and_change) ... ok
+test_duplicate_input_within_one_operation (test_model.PaymentModelTests.test_duplicate_input_within_one_operation) ... ok
+test_duplicate_output_commitments_reject_without_spending (test_model.PaymentModelTests.test_duplicate_output_commitments_reject_without_spending) ... ok
+test_duplicate_spends_same_and_later_batch_are_atomic (test_model.PaymentModelTests.test_duplicate_spends_same_and_later_batch_are_atomic) ... ok
+test_failed_credit_still_has_owner_recovery_or_retry (test_model.PaymentModelTests.test_failed_credit_still_has_owner_recovery_or_retry) ... ok
+test_fee_claim_not_free_treasury_and_payout_bound (test_model.PaymentModelTests.test_fee_claim_not_free_treasury_and_payout_bound) ... ok
+test_host_cannot_misclassify_valid_operation (test_model.PaymentModelTests.test_host_cannot_misclassify_valid_operation) ... ok
+test_inflation_and_range_errors (test_model.PaymentModelTests.test_inflation_and_range_errors) ... ok
+test_invalid_proof_then_valid_operation_continues (test_model.PaymentModelTests.test_invalid_proof_then_valid_operation_continues) ... ok
+test_native_payout_underpay_recipient_reserve_rent_and_replay (test_model.PaymentModelTests.test_native_payout_underpay_recipient_reserve_rent_and_replay) ... ok
+test_native_reserve_overflow_changes_nothing (test_model.PaymentModelTests.test_native_reserve_overflow_changes_nothing) ... ok
+test_network_pool_version_boundaries (test_model.PaymentModelTests.test_network_pool_version_boundaries) ... ok
+test_old_membership_root_remains_usable_with_current_nullifiers (test_model.PaymentModelTests.test_old_membership_root_remains_usable_with_current_nullifiers) ... ok
+test_output_payout_and_ciphertext_substitution_breaks_statement (test_model.PaymentModelTests.test_output_payout_and_ciphertext_substitution_breaks_statement) ... ok
+test_owner_refund_then_credit_cannot_spend_same_deposit (test_model.PaymentModelTests.test_owner_refund_then_credit_cannot_spend_same_deposit) ... ok
+test_payout_total_boundary_and_overflow_preserve_entire_state (test_model.PaymentModelTests.test_payout_total_boundary_and_overflow_preserve_entire_state) ... ok
+test_permission_rent_requires_explicit_external_funding (test_model.PaymentModelTests.test_permission_rent_requires_explicit_external_funding) ... ok
+test_public_transfer_fields_do_not_include_input_note_or_secrets (test_model.PaymentModelTests.test_public_transfer_fields_do_not_include_input_note_or_secrets) ... ok
+test_receive_address_key_substitution (test_model.PaymentModelTests.test_receive_address_key_substitution) ... ok
+test_recipient_detects_corrupt_or_unavailable_delivery (test_model.PaymentModelTests.test_recipient_detects_corrupt_or_unavailable_delivery) ... ok
+test_seeded_conservation_and_atomic_rejection_vectors (test_model.PaymentModelTests.test_seeded_conservation_and_atomic_rejection_vectors) ... ok
+test_unauthorized_and_view_only_spending (test_model.PaymentModelTests.test_unauthorized_and_view_only_spending) ... ok
+test_wrong_anchor_and_membership (test_model.PaymentModelTests.test_wrong_anchor_and_membership) ... ok
+test_wrong_deposit_commitment_or_amount (test_model.PaymentModelTests.test_wrong_deposit_commitment_or_amount) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.102s
+
+OK
+test_deadline_lease_extension_and_insufficient_transfer_margin_rejected (test_preparation.Preparation.test_deadline_lease_extension_and_insufficient_transfer_margin_rejected) ... ok
+test_failed_or_interrupted_stage_cannot_retry (test_preparation.Preparation.test_failed_or_interrupted_stage_cannot_retry) ... ok
+test_public_bundle_excludes_keys_and_rejects_changed_input (test_preparation.Preparation.test_public_bundle_excludes_keys_and_rejects_changed_input) ... ok
+test_reorg_root_lane_or_trial_change_cannot_advance (test_preparation.Preparation.test_reorg_root_lane_or_trial_change_cannot_advance) ... ok
+test_shared_deadline_is_not_reset_between_chain_waits (test_preparation.Preparation.test_shared_deadline_is_not_reset_between_chain_waits) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK
+Read-only RPC allowlist: 8 permitted methods; mutating methods/foreign endpoints rejected. No RPC executed.
+TN10 preparation manifest/source bindings valid; actual-chain inputs, staged image and live release remain unset.

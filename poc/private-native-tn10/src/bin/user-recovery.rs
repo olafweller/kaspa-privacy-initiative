@@ -113,9 +113,7 @@ fn init(p: &Path) -> Result<()> {
         &p.join("receive.json"),
         &json!({
             "schema":"KPI_USER_RECEIVE_V1", "domain":hex::encode(domain()),
-            "owner":hex::encode(w.address.owner), "incoming":hex::encode(w.address.incoming),
-            "nativePubkey":hex::encode(recipient(p)?),
-            "custody":"Only independent administration of this directory establishes independent custody."
+            "owner":hex::encode(w.address.owner), "incoming":hex::encode(w.address.incoming)
         }),
     )
 }

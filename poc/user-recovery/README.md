@@ -44,7 +44,10 @@ Run `init` on a machine administered by Bob, not on Cloud, B, TN10, a provider
 image or an operator-controlled VM. It creates a 0700 directory and 0600 files:
 `wallet.backup` (64 raw bytes, spending and incoming-view secrets), `native.key`
 (32 raw bytes), and `receive.json` (public). Back up both secret files on user
-media. Only `receive.json` crosses to the sender. Check its fingerprint/domain
+media. Only `receive.json` crosses to the sender. It contains exactly `schema`,
+`domain`, `owner` and `incoming`; it contains no native payout key or address.
+The native public key is disclosed only in the public EXIT result when the user
+chooses to withdraw. Check the receiving file's fingerprint/domain
 with Bob over an authenticated channel; no receiving-address directory authority
 is introduced here. Do not use this experimental key format for mainnet funds.
 
@@ -150,3 +153,30 @@ and reject eleven malformed, missing-history or unauthorized cases. The
 [adversarial review](ADVERSARIAL-REVIEW.md) records the remaining proof/chain and
 administrative boundaries. These are evidence about tested code, not an audit
 or a completed independent recovery milestone.
+
+
+## Targeted PR55 review correction
+
+The original `receive.json` unnecessarily disclosed the user's native payout
+key alongside private receiving data. The current receiving file contains only
+the four required fields; both Rust and CLI tests assert that exact allowlist.
+The rehearsal reads Bob's native key and payload from his public exit result
+only after he prepares withdrawal, checking the result against the operation
+and prior root. This removes an automatic sender-to-native-key link at receipt;
+future reuse of native withdrawal addresses and other correlation remain wallet
+privacy choices, not solved anonymity properties.
+
+The original PR55 addition to `.github/workflows/code.yml` broke the historical
+preparation source hash check. That workflow is restored byte-for-byte to its
+reviewed main version; the historical hash and checking code are unchanged.
+The separate `user-recovery.yml` workflow builds the wallet executable and runs
+the CLI/receive checks plus the original preparation integrity check. Rust
+regressions remain in the original Rust job's automatic test discovery.
+
+Original fixtures, logs and source/executable identities remain preserved.
+`evidence/review-fix` records the prior runmanifest and fresh post-fix results;
+the active runmanifest identifies the corrected source/executable. No old
+fixture is relabelled as an execution of the corrected receiving interface.
+
+The [targeted review response](REVIEW-FIX.md) records both fixes and the fresh
+185.21-second post-fix local rehearsal, with the same zero final user liabilities.

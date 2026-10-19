@@ -18,3 +18,12 @@ subgroup, encryption or new hash primitive. Upstream cryptographic/script bodies
 are reused. Archive readers are not added; the historical `final_backup.py` and
 all PR54 evidence remain unchanged, and future archive consumers must reuse the
 existing bounded reader rather than that historical one-shot helper.
+
+
+PR55 targeted review correction: shared receive data now has a four-field
+allowlist with no native payout key. Bob's native destination is obtained only
+from his later public EXIT result and checked against its proof-bound payload,
+operation ID and prior root. Historical code-workflow bytes/hash checks are
+preserved, with CLI coverage moved to a separate workflow. No crypto, native
+policy, guest, setup or statement is changed. Address reuse during future exits
+and network/amount/timing correlation remain unsolved privacy considerations.

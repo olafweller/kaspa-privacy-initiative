@@ -39,6 +39,9 @@ def main():
         # Fresh unrelated wallet: the test driver never opens either secret file.
         user = t / 'new-user'
         call(['init', user])
+        receive = json.loads((user / 'receive.json').read_text())
+        assert set(receive) == {'schema', 'domain', 'owner', 'incoming'}, 'receiving data must not disclose native payout keys'
+        assert receive['schema'] == 'KPI_USER_RECEIVE_V1'
         assert (user.stat().st_mode & 0o777) == 0o700
         assert ((user / 'wallet.backup').stat().st_mode & 0o777) == 0o600
         call(['init', user], False)
@@ -71,6 +74,7 @@ def main():
                                  'init overwrite', 'unrelated wallet exit', 'scan wrong root', 'changed state',
                                  'trailing state bytes', 'truncated input', 'public backup permissions'],
             'unrelatedWalletBalance': 0,
+            'sharedReceiveFields': sorted(receive),
             'newOuterProofs': 0, 'rpc': False, 'providerActions': False,
             'independentCustodyEstablished': False,
         }, indent=2))

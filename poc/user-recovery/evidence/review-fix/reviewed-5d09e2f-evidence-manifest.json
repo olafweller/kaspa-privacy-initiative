@@ -1,0 +1,53 @@
+{
+  "scope": "PUBLIC_FRESH_LOCAL_FIXTURES_AND_RETAINED_TN10_REPLAY_RESULTS_NO_SECRETS",
+  "files": {
+    "cli-tests.json": {
+      "bytes": 734,
+      "sha256": "d304721f556d4d2b84a4cf87cc39cae429ffd6ea4b24221fa4718c2c9a5b2e42"
+    },
+    "local/alice-exit.json": {
+      "bytes": 6362,
+      "sha256": "44b0757645a455dbfee8a366df3fd67ff6b16a968d20d523448dd0a88cba1f3a"
+    },
+    "local/before-bob.state.bin": {
+      "bytes": 1232,
+      "sha256": "0cc00f007532e9b1e10d21f616ff4f96dbe159bf35b0bd81bd60af6f57922ad3"
+    },
+    "local/credit-transfer.input.bin": {
+      "bytes": 2904,
+      "sha256": "763c4bf78e9b76efb86ed0920d2a25785b49ed10bdca45674e3d884c7c273589"
+    },
+    "local/deposit.input.bin": {
+      "bytes": 973,
+      "sha256": "8decabb58e021ed8b8f653d51cf2f05253002141dddebc686e11ca75db4ed08d"
+    },
+    "local/final.state.bin": {
+      "bytes": 1726,
+      "sha256": "918268f59cd332dd188bcb95e34b01c11dd42cf62e3c505737d866cac9da88e8"
+    },
+    "local/pre-full-exit.state.bin": {
+      "bytes": 1501,
+      "sha256": "cf57f86ceba888feb4cc8b5abd0d7bd76e8e0f9566f502badffae8f67a88ba9a"
+    },
+    "local/qualification.json": {
+      "bytes": 1668,
+      "sha256": "06a168fec2372bd9687e8014fbd46f124ece2159326522c22e0643de91f9c195"
+    },
+    "local/terminal.json": {
+      "bytes": 2603,
+      "sha256": "84baf196f07941f835dbd994ec237cd12fc8936b01ca7edbc1530947891b95c2"
+    },
+    "resources.json": {
+      "bytes": 173,
+      "sha256": "ff7fdd9f2671388bea8bf36b00667847713b2d272ca4ee817fe55c3eb5ce58e3"
+    },
+    "rust-tests.txt": {
+      "bytes": 2094,
+      "sha256": "21b4aac4ebf654263715fb45161c8b4034f963a40fb688dd0bc6ad05e71b3c3d"
+    },
+    "source-refresh.json": {
+      "bytes": 2112,
+      "sha256": "df4975db90e7e87bf679983286eda6c130706f90a7404099ee2058c7496738ed"
+    }
+  }
+}
