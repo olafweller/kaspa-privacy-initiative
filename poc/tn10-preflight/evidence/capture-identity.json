@@ -1,0 +1,8 @@
+{
+  "sha256": "d39d82520d0821345aac3a2f6c4d4814d29566638e7f083b1f121757c76a62d7",
+  "bytes": 3843792,
+  "gzipSha256": "ab6890589e4ed5a91d6fe65b6915cda096f3982b2eb296a35582a6f20ae8c06d",
+  "gzipBytes": 459638,
+  "validatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+  "trust": "One owner-operated consensus-validating node; inactive-lane interval; no new ZK or settlement. Negative omit/reorder/substitution controls had no applicable lane activity and were not exercised."
+}

@@ -1,0 +1,35 @@
+{
+  "observedUnix": 1792397647.3844962,
+  "scope": "READ_ONLY_PROVIDER_LIST_AND_PRICE_QUERIES_NO_LEASE",
+  "requests": [
+    {
+      "secureCloud": true,
+      "errors": null,
+      "l40s": [
+        {
+          "gpuName": "L40S",
+          "gpuTypeId": "NVIDIA L40S",
+          "minimumBidPrice": null,
+          "uninterruptablePrice": 1.09,
+          "minMemory": 94,
+          "minVcpu": 16
+        }
+      ]
+    },
+    {
+      "secureCloud": false,
+      "errors": null,
+      "l40s": [
+        {
+          "gpuName": "L40S",
+          "gpuTypeId": "NVIDIA L40S",
+          "minimumBidPrice": null,
+          "uninterruptablePrice": 0.79,
+          "minMemory": 251,
+          "minVcpu": 24
+        }
+      ]
+    }
+  ],
+  "pods": []
+}

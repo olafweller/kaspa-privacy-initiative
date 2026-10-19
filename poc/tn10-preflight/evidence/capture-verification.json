@@ -1,0 +1,34 @@
+{
+  "negative_controls": {
+    "omit": {
+      "exercised": false,
+      "reason": "negative control had no applicable activity"
+    },
+    "reorder": {
+      "exercised": false,
+      "reason": "negative control had no applicable activity"
+    },
+    "substitute-id": {
+      "exercised": false,
+      "reason": "negative control had no applicable activity"
+    }
+  },
+  "valid": {
+    "accepted_lane_transactions": 0,
+    "blocks": 20,
+    "end": "9ed51d196a4701e7f76c72db52d57d798e9727aa829c2cfa64fc94d3ec4e58e0",
+    "lane": "0044454600000000000000000000000000000000",
+    "lane_key": "e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+    "lane_tip": null,
+    "network": "testnet-10",
+    "ordered_transaction_ids": [],
+    "recognized_kpi_operations": [],
+    "scope": "LIVE_TN10_COMMITMENT_RECONSTRUCTION_NOT_ZK_OR_SETTLEMENT",
+    "seq_commit": "9fce1d8d4ecb957aaf60067515c3a5d380fffa5c869a02a6a91aad4fa4ab18c6",
+    "settlement": false,
+    "start": "ef9a8654fc19d2c656d921b43a54476b835d58fc032cc9db349ed9e3c2b14a3c",
+    "state_from_initial_domain": "4336dff42b8b4c8cb34e25851d4ef9bd3208e083065d8eb156c781bfa5d6ef91",
+    "trust": "one owner-operated consensus-validating node; no second independent node",
+    "zk_proof": false
+  }
+}

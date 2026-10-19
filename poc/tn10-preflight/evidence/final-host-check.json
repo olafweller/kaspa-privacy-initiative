@@ -1,0 +1,146 @@
+{
+  "B": {
+    "utcUnix": 1792398082.8739448,
+    "installationHashes": {
+      "remote-cuda/common.py": true,
+      "remote-cuda/provider.py": true,
+      "remote-cuda/watchdog.py": true,
+      "remote-cuda/staged_archive.py": true,
+      "remote-cuda/staged_policy.py": true,
+      "remote-cuda/staged_control.py": true,
+      "remote-cuda/staged_verify.py": true,
+      "private-native-tn10/run_stage.py": true,
+      "evidence/public-package.tar.gz": true,
+      "evidence/package-identity.json": true,
+      "qualification/deposit.bin": true,
+      "qualification/credit-transfer.bin": true,
+      "qualification/exit.bin": true,
+      "qualification/reconcile.bin": true
+    },
+    "permissions": {
+      "installation.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "private-native-tn10/run_stage.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/reconcile.bin": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/credit-transfer.bin": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/targets.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/deposit.bin": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/retained-receipts.tar.gz": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/exit.bin": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/deposit.target.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/credit-transfer.target.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/reconcile.target.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "qualification/exit.target.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/common.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/watchdog.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/staged_archive.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/provider.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/staged_verify.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/staged_policy.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "remote-cuda/staged_control.py": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "evidence/public-package.tar.gz": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "evidence/package-identity.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "package/guest.program.bin": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "package/staged-policy.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "package/trial.json": {
+        "uid": 0,
+        "mode": "0o644"
+      },
+      "package/bin/kpi-private-native-tn10": {
+        "uid": 0,
+        "mode": "0o755"
+      }
+    },
+    "serviceUserAccess": {
+      "codeWritable": false,
+      "packageReadable": true,
+      "envReadable": false,
+      "stateWritable": true
+    },
+    "unit": {
+      "User": "kpi-cuda-guard",
+      "Group": "kpi-cuda-guard",
+      "EnvironmentFile": "/etc/kpi-cuda-guard.env",
+      "StateDirectory": "kpi-cuda-guard",
+      "StateDirectoryMode": "0750",
+      "ExecStart": "/usr/bin/python3 /opt/kpi-remote-cuda/watchdog.py /var/lib/kpi-cuda-guard/lease.json /var/lib/kpi-cuda-guard/artifacts",
+      "Restart": "on-failure"
+    },
+    "oldLeasePresent": true,
+    "guard": "MainPID=0\nActiveState=inactive\nUnitFileState=disabled\n"
+  },
+  "gateway": {
+    "utcUnix": 1792398082.9229226,
+    "tn10Pid": "951",
+    "nodeSha256": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+    "clock": "NTPSynchronized=yes\n"
+  }
+}

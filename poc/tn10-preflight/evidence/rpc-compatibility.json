@@ -1,0 +1,21 @@
+{
+  "originalClient": "../private-native-tn10/read-only.mjs",
+  "originalAttemptExit": 1,
+  "originalAttemptStderr": "file:///opt/kpi-tn10-preflight-20261019/read-only.mjs:19\n    const timer = setTimeout(() => { socket.close(); reject(Error('read-only RPC timeout')); }, 30000);\n                                                            ^\n\nError: read-only RPC timeout\n    at Timeout._onTimeout (file:///opt/kpi-tn10-preflight-20261019/read-only.mjs:19:61)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)\n\nNode.js v22.22.3\n",
+  "observedNumericReply": {
+    "id": 1,
+    "method": "getServerInfo",
+    "params": {
+      "hasUtxoIndex": true,
+      "isSynced": true,
+      "networkId": "testnet-10",
+      "rpcApiRevision": 0,
+      "rpcApiVersion": 1,
+      "serverVersion": "2.1.0",
+      "virtualDaaScore": 600624883
+    }
+  },
+  "correction": "Reuse original method/endpoint allowlist; use numeric native u64 request ID and preserve raw response bytes. Historical source binding and GPU image are unchanged.",
+  "focusedTest": "node poc/tn10-preflight/rpc.test.mjs",
+  "testPassed": true
+}

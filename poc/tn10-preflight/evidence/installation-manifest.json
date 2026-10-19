@@ -1,0 +1,68 @@
+{
+  "sourceCommit": "da84afbb7daf993f805859ceb40a3fc9f0dabf15",
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+  "files": {
+    "remote-cuda/common.py": {
+      "path": "poc/remote-cuda/common.py",
+      "sha": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3"
+    },
+    "remote-cuda/provider.py": {
+      "path": "poc/remote-cuda/provider.py",
+      "sha": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f"
+    },
+    "remote-cuda/watchdog.py": {
+      "path": "poc/remote-cuda/watchdog.py",
+      "sha": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0"
+    },
+    "remote-cuda/staged_archive.py": {
+      "path": "poc/remote-cuda/staged_archive.py",
+      "sha": "534f9f70ab0287e80286351755aa739cf34e135e12bdb67d4bb51ec112ef5535"
+    },
+    "remote-cuda/staged_policy.py": {
+      "path": "poc/remote-cuda/staged_policy.py",
+      "sha": "b0539955060697c84e6d8ca55beed827a0ade6be61117d762b82498b3bc73849"
+    },
+    "remote-cuda/staged_control.py": {
+      "path": "poc/remote-cuda/staged_control.py",
+      "sha": "8b809d89c75d0d074e5e1d10d819ab41bf4bf322dfadfd6e1e13d7b24a20c119"
+    },
+    "remote-cuda/staged_verify.py": {
+      "path": "poc/remote-cuda/staged_verify.py",
+      "sha": "37e75ab09a88889d42fe8f1b8f5d762da90592fe1609847e9f2dfcbfa59ef116"
+    },
+    "private-native-tn10/run_stage.py": {
+      "path": "poc/private-native-tn10/run_stage.py",
+      "sha": "5ac1da16f7c1c75ed31715d1352d5596b938e9cdc7fe4e3fa3e1414a23fd5d57"
+    },
+    "evidence/public-package.tar.gz": {
+      "path": "poc/staged-tn10-service/evidence/public-package.tar.gz",
+      "sha": "45b06087d5ee469cab30192725af273c9cc669795c54ea8e6094087e427a87bf"
+    },
+    "evidence/package-identity.json": {
+      "path": "poc/staged-tn10-service/evidence/package-identity.json",
+      "sha": "946b1f77fe76200ea2304bae952bf8fc974f34bb1b726b181547c34354c96874"
+    },
+    "qualification/deposit.bin": {
+      "path": "poc/private-native-proof/gpu-2026-10-18-02/evidence/returned/proofs/deposit/receipt.bin",
+      "sha": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1"
+    },
+    "qualification/credit-transfer.bin": {
+      "path": "poc/private-native-proof/gpu-2026-10-18-02/evidence/returned/proofs/credit-transfer/receipt.bin",
+      "sha": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb"
+    },
+    "qualification/exit.bin": {
+      "path": "poc/private-native-proof/gpu-2026-10-18-02/evidence/returned/proofs/exit/receipt.bin",
+      "sha": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a"
+    },
+    "qualification/reconcile.bin": {
+      "path": "poc/private-native-proof/gpu-2026-10-18-02/evidence/returned/proofs/reconcile/receipt.bin",
+      "sha": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5"
+    }
+  },
+  "fixtureTargets": {
+    "deposit": "{\"schema\": \"KPI_TN10_FROZEN_BATCH_V1\", \"trial\": \"fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a\", \"stage\": \"deposit\", \"image\": \"794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9\", \"join\": \"7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e\", \"programSha256\": \"213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375\", \"inputSha256\": \"e2ee157504526738db3ba870f79590bbe655172fae72f850280b12df32f44f44\", \"journalSha256\": \"82378ad35727f015951455e1dce5fb092b6180db0e2897d005ad768d09a789e7\", \"journalHex\": \"0ff17bdca9389182ffe46b407c6a0b56e1fcefbf316bbaf556098963e2c38ca40000000000000000000000000000000000000000000000000000000000000000e3b4fc0eba02aaf2a7b89fa47b0caab806588b3bcd16722ff0f1c05929f07a34e9633a4f99ef9d03449689c629c0fcf6257761041089d069e340a82d78741ed03e5c1578de8aa47d227ea39de03b1d9cc200b9e8d2845c64fa193200637a3d1d5987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a9186000000000000000000000000000000000000000000000000000000000000000074f3a8beef73ba98698fe5284f2ed707df5aa10e53b3d4db9c38d8dadcd3607ae94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b\", \"stateSha256\": \"0dcc561760e8c97d2cef617b91db387065587b829e6a22e2dffe73dab3451c41\", \"cycleLimit\": 160000000, \"aggregateProofSeconds\": 3600, \"segmentPo2\": 16, \"automaticRetry\": false}",
+    "credit-transfer": "{\"schema\": \"KPI_TN10_FROZEN_BATCH_V1\", \"trial\": \"fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a\", \"stage\": \"credit-transfer\", \"image\": \"794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9\", \"join\": \"7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e\", \"programSha256\": \"213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375\", \"inputSha256\": \"c21a12cfdf2e462f2c7b7532756c13f21974807d8a71e015f2411e61681bc0b3\", \"journalSha256\": \"5bbc9e5f57b4e88d4a7840f3e6a8b1625f1a184fce88db28bb56652860279253\", \"journalHex\": \"e3b4fc0eba02aaf2a7b89fa47b0caab806588b3bcd16722ff0f1c05929f07a34e9633a4f99ef9d03449689c629c0fcf6257761041089d069e340a82d78741ed04462c3d51eaef4cfd32e26d4ff943a3c7f6c2365ebdf114f543154fafffef1d4e6e03aacdafc61aeaa66b4e3da8da5a36b1049869fcf8b97a95fe4b5c65ca4f2a5da0d8a9f2bc9492dd32fb52f69aca4cb41dc28eec19d80f7d1eb2e02c11c025987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b\", \"stateSha256\": \"9f90a7662c11a50c02367a2b99a86a8bc0c052e902f383d95b63d87c88276f69\", \"cycleLimit\": 160000000, \"aggregateProofSeconds\": 3600, \"segmentPo2\": 20, \"automaticRetry\": false}",
+    "exit": "{\"schema\": \"KPI_TN10_FROZEN_BATCH_V1\", \"trial\": \"fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a\", \"stage\": \"exit\", \"image\": \"794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9\", \"join\": \"7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e\", \"programSha256\": \"213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375\", \"inputSha256\": \"d3d4510e69efb00f09aaef779ecd7470bc00d5679ec1c99d377df43bfc222af4\", \"journalSha256\": \"57d751f4744d56e908b9673995e9df262dd01dd05913e0c21b1b02ff417dc964\", \"journalHex\": \"4462c3d51eaef4cfd32e26d4ff943a3c7f6c2365ebdf114f543154fafffef1d4e6e03aacdafc61aeaa66b4e3da8da5a36b1049869fcf8b97a95fe4b5c65ca4f24269f22ed8fcba85d3054cdee3d123dec9cb70f93b10331b68c26c1127f1fe8b22e0752f4875dda22561a7a92998941ef86dd038a7bd6aaacfeebea6cbd135682eacf11824da131647918c2cb915e2f14793cc1d61e8f496ddb9d4898a6519765987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918668439394c742a6f6c105f6f2c25297cc51ec77cdc354593d99ab1404bc73f9e10000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b\", \"stateSha256\": \"5680c0f7032c65dea991b695cd2ac01deddf63b5c76fe01389dd2b6db75f728d\", \"cycleLimit\": 160000000, \"aggregateProofSeconds\": 3600, \"segmentPo2\": 20, \"automaticRetry\": false}",
+    "reconcile": "{\"schema\": \"KPI_TN10_FROZEN_BATCH_V1\", \"trial\": \"fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a\", \"stage\": \"reconcile\", \"image\": \"794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9\", \"join\": \"7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e\", \"programSha256\": \"213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375\", \"inputSha256\": \"6329dcd51d26f94d26433f914c5c858bf004b9f6c2564e8c23bbeceaebbd87c6\", \"journalSha256\": \"cc22d5a160148b6bad2cb105456257ba9093b7cb224b8c138c860c9efdbf99f6\", \"journalHex\": \"4269f22ed8fcba85d3054cdee3d123dec9cb70f93b10331b68c26c1127f1fe8b22e0752f4875dda22561a7a92998941ef86dd038a7bd6aaacfeebea6cbd135680ed7a1e688ef237da17fc28aa94719ed9f52e84d3d6c0d90c7c03db197471f447fdfd42033bcc2086abe1c620343bffb63ea68bd44b68a8451de6c5bce2dc5482a09fc4576b5ebd907510a517783421aa9bd3cb8a3c553cfc0924d68bf3dc9c25987fe5052fd179d3c19d73f5e0e3a8a54560c5c70858ff64d2042c33b1ac8b7667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b\", \"stateSha256\": \"8916a9d6804a8fca2772a55525c7faea9694136c7391570b6ddb8503b1cd9edf\", \"cycleLimit\": 160000000, \"aggregateProofSeconds\": 3600, \"segmentPo2\": 16, \"automaticRetry\": false}"
+  }
+}

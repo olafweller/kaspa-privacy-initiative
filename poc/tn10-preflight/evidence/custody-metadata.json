@@ -1,0 +1,58 @@
+{
+  "alice": {
+    "mode": "0o700",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": false,
+    "directory": true,
+    "contentsRead": false
+  },
+  "alice/wallet.backup": {
+    "mode": "0o600",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": true,
+    "directory": false,
+    "contentsRead": false
+  },
+  "bob": {
+    "mode": "0o700",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": false,
+    "directory": true,
+    "contentsRead": false
+  },
+  "bob/wallet.backup": {
+    "mode": "0o600",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": true,
+    "directory": false,
+    "contentsRead": false
+  },
+  "bob/native.key": {
+    "mode": "0o600",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": true,
+    "directory": false,
+    "contentsRead": false
+  },
+  "sponsor": {
+    "mode": "0o700",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": false,
+    "directory": true,
+    "contentsRead": false
+  },
+  "sponsor/native.key": {
+    "mode": "0o600",
+    "uid": 1000,
+    "gid": 1000,
+    "regular": true,
+    "directory": false,
+    "contentsRead": false
+  }
+}

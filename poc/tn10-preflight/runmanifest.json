@@ -1,0 +1,221 @@
+{
+  "schema": "KPI_CONCRETE_TN10_PREFLIGHT_V1",
+  "date": "2026-10-19",
+  "status": "PREFLIGHT_COMPLETE_LIVE_RELEASE_AND_CUSTODY_PENDING",
+  "mergedPreparation": {
+    "pr": 53,
+    "reviewedHead": "4864924f9e8adad9ba992b2d2c379365251f37d0",
+    "merge": "da84afbb7daf993f805859ceb40a3fc9f0dabf15"
+  },
+  "baseManifest": "../staged-tn10-service/runmanifest.json",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+  "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+  "authorizations": {
+    "funding": false,
+    "broadcasting": false,
+    "newProofs": false,
+    "gpuRental": false,
+    "providerMutation": false
+  },
+  "B": {
+    "hostname": "vmi3641034.contaboserver.net",
+    "install": "/opt/kpi-staged-tn10",
+    "source": "da84afbb7daf993f805859ceb40a3fc9f0dabf15",
+    "user": "kpi-cuda-guard",
+    "hostQualified": true,
+    "retainedReceiptsVerified": 4,
+    "guardControlTestsPassed": 15,
+    "recoveryTestPassed": true,
+    "guardActive": false,
+    "guardEnabled": false,
+    "existingGuardUnchanged": true,
+    "oldLeasePresent": true,
+    "reuseOldLease": false,
+    "stateFreeBytes": 85577658368,
+    "runtimeDependsOnGateway": false,
+    "accountCredentialLocation": "Existing root-only /etc/kpi-cuda-guard.env on B; never printed/read/copied by the controller. Loaded only by systemd for the read-only provider query.",
+    "anonymousImageManifestVerified": true
+  },
+  "node": {
+    "gateway": "vmi3633138.contaboserver.net",
+    "rpc": "ws://127.0.0.1:18210",
+    "node": "/usr/local/lib/kpi-tn10/kaspad",
+    "binarySha256": "adf711b68abb2fabbb33cfdaab8f915bb615f8d7d1b33a867328b4672ddd376f",
+    "pidBefore": 951,
+    "pidAfter": 951,
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600625318,
+    "nativeCaptureValidator": ".local/ci-target/release/kpi-tn10-integration",
+    "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+    "gatewayHistoricalValidatorNotUsed": "Existing /opt/kpi-pr31-cloud-20261017/kpi-tn10-integration has a different hash; capture verification used the trusted pinned Cloud artifact.",
+    "feeRateSompiPerGram": 100,
+    "feeRateIsSnapshotNotFutureGuarantee": true
+  },
+  "lane": {
+    "id": "0044454600000000000000000000000000000000",
+    "key": "e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+    "activeAtPreflight": false,
+    "completeReadOnlyCaptureBlocks": 20,
+    "nativeCaptureVerified": true,
+    "activationRequiredAfterReleaseBeforeSeed": true,
+    "captureIsNotFutureSeed": true
+  },
+  "custody": {
+    "decision": "PENDING_OWNER_REPLY",
+    "publicTrial": "../private-native-tn10/evidence/unfunded-trial.json",
+    "roleDirectory": ".local/private-native-tn10/trial-20261019-preparation",
+    "secretContentsRead": false,
+    "secretFilesCopied": false,
+    "roleFilesModesChecked": true,
+    "walletPublicParameters": ".local/private-note-chain/wallet-01/public-proving-parameters.bin",
+    "walletPublicParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+    "walletPublicParametersBytes": 156439536,
+    "rootOperatorTrustMustRemainExplicit": true
+  },
+  "funding": {
+    "candidateSourceUtxo": {
+      "address": "kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp",
+      "outpoint": {
+        "index": 1,
+        "transactionId": "abb14f3630d67d9357ab4f805353d583cef7db7febe8e66b8302244a5cbda6ac"
+      },
+      "utxoEntry": {
+        "amount": 995388210600,
+        "blockDaaScore": 598915946,
+        "covenantId": null,
+        "isCoinbase": false,
+        "scriptPublicKey": "00002031717cff4ba3ace006774fa29f4a6b7434d1b4ee4f85e6e25ddd31d09183aec3ac"
+      }
+    },
+    "sourceAmountSompi": 995388210600,
+    "trialSponsorAddress": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "trialSponsorBalanceAtPreflightSompi": 0,
+    "bobRecipient": "kaspatest:qqdqypkn5tvv3h0tfkaze387eehw44dwytrr35ndfyzelmaqtpe5vt8gapjhu",
+    "bobBalanceAtPreflightSompi": 0,
+    "plannedSponsorAllocationSompi": 1650000000,
+    "allocationBreakdownSompi": {
+      "principal": 1000000000,
+      "stateRent": 100000000,
+      "permissionRent": 50000000,
+      "feesPlanning": 500000000
+    },
+    "fundingTransactionFee": "Separate additional actual signed funding fee, paid by source change.",
+    "sourceSpendingKey": "Existing TN10 operator custody; metadata/source balance is not proof of signing authority. Do not read or transfer it during preflight.",
+    "refreshBeforeSpend": true
+  },
+  "rental": {
+    "preferred": "Secure Cloud on-demand noninterruptible 1x L40S",
+    "gpuHourlyUsdObserved": "1.09",
+    "systemRamGbOffered": 94,
+    "vcpusOffered": 16,
+    "containerDiskGb": 90,
+    "persistentWorkspaceGb": 10,
+    "storageRunningGbMonthUsd": "0.10",
+    "storageStoppedVolumeGbMonthUsd": "0.20",
+    "planningMonthHours": 720,
+    "twoHoursPlus24hVolumeRetentionUsd": "2.274444444444444444444444445",
+    "allowanceUsd": "5",
+    "quoteIsNotReservationOrBillCap": true,
+    "actualDeploymentReadbackRequired": true,
+    "existingPodsAtPreflight": 0,
+    "limits": {
+      "gpus": 1,
+      "attempts": 1,
+      "userCyclesPerBatch": 160000000,
+      "aggregateProofSecondsIncludingChainWaits": 3600,
+      "rentalSecondsFromActualCreation": 7200,
+      "firstStageRemainingLeaseMustExceedSeconds": 3960,
+      "serviceTransferBoundaryBeforeStopSeconds": 300,
+      "independentGuardStopBeforeAbsoluteDeadlineSeconds": 60,
+      "automaticRetry": false,
+      "extension": false
+    }
+  },
+  "sequence": [
+    {
+      "step": 1,
+      "phase": "before rental",
+      "action": "After full live release/custody decision: recheck source UTXO, network/sync, fees and keys locally; construct and verify one funding transaction allocating 1,650,000,000 sompi to the trial sponsor; retain signed bytes/hash; submit once and confirm selected-chain acceptance."
+    },
+    {
+      "step": 2,
+      "phase": "before rental",
+      "action": "Build/sign/check the harmless fixed-lane activate operation if inactive; submit once, wait for actual confirmed active inclusion and capture/verify a fresh seed. The preflight inactive capture is not a seed."
+    },
+    {
+      "step": 3,
+      "phase": "before rental",
+      "action": "Build bootstrap from the verified seed and actual sponsor UTXO; confirm actual covenant ID. Build initialize preserving exactly 100,000,000 state rent and reviewed lane-restricted successor; capture both acceptances and create the zero-liability checkpoint."
+    },
+    {
+      "step": 4,
+      "phase": "before rental",
+      "action": "Recheck initialized state and fund the actual 1,000,000,000-sompi delegate deposit. Confirm, capture all accepted lane activity and freeze deposit target A with actual lineage. Retain target SHA/bytes independently on B."
+    },
+    {
+      "step": 5,
+      "phase": "rental release already required",
+      "action": "Recheck actual Secure L40S/storage quote <=USD5 planning; create exactly one Pod with the pinned immutable image. Read actual image/resources/creation/workspace. Generate a NEW <=7200-second lease, preserve the old lease, add exactly workloadScope/trial/packagePolicySha256 to the ten normal fields; set readable ownership and arm the existing sole B guard. Confirm exact scope/unused ledger/fresh heartbeat; start only with >3960 seconds left."
+    },
+    {
+      "step": 6,
+      "phase": "one shared proof hour",
+      "action": "Approve B-local A target and upload public bundle. Verify receipt A on trusted B CPU, then prepare fully signed native settlement A, all scripts/mass/compute/fees and selected-chain anchor window; submit once, confirm and checkpoint."
+    },
+    {
+      "step": 7,
+      "phase": "same shared hour",
+      "action": "Alice uses actual registered deposit reference and reviewed public parameters/own role backup to produce fresh credit and invalid/valid transfer operations. Publish, capture from A proof endpoint including interim native settlement, freeze B, approve on B, prove once, CPU-verify, prepare/confirm native settlement B and checkpoint."
+    },
+    {
+      "step": 8,
+      "phase": "same shared hour",
+      "action": "Bob uses his own backup/current public state and fixed native recipient to produce the authorized exit. Publish, capture from B proof endpoint, freeze C, prove once and CPU-verify. Build/verify/confirm C settlement with the genuine C receipt to issue the restricted permission."
+    },
+    {
+      "step": 9,
+      "phase": "same shared hour",
+      "action": "Build/check/sign payout from actual permission/reserve/sponsor inputs. Bob receives >=450,000,000 sompi including rent, reserve change is exactly 600,000,000 and state rent stays separate. Confirm payout; capture from C proof endpoint including issuance/payout; freeze/prove/CPU-verify D and confirm final native settlement/checkpoint."
+    },
+    {
+      "step": 10,
+      "phase": "completion on every outcome",
+      "action": "Retain every candidate/partial/receipt and diagnostics; B revalidates external hashes/receipts and CUDA matching-process evidence. Confirm provider EXITED on success or failure. Delete this attempt Pod/storage only after verified external preservation and confirm deletion; record actual billed runtime/cost, distinguish estimates."
+    }
+  ],
+  "perSpendGates": [
+    "Fully signed exact transaction with all native inputs executed; actual script version, lane, covenant/outpoint lineage, compute budgets, storage/compute/transient mass and integer fees checked.",
+    "Fresh selected-chain/UTXO spentness and exact receipt endpoint/seq; selected parent blue-score distance must satisfy native finality window. Never rewrite the proven endpoint.",
+    "Retain exact transaction ID/bytes before one scoped submitTransaction call with allowOrphan=false; no historical run-trial scripts. Ambiguous transport outcome requires read-only reconciliation, never automatic rebroadcast.",
+    "Keep principal/state rent/permission rent/fees separate. Do not expand the 500M fee planning allocation or use reserve principal for fees.",
+    "On reorg, stale anchor, failed proof, unsupported input size, depleted fee budget or loss of independent guard: stop and preserve last selected checkpoint; no retry/extension within this attempt."
+  ],
+  "success": [
+    "Four new actual-input receipts with connected exact journals verified independently on B; native permission issuance/payout uses the new C receipt.",
+    "Actual Bob >=450M output, 600M reserve and 100M state-rent outpoints; final D reserve600M/private600M/pending0/unpaid0 confirmed on selected chain.",
+    "Native underpayment/recipient/diversion and spent-input replay rejection observed with specific semantic/cryptographic errors; resource failures are not successful negatives.",
+    "Matching-process CUDA for every batch; durable B preservation; confirmed provider stop/deletion and actual cost records."
+  ],
+  "goNoGo": {
+    "softwareAndBPreparation": "PASS",
+    "currentSyncedNativeNode": "PASS",
+    "publicFundingAvailability": "PASS_SNAPSHOT_ONLY",
+    "lane": "INACTIVE_EXPECTED_ACTIVATE_AFTER_LIVE_RELEASE",
+    "custody": "PENDING_OWNER_CHOICE",
+    "liveActions": "NOT_AUTHORIZED",
+    "overall": "NO_GO_FOR_FUNDING_BROADCAST_OR_RENTAL_UNTIL_CUSTODY_AND_SEPARATE_LIVE_RELEASE"
+  },
+  "limitations": [
+    "One owner-operated native node and trusted B/root/controller; separate verification processes reuse the reviewed implementation.",
+    "Small experimental note tree, one pending exit, one selected reserve larger than exit; no production privacy claim.",
+    "Fresh actual outpoints/seed/targets/receipts/signed native transactions depend on future acceptance; none are invented or replaced with fixtures.",
+    "No new ZK proof, wallet proof, funding, native broadcast, GPU rental or provider mutation occurred in preflight."
+  ],
+  "releaseModel": "One subsequent owner release may authorize the entire listed bounded sequence; advance through successful checkpoints without new permission rounds, and stop on an unmet condition. No live action is authorized by this preflight."
+}

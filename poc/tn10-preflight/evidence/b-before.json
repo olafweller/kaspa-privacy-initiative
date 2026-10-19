@@ -1,0 +1,68 @@
+{
+  "hostname": "vmi3641034.contaboserver.net",
+  "uid": 0,
+  "python": "3.12.3",
+  "utc": {
+    "exit": 0,
+    "output": "2026-10-19T08:08:44+00:00"
+  },
+  "clock": {
+    "exit": 0,
+    "output": "Timezone=Europe/Berlin\nNTPSynchronized=yes"
+  },
+  "storage": {
+    "/var/lib": {
+      "available": 85608579072,
+      "device": 2049
+    },
+    "/opt": {
+      "available": 85608579072,
+      "device": 2049
+    }
+  },
+  "instructions": {},
+  "paths": {
+    "/opt/kpi-remote-cuda": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "directory": true
+    },
+    "/var/lib/kpi-cuda-guard": {
+      "uid": 995,
+      "gid": 986,
+      "mode": "0o750",
+      "directory": true
+    },
+    "/etc/kpi-cuda-guard.env": {
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o600",
+      "directory": false
+    }
+  },
+  "services": {
+    "exit": 0,
+    "output": ""
+  },
+  "guard": {
+    "exit": 0,
+    "output": "MainPID=0\nUser=kpi-cuda-guard\nActiveState=inactive\nSubState=dead\nFragmentPath=/etc/systemd/system/kpi-cuda-guard.service\nUnitFileState=disabled"
+  },
+  "guardHashes": {
+    "test_remote.py": "ddf5ccb715a43d932cef839623b6dac1ca7bcb19a458d4aa41979b7454165f1e",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "qualify_guard.py": "0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc",
+    "private_control.py": "8db8a8719c746405caa71f18454dd98bcabc50e598b7b4382f7b917b774013d6",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
+    "make_lease.py": "91cbe8d5560fce58086a2da0e7d14bae4ddfd37e822bc219b37aae4c826fa79c",
+    "lifecycle_package.py": "201dd8a9d56b974af836fa998ff2d720c374b18496bf3aeaad510681086cd12c",
+    "service.py": "bcf4b66150e7f3cef4c034de8eb676a68bf411bef201705eb62c5a1e3496a252",
+    "provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f",
+    "private_package.py": "4ad99cf0b6f52f0fa41d0f455f8ae35b94a3d9383e3d8d8665fa21666ed74269",
+    "control.py": "50ccd0d02882497dcd136b9d714aa4b3213b901c0968282f4d82de87aed8405e",
+    "lifecycle_control.py": "b0a3ba357ca9812deedc283a22fb606621704add18673cc1aeaf8b2756624e50"
+  }
+}

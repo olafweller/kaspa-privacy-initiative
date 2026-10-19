@@ -1,0 +1,171 @@
+{
+  "scope": "B_HOST_CPU_RETAINED_FIXTURES_NO_NEW_PROVING",
+  "directory": "/var/lib/kpi-cuda-guard/tn10-preflight-20261019-1792397563768240423",
+  "uid": 995,
+  "results": {
+    "guard-recovery": {
+      "exit": 0,
+      "stdout": "{\n  \"scope\": \"SIMULATED_PROVIDER_REAL_FILESYSTEM_AND_SEPARATE_PROCESS_RESTARTS\",\n  \"host\": \"vmi3641034\",\n  \"python\": \"3.12.3\",\n  \"archiveBytes\": 51,\n  \"archiveSha256\": \"094e4e30fb8a7f2110c182ec03f992590249c174efc4eee58e2fe57f3c0b7d25\",\n  \"truncatedCopyRepaired\": true,\n  \"restartRecheckedCopyAndRetainedGrace\": true,\n  \"simulatedProviderStopConfirmed\": true,\n  \"liveProviderCalled\": false,\n  \"hostRebooted\": false,\n  \"gpuUsed\": false,\n  \"sourceSha256\": {\n    \"common.py\": \"5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3\",\n    \"watchdog.py\": \"f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0\",\n    \"qualify_guard.py\": \"0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc\"\n  }\n}\n",
+      "stderr": ""
+    },
+    "guard-controls": {
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_application_headers_keep_auth_timeout_and_redirect_refusal (test_remote.Remote.test_application_headers_keep_auth_timeout_and_redirect_refusal) ... ok\ntest_archive_traversal_and_duplicate_names_rejected (test_remote.Remote.test_archive_traversal_and_duplicate_names_rejected) ... ok\ntest_bootstrap_binds_one_lease_to_the_actual_pod (test_remote.Remote.test_bootstrap_binds_one_lease_to_the_actual_pod) ... ok\ntest_cost_duration_and_host_are_checked (test_remote.Remote.test_cost_duration_and_host_are_checked) ... ok\ntest_empty_stop_response_and_already_exited_are_handled (test_remote.Remote.test_empty_stop_response_and_already_exited_are_handled) ... ok\ntest_external_watchdog_stops_after_controller_is_gone (test_remote.Remote.test_external_watchdog_stops_after_controller_is_gone) ... ok\ntest_failed_backup_does_not_delay_rental_deadline (test_remote.Remote.test_failed_backup_does_not_delay_rental_deadline) ... ok\ntest_http_auth_guard_single_start_and_disconnection (test_remote.Remote.test_http_auth_guard_single_start_and_disconnection) ... ok\ntest_live_provider_schema_and_strict_transport (test_remote.Remote.test_live_provider_schema_and_strict_transport) ... ok\ntest_rental_deadline_does_not_wait_for_a_stalled_gpu_request (test_remote.Remote.test_rental_deadline_does_not_wait_for_a_stalled_gpu_request) ... ok\ntest_restart_marks_interrupted_without_retry (test_remote.Remote.test_restart_marks_interrupted_without_retry) ... ok\ntest_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup (test_remote.Remote.test_same_size_corruption_is_repaired_and_failed_rename_cannot_complete_backup) ... ok\ntest_stop_ack_without_exited_readback_is_not_success (test_remote.Remote.test_stop_ack_without_exited_readback_is_not_success) ... ok\ntest_terminal_backup_survives_controller_loss_before_stop (test_remote.Remote.test_terminal_backup_survives_controller_loss_before_stop) ... ok\ntest_timeout_kills_real_descendant_and_strips_credentials (test_remote.Remote.test_timeout_kills_real_descendant_and_strips_credentials) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 2.171s\n\nOK\n"
+    },
+    "trusted-cpu": {
+      "exit": 0,
+      "stdout": "{\n  \"scope\": \"TRUSTED_B_CPU_VERIFICATION_NOT_LIVE_NATIVE_ACCEPTANCE\",\n  \"results\": {\n    \"deposit\": {\n      \"receiptSha256\": \"cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1\",\n      \"targetSha256\": \"e4461a9bae2de27bdae172720470de9df87d3316158d87b94f55e496cae062ba\",\n      \"verified\": true\n    },\n    \"credit-transfer\": {\n      \"receiptSha256\": \"fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb\",\n      \"targetSha256\": \"99c0935e9168668dd5b18af3ea9bd07ce9321243be78242951f73be8d9df4903\",\n      \"verified\": true\n    },\n    \"exit\": {\n      \"receiptSha256\": \"3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a\",\n      \"targetSha256\": \"55e02ab81cb73621a4b166124b5ba2f5f9e92b2705e811df280ba4c38f080c4e\",\n      \"verified\": true\n    },\n    \"reconcile\": {\n      \"receiptSha256\": \"ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5\",\n      \"targetSha256\": \"737306f5ed08ef52a85ebf94f37d66b1eb87824fe7ee9dae7e6deef7d52afa08\",\n      \"verified\": true\n    }\n  },\n  \"verifiedCount\": 4,\n  \"allFourVerified\": true,\n  \"independentImplementations\": false,\n  \"downloadedExecutablesRun\": false\n}\n",
+      "stderr": ""
+    }
+  },
+  "verification": {
+    "scope": "TRUSTED_B_CPU_VERIFICATION_NOT_LIVE_NATIVE_ACCEPTANCE",
+    "results": {
+      "deposit": {
+        "receiptSha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+        "targetSha256": "e4461a9bae2de27bdae172720470de9df87d3316158d87b94f55e496cae062ba",
+        "verified": true
+      },
+      "credit-transfer": {
+        "receiptSha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+        "targetSha256": "99c0935e9168668dd5b18af3ea9bd07ce9321243be78242951f73be8d9df4903",
+        "verified": true
+      },
+      "exit": {
+        "receiptSha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+        "targetSha256": "55e02ab81cb73621a4b166124b5ba2f5f9e92b2705e811df280ba4c38f080c4e",
+        "verified": true
+      },
+      "reconcile": {
+        "receiptSha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+        "targetSha256": "737306f5ed08ef52a85ebf94f37d66b1eb87824fe7ee9dae7e6deef7d52afa08",
+        "verified": true
+      }
+    },
+    "verifiedCount": 4,
+    "allFourVerified": true,
+    "independentImplementations": false,
+    "downloadedExecutablesRun": false
+  },
+  "crypto": {
+    "deposit": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "82378ad35727f015951455e1dce5fb092b6180db0e2897d005ad768d09a789e7",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "e4461a9bae2de27bdae172720470de9df87d3316158d87b94f55e496cae062ba"
+    },
+    "credit-transfer": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "5bbc9e5f57b4e88d4a7840f3e6a8b1625f1a184fce88db28bb56652860279253",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "99c0935e9168668dd5b18af3ea9bd07ce9321243be78242951f73be8d9df4903"
+    },
+    "exit": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "57d751f4744d56e908b9673995e9df262dd01dd05913e0c21b1b02ff417dc964",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "55e02ab81cb73621a4b166124b5ba2f5f9e92b2705e811df280ba4c38f080c4e"
+    },
+    "reconcile": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "cc22d5a160148b6bad2cb105456257ba9093b7cb224b8c138c860c9efdbf99f6",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "737306f5ed08ef52a85ebf94f37d66b1eb87824fe7ee9dae7e6deef7d52afa08"
+    }
+  },
+  "providerCalled": false,
+  "guardStarted": false
+}

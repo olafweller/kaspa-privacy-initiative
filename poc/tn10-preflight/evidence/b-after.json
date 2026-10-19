@@ -1,0 +1,45 @@
+{
+  "observedUnix": 1792397889.5176663,
+  "guard": "MainPID=0\nActiveState=inactive\nUnitFileState=disabled\n",
+  "guardHashes": {
+    "test_remote.py": "ddf5ccb715a43d932cef839623b6dac1ca7bcb19a458d4aa41979b7454165f1e",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "qualify_guard.py": "0a09774211c384506ed5119f351bb4e8d1a3c1e522c0ae74fbfe5402f4e372dc",
+    "private_control.py": "8db8a8719c746405caa71f18454dd98bcabc50e598b7b4382f7b917b774013d6",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
+    "make_lease.py": "91cbe8d5560fce58086a2da0e7d14bae4ddfd37e822bc219b37aae4c826fa79c",
+    "lifecycle_package.py": "201dd8a9d56b974af836fa998ff2d720c374b18496bf3aeaad510681086cd12c",
+    "service.py": "bcf4b66150e7f3cef4c034de8eb676a68bf411bef201705eb62c5a1e3496a252",
+    "provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f",
+    "private_package.py": "4ad99cf0b6f52f0fa41d0f455f8ae35b94a3d9383e3d8d8665fa21666ed74269",
+    "control.py": "50ccd0d02882497dcd136b9d714aa4b3213b901c0968282f4d82de87aed8405e",
+    "lifecycle_control.py": "b0a3ba357ca9812deedc283a22fb606621704add18673cc1aeaf8b2756624e50"
+  },
+  "availableStateBytes": 85577658368,
+  "storagePricing": {
+    "url": "https://docs.runpod.io/pods/pricing",
+    "sha256": "43e1b9733ccaa62d83a4798ff3eb527c90ab0d621cb765fec025a597128dd449",
+    "snippets": [
+      "fixed expiration dates. \u200b Storage pricing Storage type Running Pod Stopped Pod Notes Container disk $0.10/GB/month Not charged Temporary; erased when Pod stops Volume disk $0.10/GB/month $0.20/GB/month Persistent; retained until Pod deleted Network volume $0.07/GB/",
+      "ed Pod Notes Container disk $0.10/GB/month Not charged Temporary; erased when Pod stops Volume disk $0.10/GB/month $0.20/GB/month Persistent; retained until Pod deleted Network volume $0.07/GB/month (< 1TB) $0.07/GB/month Permanent; portable between Pods $0.05/GB/m",
+      ".td,{children:_jsx(_components.strong,{children:`Container disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`Not charged`}),_jsx(_components.td,{children:`Temporary; erased when Pod stops`})]}),_jsxs(_components.tr,{children:",
+      "ntainer disk $0.10/GB/month Not charged Temporary; erased when Pod stops Volume disk $0.10/GB/month $0.20/GB/month Persistent; retained until Pod deleted Network volume $0.07/GB/month (< 1TB) $0.07/GB/month Permanent; portable between Pods $0.05/GB/month (> 1TB) $0",
+      "n:`Volume disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`$0.20/GB/month`}),_jsx(_components.td,{children:`Persistent; retained until Pod deleted`})]}),_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_com",
+      "n:`Volume disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`$0.20/GB/month`}),_jsx(_components.td,{children:`Persistent; retained until Pod deleted`})]}),_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_com",
+      "dable and have fixed expiration dates. \u200b Storage pricing Storage type Running Pod Stopped Pod Notes Container disk $0.10/GB/month Not charged Temporary; erased when Pod stops Volume disk $0.10/GB/month $0.20/GB/month Persistent; retained until Pod deleted Network volume $0.",
+      "n:[_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_components.strong,{children:`Container disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`Not charged`}),_jsx(_components.td,{children:`Temporary; erased when Pod s",
+      "n:[_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_components.strong,{children:`Container disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`Not charged`}),_jsx(_components.td,{children:`Temporary; erased when Pod s",
+      "ng Pod Stopped Pod Notes Container disk $0.10/GB/month Not charged Temporary; erased when Pod stops Volume disk $0.10/GB/month $0.20/GB/month Persistent; retained until Pod deleted Network volume $0.07/GB/month (< 1TB) $0.07/GB/month Permanent; portable between Pods $0.0",
+      "}),_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_components.strong,{children:`Volume disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`$0.20/GB/month`}),_jsx(_components.td,{children:`Persistent; retained unti",
+      "}),_jsxs(_components.tr,{children:[_jsx(_components.td,{children:_jsx(_components.strong,{children:`Volume disk`})}),_jsx(_components.td,{children:`$0.10/GB/month`}),_jsx(_components.td,{children:`$0.20/GB/month`}),_jsx(_components.td,{children:`Persistent; retained unti"
+    ]
+  },
+  "anonymousImageManifest": {
+    "digest": "sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+    "config": "sha256:fc238d13edd749684985dd685cca91772801057354490d063e51ff3007fd4478",
+    "layers": 22,
+    "registryAccountCredentialUsed": false
+  }
+}

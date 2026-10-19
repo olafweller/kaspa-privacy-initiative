@@ -199,3 +199,13 @@ Review this new native code and the per-stage data/verification boundary first.
 Actual funding/broadcasts, a separately qualified staged GPU service/image and
 one bounded live rehearsal remain separate release gates. There is no new
 GPU lease or TN10 funding in this preparation.
+
+### Concrete native preflight — 2026-10-19
+
+PR53 is merged. The [concrete TN10 preflight](../poc/tn10-preflight/README.md)
+records installation/CPU verification on B, current synchronized native node,
+verified inactive-lane capture, available test funding and read-only rental quote.
+Bob custody and one complete live release remain pending. The staged image and
+private/native relation are unchanged; no funding, broadcast, GPU rental or new
+proof was performed. Next execution begins with fresh funding/activation and
+chain checkpoints before the four actual-input receipts.
