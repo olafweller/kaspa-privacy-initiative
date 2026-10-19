@@ -30,3 +30,9 @@ if [[ -f poc/shielded-design/test_model.py ]]; then
     PYTHONPATH="$PWD/.local/shielded-design/python${PYTHONPATH:+:$PYTHONPATH}" \
         python3 -m unittest discover -s poc/shielded-design -p 'test_*.py' -v
 fi
+
+if [[ -f poc/private-native-tn10/test_preparation.py ]]; then
+    python3 -m unittest discover -s poc/private-native-tn10 -p 'test_*.py' -v
+    node poc/private-native-tn10/read-only.test.mjs
+    python3 poc/private-native-tn10/check_preparation.py
+fi

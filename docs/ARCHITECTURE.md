@@ -531,3 +531,20 @@ state adapter and permission/payout script checks. This remains a synthetic
 UTXO/anchor context: canonical TN10 lineage, full consensus/size/mass/fee checks,
 funded issuance and actual chain payout are still unperformed. Guest, wallet
 relation, native policy and experimental privacy limitations remain unchanged.
+
+## Staged TN10 preparation — 2026-10-19
+
+The [offline staged adapter](../poc/private-native-tn10/README.md) reuses the
+reviewed private guest, wallet relation/VK and native restrictions. Actual chain
+inputs and exact trusted receipt expectations are frozen one batch at a time,
+after complete accepted-lane capture and prior settlement acceptance. PR51's
+four genuine local receipts remain regression evidence, not proofs for fresh
+outpoints or recipients.
+
+[ADR-0015](adr/0015-tn10-private-native-preparation.md) adds a deterministic,
+rent-only native initializer to break the genesis covenant-ID/state-root
+self-reference. It derives the zero-liability genesis root from the actual input
+covenant ID and permits only the exact reviewed lane-restricted successor. This
+is new native preparation code, with no administrative withdrawal key. It has
+local script tests and requires review before funding; no actual TN10 bootstrap
+or privacy-lifecycle acceptance is claimed.

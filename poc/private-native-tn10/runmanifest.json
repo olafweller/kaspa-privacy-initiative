@@ -1,0 +1,175 @@
+{
+  "schema": "KPI_TN10_PRIVATE_LIFECYCLE_PREPARATION_V1",
+  "date": "2026-10-19",
+  "status": "OFFLINE_PREPARATION_FOR_REVIEW_NOT_LIVE_READY",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "publicTrial": "evidence/unfunded-trial.json",
+  "publicTrialSha256": "ed8cb4c966f8e41a28a4773f7079c23c20e5f682defb1751f4c92c8ef125614f",
+  "roleSecretsLocation": ".local/private-native-tn10/trial-20261019-preparation/{alice,bob,sponsor}; never upload",
+  "authorizations": {
+    "funding": false,
+    "broadcasting": false,
+    "newOuterProof": false,
+    "gpuRental": false,
+    "providerActions": false
+  },
+  "network": "testnet-10",
+  "lane": "0044454600000000000000000000000000000000",
+  "walletDomain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "pins": {
+    "guestImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+    "guestProgramSha256": "213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375",
+    "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+    "walletVkId": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+    "walletParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+    "rustyKaspa": "01b532e8b553523216471682649693af92f0fd16",
+    "vprogs": "f9b84a863a7c7c20586a9cf947550475e894f72e",
+    "hostBinary": ".local/ci-target/release/kpi-private-native-tn10",
+    "hostBinarySha256": "f22a4535f93813398756c132520723b03285cb24dc2ebb8b0b25481d2eeec6b7",
+    "nativeCaptureValidator": ".local/ci-target/release/kpi-tn10-integration",
+    "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+    "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb"
+  },
+  "economicsSompi": {
+    "depositPrincipal": 1000000000,
+    "bobPrincipal": 400000000,
+    "remainingPrincipal": 600000000,
+    "stateRent": 100000000,
+    "permissionRentRefund": 50000000,
+    "nativeFeePlanningAllocationSeparate": 500000000,
+    "fees": "Fresh integer quote and actual fully signed native mass; no fixture fee assumption."
+  },
+  "management": {
+    "route": "Cloud -> TN10 gateway -> B; existing credentials only",
+    "gateway": "vmi3633138.contaboserver.net",
+    "guardHost": "vmi3641034.contaboserver.net",
+    "rpc": "ws://127.0.0.1:18210 on gateway",
+    "guard": "Existing independent B guard; no runtime dependency on gateway/Cloud/laptop."
+  },
+  "futureProofPolicy": {
+    "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+    "oneL40S": true,
+    "attempts": 1,
+    "userCyclesPerBatch": 160000000,
+    "aggregateSeconds": 3600,
+    "aggregateIncludes": "all four proofs, compression, in-container CPU verification and conservatively chain waits from first proof",
+    "rentalSecondsFromActualCreation": 7200,
+    "startTransferMarginSeconds": 360,
+    "runtimeStopMarginSeconds": 300,
+    "usdPlanningAllowance": 5,
+    "costWarning": "Actual quote plus storage; not a guaranteed provider bill cap.",
+    "automaticRetries": false,
+    "budgetExtensions": false,
+    "existingFixedImageIsNotStagedService": true,
+    "stagedImageDigest": null
+  },
+  "initialization": {
+    "order": [
+      "fresh unfunded roles / custody review",
+      "future funded sponsor allocation only after separate release",
+      "if inactive: harmless activate and confirmed capture",
+      "verify native seed capture",
+      "build bootstrap rent-only initializer",
+      "confirm actual genesis covenant ID and accepted bootstrap",
+      "build initialize preserving rent and reviewed state policy",
+      "capture both native acceptances; create zero-liability checkpoint",
+      "recheck initialized state UTXO; only then deposit principal"
+    ],
+    "initializerDecision": "../../docs/adr/0015-tn10-private-native-preparation.md",
+    "acceptedCheckpointRequiredBeforeDeposit": true
+  },
+  "stages": [
+    {
+      "name": "deposit",
+      "requiresAcceptedCheckpoint": "initialize",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 16,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 0,
+        "pending": 1000000000,
+        "unpaid": 0
+      }
+    },
+    {
+      "name": "credit-transfer",
+      "requiresAcceptedCheckpoint": "deposit",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 20,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 1000000000,
+        "pending": 0,
+        "unpaid": 0
+      }
+    },
+    {
+      "name": "exit",
+      "requiresAcceptedCheckpoint": "credit-transfer",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 20,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 600000000,
+        "pending": 0,
+        "unpaid": 400000000
+      }
+    },
+    {
+      "name": "reconcile",
+      "requiresAcceptedCheckpoint": "exit",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 16,
+      "expectedAccountingSompi": {
+        "reserve": 600000000,
+        "private": 600000000,
+        "pending": 0,
+        "unpaid": 0
+      }
+    }
+  ],
+  "eachStageGates": [
+    "Complete native capture verified by independently hash-pinned validator; no removed blocks or unstable interval.",
+    "Prior checkpoint state root/tip, actual continuation outpoint, trial and capture start match.",
+    "Locally derive full public input and exact 352-byte journal; pin target SHA on B before public upload.",
+    "Real Succinct receipt: fixed guest/join, no development mode/assumptions; independent trusted CPU verification and crypto controls.",
+    "Fresh actual UTXOs, selected end block/seq and native finality eligibility; do not rewrite proven endpoint after waiting.",
+    "Build fully signed transaction; execute every native input, preserve compute budgets, check storage/compute/transient mass and integer fee.",
+    "After separate broadcast release only: capture actual selected-chain native acceptance and preserve signed tx/receipt/verification; then advance checkpoint."
+  ],
+  "interruptionAndReorg": [
+    "Persist all attempted stages before spawning; a failed/interrupted proof is consumed and cannot retry.",
+    "Keep candidate receipts and logs; incomplete results never imply chain acceptance.",
+    "Query native history/UTXOs read-only after controller loss. Do not blindly re-broadcast within a used trial.",
+    "If a checkpoint/receipt endpoint is orphaned or lane expired, stop, preserve evidence, identify last still-selected checkpoint; no automatic statement or budget changes.",
+    "Future B guard preserves validated archives and confirms EXITED on every outcome. Delete Pod/storage only after independent external copy/hash/CPU revalidation; confirm deletion."
+  ],
+  "releaseBlockers": [
+    "Owner/Astra review of new rent-only initializer and staged adapter.",
+    "Bob custody of the fresh role backup/native key; do not treat local root separation as adversarial isolation.",
+    "Fresh read-only TN10 version/sync/active lane/seed, actual funding and UTXO lineage remain unset.",
+    "Qualify/pin staged authenticated GPU transport and immutable image with this host/runner and qualified CUDA prover. PR51 fixed workload image must not be repurposed silently.",
+    "Check B clock/storage/installed trusted package and independent guard; actual L40S/storage quote within USD5 planning before any future rental.",
+    "Separate explicit live release covering test-KAS funding, broadcasts and one bounded GPU attempt; absent now."
+  ],
+  "successRequires": [
+    "Four new actual-input receipts independently verified and exact connected state roots/lane tips.",
+    "Native actual permission issuance from the new exit receipt; exact actual reserve/permission lineage.",
+    "Actual selected-chain Bob output >=450000000, remaining delegate600000000, state covenant100000000; Bob principal/rent separated.",
+    "Live native rejection at enforcement layer for balanced underpayment, wrong recipient, reserve diversion and distinct spent-input replay; resource failures do not count.",
+    "Final actual D settlement accepted: reserve600000000/private600000000/pending0/unpaid0, actual native spentness/UTXOs retained.",
+    "Per-stage matching-process CUDA, preserved evidence on B, confirmed provider stop/deletion and measured rental/cost evidence."
+  ]
+}

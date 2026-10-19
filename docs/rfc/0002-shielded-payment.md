@@ -237,3 +237,15 @@ liabilities, without an administrator withdrawal or forced migration key.
 The [results and TN10 proposal](../../poc/shielded-design/TN10-PROPOSAL.md) name the
 open decisions. Passing the model or small composition experiment does not
 select a production construction or authorize the funded trial.
+
+## Actual-chain preparation checkpoint — 2026-10-19
+
+The [completed local four-receipt rehearsal](../../poc/private-native-proof/gpu-2026-10-18-02/README.md)
+does not establish a TN10 private payout. The [staged preparation](../../poc/private-native-tn10/README.md)
+now separates actual deposit references, accepted native lineage, complete lane
+captures and per-batch trusted targets from the fixed fixtures. The reviewed
+guest and wallet relation are unchanged. [ADR-0015](../adr/0015-tn10-private-native-preparation.md)
+records the proposed deterministic rent-only initialization step needed by the
+native genesis-ID rule. Its new script and subsequent live release need review.
+Multiple outstanding exits/reserve aggregation, tree scaling, production wallet
+custody and financial-privacy assessment remain open; this work does not close them.

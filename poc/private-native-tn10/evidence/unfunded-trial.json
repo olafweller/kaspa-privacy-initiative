@@ -1,0 +1,36 @@
+{
+  "alice": {
+    "incoming": "14f3b6414abfd8c11b57fd3aae7a9731fd4dc76dd5c8163551064cc5568c9e14",
+    "owner": "6ec84b2ff01e9dd5337b38e0976bf154047dc3d1367598a6b35b938a5ca3243d"
+  },
+  "bob": {
+    "incoming": "ed916ea0666cbc9222b028cecc2d9ec2d95eef26dc726cf8b48f5534e7f3664d",
+    "owner": "d2c92ca75b492e92e9a8b582eca19f5aebec74e9af5ae696e8fe7a98d02d96f0"
+  },
+  "bobNative": {
+    "address": "kaspatest:qqdqypkn5tvv3h0tfkaze387eehw44dwytrr35ndfyzelmaqtpe5vt8gapjhu",
+    "pubkey": "1a0206d3a2d8c8ddeb4dba2cc4fece6eead5ae22c638d26d49059fefa0587346"
+  },
+  "bobPrincipalSompi": 400000000,
+  "broadcastAuthorized": false,
+  "domain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "fundingAuthorized": false,
+  "gpuAuthorized": false,
+  "guestImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "lane": "0044454600000000000000000000000000000000",
+  "network": "testnet-10",
+  "permissionRentSompi": 50000000,
+  "principalSompi": 1000000000,
+  "programSha256": "213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375",
+  "roleCustody": "Separate local role files; operator/root can access them. Bob must control his files before live release.",
+  "schema": "KPI_TN10_PRIVATE_TRIAL_V1",
+  "scope": "UNFUNDED_PREPARATION_NOT_LIVE_READY",
+  "sponsorNative": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "pubkey": "dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891"
+  },
+  "stateRentSompi": 100000000,
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "walletParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99"
+}

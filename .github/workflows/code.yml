@@ -34,7 +34,7 @@ jobs:
           python3 - <<'PY'
           import json, os, subprocess
           from pathlib import Path
-          components = [name for name in ('a0', 'a1', 'native-value', 'takeover') if Path(f'poc/{name}/Cargo.toml').is_file()]
+          components = [name for name in ('a0', 'a1', 'native-value', 'takeover', 'private-native-tn10') if Path(f'poc/{name}/Cargo.toml').is_file()]
           assert components, 'No experimental Rust component found'
           sha = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:

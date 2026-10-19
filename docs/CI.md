@@ -96,3 +96,10 @@ exact journals and cryptographic negative controls, and executes the genuine exi
 receipt's local native permission/payout checks. It does not run a prover, rent
 a GPU, contact a provider or broadcast transactions. Historical synthetic process
 tests remain clearly separate from this real-receipt verification.
+
+The `private-native-tn10` Rust matrix component checks the offline signed native
+builders, initializer restrictions, actual deposit-reference lineage, long-gap
+capture mapping and retained real-receipt verification. Fast checks also run its
+synthetic stage-budget/public-bundle tests and read-only RPC allowlist. These
+checks neither contact TN10 nor start a new proof/provider job. See the
+[preparation scope](../poc/private-native-tn10/README.md).

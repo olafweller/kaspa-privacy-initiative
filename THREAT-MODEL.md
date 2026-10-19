@@ -419,3 +419,32 @@ retains independent expected identities and excludes GPU-supplied executables fr
 CPU/B verification. Its aggregate external process watchdog survives service loss;
 partial outputs cannot become full qualification. Existing B-root trust, lease,
 backup, confirmed-stop and storage-preservation boundaries remain unchanged.
+
+## Staged TN10 input and bootstrap boundary (2026-10-19)
+
+The [TN10 preparation](poc/private-native-tn10/README.md) must not reuse a local
+fixture receipt for real chain data, trust GPU-supplied expectations, skip lane
+activity during a proof wait, or treat a submit-success flag as native acceptance.
+Its native validator is pinned independently, complete journals are frozen on the
+trusted controller, and a checkpoint preserves accepted lineage plus the next
+capture start. Historical acceptance still requires fresh live UTXO/selected-chain
+checks before spending. An orphan/stale receipt cannot be repaired by editing its
+endpoint or accounting; halt and retain it for diagnosis.
+
+The new [rent-only initializer](docs/adr/0015-tn10-private-native-preparation.md)
+addresses a previously unexercised genesis ID/state-root circularity. It exposes
+no withdrawal authority and cannot touch a deposit, but its canonical state
+serialization, exact successor reconstruction and native bindings are new code
+requiring review. Do not deposit until initialization is actually accepted.
+
+The native broad signing helper resets all input compute budgets; the adapter
+uses the existing single-input sponsor signer after fixing measured budgets and
+checks every input again on the fully signed layout. Fees are paid from sponsor
+change, with user principal/state rent/permission rent accounted separately.
+
+Separate 0600 local role files do not protect Bob against the host administrator.
+The operator must establish Bob's actual custody before release. No RunPod key,
+wallet backup or witness enters a public proof bundle. Existing B credentials,
+lease deadline, backup and provider stop remain separate from chain execution;
+the gateway is only a management route. New staged GPU transport/image binding
+and a live full terminal rehearsal remain unqualified in this preparation.

@@ -1,0 +1,19 @@
+{
+  ".github/workflows/code.yml": "3210289fa84d93591cee5b2cb9a01183554edd798b52733cd2c01d1e3efbbaa3",
+  "poc/private-native-tn10/Cargo.lock": "6bef49867f4fd3fb9d64425ce3ee24d25d4822755bbceb838c42bdb41b3b2069",
+  "poc/private-native-tn10/Cargo.toml": "148085001eeb2c8c4506f4f3c262ce8118cb0bcbd745b2e59025fc8d798c92d7",
+  "poc/private-native-tn10/bundle.py": "d2ae78522393476b9a0d3fd82e396a621a7435da1a21c34f51f885fca03e099e",
+  "poc/private-native-tn10/check_preparation.py": "d3edbb6003e662c2c7daad428297db3a7e69683c33cf1ff8349914fa4aa2120f",
+  "poc/private-native-tn10/read-only.mjs": "2ac592f33558cba25dc90e11ae7608b1f6d445262564ddedd9a5a8d8f7113cbd",
+  "poc/private-native-tn10/read-only.test.mjs": "22d540feb432a0ea3d7d5151f89a503a4322fb965375c7c740aeb117d4276aa8",
+  "poc/private-native-tn10/run_stage.py": "5ac1da16f7c1c75ed31715d1352d5596b938e9cdc7fe4e3fa3e1414a23fd5d57",
+  "poc/private-native-tn10/runmanifest.json": "9ceb73ef6d3f6c9892559c038ce332807e996977b60ab867687d209fa1a15d3d",
+  "poc/private-native-tn10/src/batch.rs": "91e1744d435cf2fa1af2e4869d0808b854be9f4600a0d54b395c086d8c1857b0",
+  "poc/private-native-tn10/src/bootstrap.rs": "e61aa2955c6cb06534316e46656071939beb5685201daf0d88760d41303ecb52",
+  "poc/private-native-tn10/src/main.rs": "df4db030f54a04bafa9f08340aed9bb2d4ef0e5c41c9fa65c9a821bd05157fe6",
+  "poc/private-native-tn10/src/tests.rs": "f65fa8996b96b042f913434f448ef4d635713b7a8f01d6e4a0ea044e5603ec40",
+  "poc/private-native-tn10/src/transaction.rs": "595d8b4f9115faf10ba01fd6e89436898c8aaa025d94b3be24042646afb32893",
+  "poc/private-native-tn10/src/wallet.rs": "3b354a494bc87705c5d41d156e3b44804095c54d2adfa4039ad8b1cda011ce1a",
+  "poc/private-native-tn10/test_preparation.py": "72d3bc0a5f1e4f8695db91e93b3a0e6bf4d76fe77963b22550c33d2308d86b80",
+  "scripts/ci_fast.sh": "1103129837e1ade44d26212c213ba7eaec9f5904db932a96a8ea181b6e61a330"
+}

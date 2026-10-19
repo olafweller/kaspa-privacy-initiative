@@ -1,0 +1,61 @@
+{
+  "scope": "OFFLINE_PREPARATION_WITH_SYNTHETIC_UTXOS_AND_RETAINED_REAL_FIXTURE_RECEIPTS_NOT_NEW_TN10_OR_GPU",
+  "date": "2026-10-19",
+  "rustTests": {
+    "passed": 12,
+    "failed": 0,
+    "log": "rust-tests.txt"
+  },
+  "pythonTests": {
+    "passed": 5,
+    "failed": 0,
+    "scope": "synthetic deadline/order/public-package controls"
+  },
+  "readOnlyRpcTest": "8 read-only methods permitted; mutating/foreign-endpoint requests rejected; no RPC performed",
+  "nativeEngine": "Actual pinned TxScriptEngine executed signed bootstrap/initialization/deposit and genuine retained exit receipt/permission/payout regression with fee compute/mass checks.",
+  "nativeNegativeCases": [
+    "wrong initializer root",
+    "wrong lane",
+    "state-rent diversion",
+    "missing/wrong covenant authorization",
+    "extra initializer output",
+    "fully signed payout underpayment",
+    "reserve diversion",
+    "recipient substitution",
+    "wrong payout lane"
+  ],
+  "captureMapping": "Synthetic conversion round-trip for >100-score retained private input, exact bytes/journal preserved; full native verify remains mandatory for actual captures.",
+  "retainedReceiptRegression": {
+    "realReceipts": 4,
+    "cryptoNegativeControlsPerReceipt": 15,
+    "scope": "Exact OLD fixture expectations only; different trusted journal rejected. No proof generated."
+  },
+  "unfundedTrial": {
+    "publicFile": "unfunded-trial.json",
+    "sha256": "ed8cb4c966f8e41a28a4773f7079c23c20e5f682defb1751f4c92c8ef125614f",
+    "privateKeysCommitted": false,
+    "custody": "Separate local roles, not isolation from root; Bob control required before release."
+  },
+  "hostBinarySha256": "f22a4535f93813398756c132520723b03285cb24dc2ebb8b0b25481d2eeec6b7",
+  "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+  "newNativeInitialization": "Deterministic rent-only initializer; NEW code for review, guest unchanged. Native genesis ID derived from actual initial output, not substituted fixture ID.",
+  "notPerformed": [
+    "fresh live TN10 RPC/capture",
+    "funding",
+    "broadcast",
+    "new wallet proof job",
+    "new outer proof",
+    "GPU rental",
+    "provider action",
+    "B installation or guard activation",
+    "staged service/image deployment"
+  ],
+  "releaseBlockers": [
+    "Owner/Astra review of new rent-only initializer and staged adapter.",
+    "Bob custody of the fresh role backup/native key; do not treat local root separation as adversarial isolation.",
+    "Fresh read-only TN10 version/sync/active lane/seed, actual funding and UTXO lineage remain unset.",
+    "Qualify/pin staged authenticated GPU transport and immutable image with this host/runner and qualified CUDA prover. PR51 fixed workload image must not be repurposed silently.",
+    "Check B clock/storage/installed trusted package and independent guard; actual L40S/storage quote within USD5 planning before any future rental.",
+    "Separate explicit live release covering test-KAS funding, broadcasts and one bounded GPU attempt; absent now."
+  ]
+}

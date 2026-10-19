@@ -188,3 +188,14 @@ the smallest testnet private lifecycle that can falsify those requirements.
 Further public-account runtime expansion is secondary to a demonstrated private
 protocol requirement. Existing issues remain open until their own acceptance
 criteria are met; completing the Based App milestone closes none by implication.
+
+### TN10 lifecycle preparation after the local four-receipt milestone
+
+PR51 completed the fixed local proof/native-script rehearsal. The next scoped
+artifact is the [staged actual-chain adapter and run manifest](../poc/private-native-tn10/README.md).
+Its [initializer decision](adr/0015-tn10-private-native-preparation.md) preserves
+the reviewed guest while breaking the native genesis-ID/state-root circularity.
+Review this new native code and the per-stage data/verification boundary first.
+Actual funding/broadcasts, a separately qualified staged GPU service/image and
+one bounded live rehearsal remain separate release gates. There is no new
+GPU lease or TN10 funding in this preparation.
