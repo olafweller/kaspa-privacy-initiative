@@ -1,6 +1,25 @@
 # Next focus: shielded native KAS and financial privacy
 
-## Current checkpoint — 2026-10-18
+## Current checkpoint — 2026-10-19
+
+The [actual TN10 private/native lifecycle](../poc/tn10-live/README.md) completed
+with four new actual-input outer receipts, independent B/Cloud CPU verification,
+matching-process CUDA evidence and four accepted native settlements. Bob received
+4 test-KAS principal plus 0.5 test-KAS rent refund; the remaining 6 test-KAS reserve
+matches 6 test-KAS private liability with no unpaid exit. TN10 rejected the three
+signed payout attacks and a distinct spent-input replay. The single bounded L40S
+attempt stayed within its original limits; provider stop and Pod/storage deletion
+were confirmed after external preservation. The estimated GPU/storage cost is
+USD0.6654, pending the final provider invoice.
+
+This closes the single-trial actual-chain integration gap. The existing operator
+controlled logical Bob's wallet/recipient during this test. Independent user
+custody, the N-user operator-shutdown/recovery gate, production privacy and scale
+remain unproven; no production protocol is accepted by this result. The complete
+[results and limitations](../poc/tn10-live/evidence/result.json) are retained for
+review. No further rental or funded trial follows automatically.
+
+## Historical checkpoints — 2026-10-18
 
 PR42 and PR43 are merged. The [complete classifier receipt](../poc/remote-cuda/FULL-RESULTS.md)
 closes the outer-receipt blocker for the existing compact-wallet test model:
@@ -200,7 +219,7 @@ Actual funding/broadcasts, a separately qualified staged GPU service/image and
 one bounded live rehearsal remain separate release gates. There is no new
 GPU lease or TN10 funding in this preparation.
 
-### Concrete native preflight — 2026-10-19
+### Pre-release native preflight — 2026-10-19 (historical)
 
 PR53 is merged. The [concrete TN10 preflight](../poc/tn10-preflight/README.md)
 records installation/CPU verification on B, current synchronized native node,
@@ -210,3 +229,7 @@ live release remains pending. Independent user custody is not demonstrated. The 
 private/native relation are unchanged; no funding, broadcast, GPU rental or new
 proof was performed. Next execution begins with fresh funding/activation and
 chain checkpoints before the four actual-input receipts.
+
+The subsequent explicit owner release and completed execution are recorded in
+[the actual TN10 result](../poc/tn10-live/README.md), superseding the pending-release
+status above without changing the historical preflight evidence.

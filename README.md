@@ -10,6 +10,8 @@
 
 The [scoped Based App feasibility milestone](docs/based-app-feasibility-2026-10-17.md) is complete: PRs #31–#33 demonstrate real TN10 lane ordering through proved execution and accepted settlement, including native payout and same-endpoint omission rejection. The development focus now moves to [shielded native KAS and financial privacy](docs/shielded-kas-next.md). No production architecture or privacy protocol has been accepted. Developers, researchers and security reviewers are welcome.
 
+**Latest testnet result, 2026-10-19:** the [actual private/native TN10 cycle](poc/tn10-live/README.md) completed with four new outer proofs and accepted native settlements. Bob received 4 test-KAS plus 0.5 test-KAS rent refund; 6 test-KAS backing remains for 6 test-KAS private value. This was a bounded, operator-controlled trial; independent custody and the shutdown/recovery gate below remain unproven.
+
 - Start with the compact [external reviewer guide](docs/REVIEWER-GUIDE.md): three small review tasks and reproduction commands.
 - Review the [first shielded-KAS specification and local experiments](poc/shielded-design/README.md): model results, real proof-composition measurements and remaining blockers before a funded privacy trial.
 - The [proof-byte classification follow-up](poc/proof-classification/RESULTS.md) executes the correct sequence but exposes an 880-segment proof-cost blocker; no outer classification receipt or funded privacy trial is claimed.
