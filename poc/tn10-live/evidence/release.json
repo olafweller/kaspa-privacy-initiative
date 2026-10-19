@@ -1,0 +1,22 @@
+{
+  "ownerInstruction": "ok ga door met uitvoeren",
+  "recordedUtc": "2026-10-19T08:46:12Z",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "authorizations": {
+    "testFunding": true,
+    "tn10Broadcasts": true,
+    "walletProofs": true,
+    "oneBoundedL40SAttempt": true
+  },
+  "limits": {
+    "gpus": 1,
+    "attempts": 1,
+    "cyclesPerBatch": 160000000,
+    "aggregateSeconds": 3600,
+    "rentalSeconds": 7200,
+    "planningUsd": 5,
+    "retry": false,
+    "extension": false
+  },
+  "custody": "existing trusted operator controls logical Bob"
+}
