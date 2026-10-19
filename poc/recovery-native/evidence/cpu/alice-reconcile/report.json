@@ -1,0 +1,13 @@
+{
+  "case": "alice-reconcile",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "journalSha256": "0a729b4f8f73159c0dfd428a6a83f0af4a1483bf57bc0fd580da9335f9621947",
+  "scope": "NEW_GUEST_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.302469876,
+  "segmentPo2": 16,
+  "segments": 85,
+  "userCycles": 1623688
+}

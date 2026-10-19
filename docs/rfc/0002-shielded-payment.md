@@ -260,3 +260,14 @@ guest integration and genuine outer-proof/native issuance qualification. Separat
 local user processes are not independent custody. Independently administered
 users and replacement services must still demonstrate actual canonical payouts
 for all users, including the last, before the N-user recovery gate passes.
+
+## Integrated full-reserve guest qualification
+
+[ADR-0017](../adr/0017-integrated-recovery-native-guest.md) adds a separate
+[guest and six linked local batches](../../poc/recovery-native/README.md) for
+both the first user's partial and the final user's exact-reserve withdrawal.
+Exit liabilities remain until native payout reconciliation. Native script and
+accounting shapes agree; old program/state identities remain unchanged. A local
+CPU qualification is not a new outer receipt or proof-authorized issuance. The
+next bounded software package must qualify those genuine receipts before any
+separately released fresh-instance TN10 test or N-user shutdown milestone.

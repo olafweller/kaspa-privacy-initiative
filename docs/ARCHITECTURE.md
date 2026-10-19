@@ -571,3 +571,15 @@ the PR54 guest/permissions. Its native issuance context remains synthetic;
 new-guest integration and genuine proof-backed native issuance are still needed.
 Independent administration, current chain/UTXO anchoring, data availability and
 the N-user shutdown gate are not established by separate local processes.
+
+### Integrated partial and exact-reserve guest
+
+[ADR-0017](adr/0017-integrated-recovery-native-guest.md) and the
+[new relation qualification](../poc/recovery-native/README.md) integrate PR55's
+host-only full-drain policy into a separate guest/state namespace. Six linked
+batches keep both users' exits backed until authenticated native reconciliation;
+positive and zero reserve change have matching native script/accounting forms.
+A new-root wallet adapter retains user-side proving and minimal receive data.
+CPU execution is qualified; new outer receipts, genuine permission issuance and
+a fresh funded native instance remain unperformed. No old pool upgrade or
+independent shutdown-recovery claim follows from this local integration.

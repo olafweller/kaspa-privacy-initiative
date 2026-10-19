@@ -53,3 +53,4 @@ The open state architecture comparison is [RFC-0001](../rfc/0001-state-architect
 
 - [ADR-0015: staged TN10 inputs and one-way native initialization](0015-tn10-private-native-preparation.md)
 - [ADR-0016: user-held recovery and terminal reserve exit experiment](0016-user-held-recovery-and-terminal-exit.md)
+- [ADR-0017: integrated partial and exact-reserve recovery guest](0017-integrated-recovery-native-guest.md)

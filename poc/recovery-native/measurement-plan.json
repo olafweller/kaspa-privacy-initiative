@@ -1,0 +1,21 @@
+{
+  "scope": "LOCAL_EXECUTION_ONLY_NEW_GUEST_NO_OUTER_PROVING_OR_PROVIDER_ACTIONS",
+  "cycleLimitPerCase": 160000000,
+  "wallLimitPerCaseSeconds": 900,
+  "wallLimitCampaignSeconds": 3600,
+  "threads": 4,
+  "positiveCases": [
+    "deposit",
+    "credit-transfer",
+    "bob-exit",
+    "bob-reconcile",
+    "alice-exit",
+    "alice-reconcile"
+  ],
+  "noAutomaticBudgetIncrease": true,
+  "resourceFailuresCountAsRejection": false,
+  "outerProofsAuthorized": false,
+  "fundingAuthorized": false,
+  "broadcastAuthorized": false,
+  "GPUAuthorized": false
+}

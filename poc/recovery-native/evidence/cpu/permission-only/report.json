@@ -1,0 +1,13 @@
+{
+  "case": "permission-only",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "journalSha256": "01ceb45433d3745b70a99942a49e7886c801eaad8f5e1a30ee9eb33d5d0d1b37",
+  "scope": "NEW_GUEST_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.253870425,
+  "segmentPo2": 16,
+  "segments": 66,
+  "userCycles": 1248778
+}

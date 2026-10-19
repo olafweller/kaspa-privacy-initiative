@@ -243,3 +243,13 @@ path. No new GPU rental, outer proof, funding or broadcast is included. The
 host-only terminal policy still requires a new guest/issuance proof. Independent
 user custody and the N-user service-shutdown gate remain open; local process
 separation is not an independently administered user machine.
+
+### Integrated recovery guest execution — 2026-10-19
+
+PR55 is merged. The [separate new guest](../poc/recovery-native/README.md) supports
+both payout forms in six continuous local batches, with new-root user tooling,
+native regressions and a bounded CPU measurement. New outer receipts and genuine
+proof-authorized permission issuance remain next; this does not change the old
+funded instance. Prepare a six-job bounded proof package after review, retaining
+the existing aggregate proof/lease limits. Rental/funding/broadcast and the
+independent N-user shutdown test remain separately scoped work.

@@ -1,0 +1,9 @@
+{
+  "case": "auth-covenant",
+  "error": "Guest panicked: assertion `left == right` failed: covenant\n  left: [3, 132, 130, 73, 63, 234, 219, 32, 169, 164, 237, 87, 252, 4, 228, 28, 144, 126, 159, 60, 72, 192, 75, 85, 195, 22, 190, 145, 123, 67, 43, 41]\n right: [2, 132, 130, 73, 63, 234, 219, 32, 169, 164, 237, 87, 252, 4, 228, 28, 144, 126, 159, 60, 72, 192, 75, 85, 195, 22, 190, 145, 123, 67, 43, 41]",
+  "expectedAbortConfirmed": true,
+  "expectedAbortReason": "covenant",
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "scope": "ACTUAL_GUEST_SEMANTIC_ABORT_NOT_RESOURCE_FAILURE",
+  "seconds": 0.19766776
+}

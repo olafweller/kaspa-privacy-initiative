@@ -1,0 +1,98 @@
+{
+  "schema": "KPI_INTEGRATED_RECOVERY_GUEST_V1",
+  "status": "LOCAL_EXECUTION_QUALIFIED_NO_OUTER_RECEIPTS_NOT_LIVE_READY",
+  "baseMergedPR55": "05ea24a5cdb89ba5dd2cfec1041b1e69fa8de68d",
+  "program": {
+    "image": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+    "sha256": "6039c3ef645d620bdd7eef6384750e73f51bcc8f9182aae1b1ac3c963601e75b",
+    "bytes": 1570144
+  },
+  "walletVk": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+  "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "host": {
+    "localPath": ".local/ci-target/release/kpi-recovery-native-host",
+    "sha256": "d76f8aac1dd5502f9eff0b89dbd4a6b2c00f393028b8b67273ea8347e6ab50da",
+    "crossMachineBuildHashClaim": false
+  },
+  "walletExecutable": {
+    "localPath": ".local/ci-target/release/kpi-recovery-native-wallet",
+    "sha256": "aeb84c7a3edd9b076e28c3035729fca9df0d582e44d33cbc951d697fb33c3c90"
+  },
+  "localInstance": {
+    "id": "b2b007d55c60f6efe567ba4372ae96e4981da444bc397dc02e3d82b6b8c07b70",
+    "context": "SYNTHETIC_UNFUNDED_NATIVE_UTXOS_AND_ANCHORS",
+    "newStateResourceHex": "7676767676767676767676767676767676767676767676767676767676767676",
+    "actualNativeBootstrap": null,
+    "freshCanonicalTN10InstanceStillRequired": true,
+    "userSecretsUsed": false
+  },
+  "legacyInstance": {
+    "description": "PR54 retained historical TN10 instance, not queried now",
+    "programImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+    "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+    "lastRetainedReserveSompi": 600000000,
+    "migrationOrUpgradePerformed": false
+  },
+  "sourceSha256": {
+    ".github/workflows/recovery-native.yml": "bfac3391e1e311124d0043c1a358128fe3319b9ed2aea56106879c33c9bc73f1",
+    "poc/recovery-native/Cargo.lock": "5ab3fe02d01a3ff53231adac29408fe814309782724feaab6829a332a4371c3d",
+    "poc/recovery-native/Cargo.toml": "eab372693c582578b15d59124824477f2759189355f911df853d546800aacf06",
+    "poc/recovery-native/build_guest.sh": "539b49eb11a09cd33674685c24ba36929e7d308377fb0b3471ba8f48632957aa",
+    "poc/recovery-native/check_evidence.py": "a076886d7104888a9a1c6b764f37cbf1e33453c2ef51ad330d448555ba5357f3",
+    "poc/recovery-native/common/Cargo.toml": "101a0fef2c6032d63e0f0454bba3c11bfaf36755127c374311893c8fbc9bbfe3",
+    "poc/recovery-native/common/src/lib.rs": "500f07594a670a37ab7cf466139217e9e61a35eebedcfa0313c8a1420e7e23a4",
+    "poc/recovery-native/common/src/restricted.rs": "8bcb0c7d23e2eff28d0025a00da1357c06b48de280df6c8162b0909299038ca0",
+    "poc/recovery-native/guest/Cargo.lock": "cc42f1010d9470327643db1ee58c0c7ce03ffede229d9bd3f90196f147808c31",
+    "poc/recovery-native/guest/Cargo.toml": "87c56c69555b1e83fb3898e37d51f84b65452d14ee03c50e655efcd70fb99647",
+    "poc/recovery-native/guest/src/main.rs": "5854066c22cec4a65890fdf6e937017b3d8599952077a70a8bf449ed2a448401",
+    "poc/recovery-native/host/Cargo.toml": "53112e2d2e6d499d9ff8c1c4d2a01319d5bbe33f7f172d7691687a244dac5004",
+    "poc/recovery-native/host/src/bin/wallet.rs": "d653e03fdb9b1b1964f71005d2a0bb5aadc925b16b9cd2739db0e8742a55d65c",
+    "poc/recovery-native/host/src/fixtures.rs": "63eb2c62a6b3422f553564bcab2767cf18ce1132f6037d6d19609f0df121908a",
+    "poc/recovery-native/host/src/main.rs": "a39d8d11bf84c9c744dffa154419c93190899cf33f43a29babfb302df622a073",
+    "poc/recovery-native/host/src/native.rs": "76c68950c87f07e3208d7eff81106f9dfad8c1b985f0a988cd3519b2962aeb8e",
+    "poc/recovery-native/host/src/receipt.rs": "6de42f30cab638770350218cf339bb8c71df1f505edf90a67473be38d28c0c8f",
+    "poc/recovery-native/host/src/tests.rs": "773e6a06ec34b6f2ea2ad61ee9f1c3b3dcab022636ddc87176205e45158e8869",
+    "poc/recovery-native/measurement-plan.json": "26994c0432930ee2dc6f2cdbf94650c6ba2c64419ff8d92d4b8f34d0c2608634",
+    "poc/recovery-native/run_qualification.py": "0178370b762c012b33ccef462acc4c6fe2db43d8ed3ce38fa3716600ab0511e6",
+    "poc/recovery-native/test_wallet_cli.py": "27cafb94160a6f8de7d077a20b819f41255d00a2c194c8bce7ba535ead8f2706"
+  },
+  "authorizations": {
+    "GPU": false,
+    "providerActions": false,
+    "newOuterProof": false,
+    "funding": false,
+    "broadcast": false
+  },
+  "candidateNextProofPackage": {
+    "stages": [
+      "deposit",
+      "credit-transfer",
+      "bob-exit",
+      "bob-reconcile",
+      "alice-exit",
+      "alice-reconcile"
+    ],
+    "fixedTargets": "evidence/targets.json",
+    "receiptsRequired": 6,
+    "nativeIssuanceRequiredFor": [
+      "bob-exit",
+      "alice-exit"
+    ],
+    "aggregateProofSeconds": 3600,
+    "rentalSecondsFromActualCreation": 7200,
+    "attempts": 1,
+    "GPU": "one L40S",
+    "planningUSD": 5,
+    "automaticRetry": false,
+    "releaseGranted": false,
+    "producerAndImmutableImageStillToPrepare": true
+  },
+  "completed": {
+    "CPUExecution": true,
+    "nativePayoutFixtures": true,
+    "newGuestReceipts": false,
+    "nativeGenuineNewReceiptIssuance": false,
+    "canonicalNewInstanceTN10Payout": false,
+    "independentCustodyOrShutdownGate": false
+  }
+}

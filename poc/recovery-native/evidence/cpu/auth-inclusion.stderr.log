@@ -1,0 +1,6 @@
+
+thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/recovery-native/common/src/lib.rs:507:5:
+assertion `left == right` failed: start active inclusion
+  left: [158, 3, 112, 31, 15, 140, 174, 46, 110, 33, 9, 25, 191, 161, 230, 221, 243, 61, 81, 172, 74, 225, 148, 118, 23, 50, 177, 222, 36, 76, 183, 106]
+ right: [159, 3, 112, 31, 15, 140, 174, 46, 110, 33, 9, 25, 191, 161, 230, 221, 243, 61, 81, 172, 74, 225, 148, 118, 23, 50, 177, 222, 36, 76, 183, 106]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

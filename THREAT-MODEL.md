@@ -490,3 +490,16 @@ The additive terminal policy is a host-only fixture, not an upgrade or new exit
 right for the existing live reserve. A later guest must bind its policy under a
 new identity and enforce genuine permission issuance before live use. No rescue
 key, operator withdrawal privilege, or weakening of current spentness is added.
+
+## Integrated recovery guest boundary
+
+The [new guest](poc/recovery-native/README.md) has its own state/program namespace,
+covering positive-change and exact-reserve native payout shapes without a host
+payout-success oracle. It retains unpaid exit liabilities through permission
+issuance. Old/fake receipts are rejected under independent compiled expectations.
+CPU execution and synthetic native payout contexts do not establish new receipt
+soundness/issuance acceptance or canonical TN10 backing. New-root wallet handling
+retains user-held secrets and independent-root checks. No old funded pool is
+upgraded; a fresh native instance and actual chain proofs are required. Data
+availability, current anchors, independent custody and shutdown liveness remain
+open qualifications, with no rescue-key fallback.
