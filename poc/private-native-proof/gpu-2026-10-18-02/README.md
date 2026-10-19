@@ -40,7 +40,7 @@ The nine recorded stages all exited successfully. The native exit stage took
 Total measured user cycles were 139,107,917 across 253 segments; each frozen
 batch retained its 160M execution limit.
 
-The Pod had one L40S reporting 46,068 MiB VRAM, driver 580.126.09, 16 provider
+The Pod had one L40S reporting 46,068 MiB VRAM, driver 595.91.07, 16 provider
 vCPUs and 188 GB provider RAM. Proof processes retained affinity `[0,1,2,3]` and
 four compute threads, with the existing 12 GiB sampled-RSS stop boundary.
 Sampled peak summed process RSS was **759,599,104 bytes**, about 724.4 MiB;
