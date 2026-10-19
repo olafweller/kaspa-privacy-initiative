@@ -1,0 +1,14 @@
+{
+  "scope": "THIS_TN10_TEST_ONLY",
+  "recordedUtc": "2026-10-19T08:44:41Z",
+  "source": "Explicit owner reply in this Codex conversation",
+  "ownerReply": "Voor deze test beheert de bestaande operator Bob, met die vertrouwensaanname expliciet vastgelegd.",
+  "decision": "EXISTING_TRUSTED_OPERATOR_CONTROLS_BOB",
+  "covers": [
+    "Bob wallet backup",
+    "Bob native recipient key"
+  ],
+  "trust": "Bob is a logical role controlled by the existing operator in this test. The operator/root can access role secrets; this is not independent custody or protection from a malicious administrator.",
+  "keyContentsReadOrCopiedForThisUpdate": false,
+  "liveFundingBroadcastProvingOrRentalAuthorized": false
+}

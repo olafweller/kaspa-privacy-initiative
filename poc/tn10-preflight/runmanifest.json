@@ -1,7 +1,7 @@
 {
   "schema": "KPI_CONCRETE_TN10_PREFLIGHT_V1",
   "date": "2026-10-19",
-  "status": "PREFLIGHT_COMPLETE_LIVE_RELEASE_AND_CUSTODY_PENDING",
+  "status": "PREFLIGHT_COMPLETE_OPERATOR_CUSTODY_CONFIRMED_LIVE_RELEASE_PENDING",
   "mergedPreparation": {
     "pr": 53,
     "reviewedHead": "4864924f9e8adad9ba992b2d2c379365251f37d0",
@@ -67,7 +67,7 @@
     "captureIsNotFutureSeed": true
   },
   "custody": {
-    "decision": "PENDING_OWNER_REPLY",
+    "decision": "EXISTING_TRUSTED_OPERATOR_CONTROLS_BOB",
     "publicTrial": "../private-native-tn10/evidence/unfunded-trial.json",
     "roleDirectory": ".local/private-native-tn10/trial-20261019-preparation",
     "secretContentsRead": false,
@@ -76,7 +76,10 @@
     "walletPublicParameters": ".local/private-note-chain/wallet-01/public-proving-parameters.bin",
     "walletPublicParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
     "walletPublicParametersBytes": 156439536,
-    "rootOperatorTrustMustRemainExplicit": true
+    "rootOperatorTrustMustRemainExplicit": true,
+    "decisionEvidence": "evidence/custody-decision.json",
+    "decisionRecordedUtc": "2026-10-19T08:44:41Z",
+    "operatorTrust": "Bob is a logical role controlled by the existing operator in this test. The operator/root can access role secrets; this is not independent custody or protection from a malicious administrator."
   },
   "funding": {
     "candidateSourceUtxo": {
@@ -141,7 +144,7 @@
     {
       "step": 1,
       "phase": "before rental",
-      "action": "After full live release/custody decision: recheck source UTXO, network/sync, fees and keys locally; construct and verify one funding transaction allocating 1,650,000,000 sompi to the trial sponsor; retain signed bytes/hash; submit once and confirm selected-chain acceptance."
+      "action": "After full live release: recheck source UTXO, network/sync, fees and keys locally; construct and verify one funding transaction allocating 1,650,000,000 sompi to the trial sponsor; retain signed bytes/hash; submit once and confirm selected-chain acceptance."
     },
     {
       "step": 2,
@@ -176,7 +179,7 @@
     {
       "step": 8,
       "phase": "same shared hour",
-      "action": "Bob uses his own backup/current public state and fixed native recipient to produce the authorized exit. Publish, capture from B proof endpoint, freeze C, prove once and CPU-verify. Build/verify/confirm C settlement with the genuine C receipt to issue the restricted permission."
+      "action": "The operator-controlled Bob role uses its own backup/current public state and fixed native recipient to produce the authorized exit. Publish, capture from B proof endpoint, freeze C, prove once and CPU-verify. Build/verify/confirm C settlement with the genuine C receipt to issue the restricted permission."
     },
     {
       "step": 9,
@@ -207,15 +210,16 @@
     "currentSyncedNativeNode": "PASS",
     "publicFundingAvailability": "PASS_SNAPSHOT_ONLY",
     "lane": "INACTIVE_EXPECTED_ACTIVATE_AFTER_LIVE_RELEASE",
-    "custody": "PENDING_OWNER_CHOICE",
+    "custody": "CONFIRMED_TRUSTED_OPERATOR_FOR_THIS_TEST",
     "liveActions": "NOT_AUTHORIZED",
-    "overall": "NO_GO_FOR_FUNDING_BROADCAST_OR_RENTAL_UNTIL_CUSTODY_AND_SEPARATE_LIVE_RELEASE"
+    "overall": "NO_GO_FOR_FUNDING_BROADCAST_OR_RENTAL_UNTIL_SEPARATE_LIVE_RELEASE"
   },
   "limitations": [
     "One owner-operated native node and trusted B/root/controller; separate verification processes reuse the reviewed implementation.",
     "Small experimental note tree, one pending exit, one selected reserve larger than exit; no production privacy claim.",
     "Fresh actual outpoints/seed/targets/receipts/signed native transactions depend on future acceptance; none are invented or replaced with fixtures.",
-    "No new ZK proof, wallet proof, funding, native broadcast, GPU rental or provider mutation occurred in preflight."
+    "No new ZK proof, wallet proof, funding, native broadcast, GPU rental or provider mutation occurred in preflight.",
+    "Owner explicitly authorizes existing-operator custody of Bob for this test; independent user custody/recovery is not demonstrated."
   ],
   "releaseModel": "One subsequent owner release may authorize the entire listed bounded sequence; advance through successful checkpoints without new permission rounds, and stop on an unmet condition. No live action is authorized by this preflight."
 }

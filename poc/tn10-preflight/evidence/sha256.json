@@ -1,5 +1,6 @@
 {
-  "evidence/adversarial-review.md": "3962b8de62b39b100e4836938e852d75cef7ede54dba4ee0260f170caaf8cf92",
+  "collect.mjs": "6d2e79b05d09efb2f305653a726d218ea42885aa704fd10aa3b4c13824033866",
+  "evidence/adversarial-review.md": "6591434366bfa6078da2d2586c04220ba07ce81c797baf1ee5e473560c4d2d84",
   "evidence/b-after.json": "13d9fb9db39080527c016fbe893ca5a9489dc4fd73628ee30bac7d4d8cb381c5",
   "evidence/b-before.json": "58a1d64505351021ee6f3cec0ca8e67d0be457949bd1731c2c380ff3be9c5399",
   "evidence/b-installation.json": "2360ac64147d8fee25e1a12d40d776f0eb65bb257990e64f64cefcdcbc9de35e",
@@ -7,14 +8,14 @@
   "evidence/capture-identity.json": "c167113733386bae4d014fb5f8e93c773d133c9b8ede76ba89b7a09a66cc83fb",
   "evidence/capture-native.json.gz": "ab6890589e4ed5a91d6fe65b6915cda096f3982b2eb296a35582a6f20ae8c06d",
   "evidence/capture-verification.json": "684515f5b14ff7acadb4d30e46268d4b61386b45f74d2a715abf50b37f3b4906",
+  "evidence/custody-decision.json": "a16eb3c262d42cfdc68bcb7c8edd3ea1d475c888de5228b955fdbc57a143b166",
   "evidence/custody-metadata.json": "71023277cb20484415b23cfecfd7656628e6d38e291bb20cecc1582740f0628a",
   "evidence/final-host-check.json": "d0f929a28e8c68188533306f79af83bc932779eb7e10689fd1da87fb8315ffd0",
   "evidence/installation-manifest.json": "6e86c35893761d7a44bca04ab248f4db0ccc2a0ad9f81c316b7be78c05d5527f",
   "evidence/provider-quote.json": "d7ede22f0f0b8fe65a98ccdc80b0ac8ed7101c1dd78612a98b9a3acd78079351",
-  "evidence/qualification.json": "4788670c4c192b5d2c2b3ebc7bd39bbfd0882e2784c2900590b82d3a04c415fd",
+  "evidence/qualification.json": "42bc011a5ffe850766b5ae062cc5b555b8b3cf459f536c81cc2af4c82d8ccc42",
   "evidence/rpc-compatibility.json": "ead9b925fc92271c7f59e2d6dd3ddcbe8789fde626e470f3985666aa3414cc18",
   "evidence/tn10-rpc.json": "18ea96d85215e67ed98294c6f21525f2e9e2ce6f003a01065d08061aa3943f45",
   "rpc.mjs": "7e6ac1c22a19ee1c72372701ab8e9a975eeb4f202c93d0586e79019db6117bd8",
-  "rpc.test.mjs": "12e4f6e1414c76e5d448ae85ce8ca9d281a2ea32d1f6e30a958cdf1d52540e22",
-  "collect.mjs": "6d2e79b05d09efb2f305653a726d218ea42885aa704fd10aa3b4c13824033866"
+  "rpc.test.mjs": "12e4f6e1414c76e5d448ae85ce8ca9d281a2ea32d1f6e30a958cdf1d52540e22"
 }

@@ -19,7 +19,7 @@
   "previousSourceBindingsPassed": true,
   "documentationChecksPassed": true,
   "newBroadBuildPerformed": false,
-  "custody": "PENDING_OWNER_REPLY",
+  "custody": "EXISTING_TRUSTED_OPERATOR_CONTROLS_BOB",
   "nativeTrust": "One owner-operated node; no second independent node.",
   "checks": [
     "node poc/tn10-preflight/rpc.test.mjs",
@@ -30,5 +30,7 @@
     "Pinned kpi-tn10-integration verify on actual retained native capture",
     "B separate-process recovery and 15 guard tests as service user, cleared environment",
     "B real CPU verification of four retained receipts with crypto negative controls"
-  ]
+  ],
+  "custodyAtHostQualification": "PENDING_OWNER_REPLY",
+  "custodyDecision": "custody-decision.json"
 }

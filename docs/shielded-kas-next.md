@@ -205,7 +205,8 @@ GPU lease or TN10 funding in this preparation.
 PR53 is merged. The [concrete TN10 preflight](../poc/tn10-preflight/README.md)
 records installation/CPU verification on B, current synchronized native node,
 verified inactive-lane capture, available test funding and read-only rental quote.
-Bob custody and one complete live release remain pending. The staged image and
+The owner confirmed trusted-operator custody of Bob for this test; one complete
+live release remains pending. Independent user custody is not demonstrated. The staged image and
 private/native relation are unchanged; no funding, broadcast, GPU rental or new
 proof was performed. Next execution begins with fresh funding/activation and
 chain checkpoints before the four actual-input receipts.

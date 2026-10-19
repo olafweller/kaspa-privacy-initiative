@@ -22,7 +22,7 @@ It does not release funding, broadcasting, new proving or GPU rental.
 | Funding snapshot | Known source has 995,388,210,600 sompi; fresh sponsor and Bob addresses have zero UTXOs |
 | Fees snapshot | 100 sompi/gram; every later fully signed transaction still needs fresh mass/budget/fee checks |
 | RunPod | Read-only authenticated list found zero Pods; Secure Cloud L40S lowest noninterruptible quote $1.09/h |
-| Custody | Role files exist with 0700 directories/0600 files; no secret contents read or copied. Owner decision on Bob's role remains pending |
+| Custody | Role files exist with 0700 directories/0600 files; no secret contents read or copied. Owner explicitly assigned Bob to the existing trusted operator for this test |
 
 The exact GPU image remains:
 
@@ -69,7 +69,7 @@ actual L1 preflight evidence, not a new ZK proof or settlement.
 The manifest fixes the current public trial and recipients, source UTXO snapshot,
 image, B installation, custody status, fee allocation and each checkpoint:
 
-1. After custody and full live release, refresh source/fees/UTXOs and allocate
+1. After full live release, refresh source/fees/UTXOs and allocate
    **16.5 test-KAS** to the fresh sponsor: 10 principal, 1 state rent, 0.5 permission
    rent and 5 fee planning. The source separately pays the actual funding fee.
 2. Activate the inactive lane, capture/verify a fresh active seed, then confirm
@@ -98,8 +98,13 @@ must be checked at their respective execution points.
 ## Release status and evidence
 
 Preparation, B qualification, native connectivity and funding availability pass.
-**Funding/broadcast/rental remain NO-GO until Bob custody is settled and the owner
-releases this complete execution.** Inactive-lane activation and fresh chain
+Bob custody is confirmed by the [owner decision](evidence/custody-decision.json):
+the existing trusted operator manages Bob's backup and native recipient key for
+this test. This is a logical Bob role, not independent user custody or isolation
+from a malicious operator/root. No key was read or copied to record the decision.
+
+**Funding/broadcast/rental remain NO-GO until the owner releases this complete
+execution.** Inactive-lane activation and fresh chain
 inputs are planned execution steps; the current capture is not a future seed.
 Actual signed native transactions and four actual-input receipts do not exist yet.
 

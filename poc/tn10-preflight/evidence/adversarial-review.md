@@ -13,7 +13,9 @@ state rent, permission rent and fees remain separate.
 
 Only public files and retained proof bytes were installed/copied. Role files
 were checked with stat; secrets were not opened or transferred. B root/operator
-and the one native node remain trusted. Bob custody is explicitly unresolved.
+and the one native node remain trusted. Bob custody was unresolved at the host preflight. The owner subsequently
+confirmed existing-operator custody for this test; see `custody-decision.json`.
+This does not establish independent user custody or malicious-operator isolation.
 Systemd supplied the existing B account credential to a bounded read-only quote
 process without exposing it to the controller, argv, repository or GPU.
 
