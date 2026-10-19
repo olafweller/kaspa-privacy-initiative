@@ -477,3 +477,16 @@ hidden PAX/GNU metadata and padding; returned evidence also has a compressed-rea
 and logical-member cap. Interrupted recovery repeats identity-checked process
 cleanup even after an earlier recovery died between durable gate closure and
 the kill. Neither fix changes proof/native policy or extends the deadlines.
+
+## Local user recovery / exact-reserve experiment — 2026-10-19
+
+The [user-held recovery package](poc/user-recovery/README.md) requires an
+independently accepted root, not a root supplied by the snapshot provider.
+Roots authenticate retained data but cannot restore missing ciphertexts/history
+or establish freshness. User native keys/backups never belong in outer proving
+jobs. Separate processes on an operator-owned host do not protect against that
+operator; independent custody requires separately administered hardware/software.
+The additive terminal policy is a host-only fixture, not an upgrade or new exit
+right for the existing live reserve. A later guest must bind its policy under a
+new identity and enforce genuine permission issuance before live use. No rescue
+key, operator withdrawal privilege, or weakening of current spentness is added.

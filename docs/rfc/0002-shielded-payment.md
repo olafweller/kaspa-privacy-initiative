@@ -249,3 +249,14 @@ records the proposed deterministic rent-only initialization step needed by the
 native genesis-ID rule. Its new script and subsequent live release need review.
 Multiple outstanding exits/reserve aggregation, tree scaling, production wallet
 custody and financial-privacy assessment remain open; this work does not close them.
+
+## User-held recovery and terminal withdrawal package — 2026-10-19
+
+[ADR-0016](../adr/0016-user-held-recovery-and-terminal-exit.md) and the
+[executable local package](../../poc/user-recovery/README.md) make backup/data
+requirements, public-history replay and an exact-reserve terminal native policy
+testable. The old live program is unchanged. The new local policy requires later
+guest integration and genuine outer-proof/native issuance qualification. Separate
+local user processes are not independent custody. Independently administered
+users and replacement services must still demonstrate actual canonical payouts
+for all users, including the last, before the N-user recovery gate passes.

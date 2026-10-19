@@ -1,0 +1,41 @@
+{
+  "schema": "KPI_USER_RECOVERY_LOCAL_PACKAGE_V1",
+  "scope": "OFFLINE_USER_TOOL_AND_HOST_ONLY_TERMINAL_NATIVE_RELATION",
+  "baseMerge": "40b39a6503d2133da93b9dd7e77a5a1ee8652658",
+  "historicalGuestUnchanged": true,
+  "newGuestIdentity": null,
+  "newOuterProofs": 0,
+  "fundingAuthorized": false,
+  "broadcastAuthorized": false,
+  "gpuRentalAuthorized": false,
+  "independentCustodyEstablished": false,
+  "nUserShutdownGatePassed": false,
+  "publicParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "walletVk": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec",
+  "execution": [
+    "init user-local wallet/native key",
+    "replay committed public history",
+    "discover unspent encrypted notes",
+    "produce user-local EXIT proof",
+    "verify terminal native scripts and exact accounting"
+  ],
+  "sourceSha256": {
+    "poc/private-native-tn10/Cargo.lock": "6bef49867f4fd3fb9d64425ce3ee24d25d4822755bbceb838c42bdb41b3b2069",
+    "poc/private-native-tn10/src/bin/user-recovery.rs": "5f66c03208be5c3bd416182c21c0c619da728faf9095e0c03cdcc2e8f7543946",
+    "poc/private-native-tn10/src/bin/user_recovery/qualification.rs": "d7fbc1eb257b1df36b64327cb027ab345e7c53cb3918c121f6ab064616fb4c54",
+    "poc/private-native-tn10/src/bin/user_recovery/terminal.rs": "d56c2f364351a4a6f7f1e1341b052ae424951866fc89c789acb397b14f93ad29",
+    "poc/private-native-tn10/src/bin/user_recovery/tests.rs": "6b9a1aec318371f7d823cd319e87346d68080bee1487ee05b4d4bf433674cc87",
+    "poc/user-recovery/test_cli.py": "8eab4c67b4e388b9c1f0520dc93849c87553b776dfdddbf6a56c1cf76d3be787"
+  },
+  "localExecutable": {
+    "path": ".local/ci-target/release/user-recovery",
+    "sha256": "064d99676f9e0cec2be7e0bb07d7704cc4523a4dbec8cfff42ae046d7e49f80c",
+    "portableBuildHashClaim": false
+  },
+  "futureReleaseRequired": [
+    "new guest identity and real permission issuance proof",
+    "independently administered Bob machine",
+    "replacement data/executor/prover and fresh canonical checkpoints",
+    "separately authorized bounded TN10/GPU rehearsal"
+  ]
+}

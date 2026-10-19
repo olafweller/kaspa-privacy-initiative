@@ -1,0 +1,24 @@
+{
+  "scope": "OFFLINE_RETAINED_ACTUAL_TN10_HISTORY_REPLAY_AND_CLI_CONTROLS",
+  "actualHistoryBatchesReplayed": 4,
+  "exactStateSha256": "da80fa5def53ad997694141745e651f15c45ecf83b0d6e9282c2f70c93f0f650",
+  "stateRoot": "4c050dfe1e822f6db96b3237f0b6ba5d8ecc6d037c90ef26b22d5299afc761e8",
+  "negativeControls": [
+    "omitted batch",
+    "reordered history",
+    "duplicate batch",
+    "wrong independent root",
+    "init overwrite",
+    "unrelated wallet exit",
+    "scan wrong root",
+    "changed state",
+    "trailing state bytes",
+    "truncated input",
+    "public backup permissions"
+  ],
+  "unrelatedWalletBalance": 0,
+  "newOuterProofs": 0,
+  "rpc": false,
+  "providerActions": false,
+  "independentCustodyEstablished": false
+}

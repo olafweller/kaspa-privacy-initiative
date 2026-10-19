@@ -559,3 +559,15 @@ and the original aggregate deadline across reconnects/restarts. The existing B
 lease/backup/stop guard remains independent. CPU transport/process/image tests
 use retained receipts and explicitly synthetic producers. No new proof, actual
 CUDA execution or TN10 acceptance is established by this preparation.
+
+### User-held recovery and terminal reserve research
+
+After the actual TN10 lifecycle, [ADR-0016](adr/0016-user-held-recovery-and-terminal-exit.md)
+adds a [local user/recovery package](../poc/user-recovery/README.md). User-side
+backup/discovery/proving is separated from public-state replay and the outer
+prover. A new host-only full-drain relation reuses upstream terminal permission
+verification and removes the need for positive reserve change without changing
+the PR54 guest/permissions. Its native issuance context remains synthetic;
+new-guest integration and genuine proof-backed native issuance are still needed.
+Independent administration, current chain/UTXO anchoring, data availability and
+the N-user shutdown gate are not established by separate local processes.

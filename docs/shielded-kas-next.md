@@ -233,3 +233,13 @@ chain checkpoints before the four actual-input receipts.
 The subsequent explicit owner release and completed execution are recorded in
 [the actual TN10 result](../poc/tn10-live/README.md), superseding the pending-release
 status above without changing the historical preflight evidence.
+
+### Local user recovery / last-user exit package — 2026-10-19
+
+PR54's actual lifecycle evidence is preserved after merge. The next
+[local package](../poc/user-recovery/README.md) prepares user-held backup/discovery,
+public-history reconstruction and the missing exact-reserve native terminal
+path. No new GPU rental, outer proof, funding or broadcast is included. The
+host-only terminal policy still requires a new guest/issuance proof. Independent
+user custody and the N-user service-shutdown gate remain open; local process
+separation is not an independently administered user machine.
