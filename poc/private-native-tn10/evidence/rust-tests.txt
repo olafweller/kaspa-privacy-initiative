@@ -17,4 +17,3 @@ test tests::real_fixture_exit_receipt_builds_signed_permission_and_reconciled_pa
 test tests::real_retained_receipts_verify_only_their_exact_regression_targets ... ok
 
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.91s
-
