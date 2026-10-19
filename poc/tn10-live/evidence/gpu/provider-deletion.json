@@ -1,0 +1,21 @@
+{
+  "podId": "jl3e5fcfy32m40",
+  "deletedUnix": 1792402961.7297425,
+  "providerGetStatus": 404,
+  "podAbsentFromList": true,
+  "remainingPodCount": 0,
+  "deletedPodVolumeGb": 10,
+  "deletedContainerDiskGb": 90,
+  "networkVolumeCreated": false,
+  "bArchiveRevalidatedBeforeDelete": true,
+  "cloudRecoveryVerified": true,
+  "receiptCount": 4,
+  "cryptographicSuccess": true,
+  "actualTN10LifecycleCompleted": true,
+  "guardUnitState": [
+    "ActiveState=inactive",
+    "SubState=dead",
+    "UnitFileState=disabled"
+  ],
+  "actualInvoiceAvailable": false
+}

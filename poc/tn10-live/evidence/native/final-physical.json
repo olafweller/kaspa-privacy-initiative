@@ -1,0 +1,82 @@
+{
+  "scope": "ACTUAL_TN10_SELECTED_CHAIN_AND_UNSPENT_OUTPUT_OBSERVATION",
+  "bob": {
+    "address": "kaspatest:qqdqypkn5tvv3h0tfkaze387eehw44dwytrr35ndfyzelmaqtpe5vt8gapjhu",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "f26e03cade619c68d856dd429733f903add560495a547d0ee083aed34c4c6652"
+    },
+    "utxoEntry": {
+      "amount": 450000000,
+      "blockDaaScore": 600671627,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "0000201a0206d3a2d8c8ddeb4dba2cc4fece6eead5ae22c638d26d49059fefa0587346ac"
+    }
+  },
+  "reserve": {
+    "address": "kaspatest:pphyy7dzzndh5z0kz080aquhfsl940lg83nchljc5na9s3f9dwjf5luyp9uqs",
+    "outpoint": {
+      "index": 1,
+      "transactionId": "f26e03cade619c68d856dd429733f903add560495a547d0ee083aed34c4c6652"
+    },
+    "utxoEntry": {
+      "amount": 600000000,
+      "blockDaaScore": 600671627,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a87"
+    }
+  },
+  "stateCovenant": {
+    "address": "kaspatest:pzlfjl2zt7l49kzj8q7ddl4670ddlkkq63drmhzcape7cda8gx75c98rxnlku",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "236999c339905894da879ab78061e21c202f62fab6f42d8b3dd9314275d4b9b5"
+    },
+    "utxoEntry": {
+      "amount": 100000000,
+      "blockDaaScore": 600676158,
+      "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa20be997d425fbf52d852383cd6febaf3dadfdac0d45a3ddc58e873ec37a741bd4c87"
+    }
+  },
+  "permissionConsumed": true,
+  "originalDepositReserveSpent": true,
+  "finalAccounting": {
+    "outstanding_permission_rent_excluded": 0,
+    "pending_deposits": 0,
+    "private_liability": 600000000,
+    "reserve_principal": 600000000,
+    "state_covenant_rent_excluded": 100000000,
+    "unpaid_exits": 0
+  },
+  "finalCheckpointStateRoot": "4c050dfe1e822f6db96b3237f0b6ba5d8ecc6d037c90ef26b22d5299afc761e8",
+  "actualAcceptedFeeSompiByTransaction": {
+    "exit-settlement": 47634000,
+    "payout": 351800,
+    "bootstrap": 4004000,
+    "reconcile-settlement": 47582600,
+    "deposit-settlement": 47582600,
+    "initialize": 3518200,
+    "activate": 169500,
+    "publish-exit": 222500,
+    "publish-invalid-transfer": 259500,
+    "deposit": 219600,
+    "publish-credit": 241000,
+    "credit-transfer-settlement": 47582600,
+    "publish-transfer": 259500
+  },
+  "actualAcceptedTrialFeesSompi": 199627400,
+  "sourceFundingFeeSompi": 703600,
+  "feePlanningSompi": 500000000,
+  "operatorControlsLogicalBob": true,
+  "addresses": {
+    "state": "kaspatest:pzlfjl2zt7l49kzj8q7ddl4670ddlkkq63drmhzcape7cda8gx75c98rxnlku",
+    "reserve": "kaspatest:pphyy7dzzndh5z0kz080aquhfsl940lg83nchljc5na9s3f9dwjf5luyp9uqs",
+    "permission": "kaspatest:pqpqhcccqeczyv4yjjq4l0pf3d8763dzmmdxr5m0hppyta7pzlmacjx76dpja",
+    "bob": "kaspatest:qqdqypkn5tvv3h0tfkaze387eehw44dwytrr35ndfyzelmaqtpe5vt8gapjhu",
+    "sponsor": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4"
+  }
+}

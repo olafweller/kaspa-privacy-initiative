@@ -1,0 +1,60 @@
+{
+  "broadcast": false,
+  "details": {},
+  "kind": "activate",
+  "qualification": {
+    "allInputScriptsExecuted": true,
+    "computeMass": 1695,
+    "estimatedSerializedBytes": 335,
+    "feeRateSompiPerGram": 100,
+    "feeSompi": 169500,
+    "inputComputeBudgets": [
+      10
+    ],
+    "inputScriptUnits": [
+      100001
+    ],
+    "liveUtxoAndAnchorRecheckRequired": true,
+    "networkAcceptance": false,
+    "priorityMass": 1695,
+    "requiredFeeSompi": 169500,
+    "rpcJsonBytes": 794,
+    "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+    "storageMass": 0,
+    "transactionId": "5483e5c06c5318d9133eb6582ca68489b7c267a2481f1d92c80e37c57854b87a",
+    "transientMass": 1340
+  },
+  "transaction": {
+    "gas": 0,
+    "inputs": [
+      {
+        "computeBudget": 10,
+        "previousOutpoint": {
+          "index": 0,
+          "transactionId": "6c392dd9bb11979d3fca3466440a0eb394082a85784cde7cce1f63a7fe4bb2d0"
+        },
+        "sequence": 0,
+        "sigOpCount": 0,
+        "signatureScript": "416fa45a845bdb1748f212d22635bf3dd5a4fa01622f9e4587ca4e118c11554237c83320aac82acf16c887ae8c37696fe2af0bf2105175f7330732a583ac8226a101",
+        "verboseData": null
+      }
+    ],
+    "lockTime": 0,
+    "mass": 0,
+    "outputs": [
+      {
+        "covenant": null,
+        "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac",
+        "value": 1649830500,
+        "verboseData": null
+      }
+    ],
+    "payload": "4b50492d544e31302d707269766174652d747269616c2d61637469766174696f6e2d763100fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+    "storageMass": 0,
+    "subnetworkId": "0044454600000000000000000000000000000000",
+    "verboseData": null,
+    "version": 1
+  },
+  "transactionId": "5483e5c06c5318d9133eb6582ca68489b7c267a2481f1d92c80e37c57854b87a",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

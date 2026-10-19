@@ -1,0 +1,98 @@
+{
+  "broadcast": false,
+  "details": {},
+  "kind": "payout",
+  "qualification": {
+    "allInputScriptsExecuted": true,
+    "computeMass": 3518,
+    "estimatedSerializedBytes": 1428,
+    "feeRateSompiPerGram": 100,
+    "feeSompi": 351800,
+    "inputComputeBudgets": [
+      0,
+      0,
+      10
+    ],
+    "inputScriptUnits": [
+      3322,
+      181,
+      100001
+    ],
+    "liveUtxoAndAnchorRecheckRequired": true,
+    "networkAcceptance": false,
+    "priorityMass": 3518,
+    "requiredFeeSompi": 351800,
+    "rpcJsonBytes": 3255,
+    "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+    "storageMass": 0,
+    "transactionId": "f26e03cade619c68d856dd429733f903add560495a547d0ee083aed34c4c6652",
+    "transientMass": 5712
+  },
+  "transaction": {
+    "gas": 0,
+    "inputs": [
+      {
+        "computeBudget": 0,
+        "previousOutpoint": {
+          "index": 1,
+          "transactionId": "0498714331a7cb56b1894fff0ebd48fa6e7db0e195d7c7ac9d75d35a51d4f29a"
+        },
+        "sequence": 0,
+        "sigOpCount": 0,
+        "signatureScript": "20dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d9860020dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d9860022201a0206d3a2d8c8ddeb4dba2cc4fece6eead5ae22c638d26d49059fefa0587346ac080084d71700000000040084d7174dd202b614004445460000000000000000000000000000000088b25188b90088b35388b4538851ba2006b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b468851bb008851bf250000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a878852cf2000000000000000000000000000000000000000000000000000000000000000008852bf250000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a8787008800d64f8851d64f8852d64f8851c200a06952c3250000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a87870088202b3d8c351034e48b12349ce873d89b68c796f86abacfdeb12f77dc53d20e70840801000000000000006b6b7600a069766b787c947600a269527a760200007c7e00c3887b7b7600876b58cd7b766b7c7e01007c7ea80102a86c6c766b7c6b63776775686b6c6c7b7e01007c7ea87c6b7c63677c687e01017c7ea86c6c6c6c547a887b7c6b7c6b7c63677c687e01017c7ea86c6c6c7b635194676858cd7b7c00c25379a269b454a000887608000000000000000087637575b9cfd2008800c278b9be93a26967587c7e7c01207c7e7c7eb9b9c902a98193b9c9bc7eaa040000aa207c7e01877e51c388b9cf76d27651888cd35188b9be51c29d68b35aa00088b9cf07b900a06900cf207c7e0e880000c97652947cbc02517588517eaa040000aa207c7e01877e6b00b352a26351bf6c766b876351be936868b353a26352bf6c766b876352be936868b354a26353bf6c766b876353be936868b355a26354bf6c766b876354be936868b356a26355bf6c766b876355be936868b357a26356bf6c766b876356be936868b358a26357bf6c766b876357be936868b359a26358bf6c766b876358be936868b35aa26359bf6c766b870088687c947600a269b9cfd251937800a06376c36c88c2886775756c7568515175",
+        "verboseData": null
+      },
+      {
+        "computeBudget": 0,
+        "previousOutpoint": {
+          "index": 0,
+          "transactionId": "06b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b46"
+        },
+        "sequence": 0,
+        "sigOpCount": 0,
+        "signatureScript": "35b900a06900cf208ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11880000c97652947cbc0251758851",
+        "verboseData": null
+      },
+      {
+        "computeBudget": 10,
+        "previousOutpoint": {
+          "index": 2,
+          "transactionId": "0498714331a7cb56b1894fff0ebd48fa6e7db0e195d7c7ac9d75d35a51d4f29a"
+        },
+        "sequence": 0,
+        "sigOpCount": 0,
+        "signatureScript": "412f430284ca44ffaab0b3a80f10789d29048c8660ed6dcfe2659159ac8931c3b09ac83af5daacb808c7ed33ac7927b777723c8ce2b484938f19c983548149563601",
+        "verboseData": null
+      }
+    ],
+    "lockTime": 0,
+    "mass": 0,
+    "outputs": [
+      {
+        "covenant": null,
+        "scriptPublicKey": "0000201a0206d3a2d8c8ddeb4dba2cc4fece6eead5ae22c638d26d49059fefa0587346ac",
+        "value": 450000000,
+        "verboseData": null
+      },
+      {
+        "covenant": null,
+        "scriptPublicKey": "0000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a87",
+        "value": 600000000,
+        "verboseData": null
+      },
+      {
+        "covenant": null,
+        "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac",
+        "value": 347955200,
+        "verboseData": null
+      }
+    ],
+    "payload": "4b50492d6e61746976652d7061796f75742d76310088dab4f9a32eaac077214219c6cf816b4856b52bbf5ad0094bc9adb8ef4636fe",
+    "storageMass": 0,
+    "subnetworkId": "0044454600000000000000000000000000000000",
+    "verboseData": null,
+    "version": 1
+  },
+  "transactionId": "f26e03cade619c68d856dd429733f903add560495a547d0ee083aed34c4c6652",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

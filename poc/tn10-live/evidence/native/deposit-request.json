@@ -1,0 +1,44 @@
+{
+  "checkpointPath": "/workspace/kaspa-privacy-initiative/.local/tn10-live-20261019/initialize-checkpoint/checkpoint.json",
+  "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+  "feeRateSompiPerGram": 100,
+  "kind": "deposit",
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600651339
+  },
+  "sponsorUtxo": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "outpoint": {
+      "index": 1,
+      "transactionId": "217a83a658032a2e27bb913cc969e02ce0a33505fd4adf5451cf0624a8d12c09"
+    },
+    "utxoEntry": {
+      "amount": 1542308300,
+      "blockDaaScore": 600650256,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac"
+    }
+  },
+  "stateUtxo": {
+    "address": "kaspatest:ppcjsucc6dzzd3xlx3edtjl6yfvv0scr7gd2tthefuymvpfw6vctwycgyzfhf",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "217a83a658032a2e27bb913cc969e02ce0a33505fd4adf5451cf0624a8d12c09"
+    },
+    "utxoEntry": {
+      "amount": 100000000,
+      "blockDaaScore": 600650256,
+      "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa2071287318d34426c4df3472d5cbfa2258c7c303f21aa5aef94f09b6052ed330b787"
+    }
+  },
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

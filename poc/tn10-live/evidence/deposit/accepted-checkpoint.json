@@ -1,0 +1,25 @@
+{
+  "acceptanceCaptureSha256": "17823c833871ce160df7e299f78cd07a81c575331001e39de6e4dcc7970b5cf2",
+  "accounting": {
+    "outstanding_permission_rent_excluded": 0,
+    "pending_deposits": 1000000000,
+    "private_liability": 0,
+    "reserve_principal": 1000000000,
+    "state_covenant_rent_excluded": 100000000,
+    "unpaid_exits": 0
+  },
+  "completed": "deposit",
+  "freshLiveUtxoAndSelectedChainCheckBeforeSpending": true,
+  "nextCaptureStart": "ab97d3771edf0521defd1dff1a34c864ef378e74eb6b75bae2e4cea37688c6af",
+  "previousSha256": "685c2d754a5fa64b09102801a4e7f63a6a78f10722c25025c371ca62c6dec13e",
+  "schema": "KPI_TN10_CHECKPOINT_V1",
+  "signedRecordSha256": "40627bbc3f33dac770f0cbf88109b396d96154ac7a83977f11f6db8e0c2ab21c",
+  "stateOutpoint": {
+    "index": 0,
+    "transactionId": "691d3bc0ae45c8636b83a359e4316a199aa6287c88cc68d9d4c3e15cf7dae193"
+  },
+  "stateRoot": "f742396ce3fd194405fb3ff76f36721a6c905d0eaf8eeadd6352794533368e97",
+  "stateSha256": "8a66d7801cb35d6bf39a9534455458cd0ecc081ac0a2b89f3a7243471b4a84ea",
+  "status": "CAPTURED_NATIVE_ACCEPTANCE_OFFLINE_RECHECK_REQUIRED",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

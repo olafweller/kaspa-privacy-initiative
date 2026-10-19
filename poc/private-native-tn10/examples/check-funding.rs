@@ -18,6 +18,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     assert_eq!(es.len(), 1);
     assert_eq!(tx.inputs.len(), 1);
     assert_eq!(tx.outputs.len(), 2);
+    assert_eq!(tx.outputs[0].value, 1_650_000_000);
+    let mut recipient = vec![32];
+    recipient.extend(hex::decode(
+        "dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891",
+    )?);
+    recipient.push(0xac);
+    assert_eq!(
+        tx.outputs[0].script_public_key,
+        ScriptPublicKey::new(0, recipient.into())
+    );
+    assert!(tx.outputs.iter().all(|o| o.covenant.is_none()));
     assert_eq!(
         tx.inputs[0].previous_outpoint,
         es[0].outpoint.clone().into()
@@ -25,6 +36,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     assert!(!es[0].utxo_entry.is_coinbase);
     assert!(es[0].utxo_entry.covenant_id.is_none());
     let entries: Vec<UtxoEntry> = es.into_iter().map(|e| e.utxo_entry.into()).collect();
+    assert_eq!(
+        tx.outputs[1].script_public_key,
+        entries[0].script_public_key
+    );
     let pop = PopulatedTransaction::new(&tx, entries.clone());
     let cache = Cache::new(10);
     let cov = CovenantsContext::from_tx(&pop)?;
@@ -51,7 +66,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             && ctx.storage_mass <= limits.storage
     );
     let mass = kaspa_consensus_core::mass::Mass::new(non, ctx).normalized_max(&limits.cofactors());
-    let fee = entries[0].amount - tx.outputs.iter().map(|o| o.value).sum::<u64>();
+    let total = tx
+        .outputs
+        .iter()
+        .try_fold(0u64, |s, o| s.checked_add(o.value))
+        .ok_or("output sum overflow")?;
+    let fee = entries[0]
+        .amount
+        .checked_sub(total)
+        .ok_or("outputs exceed input")?;
     assert!(fee >= 100 * mass && fee <= 10_000_000);
     println!(
         "{}",

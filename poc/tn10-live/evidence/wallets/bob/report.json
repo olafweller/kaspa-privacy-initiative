@@ -1,0 +1,10 @@
+{
+  "broadcast": false,
+  "parameterSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "role": "bob",
+  "scope": "ROLE_LOCAL_WALLET_PROOFS_FOR_PUBLIC_ACCEPTED_STATE",
+  "seconds": 8.45619902,
+  "secretMaterialPublished": false,
+  "sourceStateSha256": "3c275e6309fce6e38dd071146acdf9fc1273eaa53e321e64d1c69432bc9569ed",
+  "walletVk": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec"
+}

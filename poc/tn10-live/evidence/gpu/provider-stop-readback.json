@@ -1,0 +1,30 @@
+{
+  "observedUnix": 1792402850.4284992,
+  "providerDesiredExitedConfirmed": true,
+  "provider": {
+    "id": "jl3e5fcfy32m40",
+    "createdAt": "2026-10-19 09:01:03.132 +0000 UTC",
+    "desiredStatus": "EXITED",
+    "costPerHr": 1.09,
+    "adjustedCostPerHr": null,
+    "lastStartedAt": "2026-10-19 09:01:03.127 +0000 UTC",
+    "lastStoppedAt": null,
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA L40S",
+    "volumeInGb": 10,
+    "containerDiskInGb": 90,
+    "networkVolumeId": null
+  },
+  "guardStop": {
+    "requestedUnix": 1792402632.0282362,
+    "providerDesiredExitedConfirmed": true,
+    "podId": "jl3e5fcfy32m40",
+    "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+  },
+  "guardService": [
+    "MainPID=0",
+    "ActiveState=inactive",
+    "SubState=dead"
+  ],
+  "invoiceAvailable": false
+}

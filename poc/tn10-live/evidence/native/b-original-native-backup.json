@@ -1,0 +1,10 @@
+{
+  "path": "/var/lib/kpi-cuda-guard/tn10-live-20261019/evidence/original-native-rpc-and-pages.tar",
+  "sha256": "ec336c9b417dcc57347318bb5be41ef76141f2843a0d690e1ff7b71fb0f18a0e",
+  "bytes": 326840320,
+  "savedUnix": 1792403284.9967282,
+  "publicRpcAndOriginalPagesOnly": true,
+  "sourceFileCount": 138,
+  "sourceManifestSha256": "3851b00dcf646c26edb32c5d50823cbf71b4a09b6ef5c3ae5ad4c5768e518fd9",
+  "directGatewayToBPublicStream": true
+}

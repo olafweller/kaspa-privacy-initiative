@@ -1,0 +1,26 @@
+{
+  "deposit": {
+    "producerSeconds": 61.937631324,
+    "phaseSeconds": 62.7417613749858,
+    "startUnix": 1792400523.8962824,
+    "endUnixApprox": 1792400586.6380439
+  },
+  "credit-transfer": {
+    "producerSeconds": 334.947284502,
+    "phaseSeconds": 335.78796896501444,
+    "startUnix": 1792401230.2764227,
+    "endUnixApprox": 1792401566.0643916
+  },
+  "exit": {
+    "producerSeconds": 107.732830541,
+    "phaseSeconds": 108.4359148540243,
+    "startUnix": 1792401996.1369503,
+    "endUnixApprox": 1792402104.572865
+  },
+  "reconcile": {
+    "producerSeconds": 126.586562544,
+    "phaseSeconds": 127.45415797000169,
+    "startUnix": 1792402434.5964568,
+    "endUnixApprox": 1792402562.0506148
+  }
+}

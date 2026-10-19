@@ -1,0 +1,14 @@
+{
+  "scope": "RATE_AND_OBSERVED_TIMESTAMP_ESTIMATE_NOT_FINAL_PROVIDER_INVOICE",
+  "actualInvoiceAvailable": false,
+  "observedComputeSecondsApprox": 2168.896236181259,
+  "observedStoppedVolumeSecondsApprox": 329.7015063762665,
+  "computeHourlyUsd": "1.09",
+  "activeStorageHourlyUsdUpperBound": "0.014",
+  "stoppedStorageHourlyUsdUpperBound": "0.0028",
+  "computeEstimateUsd": 0.656693582621548,
+  "storageEstimateUsdUpperBound": 0.008691030978997549,
+  "computeAndStorageEstimateUsd": 0.6653846136005456,
+  "planningAllowanceUsd": 5,
+  "accountTopupsAndTaxExcluded": true
+}

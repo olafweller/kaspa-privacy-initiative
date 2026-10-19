@@ -1,0 +1,6 @@
+{
+  "transactionId": "52afd24afb8686cbbe86bec1aa445088c0591a338921f43859af0ce3b9b013a8",
+  "negative": "recipient",
+  "reason": "{\"code\":0,\"message\":\"Rejected transaction 52afd24afb8686cbbe86bec1aa445088c0591a338921f43859af0ce3b9b013a8: failed to verify the signature script: script ran, but verification failed\",\"data\":null}",
+  "at": "2026-10-19T09:30:17.439Z"
+}

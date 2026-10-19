@@ -1,0 +1,66 @@
+{
+  "broadcast": false,
+  "details": {},
+  "kind": "deposit",
+  "qualification": {
+    "allInputScriptsExecuted": true,
+    "computeMass": 2108,
+    "estimatedSerializedBytes": 378,
+    "feeRateSompiPerGram": 100,
+    "feeSompi": 219600,
+    "inputComputeBudgets": [
+      10
+    ],
+    "inputScriptUnits": [
+      100001
+    ],
+    "liveUtxoAndAnchorRecheckRequired": true,
+    "networkAcceptance": false,
+    "priorityMass": 2196,
+    "requiredFeeSompi": 219600,
+    "rpcJsonBytes": 930,
+    "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+    "storageMass": 2196,
+    "transactionId": "06b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b46",
+    "transientMass": 1512
+  },
+  "transaction": {
+    "gas": 0,
+    "inputs": [
+      {
+        "computeBudget": 10,
+        "previousOutpoint": {
+          "index": 1,
+          "transactionId": "217a83a658032a2e27bb913cc969e02ce0a33505fd4adf5451cf0624a8d12c09"
+        },
+        "sequence": 0,
+        "sigOpCount": 0,
+        "signatureScript": "416ba57979b4aff1b1f8f9466ba9c4ca58c2db99f2f89ba363ceaee5fe2379e518430a72ae7e26c03fb25242b61940c109d6afaefd2aaf02e52872ab6fe7f5bfdc01",
+        "verboseData": null
+      }
+    ],
+    "lockTime": 0,
+    "mass": 2196,
+    "outputs": [
+      {
+        "covenant": null,
+        "scriptPublicKey": "0000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a87",
+        "value": 1000000000,
+        "verboseData": null
+      },
+      {
+        "covenant": null,
+        "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac",
+        "value": 542088700,
+        "verboseData": null
+      }
+    ],
+    "payload": "4b50492d707269766174652d6465706f7369742d7631006ec84b2ff01e9dd5337b38e0976bf154047dc3d1367598a6b35b938a5ca3243d00000000",
+    "storageMass": 2196,
+    "subnetworkId": "0044454600000000000000000000000000000000",
+    "verboseData": null,
+    "version": 1
+  },
+  "transactionId": "06b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b46",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

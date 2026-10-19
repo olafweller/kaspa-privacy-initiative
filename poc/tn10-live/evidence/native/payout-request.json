@@ -1,0 +1,59 @@
+{
+  "exitId": "88dab4f9a32eaac077214219c6cf816b4856b52bbf5ad0094bc9adb8ef4636fe",
+  "feeRateSompiPerGram": 100,
+  "kind": "payout",
+  "permissionTransactionPath": "/workspace/kaspa-privacy-initiative/.local/tn10-live-20261019/exit-settlement-build/transaction.json",
+  "permissionUtxo": {
+    "address": "kaspatest:pqpqhcccqeczyv4yjjq4l0pf3d8763dzmmdxr5m0hppyta7pzlmacjx76dpja",
+    "outpoint": {
+      "index": 1,
+      "transactionId": "0498714331a7cb56b1894fff0ebd48fa6e7db0e195d7c7ac9d75d35a51d4f29a"
+    },
+    "utxoEntry": {
+      "amount": 50000000,
+      "blockDaaScore": 600671331,
+      "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa20020be31806702232a494815fbc298b4fed45a2deda61d36fb84245f7c117f7dc87"
+    }
+  },
+  "publicStatePath": "/workspace/kaspa-privacy-initiative/.local/tn10-live-20261019/exit-batch/state.bin",
+  "reserveUtxo": {
+    "address": "kaspatest:pphyy7dzzndh5z0kz080aquhfsl940lg83nchljc5na9s3f9dwjf5luyp9uqs",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "06b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b46"
+    },
+    "utxoEntry": {
+      "amount": 1000000000,
+      "blockDaaScore": 600651381,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa206e4279a214db7a09f613cefe83974c3e5abfe83c678bfe58a4fa5845256ba49a87"
+    }
+  },
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600671420
+  },
+  "sponsorUtxo": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "outpoint": {
+      "index": 2,
+      "transactionId": "0498714331a7cb56b1894fff0ebd48fa6e7db0e195d7c7ac9d75d35a51d4f29a"
+    },
+    "utxoEntry": {
+      "amount": 348307000,
+      "blockDaaScore": 600671331,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac"
+    }
+  },
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

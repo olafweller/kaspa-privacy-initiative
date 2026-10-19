@@ -1,0 +1,10 @@
+{
+  "broadcast": false,
+  "parameterSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "role": "alice",
+  "scope": "ROLE_LOCAL_WALLET_PROOFS_FOR_PUBLIC_ACCEPTED_STATE",
+  "seconds": 23.044264486,
+  "secretMaterialPublished": false,
+  "sourceStateSha256": "8a66d7801cb35d6bf39a9534455458cd0ecc081ac0a2b89f3a7243471b4a84ea",
+  "walletVk": "d3c179aae5c2c6c013b1de1da5ad4412e4b2c8bae7288c0b9d85e0c986b5a3ec"
+}

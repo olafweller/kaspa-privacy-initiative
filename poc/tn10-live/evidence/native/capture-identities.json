@@ -1,0 +1,58 @@
+{
+  "deposit": {
+    "path": "native/deposit-capture.json.gz",
+    "rawSha256": "2eb2dbe0fdb5ed59af3e120e5e3c76099976baab45528762509cc05cc7cb3ace",
+    "rawBytes": 60172821,
+    "gzipSha256": "9b9f2a60832cd00daa5aaf225fc9a9c77706009000e8e27a323c285c0187205f",
+    "gzipBytes": 8860083
+  },
+  "credit-transfer": {
+    "path": "native/credit-transfer-capture.json.gz",
+    "rawSha256": "d648758f7d286ad6e6fc84066a66385ab33f57e76f4b3756bc20a526720be60b",
+    "rawBytes": 355661105,
+    "gzipSha256": "854d6941e209052dd08200f9ad982895654250f55da86428a5da0bbf6118b615",
+    "gzipBytes": 56331519
+  },
+  "exit": {
+    "path": "native/exit-capture.json.gz",
+    "rawSha256": "884936bc80ac3025e8d5e464620f888a555dc022298cc61848e2bc2078296d7b",
+    "rawBytes": 326045533,
+    "gzipSha256": "de78e7aaddf9e5ccfaea89aaf996a4d541948b2da199e7733991fe017ace7568",
+    "gzipBytes": 48556110
+  },
+  "reconcile": {
+    "path": "native/reconcile-capture.json.gz",
+    "rawSha256": "32dc3f7a78232e08af05dcf8aaf6238112cf2ac70d7d9183b2ebc6b6722b014c",
+    "rawBytes": 341043304,
+    "gzipSha256": "765538ea633d94599f943ce078538b7c0c447cf4d430331d94d9157fd64940ce",
+    "gzipBytes": 55932777
+  },
+  "initialize": {
+    "path": "native/initialize-capture.json.gz",
+    "rawSha256": "83c2873d706b6bc5da81fccf532285b771dcb5f58ccf01b4b50a0cdc67741039",
+    "rawBytes": 15266780,
+    "gzipSha256": "a206d0f668ed81cdb45455ee876b0bcbf5c0f90c95d99e8f27126ac23bff89fa",
+    "gzipBytes": 2222556
+  },
+  "seed": {
+    "path": "native/seed-capture.json.gz",
+    "rawSha256": "718f89a43225c3885ea1b27b25b80c12d797caea2df72c59a26f7e303c859e57",
+    "rawBytes": 4032314,
+    "gzipSha256": "202e968f8c085d5c1105613de3af41fbc562568b8587d4f29711e6901af7d330",
+    "gzipBytes": 528838
+  },
+  "final-settlement": {
+    "path": "native/final-settlement-capture.json.gz",
+    "rawSha256": "d82c732d7a0da580a94f529110613f6848801b6be597f8ccd960ed3a75a4ae1a",
+    "rawBytes": 263892070,
+    "gzipSha256": "5320d2614cfaa76c9af0d198dc545b6715fb967644538bc3f59aedde565b047f",
+    "gzipBytes": 40870532
+  },
+  "deposit-settlement": {
+    "path": "native/deposit-settlement-capture.json.gz",
+    "rawSha256": "17823c833871ce160df7e299f78cd07a81c575331001e39de6e4dcc7970b5cf2",
+    "rawBytes": 213425755,
+    "gzipSha256": "40a6b07c7b1c9eb7a7cd7dd786cc0e90562d58c911b635366d39b6880795cea2",
+    "gzipBytes": 32003215
+  }
+}

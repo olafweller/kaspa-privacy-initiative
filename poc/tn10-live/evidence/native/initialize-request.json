@@ -1,0 +1,43 @@
+{
+  "bootstrapPath": "/workspace/kaspa-privacy-initiative/.local/tn10-live-20261019/bootstrap-build/transaction.json",
+  "feeRateSompiPerGram": 100,
+  "kind": "initialize",
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600650213
+  },
+  "sponsorUtxo": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "outpoint": {
+      "index": 1,
+      "transactionId": "db6d96fa4b10fbe370e22fbf51490bfad713dc622a3fc987136db3c4bae01a2b"
+    },
+    "utxoEntry": {
+      "amount": 1545826500,
+      "blockDaaScore": 600650143,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac"
+    }
+  },
+  "stateUtxo": {
+    "address": "kaspatest:pqeul8g38w6haaxfe4zr4dtj6fev6fk473eqx7ar4s8mc8v3yefgu627djx8z",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "db6d96fa4b10fbe370e22fbf51490bfad713dc622a3fc987136db3c4bae01a2b"
+    },
+    "utxoEntry": {
+      "amount": 100000000,
+      "blockDaaScore": 600650143,
+      "covenantId": "8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11",
+      "isCoinbase": false,
+      "scriptPublicKey": "0000aa2033cf9d113bb57ef4c9cd443ab572d272cd26d5f472037ba3ac0fbc1d9126528e87"
+    }
+  },
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

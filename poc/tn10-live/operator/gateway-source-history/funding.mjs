@@ -1,0 +1,38 @@
+// One fixed 16.5 test-KAS allocation, prepared on the existing TN10 operator.
+// The existing source key is used only by this signer and never exported.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
+import * as E from '/opt/kpi-tn10-preflight-20261019/capture-tool/exact-json.mjs';
+import {request} from '/opt/kpi-tn10-preflight-20261019/tn10-preflight/rpc.mjs';
+const dir='/opt/kpi-tn10-live-20261019';
+const source='kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp';
+const destination='kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4';
+const save=(n,v)=>fs.writeFileSync(dir+'/'+n,E.stringify(v,null,2)+'\n',{flag:'wx',mode:0o600});
+const call=async(m,p={})=>{const raw=await request(m,p);const r=E.parse(raw);assert(!r.error);return r.params;};
+const info=await call('getServerInfo');assert.equal(info.networkId,'testnet-10');assert(info.isSynced);
+const fees=await call('getFeeEstimate');assert(fees.estimate.priorityBucket.feerate<=100);
+assert(!(await call('getUtxosByAddresses',{addresses:[destination]})).entries.length,'fresh sponsor only');
+const entries=(await call('getUtxosByAddresses',{addresses:[source]})).entries;
+const chosen=entries.find(e=>e.outpoint.transactionId==='abb14f3630d67d9357ab4f805353d583cef7db7febe8e66b8302244a5cbda6ac'&&e.outpoint.index===1);
+assert(chosen && !chosen.utxoEntry.isCoinbase && chosen.utxoEntry.covenantId===null);
+for(const [p,h] of [['kaspa.js','6d92cb305d0cc2eb26de9e305b7f7a8c17daa130ad478f0b340b50490557dbcf'],['kaspa_bg.wasm','c9657568610ae1d305bc2e1cf85208ceba0d1a7893c4057b38caa8add2ffb0f5']]) assert.equal(crypto.createHash('sha256').update(fs.readFileSync('/opt/kpi-cloud-https/sdk/'+p)).digest('hex'),h);
+const k=createRequire(import.meta.url)('/opt/kpi-cloud-https/sdk/kaspa.js');
+const kp='/opt/kpi-pr31-cloud-20261017/test-wallet.key';assert.equal(fs.statSync(kp).mode&0o777,0o600);
+const key=new k.PrivateKey(fs.readFileSync(kp,'utf8').trim());assert.equal(key.toAddress('testnet-10').toString(),source);
+const e=chosen.utxoEntry;
+const generator=new k.Generator({entries:[{address:source,outpoint:chosen.outpoint,amount:BigInt(e.amount),scriptPublicKey:e.scriptPublicKey,blockDaaScore:BigInt(e.blockDaaScore),isCoinbase:false}],outputs:[{address:destination,amount:1650000000n}],changeAddress:source,priorityFee:500000n,networkId:'testnet-10'});
+const pending=await generator.next();assert(pending);assert(!(await generator.next()));pending.sign([key]);
+const tx=pending.transaction;assert.equal(tx.version,0);assert.equal(tx.inputs.length,1);assert.equal(tx.outputs.length,2);
+assert.equal(tx.outputs[0].value,1650000000n);
+const spk=s=>s.version.toString(16).padStart(4,'0')+s.script;
+assert.equal(spk(tx.outputs[0].scriptPublicKey),spk(k.payToAddressScript(destination)));
+assert.equal(spk(tx.outputs[1].scriptPublicKey),spk(k.payToAddressScript(source)));
+assert(tx.outputs.every(o=>!o.covenant));
+const mass=k.calculateStorageMass('testnet-10',[Number(e.amount)],tx.outputs.map(o=>{assert(o.value<=BigInt(Number.MAX_SAFE_INTEGER));return Number(o.value);}));assert(mass!==undefined);tx.storageMass=mass;tx.finalize();
+const raw={version:tx.version,inputs:tx.inputs.map(i=>({previousOutpoint:{transactionId:i.previousOutpoint.transactionId,index:i.previousOutpoint.index},signatureScript:i.signatureScript,sequence:BigInt(i.sequence),sigOpCount:i.sigOpCount,computeBudget:i.computeBudget})),outputs:tx.outputs.map(o=>({value:BigInt(o.value),scriptPublicKey:spk(o.scriptPublicKey),covenant:null})),lockTime:BigInt(tx.lockTime),subnetworkId:tx.subnetworkId,gas:BigInt(tx.gas),payload:tx.payload,storageMass:BigInt(tx.storageMass)};
+const fee=BigInt(e.amount)-raw.outputs.reduce((s,o)=>s+o.value,0n);assert(fee>0n&&fee<=10000000n);
+save('funding-check-input.json',{transaction:raw,entries:[chosen]});
+save('funding-transaction.json',{kind:'funding',transactionId:tx.id,transaction:raw,fundingSompi:1650000000,feeSompi:fee,source,destination,networkAccepted:false});
+console.log(E.stringify({prepared:true,transactionId:tx.id,feeSompi:fee,broadcast:false}));

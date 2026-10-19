@@ -1,0 +1,207 @@
+{
+  "archivePath": "/var/lib/kpi-cuda-guard/artifacts/d56383ac91c5e4707c0d9890fafb637f8b708107d4cf90ec44b8dff6e41002f3.tar.gz",
+  "archiveSha256": "d56383ac91c5e4707c0d9890fafb637f8b708107d4cf90ec44b8dff6e41002f3",
+  "archiveBytes": 4548572,
+  "verification": {
+    "scope": "TRUSTED_B_CPU_VERIFICATION_NOT_LIVE_NATIVE_ACCEPTANCE",
+    "results": {
+      "deposit": {
+        "receiptSha256": "99c48f4a36d204ca0eae9f407ad54fc4c8fe8da2dd051bfe0208c94db895a8ec",
+        "targetSha256": "685c2d754a5fa64b09102801a4e7f63a6a78f10722c25025c371ca62c6dec13e",
+        "verified": true
+      },
+      "credit-transfer": {
+        "receiptSha256": "5466e9089fa6996ec0c0367539582266a1727f213900c04ee0e483e0eb9fd9a7",
+        "targetSha256": "1a4b0f04e6ef7ac7aadef1c5e0976c0e627427c4c71e02ac9a5494ddae136249",
+        "verified": true
+      },
+      "exit": {
+        "receiptSha256": "2eb6823bb0169229938fd37d477f5d3b4c7f537d161e772a5c2be7af008bb575",
+        "targetSha256": "31781f3f0f531b478646483ccda778b26ad4ade88d3d3f5b9cd51e9350514da9",
+        "verified": true
+      },
+      "reconcile": {
+        "receiptSha256": "abce7add3423cd75e3f9dec855d611115940f9a6ea447501201d5eda9068dfa1",
+        "targetSha256": "8c646f3f225858095b39d26f564e6c8bec56fac42f5ee174f5665d281e893f9f",
+        "verified": true
+      }
+    },
+    "verifiedCount": 4,
+    "allFourVerified": true,
+    "independentImplementations": false,
+    "downloadedExecutablesRun": false
+  },
+  "status": {
+    "state": "completed",
+    "phase": "four-stages-completed-in-container",
+    "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+    "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+    "approved": {
+      "deposit": "685c2d754a5fa64b09102801a4e7f63a6a78f10722c25025c371ca62c6dec13e",
+      "credit-transfer": "1a4b0f04e6ef7ac7aadef1c5e0976c0e627427c4c71e02ac9a5494ddae136249",
+      "exit": "31781f3f0f531b478646483ccda778b26ad4ade88d3d3f5b9cd51e9350514da9",
+      "reconcile": "8c646f3f225858095b39d26f564e6c8bec56fac42f5ee174f5665d281e893f9f"
+    },
+    "received": {
+      "deposit": {
+        "targetSha256": "685c2d754a5fa64b09102801a4e7f63a6a78f10722c25025c371ca62c6dec13e",
+        "archiveSha256": "01632e8edfbc39b27cc000287d6c7ad186bd7073073adb8d96db2a7f44083c92"
+      },
+      "credit-transfer": {
+        "targetSha256": "1a4b0f04e6ef7ac7aadef1c5e0976c0e627427c4c71e02ac9a5494ddae136249",
+        "archiveSha256": "0eebb3131d7c229c1f366300dd50ef4a658d9ddf8025da81b81f9b69d03d14ab"
+      },
+      "exit": {
+        "targetSha256": "31781f3f0f531b478646483ccda778b26ad4ade88d3d3f5b9cd51e9350514da9",
+        "archiveSha256": "c1e9391bc08f8c50cd3c280cae9d7f07938b3fc748024ffcc640fca5af9104d0"
+      },
+      "reconcile": {
+        "targetSha256": "8c646f3f225858095b39d26f564e6c8bec56fac42f5ee174f5665d281e893f9f",
+        "archiveSha256": "c7a0de758fbd0bd6c69ad9dd5f559dc99fa5faef26d7f81ee01db72424ef2649"
+      }
+    },
+    "results": {
+      "deposit": {
+        "exitCode": 0,
+        "failure": null,
+        "wallSeconds": 62.7417613749858,
+        "phaseSecondsLimit": 3599.6348917484283,
+        "peakSampledSummedRssBytes": 458461184,
+        "peakSampledSummedVirtualBytes": 107515019264,
+        "peakMatchingGpuProcessVramMiB": 5992.0,
+        "gpuProcessActivityObserved": true,
+        "kernelWaitUserSeconds": 48.428021,
+        "kernelWaitSystemSeconds": 12.045504,
+        "sampledOwnCpuSeconds": 60.16,
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+      },
+      "credit-transfer": {
+        "exitCode": 0,
+        "failure": null,
+        "wallSeconds": 335.78796896501444,
+        "phaseSecondsLimit": 2893.2540435791016,
+        "peakSampledSummedRssBytes": 793489408,
+        "peakSampledSummedVirtualBytes": 116845584384,
+        "peakMatchingGpuProcessVramMiB": 13706.0,
+        "gpuProcessActivityObserved": true,
+        "kernelWaitUserSeconds": 249.756388,
+        "kernelWaitSystemSeconds": 69.246807,
+        "sampledOwnCpuSeconds": 318.66,
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+      },
+      "exit": {
+        "exitCode": 0,
+        "failure": null,
+        "wallSeconds": 108.4359148540243,
+        "phaseSecondsLimit": 2127.3931844234467,
+        "peakSampledSummedRssBytes": 721674240,
+        "peakSampledSummedVirtualBytes": 116790439936,
+        "peakMatchingGpuProcessVramMiB": 13706.0,
+        "gpuProcessActivityObserved": true,
+        "kernelWaitUserSeconds": 83.310258,
+        "kernelWaitSystemSeconds": 23.159583,
+        "sampledOwnCpuSeconds": 105.96,
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+      },
+      "reconcile": {
+        "exitCode": 0,
+        "failure": null,
+        "wallSeconds": 127.45415797000169,
+        "phaseSecondsLimit": 1688.9343576431274,
+        "peakSampledSummedRssBytes": 466481152,
+        "peakSampledSummedVirtualBytes": 107515084800,
+        "peakMatchingGpuProcessVramMiB": 5992.0,
+        "gpuProcessActivityObserved": true,
+        "kernelWaitUserSeconds": 97.840546,
+        "kernelWaitSystemSeconds": 24.90757,
+        "sampledOwnCpuSeconds": 122.2,
+        "cpuAffinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "computeThreads": 4,
+        "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+      }
+    },
+    "currentStage": "reconcile",
+    "ledger": {
+      "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+      "deadlineUnix": 1792404123.5275888,
+      "leaseSha256": "3f2a323e4f6929cb049bca578d1855768488ae2d69bfa3edf41adc755adf5689",
+      "attempted": [
+        "deposit",
+        "credit-transfer",
+        "exit",
+        "reconcile"
+      ],
+      "completed": [
+        "deposit",
+        "credit-transfer",
+        "exit",
+        "reconcile"
+      ],
+      "lastTargetSha256": "8c646f3f225858095b39d26f564e6c8bec56fac42f5ee174f5665d281e893f9f",
+      "lastJournalHex": "16e2d59faeea634d4d0f5d39b8503bcdf920c49e5596062db2fa68e0e673470c43f03db50360c1b7f542a114891c3ded8c1b31cef23c7b701d547aa7f3845ec54c050dfe1e822f6db96b3237f0b6ba5d8ecc6d037c90ef26b22d5299afc761e8fe2be4e1ef9112b6fee20ddd458802a5d540b32bd02d7c421b2531d573b370ad9cd3fc72e630cd450dc0d0ff0606541d60918f7bbe4ca41357512a646a78a55d8ce3225250c5ddf48f98a323c1c0ba80c61cdfcc1b588e10be9fa467b0d69b11667ce2f5a84628ac978861519720d502a0429ca7aa4ddf31e5a1b3f20818ebf4f6f5563145a146cd2e53f9b6340f49587ba2f3d6288cef697c417c96571a918600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b"
+    }
+  },
+  "stats": {
+    "deposit": {
+      "paging_cycles": 1318212,
+      "reserved_cycles": 2150003,
+      "segments": 74,
+      "total_cycles": 4849664,
+      "user_cycles": 1381449
+    },
+    "credit-transfer": {
+      "paging_cycles": 6281749,
+      "reserved_cycles": 4262217,
+      "segments": 147,
+      "total_cycles": 153124864,
+      "user_cycles": 142580898
+    },
+    "exit": {
+      "paging_cycles": 2604209,
+      "reserved_cycles": 1680575,
+      "segments": 49,
+      "total_cycles": 51380224,
+      "user_cycles": 47095440
+    },
+    "reconcile": {
+      "paging_cycles": 2216063,
+      "reserved_cycles": 4368934,
+      "segments": 151,
+      "total_cycles": 9863168,
+      "user_cycles": 3278171
+    }
+  },
+  "retrievedUnix": 1792402601.354962,
+  "backup": {
+    "sha256": "d56383ac91c5e4707c0d9890fafb637f8b708107d4cf90ec44b8dff6e41002f3",
+    "bytes": 4548572,
+    "leaseDigest": "d86cbbb3f970acbb1e30e37f47e989d1e43ff5dfdb5ddc401f05811868a997fe",
+    "savedUnix": 1792402565.2228272
+  }
+}

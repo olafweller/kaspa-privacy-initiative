@@ -1,0 +1,6 @@
+{
+  "transactionId": "237200aa266717a32a174f6f9e6dd93080028c35c1ce3068a27feffae1f2e83b",
+  "negative": "spent-input-replay",
+  "reason": "{\"code\":0,\"message\":\"Rejected transaction 237200aa266717a32a174f6f9e6dd93080028c35c1ce3068a27feffae1f2e83b: transaction 237200aa266717a32a174f6f9e6dd93080028c35c1ce3068a27feffae1f2e83b is an orphan where orphan is disallowed\",\"data\":null}",
+  "at": "2026-10-19T09:30:31.744Z"
+}

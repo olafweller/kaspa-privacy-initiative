@@ -1,0 +1,28 @@
+{
+  "feeRateSompiPerGram": 100,
+  "kind": "activate",
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600649746
+  },
+  "sponsorUtxo": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "6c392dd9bb11979d3fca3466440a0eb394082a85784cde7cce1f63a7fe4bb2d0"
+    },
+    "utxoEntry": {
+      "amount": 1650000000,
+      "blockDaaScore": 600649253,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac"
+    }
+  },
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

@@ -1,0 +1,169 @@
+{
+  "scope": "Operator sources and auxiliary offline controls; published prover/guest identities unchanged",
+  "files": {
+    "poc/tn10-live/README.md": {
+      "sha256": "3de588a664c1d29d889c4176fb056e911c3134332654918f914bebc199ac4cc4",
+      "bytes": 11774
+    },
+    "poc/tn10-live/capture.mjs": {
+      "sha256": "74df3a6290c16901c14709559e84fb0c2fa0f7efa6860e46e3a0f8a1dc6451a2",
+      "bytes": 6980
+    },
+    "poc/tn10-live/capture.test.mjs": {
+      "sha256": "2a4f5a7bd6108a8698b1a5453d926ce22bfbf86d835ee6c9852b6fa4ac99532b",
+      "bytes": 1701
+    },
+    "poc/tn10-live/chain.mjs": {
+      "sha256": "8916490eeb32288c5d4d6ea0add6644c9b943e0aeab49242617cf252378dbcdd",
+      "bytes": 6445
+    },
+    "poc/tn10-live/check_evidence.py": {
+      "sha256": "992e177a17b459dbe9833f52070f5ba8de332bc937f595df52dda790d23a2a2c",
+      "bytes": 5898
+    },
+    "poc/tn10-live/funding.mjs": {
+      "sha256": "bba1872a47073b49c4daa95dc53cd642a61e44e4f5548b9fcb8e093864fef478",
+      "bytes": 4170
+    },
+    "poc/tn10-live/operator/b-admin/allocate.py": {
+      "sha256": "c83d0ec9048a5dd5c6ef44e257bf8db8f071416f7f203d87b49fe858f0f1d113",
+      "bytes": 8008
+    },
+    "poc/tn10-live/operator/b-admin/confirm_stop.py": {
+      "sha256": "74ef9ae3c8daa363026846d93a50af42b1bea5b57f20f7859f23ac888cbdc76a",
+      "bytes": 1246
+    },
+    "poc/tn10-live/operator/b-admin/delete.py": {
+      "sha256": "577e24a2e753a8a2d3ebaa986adedd742c4825e926a44abcdf5f51695999c76e",
+      "bytes": 3164
+    },
+    "poc/tn10-live/operator/b-admin/download_credit_transfer.py": {
+      "sha256": "200a6d6429547df3f8706455294411428db3ce75373e7b37e408a3b25f4adfab",
+      "bytes": 1202
+    },
+    "poc/tn10-live/operator/b-admin/download_deposit.py": {
+      "sha256": "23a3315ded39e291dff524a3a1518c66379a8cba08ca8bf3b40ed6de925e33a1",
+      "bytes": 1194
+    },
+    "poc/tn10-live/operator/b-admin/download_exit.py": {
+      "sha256": "dc7c3f148e9b4e8befe435f13039639c5c3fc78e08d54c6ec55b0e1a1a27452b",
+      "bytes": 1191
+    },
+    "poc/tn10-live/operator/b-admin/download_reconcile.py": {
+      "sha256": "c8047806ba09c1944c230796924f064ac5a3becf0b077efa94df36cbfff74ca6",
+      "bytes": 1196
+    },
+    "poc/tn10-live/operator/b-admin/final_backup.py": {
+      "sha256": "32956f822ce8376595a86f736ba53e7887ea374ab415c10fd6ceb8fddf0edc01",
+      "bytes": 1430
+    },
+    "poc/tn10-live/operator/b-admin/preflight.py": {
+      "sha256": "342c4552c14324f7f0b4c25a236a9565eba3fce53854324fe8ac9543642aa818",
+      "bytes": 2463
+    },
+    "poc/tn10-live/operator/b-admin/stage_credit_transfer.py": {
+      "sha256": "77e38cafc2f97ad46295d7098f43adb90d75a05c8ee66859c60e854d21daa61e",
+      "bytes": 1753
+    },
+    "poc/tn10-live/operator/b-admin/stage_deposit.py": {
+      "sha256": "77d4adc7ceeb00140441a6a3eccee38efc8cdcbeb2d0794cc8e76efbfdf3dbd2",
+      "bytes": 1597
+    },
+    "poc/tn10-live/operator/b-admin/stage_exit.py": {
+      "sha256": "23a7a25abed0a4b6bb76cf8b927f6cd5a5f9ae306bd5a5e8e718f291a394861b",
+      "bytes": 1780
+    },
+    "poc/tn10-live/operator/b-admin/stage_reconcile.py": {
+      "sha256": "3e3c509473f7bf8f91f3f1a0648de1199a4d4619d2f87c0a1a05ca7296859145",
+      "bytes": 1801
+    },
+    "poc/tn10-live/operator/b-admin/status01.py": {
+      "sha256": "04ddc89f924adcc9725e772f84e98eff90ed5efbc2a1e4ec02207de2d8f04eb1",
+      "bytes": 1055
+    },
+    "poc/tn10-live/operator/b-admin/status02.py": {
+      "sha256": "04ddc89f924adcc9725e772f84e98eff90ed5efbc2a1e4ec02207de2d8f04eb1",
+      "bytes": 1055
+    },
+    "poc/tn10-live/operator/b-admin/status03.py": {
+      "sha256": "78ea0de732802e6cdbbef1ddea0a7725d2e07e0f485389dade48b399e7c3e5c0",
+      "bytes": 1252
+    },
+    "poc/tn10-live/operator/b-admin/status04.py": {
+      "sha256": "78ea0de732802e6cdbbef1ddea0a7725d2e07e0f485389dade48b399e7c3e5c0",
+      "bytes": 1252
+    },
+    "poc/tn10-live/operator/b-admin/status05.py": {
+      "sha256": "54cddb7c711cba9e230312095f22f3835892a401f163ea8a8f591975ce889c90",
+      "bytes": 1252
+    },
+    "poc/tn10-live/operator/badmin.py": {
+      "sha256": "9b057ad800f8e76c6cbd218d146ea0465b112f6f42dd19c0a9939fd073cf8829",
+      "bytes": 2442
+    },
+    "poc/tn10-live/operator/final_physical.py": {
+      "sha256": "2abb14cde473e35c31b714edf0c0f24c068740a54d089f2140b21979e4664563",
+      "bytes": 2348
+    },
+    "poc/tn10-live/operator/gateway-source-history/capture-paginated.mjs": {
+      "sha256": "74df3a6290c16901c14709559e84fb0c2fa0f7efa6860e46e3a0f8a1dc6451a2",
+      "bytes": 6980
+    },
+    "poc/tn10-live/operator/gateway-source-history/chain-v2.mjs": {
+      "sha256": "37affa6e99341cc92fce128dedd5aebb18e41b4725f7969ddbd0cbf7ca438dc9",
+      "bytes": 4812
+    },
+    "poc/tn10-live/operator/gateway-source-history/chain-v3.mjs": {
+      "sha256": "3b2a172e49250a3a956914f979b8ba1ccad72d8b4d8d2a0eecbfc16add0bcd54",
+      "bytes": 4968
+    },
+    "poc/tn10-live/operator/gateway-source-history/chain-v4.mjs": {
+      "sha256": "8916490eeb32288c5d4d6ea0add6644c9b943e0aeab49242617cf252378dbcdd",
+      "bytes": 6445
+    },
+    "poc/tn10-live/operator/gateway-source-history/chain.mjs": {
+      "sha256": "30ba305c8b4ca9264aa48bae76434b320731bddb2c0e4c8da21875aa64729ff5",
+      "bytes": 4804
+    },
+    "poc/tn10-live/operator/gateway-source-history/funding.mjs": {
+      "sha256": "bba1872a47073b49c4daa95dc53cd642a61e44e4f5548b9fcb8e093864fef478",
+      "bytes": 4170
+    },
+    "poc/tn10-live/operator/live.py": {
+      "sha256": "a37b7667af278a29e52b9bfc446839706c5f254dfee655ed9b338d77240fcdc8",
+      "bytes": 10405
+    },
+    "poc/tn10-live/operator/make_stage_admin.py": {
+      "sha256": "9a3fbea45d36a207b69ad8f208c23ca96958bc662be5ba0d0df1a683705cff37",
+      "bytes": 1442
+    },
+    "poc/tn10-live/operator/manage.py": {
+      "sha256": "93310f755420c79f679206a773050c401b9c910e81843f6fdf5ce060a291c5ef",
+      "bytes": 2194
+    },
+    "poc/tn10-live/operator/native_evidence_stream.py": {
+      "sha256": "68ec7e409825878359fde696eec90a3b2dc2b9a950bbdbae784c3e7c6c90aa32",
+      "bytes": 2566
+    },
+    "poc/tn10-live/operator/release_stage.py": {
+      "sha256": "ac0495163de3ccdef9b696ce1215ced4ab50a3070742b1a7067c6f2448599144",
+      "bytes": 2931
+    },
+    "poc/private-native-tn10/examples/check-funding.rs": {
+      "sha256": "9ce1e6169d40965c0733ce230e48380e217cdc15af52eb6bfe74749793f1f729",
+      "bytes": 3505
+    },
+    "poc/private-native-tn10/examples/invalid-wallet.rs": {
+      "sha256": "dd269e581be66b7df38e7d75a4714821b07f1016aca5cae08c453c371199190e",
+      "bytes": 650
+    },
+    "poc/private-native-tn10/examples/payout-negative.rs": {
+      "sha256": "b2a01e41dab4a0b566e842d7a269b0d8e357fe296f8dddc7e718494ec611c66f",
+      "bytes": 3966
+    }
+  },
+  "trustedCpuHostSha256": "6b2fa5c0b239854c1c71a4e7d0b7d8ede724209090abda36674bd61055b9e996",
+  "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
+  "executedPayoutNegativeHelperSha256": "73c380b8d29b03fc05b887cea30ebe1463b17737495bd1fe55bc39dd3fafbc21",
+  "auxiliaryFormattingNormalizedAfterExecution": true
+}

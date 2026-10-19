@@ -1,0 +1,6 @@
+{
+  "transactionId": "d4462a27772d563147553caf5abb1a70c03b820ede43066cfec3c9b94d2cca7a",
+  "negative": "reserve",
+  "reason": "{\"code\":0,\"message\":\"Rejected transaction d4462a27772d563147553caf5abb1a70c03b820ede43066cfec3c9b94d2cca7a: failed to verify the signature script: script ran, but verification failed\",\"data\":null}",
+  "at": "2026-10-19T09:30:12.460Z"
+}

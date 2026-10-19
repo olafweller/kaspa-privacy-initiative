@@ -1,0 +1,30 @@
+{
+  "feeRateSompiPerGram": 100,
+  "kind": "bootstrap",
+  "seedPath": "/workspace/kaspa-privacy-initiative/.local/tn10-live-20261019/seed.json",
+  "seedSha256": "56322b043ae1d8d43e42354a88f8f0558d1617fd896c1cd47d601364dbf98431",
+  "server": {
+    "hasUtxoIndex": true,
+    "isSynced": true,
+    "networkId": "testnet-10",
+    "rpcApiRevision": 0,
+    "rpcApiVersion": 1,
+    "serverVersion": "2.1.0",
+    "virtualDaaScore": 600650101
+  },
+  "sponsorUtxo": {
+    "address": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+    "outpoint": {
+      "index": 0,
+      "transactionId": "5483e5c06c5318d9133eb6582ca68489b7c267a2481f1d92c80e37c57854b87a"
+    },
+    "utxoEntry": {
+      "amount": 1649830500,
+      "blockDaaScore": 600649774,
+      "covenantId": null,
+      "isCoinbase": false,
+      "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac"
+    }
+  },
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a"
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "funding",
+  "transactionId": "6c392dd9bb11979d3fca3466440a0eb394082a85784cde7cce1f63a7fe4bb2d0",
+  "transaction": {
+    "version": 0,
+    "inputs": [
+      {
+        "previousOutpoint": {
+          "transactionId": "abb14f3630d67d9357ab4f805353d583cef7db7febe8e66b8302244a5cbda6ac",
+          "index": 1
+        },
+        "signatureScript": "4144e4571ab43735e5db473f90e0198aeafe5c8c367721ec6a280b5dfbde26def71ae4665c98a06ba93e671d262c2247263c94a5e33ea8d480ac808ec45278b20d01",
+        "sequence": 0,
+        "sigOpCount": 1,
+        "computeBudget": 0
+      }
+    ],
+    "outputs": [
+      {
+        "value": 1650000000,
+        "scriptPublicKey": "000020dec58402d50d59075b8a301a10bf39a420f1ae9fa0e677605b0f02d8c3c7c891ac",
+        "covenant": null
+      },
+      {
+        "value": 993737507000,
+        "scriptPublicKey": "00002031717cff4ba3ace006774fa29f4a6b7434d1b4ee4f85e6e25ddd31d09183aec3ac",
+        "covenant": null
+      }
+    ],
+    "lockTime": 0,
+    "subnetworkId": "0000000000000000000000000000000000000000",
+    "gas": 0,
+    "payload": "",
+    "storageMass": 606
+  },
+  "fundingSompi": 1650000000,
+  "feeSompi": 703600,
+  "source": "kaspatest:qqchzl8lfw36ecqxwa869862dd6rf5d5ae8ctehzthwnr5y3swhvxyu4607hp",
+  "destination": "kaspatest:qr0vtpqz65x4jp6m3gcp5y9l8xjzpudwn7swvamqtv8s9kxrclyfzemtwvwh4",
+  "networkAccepted": false
+}

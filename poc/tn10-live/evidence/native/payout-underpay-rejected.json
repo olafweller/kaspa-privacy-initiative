@@ -1,0 +1,6 @@
+{
+  "transactionId": "dd8562eee36b8937dc16ec2ea9b77e1a8d05f9eec56ffb80a4322af5e8488197",
+  "negative": "underpay",
+  "reason": "{\"code\":0,\"message\":\"Rejected transaction dd8562eee36b8937dc16ec2ea9b77e1a8d05f9eec56ffb80a4322af5e8488197: failed to verify the signature script: script ran, but verification failed\",\"data\":null}",
+  "at": "2026-10-19T09:30:07.503Z"
+}

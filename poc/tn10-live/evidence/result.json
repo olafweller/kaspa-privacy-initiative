@@ -1,0 +1,244 @@
+{
+  "schema": "KPI_ACTUAL_TN10_PRIVATE_NATIVE_RESULT_V1",
+  "date": "2026-10-19",
+  "status": "COMPLETE_WITH_DOCUMENTED_RESEARCH_LIMITATIONS",
+  "actualTN10LifecycleCompleted": true,
+  "receiptCount": 4,
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "guestImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+  "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+  "singleGpuAttempt": true,
+  "podId": "jl3e5fcfy32m40",
+  "targets": {
+    "deposit": {
+      "receiptSha256": "99c48f4a36d204ca0eae9f407ad54fc4c8fe8da2dd051bfe0208c94db895a8ec",
+      "targetSha256": "685c2d754a5fa64b09102801a4e7f63a6a78f10722c25025c371ca62c6dec13e",
+      "verified": true,
+      "inputSha256": "673280b7b8176b56c80b3ae1427eca44bf72d6d72becf3fe8dc08a70600b2a5f",
+      "journalSha256": "1ba3da589d1bfcec5c8544d36836ded72c8d952ffe0c2388d3934c47a69c6d3d",
+      "captureSha256": "2eb2dbe0fdb5ed59af3e120e5e3c76099976baab45528762509cc05cc7cb3ace",
+      "stateSha256": "8a66d7801cb35d6bf39a9534455458cd0ecc081ac0a2b89f3a7243471b4a84ea",
+      "startBlock": "d6e98a8cbdd70df8652947b333272de1542f94dea6847141e3942eba3de4ad32",
+      "endBlock": "ab97d3771edf0521defd1dff1a34c864ef378e74eb6b75bae2e4cea37688c6af"
+    },
+    "credit-transfer": {
+      "receiptSha256": "5466e9089fa6996ec0c0367539582266a1727f213900c04ee0e483e0eb9fd9a7",
+      "targetSha256": "1a4b0f04e6ef7ac7aadef1c5e0976c0e627427c4c71e02ac9a5494ddae136249",
+      "verified": true,
+      "inputSha256": "54cf37793484d20196ba4cc12585ba50fe7f4d08ed7dec179337e62487c5954f",
+      "journalSha256": "613260f052bac2b4e2f3466781b0c1fbb7ae29e3d3f30bd5198a61c49d64c5e8",
+      "captureSha256": "d648758f7d286ad6e6fc84066a66385ab33f57e76f4b3756bc20a526720be60b",
+      "stateSha256": "3c275e6309fce6e38dd071146acdf9fc1273eaa53e321e64d1c69432bc9569ed",
+      "startBlock": "ab97d3771edf0521defd1dff1a34c864ef378e74eb6b75bae2e4cea37688c6af",
+      "endBlock": "182b2b66c6ab15117a594b70aa628b2b09651d2a7371c37629bf3eac3c913298"
+    },
+    "exit": {
+      "receiptSha256": "2eb6823bb0169229938fd37d477f5d3b4c7f537d161e772a5c2be7af008bb575",
+      "targetSha256": "31781f3f0f531b478646483ccda778b26ad4ade88d3d3f5b9cd51e9350514da9",
+      "verified": true,
+      "inputSha256": "955a3d89189f2719e647adf50d424c86bde050c80e793f8e6809e8bb4a6afa8e",
+      "journalSha256": "dcfb14a8615bb33d358c27e4bc372c8c3558cf40d6913e9b87c3349f1378bd5f",
+      "captureSha256": "884936bc80ac3025e8d5e464620f888a555dc022298cc61848e2bc2078296d7b",
+      "stateSha256": "48ea4d6bfb5fa738f1b9936bf4b8c053d4a7a2f1bbfef76cda5ec8e9229b5470",
+      "startBlock": "182b2b66c6ab15117a594b70aa628b2b09651d2a7371c37629bf3eac3c913298",
+      "endBlock": "56b75c785c3ead51cbdc7c872190af0a9a4ff965b2313cd4943b727c72099fc8"
+    },
+    "reconcile": {
+      "receiptSha256": "abce7add3423cd75e3f9dec855d611115940f9a6ea447501201d5eda9068dfa1",
+      "targetSha256": "8c646f3f225858095b39d26f564e6c8bec56fac42f5ee174f5665d281e893f9f",
+      "verified": true,
+      "inputSha256": "e55d179c1b03fffb33d187e7e71e08194f9fbfb0e82a5dcc09a6d8df2c4985a3",
+      "journalSha256": "63c36a4a7d1cf74b31677be226a93b804afe6dabc59eae98cd3a46c2ae6742ee",
+      "captureSha256": "32dc3f7a78232e08af05dcf8aaf6238112cf2ac70d7d9183b2ebc6b6722b014c",
+      "stateSha256": "da80fa5def53ad997694141745e651f15c45ecf83b0d6e9282c2f70c93f0f650",
+      "startBlock": "56b75c785c3ead51cbdc7c872190af0a9a4ff965b2313cd4943b727c72099fc8",
+      "endBlock": "9ad8ba9606978b1a2cd463c9b9cb8168e1d5904b0404bb23e80104641597b75f"
+    }
+  },
+  "stats": {
+    "deposit": {
+      "paging_cycles": 1318212,
+      "reserved_cycles": 2150003,
+      "segments": 74,
+      "total_cycles": 4849664,
+      "user_cycles": 1381449
+    },
+    "credit-transfer": {
+      "paging_cycles": 6281749,
+      "reserved_cycles": 4262217,
+      "segments": 147,
+      "total_cycles": 153124864,
+      "user_cycles": 142580898
+    },
+    "exit": {
+      "paging_cycles": 2604209,
+      "reserved_cycles": 1680575,
+      "segments": 49,
+      "total_cycles": 51380224,
+      "user_cycles": 47095440
+    },
+    "reconcile": {
+      "paging_cycles": 2216063,
+      "reserved_cycles": 4368934,
+      "segments": 151,
+      "total_cycles": 9863168,
+      "user_cycles": 3278171
+    }
+  },
+  "timings": {
+    "deposit": {
+      "producerSeconds": 61.937631324,
+      "phaseSeconds": 62.7417613749858,
+      "startUnix": 1792400523.8962824,
+      "endUnixApprox": 1792400586.6380439
+    },
+    "credit-transfer": {
+      "producerSeconds": 334.947284502,
+      "phaseSeconds": 335.78796896501444,
+      "startUnix": 1792401230.2764227,
+      "endUnixApprox": 1792401566.0643916
+    },
+    "exit": {
+      "producerSeconds": 107.732830541,
+      "phaseSeconds": 108.4359148540243,
+      "startUnix": 1792401996.1369503,
+      "endUnixApprox": 1792402104.572865
+    },
+    "reconcile": {
+      "producerSeconds": 126.586562544,
+      "phaseSeconds": 127.45415797000169,
+      "startUnix": 1792402434.5964568,
+      "endUnixApprox": 1792402562.0506148
+    }
+  },
+  "activePhaseSeconds": 634.4198031640262,
+  "aggregateElapsedSeconds": 2038.5230259895325,
+  "aggregateLimitSeconds": 3600,
+  "cycleLimitPerBatch": 160000000,
+  "rentalLimitSeconds": 7200,
+  "observedRentalSecondsApprox": 2168.896236181259,
+  "gpuArchiveSha256": "d56383ac91c5e4707c0d9890fafb637f8b708107d4cf90ec44b8dff6e41002f3",
+  "allFourMatchingProcessCudaQualified": true,
+  "sampledPeakSummedRssBytes": 793489408,
+  "sampledPeakMatchingGpuVramMiB": 13706.0,
+  "independentBAndCloudVerification": true,
+  "independentVerifierImplementations": false,
+  "providerStoppedAndDeleted": true,
+  "cost": {
+    "scope": "RATE_AND_OBSERVED_TIMESTAMP_ESTIMATE_NOT_FINAL_PROVIDER_INVOICE",
+    "actualInvoiceAvailable": false,
+    "observedComputeSecondsApprox": 2168.896236181259,
+    "observedStoppedVolumeSecondsApprox": 329.7015063762665,
+    "computeHourlyUsd": "1.09",
+    "activeStorageHourlyUsdUpperBound": "0.014",
+    "stoppedStorageHourlyUsdUpperBound": "0.0028",
+    "computeEstimateUsd": 0.656693582621548,
+    "storageEstimateUsdUpperBound": 0.008691030978997549,
+    "computeAndStorageEstimateUsd": 0.6653846136005456,
+    "planningAllowanceUsd": 5,
+    "accountTopupsAndTaxExcluded": true
+  },
+  "native": {
+    "finalAccounting": {
+      "outstanding_permission_rent_excluded": 0,
+      "pending_deposits": 0,
+      "private_liability": 600000000,
+      "reserve_principal": 600000000,
+      "state_covenant_rent_excluded": 100000000,
+      "unpaid_exits": 0
+    },
+    "bobPrincipalSompi": 400000000,
+    "bobRentRefundSompi": 50000000,
+    "bobOutputSompi": 450000000,
+    "remainingReserveSompi": 600000000,
+    "stateRentSompi": 100000000,
+    "actualAcceptedTrialFeesSompi": 199627400,
+    "sourceFundingFeeSompi": 703600,
+    "sponsorFundingSompi": 1650000000,
+    "feePlanningSompi": 500000000,
+    "permissionConsumed": true,
+    "originalDepositReserveSpent": true,
+    "finalStateRoot": "4c050dfe1e822f6db96b3237f0b6ba5d8ecc6d037c90ef26b22d5299afc761e8",
+    "positiveTransactions": {
+      "exit-settlement": {
+        "transactionId": "0498714331a7cb56b1894fff0ebd48fa6e7db0e195d7c7ac9d75d35a51d4f29a",
+        "acceptedInBlock": "e326282ba1c75f6931b2307317e4b0b8172c449426d5ae4bb4c56084ee4bea81",
+        "minimumConfirmationsRequested": 10
+      },
+      "payout": {
+        "transactionId": "f26e03cade619c68d856dd429733f903add560495a547d0ee083aed34c4c6652",
+        "acceptedInBlock": "9ad8ba9606978b1a2cd463c9b9cb8168e1d5904b0404bb23e80104641597b75f",
+        "minimumConfirmationsRequested": 10
+      },
+      "bootstrap": {
+        "transactionId": "db6d96fa4b10fbe370e22fbf51490bfad713dc622a3fc987136db3c4bae01a2b",
+        "acceptedInBlock": "7a17ecfe26b5206c947e62080882ef860c012e08e2666b98acb7d436fb983e6e",
+        "minimumConfirmationsRequested": 10
+      },
+      "reconcile-settlement": {
+        "transactionId": "236999c339905894da879ab78061e21c202f62fab6f42d8b3dd9314275d4b9b5",
+        "acceptedInBlock": "951187d7ac94fe177e06dadd28206a87cb83674e9c95d5df78fd74453c51d490",
+        "minimumConfirmationsRequested": 10
+      },
+      "deposit-settlement": {
+        "transactionId": "691d3bc0ae45c8636b83a359e4316a199aa6287c88cc68d9d4c3e15cf7dae193",
+        "acceptedInBlock": "190010705f28fdd0ef1105676bf9cc5da7742900e55d513e9252d0641f40ff1d",
+        "minimumConfirmationsRequested": 10
+      },
+      "initialize": {
+        "transactionId": "217a83a658032a2e27bb913cc969e02ce0a33505fd4adf5451cf0624a8d12c09",
+        "acceptedInBlock": "26c3e606609983813b273c19db7df7ee6326fe763ae79accb7129cd163201625",
+        "minimumConfirmationsRequested": 10
+      },
+      "activate": {
+        "transactionId": "5483e5c06c5318d9133eb6582ca68489b7c267a2481f1d92c80e37c57854b87a",
+        "acceptedInBlock": "f0141301cb8e730753c49ea12cab38740c41862becb367afb7483a7e7c47f431",
+        "minimumConfirmationsRequested": 10
+      },
+      "publish-exit": {
+        "transactionId": "45070dfb36788920e76ed8ff02cd58a491ba6b176ec9fc6ca712c4268b891356",
+        "acceptedInBlock": "56b75c785c3ead51cbdc7c872190af0a9a4ff965b2313cd4943b727c72099fc8",
+        "minimumConfirmationsRequested": 10
+      },
+      "publish-invalid-transfer": {
+        "transactionId": "6d510c5ad4a18fcd836e98cbad3ea422c7ab80f38a642e96bef8db141ea9f143",
+        "acceptedInBlock": "e153a6856df6dc88257cc42dab7aeb919941a3ada14e651c3d9e21aaac27aa0f",
+        "minimumConfirmationsRequested": 10
+      },
+      "deposit": {
+        "transactionId": "06b679085deaeba35dbcb743f21d3aaa1529d281426ac9bdcc78a932cee42b46",
+        "acceptedInBlock": "ab97d3771edf0521defd1dff1a34c864ef378e74eb6b75bae2e4cea37688c6af",
+        "minimumConfirmationsRequested": 10
+      },
+      "publish-credit": {
+        "transactionId": "dec337271c8f9b922d58dc821c19a4a4e090c4f4d307723016e7409bffeb6938",
+        "acceptedInBlock": "42ae16ab9693834cedd628a587e8ea8432336b9a1cc80f6a3dad02b335a63b0b",
+        "minimumConfirmationsRequested": 10
+      },
+      "credit-transfer-settlement": {
+        "transactionId": "b40f0c20a4a3a735a720268d80193c3507ad1921c73282200e406bf113516094",
+        "acceptedInBlock": "f39394cff5e658890086149381babdd5054ce142c4d9e6b312c3845faefd2e1b",
+        "minimumConfirmationsRequested": 10
+      },
+      "publish-transfer": {
+        "transactionId": "58d4434543ae8a311ebc331b87ac5e7947bb2eae78a557c579da9c273ef29f88",
+        "acceptedInBlock": "182b2b66c6ab15117a594b70aa628b2b09651d2a7371c37629bf3eac3c913298",
+        "minimumConfirmationsRequested": 10
+      }
+    },
+    "payoutNegativeControls": [
+      "underpay",
+      "reserve",
+      "recipient"
+    ],
+    "distinctSpentInputReplayRejected": true
+  },
+  "custody": "Existing trusted operator controls the logical Bob wallet and native recipient key. No independent custody or malicious-operator protection is claimed.",
+  "scopeLimits": [
+    "Test KAS only; one owner-operated native TN10 node, trusted operator and B root.",
+    "Experimental circuit/setup and small note tree; one pending exit, one selected reserve larger than payout, fixed three-input/three-output terminal payout.",
+    "Four actual-input proofs and settlements; no production privacy, independent operator network, mobile-wallet performance or throughput claim.",
+    "Cost is an observed-rate/timestamp estimate, not a final provider invoice."
+  ]
+}

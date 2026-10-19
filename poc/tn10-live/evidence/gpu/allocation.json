@@ -1,0 +1,41 @@
+{
+  "provider": {
+    "id": "jl3e5fcfy32m40",
+    "name": "kpi-tn10-live-20261019",
+    "createdAt": "2026-10-19 09:01:03.132 +0000 UTC",
+    "desiredStatus": "RUNNING",
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA L40S",
+    "costPerHr": 1.09,
+    "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+    "memoryInGb": 188,
+    "vcpuCount": 16,
+    "volumeInGb": 10,
+    "containerDiskInGb": 90,
+    "volumeMountPath": "/workspace"
+  },
+  "lease": {
+    "podId": "jl3e5fcfy32m40",
+    "gpuCount": 1,
+    "gpuType": "NVIDIA L40S",
+    "createdUnix": 1792400463.132,
+    "stopUnix": 1792407663.132,
+    "serviceUrl": "https://jl3e5fcfy32m40-8080.proxy.runpod.net",
+    "actualGpuHourlyUsd": "1.09",
+    "actualStorageHourlyUsd": "0.014",
+    "stoppedStorageHourlyUsd": "0.0028",
+    "retentionHours": 24,
+    "workloadScope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+    "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+    "packagePolicySha256": "a85140207c3a8aabbc8436dab323136098bc626430dba69f57c308132013de0e"
+  },
+  "leaseDigest": "d86cbbb3f970acbb1e30e37f47e989d1e43ff5dfdb5ddc401f05811868a997fe",
+  "guardUnit": "kpi-cuda-guard.service",
+  "guardService": [
+    "MainPID=86169",
+    "ActiveState=active",
+    "SubState=running"
+  ],
+  "proofStarted": false,
+  "plannedMaxCostWith24hRetentionUsd": 2.2752000000000003
+}

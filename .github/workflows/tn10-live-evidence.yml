@@ -1,0 +1,24 @@
+name: Stored actual TN10 lifecycle evidence
+on:
+  pull_request:
+    paths:
+      - 'poc/tn10-live/**'
+      - 'poc/private-native-tn10/examples/**'
+      - '.github/workflows/tn10-live-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  actual-tn10-receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Check native pagination and reverify stored actual-input receipts on CPU
+        run: |
+          node poc/tn10-live/capture.test.mjs
+          python3 poc/tn10-live/check_evidence.py

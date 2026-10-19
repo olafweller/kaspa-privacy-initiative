@@ -1,0 +1,15 @@
+{
+  "archiveSha256": "d56383ac91c5e4707c0d9890fafb637f8b708107d4cf90ec44b8dff6e41002f3",
+  "archiveBytes": 4548572,
+  "allFourCpuVerified": true,
+  "receiptHashes": {
+    "deposit": "99c48f4a36d204ca0eae9f407ad54fc4c8fe8da2dd051bfe0208c94db895a8ec",
+    "credit-transfer": "5466e9089fa6996ec0c0367539582266a1727f213900c04ee0e483e0eb9fd9a7",
+    "exit": "2eb6823bb0169229938fd37d477f5d3b4c7f537d161e772a5c2be7af008bb575",
+    "reconcile": "abce7add3423cd75e3f9dec855d611115940f9a6ea447501201d5eda9068dfa1"
+  },
+  "actualTN10LifecycleCompleted": true,
+  "finalPhysicalStateRoot": "4c050dfe1e822f6db96b3237f0b6ba5d8ecc6d037c90ef26b22d5299afc761e8",
+  "savedOnCloud": true,
+  "sameReviewedVerifierImplementation": true
+}
