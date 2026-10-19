@@ -10,8 +10,11 @@ the [qualification evidence](evidence/qualification.json).
 Retain the reviewed PR52 host executable, guest, VK, wallet relation and native
 restrictions unchanged. The CUDA executable is the previously qualified RISC
 Zero 3.0.3 binary. The new image contains the trusted host/program/public trial
-and Python service; it contains **no** wallet backup, native private key, wallet
-setup parameters, provider credential, synthetic producer or fixed chain input.
+and Python service. The new staged package contains **no** wallet backup, native
+private key, wallet setup parameters, provider credential, synthetic producer or
+fixed chain input. The unchanged qualified base image also retains its historical
+public PR40 diagnostic inputs/binary under `/opt/kpi/package`; this service does
+not select or execute that workload. Its CUDA build metadata is checked there.
 
 Inputs arrive in this order: deposit → credit-transfer → exit → reconcile.
 Each next public input depends on actual preceding native acceptance and is
@@ -146,3 +149,11 @@ extensions, and USD5 planning including the actual quote/storage. USD5 is not a
 provider bill guarantee. Leave transfer/stop margin and preserve/CPU-verify
 external copies before deleting a future Pod/storage. Actual B installation,
 fresh native preflight, custody and separate live release remain unperformed.
+
+The image is published from `c70844a9fef2d6974a0bf5bbb411b1bd6ac91c50`; see
+[publication provenance](evidence/publication.json) and the exact digest in
+[deployment.json](deployment.json). The follow-up commit records publication
+metadata/documentation only; its runtime sources remain identical to the image
+source commit and are checked by `evidence/source-sha256.json`. The historical
+PR52 manifest remains unchanged; use this supplemental manifest for the reviewed
+service binding, followed by actual-chain preflight and separate live release.

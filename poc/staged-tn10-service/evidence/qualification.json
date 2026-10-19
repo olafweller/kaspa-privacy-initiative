@@ -16,5 +16,9 @@
   "newProofJobStarted": false,
   "liveTN10Called": false,
   "fundingOrBroadcast": false,
-  "publishedImagePending": true
+  "publishedImagePending": false,
+  "remoteCudaTestsPassed": 41,
+  "remoteCudaTestsFailed": 0,
+  "publication": "publication.json",
+  "publishedImageCpuReport": "published-image-smoke.json"
 }

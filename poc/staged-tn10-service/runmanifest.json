@@ -7,7 +7,7 @@
   "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
   "serviceScope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
   "deployment": "deployment.json",
-  "stagedImageDigest": null,
+  "stagedImageDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:744ee5662b5d85d0a6e695bf3beeda9c3414522739bfa39862a9532bc296e128",
   "authorizations": {
     "funding": false,
     "broadcasting": false,
