@@ -1,5 +1,43 @@
 use super::*;
 #[test]
+fn whole_native_history_rejects_reused_transfer_and_payout_inputs() {
+    let p = fixtures::scenarios().unwrap();
+    let scan = |p: &fixtures::Prepared| {
+        fixtures::native_history(
+            p.cases
+                .iter()
+                .map(|(name, input, _)| (name.as_str(), input)),
+        )
+        .unwrap()
+    };
+    let good = scan(&p);
+    assert_eq!(good["transactionCount"], 13);
+    assert_eq!(good["inputCount"], good["uniqueInputs"]);
+    fixtures::require_single_spend(&good).unwrap();
+
+    // Reproduce both reviewed bugs independently. Changing app validity does
+    // not release the funding UTXO, and each payout consumes its sponsor UTXO.
+    let mut transfer = p.clone();
+    let valid_rest = transfer.cases[1].1.lane.blocks[0].txs[3].rest.clone();
+    transfer.cases[1].1.lane.blocks[0].txs[2].rest = valid_rest;
+    let bad = scan(&transfer);
+    assert_eq!(bad["conflicts"].as_array().unwrap().len(), 1);
+    assert_eq!(bad["conflicts"][0]["first"]["stage"], "credit-transfer");
+    assert_eq!(bad["conflicts"][0]["again"]["stage"], "credit-transfer");
+    assert!(fixtures::require_single_spend(&bad).is_err());
+
+    let mut payout = p.clone();
+    let sponsor_offset = 2 + 8 + 2 * (32 + 4 + 8 + 8);
+    let bob = payout.cases[3].1.lane.blocks[0].txs[1].rest.clone();
+    payout.cases[5].1.lane.blocks[0].txs[1].rest[sponsor_offset..sponsor_offset + 36]
+        .copy_from_slice(&bob[sponsor_offset..sponsor_offset + 36]);
+    let bad = scan(&payout);
+    assert_eq!(bad["conflicts"].as_array().unwrap().len(), 1);
+    assert_eq!(bad["conflicts"][0]["first"]["stage"], "bob-reconcile");
+    assert_eq!(bad["conflicts"][0]["again"]["stage"], "alice-reconcile");
+    assert!(fixtures::require_single_spend(&bad).is_err());
+}
+#[test]
 fn six_linked_batches_keep_exits_backed_until_both_payouts() {
     let p = fixtures::scenarios().unwrap();
     assert_eq!(p.cases.len(), 6);

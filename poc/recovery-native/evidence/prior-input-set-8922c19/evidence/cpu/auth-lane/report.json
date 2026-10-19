@@ -1,0 +1,9 @@
+{
+  "case": "auth-lane",
+  "error": "Guest panicked: assertion `left == right` failed: fixed lane\n  left: [1, 68, 69, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\n right: [0, 68, 69, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+  "expectedAbortConfirmed": true,
+  "expectedAbortReason": "fixed lane",
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "scope": "ACTUAL_GUEST_SEMANTIC_ABORT_NOT_RESOURCE_FAILURE",
+  "seconds": 0.206572169
+}

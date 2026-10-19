@@ -1,0 +1,13 @@
+{
+  "case": "alice-exit",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "journalSha256": "69ea8b4421dcb16c0306f7aa442e552f41885c426eb685c8152d8001b1d2089d",
+  "scope": "NEW_GUEST_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 1.312181544,
+  "segmentPo2": 20,
+  "segments": 46,
+  "userCycles": 44189860
+}

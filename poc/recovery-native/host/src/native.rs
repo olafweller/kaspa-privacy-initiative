@@ -211,7 +211,14 @@ pub fn payout_backend(
             TransactionInput::new_with_compute_budget(op(&p.outpoint), b.drain(), 0, 1),
             TransactionInput::new_with_compute_budget(op(reserve), ds, 0, 1),
             TransactionInput::new_with_compute_budget(
-                TransactionOutpoint::new(Hash::from_bytes([0x85; 32]), 0),
+                // Distinct deterministic public fixture UTXO for each exit.
+                // A sponsor input consumed by Bob cannot also fund Alice.
+                TransactionOutpoint::new(
+                    Hash::from_bytes(hash(
+                        &[b"KPI-recovery-payout-sponsor-v1".as_slice(), &eid].concat(),
+                    )),
+                    0,
+                ),
                 vec![],
                 0,
                 1,

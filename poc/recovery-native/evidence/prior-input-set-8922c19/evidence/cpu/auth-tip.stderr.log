@@ -1,0 +1,6 @@
+
+thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/recovery-native/common/src/lib.rs:500:5:
+assertion `left == right` failed: prior tip
+  left: [51, 206, 191, 226, 110, 5, 129, 130, 187, 61, 158, 73, 202, 226, 83, 130, 29, 229, 73, 14, 201, 31, 189, 253, 231, 174, 243, 173, 43, 188, 26, 59]
+ right: [50, 206, 191, 226, 110, 5, 129, 130, 187, 61, 158, 73, 202, 226, 83, 130, 29, 229, 73, 14, 201, 31, 189, 253, 231, 174, 243, 173, 43, 188, 26, 59]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

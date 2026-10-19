@@ -1,0 +1,13 @@
+{
+  "case": "deposit",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "journalSha256": "501e2543326f1469c9e0dc199813c4755ccaced67ede5ae19cc6395cc88e0768",
+  "scope": "NEW_GUEST_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.241691994,
+  "segmentPo2": 16,
+  "segments": 34,
+  "userCycles": 552697
+}

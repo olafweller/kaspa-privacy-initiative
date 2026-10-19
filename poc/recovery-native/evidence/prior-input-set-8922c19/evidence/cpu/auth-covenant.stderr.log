@@ -1,0 +1,6 @@
+
+thread '<unnamed>' (1) panicked at /workspace/kaspa-privacy-initiative/poc/recovery-native/common/src/lib.rs:498:5:
+assertion `left == right` failed: covenant
+  left: [3, 132, 130, 73, 63, 234, 219, 32, 169, 164, 237, 87, 252, 4, 228, 28, 144, 126, 159, 60, 72, 192, 75, 85, 195, 22, 190, 145, 123, 67, 43, 41]
+ right: [2, 132, 130, 73, 63, 234, 219, 32, 169, 164, 237, 87, 252, 4, 228, 28, 144, 126, 159, 60, 72, 192, 75, 85, 195, 22, 190, 145, 123, 67, 43, 41]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

@@ -95,6 +95,10 @@ pub fn scenarios() -> Result<Prepared> {
     let ta = native::settlement_template(&a.2.state, None, initial, sponsor(0xa1));
     let old_b: Input = bincode::deserialize(&fs::read(old().join("credit-transfer.input.bin"))?)?;
     let mut invalid = old_b.lane.blocks[0].txs[1].clone();
+    // Rejection by the private application does not unspend its L1 input.
+    // v1 rest begins with version (u16), count (u64), then the first input ID.
+    assert_eq!(app::NativeTx::parse(&invalid.rest)?.inputs.len(), 1);
+    invalid.rest[10..42].copy_from_slice(&[0x93; 32]);
     // Preserve actual canonical curve points, but change a bound nullifier bit.
     let offset = chain::OP_TAG.len() + 4 + 2 + 32 + 32 + 32;
     invalid.payload[offset] ^= 1;
@@ -196,10 +200,61 @@ pub fn scenarios() -> Result<Prepared> {
     assert!(f.2.state.reserves.is_empty());
     assert!(f.2.state.permissions.is_empty());
     assert!(f.2.state.ledger.exits.values().all(|e| e.paid));
-    Ok(Prepared {
+    let prepared = Prepared {
         cases: vec![a, b, c, d, e, f],
         templates: vec![ta, tb, tc, td, te, tf],
-    })
+    };
+    require_single_spend(&native_history(
+        prepared
+            .cases
+            .iter()
+            .map(|(name, input, _)| (name.as_str(), input)),
+    )?)?;
+    Ok(prepared)
+}
+/// Fixture qualification only: L1 enforces native spentness in a real trial.
+/// Scan captured main-history inputs exactly once. Templates are already present
+/// in later batches; alternatives/replays are separate histories, not appended.
+pub fn native_history<'a>(
+    inputs: impl IntoIterator<Item = (&'a str, &'a Input)>,
+) -> Result<serde_json::Value> {
+    let mut spent = std::collections::BTreeMap::new();
+    let mut conflicts = vec![];
+    let mut transactions = vec![];
+    let mut input_count = 0;
+    for (stage, input) in inputs {
+        for (block, b) in input.lane.blocks.iter().enumerate() {
+            for (index, tx) in b.txs.iter().enumerate() {
+                let parsed = app::NativeTx::parse(&tx.rest)?;
+                let location = json!({"stage":stage,"block":block,"transactionIndex":index});
+                for outpoint in &parsed.inputs {
+                    input_count += 1;
+                    if let Some(first) = spent.get(outpoint) {
+                        conflicts.push(json!({"outpoint":outpoint,"first":first,"again":location}));
+                    } else {
+                        spent.insert(outpoint.clone(), location.clone());
+                    }
+                }
+                transactions.push(json!({"location":location,"inputs":parsed.inputs}));
+            }
+        }
+    }
+    Ok(
+        json!({"scope":"MAIN_CAPTURED_NATIVE_HISTORY_INPUT_UNIQUENESS_NOT_CHAIN_ACCEPTANCE",
+        "transactionCount":transactions.len(),"inputCount":input_count,
+        "uniqueInputs":spent.len(),"conflicts":conflicts,"transactions":transactions,
+        "templatesCountedSeparately":false,"adversarialAlternativesIncluded":false}),
+    )
+}
+pub fn require_single_spend(history: &serde_json::Value) -> Result<()> {
+    if !history["conflicts"]
+        .as_array()
+        .ok_or("history conflicts field")?
+        .is_empty()
+    {
+        return Err("reused native input in main fixture history".into());
+    }
+    Ok(())
 }
 pub fn controls(p: &Prepared) -> Result<(Vec<Case>, Vec<(String, Input, String)>)> {
     let mut complete = vec![];
@@ -275,6 +330,15 @@ pub fn controls(p: &Prepared) -> Result<(Vec<Case>, Vec<(String, Input, String)>
 pub fn prepare(out: &Path) -> Result<()> {
     fs::create_dir(out)?;
     let p = scenarios()?;
+    report(
+        out,
+        "native-history.json",
+        &native_history(
+            p.cases
+                .iter()
+                .map(|(name, input, _)| (name.as_str(), input)),
+        )?,
+    )?;
     let (extra, aborts) = controls(&p)?;
     let mut targets = serde_json::Map::new();
     for (name, input, expected) in p.cases.iter().chain(extra.iter()) {

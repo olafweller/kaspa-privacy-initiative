@@ -11,7 +11,7 @@
   "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
   "host": {
     "localPath": ".local/ci-target/release/kpi-recovery-native-host",
-    "sha256": "d76f8aac1dd5502f9eff0b89dbd4a6b2c00f393028b8b67273ea8347e6ab50da",
+    "sha256": "e608e775d95411dda33508fb55d4e97fc81ce5e4902a86de0add6276ed1dd2ca",
     "crossMachineBuildHashClaim": false
   },
   "walletExecutable": {
@@ -38,7 +38,7 @@
     "poc/recovery-native/Cargo.lock": "5ab3fe02d01a3ff53231adac29408fe814309782724feaab6829a332a4371c3d",
     "poc/recovery-native/Cargo.toml": "eab372693c582578b15d59124824477f2759189355f911df853d546800aacf06",
     "poc/recovery-native/build_guest.sh": "539b49eb11a09cd33674685c24ba36929e7d308377fb0b3471ba8f48632957aa",
-    "poc/recovery-native/check_evidence.py": "a076886d7104888a9a1c6b764f37cbf1e33453c2ef51ad330d448555ba5357f3",
+    "poc/recovery-native/check_evidence.py": "dc03ff6ead79745cf3925b972944b1bb71560b8b7c32ac7b57653738a7c044e8",
     "poc/recovery-native/common/Cargo.toml": "101a0fef2c6032d63e0f0454bba3c11bfaf36755127c374311893c8fbc9bbfe3",
     "poc/recovery-native/common/src/lib.rs": "500f07594a670a37ab7cf466139217e9e61a35eebedcfa0313c8a1420e7e23a4",
     "poc/recovery-native/common/src/restricted.rs": "8bcb0c7d23e2eff28d0025a00da1357c06b48de280df6c8162b0909299038ca0",
@@ -47,11 +47,11 @@
     "poc/recovery-native/guest/src/main.rs": "5854066c22cec4a65890fdf6e937017b3d8599952077a70a8bf449ed2a448401",
     "poc/recovery-native/host/Cargo.toml": "53112e2d2e6d499d9ff8c1c4d2a01319d5bbe33f7f172d7691687a244dac5004",
     "poc/recovery-native/host/src/bin/wallet.rs": "d653e03fdb9b1b1964f71005d2a0bb5aadc925b16b9cd2739db0e8742a55d65c",
-    "poc/recovery-native/host/src/fixtures.rs": "63eb2c62a6b3422f553564bcab2767cf18ce1132f6037d6d19609f0df121908a",
-    "poc/recovery-native/host/src/main.rs": "a39d8d11bf84c9c744dffa154419c93190899cf33f43a29babfb302df622a073",
-    "poc/recovery-native/host/src/native.rs": "76c68950c87f07e3208d7eff81106f9dfad8c1b985f0a988cd3519b2962aeb8e",
+    "poc/recovery-native/host/src/fixtures.rs": "3e73299f27aea363c06eadbcb8c5cf4ed0d11531ad369ef9199c82a970393673",
+    "poc/recovery-native/host/src/main.rs": "f6556ab0564306d58e4a60e0a9decdf3fbc4e49686dfbc8d21b19bef22f7b7ec",
+    "poc/recovery-native/host/src/native.rs": "b0b0d9659d73f2cc8fec575c7f4af2ba28f1da4dcc740ec64f67a0d7739e453a",
     "poc/recovery-native/host/src/receipt.rs": "6de42f30cab638770350218cf339bb8c71df1f505edf90a67473be38d28c0c8f",
-    "poc/recovery-native/host/src/tests.rs": "773e6a06ec34b6f2ea2ad61ee9f1c3b3dcab022636ddc87176205e45158e8869",
+    "poc/recovery-native/host/src/tests.rs": "6dc04a77ae5b84de18699a9cc7fabd2b3a0ee1c7834f79152290e3af235a9799",
     "poc/recovery-native/measurement-plan.json": "26994c0432930ee2dc6f2cdbf94650c6ba2c64419ff8d92d4b8f34d0c2608634",
     "poc/recovery-native/run_qualification.py": "0178370b762c012b33ccef462acc4c6fe2db43d8ed3ce38fa3716600ab0511e6",
     "poc/recovery-native/test_wallet_cli.py": "27cafb94160a6f8de7d077a20b819f41255d00a2c194c8bce7ba535ead8f2706"
@@ -94,5 +94,16 @@
     "nativeGenuineNewReceiptIssuance": false,
     "canonicalNewInstanceTN10Payout": false,
     "independentCustodyOrShutdownGate": false
+  },
+  "fixtureCorrection": {
+    "reviewedPriorHead": "8922c19375621c39426a1b7965c104cb95e2884a",
+    "priorInputSet": "evidence/prior-input-set-8922c19",
+    "priorEvidenceManifestSha256": "b77d7ff9fc1acc4dbe714896568c288ce9efefe6508fd0994d7a12a89b80bb15",
+    "mainNativeHistory": "evidence/fixtures/native-history.json",
+    "nativeTransactions": 13,
+    "nativeInputs": 22,
+    "duplicateInputs": 0,
+    "guestChanged": false,
+    "measurementLimitsChanged": false
   }
 }

@@ -1,0 +1,20 @@
+{
+  "scope": "FIXTURE_ONLY_REPAIR_NO_GUEST_OR_CRYPTOGRAPHIC_CHANGE",
+  "priorHead": "8922c19375621c39426a1b7965c104cb95e2884a",
+  "priorManifestPreservedByteForByte": true,
+  "priorManifestSha256": "b77d7ff9fc1acc4dbe714896568c288ce9efefe6508fd0994d7a12a89b80bb15",
+  "priorConflicts": 2,
+  "correctedTransactions": 13,
+  "correctedNativeInputs": 22,
+  "correctedConflicts": 0,
+  "regressions": "Each reviewed conflict independently reintroduced and rejected; archived binary corpus also rejected with both conflicts",
+  "guestProgramSha256": "6039c3ef645d620bdd7eef6384750e73f51bcc8f9182aae1b1ac3c963601e75b",
+  "guestProgramUnchanged": true,
+  "measurementPlanUnchanged": true,
+  "actualGuestCases": 15,
+  "actualGuestCampaignCompleted": true,
+  "newOuterReceipts": 0,
+  "GPU": false,
+  "RPC": false,
+  "providerActions": false
+}

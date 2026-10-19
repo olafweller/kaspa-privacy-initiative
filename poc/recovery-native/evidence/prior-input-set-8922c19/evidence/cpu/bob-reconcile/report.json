@@ -1,0 +1,13 @@
+{
+  "case": "bob-reconcile",
+  "cycleLimit": 160000000,
+  "developmentMode": false,
+  "exactExpectedJournalMatched": true,
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "journalSha256": "f2ceafc6eef7bedb3fe49dc784d2c45e032e82a1b7ea59007d2c0ca69e89ab5d",
+  "scope": "NEW_GUEST_EXECUTION_ONLY_NO_RECEIPT",
+  "seconds": 0.296352766,
+  "segmentPo2": 16,
+  "segments": 79,
+  "userCycles": 1496280
+}

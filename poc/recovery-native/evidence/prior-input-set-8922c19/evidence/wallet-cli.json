@@ -1,0 +1,17 @@
+{
+  "scope": "NEW_RELATION_OFFLINE_WALLET_BRIDGE_NOT_INDEPENDENT_CUSTODY_OR_TN10",
+  "sixBatchesReconstructedExactly": true,
+  "sharedReceiveFields": [
+    "domain",
+    "incoming",
+    "owner",
+    "schema"
+  ],
+  "oldRelationRootRejected": true,
+  "unauthorizedExitRejected": true,
+  "missingAndReorderedHistoryRejected": true,
+  "initOverwriteRejected": true,
+  "wrongRootRejected": true,
+  "newOuterProofs": 0,
+  "RPC": false
+}

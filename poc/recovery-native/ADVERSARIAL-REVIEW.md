@@ -47,3 +47,27 @@ inputs in non-broadcastable templates. Both were corrected before the frozen
 CPU campaign. Guest intermediate builds and local logs remain under `.local`;
 only the final image/input set is qualified. No limits were raised and no funded
 or proving attempt occurred.
+
+## Review correction: one native input spend across the complete fixture history
+
+Astra's review of `8922c193` found two fixture-only native conflicts: the invalid
+and valid transfers shared funding, and the two payouts shared sponsor funding.
+The new host check reproduces exactly both conflicts from the preserved binaries;
+the previous per-transaction script checks did not enforce cross-transaction
+spentness. This is a test-history error, not evidence of a native consensus bypass.
+
+Each publication now uses distinct funding, and payout sponsor IDs are derived
+deterministically from the exit ID with an explicit fixture domain. Whole-history
+input uniqueness is mandatory during preparation and checking saved inputs.
+Thirteen captured transactions spend 22 distinct inputs; templates and alternative
+attack histories are not appended a second time. The regression reintroduces
+both bugs separately and requires rejection. Invalid app operations still consume
+their native publication funding. No guest assumption or cryptographic check is
+weakened, and no native UTXO ledger is added to the guest.
+
+Dependent public inputs, native IDs, state roots, tips, exact journals and host
+pins were regenerated. All fifteen actual guest CPU cases passed under the same
+limits using the identical guest program; all nine Rust tests passed. The original
+corpus, measurements and manifest remain explicitly superseded evidence, not proof
+targets. The correction does not establish signed chain-valid funding, canonical
+UTXO availability, new outer receipts or independent recovery after shutdown.

@@ -20,3 +20,8 @@ source hashes, guest identity, receipts and actual TN10 evidence remain intact.
 Changes are limited to versioned state/journal domains, exact-reserve admission,
 matching native policy, payout shape and reserve removal. The detailed enforcing
 boundaries and alternatives are in [ADR-0017](../../docs/adr/0017-integrated-recovery-native-guest.md).
+
+The follow-up review correction changes only native fixture funding outpoints
+and adds whole-history input-uniqueness qualification. It reuses the existing
+canonical v1 parser and hash helper; it adds no wallet, cryptographic, native
+policy or guest subsystem. The source/reuse decisions above remain unchanged.

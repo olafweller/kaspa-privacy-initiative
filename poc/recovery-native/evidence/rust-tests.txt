@@ -1,5 +1,5 @@
    Compiling kpi-recovery-native-host v0.1.0 (/workspace/kaspa-privacy-initiative/poc/recovery-native/host)
-    Finished `release` profile [optimized] target(s) in 5.74s
+    Finished `release` profile [optimized] target(s) in 5.91s
      Running unittests src/lib.rs (.local/ci-target/release/deps/kpi_recovery_native-1067c388678d633c)
 
 running 0 tests
@@ -8,17 +8,18 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running unittests src/main.rs (.local/ci-target/release/deps/kpi_recovery_native_host-9e4dd2368689b937)
 
-running 8 tests
-test tests::exit_amount_range_is_explicit_and_cannot_wrap_permission_refund ... ok
+running 9 tests
 test tests::exact_reserve_must_not_create_a_zero_reserve_output ... ok
+test tests::exit_amount_range_is_explicit_and_cannot_wrap_permission_refund ... ok
 test tests::native_payout_forms_and_sponsor_topups_reconcile_without_tags ... ok
 test tests::exact_selected_reserve_drain_preserves_a_second_pending_deposit ... ok
+test tests::six_linked_batches_keep_exits_backed_until_both_payouts ... ok
 test tests::native_semantic_negatives_preserve_original_policy_for_both_forms ... ok
 test tests::verifier_rejects_old_real_receipts_and_fakes_under_fixed_new_identity ... ok
-test tests::six_linked_batches_keep_exits_backed_until_both_payouts ... ok
+test tests::whole_native_history_rejects_reused_transfer_and_payout_inputs ... ok
 test tests::wrong_permission_and_exit_replay_are_rejected ... ok
 
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
      Running unittests src/bin/wallet.rs (.local/ci-target/release/deps/kpi_recovery_native_wallet-371b240c6b4ca036)
 

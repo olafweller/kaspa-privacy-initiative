@@ -1,0 +1,9 @@
+{
+  "case": "auth-root",
+  "error": "Guest panicked: assertion `left == right` failed: prior state\n  left: [236, 17, 62, 234, 185, 179, 113, 0, 226, 54, 132, 0, 193, 83, 235, 77, 230, 35, 37, 152, 252, 214, 85, 39, 129, 140, 170, 39, 203, 152, 127, 151]\n right: [237, 17, 62, 234, 185, 179, 113, 0, 226, 54, 132, 0, 193, 83, 235, 77, 230, 35, 37, 152, 252, 214, 85, 39, 129, 140, 170, 39, 203, 152, 127, 151]",
+  "expectedAbortConfirmed": true,
+  "expectedAbortReason": "prior state",
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "scope": "ACTUAL_GUEST_SEMANTIC_ABORT_NOT_RESOURCE_FAILURE",
+  "seconds": 0.222309499
+}

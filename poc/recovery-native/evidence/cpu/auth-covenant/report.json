@@ -5,5 +5,5 @@
   "expectedAbortReason": "covenant",
   "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
   "scope": "ACTUAL_GUEST_SEMANTIC_ABORT_NOT_RESOURCE_FAILURE",
-  "seconds": 0.19766776
+  "seconds": 0.178436739
 }

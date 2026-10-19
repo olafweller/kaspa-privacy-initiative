@@ -1,0 +1,9 @@
+{
+  "case": "unreconciled-payout",
+  "error": "Guest panicked: unreconciled accepted native consumption",
+  "expectedAbortConfirmed": true,
+  "expectedAbortReason": "unreconciled accepted native consumption",
+  "expectedImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "scope": "ACTUAL_GUEST_SEMANTIC_ABORT_NOT_RESOURCE_FAILURE",
+  "seconds": 0.263996061
+}

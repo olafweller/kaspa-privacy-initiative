@@ -120,8 +120,33 @@ fn check_package(dir: &Path) -> Result<()> {
         #[cfg(feature = "proof")]
         assert_eq!(receipt::target(name)?, expected.journal);
     }
+    let history = load_history(dir)?;
+    fixtures::require_single_spend(&history)?;
+    let retained: serde_json::Value =
+        serde_json::from_slice(&fs::read(dir.join("native-history.json"))?)?;
+    assert_eq!(
+        history, retained,
+        "retained native history / actual input bytes"
+    );
     println!("Six fixed inputs, full journals, state/tip/native-template continuity and guest identity match; no new guest execution or proof.");
     Ok(())
+}
+fn load_history(dir: &Path) -> Result<serde_json::Value> {
+    let inputs: Vec<(String, Input)> = fixtures::STAGES
+        .iter()
+        .map(|name| {
+            Ok((
+                name.to_string(),
+                bincode::deserialize(&fs::read(dir.join(format!("{name}.input.bin")))?)?,
+            ))
+        })
+        .collect::<Result<_>>()?;
+    fixtures::native_history(inputs.iter().map(|(name, input)| (name.as_str(), input)))
+}
+fn check_history(dir: &Path) -> Result<()> {
+    let history = load_history(dir)?;
+    println!("{}", serde_json::to_string_pretty(&history)?);
+    fixtures::require_single_spend(&history)
 }
 fn main() -> Result<()> {
     if std::env::var_os("RISC0_DEV_MODE").is_some() {
@@ -131,6 +156,7 @@ fn main() -> Result<()> {
     match args.get(1).map(String::as_str) {
         Some("prepare") if args.len()==3=>fixtures::prepare(Path::new(&args[2])),
         Some("check-package") if args.len()==3=>check_package(Path::new(&args[2])),
+        Some("check-history") if args.len()==3=>check_history(Path::new(&args[2])),
         Some("profile") if args.len()==6=>profile(Path::new(&args[2]),Path::new(&args[3]),&args[4],Path::new(&args[5])),
         #[cfg(feature="proof")]
         Some("verify") if args.len()==4=>receipt::verify_file(&args[2],Path::new(&args[3])),

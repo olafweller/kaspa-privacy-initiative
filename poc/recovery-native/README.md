@@ -7,7 +7,8 @@ retaining PR54/55's original code, proofs and evidence unchanged.
 **Result:** all six linked batches and nine additional CPU cases completed under
 the predeclared limits. Both native payout forms pass the real pinned script
 engine. Genuine new outer receipts and proof-authorized native permission
-issuance have not been produced. No GPU/provider, funding, RPC or broadcast was
+issuance have not been produced. The corrected main history contains 13 transactions
+and 22 distinct native inputs. No GPU/provider, funding, RPC or broadcast was
 performed. This is execution/implementation qualification, not a new TN10 trial.
 
 ## New identity and enforcing relation
@@ -47,12 +48,12 @@ its retired reserve.
 
 | Batch | User cycles | Segments | CPU guest execution |
 |---|---:|---:|---:|
-| Deposit registration | 552,697 | 34 | 0.242 s |
-| Credit → invalid transfer → valid payment | 139,741,397 | 143 | 3.361 s |
-| Bob exit: 4 test-KAS, 6 remain | 43,994,671 | 46 | 1.273 s |
-| Bob permission/payout reconciliation | 1,496,280 | 79 | 0.296 s |
-| Alice exit: exact remaining 6 test-KAS | 44,189,860 | 46 | 1.312 s |
-| Alice permission/payout reconciliation | 1,623,688 | 85 | 0.303 s |
+| Deposit registration | 552,697 | 34 | 0.215 s |
+| Credit → invalid transfer → valid payment | 139,741,397 | 143 | 3.142 s |
+| Bob exit: 4 test-KAS, 6 remain | 43,994,671 | 46 | 1.158 s |
+| Bob permission/payout reconciliation | 1,496,280 | 79 | 0.299 s |
+| Alice exit: exact remaining 6 test-KAS | 44,189,850 | 46 | 1.168 s |
+| Alice permission/payout reconciliation | 1,623,712 | 85 | 0.305 s |
 
 Full 352-byte journals are fixed in [targets.json](evidence/targets.json), with
 prior/next root and lane-tip continuity. Every state settlement template consumes
@@ -67,13 +68,20 @@ unpaid exits and permission rent; the state covenant retains its separate
 100,000,000 sompi. Each user receives principal plus a separately sponsored
 50,000,000 sompi permission-rent refund. The data context is synthetic, with
 real public wallet-proof fixtures from PR55. No wallet secret is read or copied.
-The rejected transfer has canonical proof points but a false intent binding.
+The rejected transfer has canonical proof points but a false intent binding. It
+has a separate native funding input: application rejection does not undo an L1
+input spend. Bob and Alice also have separate deterministic payout sponsor UTXOs.
+The host scans the captured six-batch history as one sequence for native input
+reuse. Templates already included in later batches are not counted twice;
+alternative attacks and deliberate replay controls are separate histories.
+This fixture check does not establish canonical UTXO availability or chain
+acceptance and adds no native UTXO ledger to the guest.
 
 [The measurement plan](measurement-plan.json) predates execution: 160M cycles
 and 900 seconds per case, four CPU threads, 3,600 seconds aggregate. The final
-15-case campaign completed in **12.146 seconds**; sampled process-group RAM peak
-was **88,580,096 bytes**. This is execution time, not outer proving time. The six
-main guest sessions total 6.786 seconds; process setup/control cases explain the
+15-case corrected campaign completed in **11.035 seconds**; sampled process-group RAM peak
+was **80,941,056 bytes**. This is execution time, not outer proving time. The six
+main guest sessions total 6.286 seconds; process setup/control cases explain the
 larger campaign duration. All main sessions have multiple segments for the fixed
 join profile. Nothing revises the original 32M comparison result.
 
@@ -82,14 +90,34 @@ full exit obligation remains), a replayed wallet exit, six authentication change
 and an unreconciled accepted payout. Only explicit semantic guest panics count
 as required aborts; resource failures never count as successful rejection.
 
-Eight Rust tests retain both payout forms, 17 semantic native rejection variants,
+Nine Rust tests retain both payout forms, 17 semantic native rejection variants,
 sponsor top-ups, tagless payouts, a second pending deposit during full drain,
 zero-output rejection, amount/rent overflow, bad permission and replay, and
-old-real/fake receipt rejection. [Wallet CLI checks](evidence/wallet-cli.json)
+old-real/fake receipt rejection. The new regression reintroduces each reviewed
+native conflict independently and requires the whole-history check to fail.
+[Wallet CLI checks](evidence/wallet-cli.json)
 reconstruct all six states exactly, enforce the four receiving fields, reject
 unauthorized exits/history changes and refuse an old relation's accepted root.
 CI repeats host/native regressions and regenerates the frozen public package;
 it checks stored CPU evidence but does not rerun the zkVM or produce receipts.
+
+## Focused fixture correction after review
+
+The original `8922c193` corpus reused the invalid/valid transfer funding input
+and both payouts' sponsor input. Both conflicts were reproduced from its actual
+binary inputs. That corpus cannot represent one accepted native history, although
+its CPU measurements still describe those exact inputs. Its complete evidence
+and runmanifest remain byte-preserved in
+[prior-input-set-8922c19](evidence/prior-input-set-8922c19/README.md), with a
+[conflict reproduction](evidence/prior-input-set-8922c19/reproduced-conflicts.json).
+
+Only fixture funding outpoints and the dependent inputs, IDs, roots, journals,
+compiled host expectations and measurements changed. Guest image, wallet proofs,
+VK/setup, native restrictions and measurement limits are unchanged. The active
+[native-history report](evidence/fixtures/native-history.json) is regenerated
+from actual input bytes during package checks. CI also reproduces the two old
+conflicts and verifies the archived manifest. The review scope is these fixture
+changes; no new subsystem or design decision is introduced.
 
 ## Reproduce locally
 
