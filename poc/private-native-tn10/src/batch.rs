@@ -103,6 +103,9 @@ pub(crate) fn from_capture(c: &Value, cov: H) -> Result<lane::Input> {
     })
 }
 pub fn seed(validator: &Path, sha: &str, capture: &Path, out: &Path) -> Result<()> {
+    let frozen = out.with_extension("capture.json");
+    save(&frozen, &fs::read(capture)?)?;
+    let capture = frozen.as_path();
     let lane = export(validator, sha, capture, [0; 32])?;
     let c = read(capture)?;
     let end = record(&c, "end-block")?;
@@ -422,6 +425,10 @@ pub fn checkpoint(
             t["stage"].as_str().ok_or("stage")?.to_string(),
         )
     };
+    mkdir(out)?;
+    let frozen = out.join("acceptance-capture.json");
+    save(&frozen, &fs::read(capture)?)?;
+    let capture = frozen.as_path();
     export(validator, sha, capture, s.covenant)?;
     let c = read(capture)?;
     require(
@@ -443,9 +450,7 @@ pub fn checkpoint(
                 == Some(CovenantBinding::new(0, Hash::from_bytes(s.covenant))),
         "exact accepted continuation",
     )?;
-    mkdir(out)?;
     save(&out.join("state.bin"), &bincode::serialize(&s)?)?;
-    save(&out.join("acceptance-capture.json"), &fs::read(capture)?)?;
     report(
         &out.join("checkpoint.json"),
         &json!({"schema":"KPI_TN10_CHECKPOINT_V1","status":"CAPTURED_NATIVE_ACCEPTANCE_OFFLINE_RECHECK_REQUIRED","trial":tx["trial"],"completed":completed,

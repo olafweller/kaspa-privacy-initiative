@@ -52,7 +52,8 @@ verify TRUSTED_TARGET_JSON EXPECTED_TARGET_SHA RECEIPT NEW_VERIFICATION_DIR
 wallet TRIAL_JSON PUBLIC_STATE_BIN OWN_BACKUP PUBLIC_PARAMETERS credit-transfer|exit NEW_OUTPUT_DIR
 ```
 
-`seed`, `checkpoint` and `freeze` run the hash-pinned existing native validator's
+`seed`, `checkpoint` and `freeze` preserve their own capture copy before running
+the hash-pinned existing native validator's
 full `verify`. Its short-interval `export` is intentionally not used. An active
 collapsed inclusion is required. Public input is mapped from **all** accepted
 native lane bodies in canonical order, without dropping irrelevant or app-invalid

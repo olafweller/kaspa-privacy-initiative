@@ -36,7 +36,7 @@
     "privateKeysCommitted": false,
     "custody": "Separate local roles, not isolation from root; Bob control required before release."
   },
-  "hostBinarySha256": "f22a4535f93813398756c132520723b03285cb24dc2ebb8b0b25481d2eeec6b7",
+  "hostBinarySha256": "6b2fa5c0b239854c1c71a4e7d0b7d8ede724209090abda36674bd61055b9e996",
   "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
   "newNativeInitialization": "Deterministic rent-only initializer; NEW code for review, guest unchanged. Native genesis ID derived from actual initial output, not substituted fixture ID.",
   "notPerformed": [

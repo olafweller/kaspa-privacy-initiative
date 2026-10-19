@@ -25,7 +25,7 @@
     "rustyKaspa": "01b532e8b553523216471682649693af92f0fd16",
     "vprogs": "f9b84a863a7c7c20586a9cf947550475e894f72e",
     "hostBinary": ".local/ci-target/release/kpi-private-native-tn10",
-    "hostBinarySha256": "f22a4535f93813398756c132520723b03285cb24dc2ebb8b0b25481d2eeec6b7",
+    "hostBinarySha256": "6b2fa5c0b239854c1c71a4e7d0b7d8ede724209090abda36674bd61055b9e996",
     "nativeCaptureValidator": ".local/ci-target/release/kpi-tn10-integration",
     "nativeCaptureValidatorSha256": "a741467791c295e78647d5a1d7f012fddb0b484a11989e5177fa257d271d8837",
     "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb"
