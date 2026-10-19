@@ -1,0 +1,16 @@
+{
+  "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+  "immutableImage": null,
+  "publicationPending": true,
+  "baseCudaDigest": "sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6",
+  "port": 8080,
+  "persistentMount": "/workspace",
+  "stateDirectory": "/workspace/kpi-staged-tn10",
+  "gpuCount": 1,
+  "gpuType": "NVIDIA L40S",
+  "containerDiskGb": 90,
+  "volumeGb": 10,
+  "rentalAuthorized": false,
+  "proofJobsAuthorized": false,
+  "actualQuoteRequired": true
+}

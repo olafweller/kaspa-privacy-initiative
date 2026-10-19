@@ -548,3 +548,14 @@ covenant ID and permits only the exact reviewed lane-restricted successor. This
 is new native preparation code, with no administrative withdrawal key. It has
 local script tests and requires review before funding; no actual TN10 bootstrap
 or privacy-lifecycle acceptance is claimed.
+
+## Staged service transport qualification — 2026-10-19
+
+The [staged service](../poc/staged-tn10-service/README.md) implements ADR-0015's
+four successive public batch arrivals using the unchanged reviewed host, guest
+and qualified CUDA binary. B independently approves each target before upload;
+one durable ledger, exclusive service process and external timeout retain order
+and the original aggregate deadline across reconnects/restarts. The existing B
+lease/backup/stop guard remains independent. CPU transport/process/image tests
+use retained receipts and explicitly synthetic producers. No new proof, actual
+CUDA execution or TN10 acceptance is established by this preparation.

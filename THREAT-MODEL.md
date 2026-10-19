@@ -448,3 +448,26 @@ wallet backup or witness enters a public proof bundle. Existing B credentials,
 lease deadline, backup and provider stop remain separate from chain execution;
 the gateway is only a management route. New staged GPU transport/image binding
 and a live full terminal rehearsal remain unqualified in this preparation.
+
+## Staged GPU service preparation (2026-10-19)
+
+The [staged service](poc/staged-tn10-service/README.md) authenticates uploads and
+requires a target hash approved independently on trusted B. GPU-returned metadata
+cannot set receipt expectations. Only four public assets are accepted; uploaded
+executables cannot replace the image host or pinned guest. Archive traversal,
+links, duplicates and altered assets are rejected before execution. No wallet
+secrets or provider credentials belong in this interface/image.
+
+The service token, trusted B installation and B root remain operator trust
+assumptions. This is not isolation from a malicious administrator. A missing
+controller or stale heartbeat blocks a new stage; an interrupted active service
+consumes the attempt rather than resuming or repeating it. An exclusive volume
+lock prevents another mutating service process. The unchanged external B guard
+retains the absolute rental stop even if service/backup I/O fails. Synthetic
+provider responses do not qualify actual provider stop or account permissions.
+
+These transport changes cannot authorize native withdrawals or alter monetary
+state: the unchanged guest/native scripts and independent exact receipt checks
+remain necessary. Reorg, stale anchor and accepted-chain checkpoints remain the
+reviewed PR52 controller duties; a mismatch requires stopping the trial. This
+preparation adds no claim of production privacy or live TN10 rehearsal success.

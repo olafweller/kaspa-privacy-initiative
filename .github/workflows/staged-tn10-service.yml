@@ -1,0 +1,35 @@
+name: Staged TN10 service qualification
+on:
+  pull_request:
+    paths:
+      - 'poc/remote-cuda/staged*'
+      - 'poc/remote-cuda/test_staged.py'
+      - 'poc/remote-cuda/check_staged_image.py'
+      - 'poc/remote-cuda/Dockerfile.staged'
+      - 'poc/staged-tn10-service/**'
+      - '.github/workflows/*staged*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Real HTTP and subprocess controls; no new proofs or network calls
+        run: |
+          python3 poc/staged-tn10-service/check_preparation.py
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_staged.py' -v
+          python3 scripts/check_docs.py
+      - name: Recover pinned public executable package and build service
+        run: |
+          python3 poc/remote-cuda/staged_context.py .local/staged-check
+          docker build -f .local/staged-check/Dockerfile.staged -t kpi-staged-tn10:checked .local/staged-check
+          python3 poc/remote-cuda/check_staged_image.py kpi-staged-tn10:checked > .local/staged-image-smoke.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staged-tn10-cpu-image-qualification
+          path: .local/staged-image-smoke.json

@@ -1,0 +1,13 @@
+{
+  "archive": {
+    "bytes": 7520709,
+    "sha256": "45b06087d5ee469cab30192725af273c9cc669795c54ea8e6094087e427a87bf"
+  },
+  "files": {
+    "bin/kpi-private-native-tn10": "6b2fa5c0b239854c1c71a4e7d0b7d8ede724209090abda36674bd61055b9e996",
+    "guest.program.bin": "213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375",
+    "staged-policy.json": "a85140207c3a8aabbc8436dab323136098bc626430dba69f57c308132013de0e",
+    "trial.json": "ed8cb4c966f8e41a28a4773f7079c23c20e5f682defb1751f4c92c8ef125614f"
+  },
+  "scope": "PUBLIC_HOST_PROGRAM_TRIAL_NO_WALLET_SECRETS_OR_CHAIN_INPUT"
+}

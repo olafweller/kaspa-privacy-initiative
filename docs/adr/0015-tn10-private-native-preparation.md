@@ -95,3 +95,16 @@ of production privacy, independent prover implementations or live TN10 success.
 Reconsider the initializer if native ID rules/state encoding/template change;
 reconsider the staged proof route if real captures exceed the frozen guest input
 limit, lose active-lane continuity, or miss the native anchor/proving window.
+
+## Transport implementation qualification — 2026-10-19
+
+The [staged service](../../poc/staged-tn10-service/README.md) implements the
+chosen separate service/image binding without changing the private relation,
+native scripts or reviewed host. B approves the independent target SHA before
+the four-file public upload. A persistent exclusive ledger consumes each stage
+before launch; active restart interrupts it, waiting restart retains progress,
+and the original aggregate deadline includes chain waits. Retained real receipts
+and synthetic producers qualify transport and recovery without new proof jobs.
+Live B installation, actual chain/custody/anchor preflight and a separately
+released funded/GPU rehearsal remain necessary. The historical PR52 manifest
+is intentionally preserved; the new supplemental manifest records this service.

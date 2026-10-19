@@ -1,0 +1,7 @@
+# Retain the already qualified RISC Zero 3.0.3 CUDA executable unchanged.
+FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+COPY staged-dist /opt/kpi/staged-tn10
+COPY run_stage.py /opt/kpi/private-native-tn10/run_stage.py
+COPY common.py worker.py staged_policy.py staged_child.py staged_worker.py staged_service.py /opt/kpi/app/
+RUN python3 -c "from pathlib import Path;from staged_policy import check;check(Path('/opt/kpi/staged-tn10'),cuda=True)"
+CMD ["python3", "staged_service.py"]

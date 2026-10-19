@@ -1,0 +1,44 @@
+name: Publish staged TN10 CUDA service image
+on:
+  push:
+    tags:
+      - 'cuda-staged-tn10-*'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Restore package, qualify service and build immutable image
+        run: |
+          python3 poc/staged-tn10-service/check_preparation.py
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_staged.py' -v
+          python3 poc/remote-cuda/staged_context.py .local/staged-image
+          docker build -f .local/staged-image/Dockerfile.staged -t kpi-staged-tn10:checked .local/staged-image
+          python3 poc/remote-cuda/check_staged_image.py kpi-staged-tn10:checked > .local/staged-image-smoke.json
+      - name: Publish and re-pull exact digest; recheck actual image
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:staged-tn10-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-staged-tn10:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee .local/staged-image-digest.txt >> "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/remote-cuda/check_staged_image.py "$task_digest" > .local/staged-image-published-smoke.json
+          docker logout ghcr.io
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staged-tn10-image-publication
+          path: |
+            .local/staged-image-smoke.json
+            .local/staged-image-published-smoke.json
+            .local/staged-image-digest.txt

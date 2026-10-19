@@ -1,0 +1,20 @@
+{
+  ".github/workflows/cuda-staged-image.yml": "6665de6fcc364ba926be79a3fd6f18a76ffc3452d629a79d24d2af702c0b87eb",
+  ".github/workflows/staged-tn10-service.yml": "73084791cc1509b125a6b7c54b9e4beee2388e2176426f84e4656eafd0ea5db9",
+  "poc/private-native-tn10/run_stage.py": "5ac1da16f7c1c75ed31715d1352d5596b938e9cdc7fe4e3fa3e1414a23fd5d57",
+  "poc/remote-cuda/Dockerfile.staged": "5c97a61a002ff9a06ddc36bc02db3774e16da90a3e7be3053dece287d3792af7",
+  "poc/remote-cuda/check_staged_image.py": "67f9ebbd68bb66f7d74ad98f3e8c1f148619b1e73b10b83c523b4a1bf339788e",
+  "poc/remote-cuda/staged_child.py": "ce9485d9a609c5e2a8c32f639e4c9bc6acfb5984b16b7640f7d29cfc736583a1",
+  "poc/remote-cuda/staged_context.py": "f11cfa5aee21f75be6ed0a80bfdf08784f937062910637b0abdf742b9b87851d",
+  "poc/remote-cuda/staged_control.py": "8b809d89c75d0d074e5e1d10d819ab41bf4bf322dfadfd6e1e13d7b24a20c119",
+  "poc/remote-cuda/staged_package.py": "f379b9fd92cdd6a03bf7873b3c49e916031d9c6e226cd4e235b0aec2ac937b13",
+  "poc/remote-cuda/staged_policy.py": "e1cf41f7d7c1e5e30b155322b2e88647ff514e3ce706544c7a1cd1e747a0c2e5",
+  "poc/remote-cuda/staged_service.py": "88c699b8bdee6185d0941f94d1735845b0645d0e98297c9766dcf73991bc1e48",
+  "poc/remote-cuda/staged_verify.py": "26871fc734fb10e5ab16c0a24cbb1d33c0fb123653930ef7f67eec745d3a035c",
+  "poc/remote-cuda/staged_worker.py": "27e5402863d9ff6731e2ca80890b646b8b11da60e4dce050081f17928fc1d22e",
+  "poc/remote-cuda/test_staged.py": "a576d5e0b96ba97fbc2ded5db586499f35b8070eed9df571a22c9143ba2bb650",
+  "poc/staged-tn10-service/check_preparation.py": "a4edc1b52b701b0591eef57aee26f33ab23fe947efb7c93e80d8e32b1a1ef60c",
+  "poc/staged-tn10-service/evidence/public-package.tar.gz": "45b06087d5ee469cab30192725af273c9cc669795c54ea8e6094087e427a87bf",
+  "poc/staged-tn10-service/synthetic_job.py": "3be4bc63400ab63a0f720c78fa84a8531e14035df2b2ad4e409ec5a4d5dc4d57",
+  "poc/staged-tn10-service/synthetic_server.py": "86cca3387c702f6f92ec1af3d8e3c4d088626d004fbdfce01e5e55ae04b3cd39"
+}

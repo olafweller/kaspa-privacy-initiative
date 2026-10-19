@@ -103,3 +103,13 @@ capture mapping and retained real-receipt verification. Fast checks also run its
 synthetic stage-budget/public-bundle tests and read-only RPC allowlist. These
 checks neither contact TN10 nor start a new proof/provider job. See the
 [preparation scope](../poc/private-native-tn10/README.md).
+
+## Staged TN10 service and image
+
+The dedicated `staged-tn10-service.yml` workflow tests real authenticated HTTP,
+subprocess/timeout, persistent restart, partial artifacts and unchanged guard
+integration. Producers are explicitly synthetic; existing receipts are really
+verified on CPU. `cuda-staged-image.yml` publishes only tagged preparations,
+re-pulls the immutable digest and repeats source/binary/startup/receipt checks.
+No test starts new proving, calls a provider or rents a GPU. See the
+[qualification package](../poc/staged-tn10-service/README.md).
