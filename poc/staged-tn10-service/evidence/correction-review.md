@@ -44,3 +44,13 @@ Privacy, reorg and actual-chain freshness limitations remain unchanged.
 The selected wallet/guest/native code and USD5 planning / one L40S / one attempt /
 3,600 aggregate seconds / 7,200 rental seconds are unchanged. This work starts no
 new proof, GPU rental, provider action, funding or TN10 broadcast.
+
+## Requalification
+
+All 44 remote-CUDA tests passed, including the 15 staged service tests. The
+corrected image publication workflow passed, pulled its immutable digest and
+repeated CPU image checks. This Cloud task also pulled that exact digest and
+repeated the source/binary/startup/restart/retained-receipt checks; see
+`publication.json` and `published-image-smoke.json`. Runtime code is unchanged
+between the published source commit and the publication-metadata follow-up.
+The old image is historical evidence and is superseded for any future trial.

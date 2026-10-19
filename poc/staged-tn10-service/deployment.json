@@ -1,7 +1,7 @@
 {
   "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
-  "immutableImage": null,
-  "publicationPending": true,
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fa4f72f0e060325a951eac33ea01ef00d3593ffe68531d69cf6a8b09daf41aa1",
+  "publicationPending": false,
   "baseCudaDigest": "sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6",
   "port": 8080,
   "persistentMount": "/workspace",
@@ -13,6 +13,6 @@
   "rentalAuthorized": false,
   "proofJobsAuthorized": false,
   "actualQuoteRequired": true,
-  "imageSourceCommit": null,
+  "imageSourceCommit": "9b942330e8bbe19674adab12a1b9d6f767433132",
   "publication": "evidence/publication.json"
 }

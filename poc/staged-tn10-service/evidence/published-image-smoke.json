@@ -30,10 +30,11 @@
   "application": {
     "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
     "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
-    "staged_policy.py": "e1cf41f7d7c1e5e30b155322b2e88647ff514e3ce706544c7a1cd1e747a0c2e5",
+    "staged_archive.py": "534f9f70ab0287e80286351755aa739cf34e135e12bdb67d4bb51ec112ef5535",
+    "staged_policy.py": "b0539955060697c84e6d8ca55beed827a0ade6be61117d762b82498b3bc73849",
     "staged_child.py": "ce9485d9a609c5e2a8c32f639e4c9bc6acfb5984b16b7640f7d29cfc736583a1",
     "staged_worker.py": "27e5402863d9ff6731e2ca80890b646b8b11da60e4dce050081f17928fc1d22e",
-    "staged_service.py": "88c699b8bdee6185d0941f94d1735845b0645d0e98297c9766dcf73991bc1e48"
+    "staged_service.py": "4b93f5d6e145dcae90cec45cd9fb8e325f0404b3ecbb7a97e797e79b55b42bb4"
   },
   "reviewedRunnerSha256": "5ac1da16f7c1c75ed31715d1352d5596b938e9cdc7fe4e3fa3e1414a23fd5d57",
   "scope": "STAGED_IMAGE_CPU_QUALIFICATION_RETAINED_FIXTURES_ONLY",
@@ -53,7 +54,7 @@
     "buildJobs": 4,
     "gpuExecutionQualified": false
   },
-  "imageId": "sha256:d42336e01e41affbf3cb0a5c33ad87134f9e551f7ec69e60aba86402ec947067",
+  "imageId": "sha256:fc238d13edd749684985dd685cca91772801057354490d063e51ff3007fd4478",
   "retainedCpuReceiptChecks": {
     "deposit": {
       "developmentMode": false,
