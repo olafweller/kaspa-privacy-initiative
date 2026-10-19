@@ -1,0 +1,180 @@
+{
+  "policy": {
+    "aggregateSeconds": 3600,
+    "cases": [
+      "deposit",
+      "credit-transfer",
+      "exit",
+      "reconcile"
+    ],
+    "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "guestImage": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+    "hostBinarySha256": "6b2fa5c0b239854c1c71a4e7d0b7d8ede724209090abda36674bd61055b9e996",
+    "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+    "nativeFundingAndBroadcastAuthorized": false,
+    "programSha256": "213ed12a0f0b514443fcab9608de5d42e0961fc6704fd51d49326106ead1e375",
+    "proofAndRentalAuthorized": false,
+    "rentalSeconds": 7200,
+    "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+    "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+    "trialSha256": "ed8cb4c966f8e41a28a4773f7079c23c20e5f682defb1751f4c92c8ef125614f",
+    "uploadFiles": [
+      "guest.program.bin",
+      "input.bin",
+      "journal.bin",
+      "target.json"
+    ],
+    "walletSecretsIncluded": false
+  },
+  "policySha256": "a85140207c3a8aabbc8436dab323136098bc626430dba69f57c308132013de0e",
+  "application": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "worker.py": "6788e312ca9d636399ed32e4e72c54bf965f26e52aceee213c48da6f3667549b",
+    "staged_policy.py": "e1cf41f7d7c1e5e30b155322b2e88647ff514e3ce706544c7a1cd1e747a0c2e5",
+    "staged_child.py": "ce9485d9a609c5e2a8c32f639e4c9bc6acfb5984b16b7640f7d29cfc736583a1",
+    "staged_worker.py": "27e5402863d9ff6731e2ca80890b646b8b11da60e4dce050081f17928fc1d22e",
+    "staged_service.py": "88c699b8bdee6185d0941f94d1735845b0645d0e98297c9766dcf73991bc1e48"
+  },
+  "reviewedRunnerSha256": "5ac1da16f7c1c75ed31715d1352d5596b938e9cdc7fe4e3fa3e1414a23fd5d57",
+  "scope": "STAGED_IMAGE_CPU_QUALIFICATION_RETAINED_FIXTURES_ONLY",
+  "cudaBuild": {
+    "sourceCommit": "14b5d588dd01cf4f7ba804d8bb0a61264e6ae2c6",
+    "sdkVersion": "3.0.3",
+    "features": [
+      "cuda",
+      "disable-dev-mode"
+    ],
+    "nvccFlags": "-arch=sm_89",
+    "binarySha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "upstreamCargoLockSha256": "15995a3395e61847c403182721c13c56f8735c8d22ed989dc350c5621d812024",
+    "rustVersion": "rustc 1.89.0 (29483883e 2025-08-04)",
+    "nvccVersion": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "cxxVersion": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+    "buildJobs": 4,
+    "gpuExecutionQualified": false
+  },
+  "imageId": "sha256:2e5e94b14a96266455ca4bad0609b1d536b55b5403dc12780643da75464b5acc",
+  "retainedCpuReceiptChecks": {
+    "deposit": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "82378ad35727f015951455e1dce5fb092b6180db0e2897d005ad768d09a789e7",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "cf34430183d4a5c25ae8ddcf57c83a4f587172db1f88aeb8ed998bce7bd199b1",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "e4461a9bae2de27bdae172720470de9df87d3316158d87b94f55e496cae062ba"
+    },
+    "credit-transfer": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "5bbc9e5f57b4e88d4a7840f3e6a8b1625f1a184fce88db28bb56652860279253",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "fa79270168d950c6e374a3603983fcc34951701b7df6681ac2f57ffc56f1d2eb",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "99c0935e9168668dd5b18af3ea9bd07ce9321243be78242951f73be8d9df4903"
+    },
+    "exit": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "57d751f4744d56e908b9673995e9df262dd01dd05913e0c21b1b02ff417dc964",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "3ee87294ce187676557ec3cfc03fa5e7af7ee0969e864443774cb4a05a98a32a",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "55e02ab81cb73621a4b166124b5ba2f5f9e92b2705e811df280ba4c38f080c4e"
+    },
+    "reconcile": {
+      "developmentMode": false,
+      "image": "794cfff4cfa509799ec1f6750678d3fe4bc8623522aa647cc65e6b53955c4bc9",
+      "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+      "journalSha256": "cc22d5a160148b6bad2cb105456257ba9093b7cb224b8c138c860c9efdbf99f6",
+      "negativeControls": {
+        "corruptedSealRejected": true,
+        "malformedControlInclusionRejected": true,
+        "tamperedJournalOffsetsRejected": [
+          0,
+          32,
+          64,
+          96,
+          128,
+          160,
+          192,
+          224,
+          256,
+          288,
+          320
+        ],
+        "wrongExpectedControlRejectedBySealVerifier": true,
+        "wrongImageRejected": true
+      },
+      "noUnresolvedAssumptions": true,
+      "receiptSha256": "ae56737e256191a55845620a17e0a813ce6eaa1130a6ee4cde371336070096b5",
+      "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+      "targetSha256": "737306f5ed08ef52a85ebf94f37d66b1eb87824fe7ee9dae7e6deef7d52afa08"
+    }
+  },
+  "persistentAuthenticatedStartup": true,
+  "unguardedJobsStarted": 0,
+  "proofJobStarted": false,
+  "providerCalled": false,
+  "cudaExecutionQualified": false
+}

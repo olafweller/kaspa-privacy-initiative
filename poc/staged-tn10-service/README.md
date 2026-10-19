@@ -27,6 +27,11 @@ The only uploaded files are `guest.program.bin`, `input.bin`, `journal.bin` and
 `target.json`. The service checks archive hash, exact filenames, duplicates,
 regular-file type, bounded decompression, each asset hash, trial/stage, the fixed
 guest/join, complete journal, cycle/segment settings and the shared hour limit.
+The shared gzip reader checks **all** decompressed bytes before tar parsing,
+including PAX/GNU extension metadata, headers and padding. Uploads allow at most
+8 MiB compressed / 16 MiB expanded and four logical members. Returned evidence
+allows 64 MiB compressed / 256 MiB expanded and 2,048 logical members; its
+compressed file read is bounded too. Existing file/hash/journal checks remain.
 Extraction never executes or trusts an uploaded program: the guest bytes must
 match the reviewed program SHA; the host executable comes from the image.
 
@@ -48,7 +53,10 @@ producer. The actual directory parents exist before either Rust process starts.
 Process-group identity (PID, start ticks and boot ID) is recorded before proving;
 a durable launch gate prevents an unregistered child starting after restart;
 an active-service restart kills only the matching saved group and terminates the
-attempt as interrupted. Waiting restarts retain progress/deadline and require a
+attempt as interrupted. Cleanup is repeated on every interrupted restart, so
+process loss after persisting the interruption but before the kill cannot skip
+the kill on the next restart. PID/start-time/boot-ID checks remain in force.
+Waiting restarts retain progress/deadline and require a
 fresh B heartbeat. A lost HTTP response does not cancel/repeat the accepted job.
 
 The service checks for an actual `/workspace` entry in Linux mountinfo. Docker
@@ -150,10 +158,19 @@ provider bill guarantee. Leave transfer/stop margin and preserve/CPU-verify
 external copies before deleting a future Pod/storage. Actual B installation,
 fresh native preflight, custody and separate live release remain unperformed.
 
-The image is published from `c70844a9fef2d6974a0bf5bbb411b1bd6ac91c50`; see
-[publication provenance](evidence/publication.json) and the exact digest in
+The current image source commit is recorded in
+[publication provenance](evidence/publication.json), with the exact digest in
 [deployment.json](deployment.json). The follow-up commit records publication
 metadata/documentation only; its runtime sources remain identical to the image
 source commit and are checked by `evidence/source-sha256.json`. The historical
 PR52 manifest remains unchanged; use this supplemental manifest for the reviewed
 service binding, followed by actual-chain preflight and separate live release.
+
+## Focused Astra correction
+
+The two reproduced PR53 findings and their fixes are recorded in
+[correction review](evidence/correction-review.md). The original reviewed
+`71575ad` reports, source bindings and manifests are retained under
+[evidence/history/pr53-71575ad](evidence/history/pr53-71575ad/qualification.json).
+The public host/guest package is unchanged; only the service/image plumbing and
+B archive parser change. No live execution release is added.

@@ -45,19 +45,25 @@ class App:
             self.lease=json.loads((volume/'lease.json').read_text())
             self._validate_lease(self.lease);self.digest=lease_check(self.lease)
         if self.state['state']=='running':
-            stage=self.state['currentStage']
             # Close the launch gate durably BEFORE looking for the group. If
             # its child has not registered yet, it will see interrupted state;
             # if it passed the gate, its group was already registered to kill.
             self.state.update(state='interrupted',phase='service-restarted-no-retry')
             self._save()
-            staged_worker.stop_interrupted(self.output/'stages'/stage)
-            self._terminal('interrupted','service-restarted-no-retry')
-        elif self.ledger_path.exists():
+        elif self.state['state']!='interrupted' and self.ledger_path.exists():
             ledger=json.loads(self.ledger_path.read_text())
             # Fail closed if a crash split the ledger and service-state writes.
             if ledger['attempted']!=ledger['completed']:
-                self._terminal('interrupted','incomplete-persistent-stage-no-retry')
+                self.state.update(state='interrupted',phase='incomplete-persistent-stage-no-retry')
+                self._save()
+        # Repeat cleanup on EVERY interrupted restart, including a crash after
+        # the durable gate closure but before the preceding kill. Identity
+        # checks make this safe after exit/PID reuse; it never restarts a job.
+        if self.state['state']=='interrupted':
+            stage=self.state.get('currentStage')
+            if stage is not None:
+                staged_worker.stop_interrupted(self.output/'stages'/stage)
+            self._backup()
         self._save();self.expire()
 
     def close(self):

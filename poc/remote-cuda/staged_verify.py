@@ -1,20 +1,24 @@
 """B verifies returned bytes with trusted local targets and executable only."""
-import io
 import json
 from pathlib import Path
 import subprocess
 import sys
-import tarfile
 from common import atomic,sha
 from staged_policy import CASES,check,write
+from staged_archive import open_archive,read_compressed
+
+MAX_ARCHIVE = 64*1024**2
+MAX_ARCHIVE_TAR = 256*1024**2
+MAX_MEMBERS = 2048
 
 
 def verify(package,archive,targets,out):
     check(package);expected=json.loads(targets.read_text());out.mkdir()
     candidates={}
-    with tarfile.open(fileobj=io.BytesIO(archive.read_bytes()),mode='r:gz') as tar:
+    data=read_compressed(archive,MAX_ARCHIVE)
+    with open_archive(data,MAX_ARCHIVE,MAX_ARCHIVE_TAR,MAX_MEMBERS) as (tar,members):
         seen=set();total=0
-        for item in tar:
+        for item in members:
             total+=item.size
             if item.size<0 or item.size>64*1024**2 or total>256*1024**2:raise ValueError('bounded evidence archive required')
             if item.name in seen:raise ValueError('duplicate archive member')

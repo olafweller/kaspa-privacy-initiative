@@ -1,12 +1,11 @@
 """One reviewed program/trial and four public arrivals; no executable uploads."""
-import io
 import json
 import os
 from pathlib import Path
 import re
 import sys
-import tarfile
 from common import sha
+from staged_archive import open_archive
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'private-native-tn10'))
@@ -20,6 +19,7 @@ CUDA = '4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb'
 CASES = reviewed.CASES
 PUBLIC = ('guest.program.bin', 'input.bin', 'journal.bin', 'target.json')
 MAX_UPLOAD = 8*1024**2
+MAX_UPLOAD_TAR = 16*1024**2  # Includes headers, PAX/GNU metadata and padding.
 
 
 def digest(value):
@@ -58,8 +58,8 @@ def unpack(data, expected, policy, stage):
     if stage not in CASES or not 0 < len(data) <= MAX_UPLOAD:
         raise ValueError('fixed stage / bounded public upload required')
     files = {}
-    with tarfile.open(fileobj=io.BytesIO(data), mode='r:gz') as tar:
-        for item in tar:
+    with open_archive(data, MAX_UPLOAD, MAX_UPLOAD_TAR, len(PUBLIC)) as (tar, members):
+        for item in members:
             if item.name not in PUBLIC or item.name in files or not item.isfile():
                 raise ValueError('unknown, duplicate, linked or non-regular public asset')
             if item.size < 0 or item.size > 2*1024**2:

@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "c70844a9fef2d6974a0bf5bbb411b1bd6ac91c50",
+  "sourceTag": "cuda-staged-tn10-20261019-01",
+  "workflowRun": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39214679334",
+  "workflowJob": 117935669717,
+  "conclusion": "success",
+  "image": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:744ee5662b5d85d0a6e695bf3beeda9c3414522739bfa39862a9532bc296e128",
+  "registryTag": "staged-tn10-c70844a9fef2d6974a0bf5bbb411b1bd6ac91c50",
+  "publishedImageId": "sha256:d42336e01e41affbf3cb0a5c33ad87134f9e551f7ec69e60aba86402ec947067",
+  "artifactId": 12168639631,
+  "artifactSha256": "b517e614f63602790ee2ec7e9d38a9baa3c03652b54d79de4af7db40ce34b584",
+  "artifactUrl": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39214679334/artifacts/12168639631",
+  "qualifiedBeforeAndAfterRegistryPull": true,
+  "workflowNewProofsOrGpu": false,
+  "metadataFollowup": "Only supplemental publication reports/manifests/documentation change after image source commit. Runtime sources remain bound by source-sha256.json. Local re-pull report is published-image-smoke.json."
+}

@@ -1,7 +1,7 @@
 {
   "scope": "LOCAL_HTTP_PROCESS_IMAGE_QUALIFICATION_NO_NEW_PROVING_OR_GPU",
   "date": "2026-10-19",
-  "serviceTestsPassed": 12,
+  "serviceTestsPassed": 15,
   "serviceTestsFailed": 0,
   "retainedReceiptsActuallyVerified": true,
   "producerSimulation": "Copies existing receipts; never invokes a prover; helpers excluded from image.",
@@ -16,9 +16,12 @@
   "newProofJobStarted": false,
   "liveTN10Called": false,
   "fundingOrBroadcast": false,
-  "publishedImagePending": false,
-  "remoteCudaTestsPassed": 41,
+  "publishedImagePending": true,
+  "remoteCudaTestsPassed": 44,
   "remoteCudaTestsFailed": 0,
   "publication": "publication.json",
-  "publishedImageCpuReport": "published-image-smoke.json"
+  "publishedImageCpuReport": "published-image-smoke.json",
+  "historicalEvidence": "history/pr53-71575ad",
+  "archiveExpansionBoundBeforeTar": true,
+  "repeatedInterruptedCleanup": true
 }

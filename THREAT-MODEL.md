@@ -471,3 +471,9 @@ state: the unchanged guest/native scripts and independent exact receipt checks
 remain necessary. Reorg, stale anchor and accepted-chain checkpoints remain the
 reviewed PR52 controller duties; a mismatch requires stopping the trial. This
 preparation adds no claim of production privacy or live TN10 rehearsal success.
+
+The PR53 correction bounds all gzip expansion before tar parsing, including
+hidden PAX/GNU metadata and padding; returned evidence also has a compressed-read
+and logical-member cap. Interrupted recovery repeats identity-checked process
+cleanup even after an earlier recovery died between durable gate closure and
+the kill. Neither fix changes proof/native policy or extends the deadlines.

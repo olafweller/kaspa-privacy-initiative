@@ -1,0 +1,86 @@
+test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) ... 
+  test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) (metadata='pax') ... FAIL
+  test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) (metadata='gnu') ... FAIL
+test_external_archive_compressed_and_member_limits (test_staged.Staged.test_external_archive_compressed_and_member_limits) ... FAIL
+test_second_recovery_reaps_group_after_crash_between_gate_and_kill (test_staged.Staged.test_second_recovery_reaps_group_after_crash_between_gate_and_kill) ... FAIL
+
+======================================================================
+FAIL: test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) (metadata='pax')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/kaspa-privacy-initiative/poc/remote-cuda/test_staged.py", line 239, in test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes
+    staged_policy.unpack(data,digest,self.policy,'deposit')
+  File "poc/remote-cuda/staged_policy.py", line 61, in unpack
+    with open_archive(data, MAX_UPLOAD, MAX_UPLOAD_TAR, len(PUBLIC)) as (tar, members):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: tar parser must not run
+
+======================================================================
+FAIL: test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes (test_staged.Staged.test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes) (metadata='gnu')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/kaspa-privacy-initiative/poc/remote-cuda/test_staged.py", line 239, in test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes
+    staged_policy.unpack(data,digest,self.policy,'deposit')
+  File "poc/remote-cuda/staged_policy.py", line 61, in unpack
+    with open_archive(data, MAX_UPLOAD, MAX_UPLOAD_TAR, len(PUBLIC)) as (tar, members):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: tar parser must not run
+
+======================================================================
+FAIL: test_external_archive_compressed_and_member_limits (test_staged.Staged.test_external_archive_compressed_and_member_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/kaspa-privacy-initiative/poc/remote-cuda/test_staged.py", line 249, in test_external_archive_compressed_and_member_limits
+    staged_verify.verify(self.package,source,targets,Path(self.tmp.name)/'oversize-verify')
+  File "poc/remote-cuda/staged_verify.py", line 15, in verify
+    def verify(package,archive,targets,out):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tarfile.py", line 1904, in open
+    return func(name, filemode, fileobj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tarfile.py", line 1952, in gzopen
+    fileobj = GzipFile(name, mode + "b", compresslevel, fileobj)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: must reject before gzip
+
+======================================================================
+FAIL: test_second_recovery_reaps_group_after_crash_between_gate_and_kill (test_staged.Staged.test_second_recovery_reaps_group_after_crash_between_gate_and_kill)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/kaspa-privacy-initiative/poc/remote-cuda/test_staged.py", line 282, in test_second_recovery_reaps_group_after_crash_between_gate_and_kill
+    recovered=self.app();cleanup.assert_called_once_with(output)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 960, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'stop_interrupted' to be called once. Called 0 times.
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.101s
+
+FAILED (failures=4)
+OLD_REVIEWED_HEAD=71575ad40826b59efed6fe6b08a5780876452a07
+EXPECTED_REGRESSIONS_FAIL_ON_OLD_CODE= True

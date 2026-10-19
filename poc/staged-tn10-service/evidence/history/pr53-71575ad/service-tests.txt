@@ -1,0 +1,17 @@
+test_changed_asset_or_limits_rejected_before_any_executor (test_staged.Staged.test_changed_asset_or_limits_rejected_before_any_executor) ... ok
+test_duplicate_and_concurrent_requests_start_exactly_once (test_staged.Staged.test_duplicate_and_concurrent_requests_start_exactly_once) ... ok
+test_existing_independent_guard_backs_up_waiting_and_confirms_simulated_stop (test_staged.Staged.test_existing_independent_guard_backs_up_waiting_and_confirms_simulated_stop) ... ok
+test_failure_preserves_candidate_and_forbids_later_stage_or_retry (test_staged.Staged.test_failure_preserves_candidate_and_forbids_later_stage_or_retry) ... ok
+test_four_real_http_arrivals_actual_cpu_verification_and_external_archive (test_staged.Staged.test_four_real_http_arrivals_actual_cpu_verification_and_external_archive) ... ok
+test_guard_order_and_single_mutating_process_are_enforced (test_staged.Staged.test_guard_order_and_single_mutating_process_are_enforced) ... ok
+test_lost_http_response_does_not_cancel_or_repeat_accepted_job (test_staged.Staged.test_lost_http_response_does_not_cancel_or_repeat_accepted_job) ... ok
+test_original_deadline_expires_between_batches_without_request_reset (test_staged.Staged.test_original_deadline_expires_between_batches_without_request_reset) ... ok
+test_real_external_timeout_kills_stalled_process_group_preserving_candidate (test_staged.Staged.test_real_external_timeout_kills_stalled_process_group_preserving_candidate) ... ok
+test_real_service_process_loss_interrupts_job_and_preserves_deadline (test_staged.Staged.test_real_service_process_loss_interrupts_job_and_preserves_deadline) ... ok
+test_reconnect_waiting_restart_keeps_lease_order_and_deadline (test_staged.Staged.test_reconnect_waiting_restart_keeps_lease_order_and_deadline) ... ok
+test_unauthorized_wrong_target_trial_unknown_or_duplicate_members_rejected (test_staged.Staged.test_unauthorized_wrong_target_trial_unknown_or_duplicate_members_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 20.691s
+
+OK

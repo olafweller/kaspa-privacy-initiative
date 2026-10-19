@@ -2,6 +2,7 @@
 import concurrent.futures
 import copy
 import io
+import gzip
 from http.client import HTTPConnection
 from http.server import ThreadingHTTPServer
 import json
@@ -15,12 +16,14 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 from common import sha
 import staged_package
 import staged_policy
 import staged_service
 import staged_worker
 import staged_verify
+import staged_archive
 
 TOKEN='synthetic-local-http-token-not-a-credential-0000000000'
 ROOT=staged_policy.ROOT
@@ -211,6 +214,82 @@ class Staged(unittest.TestCase):
         self.assertEqual(self.submit(h,'deposit',files,digest)[0],409)
         files,digest=fixture(self.policy,'deposit');target=json.loads(files['target.json']);target['aggregateProofSeconds']=7200;files['target.json']=json.dumps(target).encode();digest=sha(files['target.json'])
         self.assertEqual(self.submit(h,'deposit',files,digest)[0],409);self.assertEqual(self.executions,[])
+
+    def test_pax_and_gnu_expansion_rejected_before_tar_parsing_in_both_routes(self):
+        files,digest=fixture(self.policy,'deposit')
+        baseline=gzip.decompress(archive(files));limit=len(baseline)+1024
+        for kind in ('pax','gnu'):
+            stream=io.BytesIO()
+            with tarfile.open(fileobj=stream,mode='w',format=tarfile.PAX_FORMAT) as tar:
+                if kind=='gnu':
+                    header=tarfile.TarInfo('././@LongLink');header.type=tarfile.GNUTYPE_LONGNAME
+                    metadata=b'x'*(64*1024)+b'\0';header.size=len(metadata)
+                    tar.addfile(header,io.BytesIO(metadata))
+                for name,data in files.items():
+                    member=tarfile.TarInfo(name);member.size=len(data)
+                    if kind=='pax':member.pax_headers={'comment':'x'*(64*1024)}
+                    tar.addfile(member,io.BytesIO(data))
+            data=gzip.compress(stream.getvalue())
+            self.assertLess(len(data),staged_policy.MAX_UPLOAD)
+            self.assertGreater(len(stream.getvalue()),limit)
+            source=Path(self.tmp.name)/(kind+'.tgz');source.write_bytes(data)
+            targets=Path(self.tmp.name)/'targets.json';targets.write_text('{}')
+            with self.subTest(metadata=kind),patch.object(staged_policy,'MAX_UPLOAD_TAR',limit,create=True),patch.object(staged_verify,'MAX_ARCHIVE_TAR',limit,create=True),patch.object(staged_archive.tarfile,'open',side_effect=AssertionError('tar parser must not run')) as parser:
+                with self.assertRaisesRegex(ValueError,'expanded archive limit'):
+                    staged_policy.unpack(data,digest,self.policy,'deposit')
+                with self.assertRaisesRegex(ValueError,'expanded archive limit'):
+                    staged_verify.verify(self.package,source,targets,Path(self.tmp.name)/(kind+'-verify'))
+                parser.assert_not_called()
+
+    def test_external_archive_compressed_and_member_limits(self):
+        source=Path(self.tmp.name)/'oversize.tgz';source.write_bytes(b'x'*1025)
+        targets=Path(self.tmp.name)/'empty-targets.json';targets.write_text('{}')
+        with patch.object(staged_verify,'MAX_ARCHIVE',1024,create=True),patch.object(staged_archive.gzip,'GzipFile',side_effect=AssertionError('must reject before gzip')):
+            with self.assertRaisesRegex(ValueError,'compressed archive limit'):
+                staged_verify.verify(self.package,source,targets,Path(self.tmp.name)/'oversize-verify')
+        source.write_bytes(archive({'one':b'','two':b'','three':b''}))
+        with patch.object(staged_verify,'MAX_MEMBERS',2,create=True):
+            with self.assertRaisesRegex(ValueError,'member limit'):
+                staged_verify.verify(self.package,source,targets,Path(self.tmp.name)/'members-verify')
+        raw=gzip.decompress(source.read_bytes())
+        # The full decompressed size, including tar padding, is allowed at the
+        # exact bound; a byte below it must fail before tarfile sees anything.
+        with staged_archive.open_archive(source.read_bytes(),source.stat().st_size,len(raw),3) as (_,members):
+            self.assertEqual(len(list(members)),3)
+        with self.assertRaisesRegex(ValueError,'expanded archive limit'):
+            with staged_archive.open_archive(source.read_bytes(),source.stat().st_size,len(raw)-1,3):pass
+
+    def test_second_recovery_reaps_group_after_crash_between_gate_and_kill(self):
+        app=self.app();h=self.connect(app);lease,_=self.configure(h)
+        files,digest=fixture(self.policy,'deposit');target=json.loads(files['target.json'])
+        ledger=staged_policy.reviewed.reserve(None,target,digest,lease,self.clock[0])
+        staged_policy.reviewed.atomic(self.volume/'ledger.json',ledger)
+        app.state.update(state='running',currentStage='deposit')
+        app._save();app.close();self.apps.remove(app)
+        output=self.volume/'gpu-attempt/stages/deposit';output.mkdir(parents=True)
+        process=subprocess.Popen(['/usr/bin/timeout','--signal=KILL','60s','sleep','60'],start_new_session=True)
+        interrupted=staged_service.App.__new__(staged_service.App)
+        class SimulatedProcessLoss(BaseException):pass
+        try:
+            staged_policy.reviewed.atomic(output/'supervision.json',staged_worker.identity(process.pid))
+            with patch.object(staged_worker,'stop_interrupted',side_effect=SimulatedProcessLoss):
+                with self.assertRaises(SimulatedProcessLoss):
+                    interrupted.__init__(self.package,self.volume,'unittest123',TOKEN)
+            interrupted.close()
+            self.assertEqual(json.loads((self.volume/'state.json').read_text())['state'],'interrupted')
+            self.assertIsNone(process.poll(),'first crash must leave the real wait process alive')
+            with patch.object(staged_worker,'stop_interrupted',wraps=staged_worker.stop_interrupted) as cleanup:
+                recovered=self.app();cleanup.assert_called_once_with(output)
+            process.wait(timeout=5);self.assertLess(process.returncode,0)
+            self.assertEqual(json.loads((self.volume/'ledger.json').read_text()),ledger)
+            self.assertEqual(recovered.state['state'],'interrupted');self.assertEqual(self.executions,[])
+            # Repeating cleanup after exit is safe and cannot reset the attempt.
+            recovered.close();self.apps.remove(recovered)
+            self.assertEqual(self.app().state['state'],'interrupted')
+        finally:
+            if hasattr(interrupted,'ownership') and not interrupted.ownership.closed:interrupted.close()
+            if process.poll() is None:os.killpg(process.pid,9)
+            process.wait(timeout=5)
 
     def test_real_service_process_loss_interrupts_job_and_preserves_deadline(self):
         processes=[]

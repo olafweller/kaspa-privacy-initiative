@@ -1,0 +1,18 @@
+{
+  "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:744ee5662b5d85d0a6e695bf3beeda9c3414522739bfa39862a9532bc296e128",
+  "publicationPending": false,
+  "baseCudaDigest": "sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6",
+  "port": 8080,
+  "persistentMount": "/workspace",
+  "stateDirectory": "/workspace/kpi-staged-tn10",
+  "gpuCount": 1,
+  "gpuType": "NVIDIA L40S",
+  "containerDiskGb": 90,
+  "volumeGb": 10,
+  "rentalAuthorized": false,
+  "proofJobsAuthorized": false,
+  "actualQuoteRequired": true,
+  "imageSourceCommit": "c70844a9fef2d6974a0bf5bbb411b1bd6ac91c50",
+  "publication": "evidence/publication.json"
+}

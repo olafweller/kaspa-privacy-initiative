@@ -1,0 +1,130 @@
+{
+  "schema": "KPI_STAGED_TN10_REHEARSAL_PREPARATION_V1",
+  "status": "SOFTWARE_QUALIFICATION_NOT_LIVE_RELEASE",
+  "date": "2026-10-19",
+  "reviewedBaseCommit": "606010c29a4ba30e620b5d40ba44de7a7ef479bd",
+  "baseRunmanifest": "../private-native-tn10/runmanifest.json",
+  "trial": "fb82dcc105bc33efaef6e20c28144f871204e16fce531ed2e643e90f91a9977a",
+  "serviceScope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+  "deployment": "deployment.json",
+  "stagedImageDigest": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:744ee5662b5d85d0a6e695bf3beeda9c3414522739bfa39862a9532bc296e128",
+  "authorizations": {
+    "funding": false,
+    "broadcasting": false,
+    "newProofJobs": false,
+    "gpuRental": false,
+    "providerActions": false
+  },
+  "limits": {
+    "scope": "STAGED_TN10_PRIVATE_LIFECYCLE_V1",
+    "oneL40S": true,
+    "attempts": 1,
+    "userCyclesPerBatch": 160000000,
+    "aggregateSeconds": 3600,
+    "aggregateIncludes": "all four proofs, compression, in-container CPU verification and conservatively chain waits from first proof",
+    "rentalSecondsFromActualCreation": 7200,
+    "startTransferMarginSeconds": 360,
+    "runtimeStopMarginSeconds": 300,
+    "usdPlanningAllowance": 5,
+    "costWarning": "Actual quote plus storage; not a guaranteed provider bill cap.",
+    "automaticRetries": false,
+    "budgetExtensions": false,
+    "existingFixedImageIsNotStagedService": true
+  },
+  "stages": [
+    {
+      "name": "deposit",
+      "requiresAcceptedCheckpoint": "initialize",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 16,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 0,
+        "pending": 1000000000,
+        "unpaid": 0
+      }
+    },
+    {
+      "name": "credit-transfer",
+      "requiresAcceptedCheckpoint": "deposit",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 20,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 1000000000,
+        "pending": 0,
+        "unpaid": 0
+      }
+    },
+    {
+      "name": "exit",
+      "requiresAcceptedCheckpoint": "credit-transfer",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 20,
+      "expectedAccountingSompi": {
+        "reserve": 1000000000,
+        "private": 600000000,
+        "pending": 0,
+        "unpaid": 400000000
+      }
+    },
+    {
+      "name": "reconcile",
+      "requiresAcceptedCheckpoint": "exit",
+      "publicInputSource": "Actual complete accepted-lane capture after preceding checkpoint; not fixture input.",
+      "targetSha256": null,
+      "receiptSha256": null,
+      "status": "PENDING_ACTUAL_CHAIN_INPUT_AND_SEPARATE_RELEASE",
+      "segmentPo2": 16,
+      "expectedAccountingSompi": {
+        "reserve": 600000000,
+        "private": 600000000,
+        "pending": 0,
+        "unpaid": 0
+      }
+    }
+  ],
+  "leaseExtraFields": [
+    "workloadScope",
+    "trial",
+    "packagePolicySha256"
+  ],
+  "preflight": [
+    "Install hash-checked package/client on B, preserving old guard and state; no second chain executor.",
+    "Confirm B clock, free storage, actual custody and trusted native/CPU artifacts.",
+    "Read actual synced TN10/active lane/UTXOs and quote/mass/fees for signed native steps.",
+    "Before rental obtain separate release and actual one-L40S/storage quote fitting USD5 planning.",
+    "Read provider creation time/image digest/resources/persistent volume; bind unchanged B guard <=7200s from actual creation.",
+    "Read service scope, policy hash and unused volume/ledger; require fresh B heartbeat and >3960s remaining."
+  ],
+  "stageWorkflow": [
+    "Use actual accepted chain data and PR52 tooling to freeze the next batch target locally.",
+    "Retain target/input/journal and exact target SHA independently on B before upload.",
+    "Approve only that next SHA, upload its four-file public bundle; poll instead of retrying on lost response.",
+    "Copy/hash-check results to B and verify exact receipt with trusted CPU executable and independent target.",
+    "Prepare and locally execute fully signed native settlement/payout, budgets/masses/fees; actual broadcast still needs live release.",
+    "Observe actual selected-chain native acceptance; next capture begins at the preceding proof endpoint, including interim settlements."
+  ],
+  "stopAndRecovery": [
+    "One deadline starts with first accepted proof stage and includes chain waits; no reset after connection/service restart.",
+    "Active service restart interrupts saved process group and forbids retry. Waiting restart keeps deadline/order and needs a fresh B heartbeat.",
+    "Keep candidate/partial evidence; never label partial/CUDA-inconclusive output successful.",
+    "Unchanged independent B guard saves durable archives and confirms provider EXITED on every outcome.",
+    "Delete Pod/storage only after external hash and independent CPU verification; confirm deletion."
+  ],
+  "remaining": [
+    "Actual B installation/preflight and Bob key custody not performed.",
+    "Actual fresh TN10 captures/outpoints, signed native inputs and corresponding new proofs do not yet exist.",
+    "Actual CUDA execution, native permission/payout/settlement acceptance and spent-input replay rejection remain future live evidence.",
+    "Separate explicit release is still required for funding, broadcast and one paid GPU attempt."
+  ]
+}

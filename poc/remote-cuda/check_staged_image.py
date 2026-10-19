@@ -11,7 +11,7 @@ import uuid
 from common import sha
 from staged_policy import ROOT,CUDA,SCOPE
 
-APP_FILES=('common.py','worker.py','staged_policy.py','staged_child.py','staged_worker.py','staged_service.py')
+APP_FILES=('common.py','worker.py','staged_archive.py','staged_policy.py','staged_child.py','staged_worker.py','staged_service.py')
 
 
 def check(image):

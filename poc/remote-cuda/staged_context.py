@@ -5,7 +5,7 @@ import sys
 from staged_package import restore
 from staged_policy import ROOT
 
-FILES=('Dockerfile.staged','common.py','worker.py','staged_policy.py','staged_child.py','staged_worker.py','staged_service.py')
+FILES=('Dockerfile.staged','common.py','worker.py','staged_archive.py','staged_policy.py','staged_child.py','staged_worker.py','staged_service.py')
 
 
 def prepare(out):
