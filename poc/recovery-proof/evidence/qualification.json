@@ -25,5 +25,7 @@
   "newOuterReceipts": 0,
   "gpuExecutionQualified": false,
   "providerCalled": false,
-  "allRemoteCudaTestsPassed": 54
+  "allRemoteCudaTestsPassed": 54,
+  "publishedImmutableImageCpuQualified": true,
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
 }

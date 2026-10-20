@@ -7,7 +7,7 @@
   "expectedJoinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
   "packageArchiveSha256": "42aae900499190386464c36208c0aa2a4b3e6c102e443ff99a714ef8469656c4",
   "workloadSha256": "78033138f9ed1c7b6f4ae7b1734a92a1be2a8495c28237cf6696e7f6c6ca2640",
-  "immutableImage": null,
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628",
   "batches": [
     {
       "case": "deposit",
@@ -152,5 +152,6 @@
     "durable external preservation and independent verification on B",
     "provider EXITED on every outcome; deletion only after verified preservation",
     "per-stage and total time, RAM, VRAM, receipt hashes, actual rental/storage rates and cost distinction"
-  ]
+  ],
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
 }
