@@ -1,0 +1,22 @@
+{
+  "scope": "SIX_LOCAL_RECOVERY_RECEIPTS_AND_BOTH_NATIVE_EXITS_NOT_TN10",
+  "cases": [
+    "deposit",
+    "credit-transfer",
+    "bob-exit",
+    "bob-reconcile",
+    "alice-exit",
+    "alice-reconcile"
+  ],
+  "receipts": {
+    "deposit": "3a4c76ab02f878a7b1feef9b41b4733f251ed7e89a7c864e0e6f7fe261629228",
+    "credit-transfer": "1f8582bb081685db41c63b480a82f07dff11e9c335a7aaf8a662ae8ad1b43c1a",
+    "bob-exit": "f8e99ba7a78cd0976616583617b16e4f5ab712e1475e063067f8f47c432ee4c3",
+    "bob-reconcile": "9dc92760e729e30712ee29b4ab706873de3a1919b1a2a4bc8e66876813ad9b42",
+    "alice-exit": "11b5abd135045f392ec32013b8f3cf52837ced34f31622b27102b9b8cc239789",
+    "alice-reconcile": "bced678527a331f4f7b2162b6d796648964c5ef1e8a876b5296b2909a1ab2fcb"
+  },
+  "seconds": 681.4294473980262,
+  "separateCpuVerificationProcesses": true,
+  "bothGenuineNativeExitsChecked": true
+}

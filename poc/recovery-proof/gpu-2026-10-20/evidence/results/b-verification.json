@@ -1,0 +1,832 @@
+{
+  "scope": "INDEPENDENT_B_SIX_RECOVERY_RECEIPT_AUDIT_NOT_TN10",
+  "unixSeconds": 1792483680.1928365,
+  "seconds": 2.673163206985919,
+  "archiveSha256": "46f0c06aa7f465753b8f13bb1b06dc001eb532793dd3e4132d937286b9b77b9f",
+  "archiveBytes": 3386420,
+  "extracted": {
+    "safeRegularFilesExtracted": 85
+  },
+  "archiveAndPublicInputsVerified": true,
+  "result": {
+    "scope": "INDEPENDENT_CPU_SIX_RECOVERY_RECEIPTS_NOT_TN10",
+    "verifiedReceipts": {
+      "deposit": {
+        "sha256": "3a4c76ab02f878a7b1feef9b41b4733f251ed7e89a7c864e0e6f7fe261629228",
+        "candidateOnly": false
+      },
+      "credit-transfer": {
+        "sha256": "1f8582bb081685db41c63b480a82f07dff11e9c335a7aaf8a662ae8ad1b43c1a",
+        "candidateOnly": false
+      },
+      "bob-exit": {
+        "sha256": "f8e99ba7a78cd0976616583617b16e4f5ab712e1475e063067f8f47c432ee4c3",
+        "candidateOnly": false
+      },
+      "bob-reconcile": {
+        "sha256": "9dc92760e729e30712ee29b4ab706873de3a1919b1a2a4bc8e66876813ad9b42",
+        "candidateOnly": false
+      },
+      "alice-exit": {
+        "sha256": "11b5abd135045f392ec32013b8f3cf52837ced34f31622b27102b9b8cc239789",
+        "candidateOnly": false
+      },
+      "alice-reconcile": {
+        "sha256": "bced678527a331f4f7b2162b6d796648964c5ef1e8a876b5296b2909a1ab2fcb",
+        "candidateOnly": false
+      }
+    },
+    "failures": {},
+    "verifiedCount": 6,
+    "nativePermissionAndRestrictedPayoutVerified": {
+      "bob-exit": true,
+      "alice-exit": true
+    },
+    "allSixCryptographicallyVerified": true,
+    "allSixFinalReceiptsVerified": true,
+    "CUDAQualificationRequiresSeparateTelemetry": true,
+    "actualTN10Broadcast": false
+  },
+  "cryptographicSuccess": true,
+  "actualTN10Broadcast": false,
+  "aggregate.resources": {
+    "exitCode": 0,
+    "failure": null,
+    "wallSeconds": 681.6570238299901,
+    "phaseSecondsLimit": 3600,
+    "peakSampledSummedRssBytes": 791191552,
+    "peakSampledSummedVirtualBytes": 116573384704,
+    "peakMatchingGpuProcessVramMiB": 13706.0,
+    "gpuProcessActivityObserved": true,
+    "kernelWaitUserSeconds": 536.972287,
+    "kernelWaitSystemSeconds": 139.195206,
+    "sampledOwnCpuSeconds": 673.43,
+    "cpuAffinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "computeThreads": 4,
+    "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+  },
+  "hardware": {
+    "name": "NVIDIA L40S",
+    "uuid": "GPU-b83cf412-be08-917e-900c-da346f263044",
+    "vramMiB": 46068.0,
+    "driverVersion": "595.91.07",
+    "computeCapability": "8.9",
+    "cgroupV2Limits": {
+      "cpu.max": null,
+      "memory.max": null,
+      "cpuset.cpus.effective": null
+    },
+    "availableCpuAffinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "scope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS",
+    "cudaProverSha256": "4447bbfa89b450611deda80825387d48cce6d23b428310ac45662f5c65f1cbcb",
+    "startupSeconds": 0.4967688540054951,
+    "aggregateExternalWatchdog": "GNU timeout --signal=KILL; same process group; survives service death"
+  },
+  "cuda-by-batch": {
+    "deposit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 102,
+      "peakSampledGroupRssBytes": 444633088,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 28.087484132993268
+    },
+    "credit-transfer": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 1131,
+      "peakSampledGroupRssBytes": 791191552,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 316.6247262299876
+    },
+    "bob-exit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 355,
+      "peakSampledGroupRssBytes": 727224320,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 98.9240807100141
+    },
+    "bob-reconcile": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 237,
+      "peakSampledGroupRssBytes": 477614080,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 65.39181576200644
+    },
+    "alice-exit": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 358,
+      "peakSampledGroupRssBytes": 726921216,
+      "peakMatchingGpuVramMiB": 13706.0,
+      "seconds": 99.65610197398928
+    },
+    "alice-reconcile": {
+      "matchingProcessCudaActivityObserved": true,
+      "sampleCount": 254,
+      "peakSampledGroupRssBytes": 476213248,
+      "peakMatchingGpuVramMiB": 5992.0,
+      "seconds": 70.53350367999519
+    }
+  },
+  "complete": {
+    "scope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS",
+    "seconds": 683.0244798570056,
+    "sixReceiptsAndBothNativeExitsChecked": true,
+    "independentBVerificationStillRequired": true,
+    "CUDAProcessActivityObservedForAllBatches": true,
+    "actualTN10Broadcast": false
+  },
+  "pipeline-complete": {
+    "scope": "SIX_LOCAL_RECOVERY_RECEIPTS_AND_BOTH_NATIVE_EXITS_NOT_TN10",
+    "cases": [
+      "deposit",
+      "credit-transfer",
+      "bob-exit",
+      "bob-reconcile",
+      "alice-exit",
+      "alice-reconcile"
+    ],
+    "receipts": {
+      "deposit": "3a4c76ab02f878a7b1feef9b41b4733f251ed7e89a7c864e0e6f7fe261629228",
+      "credit-transfer": "1f8582bb081685db41c63b480a82f07dff11e9c335a7aaf8a662ae8ad1b43c1a",
+      "bob-exit": "f8e99ba7a78cd0976616583617b16e4f5ab712e1475e063067f8f47c432ee4c3",
+      "bob-reconcile": "9dc92760e729e30712ee29b4ab706873de3a1919b1a2a4bc8e66876813ad9b42",
+      "alice-exit": "11b5abd135045f392ec32013b8f3cf52837ced34f31622b27102b9b8cc239789",
+      "alice-reconcile": "bced678527a331f4f7b2162b6d796648964c5ef1e8a876b5296b2909a1ab2fcb"
+    },
+    "seconds": 681.4294473980262,
+    "separateCpuVerificationProcesses": true,
+    "bothGenuineNativeExitsChecked": true
+  },
+  "progress": {
+    "stages": [
+      {
+        "case": "deposit",
+        "kind": "prove",
+        "startedUnix": 1792482967.2088888,
+        "startedMonotonic": 132965.204200296,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "deposit",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 84,
+        "exitCode": 0,
+        "finishedUnix": 1792482995.296369,
+        "finishedMonotonic": 132993.291684429
+      },
+      {
+        "case": "deposit",
+        "kind": "cpu-verify",
+        "startedUnix": 1792482995.3135915,
+        "startedMonotonic": 132993.308903032,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "deposit",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/deposit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 512,
+        "exitCode": 0,
+        "finishedUnix": 1792482995.616076,
+        "finishedMonotonic": 132993.611388909
+      },
+      {
+        "case": "credit-transfer",
+        "kind": "prove",
+        "startedUnix": 1792482995.6251574,
+        "startedMonotonic": 132993.620468904,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "credit-transfer",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 517,
+        "exitCode": 0,
+        "finishedUnix": 1792483312.2498825,
+        "finishedMonotonic": 133310.245195134
+      },
+      {
+        "case": "credit-transfer",
+        "kind": "cpu-verify",
+        "startedUnix": 1792483312.264725,
+        "startedMonotonic": 133310.260036889,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "credit-transfer",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/credit-transfer"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 5154,
+        "exitCode": 0,
+        "finishedUnix": 1792483312.560089,
+        "finishedMonotonic": 133310.555401737
+      },
+      {
+        "case": "bob-exit",
+        "kind": "prove",
+        "startedUnix": 1792483312.589264,
+        "startedMonotonic": 133310.584575686,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "bob-exit",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 5160,
+        "exitCode": 0,
+        "finishedUnix": 1792483411.5133438,
+        "finishedMonotonic": 133409.508656396
+      },
+      {
+        "case": "bob-exit",
+        "kind": "cpu-verify",
+        "startedUnix": 1792483411.5251188,
+        "startedMonotonic": 133409.520430502,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "bob-exit",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 6623,
+        "exitCode": 0,
+        "finishedUnix": 1792483411.8193166,
+        "finishedMonotonic": 133409.814629379
+      },
+      {
+        "case": "bob-exit",
+        "kind": "native-exit",
+        "startedUnix": 1792483411.8303142,
+        "startedMonotonic": 133409.825625603,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-native-exit",
+          "bob-exit",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/native/bob-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 6628,
+        "exitCode": 0,
+        "finishedUnix": 1792483411.921035,
+        "finishedMonotonic": 133409.916347159
+      },
+      {
+        "case": "bob-reconcile",
+        "kind": "prove",
+        "startedUnix": 1792483411.93138,
+        "startedMonotonic": 133409.92669134,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "bob-reconcile",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 6637,
+        "exitCode": 0,
+        "finishedUnix": 1792483477.3231936,
+        "finishedMonotonic": 133475.318507102
+      },
+      {
+        "case": "bob-reconcile",
+        "kind": "cpu-verify",
+        "startedUnix": 1792483477.3372722,
+        "startedMonotonic": 133475.332583785,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "bob-reconcile",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-reconcile"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 7617,
+        "exitCode": 0,
+        "finishedUnix": 1792483477.6536746,
+        "finishedMonotonic": 133475.648987428
+      },
+      {
+        "case": "alice-exit",
+        "kind": "prove",
+        "startedUnix": 1792483477.6678536,
+        "startedMonotonic": 133475.663165462,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "alice-exit",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 7622,
+        "exitCode": 0,
+        "finishedUnix": 1792483577.3239546,
+        "finishedMonotonic": 133575.319267436
+      },
+      {
+        "case": "alice-exit",
+        "kind": "cpu-verify",
+        "startedUnix": 1792483577.336756,
+        "startedMonotonic": 133575.332067845,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "alice-exit",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/alice-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 9099,
+        "exitCode": 0,
+        "finishedUnix": 1792483577.6326334,
+        "finishedMonotonic": 133575.627945824
+      },
+      {
+        "case": "alice-exit",
+        "kind": "native-exit",
+        "startedUnix": 1792483577.6446533,
+        "startedMonotonic": 133575.639964976,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-native-exit",
+          "alice-exit",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/native/alice-exit"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 9104,
+        "exitCode": 0,
+        "finishedUnix": 1792483577.7365394,
+        "finishedMonotonic": 133575.731851635
+      },
+      {
+        "case": "alice-reconcile",
+        "kind": "prove",
+        "startedUnix": 1792483577.7593145,
+        "startedMonotonic": 133575.754625833,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-producer",
+          "prove",
+          "alice-reconcile",
+          "/opt/kpi/recovery/inputs",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 9112,
+        "exitCode": 0,
+        "finishedUnix": 1792483648.2928169,
+        "finishedMonotonic": 133646.288129513
+      },
+      {
+        "case": "alice-reconcile",
+        "kind": "cpu-verify",
+        "startedUnix": 1792483648.310444,
+        "startedMonotonic": 133646.305755745,
+        "command": [
+          "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+          "verify-receipt",
+          "alice-reconcile",
+          "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile/receipt.bin",
+          "/workspace/kpi-recovery-six/gpu-attempt/cpu/alice-reconcile"
+        ],
+        "sameProcessGroup": 77,
+        "finished": true,
+        "pid": 10162,
+        "exitCode": 0,
+        "finishedUnix": 1792483648.613051,
+        "finishedMonotonic": 133646.60836332
+      }
+    ],
+    "lastCompleted": "alice-reconcile-cpu-verify"
+  },
+  "stages": [
+    {
+      "case": "deposit",
+      "kind": "prove",
+      "startedUnix": 1792482967.2088888,
+      "startedMonotonic": 132965.204200296,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "deposit",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 84,
+      "exitCode": 0,
+      "finishedUnix": 1792482995.296369,
+      "finishedMonotonic": 132993.291684429
+    },
+    {
+      "case": "deposit",
+      "kind": "cpu-verify",
+      "startedUnix": 1792482995.3135915,
+      "startedMonotonic": 132993.308903032,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "deposit",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/deposit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 512,
+      "exitCode": 0,
+      "finishedUnix": 1792482995.616076,
+      "finishedMonotonic": 132993.611388909
+    },
+    {
+      "case": "credit-transfer",
+      "kind": "prove",
+      "startedUnix": 1792482995.6251574,
+      "startedMonotonic": 132993.620468904,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "credit-transfer",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 517,
+      "exitCode": 0,
+      "finishedUnix": 1792483312.2498825,
+      "finishedMonotonic": 133310.245195134
+    },
+    {
+      "case": "credit-transfer",
+      "kind": "cpu-verify",
+      "startedUnix": 1792483312.264725,
+      "startedMonotonic": 133310.260036889,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "credit-transfer",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/credit-transfer"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 5154,
+      "exitCode": 0,
+      "finishedUnix": 1792483312.560089,
+      "finishedMonotonic": 133310.555401737
+    },
+    {
+      "case": "bob-exit",
+      "kind": "prove",
+      "startedUnix": 1792483312.589264,
+      "startedMonotonic": 133310.584575686,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "bob-exit",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 5160,
+      "exitCode": 0,
+      "finishedUnix": 1792483411.5133438,
+      "finishedMonotonic": 133409.508656396
+    },
+    {
+      "case": "bob-exit",
+      "kind": "cpu-verify",
+      "startedUnix": 1792483411.5251188,
+      "startedMonotonic": 133409.520430502,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "bob-exit",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 6623,
+      "exitCode": 0,
+      "finishedUnix": 1792483411.8193166,
+      "finishedMonotonic": 133409.814629379
+    },
+    {
+      "case": "bob-exit",
+      "kind": "native-exit",
+      "startedUnix": 1792483411.8303142,
+      "startedMonotonic": 133409.825625603,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-native-exit",
+        "bob-exit",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/native/bob-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 6628,
+      "exitCode": 0,
+      "finishedUnix": 1792483411.921035,
+      "finishedMonotonic": 133409.916347159
+    },
+    {
+      "case": "bob-reconcile",
+      "kind": "prove",
+      "startedUnix": 1792483411.93138,
+      "startedMonotonic": 133409.92669134,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "bob-reconcile",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 6637,
+      "exitCode": 0,
+      "finishedUnix": 1792483477.3231936,
+      "finishedMonotonic": 133475.318507102
+    },
+    {
+      "case": "bob-reconcile",
+      "kind": "cpu-verify",
+      "startedUnix": 1792483477.3372722,
+      "startedMonotonic": 133475.332583785,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "bob-reconcile",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-reconcile"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 7617,
+      "exitCode": 0,
+      "finishedUnix": 1792483477.6536746,
+      "finishedMonotonic": 133475.648987428
+    },
+    {
+      "case": "alice-exit",
+      "kind": "prove",
+      "startedUnix": 1792483477.6678536,
+      "startedMonotonic": 133475.663165462,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "alice-exit",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 7622,
+      "exitCode": 0,
+      "finishedUnix": 1792483577.3239546,
+      "finishedMonotonic": 133575.319267436
+    },
+    {
+      "case": "alice-exit",
+      "kind": "cpu-verify",
+      "startedUnix": 1792483577.336756,
+      "startedMonotonic": 133575.332067845,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "alice-exit",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/alice-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 9099,
+      "exitCode": 0,
+      "finishedUnix": 1792483577.6326334,
+      "finishedMonotonic": 133575.627945824
+    },
+    {
+      "case": "alice-exit",
+      "kind": "native-exit",
+      "startedUnix": 1792483577.6446533,
+      "startedMonotonic": 133575.639964976,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-native-exit",
+        "alice-exit",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/native/alice-exit"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 9104,
+      "exitCode": 0,
+      "finishedUnix": 1792483577.7365394,
+      "finishedMonotonic": 133575.731851635
+    },
+    {
+      "case": "alice-reconcile",
+      "kind": "prove",
+      "startedUnix": 1792483577.7593145,
+      "startedMonotonic": 133575.754625833,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-producer",
+        "prove",
+        "alice-reconcile",
+        "/opt/kpi/recovery/inputs",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 9112,
+      "exitCode": 0,
+      "finishedUnix": 1792483648.2928169,
+      "finishedMonotonic": 133646.288129513
+    },
+    {
+      "case": "alice-reconcile",
+      "kind": "cpu-verify",
+      "startedUnix": 1792483648.310444,
+      "startedMonotonic": 133646.305755745,
+      "command": [
+        "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+        "verify-receipt",
+        "alice-reconcile",
+        "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile/receipt.bin",
+        "/workspace/kpi-recovery-six/gpu-attempt/cpu/alice-reconcile"
+      ],
+      "sameProcessGroup": 77,
+      "finished": true,
+      "pid": 10162,
+      "exitCode": 0,
+      "finishedUnix": 1792483648.613051,
+      "finishedMonotonic": 133646.60836332
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case": "alice-reconcile",
+  "kind": "prove",
+  "startedUnix": 1792483577.7593145,
+  "startedMonotonic": 133575.754625833,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "alice-reconcile",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 9112,
+  "exitCode": 0,
+  "finishedUnix": 1792483648.2928169,
+  "finishedMonotonic": 133646.288129513
+}

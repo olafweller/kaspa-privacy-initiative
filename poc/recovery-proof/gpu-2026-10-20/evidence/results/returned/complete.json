@@ -1,0 +1,8 @@
+{
+  "scope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS",
+  "seconds": 683.0244798570056,
+  "sixReceiptsAndBothNativeExitsChecked": true,
+  "independentBVerificationStillRequired": true,
+  "CUDAProcessActivityObservedForAllBatches": true,
+  "actualTN10Broadcast": false
+}

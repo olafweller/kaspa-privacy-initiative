@@ -1,0 +1,21 @@
+name: Stored recovery lifecycle receipt verification
+on:
+  pull_request:
+    paths:
+      - 'poc/recovery-proof/**'
+      - 'poc/remote-cuda/recovery_control.py'
+      - 'poc/remote-cuda/recovery_package.py'
+      - 'poc/remote-cuda/recovery_worker.py'
+      - '.github/workflows/recovery-gpu-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  stored-recovery-receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify six real receipts and both native exits on CPU; no proving or provider
+        run: python3 poc/recovery-proof/gpu-2026-10-20/check_evidence.py

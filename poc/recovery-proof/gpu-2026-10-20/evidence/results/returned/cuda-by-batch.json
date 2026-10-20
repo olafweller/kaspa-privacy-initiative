@@ -1,0 +1,44 @@
+{
+  "deposit": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 102,
+    "peakSampledGroupRssBytes": 444633088,
+    "peakMatchingGpuVramMiB": 5992.0,
+    "seconds": 28.087484132993268
+  },
+  "credit-transfer": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 1131,
+    "peakSampledGroupRssBytes": 791191552,
+    "peakMatchingGpuVramMiB": 13706.0,
+    "seconds": 316.6247262299876
+  },
+  "bob-exit": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 355,
+    "peakSampledGroupRssBytes": 727224320,
+    "peakMatchingGpuVramMiB": 13706.0,
+    "seconds": 98.9240807100141
+  },
+  "bob-reconcile": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 237,
+    "peakSampledGroupRssBytes": 477614080,
+    "peakMatchingGpuVramMiB": 5992.0,
+    "seconds": 65.39181576200644
+  },
+  "alice-exit": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 358,
+    "peakSampledGroupRssBytes": 726921216,
+    "peakMatchingGpuVramMiB": 13706.0,
+    "seconds": 99.65610197398928
+  },
+  "alice-reconcile": {
+    "matchingProcessCudaActivityObserved": true,
+    "sampleCount": 254,
+    "peakSampledGroupRssBytes": 476213248,
+    "peakMatchingGpuVramMiB": 5992.0,
+    "seconds": 70.53350367999519
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "exitCode": 0,
+  "failure": null,
+  "wallSeconds": 681.6570238299901,
+  "phaseSecondsLimit": 3600,
+  "peakSampledSummedRssBytes": 791191552,
+  "peakSampledSummedVirtualBytes": 116573384704,
+  "peakMatchingGpuProcessVramMiB": 13706.0,
+  "gpuProcessActivityObserved": true,
+  "kernelWaitUserSeconds": 536.972287,
+  "kernelWaitSystemSeconds": 139.195206,
+  "sampledOwnCpuSeconds": 673.43,
+  "cpuAffinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "computeThreads": 4,
+  "note": "CPU/RSS/VRAM are sampled; sums may double-count shared memory and miss peaks. GPU PID namespace mismatch makes qualification inconclusive."
+}

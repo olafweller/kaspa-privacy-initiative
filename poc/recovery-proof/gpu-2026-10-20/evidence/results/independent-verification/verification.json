@@ -1,0 +1,39 @@
+{
+  "scope": "INDEPENDENT_CPU_SIX_RECOVERY_RECEIPTS_NOT_TN10",
+  "verifiedReceipts": {
+    "deposit": {
+      "sha256": "3a4c76ab02f878a7b1feef9b41b4733f251ed7e89a7c864e0e6f7fe261629228",
+      "candidateOnly": false
+    },
+    "credit-transfer": {
+      "sha256": "1f8582bb081685db41c63b480a82f07dff11e9c335a7aaf8a662ae8ad1b43c1a",
+      "candidateOnly": false
+    },
+    "bob-exit": {
+      "sha256": "f8e99ba7a78cd0976616583617b16e4f5ab712e1475e063067f8f47c432ee4c3",
+      "candidateOnly": false
+    },
+    "bob-reconcile": {
+      "sha256": "9dc92760e729e30712ee29b4ab706873de3a1919b1a2a4bc8e66876813ad9b42",
+      "candidateOnly": false
+    },
+    "alice-exit": {
+      "sha256": "11b5abd135045f392ec32013b8f3cf52837ced34f31622b27102b9b8cc239789",
+      "candidateOnly": false
+    },
+    "alice-reconcile": {
+      "sha256": "bced678527a331f4f7b2162b6d796648964c5ef1e8a876b5296b2909a1ab2fcb",
+      "candidateOnly": false
+    }
+  },
+  "failures": {},
+  "verifiedCount": 6,
+  "nativePermissionAndRestrictedPayoutVerified": {
+    "bob-exit": true,
+    "alice-exit": true
+  },
+  "allSixCryptographicallyVerified": true,
+  "allSixFinalReceiptsVerified": true,
+  "CUDAQualificationRequiresSeparateTelemetry": true,
+  "actualTN10Broadcast": false
+}

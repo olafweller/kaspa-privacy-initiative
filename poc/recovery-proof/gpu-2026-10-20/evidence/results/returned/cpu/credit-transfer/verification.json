@@ -1,0 +1,29 @@
+{
+  "case": "credit-transfer",
+  "controlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "developmentMode": false,
+  "exactJournalVerified": true,
+  "negativeControls": {
+    "corruptedSealRejected": true,
+    "malformedControlInclusionRejected": true,
+    "tamperedJournalOffsetsRejected": [
+      0,
+      32,
+      64,
+      96,
+      128,
+      160,
+      192,
+      224,
+      256,
+      288,
+      320
+    ],
+    "wrongExpectedControlRejectedBySealVerifier": true,
+    "wrongImageRejected": true
+  },
+  "noUnresolvedAssumptions": true,
+  "programImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "receiptSha256": "1f8582bb081685db41c63b480a82f07dff11e9c335a7aaf8a662ae8ad1b43c1a",
+  "scope": "SIX_BATCH_INDEPENDENT_PROCESS_CPU_VERIFICATION_NOT_TN10"
+}

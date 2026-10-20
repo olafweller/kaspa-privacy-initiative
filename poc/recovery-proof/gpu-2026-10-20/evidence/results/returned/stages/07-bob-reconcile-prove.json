@@ -1,0 +1,19 @@
+{
+  "case": "bob-reconcile",
+  "kind": "prove",
+  "startedUnix": 1792483411.93138,
+  "startedMonotonic": 133409.92669134,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "bob-reconcile",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 6637,
+  "exitCode": 0,
+  "finishedUnix": 1792483477.3231936,
+  "finishedMonotonic": 133475.318507102
+}

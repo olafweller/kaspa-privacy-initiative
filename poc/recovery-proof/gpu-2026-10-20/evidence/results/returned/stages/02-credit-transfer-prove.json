@@ -1,0 +1,19 @@
+{
+  "case": "credit-transfer",
+  "kind": "prove",
+  "startedUnix": 1792482995.6251574,
+  "startedMonotonic": 132993.620468904,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "credit-transfer",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 517,
+  "exitCode": 0,
+  "finishedUnix": 1792483312.2498825,
+  "finishedMonotonic": 133310.245195134
+}

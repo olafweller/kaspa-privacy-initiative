@@ -1,0 +1,19 @@
+{
+  "case": "alice-exit",
+  "kind": "native-exit",
+  "startedUnix": 1792483577.6446533,
+  "startedMonotonic": 133575.639964976,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-native-exit",
+    "alice-exit",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/native/alice-exit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 9104,
+  "exitCode": 0,
+  "finishedUnix": 1792483577.7365394,
+  "finishedMonotonic": 133575.731851635
+}

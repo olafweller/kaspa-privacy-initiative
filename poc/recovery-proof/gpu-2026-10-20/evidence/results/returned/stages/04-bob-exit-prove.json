@@ -1,0 +1,19 @@
+{
+  "case": "bob-exit",
+  "kind": "prove",
+  "startedUnix": 1792483312.589264,
+  "startedMonotonic": 133310.584575686,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "bob-exit",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 5160,
+  "exitCode": 0,
+  "finishedUnix": 1792483411.5133438,
+  "finishedMonotonic": 133409.508656396
+}

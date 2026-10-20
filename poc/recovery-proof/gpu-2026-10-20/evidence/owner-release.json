@@ -1,0 +1,17 @@
+{
+  "scope": "ONE_LOCAL_SIX_RECOVERY_RECEIPT_GPU_ATTEMPT",
+  "authorizationSource": "Owner Chat instruction approving merge of PR57 at f9a4ec0 and proceeding with the previously bounded GPU experiment after Astra review",
+  "reviewedPr57Head": "f9a4ec04a9cd4cad40235247b64d902999bc93a3",
+  "pr57Merge": "c4dc4d8126c5497447760828ffc10382609d49a4",
+  "gpu": "one NVIDIA L40S",
+  "attempts": 1,
+  "aggregateProofProcessGroupSeconds": 3600,
+  "rentalSecondsFromActualCreation": 7200,
+  "planningLimitUsd": 5,
+  "planningAllowanceIsNotGuaranteedInvoiceCap": true,
+  "automaticRetry": false,
+  "TN10BroadcastAuthorized": false,
+  "nativeFundingAuthorized": false,
+  "independentBBackupAndConfirmedStopRequired": true,
+  "deleteOnlyAfterVerifiedExternalPreservation": true
+}

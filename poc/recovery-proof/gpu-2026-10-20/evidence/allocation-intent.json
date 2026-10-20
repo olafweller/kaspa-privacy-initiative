@@ -1,0 +1,24 @@
+{
+  "unixSeconds": 1792482911.3370564,
+  "name": "kpi-recovery-six-20261020-01",
+  "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628",
+  "ownerAuthorization": "Owner approved PR57 and released one bounded six-receipt GPU attempt in Chat, 2026-10-20",
+  "gpuQuote": {
+    "id": "NVIDIA L40S",
+    "securePrice": 1.09,
+    "lowestPrice": {
+      "gpuTypeId": "NVIDIA L40S",
+      "uninterruptablePrice": 1.09,
+      "minMemory": 62,
+      "minVcpu": 16
+    }
+  },
+  "gpuCount": 1,
+  "gpuType": "NVIDIA L40S",
+  "activeStorageHourlyUsd": 0.014,
+  "stoppedStorageHourlyUsd": 0.0028,
+  "planningTotalWith24hRetentionUsd": 2.2752000000000003,
+  "wholeProofSecondsLimit": 3600,
+  "rentalSecondsLimit": 7200,
+  "existingPodCount": 0
+}

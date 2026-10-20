@@ -1,0 +1,18 @@
+{
+  "frozenPayoutTransactionId": "4795347a068ee17f7410893f6299ee42cceabc55994f622f4e93d31c9422aa87",
+  "frozenPermissionTransactionId": "484ef8c8ea48083a8b7c4713387c90a1a9d61a493180344722dd828cd6455e84",
+  "nativeBroadcast": false,
+  "negativeVariants": [
+    "underpay",
+    "wrong-recipient",
+    "default-lane",
+    "foreign-reserve",
+    "extra-sponsor-input",
+    "extra-sponsor-output",
+    "partial",
+    "partial-three-outputs"
+  ],
+  "newReceiptRequired": true,
+  "stage": "bob-exit",
+  "syntheticChainContext": true
+}

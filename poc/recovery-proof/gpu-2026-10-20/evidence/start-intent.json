@@ -1,0 +1,17 @@
+{
+  "unixSeconds": 1792482965.857844,
+  "podId": "lwg8z2huy343fa",
+  "attempt": 1,
+  "proofSecondsLimit": 3600,
+  "cycleLimitPerBatch": 160000000,
+  "orderedBatches": [
+    "deposit",
+    "credit-transfer",
+    "bob-exit",
+    "bob-reconcile",
+    "alice-exit",
+    "alice-reconcile"
+  ],
+  "effectiveGuardStopUnix": 1792490052.118,
+  "scope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS"
+}

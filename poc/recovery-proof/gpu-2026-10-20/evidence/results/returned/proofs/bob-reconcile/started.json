@@ -1,0 +1,7 @@
+{
+  "aggregateExternalProcessGroupDeadlineRequired": true,
+  "automaticRetries": false,
+  "case": "bob-reconcile",
+  "cycleLimit": 160000000,
+  "segmentPo2": 16
+}

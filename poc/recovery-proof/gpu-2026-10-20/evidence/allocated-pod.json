@@ -1,0 +1,11 @@
+{
+  "id": "lwg8z2huy343fa",
+  "name": "kpi-recovery-six-20261020-01",
+  "createdAt": "2026-10-20 07:55:12.118 +0000 UTC",
+  "desiredStatus": "RUNNING",
+  "costPerHr": 1.09,
+  "imageName": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628",
+  "gpuCount": 1,
+  "volumeInGb": 10,
+  "containerDiskInGb": 90
+}

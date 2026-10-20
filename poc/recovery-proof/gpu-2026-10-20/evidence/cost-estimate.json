@@ -1,0 +1,16 @@
+{
+  "scope": "RATE_AND_TIMESTAMP_ESTIMATE_NOT_ITEMIZED_INVOICE",
+  "actualInvoiceAvailable": false,
+  "providerReportedComputeSecondsApprox": 807.8819999694824,
+  "createdToConfirmedExitedObservationSeconds": 854.8899977207184,
+  "createdToDeletionSeconds": 863.6170268058777,
+  "gpuHourlyUsd": 1.09,
+  "activeStorageHourlyUsdUpperBound": 0.014,
+  "stoppedStorageHourlyUsdUpperBound": 0.0028,
+  "computeEstimateUsd": 0.24460871665742664,
+  "conservativeComputeAndStorageEstimateUsd": 0.26217305365697546,
+  "planningLimitUsd": 5,
+  "accountTopUpNotIncluded": true,
+  "storageCostBasis": "90GB container + 10GB local volume active at USD0.10/GB/month; 10GB stopped volume at USD0.20/GB/month; 720h/month, rounded upward",
+  "taxesOrBillingAdjustmentsUnknown": true
+}

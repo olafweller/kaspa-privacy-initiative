@@ -1,0 +1,19 @@
+{
+  "case": "deposit",
+  "kind": "cpu-verify",
+  "startedUnix": 1792482995.3135915,
+  "startedMonotonic": 132993.308903032,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-receipt",
+    "deposit",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/cpu/deposit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 512,
+  "exitCode": 0,
+  "finishedUnix": 1792482995.616076,
+  "finishedMonotonic": 132993.611388909
+}

@@ -260,3 +260,22 @@ the corrected inputs, exact journals and per-case segment limits. Its target is
 six real independently verified receipts and both receipt-authorized local
 permission/payout paths. Package/image preparation grants no rental, proof,
 funding or broadcast release; a fresh canonical TN10 instance remains next.
+
+### Six-receipt local recovery proof completed — 2026-10-20
+
+After PR57 merge and the owner's bounded rental release, the
+[six-receipt L40S experiment](../poc/recovery-proof/gpu-2026-10-20/README.md)
+completed in 683.024 seconds. All six final receipts were independently verified
+on B and Cloud, including exact journals, ninety cryptographic mutation checks,
+both genuine receipt-authorized native permission/payout routes and seventeen
+semantic native rejection variants. Per-batch matching-process CUDA activity
+was observed. Final reserve/private obligations are zero, with 100M sompi state
+rent separate. B preserved the results and independently stopped the Pod;
+provider stop and subsequent Pod/local-storage deletion were confirmed.
+
+This completes the scoped local proof gate, superseding the pending-proof status
+above without changing historical evidence or the old PR54 instance. The next
+live boundary is a fresh TN10 lifecycle with actual accepted captures/new proofs
+and independent user recovery/last withdrawal after service loss. There was no
+TN10 broadcast or funding in this experiment; no additional rental or live trial
+is released by its result.

@@ -1,0 +1,19 @@
+{
+  "case": "bob-reconcile",
+  "kind": "cpu-verify",
+  "startedUnix": 1792483477.3372722,
+  "startedMonotonic": 133475.332583785,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-receipt",
+    "bob-reconcile",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-reconcile/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-reconcile"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 7617,
+  "exitCode": 0,
+  "finishedUnix": 1792483477.6536746,
+  "finishedMonotonic": 133475.648987428
+}

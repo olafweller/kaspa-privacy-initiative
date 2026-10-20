@@ -1,0 +1,7 @@
+{
+  "aggregateExternalProcessGroupDeadlineRequired": true,
+  "automaticRetries": false,
+  "case": "credit-transfer",
+  "cycleLimit": 160000000,
+  "segmentPo2": 20
+}

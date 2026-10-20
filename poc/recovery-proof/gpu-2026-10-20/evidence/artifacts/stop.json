@@ -1,0 +1,6 @@
+{
+  "requestedUnix": 1792483721.2238402,
+  "providerDesiredExitedConfirmed": true,
+  "podId": "lwg8z2huy343fa",
+  "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+}

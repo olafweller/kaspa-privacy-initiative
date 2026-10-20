@@ -1,0 +1,19 @@
+{
+  "case": "alice-exit",
+  "kind": "prove",
+  "startedUnix": 1792483477.6678536,
+  "startedMonotonic": 133475.663165462,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "alice-exit",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-exit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 7622,
+  "exitCode": 0,
+  "finishedUnix": 1792483577.3239546,
+  "finishedMonotonic": 133575.319267436
+}

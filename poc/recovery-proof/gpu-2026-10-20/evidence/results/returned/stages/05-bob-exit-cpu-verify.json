@@ -1,0 +1,19 @@
+{
+  "case": "bob-exit",
+  "kind": "cpu-verify",
+  "startedUnix": 1792483411.5251188,
+  "startedMonotonic": 133409.520430502,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-receipt",
+    "bob-exit",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/bob-exit/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/cpu/bob-exit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 6623,
+  "exitCode": 0,
+  "finishedUnix": 1792483411.8193166,
+  "finishedMonotonic": 133409.814629379
+}

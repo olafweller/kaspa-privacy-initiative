@@ -1,0 +1,19 @@
+{
+  "case": "credit-transfer",
+  "kind": "cpu-verify",
+  "startedUnix": 1792483312.264725,
+  "startedMonotonic": 133310.260036889,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-receipt",
+    "credit-transfer",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/credit-transfer/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/cpu/credit-transfer"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 5154,
+  "exitCode": 0,
+  "finishedUnix": 1792483312.560089,
+  "finishedMonotonic": 133310.555401737
+}

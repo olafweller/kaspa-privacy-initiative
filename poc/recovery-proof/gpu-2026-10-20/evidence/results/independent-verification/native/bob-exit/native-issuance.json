@@ -1,0 +1,25 @@
+{
+  "accounting": {
+    "outstanding_permission_rent_excluded": 0,
+    "pending_deposits": 0,
+    "private_liability": 600000000,
+    "reserve_principal": 600000000,
+    "state_covenant_rent_excluded": 100000000,
+    "unpaid_exits": 0
+  },
+  "frozenPermissionIdMatched": true,
+  "issuanceScriptUnits": [
+    25006820,
+    0
+  ],
+  "nativeBroadcast": false,
+  "newReceiptVerified": true,
+  "payoutScriptUnits": [
+    3322,
+    181,
+    100001
+  ],
+  "receiptSha256": "f8e99ba7a78cd0976616583617b16e4f5ab712e1475e063067f8f47c432ee4c3",
+  "scope": "GENUINE_NEW_RECEIPT_NATIVE_ISSUANCE_AND_PAYOUT_LOCAL_CONTEXT_NOT_TN10",
+  "stage": "bob-exit"
+}

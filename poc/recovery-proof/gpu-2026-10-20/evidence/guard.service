@@ -1,0 +1,20 @@
+[Unit]
+Description=Independent bounded KPI six-receipt GPU guard
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+User=kpi-cuda-guard
+Group=kpi-cuda-guard
+EnvironmentFile=/etc/kpi-cuda-guard.env
+WorkingDirectory=/opt/kpi-remote-cuda
+ExecStart=/usr/bin/python3 /opt/kpi-remote-cuda/watchdog.py /var/lib/kpi-cuda-guard/recovery-six-20261020-01/lease.json /var/lib/kpi-cuda-guard/recovery-six-20261020-01/artifacts
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/kpi-cuda-guard/recovery-six-20261020-01
+[Install]
+WantedBy=multi-user.target

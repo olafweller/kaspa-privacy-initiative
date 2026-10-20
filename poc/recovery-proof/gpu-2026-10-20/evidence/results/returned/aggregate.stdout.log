@@ -1,0 +1,21 @@
+[2m2026-10-20T07:56:07.654476Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 82.171943ms
+PROFILE after_checked_proof_decode 10291224
+PROFILE after_conversion_and_public_inputs 21882820
+PROFILE after_pairing 46286973
+PROFILE after_checked_proof_decode 56264743
+PROFILE after_conversion_and_public_inputs 68434248
+PROFILE after_pairing 92835603
+PROFILE after_checked_proof_decode 102673160
+PROFILE after_conversion_and_public_inputs 114847620
+PROFILE after_pairing 139251798
+[2m2026-10-20T07:56:39.662378Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 3.669184254s
+PROFILE after_checked_proof_decode 10580995
+PROFILE after_conversion_and_public_inputs 18883764
+PROFILE after_pairing 43287917
+[2m2026-10-20T08:01:54.137798Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 1.186483199s
+[2m2026-10-20T08:03:32.444941Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 147.103669ms
+PROFILE after_checked_proof_decode 10665707
+PROFILE after_conversion_and_public_inputs 19016106
+PROFILE after_pairing 43420259
+[2m2026-10-20T08:04:39.226612Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 1.184051298s
+[2m2026-10-20T08:06:18.287289Z[0m [32m INFO[0m [2mrisc0_zkvm::host::server::exec::executor[0m[2m:[0m execution time: 159.887831ms

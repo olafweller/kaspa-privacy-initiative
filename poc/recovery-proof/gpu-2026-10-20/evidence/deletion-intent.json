@@ -1,0 +1,11 @@
+{
+  "unixSeconds": 1792483773.574001,
+  "podId": "lwg8z2huy343fa",
+  "providerDesiredStatus": "EXITED",
+  "verifiedBAndCloudArchiveSha256": "46f0c06aa7f465753b8f13bb1b06dc001eb532793dd3e4132d937286b9b77b9f",
+  "archiveBytes": 3386420,
+  "receiptCount": 6,
+  "cryptographicSuccess": true,
+  "deletePodLocalVolumeGb": 10,
+  "networkVolumeId": null
+}

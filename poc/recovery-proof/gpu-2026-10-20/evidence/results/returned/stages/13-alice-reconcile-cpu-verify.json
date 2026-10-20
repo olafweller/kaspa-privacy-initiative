@@ -1,0 +1,19 @@
+{
+  "case": "alice-reconcile",
+  "kind": "cpu-verify",
+  "startedUnix": 1792483648.310444,
+  "startedMonotonic": 133646.305755745,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-verifier",
+    "verify-receipt",
+    "alice-reconcile",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/alice-reconcile/receipt.bin",
+    "/workspace/kpi-recovery-six/gpu-attempt/cpu/alice-reconcile"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 10162,
+  "exitCode": 0,
+  "finishedUnix": 1792483648.613051,
+  "finishedMonotonic": 133646.60836332
+}

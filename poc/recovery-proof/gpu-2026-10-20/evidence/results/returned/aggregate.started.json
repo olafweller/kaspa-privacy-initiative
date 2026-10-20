@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/usr/bin/timeout",
+    "--signal=KILL",
+    "3599.218157s",
+    "/usr/bin/python3",
+    "/opt/kpi/app/recovery_runner.py",
+    "/opt/kpi/recovery",
+    "/workspace/kpi-recovery-six/gpu-attempt"
+  ],
+  "phaseSecondsLimit": 3600,
+  "unixSeconds": 1792482967.0739548,
+  "cpuAffinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "addressSpaceLimit": null,
+  "rssStopBytes": 12884901888,
+  "cudaRequired": true
+}

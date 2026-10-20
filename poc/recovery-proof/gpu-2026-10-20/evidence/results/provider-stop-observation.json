@@ -1,0 +1,22 @@
+{
+  "observedUnix": 1792483767.0079978,
+  "provider": {
+    "id": "lwg8z2huy343fa",
+    "desiredStatus": "EXITED",
+    "createdAt": "2026-10-20 07:55:12.118 +0000 UTC",
+    "lastStatusChange": "Exited by user: Tue Oct 20 2026 08:08:40 GMT+0000 (Coordinated Universal Time)",
+    "costPerHr": 1.09,
+    "gpuCount": 1,
+    "volumeInGb": 10,
+    "containerDiskInGb": 90,
+    "networkVolumeId": null
+  },
+  "providerDesiredExitedConfirmed": true,
+  "guardStop": {
+    "requestedUnix": 1792483721.2238402,
+    "providerDesiredExitedConfirmed": true,
+    "podId": "lwg8z2huy343fa",
+    "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+  },
+  "actualInvoiceChargesAvailable": false
+}

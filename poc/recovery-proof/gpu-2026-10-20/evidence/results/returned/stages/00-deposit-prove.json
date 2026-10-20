@@ -1,0 +1,19 @@
+{
+  "case": "deposit",
+  "kind": "prove",
+  "startedUnix": 1792482967.2088888,
+  "startedMonotonic": 132965.204200296,
+  "command": [
+    "/opt/kpi/recovery/bin/kpi-recovery-producer",
+    "prove",
+    "deposit",
+    "/opt/kpi/recovery/inputs",
+    "/workspace/kpi-recovery-six/gpu-attempt/proofs/deposit"
+  ],
+  "sameProcessGroup": 77,
+  "finished": true,
+  "pid": 84,
+  "exitCode": 0,
+  "finishedUnix": 1792482995.296369,
+  "finishedMonotonic": 132993.291684429
+}
