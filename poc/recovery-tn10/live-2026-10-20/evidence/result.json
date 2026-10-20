@@ -1,0 +1,889 @@
+{
+  "scope": "ACTUAL_TN10_OWNER_HELD_RECOVERY_AND_FULL_RESERVE_WITHDRAWAL",
+  "date": "2026-10-20",
+  "reviewedPreparationPr": 60,
+  "reviewedHead": "f02e98d5918af3f53985b77809c7e930d888231f",
+  "mergeCommit": "3bd363a85169f887f9ad1f155c63c5e9da34447c",
+  "imageBuildCommit": "aa4fd3381a996acf872313cb800f8c8bb4f9cf34",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:cd42221a752ac0469e2b78254ab48aa8da0dedd8b491355e4a184cacd142f468",
+  "guestImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "trial": "d79d6a5f585440bab9998f0473d32afa1c35f6eb86db9427b3f7c51bdb463269",
+  "stages": {
+    "deposit": {
+      "receiptSha256": "920948802c392f8b940225ed78d3c0ec6bd98c6a2e86990699e80c3f447791d7",
+      "targetSha256": "c9d28c8173fc61d4dcf3c7d5b06790cb1bb666ce720e20d88910a9b17af43e83",
+      "journalSha256": "15620e29a27a6da06ad918a71f02a38df9d0fe678a3b0e167fc28ca93ca2fb0d",
+      "inputSha256": "98b4c1c3bfd45756132805c78bdd84efd9cde86c727a411df5ba88fd409cbebc",
+      "userCycles": 1883109,
+      "totalCycles": 6062080,
+      "segments": 93,
+      "segmentPo2": 16,
+      "producerProcessWallSeconds": 60.68159377700067,
+      "sampleCount": 234,
+      "matchingActiveGpuSamples": 223,
+      "peakSampledSummedRssBytes": 441843712,
+      "peakMatchingGpuProcessVramMiB": 5992.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    },
+    "credit-transfer": {
+      "receiptSha256": "4cd406a60af5534708065f0ee5401ae53f27f4e6f1cae513f121f8796875991d",
+      "targetSha256": "46ba3f7f9e48ead5bbcd173a6fdd87b51cff0e0338bc01535c31a228085221a4",
+      "journalSha256": "c1d2d5b438b3d7fe4e86cf61321dadb96625be5e5bd8ab1ab8142436939ee59f",
+      "inputSha256": "1e23fbf37031ce987204a772f34b8f50fbbb7d414cc22713fad354793ec36f90",
+      "userCycles": 97957741,
+      "totalCycles": 105906176,
+      "segments": 101,
+      "segmentPo2": 20,
+      "producerProcessWallSeconds": 172.85175051700207,
+      "sampleCount": 672,
+      "matchingActiveGpuSamples": 623,
+      "peakSampledSummedRssBytes": 765394944,
+      "peakMatchingGpuProcessVramMiB": 13706.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    },
+    "bob-exit": {
+      "receiptSha256": "374d49ef3463b18116fc4cfd52039289c00ab0e41ad3b757159f742ec07e3a48",
+      "targetSha256": "f60907a2065a4ab432e72a3352c8a3bd918b11ee753631a5d0d5c64eb1d5c4df",
+      "journalSha256": "142205d97006d05655b7fecc0edea2613de36d5b97e8384fa8c9de45e68aa677",
+      "inputSha256": "0221b446136469b5049336af29697690584500afba98ca9eccdfeba554362358",
+      "userCycles": 47613695,
+      "totalCycles": 51904512,
+      "segments": 50,
+      "segmentPo2": 20,
+      "producerProcessWallSeconds": 85.87597131599614,
+      "sampleCount": 334,
+      "matchingActiveGpuSamples": 310,
+      "peakSampledSummedRssBytes": 735313920,
+      "peakMatchingGpuProcessVramMiB": 13706.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    },
+    "bob-reconcile": {
+      "receiptSha256": "9a353fff08f69ce727b07e538820cf9a83974cce1453195f1e44a67a6d749661",
+      "targetSha256": "33db06755f4a465f7eb482f6f8f312ee9ba7a60de8c96b84b221be9f975676d4",
+      "journalSha256": "6ddb5551552013f07de3e3145d532804767e064cb9ecf6b70ffe706f9a2b37bd",
+      "inputSha256": "7d8435a2e5fcb1bad3b713495b2c28ef62b52b739b7599ae823e496da0ff0cd0",
+      "userCycles": 3178895,
+      "totalCycles": 9601024,
+      "segments": 147,
+      "segmentPo2": 16,
+      "producerProcessWallSeconds": 97.30113827099558,
+      "sampleCount": 379,
+      "matchingActiveGpuSamples": 365,
+      "peakSampledSummedRssBytes": 470953984,
+      "peakMatchingGpuProcessVramMiB": 5992.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    },
+    "alice-exit": {
+      "receiptSha256": "628f1799981d92642fa5e1f25242bc479e6c4c4d1c15acf91c54a248d0991bde",
+      "targetSha256": "0073419fcc76f59f2e25aedc9e4e57ee17bf68f34449f52dd4024b57ee74081f",
+      "journalSha256": "9b6f24682f2695a0bf33db7162e2322323133f9333bd2e5c78e8fa27120e3778",
+      "inputSha256": "be711f0c52011e57f7e0959fcdc63cd9f0a5f2ecdf1171a800fb6605fb838478",
+      "userCycles": 47386717,
+      "totalCycles": 51511296,
+      "segments": 50,
+      "segmentPo2": 20,
+      "producerProcessWallSeconds": 91.46566329299822,
+      "sampleCount": 319,
+      "matchingActiveGpuSamples": 287,
+      "peakSampledSummedRssBytes": 738918400,
+      "peakMatchingGpuProcessVramMiB": 13706.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    },
+    "alice-reconcile": {
+      "receiptSha256": "61c09f3ee70f4d2f995fd369c5f6a9048c8b0ed95caa98f177dfb6913b6338a9",
+      "targetSha256": "157432641afc91bd2ad4e702a95a21d244bbea4bad704d44b233cb5a83dffa22",
+      "journalSha256": "b69ad0b08eabb91ed8096fa1cfcae96709022f07f0ea1055b949d33a72ef7b97",
+      "inputSha256": "78ec53ae2c2c758c6c7ede0983137aefe8baefcf1fd388a22c85985eb7566fb4",
+      "userCycles": 3155174,
+      "totalCycles": 9535488,
+      "segments": 146,
+      "segmentPo2": 16,
+      "producerProcessWallSeconds": 111.16170451299695,
+      "sampleCount": 387,
+      "matchingActiveGpuSamples": 349,
+      "peakSampledSummedRssBytes": 480247808,
+      "peakMatchingGpuProcessVramMiB": 5992.0,
+      "cpuAffinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "computeThreads": 4,
+      "finalReceipt": true,
+      "independentCpuVerified": true,
+      "cryptographicNegativeControls": 15
+    }
+  },
+  "receiptCount": 6,
+  "allSixFinalReceiptsVerified": true,
+  "cryptographicNegativeControlsPerReceipt": 15,
+  "totalDistinctCryptographicNegativeControls": 90,
+  "allSixMatchingProcessCudaQualified": true,
+  "gpu": {
+    "name": "NVIDIA L40S",
+    "count": 1,
+    "reportedVramMiB": 46068.0,
+    "driverVersion": "595.91.07",
+    "computeCapability": "8.9"
+  },
+  "sumProducerProcessWallSeconds": 619.3378216869896,
+  "sampledPeaksMayMissInstantaneousPeaks": true,
+  "summedRssMayDoubleCountSharedPages": true,
+  "timing": {
+    "firstStageStartUnix": 1792527404.5851681,
+    "originalSharedDeadlineUnix": 1792531004.5851681,
+    "lastProofProcessEndUnixApprox": 1792530845.129414,
+    "sharedProofAndWaitSecondsApprox": 3440.5442459583282,
+    "withinOriginal3600SecondLimit": true,
+    "cycleLimitPerStage": 160000000,
+    "deadlineExtended": false,
+    "finalStageAdmissionProfile": "Measured 97.3s prior reconciliation plus >=120s margin; minimum remaining 240s; hard deadline unchanged",
+    "localNativePostprocessingAndPreservationReportedSeparately": true
+  },
+  "nativeAcceptedTransactions": {
+    "activate": {
+      "transactionId": "ffa76904e7d280dbca48b4c481837328a49eee41f96506a95345c10ff6f19326",
+      "acceptedBlock": "f83141d9ca7ce2470e4db0dbf60b3c23d3dec3f872da6b5f0e361b77ecc7cbcc"
+    },
+    "alice-exit-settlement": {
+      "transactionId": "a23983c3f1e5d18d79fcbb4961f4734f52ba35a4e4751b9b56f47f6237e6a902",
+      "acceptedBlock": "939c00ed35e5fcdb6db9e2a315a4fac318c951b29bce91e791cb085b48172a17"
+    },
+    "alice-payout": {
+      "transactionId": "cebb9010925b94c57f5ab700236d2f2fd972afe3cf399e88041719440ab19c20",
+      "acceptedBlock": "5a6b14d561d2eced608e80aae2e89ad5e68eec3679ed1e8ce1898b0922152d96"
+    },
+    "alice-reconcile-settlement": {
+      "transactionId": "30d30f7ba9cb6dc02306dec2b463f7b5fd1991c309dfbe053e99c8fe9ca4e1f9",
+      "acceptedBlock": "a05dba51efdb1b486d5e7c23365b5ece3380eeab5e37eb1fe5c22b22eab3186e"
+    },
+    "bob-exit-settlement": {
+      "transactionId": "176edc05aa7e0d928a02d0b44bd97565f7f0a96127f356137dcacd375315ce4f",
+      "acceptedBlock": "22069b172ca7a91aa48872a88e01709b52097404af30d5dbcc8b555437360aa6"
+    },
+    "bob-payout": {
+      "transactionId": "c76439798a36188eb7aaa61c48efb7130450ffa15552170e41ba6260a5543924",
+      "acceptedBlock": "b63a211a7e64f8a339b22cf962f7d619385f0c83b95285d87f002d7a7e02c5a3"
+    },
+    "bob-reconcile-settlement": {
+      "transactionId": "435cc44754b5fd8515adbe1a5ff45c14deaf21889f3158591cdb36a460c9cfac",
+      "acceptedBlock": "bb17428762ec8cec5bd60ebda953a81afb9eb27d103014d3998680535bf0ace8"
+    },
+    "bootstrap": {
+      "transactionId": "339d32a488b3ad55ee1c68195a5529f12ffe86fe5c6fd7e6e05ee2b04b2d9066",
+      "acceptedBlock": "9cca7d6318818359a2fd29bad3931123bb68571023ca106ddb48eaa75ba34032"
+    },
+    "credit-transfer-settlement": {
+      "transactionId": "935d763243a7fa12de6ec4dcebb7dc94df5ba943293a70512dae2a9be81bdf40",
+      "acceptedBlock": "4bf250841c805fb80b49e05d420d79ea6c61244cb8dc20f80cc7cec3afcdc927"
+    },
+    "deposit": {
+      "transactionId": "d3d97503daead1991086f0253a259508a2abd325bae6309abab0699fe46ab86b",
+      "acceptedBlock": "5d9710182033dc8c4e3a1d69ef89c13ca57e10fa1abc0154b7173652465232e0"
+    },
+    "deposit-settlement": {
+      "transactionId": "92a5c9afc6f344316f9d3d6fdcb8457949248162130150ecf84cc681ad26b8d7",
+      "acceptedBlock": "d0095eb1d1663214cf7ccab1b3cc75a7a301ed2f9c5d2247d1709d741fb3eb8a"
+    },
+    "funding": {
+      "transactionId": "54e693967c0c5794cfadab686682c988313521096bfb9202b7548d847ea2478a",
+      "acceptedBlock": "b8a0c47cc8022538e1c992ad8fa9020b189bef4639184cf493851a792c595b34"
+    },
+    "initialize": {
+      "transactionId": "5e81740cb1bf59365eae4b246d1516a9e6b4b74d5566cd43b97e048107f0a959",
+      "acceptedBlock": "698581fee9de81be7811caa6573d7ce76c2a5a71456ff0f02b7ead20fb05bbb2"
+    },
+    "publish-alice-exit": {
+      "transactionId": "d7633734e17fbdacf27f0542f7f5576d4ac011d83f0b2d30c085442dc95b9651",
+      "acceptedBlock": "dabd636212f5f7197a830000a4379a985590839db0f209e043f229a57dfe6844"
+    },
+    "publish-alice-payment-credit": {
+      "transactionId": "fcdddaba76e36c1e124a4119245d4b07b42902ce22aae0b9dde705bbf390cb23",
+      "acceptedBlock": "d9f45bee456ea41ae5b33c56ceac26f8ef2f4da04a0bb87adbeae1949b9ae1bc"
+    },
+    "publish-alice-payment-transfer": {
+      "transactionId": "8970ff645c1437d409334bfe1baaf08cad558a81ab79b1b0b3fa6a37e3240858",
+      "acceptedBlock": "54bc054075b0ca4c9f838ef38821c7207711364365b2c0c5143ecf5846c5835f"
+    },
+    "publish-bob-exit": {
+      "transactionId": "b77f883ea08c59bed07f08b945d20daebcc0da9b8330c403c9f776f8cdce6dc7",
+      "acceptedBlock": "965a21961be12e53480182d33e1d329baad0616b74350dc92e3739382b716225"
+    }
+  },
+  "finalNativeReadback": {
+    "trial": "d79d6a5f585440bab9998f0473d32afa1c35f6eb86db9427b3f7c51bdb463269",
+    "scope": "FRESH_ACTUAL_TN10_PAYOUT_AND_SPENT_UTXO_READBACK",
+    "bobPayoutSompi": 450000000,
+    "bobPrincipalSompi": 400000000,
+    "bobPermissionRentRefundSompi": 50000000,
+    "alicePayoutSompi": 650000000,
+    "alicePrincipalSompi": 600000000,
+    "alicePermissionRentRefundSompi": 50000000,
+    "bothRecipientOutputsPresent": true,
+    "bothPermissionsSpent": true,
+    "initialAndRemainingReserveSpent": true,
+    "allPreviousStateOutputsSpent": true,
+    "separateStateRentSompi": 100000000,
+    "finalStateOutpoint": {
+      "transactionId": "30d30f7ba9cb6dc02306dec2b463f7b5fd1991c309dfbe053e99c8fe9ca4e1f9",
+      "index": 0
+    },
+    "oldPr54PoolTouched": false,
+    "nativeServer": {
+      "hasUtxoIndex": true,
+      "isSynced": true,
+      "networkId": "testnet-10",
+      "rpcApiRevision": 0,
+      "rpcApiVersion": 1,
+      "serverVersion": "2.1.0",
+      "virtualDaaScore": 601958617
+    }
+  },
+  "finalCheckpoint": {
+    "acceptanceCaptureSha256": "485cd8ff68ff837d2cca7196a397d6bc1a6a270530fcc538984fa498a190d7e4",
+    "accounting": {
+      "outstanding_permission_rent_excluded": 0,
+      "pending_deposits": 0,
+      "private_liability": 0,
+      "reserve_principal": 0,
+      "state_covenant_rent_excluded": 100000000,
+      "unpaid_exits": 0
+    },
+    "completed": "alice-reconcile",
+    "freshLiveUtxoAndSelectedChainCheckBeforeSpending": true,
+    "nextCaptureStart": "5a6b14d561d2eced608e80aae2e89ad5e68eec3679ed1e8ce1898b0922152d96",
+    "previousSha256": "157432641afc91bd2ad4e702a95a21d244bbea4bad704d44b233cb5a83dffa22",
+    "schema": "KPI_RECOVERY_TN10_CHECKPOINT_V1",
+    "signedRecordSha256": "d359ba7d01860920ebc4f4b672129118b56803e250d428b0d102452f2f40ef4a",
+    "stateOutpoint": {
+      "index": 0,
+      "transactionId": "30d30f7ba9cb6dc02306dec2b463f7b5fd1991c309dfbe053e99c8fe9ca4e1f9"
+    },
+    "stateRoot": "ba8603dcb5569a782a6d471ac197f1ce2592dd734e1718ff4606640755d95f3f",
+    "stateSha256": "d4eaa744160113436d13b025d46d78116bb4ed743fc3f6a46323f94aa0969d0a",
+    "status": "CAPTURED_NATIVE_ACCEPTANCE_OFFLINE_RECHECK_REQUIRED",
+    "trial": "d79d6a5f585440bab9998f0473d32afa1c35f6eb86db9427b3f7c51bdb463269"
+  },
+  "coldBRecovery": {
+    "unix": 1792528672.8590171,
+    "seconds": 0.10620760917663574,
+    "root": "26778df94127a160396bab060f12efaaa43e0951e28d27a74191f1daaeedc2d7",
+    "stateSha256": "2b86acafc2f61cf1fd5bb21203954e8ea9ac93ca7b35157c29252ca1d692cfd0",
+    "freshReplay": true,
+    "networkUnavailable": true,
+    "publicMaterializedCacheInaccessible": true,
+    "originalCacheAbsentOnB": true,
+    "independentlyAcceptedInitialRoot": "bbedd9ecaed252ef15931e4a1d4d9a6da91560c2aead79f82323bbe2e2039130"
+  },
+  "originalControllerInterruption": {
+    "model": "Finite original application CLI jobs; no always-on application daemon claimed",
+    "executionDenied": true,
+    "activeOriginalJobsAtOutage": [],
+    "originalCachePreserved": true,
+    "coldReplayNetworkUnavailable": true,
+    "originalCacheAbsentOnB": true,
+    "materializedPublicCacheInaccessibleToReplay": true,
+    "sharedNativeGatewayHistoryGuardServicesStopped": false,
+    "entryPointModeRestoredAfterClosure": "0500",
+    "originalJobsRestarted": false
+  },
+  "ownerReportedMintRecovery": {
+    "bob": {
+      "schema": "KPI_OWNER_LOCAL_LIVE_RECOVERY_REPORT_V1",
+      "reportedUnix": 1792528995.021131,
+      "source": "Owner relayed local Mint Codex result in this Chat",
+      "trial": "d79d6a5f585440bab9998f0473d32afa1c35f6eb86db9427b3f7c51bdb463269",
+      "freshT7RestoreBothWallets": true,
+      "publicHistoryReconstructionMatched": true,
+      "bobRecoveredNotes": 1,
+      "bobRecoveredSompi": 400000000,
+      "bobWalletExitProofMadeAndCheckedLocally": true,
+      "cloudReadWalletSecrets": false,
+      "cloudIndependentlyInspectedMintFilesystem": false
+    },
+    "alice": {
+      "schema": "KPI_OWNER_LOCAL_ALICE_RECOVERY_REPORT_V1",
+      "reportedUnix": 1792530173.0980153,
+      "source": "Owner relayed local Mint Codex result in this Chat",
+      "trial": "d79d6a5f585440bab9998f0473d32afa1c35f6eb86db9427b3f7c51bdb463269",
+      "publicHistoryBatches": 4,
+      "publicHistoryReconstructionMatched": true,
+      "aliceRecoveredNotes": 1,
+      "aliceRecoveredSompi": 600000000,
+      "aliceWalletExitProofMadeAndCheckedLocally": true,
+      "cloudReadWalletSecrets": false,
+      "cloudIndependentlyInspectedMintFilesystem": false
+    },
+    "cloudInspectedMintSecrets": false
+  },
+  "retainedPrivateEvidence": {
+    "terminalArchiveSha256": "e15220bd18bca949754888457a5ccdc2790df52ae1c556caaa33f4e2006eec23",
+    "terminalArchiveBytes": 6830556,
+    "durablyPreservedPublicHistoryFiles": 164,
+    "ownerReceiveFilesAndPublicInputBodiesPublished": false,
+    "userSecretsTransferred": false
+  },
+  "lease": {
+    "podId": "ucs7t0z9gs9zf0",
+    "gpuCount": 1,
+    "gpuType": "NVIDIA L40S",
+    "createdUnix": 1792527365.41,
+    "stopUnix": 1792534565.41,
+    "actualGpuHourlyUsd": "1.09",
+    "actualStorageHourlyUsd": "0.014",
+    "stoppedStorageHourlyUsd": "0.0028"
+  },
+  "providerStop": {
+    "observedUnix": 1792530975.4258878,
+    "providerDesiredExitedConfirmed": true,
+    "provider": {
+      "id": "ucs7t0z9gs9zf0",
+      "createdAt": "2026-10-20 20:16:05.41 +0000 UTC",
+      "desiredStatus": "EXITED",
+      "costPerHr": 1.09,
+      "adjustedCostPerHr": null,
+      "lastStartedAt": "2026-10-20 20:16:05.406 +0000 UTC",
+      "lastStoppedAt": null,
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA L40S",
+      "volumeInGb": 10,
+      "containerDiskInGb": 90,
+      "networkVolumeId": null
+    },
+    "guardStop": {
+      "requestedUnix": 1792530914.586221,
+      "providerDesiredExitedConfirmed": true,
+      "podId": "ucs7t0z9gs9zf0",
+      "note": "Compute stop is separate from volume cleanup and actual billing reconciliation."
+    },
+    "guardService": [
+      "MainPID=0",
+      "ActiveState=inactive",
+      "SubState=dead"
+    ],
+    "invoiceAvailable": false
+  },
+  "providerDeletion": {
+    "podId": "ucs7t0z9gs9zf0",
+    "deletedUnix": 1792531073.0781775,
+    "providerGetStatus": 404,
+    "podAbsentFromList": true,
+    "remainingPodCount": 0,
+    "deletedPodVolumeGb": 10,
+    "deletedContainerDiskGb": 90,
+    "networkVolumeCreated": false,
+    "bArchiveRevalidatedBeforeDelete": true,
+    "receiptCount": 6,
+    "allSixFinalReceiptsVerified": true,
+    "actualTN10LifecycleCompleted": true,
+    "guardUnitState": [
+      "ActiveState=inactive",
+      "SubState=dead",
+      "UnitFileState=disabled"
+    ],
+    "actualInvoiceAvailable": false
+  },
+  "cost": {
+    "scope": "RATE_AND_OBSERVED_TIMESTAMP_ESTIMATE_NOT_FINAL_PROVIDER_INVOICE",
+    "actualInvoiceAvailable": false,
+    "observedComputeSecondsApprox": 3549.17622089386,
+    "observedStoppedVolumeSecondsApprox": 158.49195647239685,
+    "computeHourlyUsd": "1.09",
+    "activeStorageHourlyUsdUpperBound": "0.014",
+    "stoppedStorageHourlyUsdUpperBound": "0.0028",
+    "computeEstimateUsd": 1.0746116891039743,
+    "storageEstimateUsdUpperBound": 0.013925623491843543,
+    "planningAllowanceUsd": 5,
+    "accountTopupsAndTaxExcluded": true,
+    "computeAndStorageEstimateUsd": 1.0885373125958178
+  },
+  "scopeLimits": [
+    "One owner manages both logical users; independent human custody was not tested",
+    "B-root and the operator remain trusted administration roles",
+    "Live wallet publications were credit, transfer, Bob exit and Alice exit. No additional intentionally invalid live wallet publication was included; 90 receipt mutations were checked on CPU.",
+    "The native full node/gateway/history/prover and independent B guard remained available during original app-controller unavailability",
+    "One trial, one initial 10-KAS reserve, sequential exits; no general multi-operator or multi-reserve service",
+    "Full public chain captures and owner-specific public-input bodies retained privately; CI checks receipt cryptography against retained pre-frozen targets, not fresh canonical-chain selection",
+    "Testnet research only; no mainnet, anonymity-set, mobile-wallet or production-security conclusion"
+  ],
+  "independentBAndCloudCpuVerification": true,
+  "cloudCpuVerification": {
+    "command": "python3 poc/recovery-tn10/live-2026-10-20/check_evidence.py",
+    "actualReceiptSealsVerified": 6,
+    "cryptographicMutationsVerified": 90,
+    "retainedReportsEqualFreshResults": true,
+    "sameReviewedVerifierImplementation": true,
+    "provingOrWalletAccessOrNetworkRequired": false
+  },
+  "signedNativeQualifications": {
+    "activate": {
+      "transactionId": "ffa76904e7d280dbca48b4c481837328a49eee41f96506a95345c10ff6f19326",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 1695,
+        "estimatedSerializedBytes": 335,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 169500,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 1695,
+        "requiredFeeSompi": 169500,
+        "rpcJsonBytes": 794,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 0,
+        "transactionId": "ffa76904e7d280dbca48b4c481837328a49eee41f96506a95345c10ff6f19326",
+        "transientMass": 1340
+      }
+    },
+    "alice-exit-settlement": {
+      "transactionId": "a23983c3f1e5d18d79fcbb4961f4734f52ba35a4e4751b9b56f47f6237e6a902",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 476340,
+        "estimatedSerializedBytes": 224240,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47634000,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006820,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 476340,
+        "requiredFeeSompi": 47634000,
+        "rpcJsonBytes": 448857,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 103976,
+        "transactionId": "a23983c3f1e5d18d79fcbb4961f4734f52ba35a4e4751b9b56f47f6237e6a902",
+        "transientMass": 896960
+      }
+    },
+    "alice-payout": {
+      "transactionId": "cebb9010925b94c57f5ab700236d2f2fd972afe3cf399e88041719440ab19c20",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 3137,
+        "estimatedSerializedBytes": 1417,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 313700,
+        "inputComputeBudgets": [
+          0,
+          0,
+          10
+        ],
+        "inputScriptUnits": [
+          3386,
+          181,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 3137,
+        "requiredFeeSompi": 313700,
+        "rpcJsonBytes": 3189,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 0,
+        "transactionId": "cebb9010925b94c57f5ab700236d2f2fd972afe3cf399e88041719440ab19c20",
+        "transientMass": 5668
+      }
+    },
+    "alice-reconcile-settlement": {
+      "transactionId": "30d30f7ba9cb6dc02306dec2b463f7b5fd1991c309dfbe053e99c8fe9ca4e1f9",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 475826,
+        "estimatedSerializedBytes": 224096,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47582600,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006575,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 475826,
+        "requiredFeeSompi": 47582600,
+        "rpcJsonBytes": 448494,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 19348,
+        "transactionId": "30d30f7ba9cb6dc02306dec2b463f7b5fd1991c309dfbe053e99c8fe9ca4e1f9",
+        "transientMass": 896384
+      }
+    },
+    "bob-exit-settlement": {
+      "transactionId": "176edc05aa7e0d928a02d0b44bd97565f7f0a96127f356137dcacd375315ce4f",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 476340,
+        "estimatedSerializedBytes": 224240,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47634000,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006820,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 476340,
+        "requiredFeeSompi": 47634000,
+        "rpcJsonBytes": 448857,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 107416,
+        "transactionId": "176edc05aa7e0d928a02d0b44bd97565f7f0a96127f356137dcacd375315ce4f",
+        "transientMass": 896960
+      }
+    },
+    "bob-payout": {
+      "transactionId": "c76439798a36188eb7aaa61c48efb7130450ffa15552170e41ba6260a5543924",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 3518,
+        "estimatedSerializedBytes": 1428,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 351800,
+        "inputComputeBudgets": [
+          0,
+          0,
+          10
+        ],
+        "inputScriptUnits": [
+          3322,
+          181,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 3518,
+        "requiredFeeSompi": 351800,
+        "rpcJsonBytes": 3255,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 0,
+        "transactionId": "c76439798a36188eb7aaa61c48efb7130450ffa15552170e41ba6260a5543924",
+        "transientMass": 5712
+      }
+    },
+    "bob-reconcile-settlement": {
+      "transactionId": "435cc44754b5fd8515adbe1a5ff45c14deaf21889f3158591cdb36a460c9cfac",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 475826,
+        "estimatedSerializedBytes": 224096,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47582600,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006575,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 475826,
+        "requiredFeeSompi": 47582600,
+        "rpcJsonBytes": 448494,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 24789,
+        "transactionId": "435cc44754b5fd8515adbe1a5ff45c14deaf21889f3158591cdb36a460c9cfac",
+        "transientMass": 896384
+      }
+    },
+    "bootstrap": {
+      "transactionId": "339d32a488b3ad55ee1c68195a5529f12ffe86fe5c6fd7e6e05ee2b04b2d9066",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2083,
+        "estimatedSerializedBytes": 353,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 4003800,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 40038,
+        "requiredFeeSompi": 4003800,
+        "rpcJsonBytes": 912,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 40038,
+        "transactionId": "339d32a488b3ad55ee1c68195a5529f12ffe86fe5c6fd7e6e05ee2b04b2d9066",
+        "transientMass": 1412
+      }
+    },
+    "credit-transfer-settlement": {
+      "transactionId": "935d763243a7fa12de6ec4dcebb7dc94df5ba943293a70512dae2a9be81bdf40",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 475826,
+        "estimatedSerializedBytes": 224096,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47582600,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006575,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 475826,
+        "requiredFeeSompi": 47582600,
+        "rpcJsonBytes": 448494,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 28040,
+        "transactionId": "935d763243a7fa12de6ec4dcebb7dc94df5ba943293a70512dae2a9be81bdf40",
+        "transientMass": 896384
+      }
+    },
+    "deposit": {
+      "transactionId": "d3d97503daead1991086f0253a259508a2abd325bae6309abab0699fe46ab86b",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2108,
+        "estimatedSerializedBytes": 378,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 210800,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 2108,
+        "requiredFeeSompi": 210800,
+        "rpcJsonBytes": 930,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 2060,
+        "transactionId": "d3d97503daead1991086f0253a259508a2abd325bae6309abab0699fe46ab86b",
+        "transientMass": 1512
+      }
+    },
+    "deposit-settlement": {
+      "transactionId": "92a5c9afc6f344316f9d3d6fdcb8457949248162130150ecf84cc681ad26b8d7",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 475826,
+        "estimatedSerializedBytes": 224096,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 47582600,
+        "inputComputeBudgets": [
+          2500,
+          10
+        ],
+        "inputScriptUnits": [
+          25006837,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 475826,
+        "requiredFeeSompi": 47582600,
+        "rpcJsonBytes": 448494,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 28834,
+        "transactionId": "92a5c9afc6f344316f9d3d6fdcb8457949248162130150ecf84cc681ad26b8d7",
+        "transientMass": 896384
+      }
+    },
+    "initialize": {
+      "transactionId": "5e81740cb1bf59365eae4b246d1516a9e6b4b74d5566cd43b97e048107f0a959",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 3140,
+        "estimatedSerializedBytes": 1410,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 3532100,
+        "inputComputeBudgets": [
+          0,
+          10
+        ],
+        "inputScriptUnits": [
+          5060,
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 35321,
+        "requiredFeeSompi": 3532100,
+        "rpcJsonBytes": 3120,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 35321,
+        "transactionId": "5e81740cb1bf59365eae4b246d1516a9e6b4b74d5566cd43b97e048107f0a959",
+        "transientMass": 5640
+      }
+    },
+    "publish-alice-exit": {
+      "transactionId": "d7633734e17fbdacf27f0542f7f5576d4ac011d83f0b2d30c085442dc95b9651",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2225,
+        "estimatedSerializedBytes": 865,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 222500,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 2225,
+        "requiredFeeSompi": 222500,
+        "rpcJsonBytes": 1853,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 1,
+        "transactionId": "d7633734e17fbdacf27f0542f7f5576d4ac011d83f0b2d30c085442dc95b9651",
+        "transientMass": 3460
+      }
+    },
+    "publish-alice-payment-credit": {
+      "transactionId": "fcdddaba76e36c1e124a4119245d4b07b42902ce22aae0b9dde705bbf390cb23",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2410,
+        "estimatedSerializedBytes": 1050,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 241000,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 2410,
+        "requiredFeeSompi": 241000,
+        "rpcJsonBytes": 2223,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 1,
+        "transactionId": "fcdddaba76e36c1e124a4119245d4b07b42902ce22aae0b9dde705bbf390cb23",
+        "transientMass": 4200
+      }
+    },
+    "publish-alice-payment-transfer": {
+      "transactionId": "8970ff645c1437d409334bfe1baaf08cad558a81ab79b1b0b3fa6a37e3240858",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2595,
+        "estimatedSerializedBytes": 1235,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 259500,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 2595,
+        "requiredFeeSompi": 259500,
+        "rpcJsonBytes": 2593,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 1,
+        "transactionId": "8970ff645c1437d409334bfe1baaf08cad558a81ab79b1b0b3fa6a37e3240858",
+        "transientMass": 4940
+      }
+    },
+    "publish-bob-exit": {
+      "transactionId": "b77f883ea08c59bed07f08b945d20daebcc0da9b8330c403c9f776f8cdce6dc7",
+      "qualification": {
+        "allInputScriptsExecuted": true,
+        "computeMass": 2225,
+        "estimatedSerializedBytes": 865,
+        "feeRateSompiPerGram": 100,
+        "feeSompi": 222500,
+        "inputComputeBudgets": [
+          10
+        ],
+        "inputScriptUnits": [
+          100001
+        ],
+        "liveUtxoAndAnchorRecheckRequired": true,
+        "networkAcceptance": false,
+        "priorityMass": 2225,
+        "requiredFeeSompi": 222500,
+        "rpcJsonBytes": 1853,
+        "scope": "OFFLINE_SIGNED_NATIVE_CHECK_NOT_MEMPOOL_OR_SELECTED_CHAIN_ACCEPTANCE",
+        "storageMass": 1,
+        "transactionId": "b77f883ea08c59bed07f08b945d20daebcc0da9b8330c403c9f776f8cdce6dc7",
+        "transientMass": 3460
+      }
+    }
+  }
+}

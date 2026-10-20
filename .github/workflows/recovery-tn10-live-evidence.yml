@@ -1,0 +1,21 @@
+name: Stored actual TN10 recovery receipts
+on:
+  pull_request:
+    paths:
+      - 'poc/recovery-tn10/live-2026-10-20/**'
+      - 'poc/recovery-tn10/service/staged_package.py'
+      - 'poc/recovery-tn10/service/pins.json'
+      - 'poc/recovery-tn10/evidence/base-package.tar.gz'
+      - '.github/workflows/recovery-tn10-live-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  stored-actual-recovery-receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Reverify six actual-input receipts and 90 mutations on CPU
+        run: python3 poc/recovery-tn10/live-2026-10-20/check_evidence.py

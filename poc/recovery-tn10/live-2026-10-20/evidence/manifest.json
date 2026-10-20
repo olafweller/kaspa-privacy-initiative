@@ -1,0 +1,81 @@
+{
+  "schema": "KPI_ACTUAL_TN10_RECOVERY_PUBLIC_EVIDENCE_V1",
+  "files": {
+    "cpu/alice-exit.json": {
+      "bytes": 918,
+      "sha256": "4ae5e56bb0f70cf2af641b82119c4150a9633daa52d729f6dbc88c0bc27531a0"
+    },
+    "cpu/alice-reconcile.json": {
+      "bytes": 918,
+      "sha256": "5c60115488d2057eb8ee4edba4cb676689fc56765270c60e68e260b6f823c11c"
+    },
+    "cpu/bob-exit.json": {
+      "bytes": 918,
+      "sha256": "bc8e5e3586efa30a782a20113a0286c2f5e7a7821bc4c7b0f4e8ddcd3e229a05"
+    },
+    "cpu/bob-reconcile.json": {
+      "bytes": 918,
+      "sha256": "3107eb58d58fae43cbebd21cc869505789201dea723e16231288f2c1705361a1"
+    },
+    "cpu/credit-transfer.json": {
+      "bytes": 918,
+      "sha256": "e7e63420309b37cfb615cbd2a57bb3b7a724eeaf7135f3708a0b3b1d867067b8"
+    },
+    "cpu/deposit.json": {
+      "bytes": 918,
+      "sha256": "55267dd5471d59a1d22695d872e44157cbe8f895a729a02b0722a12c4e1ad359"
+    },
+    "receipts/alice-exit.bin": {
+      "bytes": 223930,
+      "sha256": "628f1799981d92642fa5e1f25242bc479e6c4c4d1c15acf91c54a248d0991bde"
+    },
+    "receipts/alice-reconcile.bin": {
+      "bytes": 223930,
+      "sha256": "61c09f3ee70f4d2f995fd369c5f6a9048c8b0ed95caa98f177dfb6913b6338a9"
+    },
+    "receipts/bob-exit.bin": {
+      "bytes": 223930,
+      "sha256": "374d49ef3463b18116fc4cfd52039289c00ab0e41ad3b757159f742ec07e3a48"
+    },
+    "receipts/bob-reconcile.bin": {
+      "bytes": 223930,
+      "sha256": "9a353fff08f69ce727b07e538820cf9a83974cce1453195f1e44a67a6d749661"
+    },
+    "receipts/credit-transfer.bin": {
+      "bytes": 223930,
+      "sha256": "4cd406a60af5534708065f0ee5401ae53f27f4e6f1cae513f121f8796875991d"
+    },
+    "receipts/deposit.bin": {
+      "bytes": 223930,
+      "sha256": "920948802c392f8b940225ed78d3c0ec6bd98c6a2e86990699e80c3f447791d7"
+    },
+    "result.json": {
+      "bytes": 34022,
+      "sha256": "26e13486d15ec2b0947d1bc4eb0f72f8b064a997133f2befb1d6178a304bb164"
+    },
+    "targets/alice-exit.json": {
+      "bytes": 2194,
+      "sha256": "0073419fcc76f59f2e25aedc9e4e57ee17bf68f34449f52dd4024b57ee74081f"
+    },
+    "targets/alice-reconcile.json": {
+      "bytes": 2199,
+      "sha256": "157432641afc91bd2ad4e702a95a21d244bbea4bad704d44b233cb5a83dffa22"
+    },
+    "targets/bob-exit.json": {
+      "bytes": 2192,
+      "sha256": "f60907a2065a4ab432e72a3352c8a3bd918b11ee753631a5d0d5c64eb1d5c4df"
+    },
+    "targets/bob-reconcile.json": {
+      "bytes": 2197,
+      "sha256": "33db06755f4a465f7eb482f6f8f312ee9ba7a60de8c96b84b221be9f975676d4"
+    },
+    "targets/credit-transfer.json": {
+      "bytes": 2199,
+      "sha256": "46ba3f7f9e48ead5bbcd173a6fdd87b51cff0e0338bc01535c31a228085221a4"
+    },
+    "targets/deposit.json": {
+      "bytes": 2191,
+      "sha256": "c9d28c8173fc61d4dcf3c7d5b06790cb1bb666ce720e20d88910a9b17af43e83"
+    }
+  }
+}

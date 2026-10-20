@@ -1,0 +1,29 @@
+{
+  "developmentMode": false,
+  "image": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "join": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "journalSha256": "c1d2d5b438b3d7fe4e86cf61321dadb96625be5e5bd8ab1ab8142436939ee59f",
+  "negativeControls": {
+    "corruptedSealRejected": true,
+    "malformedControlInclusionRejected": true,
+    "tamperedJournalOffsetsRejected": [
+      0,
+      32,
+      64,
+      96,
+      128,
+      160,
+      192,
+      224,
+      256,
+      288,
+      320
+    ],
+    "wrongExpectedControlRejectedBySealVerifier": true,
+    "wrongImageRejected": true
+  },
+  "noUnresolvedAssumptions": true,
+  "receiptSha256": "4cd406a60af5534708065f0ee5401ae53f27f4e6f1cae513f121f8796875991d",
+  "scope": "INDEPENDENT_CPU_REAL_CHAIN_INPUT_RECEIPT_NOT_CHAIN_ACCEPTANCE",
+  "targetSha256": "46ba3f7f9e48ead5bbcd173a6fdd87b51cff0e0338bc01535c31a228085221a4"
+}
