@@ -1,0 +1,20 @@
+{
+  "status": "PUBLISHED_AND_PULLED_DIGEST_CPU_STARTUP_QUALIFIED_NOT_GPU_EXECUTION",
+  "sourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628",
+  "workflowRunId": 39378910654,
+  "workflowUrl": "https://github.com/olafweller/kaspa-privacy-initiative/actions/runs/39378910654",
+  "workflowConclusion": "success",
+  "jobId": 118483233570,
+  "artifactId": 12245025090,
+  "artifactSha256": "2b1031cce9e670741f429d308f3f4b5c868a172e32487d81260a94f49a671407",
+  "builtAndPublishedImageId": "sha256:cba369ffbe9a5201ca90fbc4b7f4b185757598f77ab5e1e4c3aa3bfe9b0e812e",
+  "applicationHashesCheckedAgainstCurrentSource": true,
+  "frozenBinaryAndWorkloadHashesChecked": true,
+  "nativeContextsNeedNoBuildMachineFiles": true,
+  "localDockerBuildPerformed": false,
+  "CPUImageBuildAndChecksLocation": "GitHub ubuntu-24.04 runner; no GPU",
+  "gpuExecutionQualified": false,
+  "proofJobStarted": false,
+  "providerCalled": false
+}

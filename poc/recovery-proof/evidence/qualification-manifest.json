@@ -1,16 +1,88 @@
 {
   "files": {
     "all-remote-tests.log": {
-      "sha256": "62bea294730e7cfe840f9340b39cb96d1e227a12b157892902d627c195a15737",
+      "sha256": "7e277a8e35f08716c7ad1543da774db9d9f1cd4d7f2664af66082262213d7f4f",
       "bytes": 243
+    },
+    "archive-fix-bindings.json": {
+      "sha256": "62f7b1006d79f8baf20d2b790f366c1e7870f8e71dd279a4df0ef9d064414b80",
+      "bytes": 1209
+    },
+    "archive-fix-reproduction.json": {
+      "sha256": "2131f21199ecc494be5d577b6338ac9b7c7c01bf1f88aaab0e38e3bff7eb6bed",
+      "bytes": 322
+    },
+    "archive-fix-tests.log": {
+      "sha256": "8fd16df71c9deda935af9efc1b023dd4eabdee9f3aeb1bc5afe17a5d7b60f757",
+      "bytes": 778
+    },
+    "b-client-archive-qualification.json": {
+      "sha256": "2ae246ce52797e362c341f75f941dc98edc1de881edcf5f80337de4d0e1e7f6c",
+      "bytes": 2078
     },
     "build.log": {
       "sha256": "dea9ce8925661abda29a5319ddee6e3ac341716d378e4c6e4c2052726b3f9059",
       "bytes": 163
     },
     "package-identity.json": {
+      "sha256": "cf10673cb40e6d36308d3a227a60bc7faf3b2633fb868b8e0bed8c881a24563a",
+      "bytes": 15372
+    },
+    "pre-archive-fix-1059dea/README.md": {
+      "sha256": "d8cb89e1217145716a0d951bfcecbeb81092e15440e8337b28c6b3dacd702cd0",
+      "bytes": 589
+    },
+    "pre-archive-fix-1059dea/all-remote-tests.log": {
+      "sha256": "62bea294730e7cfe840f9340b39cb96d1e227a12b157892902d627c195a15737",
+      "bytes": 243
+    },
+    "pre-archive-fix-1059dea/build.log": {
+      "sha256": "dea9ce8925661abda29a5319ddee6e3ac341716d378e4c6e4c2052726b3f9059",
+      "bytes": 163
+    },
+    "pre-archive-fix-1059dea/package-identity.json": {
       "sha256": "2e672eb56e0c776d788b2b5cf1fd3986c8ccd3c4b6a59cb3dc94efbf926236e3",
       "bytes": 14102
+    },
+    "pre-archive-fix-1059dea/publication-excerpt.log": {
+      "sha256": "4c0d6f20a06178b53d73890b1c6233f51eb8d927ed8da62e5ad703142825f6fb",
+      "bytes": 1274
+    },
+    "pre-archive-fix-1059dea/publication.json": {
+      "sha256": "53dea9f951783dd2dbfda05e7b6a84b568adcc0fecf5575f62c90a54ddd32f88",
+      "bytes": 1074
+    },
+    "pre-archive-fix-1059dea/python-tests.log": {
+      "sha256": "203c08224633b979d12f07800aca4a9826591ded766ac1c86390f667dc9307c8",
+      "bytes": 1699
+    },
+    "pre-archive-fix-1059dea/qualification-manifest.json": {
+      "sha256": "a345cb69edeef79a57dbf55422d0a597f6c678317bae85a44ad18c2300b3a98a",
+      "bytes": 1717
+    },
+    "pre-archive-fix-1059dea/qualification.json": {
+      "sha256": "cdb701643e81a07111741383211ff6063b401ed733739e681656dce0ef0ff340",
+      "bytes": 1008
+    },
+    "pre-archive-fix-1059dea/recovery-image-digest.txt": {
+      "sha256": "b080d894eff270f3a5987c194cf553044c1c435d5a86ee29d65900f83a89ada0",
+      "bytes": 135
+    },
+    "pre-archive-fix-1059dea/recovery-image-published-smoke.json": {
+      "sha256": "72c5ae76f317a5f12e46181931c94ad07146eb8fa0fc37b49fca8fdafe640615",
+      "bytes": 3988
+    },
+    "pre-archive-fix-1059dea/recovery-image-smoke.json": {
+      "sha256": "72c5ae76f317a5f12e46181931c94ad07146eb8fa0fc37b49fca8fdafe640615",
+      "bytes": 3988
+    },
+    "pre-archive-fix-1059dea/runmanifest.json": {
+      "sha256": "0fe20eb5c7e56015126d857890c7f28a28f5b376212b576a3b0eca0ecf2aa8a3",
+      "bytes": 10989
+    },
+    "pre-archive-fix-1059dea/rust-tests.log": {
+      "sha256": "51775ab553bd9d1a3080d7ab48641ed0cd4137c894e4fb0d9e6440f81177231c",
+      "bytes": 1233
     },
     "public-package.tar.gz": {
       "sha256": "42aae900499190386464c36208c0aa2a4b3e6c102e443ff99a714ef8469656c4",
@@ -25,12 +97,12 @@
       "bytes": 1074
     },
     "python-tests.log": {
-      "sha256": "203c08224633b979d12f07800aca4a9826591ded766ac1c86390f667dc9307c8",
-      "bytes": 1699
+      "sha256": "0714fa92be82b4bfcf7796ba855250c01dad073da60d7e89aa31316813172ff1",
+      "bytes": 2379
     },
     "qualification.json": {
-      "sha256": "cdb701643e81a07111741383211ff6063b401ed733739e681656dce0ef0ff340",
-      "bytes": 1008
+      "sha256": "d7a02df26abf02b72323f492ce78f1adb11f8e3c45c3c167920df7691b2bca61",
+      "bytes": 1208
     },
     "recovery-image-digest.txt": {
       "sha256": "b080d894eff270f3a5987c194cf553044c1c435d5a86ee29d65900f83a89ada0",

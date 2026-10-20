@@ -13,6 +13,9 @@ from recovery_package import restore, check, BINS, CASES, IMAGE, CONTROL
 
 def main():
     e = Path(__file__).resolve().parent/'evidence'
+    bindings = json.loads((e.parent/'runmanifest.json').read_text())['trustedBClientFiles']
+    for name, digest in bindings.items():
+        assert hashlib.sha256((ROOT/'poc/remote-cuda'/name).read_bytes()).hexdigest() == digest, name
     with tempfile.TemporaryDirectory(prefix='kpi-recovery-package-') as d:
         package = Path(d)/'package'
         policy = restore(package)

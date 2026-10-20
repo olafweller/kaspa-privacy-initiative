@@ -8,8 +8,12 @@ test_real_children_obey_nonrecursive_rust_output_directory_contract (test_recove
 test_single_start_and_missing_guard_remain_enforced (test_recovery.Recovery.test_single_start_and_missing_guard_remain_enforced) ... ok
 test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit (test_recovery.Recovery.test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit) ... ok
 test_transfer_margin_is_checked_before_consuming_attempt (test_recovery.Recovery.test_transfer_margin_is_checked_before_consuming_attempt) ... ok
+test_compressed_read_and_hash_fail_before_decompression (test_recovery_extract.RecoveryArchives.test_compressed_read_and_hash_fail_before_decompression) ... ok
+test_hidden_pax_and_gnu_expansion_stops_before_parser_in_function_and_cli (test_recovery_extract.RecoveryArchives.test_hidden_pax_and_gnu_expansion_stops_before_parser_in_function_and_cli) ... ok
+test_real_cli_from_isolated_pinned_b_client_installation (test_recovery_extract.RecoveryArchives.test_real_cli_from_isolated_pinned_b_client_installation) ... ok
+test_visible_file_member_and_path_checks_remain_enforced (test_recovery_extract.RecoveryArchives.test_visible_file_member_and_path_checks_remain_enforced) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 4.579s
+Ran 14 tests in 5.529s
 
 OK

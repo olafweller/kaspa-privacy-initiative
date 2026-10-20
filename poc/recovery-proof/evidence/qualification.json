@@ -3,7 +3,7 @@
   "reviewedGuestUnchanged": true,
   "fixedBatchCount": 6,
   "RustTestsPassed": 10,
-  "PythonTestsPassed": 10,
+  "PythonTestsPassed": 14,
   "sequentialStages": 14,
   "aggregateProofSeconds": 3600,
   "rentalSecondsFromActualCreation": 7200,
@@ -25,7 +25,12 @@
   "newOuterReceipts": 0,
   "gpuExecutionQualified": false,
   "providerCalled": false,
-  "allRemoteCudaTestsPassed": 54,
+  "allRemoteCudaTestsPassed": 58,
   "publishedImmutableImageCpuQualified": true,
-  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300",
+  "archiveFixTestsPassed": 4,
+  "archiveFixTestsOnBPassed": 4,
+  "archiveFixRustTestsRerunLocally": false,
+  "BClientRevision": "BOUNDED_RESULT_ARCHIVE_V1",
+  "imageRepublishedForBArchiveFix": false
 }

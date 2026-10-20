@@ -1,0 +1,157 @@
+{
+  "scope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS",
+  "softwarePreparationOnly": true,
+  "reviewedPr56Head": "cfee7e5f7cd25d9bac600eab5292a8ffcc52e7b3",
+  "pr56Merge": "2010684bc40c482e69f0994229385a0a1e0ece78",
+  "expectedProgramImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "expectedJoinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "packageArchiveSha256": "42aae900499190386464c36208c0aa2a4b3e6c102e443ff99a714ef8469656c4",
+  "workloadSha256": "78033138f9ed1c7b6f4ae7b1734a92a1be2a8495c28237cf6696e7f6c6ca2640",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628",
+  "batches": [
+    {
+      "case": "deposit",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 1000000000,
+        "private_liability": 0,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "expectedJournalHex": "2be19e10f078aea53791150545bda31c80993068bec6a9e86c61aa63058daf930000000000000000000000000000000000000000000000000000000000000000d18bb327901042de782ad4cb28026b9337a003174569f24df2cd5f5162a5451bdf6a36cbae0852fd153408b0d1718e956893fda3dd6954ff34d5cfa5b7b4d13869372532e1c506bfe8ba9c6ce386653963133871cdafb5e8e4eaf9f67db09945028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b740000000000000000000000000000000000000000000000000000000000000000043d415cc20df3fdcf03c0d096a35e420e68dcde1a6acb3a41a916ee4245ee20fe94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "501e2543326f1469c9e0dc199813c4755ccaced67ede5ae19cc6395cc88e0768",
+      "inputSha256": "0697ed3e2ea9951c58b9d18956b7a906e304bba06242e6afbae0de4bd77ce49d",
+      "segmentPo2": 16,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/deposit/receipt.bin",
+      "candidateOutput": "proofs/deposit/candidate-receipt.bin"
+    },
+    {
+      "case": "credit-transfer",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 1000000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "expectedJournalHex": "d18bb327901042de782ad4cb28026b9337a003174569f24df2cd5f5162a5451bdf6a36cbae0852fd153408b0d1718e956893fda3dd6954ff34d5cfa5b7b4d13879bc951df3bdc84dee8d96f7c87c941dfd773e0a66300766fb7a3cc889577784e766fb7bd4df580f1969f7f61bf3930656ba652a854044cdb3a88b6dbb805b5f64142e94cf4ccdcfa923097ec4bd32516359d77de532b05aada6c420de8acb18028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b74000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "adbe521187f9eb9a2b649904d135ee449dc71194372af69672fcdc6ffdbac71a",
+      "inputSha256": "0d122326fe6bee27cbb32f44a719f9c53ca317784924bfb9e445a627194f6df5",
+      "segmentPo2": 20,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/credit-transfer/receipt.bin",
+      "candidateOutput": "proofs/credit-transfer/candidate-receipt.bin"
+    },
+    {
+      "case": "bob-exit",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 1000000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 400000000
+      },
+      "expectedJournalHex": "79bc951df3bdc84dee8d96f7c87c941dfd773e0a66300766fb7a3cc889577784e766fb7bd4df580f1969f7f61bf3930656ba652a854044cdb3a88b6dbb805b5f6c6037a7cb0b1242d565e6c5e0cc328fbb3da30ea0e6413ee791be24a187d576f7c1aa830edac35838fe963f03c76c78193fe574ffcb196bc28caccfeb7d726184c872f362ff091d8e8dbb49ec996c8d96aab4ac332dbf500f467abf2096ee0c028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b740d64c86298f51aaf269f14aefc80c664eabc7f4465318b013a0ab4c6d56853a8d0000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "613f0f2fa9b7ce6ff14edb72975fa9ab3e7464dc98e90726df488740b37c59d4",
+      "inputSha256": "87eff1c4d151b87d9fcb7912088833fd8914aef4a04f4b0217bc4b24ae6e3211",
+      "segmentPo2": 20,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/bob-exit/receipt.bin",
+      "candidateOutput": "proofs/bob-exit/candidate-receipt.bin"
+    },
+    {
+      "case": "bob-reconcile",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 600000000,
+        "reserve_principal": 600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "expectedJournalHex": "6c6037a7cb0b1242d565e6c5e0cc328fbb3da30ea0e6413ee791be24a187d576f7c1aa830edac35838fe963f03c76c78193fe574ffcb196bc28caccfeb7d7261902125a30dc7ca490b447606dc958d00e2c36c43c1190f5bda6e442a463a904657eed47b70e5f26450063d1adb59af392b66cf0246e3f6be0505dc4a8c12f0d72f152bf4289126ee4e42369cbd307bac98903e55c2cb8f3ad118d5e46d107f20028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b74000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "47657831b96c43aa7f5b378a403aae96cf0b41f73e8c059a07b2186babf0ce04",
+      "inputSha256": "b45c6f49eb7c518a5708055308f9e1951201a17952a56142ccea0a81f9027937",
+      "segmentPo2": 16,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/bob-reconcile/receipt.bin",
+      "candidateOutput": "proofs/bob-reconcile/candidate-receipt.bin"
+    },
+    {
+      "case": "alice-exit",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 0,
+        "reserve_principal": 600000000,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 600000000
+      },
+      "expectedJournalHex": "902125a30dc7ca490b447606dc958d00e2c36c43c1190f5bda6e442a463a904657eed47b70e5f26450063d1adb59af392b66cf0246e3f6be0505dc4a8c12f0d7c85e4bb565358f909642d505a293ee28905969f1d8f65351147f0e4eeb089b61b4d1eebd24b63cff88ee81a9d690d3b48c83c3215a311bde0a8d33a66cb08f53533aee9d0b96226ffc3bd4c31aa113ce381eea41e8d23288cb147d61476700dd028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b740c1cc3ff8f254e4c6bcf578bb6a5eb8904d322926e78bb9729f6c800524dffa4b0000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "fa432b0215e525b996d9fef2dcd54cde955f9d03a5c827b8ffbef973c5cf2c93",
+      "inputSha256": "592756bd985230d6b68e19474013dce69c9b23e1fcd9e56f66e2a4b66b35cefb",
+      "segmentPo2": 20,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/alice-exit/receipt.bin",
+      "candidateOutput": "proofs/alice-exit/candidate-receipt.bin"
+    },
+    {
+      "case": "alice-reconcile",
+      "accounting": {
+        "outstanding_permission_rent_excluded": 0,
+        "pending_deposits": 0,
+        "private_liability": 0,
+        "reserve_principal": 0,
+        "state_covenant_rent_excluded": 100000000,
+        "unpaid_exits": 0
+      },
+      "expectedJournalHex": "c85e4bb565358f909642d505a293ee28905969f1d8f65351147f0e4eeb089b61b4d1eebd24b63cff88ee81a9d690d3b48c83c3215a311bde0a8d33a66cb08f534cbbe70a9fde378820b019a0ed11674165a5080fc707c232ad922a08df2c7d63059a9de8fb83d446bef3444db739854e025a7f261e3e4a1ff4ad38f1f705db6c5b6d6c6850baa40d39be4f1cf1d57b6d06f53aff010c7f04d67b8806f2d007a1028482493feadb20a9a4ed57fc04e41c907e9f3c48c04b55c316be917b432b29c47021fa6eff6246b87cc959cbdcc89392ffc6282542df42463f653b99eebec239eda83a558ccfe2bb279bdf32423cf72ba8d1b722528e107babc4e00ad8b74000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e94e9720ed1aaca48f921aa5b15e4ebb02abc181a0149f57a2cf361e521ab86b",
+      "expectedJournalSha256": "7946024b771aeeb0b4227a1fc636e376bd797e5bf3d5cbfc2cfd0b9524bfbce0",
+      "inputSha256": "a93f25645e05b99b19024611f1b3ea6fcc94a3062f644f385947b038d0baeb79",
+      "segmentPo2": 16,
+      "executionCycleLimit": 160000000,
+      "proofOutput": "proofs/alice-reconcile/receipt.bin",
+      "candidateOutput": "proofs/alice-reconcile/candidate-receipt.bin"
+    }
+  ],
+  "aggregateProofProcessGroupSeconds": 3600,
+  "maxRentalSecondsFromActualCreation": 7200,
+  "minimumRemainingLeaseSecondsAtStart": 3960,
+  "BStopLeadSeconds": 60,
+  "plannedTransferMarginSeconds": 300,
+  "attempts": 1,
+  "automaticRetry": false,
+  "planningLimitUsd": 5,
+  "actualQuoteIncludingStorageRequired": true,
+  "freshGuardHeartbeatRequired": true,
+  "nativeReceiptChecks": [
+    "bob-exit",
+    "alice-exit"
+  ],
+  "managementRoute": "Cloud -> TN10 -> B -> Pod HTTPS",
+  "newCloudDomainsOrSecretsRequired": false,
+  "runtimeDependenciesOnCloudGatewayLaptop": false,
+  "providerAccountCredentials": "B only; /etc/kpi-cuda-guard.env; root0600; never read/print in Cloud",
+  "rentalAuthorized": false,
+  "proofExecutionAuthorized": false,
+  "fundingAuthorized": false,
+  "TN10BroadcastAuthorized": false,
+  "guardSources": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "watchdog.py": "f057acefdd5d7c54075711228ae5490b5252bb610605837c74b244c1261ed9d0",
+    "provider.py": "9e1a65b68da2cff78d3549b6b72c83a6bcbf8a7a540fa7aa1d6faafbebe7380f"
+  },
+  "requiredEvidence": [
+    "six final independently CPU-verified Succinct receipts with mutation controls",
+    "both genuine exit receipts authorize matching native issuance and payouts; 17 native negatives",
+    "per-batch matching-process CUDA activity",
+    "durable external preservation and independent verification on B",
+    "provider EXITED on every outcome; deletion only after verified preservation",
+    "per-stage and total time, RAM, VRAM, receipt hashes, actual rental/storage rates and cost distinction"
+  ],
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
+}

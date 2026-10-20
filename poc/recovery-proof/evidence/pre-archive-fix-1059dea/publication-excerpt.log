@@ -1,0 +1,10 @@
+2026-10-20T06:11:28.1860459Z #9 0.213 fixed public target verified; no proof started
+2026-10-20T06:11:28.2952710Z #9 0.322 fixed public target verified; no proof started
+2026-10-20T06:11:28.4023008Z #9 0.429 fixed public target verified; no proof started
+2026-10-20T06:11:28.5098209Z #9 0.536 fixed public target verified; no proof started
+2026-10-20T06:11:28.6178178Z #9 0.644 fixed public target verified; no proof started
+2026-10-20T06:11:28.7240938Z #9 0.751 fixed public target verified; no proof started
+2026-10-20T06:11:39.1134993Z recovery-5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300: digest: sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628 size: 4919
+2026-10-20T06:11:39.6021690Z ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628: Pulling from olafweller/kaspa-privacy-initiative/cuda-qualification
+2026-10-20T06:11:39.6033453Z Status: Image is up to date for ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628
+2026-10-20T06:11:39.6040079Z ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:442bc15d6d4cece6e0cd28b30862a0a9c15c64c67a637275fd45ea648600a628

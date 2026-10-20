@@ -1,12 +1,43 @@
 """Trusted local/B CPU verifier; never execute anything from GPU results."""
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import subprocess
 import sys
 from common import atomic,sha
-from package import checked_archive,write
+from package import write
+from staged_archive import open_archive,read_compressed
 from recovery_package import BINS, CASES, INPUTS, check
+
+MAX_ARCHIVE = 64*1024**2
+MAX_ARCHIVE_TAR = 256*1024**2
+MAX_MEMBERS = 512
+MAX_FILE = 32*1024**2
+MAX_CONTENT = 128*1024**2
+
+
+def extract(archive, out, expected_sha):
+    # Include hidden extension records and padding in the expansion bound,
+    # before tarfile can process PAX/GNU metadata. The digest is not a size cap.
+    data=read_compressed(archive,MAX_ARCHIVE)
+    assert sha(data)==expected_sha, 'archive hash mismatch'
+    content={};total=0
+    with open_archive(data,MAX_ARCHIVE,MAX_ARCHIVE_TAR,MAX_MEMBERS) as (tar,members):
+        for item in members:
+            name=PurePosixPath(item.name)
+            assert name.parts and len(item.name)<=240
+            assert item.isfile() and not name.is_absolute() and '..' not in name.parts
+            assert str(name)==item.name and item.name not in content
+            assert 0<=item.size<=MAX_FILE
+            total+=item.size
+            assert total<=MAX_CONTENT
+            raw=tar.extractfile(item).read()
+            assert len(raw)==item.size
+            content[item.name]=raw
+    # Reject malformed/oversized archives before creating any output directory.
+    out.mkdir()
+    for name,raw in content.items():write(out/name,raw)
+    return {'safeRegularFilesExtracted':len(content)}
 
 
 def verify(package, downloaded, out, executor=None):
@@ -57,9 +88,7 @@ def verify(package, downloaded, out, executor=None):
 
 if __name__=='__main__':
     if len(sys.argv)==5 and sys.argv[1]=='extract':
-        content=checked_archive(Path(sys.argv[2]),sys.argv[4]);out=Path(sys.argv[3]);out.mkdir()
-        for name,raw in content.items():write(out/name,raw)
-        print(json.dumps({'safeRegularFilesExtracted':len(content)}));raise SystemExit(0)
+        print(json.dumps(extract(Path(sys.argv[2]),Path(sys.argv[3]),sys.argv[4])));raise SystemExit(0)
     assert len(sys.argv)==5 and sys.argv[1]=='verify'
     r=verify(*(Path(x) for x in sys.argv[2:]));print(json.dumps(r,indent=2))
     # Partial results survive, but partial/failing output is never full success.

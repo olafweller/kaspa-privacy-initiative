@@ -1,0 +1,31 @@
+{
+  "scope": "SOFTWARE_AND_CPU_PREPARATION_NO_NEW_PROVING_OR_PROVIDER_ACTIONS",
+  "reviewedGuestUnchanged": true,
+  "fixedBatchCount": 6,
+  "RustTestsPassed": 10,
+  "PythonTestsPassed": 10,
+  "sequentialStages": 14,
+  "aggregateProofSeconds": 3600,
+  "rentalSecondsFromActualCreation": 7200,
+  "executionCycleLimitPerBatch": 160000000,
+  "segmentPo2": {
+    "deposit": 16,
+    "credit-transfer": 20,
+    "bob-exit": 20,
+    "bob-reconcile": 16,
+    "alice-exit": 20,
+    "alice-reconcile": 16
+  },
+  "candidatePreservationTested": true,
+  "realProcessDirectoryContractTested": true,
+  "externalDeadlineAndControllerLossTested": true,
+  "startMarginCheckedBeforeAttemptMarker": true,
+  "nativeFixtureContextsEmbedded": true,
+  "genuineReceiptNativeIssuanceExecuted": false,
+  "newOuterReceipts": 0,
+  "gpuExecutionQualified": false,
+  "providerCalled": false,
+  "allRemoteCudaTestsPassed": 54,
+  "publishedImmutableImageCpuQualified": true,
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
+}

@@ -43,3 +43,15 @@ applicable; no new note/nullifier/circuit/curve or privacy subsystem is designed
 The operational additions implement ADR-0017's already selected bounded proof
 step. Native public contexts are compiled instead of read from build paths.
 The same implementation is reused on GPU/CPU/B, not independently implemented.
+
+## Focused B result-archive repair
+
+The first B extraction route called a generic archive helper whose visible-file
+limits did not cover hidden PAX/GNU metadata processed by tarfile. The existing
+staged helper now bounds both compressed reads and total gzip expansion before
+tar parsing. A matching digest cannot substitute for this resource bound.
+Tests cover a one-byte normal file with 64 KiB metadata, parser-not-called
+assertions through both the function and real CLI, and preservation of path,
+regular-file, duplicate, count and file/content limits. A fresh isolated B-client
+installation includes the pinned helper. The change is limited to B extraction
+and qualification: no guest, proof/native verifier or GPU image change is made.

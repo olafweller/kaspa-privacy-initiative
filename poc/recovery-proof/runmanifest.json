@@ -153,5 +153,24 @@
     "provider EXITED on every outcome; deletion only after verified preservation",
     "per-stage and total time, RAM, VRAM, receipt hashes, actual rental/storage rates and cost distinction"
   ],
-  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300"
+  "imageSourceCommit": "5e9a5c3c47c00dcf3d483cce7eaa1a2471e6a300",
+  "trustedBClientFiles": {
+    "common.py": "5ed5815ae1177f5915852477d270110f3768bd6b61ff5ebd5833b62526e549c3",
+    "package.py": "f8ae0ea16e9aa31064d8f0e288eff87f9cb57e19e66fa811a6d0235e5157629c",
+    "recovery_package.py": "f4af3f9c1c052282a798c62f9f591a9e9dbeb95179eed437194005d2bc4774e6",
+    "recovery_control.py": "6ef5c0b5857615dda4ed8ae2487c33c9befe978d6d8238e5836a5122c961cb0f",
+    "staged_archive.py": "534f9f70ab0287e80286351755aa739cf34e135e12bdb67d4bb51ec112ef5535"
+  },
+  "BArchiveLimits": {
+    "compressedBytes": 67108864,
+    "expandedBytesIncludingMetadataAndPadding": 268435456,
+    "members": 512,
+    "singleFileBytes": 33554432,
+    "visibleContentBytes": 134217728,
+    "expansionBoundBeforeTarParsing": true
+  },
+  "BClientRevision": "BOUNDED_RESULT_ARCHIVE_V1",
+  "BClientBaselineCommit": "1059deaf25e182700831cde33b12aac02315733e",
+  "BClientQualifiedDirectory": "/opt/kpi-remote-cuda/recovery-six-client-20261020-archive-fix/poc/remote-cuda",
+  "BClientQualificationEvidence": "evidence/b-client-archive-qualification.json"
 }

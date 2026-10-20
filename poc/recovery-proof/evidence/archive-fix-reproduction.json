@@ -1,0 +1,10 @@
+{
+  "scope": "SMALL_PAX_REPRODUCTION_NO_GPU_OR_PROVIDER",
+  "compressedBytes": 233,
+  "totalExpandedBytes": 71680,
+  "hiddenMetadataBytes": 65536,
+  "legacyVisibleBytesAccepted": 1,
+  "newTestExpandedLimit": 11264,
+  "newRejectedBeforeTarParser": true,
+  "newError": "expanded archive limit exceeded before tar parsing"
+}

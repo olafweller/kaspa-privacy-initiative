@@ -51,6 +51,6 @@ jobs:
           cargo +1.91.0 fmt --manifest-path poc/recovery-proof/Cargo.toml --check
           cargo +1.91.0 test --locked --release --manifest-path poc/recovery-proof/Cargo.toml
           python3 poc/recovery-proof/check_package.py
-          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_recovery.py' -v
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_recovery*.py' -v
           cargo +1.91.0 build --locked --release --manifest-path poc/recovery-native/Cargo.toml --bin kpi-recovery-native-host
           python3 poc/recovery-native/check_evidence.py .local/ci-target/release/kpi-recovery-native-host

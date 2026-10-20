@@ -88,3 +88,30 @@ Even successful receipts would prove this local synthetic context. A fresh
 actual TN10 instance, real accepted captures and new proofs remain necessary.
 The old PR54 reserve is unchanged. Independent user custody, data availability
 and withdrawal after original-service shutdown remain separate live gates.
+
+## B archive correction after review of 1059dea
+
+The result extractor now reuses the existing `staged_archive.py` helper. It bounds
+the compressed read (64 MiB) and the entire gzip expansion (256 MiB) before tar
+processing, including hidden PAX/GNU extension data and padding. Existing hash,
+canonical path, regular-file, duplicate, member-count and per-file/visible-content
+limits remain enforced. Invalid archives create no extraction directory.
+
+The four focused regressions exercise the actual CLI, an isolated installation
+of the pinned B client files, and small PAX/GNU cases that must fail before
+`tarfile.open`. Compressed-size and digest rejection happen before gzip processing.
+The `trustedBClientFiles` manifest explicitly includes the helper dependency.
+See the [extraction tests](../remote-cuda/test_recovery_extract.py).
+
+The image, public archive, binaries and proof workload remain unchanged. The
+corrected controller and its archive helper are B-side dependencies, not GPU
+image contents. The original qualification/identity is preserved under
+[pre-archive-fix-1059dea](evidence/pre-archive-fix-1059dea/README.md); original image
+publication remains evidence for that same immutable image. Current B bindings
+are recorded separately from that image's copied runtime sources.
+
+The same four regressions passed on actual B as `kpi-cuda-guard`, including the
+isolated client import and real extraction CLI. Installed sources and results
+are recorded in [B qualification](evidence/b-client-archive-qualification.json).
+The guard stayed disabled/inactive; no credentials, provider or proof operation
+was used. This qualifies the B extractor, not native receipts or a GPU run.

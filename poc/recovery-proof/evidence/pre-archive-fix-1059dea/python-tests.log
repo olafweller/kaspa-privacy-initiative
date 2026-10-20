@@ -1,0 +1,15 @@
+test_candidate_is_preserved_and_never_reported_as_all_final_receipts (test_recovery.Recovery.test_candidate_is_preserved_and_never_reported_as_all_final_receipts) ... ok
+test_external_watchdog_survives_controlling_process_death (test_recovery.Recovery.test_external_watchdog_survives_controlling_process_death) ... ok
+test_fixed_package_and_all_compiled_targets_without_execution (test_recovery.Recovery.test_fixed_package_and_all_compiled_targets_without_execution) ... ok
+test_journal_continuity_cannot_be_replaced (test_recovery.Recovery.test_journal_continuity_cannot_be_replaced) ... ok
+test_partial_results_survive_later_stage_failure_and_verification_is_trusted (test_recovery.Recovery.test_partial_results_survive_later_stage_failure_and_verification_is_trusted) ... ok
+test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant (test_recovery.Recovery.test_real_aggregate_deadline_keeps_first_artifact_and_kills_later_descendant) ... ok
+test_real_children_obey_nonrecursive_rust_output_directory_contract (test_recovery.Recovery.test_real_children_obey_nonrecursive_rust_output_directory_contract) ... ok
+test_single_start_and_missing_guard_remain_enforced (test_recovery.Recovery.test_single_start_and_missing_guard_remain_enforced) ... ok
+test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit (test_recovery.Recovery.test_stage_list_has_one_proof_and_independent_check_per_case_and_native_exit) ... ok
+test_transfer_margin_is_checked_before_consuming_attempt (test_recovery.Recovery.test_transfer_margin_is_checked_before_consuming_attempt) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.579s
+
+OK

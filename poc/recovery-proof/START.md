@@ -4,6 +4,10 @@
    service scope `FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS`. Restore the package on B
    into a fresh directory and run `check-target` for all six cases plus
    `check-native-context`. Retain the existing B installation and historical data.
+   Install every `trustedBClientFiles` entry from the runmanifest together in the
+   client directory, including `staged_archive.py`, and verify those hashes.
+   `recovery_control.py extract` requires that bounded archive helper. Run its
+   actual CLI smoke test from the installed directory before receiving results.
 2. At a separately released run, check B's NTP clock, storage, installed guard and
    current GPU/storage quote against the USD5 planning allowance. Use only B's
    existing root-only credentials, never print or transfer their values.
@@ -24,6 +28,9 @@
    Use `recovery_control.py verify TRUSTED_PACKAGE EXTRACTED NEW_VERIFICATION` on
    B and again on trusted CPU if desired. Use binaries only from the trusted
    package. Partial/candidate results are retained and explicitly labelled.
+   The B extractor bounds compressed reads and the whole gzip expansion before
+   tar parsing, including hidden PAX/GNU headers and padding. The received hash
+   alone does not provide an expansion bound.
 7. Require six final cryptographically verified receipts, both genuine native
    permission/payout checks, per-batch matching-process CUDA activity and complete
    timing/RAM/VRAM records for full success. Preserve all diagnostics on failure.
