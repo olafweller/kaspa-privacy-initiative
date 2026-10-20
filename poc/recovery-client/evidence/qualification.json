@@ -1,0 +1,13 @@
+{
+  "scope": "ACTUAL_OFFLINE_START_KIT_TEST_NOT_TN10_OR_INDEPENDENT_USER_CUSTODY",
+  "archiveHashAndReproducibleBuildVerified": true,
+  "actualWalletAndSixBatchRebuildPassed": true,
+  "freshTwoRoleInitPassed": true,
+  "privateFilePermissionsChecked": true,
+  "publicOnlyReceiveAllowlist": true,
+  "overwriteMountedPathExtraReceiveFieldSymlinkBinaryAndFixtureTamperRejected": true,
+  "newWalletProofs": 0,
+  "GPUJobs": 0,
+  "funding": false,
+  "broadcast": false
+}

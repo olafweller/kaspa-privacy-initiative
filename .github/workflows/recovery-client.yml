@@ -1,0 +1,18 @@
+name: Offline user wallet start kit
+on:
+  pull_request:
+    paths:
+      - 'poc/recovery-client/**'
+      - '.github/workflows/recovery-client.yml'
+permissions:
+  contents: read
+jobs:
+  offline-client:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Check distributed archive, actual wallet and offline user preparation; no provider or broadcast
+        run: python3 poc/recovery-client/test_client.py

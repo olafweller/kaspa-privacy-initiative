@@ -1,0 +1,16 @@
+{
+  "filename": "KPI-wallet-start-linux-x86_64.zip",
+  "bytes": 1475315,
+  "sha256": "fe6e52acae28e53aeff4c314569c23e74f2ff001550f475806185b0c161fef1b",
+  "schema": "KPI_LOCAL_RECOVERY_START_KIT_V1",
+  "scope": "OFFLINE_ONBOARDING_NOT_LIVE_TRIAL_READY",
+  "platform": "linux-x86_64-glibc-2.34-plus",
+  "guestImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "walletSha256": "aeb84c7a3edd9b076e28c3035729fca9df0d582e44d33cbc951d697fb33c3c90",
+  "publicParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99",
+  "publicParametersIncluded": false,
+  "userWalletSecretsIncluded": false,
+  "broadcast": false,
+  "providerAccess": false,
+  "walletSourceSha256": "d653e03fdb9b1b1964f71005d2a0bb5aadc925b16b9cd2739db0e8742a55d65c"
+}

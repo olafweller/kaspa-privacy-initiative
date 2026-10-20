@@ -1,0 +1,46 @@
+KPI — lokale voorbereiding, nog geen TN10-transacties
+
+Dit startpakket werkt op Linux x86_64 met glibc 2.34 of nieuwer en Python 3.
+Ubuntu 22.04/24.04 x86_64 is een geschikte doelomgeving.
+Windows/WSL2 met Ubuntu is eveneens mogelijk; native macOS wordt niet geleverd.
+Een GPU, Rust, Docker of servertoegang is voor deze stappen niet nodig.
+
+1. Pak het ZIP-bestand uit in je Linux-home, bijvoorbeeld ~/kpi-wallet-start.
+   Gebruik geen Windows-map onder /mnt/c en geen OneDrive-map voor de wallets.
+
+2. Open in die map een terminal en voer uit:
+
+   python3 client.py doctor
+
+   Dit controleert het pakket en voert offline herstel met een tijdelijke
+   testwallet uit. Er worden geen persoonlijke wallets of transacties gemaakt.
+   Deel gerust de korte OK- of STOP-melding.
+
+3. Pas nadat die controle slaagt, maak je jouw twee logische testwallets:
+
+   python3 client.py init ~/kpi-testwallets
+
+   Kies een nieuwe map; bestaande wallets worden nooit overschreven.
+   De gegevens blijven op jouw computer. Alice en Bob zijn twee testrollen die
+   jij beheert; dit is geen bewijs van onafhankelijk beheer door twee mensen.
+
+4. Bewaar voor zowel alice als bob de bestanden wallet.backup en native.key op
+   eigen backupmedia. Deze bestanden zijn niet versleuteld. Upload ze nooit naar
+   deze chat, GitHub, Cloud, B, TN10 of een GPU-machine.
+   Laat de werkexemplaren voorlopig op je lokale computer staan.
+
+5. Alleen ~/kpi-testwallets/public/alice-receive.json en bob-receive.json zijn
+   bedoeld om te delen. Ze bevatten geen geheime sleutel of native uitbetalingskey.
+   Met dit commando kun je uitsluitend de openbare ontvanggegevens tonen:
+
+   python3 client.py public ~/kpi-testwallets
+
+Daarna wacht je op het concrete TN10-uitvoeringspakket. Er is nu geen tijdsdruk
+of lopende GPU-huur. Zet geen bestaande diensten uit en verstuur geen test-KAS.
+
+Dit is alleen de lokale startstap. De live zes-stappenservice, onafhankelijke
+actuele ketencontrole en Alice' lokale credit/transfer-aanmaak moeten nog worden
+geintegreerd. De oorspronkelijke walletbinary bevat herstel/scan/exitfuncties;
+we starten daarmee nu geen opname. De bestaande publieke provingparameters
+worden voor de latere walletbewijzen apart met hun vastgelegde hash geleverd;
+ze zijn niet nodig voor de controles en wallet-aanmaak hierboven.
