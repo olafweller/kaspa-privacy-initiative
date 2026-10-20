@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "aa4fd3381a996acf872313cb800f8c8bb4f9cf34",
+  "workflowRun": 39400006314,
+  "job": 118552064787,
+  "artifact": 12255051711,
+  "artifactZipSha256": "37d4c3f54cabac6f9433df3c59a2690550e9eea2f40da1fbfaa08ef1c1379e2b",
+  "buildAndPublish": "success",
+  "immutableImage": "ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:cd42221a752ac0469e2b78254ab48aa8da0dedd8b491355e4a184cacd142f468",
+  "pulledDigestCpuSmoke": "success",
+  "gpuExecution": false,
+  "rental": false
+}

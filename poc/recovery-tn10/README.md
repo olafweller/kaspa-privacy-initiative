@@ -122,3 +122,17 @@ No live readiness claim is made until the full terminal payout and confirmations
 succeed. State/UTXO/anchor checks, named outage, public-data availability, local
 user proof turnaround, the unchanged shared hour/lease limits and real native
 acceptance remain gates for the separately released rehearsal.
+
+## Published immutable image
+
+The generic image was built from commit
+`aa4fd3381a996acf872313cb800f8c8bb4f9cf34` and published as:
+
+`ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:cd42221a752ac0469e2b78254ab48aa8da0dedd8b491355e4a184cacd142f468`
+
+The [publication](evidence/image-publication/publication.json) and retained built/
+pulled-image smoke reports confirm successful CPU binding/startup with six stages,
+no owner addresses in the image and no provider/proving call. The source-to-image
+binding is preserved; subsequent publication metadata does not change runtime
+sources, executable, guest, public parameter identity or the image. Actual CUDA
+execution of this new staged package remains for the separately released run.

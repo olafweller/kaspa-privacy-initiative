@@ -1,0 +1,1 @@
+{"scope": "STAGED_RECOVERY_TN10_SIX_V1", "sixCases": ["deposit", "credit-transfer", "bob-exit", "bob-reconcile", "alice-exit", "alice-reconcile"], "cpuStartupPassed": true, "ownerReceiveDataInImage": false, "gpuExecution": false, "proofStarted": false, "providerCalled": false}
