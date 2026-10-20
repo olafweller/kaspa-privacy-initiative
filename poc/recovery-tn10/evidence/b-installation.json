@@ -1,0 +1,35 @@
+{
+  "scope": "B_CPU_INSTALLATION_AND_UNFUNDED_PUBLIC_RECEIVE_INITIALIZATION_NOT_LIVE_READINESS",
+  "observedUnix": 1792488685.3220375,
+  "hostname": "vmi3641034.contaboserver.net",
+  "installation": "/opt/kpi-recovery-tn10-aa4fd33",
+  "privateState": "/var/lib/kpi-cuda-guard/recovery-tn10-prep-20261020",
+  "hostBinarySha256": "8f48a0fb3066b7d5395a9d0a13254b76977879e71c32707548c9e323a06ffabd",
+  "guestImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "sixRetainedReceiptsCpuVerified": [
+    "deposit",
+    "credit-transfer",
+    "bob-exit",
+    "bob-reconcile",
+    "alice-exit",
+    "alice-reconcile"
+  ],
+  "userWalletSecretsImported": false,
+  "sponsorKeyGeneratedLocallyOnB": true,
+  "sponsorKeyExported": false,
+  "ownerReceiveValuesPrinted": false,
+  "guardActivated": false,
+  "providerCalled": false,
+  "funding": false,
+  "broadcast": false,
+  "newProofs": 0,
+  "permissionModes": {
+    ".": "0o700",
+    "alice-receive.json": "0o600",
+    "bob-receive.json": "0o600",
+    "trial": "0o700",
+    "trial/sponsor/native.key": "0o600"
+  },
+  "guardActiveState": "inactive",
+  "guardEnableState": "disabled"
+}

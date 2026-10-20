@@ -136,3 +136,20 @@ no owner addresses in the image and no provider/proving call. The source-to-imag
 binding is preserved; subsequent publication metadata does not change runtime
 sources, executable, guest, public parameter identity or the image. Actual CUDA
 execution of this new staged package remains for the separately released run.
+
+## Independent B preparation
+
+The [B installation report](evidence/b-installation.json) records the trusted host
+and bounded package helpers installed separately at `/opt/kpi-recovery-tn10-aa4fd33`.
+The owner's public receiving files and fresh unfunded trial are private runtime
+state under `/var/lib/kpi-cuda-guard/recovery-tn10-prep-20261020`, outside Git and
+the image. The sponsor key was generated locally on B and was not exported; no
+user wallet/native secret was imported. Private state directories are 0700 and
+the receiving files/sponsor key are 0600.
+
+B independently verified all six retained PR58 receipts with the new CPU host.
+These checks do not produce receipts for the fresh trial or establish live chain
+readiness. The existing guard remains disabled/inactive. No provider request,
+funding, broadcast, proof job or unrelated-service change was made. Mint client/
+parameter delivery and the concrete outage/access contract still need preflight
+qualification before a separately authorized live rehearsal.
