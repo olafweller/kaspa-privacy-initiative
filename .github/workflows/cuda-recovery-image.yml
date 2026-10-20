@@ -1,0 +1,46 @@
+name: Prepare fixed recovery six-batch CUDA image
+on:
+  push:
+    tags:
+      - 'cuda-recovery-six-*'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Restore fixed public package and qualify orchestration without proving
+        run: |
+          python3 poc/remote-cuda/recovery_package.py restore .local/recovery-image/recovery-dist
+          PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s poc/remote-cuda -p 'test_recovery.py' -q
+          cp poc/remote-cuda/{Dockerfile.recovery,common.py,worker.py,service.py,package.py,recovery_package.py,recovery_runner.py,recovery_worker.py,recovery_service.py} .local/recovery-image/
+      - name: Build with previously qualified CUDA prover and check CPU startup
+        run: |
+          docker build -f .local/recovery-image/Dockerfile.recovery -t kpi-cuda-recovery:checked .local/recovery-image
+          python3 poc/remote-cuda/check_recovery_image.py kpi-cuda-recovery:checked > .local/recovery-image-smoke.json
+      - name: Publish immutable image and recheck pulled digest
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:recovery-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-cuda-recovery:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee .local/recovery-image-digest.txt >> "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/remote-cuda/check_recovery_image.py "$task_digest" > .local/recovery-image-published-smoke.json
+          docker logout ghcr.io
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: recovery-six-image-preparation
+          path: |
+            .local/recovery-image-smoke.json
+            .local/recovery-image-published-smoke.json
+            .local/recovery-image-digest.txt

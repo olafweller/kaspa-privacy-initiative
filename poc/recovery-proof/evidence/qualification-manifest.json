@@ -1,0 +1,32 @@
+{
+  "files": {
+    "all-remote-tests.log": {
+      "sha256": "62bea294730e7cfe840f9340b39cb96d1e227a12b157892902d627c195a15737",
+      "bytes": 243
+    },
+    "build.log": {
+      "sha256": "dea9ce8925661abda29a5319ddee6e3ac341716d378e4c6e4c2052726b3f9059",
+      "bytes": 163
+    },
+    "package-identity.json": {
+      "sha256": "2e672eb56e0c776d788b2b5cf1fd3986c8ccd3c4b6a59cb3dc94efbf926236e3",
+      "bytes": 14102
+    },
+    "public-package.tar.gz": {
+      "sha256": "42aae900499190386464c36208c0aa2a4b3e6c102e443ff99a714ef8469656c4",
+      "bytes": 12851231
+    },
+    "python-tests.log": {
+      "sha256": "203c08224633b979d12f07800aca4a9826591ded766ac1c86390f667dc9307c8",
+      "bytes": 1699
+    },
+    "qualification.json": {
+      "sha256": "ad6555809e274a61f59e39037654fef860df64f2eb421f80f463e8087f86e005",
+      "bytes": 894
+    },
+    "rust-tests.log": {
+      "sha256": "51775ab553bd9d1a3080d7ab48641ed0cd4137c894e4fb0d9e6440f81177231c",
+      "bytes": 1233
+    }
+  }
+}

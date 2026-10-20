@@ -1,0 +1,7 @@
+# Qualified official RISC Zero 3.0.3 CUDA prover, never rebuilt for this workload.
+FROM ghcr.io/olafweller/kaspa-privacy-initiative/cuda-qualification@sha256:fb6af438a2f4735b878d07ea5ddfd709c4bd7ecf4b4327df4314286076eb51a6
+COPY recovery-dist /opt/kpi/recovery
+COPY common.py worker.py service.py package.py recovery_package.py recovery_runner.py recovery_worker.py recovery_service.py /opt/kpi/app/
+RUN python3 -c "from pathlib import Path;from recovery_package import check;check(Path('/opt/kpi/recovery'),cuda=True)"
+RUN for case in deposit credit-transfer bob-exit bob-reconcile alice-exit alice-reconcile; do /opt/kpi/recovery/bin/kpi-recovery-producer check-target "$case" /opt/kpi/recovery/inputs; done
+CMD ["python3", "recovery_service.py"]

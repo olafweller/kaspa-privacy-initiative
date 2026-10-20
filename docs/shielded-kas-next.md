@@ -253,3 +253,10 @@ proof-authorized permission issuance remain next; this does not change the old
 funded instance. Prepare a six-job bounded proof package after review, retaining
 the existing aggregate proof/lease limits. Rental/funding/broadcast and the
 independent N-user shutdown test remain separately scoped work.
+
+After the focused PR56 correction/review and merge, the next concrete artifact
+is the [six-receipt software package](../poc/recovery-proof/README.md). It retains
+the corrected inputs, exact journals and per-case segment limits. Its target is
+six real independently verified receipts and both receipt-authorized local
+permission/payout paths. Package/image preparation grants no rental, proof,
+funding or broadcast release; a fresh canonical TN10 instance remains next.

@@ -1,0 +1,43 @@
+{
+  "status": "SOFTWARE_PREPARATION_ONLY_NO_RENTAL_OR_PROOF_RELEASE",
+  "immutableImage": null,
+  "sourceCommit": null,
+  "expectedProgramImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "expectedControlId": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "workloadSha256": "78033138f9ed1c7b6f4ae7b1734a92a1be2a8495c28237cf6696e7f6c6ca2640",
+  "packageArchiveSha256": "42aae900499190386464c36208c0aa2a4b3e6c102e443ff99a714ef8469656c4",
+  "serviceScope": "FIXED_RECOVERY_SIX_SUCCINCT_RECEIPTS",
+  "serviceVolume": "/workspace/kpi-recovery-six",
+  "configurationExample": {
+    "computeType": "GPU",
+    "gpuTypeIds": [
+      "NVIDIA L40S"
+    ],
+    "gpuCount": 1,
+    "cloudType": "SECURE",
+    "imageName": null,
+    "containerDiskInGb": 90,
+    "volumeInGb": 10,
+    "volumeMountPath": "/workspace",
+    "minCudaVersion": "12.8",
+    "ports": [
+      "8080/http"
+    ],
+    "env": {
+      "NVIDIA_DRIVER_CAPABILITIES": "compute,utility",
+      "KPI_GPU_TOKEN": "INJECT_EXISTING_B_SERVICE_TOKEN_NEVER_PRINT_VALUE"
+    }
+  },
+  "minHostVcpus": 4,
+  "minHostRamGiB": 32,
+  "proposedAttempts": 1,
+  "wholeProofGroupMaxSeconds": 3600,
+  "maxRentalSecondsFromActualCreation": 7200,
+  "spendPlanningLimitUsd": 5,
+  "actualGpuAndStorageQuoteRequired": true,
+  "accountCredentialLocation": "B only; existing root-only /etc/kpi-cuda-guard.env",
+  "managementRoute": "Cloud -> TN10 -> B -> Pod HTTPS",
+  "cloudNetworkOrSecretChangesRequired": false,
+  "rentalAuthorized": false,
+  "noTN10Broadcast": true
+}

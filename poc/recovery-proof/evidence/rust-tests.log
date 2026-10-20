@@ -1,0 +1,17 @@
+   Compiling kpi-recovery-proof v0.1.0 (/workspace/kaspa-privacy-initiative/poc/recovery-proof/host)
+    Finished `release` profile [optimized] target(s) in 6.19s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_recovery_proof-900fe4240336c37e)
+
+running 10 tests
+test native_tests::exact_reserve_must_not_create_a_zero_reserve_output ... ok
+test native_tests::exit_amount_range_is_explicit_and_cannot_wrap_permission_refund ... ok
+test native_tests::six_linked_batches_keep_exits_backed_until_both_payouts ... ok
+test native_tests::native_semantic_negatives_preserve_original_policy_for_both_forms ... ok
+test native_tests::whole_native_history_rejects_reused_transfer_and_payout_inputs ... ok
+test native_tests::exact_selected_reserve_drain_preserves_a_second_pending_deposit ... ok
+test native_tests::native_payout_forms_and_sponsor_topups_reconcile_without_tags ... ok
+test native_tests::wrong_permission_and_exit_replay_are_rejected ... ok
+test native_tests::verifier_rejects_old_real_receipts_and_fakes_under_fixed_new_identity ... ok
+test tests::fixed_six_targets_keep_segment_profiles_and_reject_fakes ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.90s

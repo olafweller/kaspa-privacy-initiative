@@ -583,3 +583,9 @@ A new-root wallet adapter retains user-side proving and minimal receive data.
 CPU execution is qualified; new outer receipts, genuine permission issuance and
 a fresh funded native instance remain unperformed. No old pool upgrade or
 independent shutdown-recovery claim follows from this local integration.
+
+The [fixed six-receipt package](../poc/recovery-proof/README.md) adds the producer,
+separate-process/B verification and both genuine-receipt native exit entrypoints
+without changing the guest or frozen corpus. One aggregate timer covers all six
+proofs and checks; the existing independent lease guard is reused. Preparation
+does not produce receipts or qualify actual chain acceptance/shutdown recovery.
