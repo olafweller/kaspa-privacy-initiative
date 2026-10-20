@@ -1,0 +1,53 @@
+name: Staged recovery TN10 preparation checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: recovery-tn10-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  recovery-tn10:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CARGO_BUILD_JOBS: '2'
+      RAYON_NUM_THREADS: '2'
+      CARGO_TARGET_DIR: ${{ github.workspace }}/kpi/.local/ci-target
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: kpi
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: kaspanet/rusty-kaspa
+          ref: 01b532e8b553523216471682649693af92f0fd16
+          path: upstream/rusty-kaspa
+          persist-credentials: false
+      - name: Pinned Rust and native build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang libclang-dev llvm-dev cmake pkg-config libssl-dev protobuf-compiler
+          rustup toolchain install 1.91.0 --profile minimal --component rustfmt
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            kpi/.local/ci-target
+          key: rust-ubuntu24-x64-1.91.0-01b532e-recovery-native-${{ hashFiles('kpi/poc/**/Cargo.lock') }}
+          restore-keys: |
+            rust-ubuntu24-x64-1.91.0-01b532e-recovery-native-
+            rust-ubuntu24-x64-1.91.0-01b532e-recovery-
+            rust-ubuntu24-x64-1.91.0-01b532e-private-native-tn10-
+      - name: Generic six-stage source and native integration checks
+        working-directory: kpi
+        run: |
+          export BINDGEN_EXTRA_CLANG_ARGS="-isystem $(cc -print-file-name=include)"
+          cargo +1.91.0 fmt --manifest-path poc/recovery-tn10/Cargo.toml --check
+          cargo +1.91.0 test --locked --release --manifest-path poc/recovery-tn10/Cargo.toml
+          python3 poc/recovery-tn10/check_preparation.py
+          python3 -m unittest discover -s poc/recovery-tn10/service -p 'test_*.py' -v

@@ -1,0 +1,9 @@
+    Finished `release` profile [optimized] target(s) in 0.30s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_recovery_tn10-a5804f40e6a2e8e3)
+
+running 1 test
+test tests::fresh_local_wallet_credit_and_both_recovered_exits has been running for over 60 seconds
+test tests::fresh_local_wallet_credit_and_both_recovered_exits ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 230.54s
+

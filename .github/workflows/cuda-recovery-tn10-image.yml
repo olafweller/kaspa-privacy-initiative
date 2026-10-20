@@ -1,0 +1,41 @@
+name: Prepare generic staged recovery TN10 CUDA image
+on:
+  push:
+    tags: ['cuda-recovery-tn10-*']
+permissions:
+  contents: read
+  packages: write
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Prepare trial-neutral context and build with previously qualified CUDA prover
+        run: |
+          python3 poc/recovery-tn10/service/context.py .local/recovery-tn10-image
+          docker build -t kpi-recovery-tn10:checked .local/recovery-tn10-image
+          python3 poc/recovery-tn10/service/check_image.py kpi-recovery-tn10:checked > .local/image-smoke.json
+      - name: Publish immutable image and recheck pulled digest
+        env:
+          KPI_REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          task_repository="ghcr.io/${GITHUB_REPOSITORY,,}/cuda-qualification"
+          task_tag="$task_repository:recovery-tn10-$GITHUB_SHA"
+          printf '%s' "$KPI_REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker tag kpi-recovery-tn10:checked "$task_tag"
+          docker push "$task_tag"
+          task_digest="$(docker image inspect "$task_tag" --format '{{index .RepoDigests 0}}')"
+          printf '%s\n' "$task_digest" | tee .local/image-digest.txt >> "$GITHUB_STEP_SUMMARY"
+          docker pull "$task_digest"
+          python3 poc/recovery-tn10/service/check_image.py "$task_digest" > .local/published-smoke.json
+          docker logout ghcr.io
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staged-recovery-tn10-image
+          path: |
+            .local/image-smoke.json
+            .local/published-smoke.json
+            .local/image-digest.txt

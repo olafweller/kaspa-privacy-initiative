@@ -1,0 +1,17 @@
+   Compiling kpi-recovery-tn10 v0.1.0 (/workspace/kaspa-privacy-initiative/poc/recovery-tn10)
+    Finished `release` profile [optimized] target(s) in 8.41s
+     Running unittests src/main.rs (.local/ci-target/release/deps/kpi_recovery_tn10-a5804f40e6a2e8e3)
+
+running 9 tests
+test tests::fresh_local_wallet_credit_and_both_recovered_exits ... ignored, requires retained public parameters; run separately, no outer proof
+test tests::genesis_depends_on_output_and_outpoint_without_root_cycle ... ok
+test tests::actual_genesis_id_initializes_exact_reviewed_state ... ok
+test tests::full_signed_size_and_fee_checks_are_not_unsigned_estimates ... ok
+test tests::public_only_trial_has_no_user_secrets_and_rejects_receive_extensions ... ok
+test tests::initializer_rejects_wrong_root_lane_rent_auth_and_extra_outputs ... ok
+test tests::genuine_alice_full_issuance_and_payout ... ok
+test tests::genuine_bob_partial_issuance_and_payout ... ok
+test tests::six_retained_genuine_receipts_verify_exact_dynamic_targets_and_accounting ... ok
+
+test result: ok. 8 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.21s
+

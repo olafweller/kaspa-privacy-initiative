@@ -1,0 +1,45 @@
+{
+  "alice": {
+    "incoming": "14f3b6414abfd8c11b57fd3aae7a9731fd4dc76dd5c8163551064cc5568c9e14",
+    "owner": "6ec84b2ff01e9dd5337b38e0976bf154047dc3d1367598a6b35b938a5ca3243d"
+  },
+  "aliceFinalPrincipalSompi": 600000000,
+  "batches": [
+    "deposit",
+    "credit-transfer",
+    "bob-exit",
+    "bob-reconcile",
+    "alice-exit",
+    "alice-reconcile"
+  ],
+  "bob": {
+    "incoming": "ed916ea0666cbc9222b028cecc2d9ec2d95eef26dc726cf8b48f5534e7f3664d",
+    "owner": "d2c92ca75b492e92e9a8b582eca19f5aebec74e9af5ae696e8fe7a98d02d96f0"
+  },
+  "bobPrincipalSompi": 400000000,
+  "broadcastAuthorized": false,
+  "domain": "0a712763b53b5872e21f25ea109487aa8d7933932cc761c55583da41e9e0cf54",
+  "fundingAuthorized": false,
+  "gpuAttempts": 1,
+  "gpuAuthorized": false,
+  "guestImage": "095a2fb2f58c350ccd2688ae7f72748c915bd973c60fd4abaa8d87b282ad68b5",
+  "joinControl": "7a8f24092c34ed3eb81b3d0a0b796c588c615d3488ef9e61c21dbd1e4b83ea6e",
+  "lane": "0044454600000000000000000000000000000000",
+  "maxRentalSeconds": 7200,
+  "network": "testnet-10",
+  "permissionRentSompi": 50000000,
+  "planningLimitUsd": 5,
+  "principalSompi": 1000000000,
+  "programSha256": "6039c3ef645d620bdd7eef6384750e73f51bcc8f9182aae1b1ac3c963601e75b",
+  "roleCustody": "Public synthetic example; not the owner wallets.",
+  "schema": "KPI_RECOVERY_TN10_TRIAL_V1",
+  "scope": "SYNTHETIC_PUBLIC_QUALIFICATION_ONLY",
+  "sharedProofSeconds": 3600,
+  "sponsorNative": {
+    "address": "kaspatest:qz8jljlfeejs6jc6hqhewnfresaj3zckr520hpsdyk3c46plgwmuwcclunlmy",
+    "pubkey": "8f2fcbe9ce650d4b1ab82f974d23cc3b288b161d14fb860d25a38ae83f43b7c7"
+  },
+  "stateRentSompi": 100000000,
+  "trial": "f3ba52c40d385524d4074c31cab9ddf331109f8e5cb21a63079de94de0eb5eb9",
+  "walletParametersSha256": "812b3bda0ec5f9b0c17fc1d530e49fc21defc9dcc5ea9c70a133ca62fec31e99"
+}

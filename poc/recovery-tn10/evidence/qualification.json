@@ -1,0 +1,22 @@
+{
+  "scope": "LOCAL_STAGED_RECOVERY_PREPARATION_NOT_LIVE_READINESS",
+  "rustTestsPassed": 8,
+  "serviceTestsPassed": 17,
+  "freshWalletProofs": 4,
+  "freshWalletCycleSeconds": 230.54,
+  "newOuterReceipts": 0,
+  "retainedPr58ReceiptCountChecked": 6,
+  "bothRetainedExitReceiptsInActualSignedBuilder": true,
+  "finalLocalReserveAndUserObligationsSompi": 0,
+  "separateStateRentSompi": 100000000,
+  "sameGuestAndWalletVk": true,
+  "ownerReceiveDataPublished": false,
+  "userSecretsReadOrTransferred": false,
+  "RPCReadOnlyInventoryOnly": true,
+  "hostsNtpSynchronized": true,
+  "liveFunding": false,
+  "broadcast": false,
+  "rental": false,
+  "servicesStopped": false,
+  "actualOwnerMintExtendedClientQualified": false
+}
